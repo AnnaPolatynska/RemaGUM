@@ -31,7 +31,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listBoxMaszyny = new System.Windows.Forms.ListBox();
             this.buttonAnuluj = new System.Windows.Forms.Button();
-            this.ButtonNowa = new System.Windows.Forms.Button();
+            this.buttonNowa = new System.Windows.Forms.Button();
             this.buttonZapisz = new System.Windows.Forms.Button();
             this.buttonUsun = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -48,21 +48,21 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerData_kol_przegl = new System.Windows.Forms.DateTimePicker();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBoxDzial = new System.Windows.Forms.ComboBox();
             this.dateTimePickerData_ost_przegl = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxNr_pom = new System.Windows.Forms.ComboBox();
             this.comboBoxKategoria = new System.Windows.Forms.ComboBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxUwagi = new System.Windows.Forms.RichTextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBoxNr_prot_BHP = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxNr_GUM = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxProducent = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -111,15 +111,17 @@
             this.buttonAnuluj.TabIndex = 3;
             this.buttonAnuluj.Text = "Anuluj";
             this.buttonAnuluj.UseVisualStyleBackColor = true;
+            this.buttonAnuluj.Click += new System.EventHandler(this.buttonAnuluj_Click);
             // 
-            // ButtonNowa
+            // buttonNowa
             // 
-            this.ButtonNowa.Location = new System.Drawing.Point(12, 19);
-            this.ButtonNowa.Name = "ButtonNowa";
-            this.ButtonNowa.Size = new System.Drawing.Size(75, 23);
-            this.ButtonNowa.TabIndex = 2;
-            this.ButtonNowa.Text = "Nowa";
-            this.ButtonNowa.UseVisualStyleBackColor = true;
+            this.buttonNowa.Location = new System.Drawing.Point(12, 19);
+            this.buttonNowa.Name = "buttonNowa";
+            this.buttonNowa.Size = new System.Drawing.Size(75, 23);
+            this.buttonNowa.TabIndex = 2;
+            this.buttonNowa.Text = "Nowa";
+            this.buttonNowa.UseVisualStyleBackColor = true;
+            this.buttonNowa.Click += new System.EventHandler(this.ButtonNowa_Click);
             // 
             // buttonZapisz
             // 
@@ -138,11 +140,12 @@
             this.buttonUsun.TabIndex = 4;
             this.buttonUsun.Text = "Usuń";
             this.buttonUsun.UseVisualStyleBackColor = true;
+            this.buttonUsun.Click += new System.EventHandler(this.buttonUsun_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Menu;
-            this.groupBox2.Controls.Add(this.ButtonNowa);
+            this.groupBox2.Controls.Add(this.buttonNowa);
             this.groupBox2.Controls.Add(this.buttonUsun);
             this.groupBox2.Controls.Add(this.buttonZapisz);
             this.groupBox2.Controls.Add(this.buttonAnuluj);
@@ -238,23 +241,23 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dateTimePickerData_kol_przegl);
-            this.panel1.Controls.Add(this.comboBox3);
+            this.panel1.Controls.Add(this.comboBoxDzial);
             this.panel1.Controls.Add(this.dateTimePickerData_ost_przegl);
             this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.comboBoxNr_pom);
             this.panel1.Controls.Add(this.comboBoxKategoria);
-            this.panel1.Controls.Add(this.richTextBox1);
+            this.panel1.Controls.Add(this.richTextBoxUwagi);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.textBoxNr_prot_BHP);
             this.panel1.Controls.Add(this.textBoxRok_produkcji);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.textBoxNr_GUM);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.textBoxProducent);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.textBoxNr_fabryczny);
             this.panel1.Controls.Add(this.textBoxNazwa);
@@ -285,13 +288,13 @@
             this.dateTimePickerData_kol_przegl.Size = new System.Drawing.Size(153, 20);
             this.dateTimePickerData_kol_przegl.TabIndex = 37;
             // 
-            // comboBox3
+            // comboBoxDzial
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(15, 455);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(373, 21);
-            this.comboBox3.TabIndex = 33;
+            this.comboBoxDzial.FormattingEnabled = true;
+            this.comboBoxDzial.Location = new System.Drawing.Point(15, 455);
+            this.comboBoxDzial.Name = "comboBoxDzial";
+            this.comboBoxDzial.Size = new System.Drawing.Size(373, 21);
+            this.comboBoxDzial.TabIndex = 33;
             // 
             // dateTimePickerData_ost_przegl
             // 
@@ -309,13 +312,13 @@
             this.label13.TabIndex = 27;
             this.label13.Text = "Data nastepnego przeglądu";
             // 
-            // comboBox2
+            // comboBoxNr_pom
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(17, 402);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(373, 21);
-            this.comboBox2.TabIndex = 32;
+            this.comboBoxNr_pom.FormattingEnabled = true;
+            this.comboBoxNr_pom.Location = new System.Drawing.Point(17, 402);
+            this.comboBoxNr_pom.Name = "comboBoxNr_pom";
+            this.comboBoxNr_pom.Size = new System.Drawing.Size(373, 21);
+            this.comboBoxNr_pom.TabIndex = 32;
             // 
             // comboBoxKategoria
             // 
@@ -325,13 +328,13 @@
             this.comboBoxKategoria.Size = new System.Drawing.Size(373, 21);
             this.comboBoxKategoria.TabIndex = 31;
             // 
-            // richTextBox1
+            // richTextBoxUwagi
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(15, 560);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(373, 60);
-            this.richTextBox1.TabIndex = 30;
-            this.richTextBox1.Text = "";
+            this.richTextBoxUwagi.Location = new System.Drawing.Point(15, 560);
+            this.richTextBoxUwagi.Name = "richTextBoxUwagi";
+            this.richTextBoxUwagi.Size = new System.Drawing.Size(373, 60);
+            this.richTextBoxUwagi.TabIndex = 30;
+            this.richTextBoxUwagi.Text = "";
             // 
             // label12
             // 
@@ -351,12 +354,12 @@
             this.label14.TabIndex = 29;
             this.label14.Text = "Uwagi";
             // 
-            // textBox5
+            // textBoxNr_prot_BHP
             // 
-            this.textBox5.Location = new System.Drawing.Point(15, 509);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(377, 20);
-            this.textBox5.TabIndex = 24;
+            this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(15, 509);
+            this.textBoxNr_prot_BHP.Name = "textBoxNr_prot_BHP";
+            this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(377, 20);
+            this.textBoxNr_prot_BHP.TabIndex = 24;
             // 
             // label11
             // 
@@ -366,7 +369,6 @@
             this.label11.Size = new System.Drawing.Size(109, 13);
             this.label11.TabIndex = 23;
             this.label11.Text = "Nr wg protokołu BHP";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label10
             // 
@@ -386,12 +388,12 @@
             this.label9.TabIndex = 19;
             this.label9.Text = "Nr pomieszczenia";
             // 
-            // textBox2
+            // textBoxNr_GUM
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 353);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(377, 20);
-            this.textBox2.TabIndex = 18;
+            this.textBoxNr_GUM.Location = new System.Drawing.Point(12, 353);
+            this.textBoxNr_GUM.Name = "textBoxNr_GUM";
+            this.textBoxNr_GUM.Size = new System.Drawing.Size(377, 20);
+            this.textBoxNr_GUM.TabIndex = 18;
             // 
             // label8
             // 
@@ -402,12 +404,12 @@
             this.label8.TabIndex = 17;
             this.label8.Text = "Nr GUM";
             // 
-            // textBox1
+            // textBoxProducent
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 304);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(377, 20);
-            this.textBox1.TabIndex = 16;
+            this.textBoxProducent.Location = new System.Drawing.Point(12, 304);
+            this.textBoxProducent.Name = "textBoxProducent";
+            this.textBoxProducent.Size = new System.Drawing.Size(377, 20);
+            this.textBoxProducent.TabIndex = 16;
             // 
             // label7
             // 
@@ -417,7 +419,6 @@
             this.label7.Size = new System.Drawing.Size(56, 13);
             this.label7.TabIndex = 15;
             this.label7.Text = "Producent";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // pictureBox1
             // 
@@ -471,7 +472,6 @@
             this.label19.Size = new System.Drawing.Size(135, 13);
             this.label19.TabIndex = 34;
             this.label19.Text = "Ilość osiągniętych punktów";
-            this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
             // comboBoxStan_techniczny
             // 
@@ -578,7 +578,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonAnuluj;
         private System.Windows.Forms.ListBox listBoxMaszyny;
-        private System.Windows.Forms.Button ButtonNowa;
+        private System.Windows.Forms.Button buttonNowa;
         private System.Windows.Forms.Button buttonZapisz;
         private System.Windows.Forms.Button buttonUsun;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -597,15 +597,15 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBoxNr_prot_BHP;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxNr_GUM;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxProducent;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxUwagi;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
@@ -613,8 +613,8 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DateTimePicker dateTimePickerData_ost_przegl;
         private System.Windows.Forms.DateTimePicker dateTimePickerData_kol_przegl;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxDzial;
+        private System.Windows.Forms.ComboBox comboBoxNr_pom;
         private System.Windows.Forms.ComboBox comboBoxKategoria;
         private System.Windows.Forms.ComboBox comboBoxStan_techniczny;
         private System.Windows.Forms.GroupBox groupBox3;
