@@ -78,11 +78,14 @@
             this.comboBoxPriorytet = new System.Windows.Forms.ComboBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelID = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelIDVal = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -102,6 +105,7 @@
             this.listBoxMaszyny.Name = "listBoxMaszyny";
             this.listBoxMaszyny.Size = new System.Drawing.Size(293, 667);
             this.listBoxMaszyny.TabIndex = 0;
+            this.listBoxMaszyny.SelectedIndexChanged += new System.EventHandler(this.listBoxMaszyny_SelectedIndexChanged);
             // 
             // buttonAnuluj
             // 
@@ -131,6 +135,7 @@
             this.buttonZapisz.TabIndex = 3;
             this.buttonZapisz.Text = "Zapisz";
             this.buttonZapisz.UseVisualStyleBackColor = true;
+            this.buttonZapisz.Click += new System.EventHandler(this.buttonZapisz_Click);
             // 
             // buttonUsun
             // 
@@ -542,11 +547,26 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelID,
+            this.toolStripStatusLabelIDVal});
             this.statusStrip1.Location = new System.Drawing.Point(0, 736);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1169, 22);
             this.statusStrip1.TabIndex = 42;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabelID
+            // 
+            this.toolStripStatusLabelID.Name = "toolStripStatusLabelID";
+            this.toolStripStatusLabelID.Size = new System.Drawing.Size(21, 17);
+            this.toolStripStatusLabelID.Text = "ID:";
+            // 
+            // toolStripStatusLabelIDVal
+            // 
+            this.toolStripStatusLabelIDVal.Name = "toolStripStatusLabelIDVal";
+            this.toolStripStatusLabelIDVal.Size = new System.Drawing.Size(66, 17);
+            this.toolStripStatusLabelIDVal.Text = "id maszyny";
             // 
             // SpisForm
             // 
@@ -569,6 +589,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -625,6 +647,8 @@
         private System.Windows.Forms.TextBox textBoxPunktacja;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelIDVal;
     }
 }
 

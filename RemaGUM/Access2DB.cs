@@ -527,7 +527,7 @@ namespace nsAccess2DB
 
     }//class MaszynyDAO
 
-    ////                                             DAO - warstawa operacji biznesowych tabeli Maszyny
+    // -------------------------------> BUS - warstawa operacji biznesowych tabeli Maszyny
     public class MaszynyBUS
     {
         MaszynyDAO _DAO;

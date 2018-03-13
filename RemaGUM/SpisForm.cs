@@ -96,58 +96,178 @@ namespace RemaGUM
             _tt.SetToolTip(buttonZapisz, "zapis nowej maszyny, przyrządu lub urządzenia lub edycja wybranej pozycji.");
             _tt.SetToolTip(buttonAnuluj, "anulowanie zmiany.");
             _tt.SetToolTip(buttonUsun, "usuwa pozycja w bazie.");
-
+           
         }//public SpisForm()
+        
+
+        //wyświetla listę maszyn
         private void wypelnijMaszyny()
         {
             nsAccess2DB.MaszynyVO VO;
+            
+            listBoxMaszyny.Items.Clear();
+
             _MaszynyBUS.select();
 
-            listBoxMaszyny.Items.Clear();
             while (!_MaszynyBUS.eof)
             {
                 VO = _MaszynyBUS.VO;
-                listBoxMaszyny.Items.Add(VO.Nazwa);
+                listBoxMaszyny.Items.Add(VO.Nazwa+ " - " + _MaszynyBUS.VO.Nr_fabryczny.ToString());
                 _MaszynyBUS.skip();
             }
 
-            buttonZapisz.Enabled = listBoxMaszyny.SelectedIndex > -1;
+            //Przycisk zapisz nieaktywny na starcie
+           // buttonZapisz.Enabled = listBoxMaszyny.SelectedIndex > -1;
+
         }//wypelnijMaszyny
 
+        private void listBoxMaszyny_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+            _MaszynyBUS.idx = listBoxMaszyny.SelectedIndex;
+            nsAccess2DB.MaszynyVO VO = _MaszynyBUS.VO;
+
+            listBoxMaszyny.Tag = _MaszynyBUS.VO.ID_maszyny;
+            toolStripStatusLabelIDVal.Text = _MaszynyBUS.VO.ID_maszyny.ToString();
+            comboBoxKategoria.Text = _MaszynyBUS.VO.Kategoria;
+            textBoxNazwa.Text = _MaszynyBUS.VO.Nazwa;
+            textBoxTyp.Text = _MaszynyBUS.VO.Typ;
+            textBoxNr_inwentarzowy.Text = _MaszynyBUS.VO.Nr_inwentarzowy;
+            textBoxNr_fabryczny.Text = _MaszynyBUS.VO.Nr_fabryczny;
+            textBoxRok_produkcji.Text = _MaszynyBUS.VO.Rok_produkcji;
+            textBoxProducent.Text = _MaszynyBUS.VO.Producent;
+            pictureBox1.Text = _MaszynyBUS.VO.Zdjecie1;
+            textBoxNr_GUM.Text = _MaszynyBUS.VO.Nr_GUM;
+            comboBoxNr_pom.Text = _MaszynyBUS.VO.Nr_pom;
+            comboBoxDzial.Text = _MaszynyBUS.VO.Dzial;
+            textBoxNr_prot_BHP.Text = _MaszynyBUS.VO.Nr_prot_BHP;
+            dateTimePickerData_ost_przegl.Text = _MaszynyBUS.VO.Data_ost_przegl;
+            dateTimePickerData_kol_przegl.Text = _MaszynyBUS.VO.Data_kol_przegl;
+            richTextBoxUwagi.Text = _MaszynyBUS.VO.Uwagi;
+            comboBoxWykorzystanie.Text = _MaszynyBUS.VO.Wykorzystanie;
+            comboBoxStan_techniczny.Text = _MaszynyBUS.VO.Stan_techniczny;
+            comboBoxPriorytet.Text = _MaszynyBUS.VO.Priorytet;
+            comboBoxPropozycja.Text = _MaszynyBUS.VO.Propozycja;
+            textBoxPunktacja.Text = _MaszynyBUS.VO.Punktacja.ToString();
+
+            wypelnijMaszyny();
+            
+        }//listBoxMaszyny_SelectedIndexChanged
+        
+        
+
+        //przycisk Nowa czyści formularz
         private void ButtonNowa_Click(object sender, EventArgs e)
         {
+            comboBoxKategoria.Text = string.Empty;
+            textBoxNazwa.Text = string.Empty;
+            textBoxTyp.Text = string.Empty;
+            textBoxNr_inwentarzowy.Text = string.Empty;
+            textBoxNr_fabryczny.Text = string.Empty;
+            textBoxRok_produkcji.Text = string.Empty;
+            textBoxProducent.Text = string.Empty;
+            pictureBox1.Text = string.Empty;
+            textBoxNr_GUM.Text = string.Empty;
+            comboBoxNr_pom.Text = string.Empty;
+            comboBoxDzial.Text = string.Empty;
+            textBoxNr_prot_BHP.Text = string.Empty;
+            //dateTimePickerData_ost_przegl.Text = string.Empty;
+            //dateTimePickerData_kol_przegl.Text = string.Empty;
+            richTextBoxUwagi.Text = string.Empty;
+            comboBoxWykorzystanie.Text = string.Empty;
+            comboBoxStan_techniczny.Text = string.Empty;
+            comboBoxPriorytet.Text = string.Empty;
+            comboBoxPropozycja.Text = string.Empty;
+            textBoxPunktacja.Text = string.Empty;
 
         }//ButtonNowa_Click
 
-        private void buttonZapisz_Click(object sender, EventArgs e)
-        {
-        nsAccess2DB.MaszynyVO VO = new nsAccess2DB.MaszynyVO();
-
-        VO.ID_maszyny = (int)textBoxNazwa.Tag;////////   ???
-        VO.Nazwa = textBoxNazwa.Text.Trim();
-        VO.Typ = textBoxTyp.Text.Trim();
-        VO.Nr_inwentarzowy = textBoxNr_inwentarzowy.Text.Trim();
-        VO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
-        VO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
-            //VO.Korzysc = comboBoxKorzysc.Text;
-            //VO.Priorytet = comboBoxPriorytet.Text;
-            //_MaszynyBUS.write(VO);
-
-        }//buttonZapisz_Click
-
+       
         private void buttonAnuluj_Click(object sender, EventArgs e)
         {
+            int idx = listBoxMaszyny.SelectedIndex;
+
+            comboBoxKategoria.Text = string.Empty;
+            textBoxNazwa.Text = string.Empty;
+            textBoxTyp.Text = string.Empty;
+            textBoxNr_inwentarzowy.Text = string.Empty;
+            textBoxNr_fabryczny.Text = string.Empty;
+            textBoxRok_produkcji.Text = string.Empty;
+            textBoxProducent.Text = string.Empty;
+            pictureBox1.Text = string.Empty;
+            textBoxNr_GUM.Text = string.Empty;
+            comboBoxNr_pom.Text = string.Empty;
+            comboBoxDzial.Text = string.Empty;
+            textBoxNr_prot_BHP.Text = string.Empty;
+            //dateTimePickerData_ost_przegl.Text = string.Empty;
+            //dateTimePickerData_kol_przegl.Text = string.Empty;
+            richTextBoxUwagi.Text = string.Empty;
+            comboBoxWykorzystanie.Text = string.Empty;
+            comboBoxStan_techniczny.Text = string.Empty;
+            comboBoxPriorytet.Text = string.Empty;
+            comboBoxPropozycja.Text = string.Empty;
+            textBoxPunktacja.Text = string.Empty;
+
+            wypelnijMaszyny();
+            listBoxMaszyny.SelectedIndex = idx;
 
         }//buttonAnuluj_Click
 
 
         private void buttonUsun_Click(object sender, EventArgs e)
         {
+           // if (listBoxMaszyny.Tag != null)
+            //{ _maszynyBUS
+            //}
 
         }//buttonUsun_Click
 
+        private void buttonZapisz_Click(object sender, EventArgs e)
+        {
+            int idx = listBoxMaszyny.SelectedIndex;
+            
+            nsAccess2DB.MaszynyVO maszynyVO = new nsAccess2DB.MaszynyVO();
 
+            maszynyVO.Kategoria = comboBoxKategoria.Text;
+            maszynyVO.Nazwa = textBoxNazwa.Text.Trim();
+            maszynyVO.Typ = textBoxTyp.Text.Trim();
+            maszynyVO.Nr_inwentarzowy = textBoxNr_inwentarzowy.Text.Trim();
+            maszynyVO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
+            maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
+            maszynyVO.Producent = textBoxProducent.Text.Trim();
+            maszynyVO.Zdjecie1 = pictureBox1.Text;  /////                ???????????????? obrazek
+            maszynyVO.Nr_GUM = textBoxNr_GUM.Text.Trim();
+            maszynyVO.Nr_pom = comboBoxNr_pom.Text;
+            maszynyVO.Dzial = comboBoxDzial.Text;
+            maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
+            //maszynyVO.Data_ost_przegl = dateTimePickerData_ost_przegl.Text;
+            //maszynyVO.Data_kol_przegl = dateTimePickerData_kol_przegl.Text;
+            maszynyVO.Uwagi = richTextBoxUwagi.Text.Trim();
+            maszynyVO.Wykorzystanie = comboBoxWykorzystanie.Text;
+            maszynyVO.Stan_techniczny = comboBoxStan_techniczny.Text;
+            maszynyVO.Priorytet = comboBoxPriorytet.Text;
+            maszynyVO.Propozycja = comboBoxPropozycja.Text;
+            //maszynyVO.Punktacja = int.Parse(textBoxPunktacja.Text);
+
+            /*if (toolStripStatusLabelIDVal.Text == string.Empty)
+            { maszynyVO.ID_maszyny = -1; }
+            else
+            {
+                maszynyVO.ID_maszyny = int.Parse(toolStripStatusLabelIDVal.Text);
+            }
+           */
+            _MaszynyBUS.write(maszynyVO);
+                       
+            wypelnijMaszyny();
+          
+            if (listBoxMaszyny.Items.Count > 0) {
+                listBoxMaszyny.SelectedIndex = listBoxMaszyny.Items.Count - 1;
+                            }
+
+
+        }//buttonZapisz_Click
+
+       
     }// public partial class SpisForm : Form
        
 }//namespace RemaGUM
