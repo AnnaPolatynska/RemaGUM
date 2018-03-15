@@ -127,7 +127,7 @@ namespace nsAccess2DB
         }//executeInsertQuery
 
         /// <method>
-        /// Plecenie aktualizacji.
+        /// Polecenie aktualizacji.
         /// </method>
         public bool executeUpdateQuery(String query, OleDbParameter[] parameters)
         {
@@ -157,7 +157,7 @@ namespace nsAccess2DB
 
     ///////////////////////////////////////////////////////////// klasa wymiany danych z tabelą Maszyny
 
-   //---------------------------------------------------------------> MaszynyVO
+    //---------------------------------------------------------------> MaszynyVO
     ///<summary>
     ///Klasa wymiany danych z tabelą Maszyny
     ///</summary>
@@ -192,7 +192,7 @@ namespace nsAccess2DB
         /// Konstruktor wymiany danych z tabelą Maszyny
         ///</summary>
         //public MaszynyVO (){   }
-        public MaszynyVO (){ }
+        public MaszynyVO() { }
         // gettery i settery
         public int ID_maszyny
         {
@@ -326,7 +326,7 @@ namespace nsAccess2DB
             _conn = new dbConnection(connString);
             _error = _conn._error;
         } //konstruktor MaszynyDAO
-        
+
         /// <summary>
         /// Zwraca tabelę wszystkich Maszyn.
         /// </summary>
@@ -340,20 +340,97 @@ namespace nsAccess2DB
             _error = _conn._error;
             return dt;
         }//select
-         /// <summary>
-         /// Zwraca tabelę spełniającą wartości parametrów.
-         /// </summary>
-         /// <param name="ID_maszyny">zwraca maszynę po ID_maszyny</param>
-         /// <returns>Tabela.</returns>
+
+        /// <summary>
+        /// Zwraca tabelę wszystkich Maszyn po ID.
+        /// </summary>
+        /// <returns>Tabele.</returns>
         public DataTable select(int ID_maszyny)
         {
-            string query = "SELECT * FROM Maszyny WHERE  = " + ID_maszyny.ToString() + ";";
+            string query = "SELECT * FROM Maszyny WHERE ID_maszyny ='" + ID_maszyny.ToString() + "';";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
             _error = _conn._error;
             return dt;
-        }//select
+        }//select po ID
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="Nazwa">zwraca maszynę po nazwie</param>
+        /// <returns>Tabela.</returns>
+        public DataTable selectNazwa(string Nazwa)
+        {
+            string query = "SELECT * FROM Maszyny WHERE Nazwa = '" + Nazwa + "'ORDER BY Nazwa ASC;";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//selectNazwa
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="Typ">zwraca maszynę po typie</param>
+        /// <returns>Tabela.</returns>
+        public DataTable selectTyp(string Typ)
+        {
+            string query = "SELECT * FROM Maszyny WHERE Typ = " + Typ + "order by Typ ASC;";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//selectTyp
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="Nr_inwentarzowy">zwraca maszynę po Nr inwentarzowym</param>
+        /// <returns>Tabela.</returns>
+        public DataTable selectNr_inwentarzowy(string Nr_inwentarzowy)
+        {
+            string query = "SELECT * FROM Maszyny WHERE Nr_inwentarzowy = " + Nr_inwentarzowy + "order by Typ ASC;";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//selectNr_inwentarzowy
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="Nr_fabryczny">zwraca maszynę po Nr fabrycznym</param>
+        /// <returns>Tabela.</returns>
+        public DataTable selectNr_fabryczny(string Nr_fabryczny)
+        {
+            string query = "SELECT * FROM Maszyny WHERE Nr_fabryczny = " + Nr_fabryczny + "order by Typ ASC;";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//selectNr_fabryczny
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="Nr_pom">zwraca maszynę po Nr pomieszczenia</param>
+        /// <returns>Tabela.</returns>
+        public DataTable selectNr_pom(string Nr_pom)
+        {
+            string query = "SELECT * FROM Maszyny WHERE Nr_pom = " + Nr_pom + "order by Typ ASC;";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//selectNr_pom
+
+
         /// <summary>
         /// Wprowadza nowy rekord.
         /// </summary>
@@ -519,7 +596,7 @@ namespace nsAccess2DB
 
             parameters[22] = new OleDbParameter("Punktacja", OleDbType.Integer);
             parameters[22].Value = VO.Punktacja;
-            
+
             bool b = _conn.executeUpdateQuery(query, parameters);
             _error = _conn._error;
             return b;
@@ -628,8 +705,8 @@ namespace nsAccess2DB
                 {
                     VOi.Punktacja = int.Parse(dr["Punktacja"].ToString());
                 }
-                catch {VOi.Punktacja = 0; }
-                
+                catch { VOi.Punktacja = 0; }
+
 
                 _VOs[_VOs.Length - 1] = VOi;
             }
@@ -755,5 +832,224 @@ namespace nsAccess2DB
         }//exists
 
     }//public class MaszynyBUS
+
+    ///////////////////////////////////// Częstotliwość
+    /// <summary>
+    /// Klasa wymiany danych z tabelą Czestotliwosc.
+    /// </summary>
+    public class CzestotliwoscVO
+    {
+        private string _Czestotliwosc = string.Empty; //100
+            /// <summary>
+            /// Konstruktor wymiany danych Czestotliwosc
+            /// </summary>
+        public CzestotliwoscVO() { }
+
+        public string Nazwa
+        {
+            get { return _Czestotliwosc; }
+            set { _Czestotliwosc = value; }
+        }
+
+    }//class CzestotliwoscVO
+
+    //Klasa dostępu (Data Access Object) do tabeli Czestotliwosc.
+    public class CzestotliwoscDAO
+    {
+        private dbConnection _conn;
+        public string _error = string.Empty;
+
+        /// <constructor>
+        /// Konstruktor.
+        /// </constructor>
+        public CzestotliwoscDAO(string connString)
+        {
+            _conn = new dbConnection(connString);
+            _error = _conn._error;
+        }//CzestotliwoscDAO
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        public DataTable select()
+        {
+            string query = "SELECT * FROM Czestotliwosc;";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select
+
+    }//class CzestotliwoscDAO
+
+    //Warstwa operacji biznesowaych tabeli Czestotliwosc.
+    public class CzestotliwoscBUS
+    {
+        CzestotliwoscDAO _DAO;
+
+        private CzestotliwoscVO[] _VOs = new CzestotliwoscVO[0];    //lista danych
+        private CzestotliwoscVO _VOi = new CzestotliwoscVO();       //dane na pozycji _idx
+        private int _idx = 0;                       //indeks pozycji
+        private bool _eof = false;                  //wskaźnik końca pliku
+        private int _count = 0;                     //liczba pozycji
+
+        public string _error = string.Empty;
+
+        /// <summary>
+        /// Konstruktor.
+        /// </summary>
+        /// <param name="connString">ConnectionStrine.</param>
+        public CzestotliwoscBUS(string connString)
+        {
+            _DAO = new CzestotliwoscDAO(connString);
+            _error = _DAO._error;
+        }//CzestotliwoscBUS
+
+        /// <summary>
+        /// Wypełnia tablice.
+        /// </summary>
+        /// <param name="dt">Tabela danych.</param>
+        private void fillTable(DataTable dt)
+        {
+            CzestotliwoscVO VOi;
+            _VOs = new CzestotliwoscVO[0];
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Array.Resize(ref _VOs, _VOs.Length + 1);
+
+                VOi = new CzestotliwoscVO();
+
+                VOi.Nazwa = dr["Czestotliwosc"].ToString();
+
+                _VOs[_VOs.Length - 1] = VOi;
+            }
+
+            _eof = _VOs.Length == 0;
+            _count = _VOs.Length;
+            if (_count > 0)
+                _idx = 0;
+            else
+            {
+                _idx = -1;
+                _eof = true;
+            }
+
+        }//fillTable
+
+        /// <summary>
+        /// Wypełnia tablice danych pozycjami.
+        /// </summary>
+        public void select()
+        {
+            fillTable(_DAO.select());
+        }//select
+
+        /// <summary>
+        /// Przemieszcza indeks w tablicy danych o jedną pozycję.
+        /// </summary>
+        public void skip()
+        {
+            if (_count > 0)
+            {
+                _idx++;
+                _eof = _idx >= _count;
+            }
+        }//skip
+
+        /// <summary>
+        /// Przemieszcza indeks w tablicy danych na pozycję pierwszą.
+        /// </summary>
+        public void top()
+        {
+            if (_count > 0)
+            {
+                _idx = 0;
+                _eof = false;
+            }
+        }//top
+
+        /// <summary>
+        /// Zmienna logiczna osiągnięcia końca pliku.
+        /// </summary>
+        public bool eof
+        {
+            get { return _eof; }
+        }
+
+        /// <summary>
+        /// Zwraca liczbę pozycji tablicy.
+        /// </summary>
+        public int count
+        {
+            get { return _count; }
+        }
+
+        /// <summary>
+        /// Zwraca daną okrśloną wskaźnikiem pozycji.
+        /// </summary>
+        public CzestotliwoscVO VO
+        {
+            get
+            {
+                if (_idx > -1 & _idx < _count)
+                {
+                    return _VOi = _VOs[_idx];
+                }
+                return new CzestotliwoscVO();
+            }
+        }//VO
+
+        /// <summary>
+        /// Ustawia wskaźnik pozycji.
+        /// </summary>
+        public int idx
+        {
+            set
+            {
+                if (value > -1 & value < _count)
+                {
+                    _idx = value;
+                }
+            }
+        }//idx
+
+        /// <summary>
+        /// Sprawdza istnienie rekordu.
+        /// </summary>
+        /// <param name="Id">Nazwa Czestotliwosc.</param>
+        /// <returns>Wynik logiczny sprawdzenia.</returns>
+        public bool exists(String Nazwa)
+        {
+            foreach (CzestotliwoscVO VOi in _VOs)
+            {
+                if (VOi.Nazwa == Nazwa) return true;
+            }
+            return false;
+        }//exists
+
+        /// <summary>
+        /// Zwraca indeks pozycji.
+        /// </summary>
+        /// <param name="Nazwa">Identyfikator maszyny</param>
+        /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora działu.</returns>
+        public int getIdx(string Nazwa)
+        {
+            int idx = -1;
+            foreach (CzestotliwoscVO VOi in _VOs)
+            {
+                idx++;
+                if (VOi.Nazwa == Nazwa) return idx;
+            }
+
+            return -1;
+        }//getIdx
+
+    }//class CzestotliwoscBUS
+
+
+
+
 
 }//namespace nsAccess2DB
