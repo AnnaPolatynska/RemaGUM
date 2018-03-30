@@ -1,2 +1,3 @@
 # RemaGUM
-C# program do ewidencji i zarządzania maszynami w warsztacie GUM
+Program stworzony jest w języku C# przy użyciu środowiska Visual Studio 2017. Baza danych MS Access obsługiwana językiem SQL.
+Program służy do ewidencji i zarządzania maszynami w warsztacie GUM. Program będzie rozwijany funkcjonalnie.  Wstępna wersja zawiera bazę danych maszyn w Warsztacie GUM, baza danych będzie rozwijana na wyposażenie poszczególnych laboratoriów i ułatwi sprawniejsze zarządzanie parkiem maszynowym i urządzeniami laboratoryjnymi. Wstępnie program zawiera możliwość dodania, usunięcia i edycji kolejnych maszyn/urządzeń do bazy. Lista maszyn może być sortowana po nazwie typie itd. Istnieje też możliwość wyszukiwania po początkowej frazie nazwy. Każda z maszyn ma możliwość dodania słownikowego opisu jej stanu technicznego  
