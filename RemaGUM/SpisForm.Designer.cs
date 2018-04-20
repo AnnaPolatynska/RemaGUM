@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpisForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listBoxMaszyny = new System.Windows.Forms.ListBox();
             this.buttonAnuluj = new System.Windows.Forms.Button();
@@ -46,12 +47,13 @@
             this.textBoxNr_fabryczny = new System.Windows.Forms.TextBox();
             this.textBoxRok_produkcji = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBoxOsoba_zarzadzajaca = new System.Windows.Forms.ComboBox();
+            this.textBoxNr_pom = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerData_kol_przegl = new System.Windows.Forms.DateTimePicker();
             this.comboBoxDzial = new System.Windows.Forms.ComboBox();
             this.dateTimePickerData_ost_przegl = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBoxNr_pom = new System.Windows.Forms.ComboBox();
             this.comboBoxKategoria = new System.Windows.Forms.ComboBox();
             this.richTextBoxUwagi = new System.Windows.Forms.RichTextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -60,27 +62,24 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBoxNr_GUM = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxProducent = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.comboBoxStan_techniczny = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBoxPunktacja = new System.Windows.Forms.TextBox();
             this.comboBoxPropozycja = new System.Windows.Forms.ComboBox();
             this.comboBoxWykorzystanie = new System.Windows.Forms.ComboBox();
-            this.comboBoxPriorytet = new System.Windows.Forms.ComboBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelID = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelIDVal = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBoxSortowanie = new System.Windows.Forms.GroupBox();
+            this.radioButton_Nazwa = new System.Windows.Forms.RadioButton();
             this.radioButton_Nr_Pomieszczenia = new System.Windows.Forms.RadioButton();
             this.radioButton_Nr_Fabryczny = new System.Windows.Forms.RadioButton();
             this.radioButton_Nr_Inwentarzowy = new System.Windows.Forms.RadioButton();
@@ -88,12 +87,15 @@
             this.buttonSzukaj = new System.Windows.Forms.Button();
             this.textBoxWyszukiwanie = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.radioButton_Nazwa = new System.Windows.Forms.RadioButton();
+            this.buttonOdswiez = new System.Windows.Forms.Button();
+            this.comboBoxOperator_maszyny = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBoxSortowanie.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -106,7 +108,7 @@
             this.groupBox1.Controls.Add(this.listBoxMaszyny);
             this.groupBox1.Location = new System.Drawing.Point(12, 59);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(306, 708);
+            this.groupBox1.Size = new System.Drawing.Size(306, 754);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lista";
@@ -118,7 +120,7 @@
             this.listBoxMaszyny.FormattingEnabled = true;
             this.listBoxMaszyny.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaszyny.Name = "listBoxMaszyny";
-            this.listBoxMaszyny.Size = new System.Drawing.Size(293, 680);
+            this.listBoxMaszyny.Size = new System.Drawing.Size(293, 719);
             this.listBoxMaszyny.TabIndex = 0;
             this.listBoxMaszyny.SelectedIndexChanged += new System.EventHandler(this.listBoxMaszyny_SelectedIndexChanged);
             // 
@@ -169,7 +171,7 @@
             this.groupBox2.Controls.Add(this.buttonUsun);
             this.groupBox2.Controls.Add(this.buttonZapisz);
             this.groupBox2.Controls.Add(this.buttonAnuluj);
-            this.groupBox2.Location = new System.Drawing.Point(324, 711);
+            this.groupBox2.Location = new System.Drawing.Point(324, 757);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(404, 56);
             this.groupBox2.TabIndex = 5;
@@ -259,12 +261,15 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.comboBoxOperator_maszyny);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.comboBoxOsoba_zarzadzajaca);
+            this.panel1.Controls.Add(this.textBoxNr_pom);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dateTimePickerData_kol_przegl);
             this.panel1.Controls.Add(this.comboBoxDzial);
             this.panel1.Controls.Add(this.dateTimePickerData_ost_przegl);
             this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.comboBoxNr_pom);
             this.panel1.Controls.Add(this.comboBoxKategoria);
             this.panel1.Controls.Add(this.richTextBoxUwagi);
             this.panel1.Controls.Add(this.label12);
@@ -275,7 +280,6 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.textBoxNr_GUM);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.textBoxProducent);
             this.panel1.Controls.Add(this.label7);
@@ -289,8 +293,24 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(324, 67);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(404, 638);
+            this.panel1.Size = new System.Drawing.Size(404, 684);
             this.panel1.TabIndex = 17;
+            // 
+            // comboBoxOsoba_zarzadzajaca
+            // 
+            this.comboBoxOsoba_zarzadzajaca.FormattingEnabled = true;
+            this.comboBoxOsoba_zarzadzajaca.Location = new System.Drawing.Point(12, 353);
+            this.comboBoxOsoba_zarzadzajaca.Name = "comboBoxOsoba_zarzadzajaca";
+            this.comboBoxOsoba_zarzadzajaca.Size = new System.Drawing.Size(373, 21);
+            this.comboBoxOsoba_zarzadzajaca.TabIndex = 39;
+            this.comboBoxOsoba_zarzadzajaca.SelectedIndexChanged += new System.EventHandler(this.comboBox_Osoba_zarzadzajaca_SelectedIndexChanged);
+            // 
+            // textBoxNr_pom
+            // 
+            this.textBoxNr_pom.Location = new System.Drawing.Point(11, 449);
+            this.textBoxNr_pom.Name = "textBoxNr_pom";
+            this.textBoxNr_pom.Size = new System.Drawing.Size(377, 20);
+            this.textBoxNr_pom.TabIndex = 38;
             // 
             // label1
             // 
@@ -311,10 +331,11 @@
             // comboBoxDzial
             // 
             this.comboBoxDzial.FormattingEnabled = true;
-            this.comboBoxDzial.Location = new System.Drawing.Point(15, 455);
+            this.comboBoxDzial.Location = new System.Drawing.Point(14, 502);
             this.comboBoxDzial.Name = "comboBoxDzial";
             this.comboBoxDzial.Size = new System.Drawing.Size(373, 21);
             this.comboBoxDzial.TabIndex = 33;
+            this.comboBoxDzial.SelectedIndexChanged += new System.EventHandler(this.comboBoxDzial_SelectedIndexChanged);
             // 
             // dateTimePickerData_ost_przegl
             // 
@@ -332,14 +353,6 @@
             this.label13.TabIndex = 27;
             this.label13.Text = "Data nastepnego przeglądu";
             // 
-            // comboBoxNr_pom
-            // 
-            this.comboBoxNr_pom.FormattingEnabled = true;
-            this.comboBoxNr_pom.Location = new System.Drawing.Point(17, 402);
-            this.comboBoxNr_pom.Name = "comboBoxNr_pom";
-            this.comboBoxNr_pom.Size = new System.Drawing.Size(373, 21);
-            this.comboBoxNr_pom.TabIndex = 32;
-            // 
             // comboBoxKategoria
             // 
             this.comboBoxKategoria.FormattingEnabled = true;
@@ -347,10 +360,11 @@
             this.comboBoxKategoria.Name = "comboBoxKategoria";
             this.comboBoxKategoria.Size = new System.Drawing.Size(373, 21);
             this.comboBoxKategoria.TabIndex = 31;
+            this.comboBoxKategoria.SelectedIndexChanged += new System.EventHandler(this.comboBoxKategoria_SelectedIndexChanged);
             // 
             // richTextBoxUwagi
             // 
-            this.richTextBoxUwagi.Location = new System.Drawing.Point(15, 560);
+            this.richTextBoxUwagi.Location = new System.Drawing.Point(14, 607);
             this.richTextBoxUwagi.Name = "richTextBoxUwagi";
             this.richTextBoxUwagi.Size = new System.Drawing.Size(373, 60);
             this.richTextBoxUwagi.TabIndex = 30;
@@ -368,7 +382,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(15, 544);
+            this.label14.Location = new System.Drawing.Point(14, 591);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(37, 13);
             this.label14.TabIndex = 29;
@@ -376,7 +390,7 @@
             // 
             // textBoxNr_prot_BHP
             // 
-            this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(15, 509);
+            this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(14, 556);
             this.textBoxNr_prot_BHP.Name = "textBoxNr_prot_BHP";
             this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(377, 20);
             this.textBoxNr_prot_BHP.TabIndex = 24;
@@ -384,7 +398,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 493);
+            this.label11.Location = new System.Drawing.Point(14, 540);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(109, 13);
             this.label11.TabIndex = 23;
@@ -393,36 +407,29 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 435);
+            this.label10.Location = new System.Drawing.Point(13, 482);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(63, 13);
+            this.label10.Size = new System.Drawing.Size(32, 13);
             this.label10.TabIndex = 21;
-            this.label10.Text = "Dział GUM ";
+            this.label10.Text = "Dział";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(15, 386);
+            this.label9.Location = new System.Drawing.Point(14, 433);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 13);
             this.label9.TabIndex = 19;
             this.label9.Text = "Nr pomieszczenia";
-            // 
-            // textBoxNr_GUM
-            // 
-            this.textBoxNr_GUM.Location = new System.Drawing.Point(12, 353);
-            this.textBoxNr_GUM.Name = "textBoxNr_GUM";
-            this.textBoxNr_GUM.Size = new System.Drawing.Size(377, 20);
-            this.textBoxNr_GUM.TabIndex = 18;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(12, 337);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 13);
+            this.label8.Size = new System.Drawing.Size(103, 13);
             this.label8.TabIndex = 17;
-            this.label8.Text = "Nr GUM";
+            this.label8.Text = "Osoba zarządzająca";
             // 
             // textBoxProducent
             // 
@@ -451,7 +458,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(13, 97);
+            this.label15.Location = new System.Drawing.Point(13, 74);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(140, 13);
             this.label15.TabIndex = 30;
@@ -466,15 +473,6 @@
             this.label16.TabIndex = 31;
             this.label16.Text = "Ocena stanu technicznego";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(13, 57);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(88, 13);
-            this.label17.TabIndex = 32;
-            this.label17.Text = "Priorytet naprawy";
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -484,15 +482,6 @@
             this.label18.TabIndex = 33;
             this.label18.Text = "Propozycja";
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(13, 181);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(135, 13);
-            this.label19.TabIndex = 34;
-            this.label19.Text = "Ilość osiągniętych punktów";
-            // 
             // comboBoxStan_techniczny
             // 
             this.comboBoxStan_techniczny.FormattingEnabled = true;
@@ -500,33 +489,23 @@
             this.comboBoxStan_techniczny.Name = "comboBoxStan_techniczny";
             this.comboBoxStan_techniczny.Size = new System.Drawing.Size(359, 21);
             this.comboBoxStan_techniczny.TabIndex = 38;
+            this.comboBoxStan_techniczny.SelectedIndexChanged += new System.EventHandler(this.comboBoxStan_techniczny_SelectedIndexChanged);
             // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.groupBox3.Controls.Add(this.textBoxPunktacja);
             this.groupBox3.Controls.Add(this.comboBoxPropozycja);
             this.groupBox3.Controls.Add(this.comboBoxWykorzystanie);
-            this.groupBox3.Controls.Add(this.comboBoxPriorytet);
             this.groupBox3.Controls.Add(this.comboBoxStan_techniczny);
-            this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Location = new System.Drawing.Point(734, 537);
+            this.groupBox3.Location = new System.Drawing.Point(734, 583);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(389, 230);
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Stan techniczny i częstotliwość wykorzystania";
-            // 
-            // textBoxPunktacja
-            // 
-            this.textBoxPunktacja.Location = new System.Drawing.Point(16, 199);
-            this.textBoxPunktacja.Name = "textBoxPunktacja";
-            this.textBoxPunktacja.Size = new System.Drawing.Size(117, 20);
-            this.textBoxPunktacja.TabIndex = 42;
             // 
             // comboBoxPropozycja
             // 
@@ -535,40 +514,44 @@
             this.comboBoxPropozycja.Name = "comboBoxPropozycja";
             this.comboBoxPropozycja.Size = new System.Drawing.Size(359, 21);
             this.comboBoxPropozycja.TabIndex = 41;
+            this.comboBoxPropozycja.SelectedIndexChanged += new System.EventHandler(this.comboBoxPropozycja_SelectedIndexChanged);
             // 
             // comboBoxWykorzystanie
             // 
             this.comboBoxWykorzystanie.FormattingEnabled = true;
-            this.comboBoxWykorzystanie.Location = new System.Drawing.Point(16, 113);
+            this.comboBoxWykorzystanie.Location = new System.Drawing.Point(16, 90);
             this.comboBoxWykorzystanie.Name = "comboBoxWykorzystanie";
             this.comboBoxWykorzystanie.Size = new System.Drawing.Size(359, 21);
             this.comboBoxWykorzystanie.TabIndex = 40;
             this.comboBoxWykorzystanie.SelectedIndexChanged += new System.EventHandler(this.ComboBoxWykorzystanie_SelectedIndexChanged);
             // 
-            // comboBoxPriorytet
+            // toolStrip
             // 
-            this.comboBoxPriorytet.FormattingEnabled = true;
-            this.comboBoxPriorytet.Location = new System.Drawing.Point(16, 73);
-            this.comboBoxPriorytet.Name = "comboBoxPriorytet";
-            this.comboBoxPriorytet.Size = new System.Drawing.Size(359, 21);
-            this.comboBoxPriorytet.TabIndex = 39;
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonHelp});
+            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(1135, 25);
+            this.toolStrip.TabIndex = 41;
+            this.toolStrip.Text = "toolStrip1";
             // 
-            // toolStrip1
+            // toolStripButtonHelp
             // 
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1132, 25);
-            this.toolStrip1.TabIndex = 41;
-            this.toolStrip1.Text = "toolStrip1";
+            this.toolStripButtonHelp.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonHelp.Image")));
+            this.toolStripButtonHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonHelp.Name = "toolStripButtonHelp";
+            this.toolStripButtonHelp.Size = new System.Drawing.Size(121, 22);
+            this.toolStripButtonHelp.Text = "Pomoc programu";
+            this.toolStripButtonHelp.Click += new System.EventHandler(this.toolStripButtonHelp_Click);
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelID,
             this.toolStripStatusLabelIDVal});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 770);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 816);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1132, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1135, 22);
             this.statusStrip1.TabIndex = 42;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -598,6 +581,18 @@
             this.groupBoxSortowanie.TabStop = false;
             this.groupBoxSortowanie.Text = "sortowanie";
             // 
+            // radioButton_Nazwa
+            // 
+            this.radioButton_Nazwa.AutoSize = true;
+            this.radioButton_Nazwa.Location = new System.Drawing.Point(435, 16);
+            this.radioButton_Nazwa.Name = "radioButton_Nazwa";
+            this.radioButton_Nazwa.Size = new System.Drawing.Size(58, 17);
+            this.radioButton_Nazwa.TabIndex = 4;
+            this.radioButton_Nazwa.TabStop = true;
+            this.radioButton_Nazwa.Text = "Nazwa";
+            this.radioButton_Nazwa.UseVisualStyleBackColor = true;
+            this.radioButton_Nazwa.CheckedChanged += new System.EventHandler(this.radioButton_Nazwa_CheckedChanged);
+            // 
             // radioButton_Nr_Pomieszczenia
             // 
             this.radioButton_Nr_Pomieszczenia.AutoSize = true;
@@ -608,6 +603,7 @@
             this.radioButton_Nr_Pomieszczenia.TabStop = true;
             this.radioButton_Nr_Pomieszczenia.Text = "Nr pomieszczenia";
             this.radioButton_Nr_Pomieszczenia.UseVisualStyleBackColor = true;
+            this.radioButton_Nr_Pomieszczenia.CheckedChanged += new System.EventHandler(this.radioButton_Nr_Pomieszczenia_CheckedChanged);
             // 
             // radioButton_Nr_Fabryczny
             // 
@@ -619,6 +615,7 @@
             this.radioButton_Nr_Fabryczny.TabStop = true;
             this.radioButton_Nr_Fabryczny.Text = "Nr fabryczny";
             this.radioButton_Nr_Fabryczny.UseVisualStyleBackColor = true;
+            this.radioButton_Nr_Fabryczny.CheckedChanged += new System.EventHandler(this.radioButton_Nr_Fabryczny_CheckedChanged);
             // 
             // radioButton_Nr_Inwentarzowy
             // 
@@ -630,6 +627,7 @@
             this.radioButton_Nr_Inwentarzowy.TabStop = true;
             this.radioButton_Nr_Inwentarzowy.Text = "Nr inwentarzowy";
             this.radioButton_Nr_Inwentarzowy.UseVisualStyleBackColor = true;
+            this.radioButton_Nr_Inwentarzowy.CheckedChanged += new System.EventHandler(this.radioButton_Nr_Inwentarzowy_CheckedChanged);
             // 
             // radioButton_Typ
             // 
@@ -641,6 +639,7 @@
             this.radioButton_Typ.TabStop = true;
             this.radioButton_Typ.Text = "Typ";
             this.radioButton_Typ.UseVisualStyleBackColor = true;
+            this.radioButton_Typ.CheckedChanged += new System.EventHandler(this.radioButton_Typ_CheckedChanged);
             // 
             // buttonSzukaj
             // 
@@ -650,6 +649,7 @@
             this.buttonSzukaj.TabIndex = 4;
             this.buttonSzukaj.Text = "szukaj";
             this.buttonSzukaj.UseVisualStyleBackColor = true;
+            this.buttonSzukaj.Click += new System.EventHandler(this.buttonSzukaj_Click);
             // 
             // textBoxWyszukiwanie
             // 
@@ -667,29 +667,46 @@
             this.groupBox5.Size = new System.Drawing.Size(601, 41);
             this.groupBox5.TabIndex = 45;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "wyszukiwanie";
+            this.groupBox5.Text = "wyszukiwanie po nazwie maszyny";
             // 
-            // radioButton_Nazwa
+            // buttonOdswiez
             // 
-            this.radioButton_Nazwa.AutoSize = true;
-            this.radioButton_Nazwa.Location = new System.Drawing.Point(435, 16);
-            this.radioButton_Nazwa.Name = "radioButton_Nazwa";
-            this.radioButton_Nazwa.Size = new System.Drawing.Size(58, 17);
-            this.radioButton_Nazwa.TabIndex = 4;
-            this.radioButton_Nazwa.TabStop = true;
-            this.radioButton_Nazwa.Text = "Nazwa";
-            this.radioButton_Nazwa.UseVisualStyleBackColor = true;
+            this.buttonOdswiez.Location = new System.Drawing.Point(1041, 4);
+            this.buttonOdswiez.Name = "buttonOdswiez";
+            this.buttonOdswiez.Size = new System.Drawing.Size(75, 23);
+            this.buttonOdswiez.TabIndex = 46;
+            this.buttonOdswiez.Text = "Odśwież";
+            this.buttonOdswiez.UseVisualStyleBackColor = true;
+            this.buttonOdswiez.Click += new System.EventHandler(this.buttonOdswiez_Click);
+            // 
+            // comboBoxOperator_maszyny
+            // 
+            this.comboBoxOperator_maszyny.FormattingEnabled = true;
+            this.comboBoxOperator_maszyny.Location = new System.Drawing.Point(11, 409);
+            this.comboBoxOperator_maszyny.Name = "comboBoxOperator_maszyny";
+            this.comboBoxOperator_maszyny.Size = new System.Drawing.Size(373, 21);
+            this.comboBoxOperator_maszyny.TabIndex = 41;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(12, 393);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(91, 13);
+            this.label17.TabIndex = 40;
+            this.label17.Text = "Operator maszyny";
             // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1132, 792);
+            this.ClientSize = new System.Drawing.Size(1135, 838);
+            this.Controls.Add(this.buttonOdswiez);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBoxSortowanie);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
@@ -703,6 +720,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBoxSortowanie.ResumeLayout(false);
@@ -742,29 +761,23 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBoxNr_GUM;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxProducent;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RichTextBox richTextBoxUwagi;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DateTimePicker dateTimePickerData_ost_przegl;
         private System.Windows.Forms.DateTimePicker dateTimePickerData_kol_przegl;
         private System.Windows.Forms.ComboBox comboBoxDzial;
-        private System.Windows.Forms.ComboBox comboBoxNr_pom;
         private System.Windows.Forms.ComboBox comboBoxKategoria;
         private System.Windows.Forms.ComboBox comboBoxStan_techniczny;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox comboBoxPropozycja;
         private System.Windows.Forms.ComboBox comboBoxWykorzystanie;
-        private System.Windows.Forms.ComboBox comboBoxPriorytet;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxPunktacja;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelIDVal;
@@ -777,6 +790,12 @@
         private System.Windows.Forms.TextBox textBoxWyszukiwanie;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.RadioButton radioButton_Nazwa;
+        private System.Windows.Forms.Button buttonOdswiez;
+        private System.Windows.Forms.TextBox textBoxNr_pom;
+        private System.Windows.Forms.ComboBox comboBoxOsoba_zarzadzajaca;
+        private System.Windows.Forms.ToolStripButton toolStripButtonHelp;
+        private System.Windows.Forms.ComboBox comboBoxOperator_maszyny;
+        private System.Windows.Forms.Label label17;
     }
 }
 
