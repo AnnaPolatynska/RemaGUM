@@ -47,6 +47,8 @@
             this.textBoxNr_fabryczny = new System.Windows.Forms.TextBox();
             this.textBoxRok_produkcji = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBoxOperator_maszyny = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.comboBoxOsoba_zarzadzajaca = new System.Windows.Forms.ComboBox();
             this.textBoxNr_pom = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -88,8 +90,6 @@
             this.textBoxWyszukiwanie = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.buttonOdswiez = new System.Windows.Forms.Button();
-            this.comboBoxOperator_maszyny = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -295,6 +295,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(404, 684);
             this.panel1.TabIndex = 17;
+            // 
+            // comboBoxOperator_maszyny
+            // 
+            this.comboBoxOperator_maszyny.FormattingEnabled = true;
+            this.comboBoxOperator_maszyny.Location = new System.Drawing.Point(11, 409);
+            this.comboBoxOperator_maszyny.Name = "comboBoxOperator_maszyny";
+            this.comboBoxOperator_maszyny.Size = new System.Drawing.Size(373, 21);
+            this.comboBoxOperator_maszyny.TabIndex = 41;
+            this.comboBoxOperator_maszyny.SelectedIndexChanged += new System.EventHandler(this.comboBox_Operator_maszyny_SelectedIndexChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(12, 393);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(91, 13);
+            this.label17.TabIndex = 40;
+            this.label17.Text = "Operator maszyny";
             // 
             // comboBoxOsoba_zarzadzajaca
             // 
@@ -678,23 +696,6 @@
             this.buttonOdswiez.Text = "Odśwież";
             this.buttonOdswiez.UseVisualStyleBackColor = true;
             this.buttonOdswiez.Click += new System.EventHandler(this.buttonOdswiez_Click);
-            // 
-            // comboBoxOperator_maszyny
-            // 
-            this.comboBoxOperator_maszyny.FormattingEnabled = true;
-            this.comboBoxOperator_maszyny.Location = new System.Drawing.Point(11, 409);
-            this.comboBoxOperator_maszyny.Name = "comboBoxOperator_maszyny";
-            this.comboBoxOperator_maszyny.Size = new System.Drawing.Size(373, 21);
-            this.comboBoxOperator_maszyny.TabIndex = 41;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(12, 393);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(91, 13);
-            this.label17.TabIndex = 40;
-            this.label17.Text = "Operator maszyny";
             // 
             // SpisForm
             // 

@@ -23,6 +23,7 @@ namespace RemaGUM
         private nsAccess2DB.CzestotliwoscBUS _CzestotliwoscBUS;
         private nsAccess2DB.PropozycjaBUS _PropozycjaBUS;
         private nsAccess2DB.Stan_technicznyBUS _Stan_technicznyBUS;
+        private nsAccess2DB.Operator_maszynyBUS _Operator_maszynyBUS;
       
 
 
@@ -83,16 +84,20 @@ namespace RemaGUM
             _PropozycjaBUS = new nsAccess2DB.PropozycjaBUS(_connStr);
             _Stan_technicznyBUS = new nsAccess2DB.Stan_technicznyBUS(_connStr);
             _Osoba_zarzadzajacaBUS = new nsAccess2DB.Osoba_zarzadzajacaBUS(_connStr);
+            _Operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connStr);
             
             _MaszynyBUS.select();
 
             WypelnijMaszynyNazwami();
-            WypełnijOsobyOdp();
+            WypelnijOsoba_zarzadzajaca();
             WypelnijCzestotliwosc();
             WypelnijKategorie();
             WypelnijDzial();            
             WypelnijPropozycje();
             WypelnijStan_techniczny();
+            WypelnijOperator_maszyny();
+
+
             
             if (listBoxMaszyny.Items.Count > 0) listBoxMaszyny.SelectedIndex = 0;
 
@@ -108,7 +113,7 @@ namespace RemaGUM
             _tt.SetToolTip(textBoxProducent, "Producent maszyny, przyrządu lub urządzenia.");
             _tt.SetToolTip(pictureBox1, "Zdjęcie maszyny, przyrządu lub urządzenia.");
             _tt.SetToolTip(comboBoxOsoba_zarzadzajaca, "Opiekun maszyny.");
-            _tt.SetToolTip(comboBoxOperator_maszyny, "Główna osoba użytkująca maszynę.");
+            _tt.SetToolTip(comboBoxOperator_maszyny, "Główna osoba użytkująca maszynę (posiadająca odpowiednie uprawnienia).");
             _tt.SetToolTip(textBoxNr_pom, "Numer pomieszczenia GUM, gdzie znajuje się maszyna, przyrząd lub urządzenie.");
             _tt.SetToolTip(comboBoxDzial, "Nazwa dział  lista maszyn, przyrządów i urządzeń itp.");
             _tt.SetToolTip(textBoxNr_prot_BHP, "Numer nadany w protokole kontroli dostosowania maszyny do minimalnych wymagań w zakresie BHP z dnia 12.06.2006 r.");
@@ -274,7 +279,6 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void listBoxMaszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             _MaszynyBUS.idx = listBoxMaszyny.SelectedIndex;
             nsAccess2DB.MaszynyVO VO = _MaszynyBUS.VO;
 
@@ -329,14 +333,15 @@ namespace RemaGUM
             _KategoriaBUS.idx = comboBoxKategoria.SelectedIndex;
         }//comboBoxKategoria_SelectedIndexChanged
 
-        private void WypełnijOsobyOdp()
+        private void WypelnijOsoba_zarzadzajaca()
         {
             nsAccess2DB.Osoba_zarzadzajacaVO VO;
             comboBoxOsoba_zarzadzajaca.Items.Clear();
 
             _Osoba_zarzadzajacaBUS.select();
             _Osoba_zarzadzajacaBUS.top();
-            while (!_Osoba_zarzadzajacaBUS.eof) {
+            while (!_Osoba_zarzadzajacaBUS.eof)
+            {
                 VO = _Osoba_zarzadzajacaBUS.VO;
                 comboBoxOsoba_zarzadzajaca.Items.Add(VO.Nazwa);
                 _Osoba_zarzadzajacaBUS.skip();
@@ -347,7 +352,28 @@ namespace RemaGUM
         {
             _Osoba_zarzadzajacaBUS.idx = comboBoxOsoba_zarzadzajaca.SelectedIndex;
         }// comboBox_Osoba_zarzadzajaca_SelectedIndexChanged
-       
+
+        private void WypelnijOperator_maszyny()
+        {
+            nsAccess2DB.Operator_maszynyVO VO;
+            comboBoxOperator_maszyny.Items.Clear();
+
+            _Operator_maszynyBUS.select();
+            _Operator_maszynyBUS.top();
+            while (!_Operator_maszynyBUS.eof)
+            {
+                VO = _Operator_maszynyBUS.VO;
+                comboBoxOperator_maszyny.Items.Add(VO.Nazwa);
+                _Operator_maszynyBUS.skip();
+            }
+        }// WypelnijOperator_maszyny()
+
+        private void comboBox_Operator_maszyny_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _Operator_maszynyBUS.idx = comboBoxOperator_maszyny.SelectedIndex;
+        }// comboBox_Operator_maszyny_SelectedIndexChanged
+
+
         /// <summary>
         /// wypełnia listbox Działami w których znajdują się maszyny
         /// </summary>
@@ -598,6 +624,7 @@ namespace RemaGUM
             VO.Wykorzystanie = comboBoxWykorzystanie.Text;
             VO.Stan_techniczny = comboBoxStan_techniczny.Text;
             VO.Propozycja = comboBoxPropozycja.Text;
+            VO.Operator_maszyny = comboBoxOperator_maszyny.Text;
 
             WypelnijMaszynyNazwami();
             listBoxMaszyny.SelectedIndex = idx;
@@ -634,7 +661,7 @@ namespace RemaGUM
             catch { }
         }// toolStripButtonHelp_Click
 
-        
+       
     }// public partial class SpisForm : Form
        
 }//namespace RemaGUM

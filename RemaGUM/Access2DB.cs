@@ -1837,7 +1837,222 @@ namespace nsAccess2DB
 
     }//class DzialBUS
 
-    /////////////////////////////////////////////////////////////////////////////////// Osoba_zarzadzajaca
+    /////////////////////////////////////////////////////////////////////////////////// Operator_maszyny
+    /// <summary>
+    /// Klasa wymiany danych z tabelą Operator_maszyny.
+    /// </summary>
+    public class Operator_maszynyVO
+    {
+        private string _Operator_maszyny = string.Empty; //255
+        /// <summary>
+        /// Konstruktor wymiany danych z tabelą Operator_maszyny
+        /// </summary>
+        public Operator_maszynyVO() { }
+
+        public string Nazwa
+        {
+            get { return _Operator_maszyny; }
+            set { _Operator_maszyny = value; }
+        }
+    }//class Operator_maszynyVO
+
+    //Klasa dostępu (Data Access Object) do tabeli Operator_maszyny.
+    public class Operator_maszynyDAO
+    {
+        private dbConnection _conn;
+        public string _error = string.Empty;
+
+        /// <constructor>
+        /// Konstruktor.
+        /// </constructor>
+        public Operator_maszynyDAO(string connString)
+        {
+            _conn = new dbConnection(connString);
+            _error = _conn._error;
+        }//Operator_maszynyDAO
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        public DataTable select()
+        {
+            string query = "SELECT * FROM Operator_maszyny;";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select
+
+    }//class Operator_maszynyDAO
+
+    //Warstwa operacji biznesowaych tabeli Operator_maszyny BUS.
+    public class Operator_maszynyBUS
+    {
+        Operator_maszynyDAO _DAO;
+
+        private Operator_maszynyVO[] _VOs = new Operator_maszynyVO[0];    //lista danych
+        private Operator_maszynyVO _VOi = new Operator_maszynyVO();       //dane na pozycji _idx
+        private int _idx = 0;                       //indeks pozycji
+        private bool _eof = false;                  //wskaźnik końca pliku
+        private int _count = 0;                     //liczba pozycji
+
+        public string _error = string.Empty;
+
+        /// <summary>
+        /// Konstruktor.
+        /// </summary>
+        /// <param name="connString">ConnectionString.</param>
+        public Operator_maszynyBUS(string connString)
+        {
+            _DAO = new Operator_maszynyDAO(connString);
+            _error = _DAO._error;
+        }//Operator_maszynyBUS
+
+        /// <summary>
+        /// Wypełnia tablice.
+        /// </summary>
+        /// <param name="dt">Tabela danych.</param>
+        private void fillTable(DataTable dt)
+        {
+            Operator_maszynyVO VOi;
+            _VOs = new Operator_maszynyVO[0];
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Array.Resize(ref _VOs, _VOs.Length + 1);
+
+                VOi = new Operator_maszynyVO();
+
+                VOi.Nazwa = dr["Operator_maszyny"].ToString();
+
+                _VOs[_VOs.Length - 1] = VOi;
+            }
+
+            _eof = _VOs.Length == 0;
+            _count = _VOs.Length;
+            if (_count > 0)
+                _idx = 0;
+            else
+            {
+                _idx = -1;
+                _eof = true;
+            }
+
+        }//fillTable
+
+        /// <summary>
+        /// Wypełnia tablice danych pozycjami.
+        /// </summary>
+        public void select()
+        {
+            fillTable(_DAO.select());
+        }//select
+
+        /// <summary>
+        /// Przemieszcza indeks w tablicy danych o jedną pozycję.
+        /// </summary>
+        public void skip()
+        {
+            if (_count > 0)
+            {
+                _idx++;
+                _eof = _idx >= _count;
+            }
+        }//skip
+
+        /// <summary>
+        /// Przemieszcza indeks w tablicy danych na pozycję pierwszą.
+        /// </summary>
+        public void top()
+        {
+            if (_count > 0)
+            {
+                _idx = 0;
+                _eof = false;
+            }
+        }//top
+
+        /// <summary>
+        /// Zmienna logiczna osiągnięcia końca pliku.
+        /// </summary>
+        public bool eof
+        {
+            get { return _eof; }
+        }
+
+        /// <summary>
+        /// Zwraca liczbę pozycji tablicy.
+        /// </summary>
+        public int count
+        {
+            get { return _count; }
+        }
+
+        /// <summary>
+        /// Zwraca daną okrśloną wskaźnikiem pozycji.
+        /// </summary>
+        public Operator_maszynyVO VO
+        {
+            get
+            {
+                if (_idx > -1 & _idx < _count)
+                {
+                    return _VOi = _VOs[_idx];
+                }
+                return new Operator_maszynyVO();
+            }
+        }//VO
+
+        /// <summary>
+        /// Ustawia wskaźnik pozycji.
+        /// </summary>
+        public int idx
+        {
+            set
+            {
+                if (value > -1 & value < _count)
+                {
+                    _idx = value;
+                }
+            }
+        }//idx
+
+        /// <summary>
+        /// Sprawdza istnienie rekordu.
+        /// </summary>
+        /// <param name="Id">Operator_maszyny.</param>
+        /// <returns>Wynik logiczny sprawdzenia.</returns>
+        public bool exists(String Nazwa)
+        {
+            foreach (Operator_maszynyVO VOi in _VOs)
+            {
+                if (VOi.Nazwa == Nazwa) return true;
+            }
+            return false;
+        }//exists
+
+        /// <summary>
+        /// Zwraca indeks pozycji.
+        /// </summary>
+        /// <param name="Nazwa">Identyfikator Operator_maszyny - osoba posiadająca uprawnienia do pracy na danej maszynie</param>
+        /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora operator_maszyny.</returns>
+        public int getIdx(string Nazwa)
+        {
+            int idx = -1;
+            foreach (Operator_maszynyVO VOi in _VOs)
+            {
+                idx++;
+                if (VOi.Nazwa == Nazwa) return idx;
+            }
+
+            return -1;
+        }//getIdx
+
+    }//class Operator_maszynyBUS
+
+    
+    /////////////////////////////////////////////////////////////////////////////////// Osoba_zarzadzajaca maszyną
     /// <summary>
     /// Klasa wymiany danych z tabelą Osoba_zarzadzajaca.
     /// </summary>
@@ -2035,8 +2250,8 @@ namespace nsAccess2DB
         /// <summary>
         /// Zwraca indeks pozycji.
         /// </summary>
-        /// <param name="Nazwa">Identyfikator Osoba_zarzadzajaca za maszynę</param>
-        /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora Osoby_odpowiedzialnej.</returns>
+        /// <param name="Nazwa">Identyfikator Osoba_zarzadzajaca maszyną</param>
+        /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora Osoba_zarzadzajaca.</returns>
         public int getIdx(string Nazwa)
         {
             int idx = -1;
