@@ -24,8 +24,6 @@ namespace RemaGUM
         private nsAccess2DB.PropozycjaBUS _PropozycjaBUS;
         private nsAccess2DB.Stan_technicznyBUS _Stan_technicznyBUS;
         private nsAccess2DB.Operator_maszynyBUS _Operator_maszynyBUS;
-      
-
 
         private ToolTip _tt;            //podpowiedzi dla niektórych kontolek
         /// <summary>
@@ -99,9 +97,11 @@ namespace RemaGUM
             WypelnijPropozycje();
             WypelnijStan_techniczny();
             WypelnijOperator_maszyny();
+            UstawFormatDaty();
 
 
-            
+
+
             if (listBoxMaszyny.Items.Count > 0) listBoxMaszyny.SelectedIndex = 0;
 
             _tt = new ToolTip();
@@ -251,11 +251,26 @@ namespace RemaGUM
             }
         }//radioButton_Nr_Pomieszczenia_CheckedChanged
 
+
+        /// <summary>
+        /// zmienia format wyświetlania dateTimePickerData_kol_przegl
+        /// </summary>
+         public void UstawFormatDaty()
+        {
+            dateTimePickerData_kol_przegl.Format = DateTimePickerFormat.Custom;
+            dateTimePickerData_kol_przegl.CustomFormat = "dd MMMM yyyy r. ";
+            dateTimePickerData_ost_przegl.Format = DateTimePickerFormat.Custom;
+            dateTimePickerData_ost_przegl.CustomFormat = "dd MMMM yyyy r. ";
+            
+        }//public void UstawFormatDaty()
+
+       
         private void radioButtonData_nast_przegladu_CheckedChanged(object sender, EventArgs e)
         {
-            DateTime data;
+            // TODO zmiana formatu dat w listBOXMaszyny - bez czasu
 
-            string s;
+            //DateTime data;
+            //string s;
 
             listBoxMaszyny.Items.Clear();
 

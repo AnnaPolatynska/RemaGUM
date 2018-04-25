@@ -82,6 +82,7 @@
             this.toolStripStatusLabelID = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelIDVal = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBoxSortowanie = new System.Windows.Forms.GroupBox();
+            this.radioButtonData_przegladu = new System.Windows.Forms.RadioButton();
             this.radioButtonNazwa = new System.Windows.Forms.RadioButton();
             this.radioButtonNr_pomieszczenia = new System.Windows.Forms.RadioButton();
             this.radioButtonNr_fabryczny = new System.Windows.Forms.RadioButton();
@@ -93,7 +94,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Maszyny = new System.Windows.Forms.TabPage();
             this.Magazyn = new System.Windows.Forms.TabPage();
-            this.radioButtonData_przegladu = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -125,10 +125,11 @@
             // 
             this.listBoxMaszyny.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBoxMaszyny.BackColor = System.Drawing.Color.Linen;
             this.listBoxMaszyny.FormattingEnabled = true;
             this.listBoxMaszyny.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaszyny.Name = "listBoxMaszyny";
-            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 680);
+            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 693);
             this.listBoxMaszyny.TabIndex = 0;
             this.listBoxMaszyny.SelectedIndexChanged += new System.EventHandler(this.listBoxMaszyny_SelectedIndexChanged);
             // 
@@ -194,6 +195,7 @@
             // 
             // textBoxNazwa
             // 
+            this.textBoxNazwa.BackColor = System.Drawing.Color.Linen;
             this.textBoxNazwa.Location = new System.Drawing.Point(11, 67);
             this.textBoxNazwa.Name = "textBoxNazwa";
             this.textBoxNazwa.Size = new System.Drawing.Size(397, 20);
@@ -210,6 +212,7 @@
             // 
             // textBoxTyp
             // 
+            this.textBoxTyp.BackColor = System.Drawing.Color.Linen;
             this.textBoxTyp.Location = new System.Drawing.Point(11, 116);
             this.textBoxTyp.Name = "textBoxTyp";
             this.textBoxTyp.Size = new System.Drawing.Size(397, 20);
@@ -235,6 +238,7 @@
             // 
             // textBoxNr_inwentarzowy
             // 
+            this.textBoxNr_inwentarzowy.BackColor = System.Drawing.Color.Linen;
             this.textBoxNr_inwentarzowy.Location = new System.Drawing.Point(11, 221);
             this.textBoxNr_inwentarzowy.Name = "textBoxNr_inwentarzowy";
             this.textBoxNr_inwentarzowy.Size = new System.Drawing.Size(397, 20);
@@ -260,6 +264,7 @@
             // 
             // textBoxNr_fabryczny
             // 
+            this.textBoxNr_fabryczny.BackColor = System.Drawing.Color.Linen;
             this.textBoxNr_fabryczny.Location = new System.Drawing.Point(11, 274);
             this.textBoxNr_fabryczny.Name = "textBoxNr_fabryczny";
             this.textBoxNr_fabryczny.Size = new System.Drawing.Size(397, 20);
@@ -267,6 +272,7 @@
             // 
             // textBoxRok_produkcji
             // 
+            this.textBoxRok_produkcji.BackColor = System.Drawing.Color.Linen;
             this.textBoxRok_produkcji.Location = new System.Drawing.Point(11, 170);
             this.textBoxRok_produkcji.Name = "textBoxRok_produkcji";
             this.textBoxRok_produkcji.Size = new System.Drawing.Size(86, 20);
@@ -314,6 +320,7 @@
             // 
             // comboBoxOperator_maszyny
             // 
+            this.comboBoxOperator_maszyny.BackColor = System.Drawing.Color.Linen;
             this.comboBoxOperator_maszyny.FormattingEnabled = true;
             this.comboBoxOperator_maszyny.Location = new System.Drawing.Point(11, 433);
             this.comboBoxOperator_maszyny.Name = "comboBoxOperator_maszyny";
@@ -332,6 +339,7 @@
             // 
             // comboBoxOsoba_zarzadzajaca
             // 
+            this.comboBoxOsoba_zarzadzajaca.BackColor = System.Drawing.Color.Linen;
             this.comboBoxOsoba_zarzadzajaca.FormattingEnabled = true;
             this.comboBoxOsoba_zarzadzajaca.Location = new System.Drawing.Point(11, 377);
             this.comboBoxOsoba_zarzadzajaca.Name = "comboBoxOsoba_zarzadzajaca";
@@ -341,6 +349,7 @@
             // 
             // textBoxNr_pom
             // 
+            this.textBoxNr_pom.BackColor = System.Drawing.Color.Linen;
             this.textBoxNr_pom.Location = new System.Drawing.Point(11, 491);
             this.textBoxNr_pom.Name = "textBoxNr_pom";
             this.textBoxNr_pom.Size = new System.Drawing.Size(397, 20);
@@ -358,6 +367,7 @@
             // 
             // dateTimePickerData_kol_przegl
             // 
+            this.dateTimePickerData_kol_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
             this.dateTimePickerData_kol_przegl.Location = new System.Drawing.Point(255, 170);
             this.dateTimePickerData_kol_przegl.Name = "dateTimePickerData_kol_przegl";
             this.dateTimePickerData_kol_przegl.Size = new System.Drawing.Size(153, 20);
@@ -365,6 +375,7 @@
             // 
             // comboBoxDzial
             // 
+            this.comboBoxDzial.BackColor = System.Drawing.Color.Linen;
             this.comboBoxDzial.FormattingEnabled = true;
             this.comboBoxDzial.Location = new System.Drawing.Point(11, 539);
             this.comboBoxDzial.Name = "comboBoxDzial";
@@ -374,6 +385,7 @@
             // 
             // dateTimePickerData_ost_przegl
             // 
+            this.dateTimePickerData_ost_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
             this.dateTimePickerData_ost_przegl.Location = new System.Drawing.Point(103, 170);
             this.dateTimePickerData_ost_przegl.Name = "dateTimePickerData_ost_przegl";
             this.dateTimePickerData_ost_przegl.Size = new System.Drawing.Size(146, 20);
@@ -390,6 +402,7 @@
             // 
             // comboBoxKategoria
             // 
+            this.comboBoxKategoria.BackColor = System.Drawing.Color.Linen;
             this.comboBoxKategoria.FormattingEnabled = true;
             this.comboBoxKategoria.Location = new System.Drawing.Point(11, 16);
             this.comboBoxKategoria.Name = "comboBoxKategoria";
@@ -399,9 +412,10 @@
             // 
             // richTextBoxUwagi
             // 
+            this.richTextBoxUwagi.BackColor = System.Drawing.Color.Linen;
             this.richTextBoxUwagi.Location = new System.Drawing.Point(11, 641);
             this.richTextBoxUwagi.Name = "richTextBoxUwagi";
-            this.richTextBoxUwagi.Size = new System.Drawing.Size(397, 79);
+            this.richTextBoxUwagi.Size = new System.Drawing.Size(397, 61);
             this.richTextBoxUwagi.TabIndex = 30;
             this.richTextBoxUwagi.Text = "";
             // 
@@ -425,6 +439,7 @@
             // 
             // textBoxNr_prot_BHP
             // 
+            this.textBoxNr_prot_BHP.BackColor = System.Drawing.Color.Linen;
             this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(11, 594);
             this.textBoxNr_prot_BHP.Name = "textBoxNr_prot_BHP";
             this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(397, 20);
@@ -468,6 +483,7 @@
             // 
             // textBoxProducent
             // 
+            this.textBoxProducent.BackColor = System.Drawing.Color.Linen;
             this.textBoxProducent.Location = new System.Drawing.Point(11, 324);
             this.textBoxProducent.Name = "textBoxProducent";
             this.textBoxProducent.Size = new System.Drawing.Size(397, 20);
@@ -519,6 +535,7 @@
             // 
             // comboBoxStan_techniczny
             // 
+            this.comboBoxStan_techniczny.BackColor = System.Drawing.Color.Linen;
             this.comboBoxStan_techniczny.FormattingEnabled = true;
             this.comboBoxStan_techniczny.Location = new System.Drawing.Point(9, 42);
             this.comboBoxStan_techniczny.Name = "comboBoxStan_techniczny";
@@ -544,6 +561,7 @@
             // 
             // comboBoxPropozycja
             // 
+            this.comboBoxPropozycja.BackColor = System.Drawing.Color.Linen;
             this.comboBoxPropozycja.FormattingEnabled = true;
             this.comboBoxPropozycja.Location = new System.Drawing.Point(9, 122);
             this.comboBoxPropozycja.Name = "comboBoxPropozycja";
@@ -553,6 +571,7 @@
             // 
             // comboBoxWykorzystanie
             // 
+            this.comboBoxWykorzystanie.BackColor = System.Drawing.Color.Linen;
             this.comboBoxWykorzystanie.FormattingEnabled = true;
             this.comboBoxWykorzystanie.Location = new System.Drawing.Point(9, 82);
             this.comboBoxWykorzystanie.Name = "comboBoxWykorzystanie";
@@ -638,6 +657,19 @@
             this.groupBoxSortowanie.TabStop = false;
             this.groupBoxSortowanie.Text = "sortowanie";
             // 
+            // radioButtonData_przegladu
+            // 
+            this.radioButtonData_przegladu.AutoSize = true;
+            this.radioButtonData_przegladu.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonData_przegladu.Location = new System.Drawing.Point(450, 24);
+            this.radioButtonData_przegladu.Name = "radioButtonData_przegladu";
+            this.radioButtonData_przegladu.Size = new System.Drawing.Size(97, 17);
+            this.radioButtonData_przegladu.TabIndex = 5;
+            this.radioButtonData_przegladu.TabStop = true;
+            this.radioButtonData_przegladu.Text = "Data przeglądu";
+            this.radioButtonData_przegladu.UseVisualStyleBackColor = true;
+            this.radioButtonData_przegladu.CheckedChanged += new System.EventHandler(this.radioButtonData_nast_przegladu_CheckedChanged);
+            // 
             // radioButtonNazwa
             // 
             this.radioButtonNazwa.AutoSize = true;
@@ -717,6 +749,7 @@
             // 
             // textBoxWyszukiwanie
             // 
+            this.textBoxWyszukiwanie.BackColor = System.Drawing.Color.Linen;
             this.textBoxWyszukiwanie.Location = new System.Drawing.Point(6, 24);
             this.textBoxWyszukiwanie.Name = "textBoxWyszukiwanie";
             this.textBoxWyszukiwanie.Size = new System.Drawing.Size(508, 20);
@@ -772,23 +805,10 @@
             this.Magazyn.Location = new System.Drawing.Point(4, 22);
             this.Magazyn.Name = "Magazyn";
             this.Magazyn.Padding = new System.Windows.Forms.Padding(3);
-            this.Magazyn.Size = new System.Drawing.Size(1152, 766);
+            this.Magazyn.Size = new System.Drawing.Size(1226, 794);
             this.Magazyn.TabIndex = 1;
             this.Magazyn.Text = "Magazyn";
             this.Magazyn.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonData_przegladu
-            // 
-            this.radioButtonData_przegladu.AutoSize = true;
-            this.radioButtonData_przegladu.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonData_przegladu.Location = new System.Drawing.Point(450, 24);
-            this.radioButtonData_przegladu.Name = "radioButtonData_przegladu";
-            this.radioButtonData_przegladu.Size = new System.Drawing.Size(97, 17);
-            this.radioButtonData_przegladu.TabIndex = 5;
-            this.radioButtonData_przegladu.TabStop = true;
-            this.radioButtonData_przegladu.Text = "Data przeglądu";
-            this.radioButtonData_przegladu.UseVisualStyleBackColor = true;
-            this.radioButtonData_przegladu.CheckedChanged += new System.EventHandler(this.radioButtonData_nast_przegladu_CheckedChanged);
             // 
             // SpisForm
             // 
