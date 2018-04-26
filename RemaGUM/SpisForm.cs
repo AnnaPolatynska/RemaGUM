@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 using System.Xml;
 using System.Diagnostics;
 using System.Threading;
@@ -15,6 +16,8 @@ namespace RemaGUM
     public partial class SpisForm : Form
     {
         private string _connStr = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Projects\\RemaGUM\\RemaGUM.mdb"; //połaczenie z bazą
+
+        private string _helpFile = Application.StartupPath + "\\RemaGUM_Help.chm"; //plik pomocy RemaGUM
 
         private nsAccess2DB.MaszynyBUS _MaszynyBUS;
         private nsAccess2DB.KategoriaBUS _KategoriaBUS;
@@ -469,8 +472,7 @@ namespace RemaGUM
             _CzestotliwoscBUS.idx = comboBoxWykorzystanie.SelectedIndex;
             comboBoxWykorzystanie.Tag = _CzestotliwoscBUS.VO.Nazwa;
         }//comboboxWykorzystanie_SelectedIndexChanged
-
-      
+              
 
         /// <summary>
         /// wypełnia listbox propozycjami co zrobić z maszyną (zachować/złomować itp)
@@ -696,14 +698,23 @@ namespace RemaGUM
 
         private void toolStripButtonHelp_Click(object sender, EventArgs e)
         {
-            try
+            if (File.Exists(_helpFile))
             {
-                Process.Start(Application.StartupPath + "\\RemaGUM.pdf");
+                Help.ShowHelp(this, _helpFile);
             }
-            catch { }
+            else
+            {
+                MessageBox.Show("Plik pomocy RemaGUM.chm nie istnieje w katalogu help.", "RemaGUM", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            
         }// toolStripButtonHelp_Click
 
-        
+        private void SpisForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }// public partial class SpisForm : Form
        
 }//namespace RemaGUM

@@ -652,7 +652,7 @@
             this.groupBoxSortowanie.ForeColor = System.Drawing.Color.Red;
             this.groupBoxSortowanie.Location = new System.Drawing.Point(6, 6);
             this.groupBoxSortowanie.Name = "groupBoxSortowanie";
-            this.groupBoxSortowanie.Size = new System.Drawing.Size(558, 57);
+            this.groupBoxSortowanie.Size = new System.Drawing.Size(604, 57);
             this.groupBoxSortowanie.TabIndex = 43;
             this.groupBoxSortowanie.TabStop = false;
             this.groupBoxSortowanie.Text = "sortowanie";
@@ -663,10 +663,10 @@
             this.radioButtonData_przegladu.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonData_przegladu.Location = new System.Drawing.Point(450, 24);
             this.radioButtonData_przegladu.Name = "radioButtonData_przegladu";
-            this.radioButtonData_przegladu.Size = new System.Drawing.Size(97, 17);
+            this.radioButtonData_przegladu.Size = new System.Drawing.Size(146, 17);
             this.radioButtonData_przegladu.TabIndex = 5;
             this.radioButtonData_przegladu.TabStop = true;
-            this.radioButtonData_przegladu.Text = "Data przeglądu";
+            this.radioButtonData_przegladu.Text = "Data kolejnego przeglądu";
             this.radioButtonData_przegladu.UseVisualStyleBackColor = true;
             this.radioButtonData_przegladu.CheckedChanged += new System.EventHandler(this.radioButtonData_nast_przegladu_CheckedChanged);
             // 
@@ -820,6 +820,7 @@
             this.Controls.Add(this.toolStrip);
             this.Name = "SpisForm";
             this.Text = "RemaGUM - spis maszyn";
+            this.Load += new System.EventHandler(this.SpisForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
