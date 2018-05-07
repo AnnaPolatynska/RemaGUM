@@ -74,7 +74,7 @@ namespace RemaGUM
             radioButtonNr_fabryczny.TabIndex = 26;
             radioButtonNr_pomieszczenia.TabIndex = 27;
             radioButtonNazwa.TabIndex = 28;
-            radioButtonData_przegladu.TabIndex = 29;
+            radioButtonData_kol_przegladu.TabIndex = 29;
             //wyszukiwanie po wpisanej nazwie ???
             textBoxWyszukiwanie.TabIndex = 30;
             buttonSzukaj.TabIndex = 31;
@@ -138,7 +138,7 @@ namespace RemaGUM
             _tt.SetToolTip(radioButtonNr_fabryczny, "Sortuj po numerze fabrycznym.");
             _tt.SetToolTip(radioButtonNr_pomieszczenia, "Sortuj po numerze pomieszczenia.");
             _tt.SetToolTip(radioButtonNazwa, "Sortuj po nazwie maszyny, przyrządu lub urządzenia.");
-            _tt.SetToolTip(radioButtonData_przegladu, "Sortuj po dacie kolejnego przeglądu.");
+            _tt.SetToolTip(radioButtonData_kol_przegladu, "Sortuj po dacie kolejnego przeglądu.");
             _tt.SetToolTip(textBoxWyszukiwanie, "Wpisz czego szukasz.");
             _tt.SetToolTip(buttonSzukaj, "Szukanie w bazie.");
             
@@ -342,8 +342,8 @@ namespace RemaGUM
             textBoxNr_pom.Text = _MaszynyBUS.VO.Nr_pom;
             comboBoxDzial.Text = _MaszynyBUS.VO.Dzial;
             textBoxNr_prot_BHP.Text = _MaszynyBUS.VO.Nr_prot_BHP;
-            dateTimePickerData_ost_przegl.Text = _MaszynyBUS.VO.Data_ost_przegl;
-            dateTimePickerData_kol_przegl.Text = _MaszynyBUS.VO.Data_kol_przegl;
+            dateTimePickerData_ost_przegl.Text = _MaszynyBUS.VO.Data_ost_przegl.ToString();
+            dateTimePickerData_kol_przegl.Text = _MaszynyBUS.VO.Data_kol_przegl.ToString();
             richTextBoxUwagi.Text = _MaszynyBUS.VO.Uwagi;
             comboBoxWykorzystanie.Text = _MaszynyBUS.VO.Wykorzystanie;
             comboBoxStan_techniczny.Text = _MaszynyBUS.VO.Stan_techniczny;
@@ -663,8 +663,8 @@ namespace RemaGUM
             VO.Nr_pom = textBoxNr_pom.Text;
             VO.Dzial = comboBoxDzial.Text;
             VO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
-            VO.Data_ost_przegl = dateTimePickerData_ost_przegl.Text;
-            VO.Data_kol_przegl = dateTimePickerData_kol_przegl.Text;
+            VO.Data_ost_przegl = dateTimePickerData_ost_przegl.Text.Trim();
+            VO.Data_kol_przegl = dateTimePickerData_kol_przegl.Text.Trim();
             VO.Uwagi = richTextBoxUwagi.Text.Trim();
             VO.Wykorzystanie = comboBoxWykorzystanie.Text;
             VO.Stan_techniczny = comboBoxStan_techniczny.Text;

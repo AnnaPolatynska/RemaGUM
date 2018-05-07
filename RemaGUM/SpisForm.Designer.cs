@@ -80,7 +80,7 @@
             this.toolStripStatusLabelID = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelIDVal = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBoxSortowanie = new System.Windows.Forms.GroupBox();
-            this.radioButtonData_przegladu = new System.Windows.Forms.RadioButton();
+            this.radioButtonData_kol_przegladu = new System.Windows.Forms.RadioButton();
             this.radioButtonNazwa = new System.Windows.Forms.RadioButton();
             this.radioButtonNr_pomieszczenia = new System.Windows.Forms.RadioButton();
             this.radioButtonNr_fabryczny = new System.Windows.Forms.RadioButton();
@@ -596,7 +596,7 @@
             // groupBoxSortowanie
             // 
             this.groupBoxSortowanie.BackColor = System.Drawing.Color.Bisque;
-            this.groupBoxSortowanie.Controls.Add(this.radioButtonData_przegladu);
+            this.groupBoxSortowanie.Controls.Add(this.radioButtonData_kol_przegladu);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNazwa);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_pomieszczenia);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_fabryczny);
@@ -610,18 +610,18 @@
             this.groupBoxSortowanie.TabStop = false;
             this.groupBoxSortowanie.Text = "sortowanie";
             // 
-            // radioButtonData_przegladu
+            // radioButtonData_kol_przegladu
             // 
-            this.radioButtonData_przegladu.AutoSize = true;
-            this.radioButtonData_przegladu.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonData_przegladu.Location = new System.Drawing.Point(450, 24);
-            this.radioButtonData_przegladu.Name = "radioButtonData_przegladu";
-            this.radioButtonData_przegladu.Size = new System.Drawing.Size(146, 17);
-            this.radioButtonData_przegladu.TabIndex = 5;
-            this.radioButtonData_przegladu.TabStop = true;
-            this.radioButtonData_przegladu.Text = "Data kolejnego przeglądu";
-            this.radioButtonData_przegladu.UseVisualStyleBackColor = true;
-            this.radioButtonData_przegladu.CheckedChanged += new System.EventHandler(this.radioButtonData_nast_przegladu_CheckedChanged);
+            this.radioButtonData_kol_przegladu.AutoSize = true;
+            this.radioButtonData_kol_przegladu.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonData_kol_przegladu.Location = new System.Drawing.Point(450, 24);
+            this.radioButtonData_kol_przegladu.Name = "radioButtonData_kol_przegladu";
+            this.radioButtonData_kol_przegladu.Size = new System.Drawing.Size(146, 17);
+            this.radioButtonData_kol_przegladu.TabIndex = 5;
+            this.radioButtonData_kol_przegladu.TabStop = true;
+            this.radioButtonData_kol_przegladu.Text = "Data kolejnego przeglądu";
+            this.radioButtonData_kol_przegladu.UseVisualStyleBackColor = true;
+            this.radioButtonData_kol_przegladu.CheckedChanged += new System.EventHandler(this.radioButtonData_nast_przegladu_CheckedChanged);
             // 
             // radioButtonNazwa
             // 
@@ -924,7 +924,7 @@
         private System.Windows.Forms.TabPage Magazyn;
         private System.Windows.Forms.ToolStripButton toolStripButtonHelp;
         private System.Windows.Forms.ToolStripButton toolStripButtonOdswiez;
-        private System.Windows.Forms.RadioButton radioButtonData_przegladu;
+        private System.Windows.Forms.RadioButton radioButtonData_kol_przegladu;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage1;
