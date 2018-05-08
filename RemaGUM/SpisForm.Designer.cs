@@ -95,6 +95,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Magazyn = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.radioButtonData_ost_przegl = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -180,6 +181,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.BackColor = System.Drawing.Color.Bisque;
             this.groupBox2.Controls.Add(this.buttonNowa);
             this.groupBox2.Controls.Add(this.buttonUsun);
@@ -498,6 +500,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox3.BackColor = System.Drawing.Color.Bisque;
             this.groupBox3.Controls.Add(this.comboBoxPropozycja);
             this.groupBox3.Controls.Add(this.comboBoxWykorzystanie);
@@ -596,6 +600,7 @@
             // groupBoxSortowanie
             // 
             this.groupBoxSortowanie.BackColor = System.Drawing.Color.Bisque;
+            this.groupBoxSortowanie.Controls.Add(this.radioButtonData_ost_przegl);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonData_kol_przegladu);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNazwa);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_pomieszczenia);
@@ -605,7 +610,7 @@
             this.groupBoxSortowanie.ForeColor = System.Drawing.Color.Red;
             this.groupBoxSortowanie.Location = new System.Drawing.Point(6, 6);
             this.groupBoxSortowanie.Name = "groupBoxSortowanie";
-            this.groupBoxSortowanie.Size = new System.Drawing.Size(604, 57);
+            this.groupBoxSortowanie.Size = new System.Drawing.Size(732, 57);
             this.groupBoxSortowanie.TabIndex = 43;
             this.groupBoxSortowanie.TabStop = false;
             this.groupBoxSortowanie.Text = "sortowanie";
@@ -614,14 +619,14 @@
             // 
             this.radioButtonData_kol_przegladu.AutoSize = true;
             this.radioButtonData_kol_przegladu.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonData_kol_przegladu.Location = new System.Drawing.Point(450, 24);
+            this.radioButtonData_kol_przegladu.Location = new System.Drawing.Point(576, 24);
             this.radioButtonData_kol_przegladu.Name = "radioButtonData_kol_przegladu";
             this.radioButtonData_kol_przegladu.Size = new System.Drawing.Size(146, 17);
             this.radioButtonData_kol_przegladu.TabIndex = 5;
             this.radioButtonData_kol_przegladu.TabStop = true;
             this.radioButtonData_kol_przegladu.Text = "Data kolejnego przeglądu";
             this.radioButtonData_kol_przegladu.UseVisualStyleBackColor = true;
-            this.radioButtonData_kol_przegladu.CheckedChanged += new System.EventHandler(this.radioButtonData_nast_przegladu_CheckedChanged);
+            this.radioButtonData_kol_przegladu.CheckedChanged += new System.EventHandler(this.radioButtonData_kol_przegladu_CheckedChanged);
             // 
             // radioButtonNazwa
             // 
@@ -640,7 +645,7 @@
             // 
             this.radioButtonNr_pomieszczenia.AutoSize = true;
             this.radioButtonNr_pomieszczenia.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNr_pomieszczenia.Location = new System.Drawing.Point(327, 24);
+            this.radioButtonNr_pomieszczenia.Location = new System.Drawing.Point(307, 25);
             this.radioButtonNr_pomieszczenia.Name = "radioButtonNr_pomieszczenia";
             this.radioButtonNr_pomieszczenia.Size = new System.Drawing.Size(108, 17);
             this.radioButtonNr_pomieszczenia.TabIndex = 3;
@@ -653,7 +658,7 @@
             // 
             this.radioButtonNr_fabryczny.AutoSize = true;
             this.radioButtonNr_fabryczny.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNr_fabryczny.Location = new System.Drawing.Point(119, 24);
+            this.radioButtonNr_fabryczny.Location = new System.Drawing.Point(119, 25);
             this.radioButtonNr_fabryczny.Name = "radioButtonNr_fabryczny";
             this.radioButtonNr_fabryczny.Size = new System.Drawing.Size(84, 17);
             this.radioButtonNr_fabryczny.TabIndex = 2;
@@ -666,7 +671,7 @@
             // 
             this.radioButtonNr_inwentarzowy.AutoSize = true;
             this.radioButtonNr_inwentarzowy.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNr_inwentarzowy.Location = new System.Drawing.Point(212, 24);
+            this.radioButtonNr_inwentarzowy.Location = new System.Drawing.Point(209, 25);
             this.radioButtonNr_inwentarzowy.Name = "radioButtonNr_inwentarzowy";
             this.radioButtonNr_inwentarzowy.Size = new System.Drawing.Size(103, 17);
             this.radioButtonNr_inwentarzowy.TabIndex = 1;
@@ -679,7 +684,7 @@
             // 
             this.radioButtonTyp.AutoSize = true;
             this.radioButtonTyp.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonTyp.Location = new System.Drawing.Point(70, 24);
+            this.radioButtonTyp.Location = new System.Drawing.Point(70, 25);
             this.radioButtonTyp.Name = "radioButtonTyp";
             this.radioButtonTyp.Size = new System.Drawing.Size(43, 17);
             this.radioButtonTyp.TabIndex = 0;
@@ -693,7 +698,7 @@
             this.buttonSzukaj.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonSzukaj.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj.BackgroundImage")));
             this.buttonSzukaj.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSzukaj.Location = new System.Drawing.Point(520, 16);
+            this.buttonSzukaj.Location = new System.Drawing.Point(392, 15);
             this.buttonSzukaj.Name = "buttonSzukaj";
             this.buttonSzukaj.Size = new System.Drawing.Size(35, 34);
             this.buttonSzukaj.TabIndex = 4;
@@ -705,7 +710,7 @@
             this.textBoxWyszukiwanie.BackColor = System.Drawing.Color.Linen;
             this.textBoxWyszukiwanie.Location = new System.Drawing.Point(6, 24);
             this.textBoxWyszukiwanie.Name = "textBoxWyszukiwanie";
-            this.textBoxWyszukiwanie.Size = new System.Drawing.Size(508, 20);
+            this.textBoxWyszukiwanie.Size = new System.Drawing.Size(380, 20);
             this.textBoxWyszukiwanie.TabIndex = 44;
             // 
             // groupBox5
@@ -715,9 +720,9 @@
             this.groupBox5.Controls.Add(this.textBoxWyszukiwanie);
             this.groupBox5.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox5.ForeColor = System.Drawing.Color.Red;
-            this.groupBox5.Location = new System.Drawing.Point(616, 6);
+            this.groupBox5.Location = new System.Drawing.Point(744, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(561, 57);
+            this.groupBox5.Size = new System.Drawing.Size(433, 57);
             this.groupBox5.TabIndex = 45;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "wyszukiwanie po nazwie";
@@ -824,6 +829,19 @@
             this.tabPage1.Text = "Normalia";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // radioButtonData_ost_przegl
+            // 
+            this.radioButtonData_ost_przegl.AutoSize = true;
+            this.radioButtonData_ost_przegl.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonData_ost_przegl.Location = new System.Drawing.Point(421, 25);
+            this.radioButtonData_ost_przegl.Name = "radioButtonData_ost_przegl";
+            this.radioButtonData_ost_przegl.Size = new System.Drawing.Size(149, 17);
+            this.radioButtonData_ost_przegl.TabIndex = 6;
+            this.radioButtonData_ost_przegl.TabStop = true;
+            this.radioButtonData_ost_przegl.Text = "Data ostatniego przeglądu";
+            this.radioButtonData_ost_przegl.UseVisualStyleBackColor = true;
+            this.radioButtonData_ost_przegl.CheckedChanged += new System.EventHandler(this.radioButtonData_ost_przegladu_CheckedChanged);
+            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -928,6 +946,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.RadioButton radioButtonData_ost_przegl;
     }
 }
 

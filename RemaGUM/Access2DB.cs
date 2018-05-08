@@ -177,8 +177,8 @@ namespace nsAccess2DB
         private string _Nr_pom = string.Empty; // 255
         private string _Dzial = string.Empty; // 255
         private string _Nr_prot_BHP = string.Empty; // 255
-        private string _Data_ost_przegl = string.Empty; //Data
-        private string _Data_kol_przegl = string.Empty; //Data
+        private int _Data_ost_przegl = 0; //liczba
+        private int _Data_kol_przegl = 0; //liczba
         private string _Uwagi = string.Empty; //255
         private string _Wykorzystanie = string.Empty; // 255
         private string _Stan_techniczny = string.Empty; // 255
@@ -264,12 +264,12 @@ namespace nsAccess2DB
             get { return _Nr_prot_BHP; }
             set { _Nr_prot_BHP = value; }
         }
-        public string Data_ost_przegl
+        public int Data_ost_przegl
         {
             get { return _Data_ost_przegl; }
             set { _Data_ost_przegl = value; }
         }
-        public string Data_kol_przegl
+        public int Data_kol_przegl
         {
             get { return _Data_kol_przegl; }
             set { _Data_kol_przegl = value; }
@@ -371,6 +371,8 @@ namespace nsAccess2DB
             _error = _conn._error;
             return dt;
         }//select po ID
+
+
         /// <summary>
         /// Zwraca tabelę wszystkich maszyn po dacie_ost_przeg
         /// </summary>
@@ -441,10 +443,10 @@ namespace nsAccess2DB
             parameters[12] = new OleDbParameter("Nr_prot_BHP", OleDbType.VarChar, 20);
             parameters[12].Value = VO.Nr_prot_BHP;
 
-            parameters[13] = new OleDbParameter("Data_ost_przegl", OleDbType.DBDate);
+            parameters[13] = new OleDbParameter("Data_ost_przegl", OleDbType.Integer);
             parameters[13].Value = VO.Data_ost_przegl;
 
-            parameters[14] = new OleDbParameter("Data_kol_przegl", OleDbType.DBDate);
+            parameters[14] = new OleDbParameter("Data_kol_przegl", OleDbType.Integer);
             parameters[14].Value = VO.Data_kol_przegl;
 
             parameters[15] = new OleDbParameter("Uwagi", OleDbType.VarChar, 255);
@@ -533,10 +535,10 @@ namespace nsAccess2DB
             parameters[12] = new OleDbParameter("Nr_prot_BHP", OleDbType.VarChar, 20);
             parameters[12].Value = VO.Nr_prot_BHP;
 
-            parameters[13] = new OleDbParameter("Data_ost_przegl", OleDbType.DBDate);
+            parameters[13] = new OleDbParameter("Data_ost_przegl", OleDbType.Integer);
             parameters[13].Value = VO.Data_ost_przegl;
 
-            parameters[14] = new OleDbParameter("Data_kol_przegl", OleDbType.DBDate);
+            parameters[14] = new OleDbParameter("Data_kol_przegl", OleDbType.Integer);
             parameters[14].Value = VO.Data_kol_przegl;
 
             parameters[15] = new OleDbParameter("Uwagi", OleDbType.VarChar, 255);
@@ -576,6 +578,7 @@ namespace nsAccess2DB
             _error = _conn._error;
             return b;
         }//update
+
         public bool delete(int ID_maszyny)
         {
             string query = "DELETE* FROM Maszyny WHERE ID_Maszyny = " + ID_maszyny.ToString() + ";";
@@ -585,6 +588,7 @@ namespace nsAccess2DB
             _error = _conn._error;
             return b;
         }// delete
+
         public DataTable selectQuery(string query)
         {
             OleDbParameter[] parameters = new OleDbParameter[0];
@@ -595,7 +599,7 @@ namespace nsAccess2DB
 
     }//class MaszynyDAO
 
-    // -------------------------------> BUS - warstawa operacji biznesowych tabeli Maszyny
+    // -------------------------------------------------------------> BUS - warstawa operacji biznesowych tabeli Maszyny
     public class MaszynyBUS
     {
         MaszynyDAO _DAO;
@@ -684,8 +688,19 @@ namespace nsAccess2DB
                 VOi.Nr_pom = dr["Nr_pom"].ToString();
                 VOi.Dzial = dr["Dzial"].ToString();
                 VOi.Nr_prot_BHP = dr["Nr_prot_BHP"].ToString();
-                VOi.Data_ost_przegl = dr["Data_ost_przegl"].ToString();
-                VOi.Data_kol_przegl = dr["Data_kol_przegl"].ToString();
+
+                try
+                {
+                    VOi.Data_ost_przegl = int.Parse(dr["Data_ost_przegl"].ToString());
+                }
+                catch { }
+
+                try
+                {
+                    VOi.Data_kol_przegl = int.Parse(dr["Data_kol_przegl"].ToString());
+                }
+                catch { }
+
                 VOi.Uwagi = dr["Uwagi"].ToString();
                 VOi.Wykorzystanie = dr["Wykorzystanie"].ToString();
                 VOi.Stan_techniczny = dr["Stan_techniczny"].ToString();
@@ -694,7 +709,9 @@ namespace nsAccess2DB
                 VOi.Rok_ost_przeg = int.Parse(dr["Rok_ost_przeg"].ToString());
                 VOi.Mc_ost_przeg = int.Parse(dr["Mc_ost_przeg"].ToString());
                 VOi.Dz_ost_przeg = int.Parse(dr["Dz_ost_przeg"].ToString());
-
+                VOi.Rok_kol_przeg = int.Parse(dr["Rok_kol_przeg"].ToString());
+                VOi.Mc_kol_przeg = int.Parse(dr["Mc_kol_przeg"].ToString());
+                VOi.Dz_kol_przeg = int.Parse(dr["Dz_kol_przeg"].ToString());
             }
             _eof = _VOs.Length == 0;
             _count = _VOs.Length;

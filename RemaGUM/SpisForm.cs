@@ -15,7 +15,7 @@ namespace RemaGUM
 {
     public partial class SpisForm : Form
     {
-        private string _connStr = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Projects\\RemaGUM\\RemaGUM.mdb"; //połaczenie z bazą
+        private string _connStr = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Projects\\RemaGUM\\RemaGUM.mdb"; //połaczenie z bazą danych
 
         private string _helpFile = Application.StartupPath + "\\RemaGUM_Help.chm"; //plik pomocy RemaGUM
 
@@ -28,7 +28,8 @@ namespace RemaGUM
         private nsAccess2DB.Stan_technicznyBUS _Stan_technicznyBUS;
         private nsAccess2DB.Operator_maszynyBUS _Operator_maszynyBUS;
 
-        private ToolTip _tt;            //podpowiedzi dla niektórych kontolek
+        private ToolTip _tt; //podpowiedzi dla niektórych kontolek
+        
         /// <summary>
         /// Konstruktor formularza.
         /// </summary>
@@ -36,10 +37,7 @@ namespace RemaGUM
         public SpisForm()
         {
             InitializeComponent();
-
             nsRest.Rest rest = new nsRest.Rest();
-
-
             _connStr += rest.dbConnection(_connStr);
 
             listBoxMaszyny.TabIndex = 0;
@@ -79,8 +77,6 @@ namespace RemaGUM
             textBoxWyszukiwanie.TabIndex = 30;
             buttonSzukaj.TabIndex = 31;
             
-
-            
             _MaszynyBUS = new nsAccess2DB.MaszynyBUS(_connStr);
             _CzestotliwoscBUS = new nsAccess2DB.CzestotliwoscBUS(_connStr);
             _KategoriaBUS = new nsAccess2DB.KategoriaBUS(_connStr);
@@ -100,12 +96,11 @@ namespace RemaGUM
             WypelnijPropozycje();
             WypelnijStan_techniczny();
             WypelnijOperator_maszyny();
-            UstawFormatDaty();
-
-
-
-
-            if (listBoxMaszyny.Items.Count > 0) listBoxMaszyny.SelectedIndex = 0;
+           
+           if (listBoxMaszyny.Items.Count > 0)
+            {
+                listBoxMaszyny.SelectedIndex = 0;
+            }
 
             _tt = new ToolTip();
 
@@ -128,7 +123,7 @@ namespace RemaGUM
             _tt.SetToolTip(richTextBoxUwagi, "Opis wszelkich innych zdarzeń/statusów mających istotny wpływ na maszynę, przyrząd lub urządzenie.");
             _tt.SetToolTip(comboBoxWykorzystanie, "Częstotliwość wykorzystania: nieuzywana, rzadziej niż kilka razy w roku, kilka razy w roku, kilka razy w okresie pół roku, kilka razy w kwartale, kilka razy w miesiącu.");
             _tt.SetToolTip(comboBoxStan_techniczny, "Stan techniczy: złom, do naprawy, dobry.");
-            _tt.SetToolTip(comboBoxPropozycja, "Propozycja: do likwidacji,do remontu, zachować.");
+            _tt.SetToolTip(comboBoxPropozycja, "Propozycja: do likwidacji, do remontu, zachować.");
             _tt.SetToolTip(buttonNowa, "Nowa pozycja w bazie.");
             _tt.SetToolTip(buttonZapisz, "Zapis nowej maszyny, przyrządu lub urządzenia lub edycja wybranej pozycji.");
             _tt.SetToolTip(buttonAnuluj, "Anulowanie zmiany.");
@@ -150,9 +145,7 @@ namespace RemaGUM
         private void WypelnijMaszynyNazwami()
         {
             nsAccess2DB.MaszynyVO VO;
-            
             listBoxMaszyny.Items.Clear();
-
             _MaszynyBUS.select();
 
             while (!_MaszynyBUS.eof)
@@ -161,8 +154,7 @@ namespace RemaGUM
                 listBoxMaszyny.Items.Add(VO.Nazwa+ " - " + _MaszynyBUS.VO.Nr_fabryczny.ToString());
                 _MaszynyBUS.skip();
             }
-           //Przycisk zapisz nieaktywny na starcie
-          // buttonZapisz.Enabled = listBoxMaszyny.SelectedIndex > -1;
+           
         }//wypelnijMaszynyNazwami
 
         //////////////////////////////////////////////////////////////         Rabio buttony
@@ -254,36 +246,14 @@ namespace RemaGUM
             }
         }//radioButton_Nr_Pomieszczenia_CheckedChanged
 
-
-        /// <summary>
-        /// zmienia format wyświetlania dateTimePickerData_kol_przegl
-        /// </summary>
-         public void UstawFormatDaty()
-        {
-            dateTimePickerData_kol_przegl.Format = DateTimePickerFormat.Custom;
-            dateTimePickerData_kol_przegl.CustomFormat = "dd MMMM yyyy r. ";
-            dateTimePickerData_ost_przegl.Format = DateTimePickerFormat.Custom;
-            dateTimePickerData_ost_przegl.CustomFormat = "dd MMMM yyyy r. ";
-            
-        }//public void UstawFormatDaty()
-
-       
-        private void radioButtonData_nast_przegladu_CheckedChanged(object sender, EventArgs e)
-        {
-            // TODO zmiana formatu dat w listBOXMaszyny - bez czasu
-
-            //DateTime data;
-            //string s;
-
+        private void radioButtonData_kol_przegladu_CheckedChanged(object sender, EventArgs e)
+        {           
             listBoxMaszyny.Items.Clear();
-
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connStr);
             _MaszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Data_kol_przegl ASC;");
             while (!_MaszynyBUS.eof)
             {
-                //data = new DateTime()
-                //s = data.ToShortDateString();
-                listBoxMaszyny.Items.Add(_MaszynyBUS.VO.Data_kol_przegl+ " -> " + _MaszynyBUS.VO.Nazwa);
+                listBoxMaszyny.Items.Add(_MaszynyBUS.VO.Dz_kol_przeg + "-" + _MaszynyBUS.VO.Mc_kol_przeg + "-" + _MaszynyBUS.VO.Rok_kol_przeg + " r. -> " + _MaszynyBUS.VO.Nazwa);
                 _MaszynyBUS.skip();
             }
 
@@ -292,6 +262,24 @@ namespace RemaGUM
                 listBoxMaszyny.SelectedIndex = 0;
             }
         }//radioButton_Nr_Pomieszczenia_CheckedChanged
+
+        private void radioButtonData_ost_przegladu_CheckedChanged(object sender, EventArgs e)
+        {
+            listBoxMaszyny.Items.Clear();
+            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connStr);
+            _MaszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Data_ost_przegl ASC;");
+            while (!_MaszynyBUS.eof)
+            {
+                listBoxMaszyny.Items.Add(_MaszynyBUS.VO.Dz_ost_przeg + "-" + _MaszynyBUS.VO.Mc_ost_przeg + "-" + _MaszynyBUS.VO.Rok_ost_przeg + " r. -> " + _MaszynyBUS.VO.Nazwa);
+                _MaszynyBUS.skip();
+            }
+
+            if (listBoxMaszyny.Items.Count > 0)
+            {
+                listBoxMaszyny.SelectedIndex = 0;
+            }
+        }//radioButton_Nr_Pomieszczenia_CheckedChanged
+
 
         /// <summary>
         /// wyszukuje maszynę po wpisaniu poczatku szukanego ciągu wyrazów
@@ -316,6 +304,7 @@ namespace RemaGUM
             {
                 listBoxMaszyny.SelectedIndex = 0;
             }
+ 
         }//buttonSzukaj_Click
 
         /// <summary>
@@ -342,8 +331,10 @@ namespace RemaGUM
             textBoxNr_pom.Text = _MaszynyBUS.VO.Nr_pom;
             comboBoxDzial.Text = _MaszynyBUS.VO.Dzial;
             textBoxNr_prot_BHP.Text = _MaszynyBUS.VO.Nr_prot_BHP;
-            dateTimePickerData_ost_przegl.Text = _MaszynyBUS.VO.Data_ost_przegl.ToString();
-            dateTimePickerData_kol_przegl.Text = _MaszynyBUS.VO.Data_kol_przegl.ToString();
+            
+            dateTimePickerData_ost_przegl.Value = new DateTime(VO.Rok_ost_przeg, VO.Mc_ost_przeg, VO.Dz_ost_przeg);
+            dateTimePickerData_kol_przegl.Value = new DateTime(VO.Rok_kol_przeg, VO.Mc_kol_przeg, VO.Dz_kol_przeg);
+           
             richTextBoxUwagi.Text = _MaszynyBUS.VO.Uwagi;
             comboBoxWykorzystanie.Text = _MaszynyBUS.VO.Wykorzystanie;
             comboBoxStan_techniczny.Text = _MaszynyBUS.VO.Stan_techniczny;
@@ -522,7 +513,6 @@ namespace RemaGUM
         //przycisk Nowa czyści formularz
         private void ButtonNowa_Click(object sender, EventArgs e)
         {
-
             comboBoxKategoria.SelectedIndex = -1;
             comboBoxKategoria.Enabled = true;
             comboBoxKategoria.SelectedIndex = 0;
@@ -572,15 +562,13 @@ namespace RemaGUM
             comboBoxOperator_maszyny.Enabled = true;
             comboBoxOperator_maszyny.SelectedIndex = 0;
             comboBoxOperator_maszyny.Refresh();
-
-
+            
             buttonAnuluj.Enabled = true;
             buttonUsun.Enabled = false;
 
             WypelnijMaszynyNazwami();
         }//ButtonNowa_Click
-
-       
+               
         private void buttonAnuluj_Click(object sender, EventArgs e)
         {
             int idx = listBoxMaszyny.SelectedIndex;
@@ -603,13 +591,12 @@ namespace RemaGUM
             comboBoxWykorzystanie.Text = string.Empty;
             comboBoxStan_techniczny.Text = string.Empty;
             comboBoxPropozycja.Text = string.Empty;
-            //comboBoxOperator_maszyny = string.Empty;
+            comboBoxOperator_maszyny.Text = string.Empty;
 
             WypelnijMaszynyNazwami();
             listBoxMaszyny.SelectedIndex = idx;
         }//buttonAnuluj_Click
-
-
+        
         private void buttonUsun_Click(object sender, EventArgs e)
         {
             _MaszynyBUS.delete((int)listBoxMaszyny.Tag);
@@ -632,9 +619,9 @@ namespace RemaGUM
             comboBoxWykorzystanie.Text = string.Empty;
             comboBoxStan_techniczny.Text = string.Empty;
             comboBoxPropozycja.Text = string.Empty;
-          
-
-           WypelnijMaszynyNazwami();
+            comboBoxOperator_maszyny.Text = string.Empty;
+            
+            WypelnijMaszynyNazwami();
            
         }//buttonUsun_Click
 
@@ -663,15 +650,23 @@ namespace RemaGUM
             VO.Nr_pom = textBoxNr_pom.Text;
             VO.Dzial = comboBoxDzial.Text;
             VO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
-            VO.Data_ost_przegl = dateTimePickerData_ost_przegl.Text.Trim();
-            VO.Data_kol_przegl = dateTimePickerData_kol_przegl.Text.Trim();
+
+            VO.Rok_ost_przeg = dateTimePickerData_ost_przegl.Value.Year;
+            VO.Mc_ost_przeg = dateTimePickerData_ost_przegl.Value.Month;
+            VO.Dz_ost_przeg = dateTimePickerData_ost_przegl.Value.Day;
+            VO.Data_ost_przegl = int.Parse(VO.Rok_ost_przeg.ToString() + VO.Mc_ost_przeg.ToString("00") + VO.Dz_ost_przeg.ToString("00"));
+
+            VO.Rok_kol_przeg = dateTimePickerData_kol_przegl.Value.Year;
+            VO.Mc_kol_przeg = dateTimePickerData_kol_przegl.Value.Month;
+            VO.Mc_kol_przeg = dateTimePickerData_kol_przegl.Value.Day;
+            VO.Data_kol_przegl = int.Parse(VO.Rok_kol_przeg.ToString() + VO.Mc_kol_przeg.ToString("00") + VO.Dz_kol_przeg.ToString("00"));
+
             VO.Uwagi = richTextBoxUwagi.Text.Trim();
             VO.Wykorzystanie = comboBoxWykorzystanie.Text;
             VO.Stan_techniczny = comboBoxStan_techniczny.Text;
             VO.Propozycja = comboBoxPropozycja.Text;
             VO.Operator_maszyny = comboBoxOperator_maszyny.Text;
-
-            WypelnijMaszynyNazwami();
+                   
             listBoxMaszyny.SelectedIndex = idx;
 
             if (toolStripStatusLabelIDVal.Text == string.Empty)
@@ -689,6 +684,8 @@ namespace RemaGUM
              _MaszynyBUS.write(VO);
 
              MessageBox.Show("Pozycja zapisana w bazie", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            WypelnijMaszynyNazwami();
         }//buttonZapisz_Click
 
         private void toolStripButtonOdswiez_Click(object sender, EventArgs e)
@@ -715,6 +712,8 @@ namespace RemaGUM
         {
 
         }
+
+       
     }// public partial class SpisForm : Form
        
 }//namespace RemaGUM
