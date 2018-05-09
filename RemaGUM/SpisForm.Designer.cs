@@ -610,7 +610,7 @@
             this.groupBoxSortowanie.ForeColor = System.Drawing.Color.Red;
             this.groupBoxSortowanie.Location = new System.Drawing.Point(6, 6);
             this.groupBoxSortowanie.Name = "groupBoxSortowanie";
-            this.groupBoxSortowanie.Size = new System.Drawing.Size(732, 57);
+            this.groupBoxSortowanie.Size = new System.Drawing.Size(746, 57);
             this.groupBoxSortowanie.TabIndex = 43;
             this.groupBoxSortowanie.TabStop = false;
             this.groupBoxSortowanie.Text = "sortowanie";
@@ -698,7 +698,7 @@
             this.buttonSzukaj.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonSzukaj.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj.BackgroundImage")));
             this.buttonSzukaj.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSzukaj.Location = new System.Drawing.Point(392, 15);
+            this.buttonSzukaj.Location = new System.Drawing.Point(375, 15);
             this.buttonSzukaj.Name = "buttonSzukaj";
             this.buttonSzukaj.Size = new System.Drawing.Size(35, 34);
             this.buttonSzukaj.TabIndex = 4;
@@ -708,9 +708,9 @@
             // textBoxWyszukiwanie
             // 
             this.textBoxWyszukiwanie.BackColor = System.Drawing.Color.Linen;
-            this.textBoxWyszukiwanie.Location = new System.Drawing.Point(6, 24);
+            this.textBoxWyszukiwanie.Location = new System.Drawing.Point(6, 23);
             this.textBoxWyszukiwanie.Name = "textBoxWyszukiwanie";
-            this.textBoxWyszukiwanie.Size = new System.Drawing.Size(380, 20);
+            this.textBoxWyszukiwanie.Size = new System.Drawing.Size(363, 20);
             this.textBoxWyszukiwanie.TabIndex = 44;
             // 
             // groupBox5
@@ -720,9 +720,9 @@
             this.groupBox5.Controls.Add(this.textBoxWyszukiwanie);
             this.groupBox5.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox5.ForeColor = System.Drawing.Color.Red;
-            this.groupBox5.Location = new System.Drawing.Point(744, 6);
+            this.groupBox5.Location = new System.Drawing.Point(758, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(433, 57);
+            this.groupBox5.Size = new System.Drawing.Size(419, 57);
             this.groupBox5.TabIndex = 45;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "wyszukiwanie po nazwie";
@@ -855,7 +855,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SpisForm";
             this.Text = "RemaGUM - spis maszyn";
-            this.Load += new System.EventHandler(this.SpisForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

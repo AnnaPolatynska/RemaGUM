@@ -328,7 +328,7 @@ namespace nsAccess2DB
             get { return _Dz_kol_przeg; }
             set { _Dz_kol_przeg = value; }
         }
-
+        
     }// class MaszynyVO
 
     //klasa dostępu (Data Access Object) do tabeli Maszyny ----------> DAO
@@ -372,26 +372,6 @@ namespace nsAccess2DB
             return dt;
         }//select po ID
 
-
-        /// <summary>
-        /// Zwraca tabelę wszystkich maszyn po dacie_ost_przeg
-        /// </summary>
-        /// <param name=""></param>
-        /// <returns></returns>
-      /* public DataTable Select(int Rok_ost_przeg)
-        {
-            string query = "SELECT * FROM Maszyny WHERE Rok_ost_przeg = "+ Rok_ost_przeg.ToString() + ";";
-        }
-
-        public DataTable Select(int Rok_ost_przeg, int Mc_ost_przeg)
-        {
-            string query = "SELECT * FROM Maszyny WHERE Rok_ost_przeg = " + Rok_ost_przeg.ToString() + "AND Mc_ost_przeg" + Mc_ost_przeg.ToString() + ";";
-        }
-        public DataTable Select(int Rok_ost_przeg, int Mc_ost_przeg, int Dz_ost_przeg)
-        {
-            string query = "SELECT * FROM Maszyny WHERE Rok_ost_przeg = " + Rok_ost_przeg.ToString() + "AND Mc_ost_przeg" + Mc_ost_przeg.ToString() + "AND Dz_ost_przeg" + Dz_ost_przeg.ToString() + ";";
-        } */
-        
 
         /// <summary>
         /// Wprowadza nowy rekord.
@@ -573,7 +553,7 @@ namespace nsAccess2DB
 
             parameters[25] = new OleDbParameter("Dz_kol_przeg", OleDbType.Integer);
             parameters[25].Value = VO.Dz_kol_przeg;
-
+            
             bool b = _conn.executeUpdateQuery(query, parameters);
             _error = _conn._error;
             return b;
@@ -700,7 +680,7 @@ namespace nsAccess2DB
                     VOi.Data_kol_przegl = int.Parse(dr["Data_kol_przegl"].ToString());
                 }
                 catch { }
-
+                
                 VOi.Uwagi = dr["Uwagi"].ToString();
                 VOi.Wykorzystanie = dr["Wykorzystanie"].ToString();
                 VOi.Stan_techniczny = dr["Stan_techniczny"].ToString();
