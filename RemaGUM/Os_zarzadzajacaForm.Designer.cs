@@ -173,7 +173,7 @@
             this.groupBox3.Size = new System.Drawing.Size(391, 342);
             this.groupBox3.TabIndex = 55;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Dane operatora maszyny";
+            this.groupBox3.Text = "Dane osoby zarządzającej";
             // 
             // label4
             // 
@@ -181,9 +181,9 @@
             this.label4.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label4.Location = new System.Drawing.Point(6, 124);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 13);
+            this.label4.Size = new System.Drawing.Size(196, 13);
             this.label4.TabIndex = 51;
-            this.label4.Text = "Nadzór nad maszynami";
+            this.label4.Text = "Osoba sprawuje nadzór nad maszynami:";
             // 
             // listBoxOs_zarzadzajaca_maszyny
             // 
@@ -301,10 +301,10 @@
             this.groupBox2.ForeColor = System.Drawing.Color.Red;
             this.groupBox2.Location = new System.Drawing.Point(339, 463);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(391, 56);
+            this.groupBox2.Size = new System.Drawing.Size(333, 56);
             this.groupBox2.TabIndex = 52;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "edycja spisu";
+            this.groupBox2.Text = "edycja spisu osób zarządzających";
             // 
             // buttonNowa
             // 
@@ -371,10 +371,11 @@
             this.listBoxOs_zarzadzajaca.Size = new System.Drawing.Size(309, 368);
             this.listBoxOs_zarzadzajaca.TabIndex = 0;
             // 
-            // Os_zarzadzajaca
+            // Os_zarzadzajacaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(734, 544);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox3);
@@ -383,7 +384,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBoxOs_zarzadzajaca);
             this.Controls.Add(this.toolStrip);
-            this.Name = "Os_zarzadzajaca";
+            this.Name = "Os_zarzadzajacaForm";
             this.Text = "Osoba zarządzająca";
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();

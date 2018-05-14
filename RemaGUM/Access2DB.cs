@@ -1933,11 +1933,14 @@ namespace nsAccess2DB
     /// </summary>
     public class Operator_maszynyVO
     {
-        private int _ID_operator = -1;
+        private int _ID_operator = 0;
         private string _Operator_maszyny = string.Empty; //255
-        private int _ID_dzial = -1;
+        private int _ID_dzial = 0;
         private string _Nazwa_dzialu = string.Empty; //255
         private string _Uprawnienie = string.Empty; //255
+        private int _Rok = 0;
+        private int _Mc = 0;
+        private int _Dzien = 0;
         private string _Data_konca_upr = string.Empty; //255
         /// <summary>
         /// Konstruktor wymiany danych z tabelą Operator_maszyny
@@ -1967,6 +1970,21 @@ namespace nsAccess2DB
             get { return _Uprawnienie; }
             set { _Uprawnienie = value; }
         }
+        public int Rok
+        {
+            get { return _Rok; }
+            set { _Rok = value; }
+        }
+        public int Mc
+        {
+            get { return _Mc; }
+            set { _Mc = value; }
+        }
+        public int Dzien
+        {
+            get { return _Dzien; }
+            set { _Dzien = value; }
+        }
         public string Data_konca_upr
         {
             get { return _Data_konca_upr; }
@@ -1994,15 +2012,125 @@ namespace nsAccess2DB
         /// </summary>
         public DataTable select()
         {
-            string query = "SELECT * FROM Operator_maszyny;";
+            string query = "SELECT * FROM Operator_maszyny ORDER BY Operator_maszyny;";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
             _error = _conn._error;
             return dt;
         }//select
+        public DataTable select(string Nazwa_dzialu)
+        {
+            string query = "SELECT * FROM Operator_maszyny ORDER BY Nazwa_Dzialu;";
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select po nazwie dzialu
+         public DataTable select(int Rok, int Mc)
+        {
+            string query = "SELECT * FROM Swieto WHERE Rok = " + Rok.ToString() + " AND Mc = " + Mc.ToString() + ";";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select po roku i mc
+
+        /// <summary>
+        /// Wprowadza nowy rekord
+        /// </summary>
+        /// <param name="VO">Obiekt wymiany danych (insert)</param>
+        /// <returns>Wartość logiczna powodzenia operacji</returns>
+        public bool insert(nsAccess2DB.Operator_maszynyVO VO)
+        {
+            string query = "INSERT INTO Operator_maszyny (Operator_maszyny, ID_dzial, Nazwa_dzialu, Uprawnienie, Data_konca_upr, Rok, Mc, Dzien)" +
+                "VALUES (@Operator_maszyny, @ID_dzial, @Nazwa_dzialu, @Uprawnienie, @Data_konca_upr, @Rok, @Mc, @Dzien)";
+
+            OleDbParameter[] parameters = new OleDbParameter[8];
+            parameters[0] = new OleDbParameter("Operator_maszyny", OleDbType.VarChar, 255);
+            parameters[0].Value = VO.Operator_maszyny;
+
+            parameters[1] = new OleDbParameter("ID_dzial", OleDbType.Integer);
+            parameters[1].Value = VO.ID_dzial;
+
+            parameters[2] = new OleDbParameter("Nazwa_dzialu", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Nazwa_dzialu;
+
+            parameters[3] = new OleDbParameter("Uprawnienie", OleDbType.VarChar, 255);
+            parameters[3].Value = VO.Uprawnienie;
+
+            parameters[4] = new OleDbParameter("Data_konca_upr", OleDbType.VarChar, 255);
+            parameters[4].Value = VO.Data_konca_upr;
+
+            parameters[5] = new OleDbParameter("Rok", OleDbType.Integer);
+            parameters[5].Value = VO.Rok;
+
+            parameters[6] = new OleDbParameter("Mc", OleDbType.Integer);
+            parameters[6].Value = VO.Mc;
+
+            parameters[7] = new OleDbParameter("Dzien", OleDbType.Integer);
+            parameters[7].Value = VO.Dzien;
+            bool b = _conn.executeInsertQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }//insert
+
+        /// <summary>
+        /// Aktualizuje rekord z wyjątkiem ID.
+        /// </summary>
+        /// <param name="VO">Obiekt wymiany danych (update)</param>
+        /// <returns>Wartość logiczna powodzenia operacji.</returns>
+        public bool update(nsAccess2DB.Operator_maszynyVO VO)
+        {
+            string query = "UPDATE Operator_maszyny SET Operator_maszyny = @Operator_maszyny, ID_dzial = @ID_dzial, Nazwa_dzialu = @Nazwa_dzialu, Uprawnienie = @Uprawnienie, Data_konca_upr = @Data_konca_upr, Rok = @Rok, Mc = @Mc, Dzien = @Dzien WHERE ID_operator = " + VO.ID_operator.ToString() + ";";
+            OleDbParameter[] parameters = new OleDbParameter[8];
+
+            parameters[0] = new OleDbParameter("Operator_maszyny", OleDbType.VarChar, 255);
+            parameters[0].Value = VO.Operator_maszyny;
+
+            parameters[1] = new OleDbParameter("ID_dzial", OleDbType.Integer);
+            parameters[1].Value = VO.ID_dzial;
+
+            parameters[2] = new OleDbParameter("Nazwa_dzialu", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Nazwa_dzialu;
+
+            parameters[3] = new OleDbParameter("Uprawnienie", OleDbType.VarChar, 255);
+            parameters[3].Value = VO.Uprawnienie;
+
+            parameters[4] = new OleDbParameter("Data_konca_upr", OleDbType.VarChar, 255);
+            parameters[4].Value = VO.Data_konca_upr;
+
+            parameters[5] = new OleDbParameter("Rok", OleDbType.Integer);
+            parameters[5].Value = VO.Rok;
+
+            parameters[6] = new OleDbParameter("Mc", OleDbType.Integer);
+            parameters[6].Value = VO.Mc;
+
+            parameters[7] = new OleDbParameter("Dzien", OleDbType.Integer);
+            parameters[7].Value = VO.Dzien;
+            bool b = _conn.executeInsertQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }//update
+
+        /// <summary>
+        /// Usuwa rekord.
+        /// </summary>
+        /// <param name="ID_operator">Identyfikator.</param>
+        /// <returns>Wartość logiczna powodzenia operacji.</returns>
+        public bool delete(int ID_operator)
+        {
+            string query = "DELETE * FROM Operator_maszyny WHERE ID_operator = " + ID_operator.ToString() + ";";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            bool b = _conn.executeDeleteQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }//delete
 
     }//class Operator_maszynyDAO
+    
 
     //Warstwa operacji biznesowaych tabeli Operator_maszyny BUS.
     public class Operator_maszynyBUS
@@ -2047,8 +2175,17 @@ namespace nsAccess2DB
                 VOi.ID_dzial = int.Parse(dr["ID_dzial"].ToString());
                 VOi.Nazwa_dzialu = dr["Nazwa_dzial"].ToString();
                 VOi.Uprawnienie = dr["Uprawnienie"].ToString();
-                VOi.Data_konca_upr = dr["Data_konca_upr"].ToString();
-                
+
+                try
+                {
+                    VOi.Data_konca_upr = dr["Data_konca_upr"].ToString();
+                }
+                catch { }
+
+                VOi.Dzien = int.Parse(dr["Dzien"].ToString());
+                VOi.Mc = int.Parse(dr["Mc"].ToString());
+                VOi.Rok = int.Parse(dr["Rok"].ToString());
+
                 _VOs[_VOs.Length - 1] = VOi;
             }
             _eof = _VOs.Length == 0;
@@ -2137,6 +2274,10 @@ namespace nsAccess2DB
                     _idx = value;
                 }
             }
+            get
+            {
+                return _idx;
+            }
         }//idx
 
         /// <summary>
@@ -2169,7 +2310,7 @@ namespace nsAccess2DB
 
             return -1;
         }//getIdx
-
+        
     }//class Operator_maszynyBUS
 
     
