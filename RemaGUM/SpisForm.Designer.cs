@@ -104,6 +104,7 @@
             this.toolStripButtonOs_zarzadzajaca = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOperator = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonSpisForm = new System.Windows.Forms.ToolStripButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -552,6 +553,7 @@
             this.toolStrip.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.toolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonSpisForm,
             this.toolStripButtonOs_zarzadzajaca,
             this.toolStripButtonOperator,
             this.toolStripSeparator1,
@@ -929,6 +931,7 @@
             this.toolStripButtonOs_zarzadzajaca.Size = new System.Drawing.Size(37, 40);
             this.toolStripButtonOs_zarzadzajaca.Text = "toolStripButton1";
             this.toolStripButtonOs_zarzadzajaca.ToolTipText = "Osoby zarządzające";
+            this.toolStripButtonOs_zarzadzajaca.Click += new System.EventHandler(this.toolStripButtonOs_zarzadzajaca_Click);
             // 
             // toolStripButtonOperator
             // 
@@ -940,6 +943,7 @@
             this.toolStripButtonOperator.Size = new System.Drawing.Size(36, 40);
             this.toolStripButtonOperator.Text = "toolStripButton2";
             this.toolStripButtonOperator.ToolTipText = "Operatorzy maszyn.";
+            this.toolStripButtonOperator.Click += new System.EventHandler(this.toolStripButtonOperator_Click);
             // 
             // toolStripSeparator1
             // 
@@ -947,6 +951,19 @@
             this.toolStripSeparator1.AutoSize = false;
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 36);
+            // 
+            // toolStripButtonSpisForm
+            // 
+            this.toolStripButtonSpisForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSpisForm.Enabled = false;
+            this.toolStripButtonSpisForm.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSpisForm.Image")));
+            this.toolStripButtonSpisForm.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonSpisForm.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSpisForm.Name = "toolStripButtonSpisForm";
+            this.toolStripButtonSpisForm.RightToLeftAutoMirrorImage = true;
+            this.toolStripButtonSpisForm.Size = new System.Drawing.Size(39, 40);
+            this.toolStripButtonSpisForm.Text = "HOME";
+            this.toolStripButtonSpisForm.ToolTipText = "Powrót do strony startowej";
             // 
             // SpisForm
             // 
@@ -1063,6 +1080,7 @@
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.GroupBox groupBoxOperator_maszyny;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonSpisForm;
     }
 }
 

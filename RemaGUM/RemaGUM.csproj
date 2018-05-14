@@ -57,6 +57,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Access2DB.cs" />
+    <Compile Include="Os_zarzadzajacaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Os_zarzadzajacaForm.Designer.cs">
+      <DependentUpon>Os_zarzadzajacaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operator_maszynyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operator_maszynyForm.Designer.cs">
+      <DependentUpon>Operator_maszynyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rest.cs" />
     <Compile Include="SpisForm.cs">
       <SubType>Form</SubType>
@@ -66,6 +78,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Os_zarzadzajacaForm.resx">
+      <DependentUpon>Os_zarzadzajacaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operator_maszynyForm.resx">
+      <DependentUpon>Operator_maszynyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SpisForm.resx">
       <DependentUpon>SpisForm.cs</DependentUpon>
     </EmbeddedResource>

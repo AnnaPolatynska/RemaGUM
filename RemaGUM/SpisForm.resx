@@ -121,6 +121,17 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolStripButtonSpisForm.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACMAAAAkCAYAAAAD3IPhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD+SURBVFhH7Y6BCoNADEP9/5922nF4tml6moPJtgcFTdL0
+        lvVB/Mhjlq0aDYG7Cugh+xC4O0J2pH9APwTuVlSHvI8yHdzNQEf66WGeg7seX+zLRzwCd3v6I6yU5dje
+        Bnd3WDnjxh5P3Sg8cXEfJy6WlAz2nR2/RBYvM9B7qAPhKZA77z8fcKGpkFvvLxKYDrl1fDVcYDqk//+Y
+        L35My2TDIJmoVoXNryaD+FEdLasmg/hRFcoMwY+qUGYIflSFMkPwoyqUGYIfVaHMEPyoCmWG4EdVKDME
+        P6pCmSH4UW3hajJQFg0gqmgRTQbKogEkqltEk4GyfhJy5wM86DHr+gJSLUeoSbIEbAAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
   <data name="toolStripButtonOs_zarzadzajaca.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACEAAAAkCAYAAAAHKVPcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

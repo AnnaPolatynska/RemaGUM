@@ -108,8 +108,6 @@ namespace RemaGUM
 
             _tt = new ToolTip();
 
-           
-
             _tt.SetToolTip(listBoxMaszyny, "Lista maszyn, przyrządów i urządzeń itp.");
             _tt.SetToolTip(comboBoxKategoria, "Kategoria maszyn, przyrządów, urządzeń np. maszyny warsztatowe, lub przyrządy pomiarowe.");
             _tt.SetToolTip(textBoxNazwa, "Nazwa maszyny, przyrządu lub urządzenia.");
@@ -721,7 +719,19 @@ namespace RemaGUM
 
             
         }// toolStripButtonHelp_Click
-       
+
+        private void toolStripButtonOperator_Click(object sender, EventArgs e)
+        {
+            Operator_maszynyForm frame = new Operator_maszynyForm();
+            frame.Show();
+
+        }
+
+        private void toolStripButtonOs_zarzadzajaca_Click(object sender, EventArgs e)
+        {
+            Os_zarzadzajacaForm frame = new Os_zarzadzajacaForm();
+            frame.Show();
+        }
     }// public partial class SpisForm : Form
        
 }//namespace RemaGUM
