@@ -80,6 +80,7 @@
             this.toolStripStatusLabelID = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelIDVal = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBoxSortowanie = new System.Windows.Forms.GroupBox();
+            this.radioButtonData_ost_przegl = new System.Windows.Forms.RadioButton();
             this.radioButtonData_kol_przegladu = new System.Windows.Forms.RadioButton();
             this.radioButtonNazwa = new System.Windows.Forms.RadioButton();
             this.radioButtonNr_pomieszczenia = new System.Windows.Forms.RadioButton();
@@ -93,9 +94,16 @@
             this.Maszyny = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Magazyn = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.radioButtonData_ost_przegl = new System.Windows.Forms.RadioButton();
+            this.Materiały = new System.Windows.Forms.TabPage();
+            this.Normalia = new System.Windows.Forms.TabPage();
+            this.Osoby = new System.Windows.Forms.TabPage();
+            this.groupBoxOperator_maszyny = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.toolStripButtonOs_zarzadzajaca = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonOperator = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -107,6 +115,9 @@
             this.tabControl1.SuspendLayout();
             this.Maszyny.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.Osoby.SuspendLayout();
+            this.groupBoxOperator_maszyny.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -541,6 +552,9 @@
             this.toolStrip.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.toolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonOs_zarzadzajaca,
+            this.toolStripButtonOperator,
+            this.toolStripSeparator1,
             this.toolStripButtonHelp,
             this.toolStripButtonOdswiez});
             this.toolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
@@ -561,6 +575,7 @@
             this.toolStripButtonHelp.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.toolStripButtonHelp.RightToLeftAutoMirrorImage = true;
             this.toolStripButtonHelp.Size = new System.Drawing.Size(38, 34);
+            this.toolStripButtonHelp.ToolTipText = "Pomoc programu.";
             this.toolStripButtonHelp.Click += new System.EventHandler(this.toolStripButtonHelp_Click);
             // 
             // toolStripButtonOdswiez
@@ -571,7 +586,7 @@
             this.toolStripButtonOdswiez.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonOdswiez.Name = "toolStripButtonOdswiez";
             this.toolStripButtonOdswiez.Size = new System.Drawing.Size(40, 40);
-            this.toolStripButtonOdswiez.Text = "toolStripButtonOdswiez";
+            this.toolStripButtonOdswiez.ToolTipText = "Odświeżenie danych.";
             this.toolStripButtonOdswiez.Click += new System.EventHandler(this.toolStripButtonOdswiez_Click);
             // 
             // statusStrip1
@@ -614,6 +629,19 @@
             this.groupBoxSortowanie.TabIndex = 43;
             this.groupBoxSortowanie.TabStop = false;
             this.groupBoxSortowanie.Text = "sortowanie";
+            // 
+            // radioButtonData_ost_przegl
+            // 
+            this.radioButtonData_ost_przegl.AutoSize = true;
+            this.radioButtonData_ost_przegl.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonData_ost_przegl.Location = new System.Drawing.Point(421, 25);
+            this.radioButtonData_ost_przegl.Name = "radioButtonData_ost_przegl";
+            this.radioButtonData_ost_przegl.Size = new System.Drawing.Size(149, 17);
+            this.radioButtonData_ost_przegl.TabIndex = 6;
+            this.radioButtonData_ost_przegl.TabStop = true;
+            this.radioButtonData_ost_przegl.Text = "Data ostatniego przeglądu";
+            this.radioButtonData_ost_przegl.UseVisualStyleBackColor = true;
+            this.radioButtonData_ost_przegl.CheckedChanged += new System.EventHandler(this.radioButtonData_ost_przegladu_CheckedChanged);
             // 
             // radioButtonData_kol_przegladu
             // 
@@ -734,8 +762,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.Maszyny);
-            this.tabControl1.Controls.Add(this.Magazyn);
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.Materiały);
+            this.tabControl1.Controls.Add(this.Normalia);
+            this.tabControl1.Controls.Add(this.Osoby);
             this.tabControl1.Location = new System.Drawing.Point(5, 51);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -810,37 +839,114 @@
             this.label1.TabIndex = 34;
             this.label1.Text = "Kategoria ";
             // 
-            // Magazyn
+            // Materiały
             // 
-            this.Magazyn.Location = new System.Drawing.Point(4, 22);
-            this.Magazyn.Name = "Magazyn";
-            this.Magazyn.Padding = new System.Windows.Forms.Padding(3);
-            this.Magazyn.Size = new System.Drawing.Size(1189, 794);
-            this.Magazyn.TabIndex = 1;
-            this.Magazyn.Text = "Materiały";
-            this.Magazyn.UseVisualStyleBackColor = true;
+            this.Materiały.Location = new System.Drawing.Point(4, 22);
+            this.Materiały.Name = "Materiały";
+            this.Materiały.Padding = new System.Windows.Forms.Padding(3);
+            this.Materiały.Size = new System.Drawing.Size(1189, 794);
+            this.Materiały.TabIndex = 1;
+            this.Materiały.Text = "Materiały";
+            this.Materiały.UseVisualStyleBackColor = true;
             // 
-            // tabPage1
+            // Normalia
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1189, 794);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Normalia";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.Normalia.Location = new System.Drawing.Point(4, 22);
+            this.Normalia.Name = "Normalia";
+            this.Normalia.Size = new System.Drawing.Size(1189, 794);
+            this.Normalia.TabIndex = 2;
+            this.Normalia.Text = "Normalia";
+            this.Normalia.UseVisualStyleBackColor = true;
             // 
-            // radioButtonData_ost_przegl
+            // Osoby
             // 
-            this.radioButtonData_ost_przegl.AutoSize = true;
-            this.radioButtonData_ost_przegl.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonData_ost_przegl.Location = new System.Drawing.Point(421, 25);
-            this.radioButtonData_ost_przegl.Name = "radioButtonData_ost_przegl";
-            this.radioButtonData_ost_przegl.Size = new System.Drawing.Size(149, 17);
-            this.radioButtonData_ost_przegl.TabIndex = 6;
-            this.radioButtonData_ost_przegl.TabStop = true;
-            this.radioButtonData_ost_przegl.Text = "Data ostatniego przeglądu";
-            this.radioButtonData_ost_przegl.UseVisualStyleBackColor = true;
-            this.radioButtonData_ost_przegl.CheckedChanged += new System.EventHandler(this.radioButtonData_ost_przegladu_CheckedChanged);
+            this.Osoby.Controls.Add(this.groupBox6);
+            this.Osoby.Controls.Add(this.groupBoxOperator_maszyny);
+            this.Osoby.Location = new System.Drawing.Point(4, 22);
+            this.Osoby.Name = "Osoby";
+            this.Osoby.Size = new System.Drawing.Size(1189, 794);
+            this.Osoby.TabIndex = 3;
+            this.Osoby.Text = "Osoby";
+            this.Osoby.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxOperator_maszyny
+            // 
+            this.groupBoxOperator_maszyny.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBoxOperator_maszyny.BackColor = System.Drawing.Color.Bisque;
+            this.groupBoxOperator_maszyny.Controls.Add(this.listBox1);
+            this.groupBoxOperator_maszyny.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.groupBoxOperator_maszyny.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxOperator_maszyny.Name = "groupBoxOperator_maszyny";
+            this.groupBoxOperator_maszyny.Size = new System.Drawing.Size(321, 267);
+            this.groupBoxOperator_maszyny.TabIndex = 2;
+            this.groupBoxOperator_maszyny.TabStop = false;
+            this.groupBoxOperator_maszyny.Text = "Lista operatorów maszyn";
+            // 
+            // listBox1
+            // 
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBox1.BackColor = System.Drawing.Color.Linen;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(6, 23);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(309, 238);
+            this.listBox1.TabIndex = 0;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox6.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox6.Controls.Add(this.listBox2);
+            this.groupBox6.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.groupBox6.Location = new System.Drawing.Point(581, 3);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(321, 267);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Lista operatorów maszyn";
+            // 
+            // listBox2
+            // 
+            this.listBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBox2.BackColor = System.Drawing.Color.Linen;
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(6, 23);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(309, 238);
+            this.listBox2.TabIndex = 0;
+            // 
+            // toolStripButtonOs_zarzadzajaca
+            // 
+            this.toolStripButtonOs_zarzadzajaca.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonOs_zarzadzajaca.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOs_zarzadzajaca.Image")));
+            this.toolStripButtonOs_zarzadzajaca.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonOs_zarzadzajaca.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonOs_zarzadzajaca.Name = "toolStripButtonOs_zarzadzajaca";
+            this.toolStripButtonOs_zarzadzajaca.Size = new System.Drawing.Size(37, 40);
+            this.toolStripButtonOs_zarzadzajaca.Text = "toolStripButton1";
+            this.toolStripButtonOs_zarzadzajaca.ToolTipText = "Osoby zarządzające";
+            // 
+            // toolStripButtonOperator
+            // 
+            this.toolStripButtonOperator.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonOperator.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOperator.Image")));
+            this.toolStripButtonOperator.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonOperator.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonOperator.Name = "toolStripButtonOperator";
+            this.toolStripButtonOperator.Size = new System.Drawing.Size(36, 40);
+            this.toolStripButtonOperator.Text = "toolStripButton2";
+            this.toolStripButtonOperator.ToolTipText = "Operatorzy maszyn.";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator1.AutoSize = false;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 36);
             // 
             // SpisForm
             // 
@@ -872,6 +978,9 @@
             this.Maszyny.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.Osoby.ResumeLayout(false);
+            this.groupBoxOperator_maszyny.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -938,14 +1047,22 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage Maszyny;
-        private System.Windows.Forms.TabPage Magazyn;
+        private System.Windows.Forms.TabPage Materiały;
         private System.Windows.Forms.ToolStripButton toolStripButtonHelp;
         private System.Windows.Forms.ToolStripButton toolStripButtonOdswiez;
         private System.Windows.Forms.RadioButton radioButtonData_kol_przegladu;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage Normalia;
         private System.Windows.Forms.RadioButton radioButtonData_ost_przegl;
+        private System.Windows.Forms.ToolStripButton toolStripButtonOs_zarzadzajaca;
+        private System.Windows.Forms.ToolStripButton toolStripButtonOperator;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.TabPage Osoby;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.GroupBox groupBoxOperator_maszyny;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

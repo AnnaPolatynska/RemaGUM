@@ -17,7 +17,7 @@ namespace RemaGUM
     {
         private string _connStr = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Projects\\RemaGUM\\RemaGUM.mdb"; //połaczenie z bazą danych
 
-        private string _helpFile = Application.StartupPath + "\\RemaGUM_Help.chm"; //plik pomocy RemaGUM
+        private string _helpFile = Application.StartupPath + "\\RemaGUM.chm"; //plik pomocy RemaGUM
 
         private nsAccess2DB.MaszynyBUS _MaszynyBUS;
         private nsAccess2DB.KategoriaBUS _KategoriaBUS;
@@ -78,7 +78,9 @@ namespace RemaGUM
             //wyszukiwanie po wpisanej nazwie ???
             textBoxWyszukiwanie.TabIndex = 30;
             buttonSzukaj.TabIndex = 31;
+            //toolStripButton
             
+
             _MaszynyBUS = new nsAccess2DB.MaszynyBUS(_connStr);
             _CzestotliwoscBUS = new nsAccess2DB.CzestotliwoscBUS(_connStr);
             _KategoriaBUS = new nsAccess2DB.KategoriaBUS(_connStr);
@@ -105,6 +107,9 @@ namespace RemaGUM
             }
 
             _tt = new ToolTip();
+
+           
+
             _tt.SetToolTip(listBoxMaszyny, "Lista maszyn, przyrządów i urządzeń itp.");
             _tt.SetToolTip(comboBoxKategoria, "Kategoria maszyn, przyrządów, urządzeń np. maszyny warsztatowe, lub przyrządy pomiarowe.");
             _tt.SetToolTip(textBoxNazwa, "Nazwa maszyny, przyrządu lub urządzenia.");
@@ -380,7 +385,7 @@ namespace RemaGUM
             while (!_Osoba_zarzadzajacaBUS.eof)
             {
                 VO = _Osoba_zarzadzajacaBUS.VO;
-                comboBoxOsoba_zarzadzajaca.Items.Add(VO.Nazwa);
+                comboBoxOsoba_zarzadzajaca.Items.Add(VO.Osoba_zarzadzajaca);
                 _Osoba_zarzadzajacaBUS.skip();
             }
         }//WypełnijOsobyOdp()
@@ -400,7 +405,7 @@ namespace RemaGUM
             while (!_Operator_maszynyBUS.eof)
             {
                 VO = _Operator_maszynyBUS.VO;
-                comboBoxOperator_maszyny.Items.Add(VO.Nazwa);
+                comboBoxOperator_maszyny.Items.Add(VO.Operator_maszyny);
                 _Operator_maszynyBUS.skip();
             }
         }// WypelnijOperator_maszyny()

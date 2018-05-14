@@ -1933,16 +1933,44 @@ namespace nsAccess2DB
     /// </summary>
     public class Operator_maszynyVO
     {
+        private int _ID_operator = -1;
         private string _Operator_maszyny = string.Empty; //255
+        private int _ID_dzial = -1;
+        private string _Nazwa_dzialu = string.Empty; //255
+        private string _Uprawnienie = string.Empty; //255
+        private string _Data_konca_upr = string.Empty; //255
         /// <summary>
         /// Konstruktor wymiany danych z tabelą Operator_maszyny
         /// </summary>
         public Operator_maszynyVO() { }
-
-        public string Nazwa
+        public int ID_operator
+        {
+            get { return _ID_operator; }
+            set { _ID_operator = value; }
+        }
+        public string Operator_maszyny
         {
             get { return _Operator_maszyny; }
             set { _Operator_maszyny = value; }
+        }
+        public int ID_dzial
+        {
+            get { return _ID_dzial; }
+            set { _ID_dzial = value; }
+        }
+        public string Nazwa_dzialu {
+            get { return _Nazwa_dzialu; }
+            set { _Nazwa_dzialu = value; }
+        }
+        public string Uprawnienie
+        {
+            get { return _Uprawnienie; }
+            set { _Uprawnienie = value; }
+        }
+        public string Data_konca_upr
+        {
+            get { return _Data_konca_upr; }
+            set { _Data_konca_upr = value; }
         }
     }//class Operator_maszynyVO
 
@@ -1983,9 +2011,9 @@ namespace nsAccess2DB
 
         private Operator_maszynyVO[] _VOs = new Operator_maszynyVO[0];    //lista danych
         private Operator_maszynyVO _VOi = new Operator_maszynyVO();       //dane na pozycji _idx
-        private int _idx = 0;                       //indeks pozycji
-        private bool _eof = false;                  //wskaźnik końca pliku
-        private int _count = 0;                     //liczba pozycji
+        private int _idx = 0;                                             //indeks pozycji
+        private bool _eof = false;                                        //wskaźnik końca pliku
+        private int _count = 0;                                           //liczba pozycji
 
         public string _error = string.Empty;
 
@@ -2014,11 +2042,15 @@ namespace nsAccess2DB
 
                 VOi = new Operator_maszynyVO();
 
-                VOi.Nazwa = dr["Operator_maszyny"].ToString();
-
+                VOi.ID_operator = int.Parse(dr["ID_operator"].ToString());
+                VOi.Operator_maszyny = dr["Operator_maszyny"].ToString();
+                VOi.ID_dzial = int.Parse(dr["ID_dzial"].ToString());
+                VOi.Nazwa_dzialu = dr["Nazwa_dzial"].ToString();
+                VOi.Uprawnienie = dr["Uprawnienie"].ToString();
+                VOi.Data_konca_upr = dr["Data_konca_upr"].ToString();
+                
                 _VOs[_VOs.Length - 1] = VOi;
             }
-
             _eof = _VOs.Length == 0;
             _count = _VOs.Length;
             if (_count > 0)
@@ -2028,7 +2060,6 @@ namespace nsAccess2DB
                 _idx = -1;
                 _eof = true;
             }
-
         }//fillTable
 
         /// <summary>
@@ -2038,7 +2069,7 @@ namespace nsAccess2DB
         {
             fillTable(_DAO.select());
         }//select
-
+        
         /// <summary>
         /// Przemieszcza indeks w tablicy danych o jedną pozycję.
         /// </summary>
@@ -2111,13 +2142,13 @@ namespace nsAccess2DB
         /// <summary>
         /// Sprawdza istnienie rekordu.
         /// </summary>
-        /// <param name="Id">Operator_maszyny.</param>
+        /// <param name="Operator_maszyny">Operator_maszyny.</param>
         /// <returns>Wynik logiczny sprawdzenia.</returns>
-        public bool exists(String Nazwa)
+        public bool exists(String Operator_maszyny)
         {
             foreach (Operator_maszynyVO VOi in _VOs)
             {
-                if (VOi.Nazwa == Nazwa) return true;
+                if (VOi.Operator_maszyny == Operator_maszyny) return true;
             }
             return false;
         }//exists
@@ -2125,15 +2156,15 @@ namespace nsAccess2DB
         /// <summary>
         /// Zwraca indeks pozycji.
         /// </summary>
-        /// <param name="Nazwa">Identyfikator Operator_maszyny - osoba posiadająca uprawnienia do pracy na danej maszynie</param>
+        /// <param name="idx Operator_maszyny">Identyfikator Operator_maszyny - osoba posiadająca uprawnienia do pracy na danej maszynie</param>
         /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora operator_maszyny.</returns>
-        public int getIdx(string Nazwa)
+        public int getIdx(string Operator_maszyny)
         {
             int idx = -1;
             foreach (Operator_maszynyVO VOi in _VOs)
             {
                 idx++;
-                if (VOi.Nazwa == Nazwa) return idx;
+                if (VOi.Operator_maszyny == Operator_maszyny) return idx;
             }
 
             return -1;
@@ -2154,7 +2185,7 @@ namespace nsAccess2DB
         /// </summary>
         public Osoba_zarzadzajacaVO() { }
 
-        public string Nazwa
+        public string Osoba_zarzadzajaca
         {
             get { return _Osoba_zarzadzajaca; }
             set { _Osoba_zarzadzajaca = value; }
@@ -2229,7 +2260,7 @@ namespace nsAccess2DB
 
                 VOi = new Osoba_zarzadzajacaVO();
 
-                VOi.Nazwa = dr["Osoba_zarzadzajaca"].ToString();
+                VOi.Osoba_zarzadzajaca = dr["Osoba_zarzadzajaca"].ToString();
 
                 _VOs[_VOs.Length - 1] = VOi;
             }
@@ -2328,11 +2359,11 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="Id">Osoba_zarzadzajaca.</param>
         /// <returns>Wynik logiczny sprawdzenia.</returns>
-        public bool exists(String Nazwa)
+        public bool exists(String Osoba_zarzadzajaca)
         {
             foreach (Osoba_zarzadzajacaVO VOi in _VOs)
             {
-                if (VOi.Nazwa == Nazwa) return true;
+                if (VOi.Osoba_zarzadzajaca == Osoba_zarzadzajaca) return true;
             }
             return false;
         }//exists
@@ -2340,15 +2371,15 @@ namespace nsAccess2DB
         /// <summary>
         /// Zwraca indeks pozycji.
         /// </summary>
-        /// <param name="Nazwa">Identyfikator Osoba_zarzadzajaca maszyną</param>
+        /// <param name="Osoba_zarzadzajaca">Identyfikator Osoba_zarzadzajaca maszyną</param>
         /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora Osoba_zarzadzajaca.</returns>
-        public int getIdx(string Nazwa)
+        public int getIdx(string Osoba_zarzadzajaca)
         {
             int idx = -1;
             foreach (Osoba_zarzadzajacaVO VOi in _VOs)
             {
                 idx++;
-                if (VOi.Nazwa == Nazwa) return idx;
+                if (VOi.Osoba_zarzadzajaca == Osoba_zarzadzajaca) return idx;
             }
 
             return -1;
