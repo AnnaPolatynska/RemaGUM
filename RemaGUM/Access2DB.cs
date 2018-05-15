@@ -2019,6 +2019,12 @@ namespace nsAccess2DB
             _error = _conn._error;
             return dt;
         }//select
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="Nazwa_dzialu"></param>
+        /// <returns></returns>
         public DataTable select(string Nazwa_dzialu)
         {
             string query = "SELECT * FROM Operator_maszyny ORDER BY Nazwa_Dzial;";
@@ -2027,7 +2033,14 @@ namespace nsAccess2DB
             _error = _conn._error;
             return dt;
         }//select po nazwie dzialu
-         public DataTable select(int Rok, int Mc)
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="Rok"></param>
+        /// <param name="Mc"></param>
+        /// <returns></returns>
+        public DataTable select(int Rok, int Mc)
         {
             string query = "SELECT * FROM Swieto WHERE Rok = " + Rok.ToString() + " AND Mc = " + Mc.ToString() + ";";
 
@@ -2037,6 +2050,19 @@ namespace nsAccess2DB
             return dt;
         }//select po roku i mc
 
+       
+        /// <summary>
+        /// Dowolne zapytanie do bazy z poziomu formularza
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public DataTable selectQuery(string query)
+        {
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//selectQuery
         /// <summary>
         /// Wprowadza nowy rekord
         /// </summary>
@@ -2310,7 +2336,12 @@ namespace nsAccess2DB
 
             return -1;
         }//getIdx
-        
+
+        // dowolne zapytanie z formularza Operator_maszyny
+        public void selectQuery(string query)
+        {
+            fillTable(_DAO.selectQuery(query));
+        }//selectQuery
     }//class Operator_maszynyBUS
 
     

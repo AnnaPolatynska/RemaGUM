@@ -283,12 +283,13 @@ namespace RemaGUM
             }
         }//radioButton_Nr_Pomieszczenia_CheckedChanged
 
+
+
         /// <summary>
         /// wyszukuje maszynę po wpisaniu dowolnego ciągu wyrazów
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
             listBoxMaszyny.Items.Clear();

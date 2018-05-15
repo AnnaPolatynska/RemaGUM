@@ -119,6 +119,7 @@
             this.buttonNowa.TabIndex = 2;
             this.buttonNowa.Text = "nowa";
             this.buttonNowa.UseVisualStyleBackColor = false;
+            this.buttonNowa.Click += new System.EventHandler(this.buttonNowa_Click);
             // 
             // buttonUsun
             // 
@@ -129,6 +130,7 @@
             this.buttonUsun.TabIndex = 4;
             this.buttonUsun.Text = "usuń";
             this.buttonUsun.UseVisualStyleBackColor = false;
+            this.buttonUsun.Click += new System.EventHandler(this.buttonUsun_Click);
             // 
             // buttonZapisz
             // 
@@ -139,6 +141,7 @@
             this.buttonZapisz.TabIndex = 3;
             this.buttonZapisz.Text = "zapisz";
             this.buttonZapisz.UseVisualStyleBackColor = false;
+            this.buttonZapisz.Click += new System.EventHandler(this.buttonZapisz_Click);
             // 
             // buttonAnuluj
             // 
@@ -149,6 +152,7 @@
             this.buttonAnuluj.TabIndex = 3;
             this.buttonAnuluj.Text = "anuluj";
             this.buttonAnuluj.UseVisualStyleBackColor = false;
+            this.buttonAnuluj.Click += new System.EventHandler(this.buttonAnuluj_Click);
             // 
             // groupBox5
             // 
@@ -207,6 +211,7 @@
             this.radioButtonData_konca_upr.TabStop = true;
             this.radioButtonData_konca_upr.Text = "Data końca uprawnień";
             this.radioButtonData_konca_upr.UseVisualStyleBackColor = true;
+            this.radioButtonData_konca_upr.CheckedChanged += new System.EventHandler(this.radioButtonData_konca_upr_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -353,7 +358,7 @@
             this.toolStripButtonSpisForm.Size = new System.Drawing.Size(39, 40);
             this.toolStripButtonSpisForm.Text = "HOME";
             this.toolStripButtonSpisForm.ToolTipText = "Powrót do strony startowej";
-            this.toolStripButtonSpisForm.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.toolStripButtonSpisForm.Click += new System.EventHandler(this.toolStripButtonSpisForm_Click);
             // 
             // toolStripButtonOs_zarzadzajaca
             // 
