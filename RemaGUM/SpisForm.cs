@@ -78,8 +78,7 @@ namespace RemaGUM
             //wyszukiwanie po wpisanej nazwie ???
             textBoxWyszukiwanie.TabIndex = 30;
             buttonSzukaj.TabIndex = 31;
-            //toolStripButton
-            
+                       
 
             _MaszynyBUS = new nsAccess2DB.MaszynyBUS(_connStr);
             _CzestotliwoscBUS = new nsAccess2DB.CzestotliwoscBUS(_connStr);
@@ -131,7 +130,7 @@ namespace RemaGUM
             _tt.SetToolTip(buttonNowa, "Nowa pozycja w bazie.");
             _tt.SetToolTip(buttonZapisz, "Zapis nowej maszyny, przyrządu lub urządzenia lub edycja wybranej pozycji.");
             _tt.SetToolTip(buttonAnuluj, "Anulowanie zmiany.");
-            _tt.SetToolTip(buttonUsun, "Usuwa pozycja w bazie.");
+            _tt.SetToolTip(buttonUsun, "Usuwa pozycję z bazy.");
             _tt.SetToolTip(radioButtonTyp, "Sortuj po typie.");
             _tt.SetToolTip(radioButtonNr_inwentarzowy, "Sortuj po numerze inwentarzowym.");
             _tt.SetToolTip(radioButtonNr_fabryczny, "Sortuj po numerze fabrycznym.");
@@ -511,7 +510,7 @@ namespace RemaGUM
             _Stan_technicznyBUS.idx = comboBoxStan_techniczny.SelectedIndex;
         }
 
-        ///////////////////////////////////////////////////////////////////// // // // ///   przyciski
+        ///////////////////////////////////////////////////////////////////// // // // ///   Button
         //przycisk Nowa czyści formularz
         private void ButtonNowa_Click(object sender, EventArgs e)
         {

@@ -40,12 +40,12 @@
             this.buttonSzukaj = new System.Windows.Forms.Button();
             this.textBoxWyszukiwanie = new System.Windows.Forms.TextBox();
             this.groupBoxSortowanie = new System.Windows.Forms.GroupBox();
-            this.radioButtonData_ost_przegl = new System.Windows.Forms.RadioButton();
+            this.radioButtonData_konca_upr = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePickerData_ost_przegl = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerData_konca_upr = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox_maszyny = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxUprawnienie = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -105,7 +105,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.Red;
             this.groupBox2.Location = new System.Drawing.Point(339, 465);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(391, 56);
+            this.groupBox2.Size = new System.Drawing.Size(333, 56);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "edycja spisu";
@@ -159,7 +159,7 @@
             this.groupBox5.ForeColor = System.Drawing.Color.Red;
             this.groupBox5.Location = new System.Drawing.Point(339, 55);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(391, 57);
+            this.groupBox5.Size = new System.Drawing.Size(333, 57);
             this.groupBox5.TabIndex = 46;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "wyszukiwanie po nazwie";
@@ -169,24 +169,25 @@
             this.buttonSzukaj.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonSzukaj.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj.BackgroundImage")));
             this.buttonSzukaj.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSzukaj.Location = new System.Drawing.Point(350, 15);
+            this.buttonSzukaj.Location = new System.Drawing.Point(290, 17);
             this.buttonSzukaj.Name = "buttonSzukaj";
             this.buttonSzukaj.Size = new System.Drawing.Size(35, 34);
             this.buttonSzukaj.TabIndex = 4;
             this.buttonSzukaj.UseVisualStyleBackColor = false;
+            this.buttonSzukaj.Click += new System.EventHandler(this.buttonSzukaj_Click);
             // 
             // textBoxWyszukiwanie
             // 
             this.textBoxWyszukiwanie.BackColor = System.Drawing.Color.Linen;
             this.textBoxWyszukiwanie.Location = new System.Drawing.Point(6, 23);
             this.textBoxWyszukiwanie.Name = "textBoxWyszukiwanie";
-            this.textBoxWyszukiwanie.Size = new System.Drawing.Size(327, 20);
+            this.textBoxWyszukiwanie.Size = new System.Drawing.Size(278, 20);
             this.textBoxWyszukiwanie.TabIndex = 44;
             // 
             // groupBoxSortowanie
             // 
             this.groupBoxSortowanie.BackColor = System.Drawing.Color.Bisque;
-            this.groupBoxSortowanie.Controls.Add(this.radioButtonData_ost_przegl);
+            this.groupBoxSortowanie.Controls.Add(this.radioButtonData_konca_upr);
             this.groupBoxSortowanie.ForeColor = System.Drawing.Color.Red;
             this.groupBoxSortowanie.Location = new System.Drawing.Point(12, 55);
             this.groupBoxSortowanie.Name = "groupBoxSortowanie";
@@ -195,25 +196,25 @@
             this.groupBoxSortowanie.TabStop = false;
             this.groupBoxSortowanie.Text = "sortowanie";
             // 
-            // radioButtonData_ost_przegl
+            // radioButtonData_konca_upr
             // 
-            this.radioButtonData_ost_przegl.AutoSize = true;
-            this.radioButtonData_ost_przegl.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonData_ost_przegl.Location = new System.Drawing.Point(6, 19);
-            this.radioButtonData_ost_przegl.Name = "radioButtonData_ost_przegl";
-            this.radioButtonData_ost_przegl.Size = new System.Drawing.Size(133, 17);
-            this.radioButtonData_ost_przegl.TabIndex = 6;
-            this.radioButtonData_ost_przegl.TabStop = true;
-            this.radioButtonData_ost_przegl.Text = "Data końca uprawnień";
-            this.radioButtonData_ost_przegl.UseVisualStyleBackColor = true;
+            this.radioButtonData_konca_upr.AutoSize = true;
+            this.radioButtonData_konca_upr.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonData_konca_upr.Location = new System.Drawing.Point(6, 19);
+            this.radioButtonData_konca_upr.Name = "radioButtonData_konca_upr";
+            this.radioButtonData_konca_upr.Size = new System.Drawing.Size(133, 17);
+            this.radioButtonData_konca_upr.TabIndex = 6;
+            this.radioButtonData_konca_upr.TabStop = true;
+            this.radioButtonData_konca_upr.Text = "Data końca uprawnień";
+            this.radioButtonData_konca_upr.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Bisque;
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.dateTimePickerData_ost_przegl);
+            this.groupBox3.Controls.Add(this.dateTimePickerData_konca_upr);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.listBox1);
+            this.groupBox3.Controls.Add(this.listBox_maszyny);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.textBoxUprawnienie);
             this.groupBox3.Controls.Add(this.label2);
@@ -224,7 +225,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.Red;
             this.groupBox3.Location = new System.Drawing.Point(339, 118);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(391, 342);
+            this.groupBox3.Size = new System.Drawing.Size(333, 342);
             this.groupBox3.TabIndex = 48;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dane operatora maszyny";
@@ -239,13 +240,13 @@
             this.label5.TabIndex = 53;
             this.label5.Text = "Data końca uprawnień";
             // 
-            // dateTimePickerData_ost_przegl
+            // dateTimePickerData_konca_upr
             // 
-            this.dateTimePickerData_ost_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
-            this.dateTimePickerData_ost_przegl.Location = new System.Drawing.Point(6, 182);
-            this.dateTimePickerData_ost_przegl.Name = "dateTimePickerData_ost_przegl";
-            this.dateTimePickerData_ost_przegl.Size = new System.Drawing.Size(128, 20);
-            this.dateTimePickerData_ost_przegl.TabIndex = 52;
+            this.dateTimePickerData_konca_upr.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateTimePickerData_konca_upr.Location = new System.Drawing.Point(6, 182);
+            this.dateTimePickerData_konca_upr.Name = "dateTimePickerData_konca_upr";
+            this.dateTimePickerData_konca_upr.Size = new System.Drawing.Size(128, 20);
+            this.dateTimePickerData_konca_upr.TabIndex = 52;
             // 
             // label4
             // 
@@ -257,16 +258,16 @@
             this.label4.TabIndex = 51;
             this.label4.Text = "Obsługiwane maszyny";
             // 
-            // listBox1
+            // listBox_maszyny
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listBox_maszyny.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBox1.BackColor = System.Drawing.Color.Linen;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 231);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(374, 95);
-            this.listBox1.TabIndex = 50;
+            this.listBox_maszyny.BackColor = System.Drawing.Color.Linen;
+            this.listBox_maszyny.FormattingEnabled = true;
+            this.listBox_maszyny.Location = new System.Drawing.Point(6, 231);
+            this.listBox_maszyny.Name = "listBox_maszyny";
+            this.listBox_maszyny.Size = new System.Drawing.Size(321, 95);
+            this.listBox_maszyny.TabIndex = 50;
             // 
             // label3
             // 
@@ -283,7 +284,7 @@
             this.textBoxUprawnienie.BackColor = System.Drawing.Color.Linen;
             this.textBoxUprawnienie.Location = new System.Drawing.Point(6, 134);
             this.textBoxUprawnienie.Name = "textBoxUprawnienie";
-            this.textBoxUprawnienie.Size = new System.Drawing.Size(374, 20);
+            this.textBoxUprawnienie.Size = new System.Drawing.Size(321, 20);
             this.textBoxUprawnienie.TabIndex = 48;
             // 
             // label2
@@ -301,7 +302,7 @@
             this.textBoxNazwa_Dzial.BackColor = System.Drawing.Color.Linen;
             this.textBoxNazwa_Dzial.Location = new System.Drawing.Point(6, 84);
             this.textBoxNazwa_Dzial.Name = "textBoxNazwa_Dzial";
-            this.textBoxNazwa_Dzial.Size = new System.Drawing.Size(374, 20);
+            this.textBoxNazwa_Dzial.Size = new System.Drawing.Size(321, 20);
             this.textBoxNazwa_Dzial.TabIndex = 46;
             // 
             // label1
@@ -319,7 +320,7 @@
             this.textBoxOperator_maszyny.BackColor = System.Drawing.Color.Linen;
             this.textBoxOperator_maszyny.Location = new System.Drawing.Point(6, 35);
             this.textBoxOperator_maszyny.Name = "textBoxOperator_maszyny";
-            this.textBoxOperator_maszyny.Size = new System.Drawing.Size(374, 20);
+            this.textBoxOperator_maszyny.Size = new System.Drawing.Size(321, 20);
             this.textBoxOperator_maszyny.TabIndex = 44;
             // 
             // toolStrip
@@ -337,7 +338,7 @@
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip.Size = new System.Drawing.Size(737, 43);
+            this.toolStrip.Size = new System.Drawing.Size(677, 43);
             this.toolStrip.TabIndex = 49;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -411,7 +412,7 @@
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 525);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(737, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(677, 22);
             this.statusStrip1.TabIndex = 50;
             this.statusStrip1.Text = "ID operatora";
             // 
@@ -419,7 +420,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 547);
+            this.ClientSize = new System.Drawing.Size(677, 547);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.groupBox3);
@@ -456,18 +457,18 @@
         private System.Windows.Forms.Button buttonSzukaj;
         private System.Windows.Forms.TextBox textBoxWyszukiwanie;
         private System.Windows.Forms.GroupBox groupBoxSortowanie;
-        private System.Windows.Forms.RadioButton radioButtonData_ost_przegl;
+        private System.Windows.Forms.RadioButton radioButtonData_konca_upr;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textBoxOperator_maszyny;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBox_maszyny;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxUprawnienie;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxNazwa_Dzial;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePickerData_ost_przegl;
+        private System.Windows.Forms.DateTimePicker dateTimePickerData_konca_upr;
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripButton toolStripButtonOs_zarzadzajaca;
         private System.Windows.Forms.ToolStripButton toolStripButtonOperator;
