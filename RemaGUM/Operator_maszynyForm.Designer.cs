@@ -78,6 +78,7 @@
             this.listBoxOperator_maszyny.Name = "listBoxOperator_maszyny";
             this.listBoxOperator_maszyny.Size = new System.Drawing.Size(309, 355);
             this.listBoxOperator_maszyny.TabIndex = 0;
+            this.listBoxOperator_maszyny.SelectedIndexChanged += new System.EventHandler(this.listBoxOperator_maszyny_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -402,6 +403,7 @@
             this.toolStripButtonHelp.RightToLeftAutoMirrorImage = true;
             this.toolStripButtonHelp.Size = new System.Drawing.Size(38, 34);
             this.toolStripButtonHelp.ToolTipText = "Pomoc programu.";
+            this.toolStripButtonHelp.Click += new System.EventHandler(this.toolStripButtonHelp_Click);
             // 
             // toolStripButtonOdswiez
             // 
@@ -412,6 +414,7 @@
             this.toolStripButtonOdswiez.Name = "toolStripButtonOdswiez";
             this.toolStripButtonOdswiez.Size = new System.Drawing.Size(40, 40);
             this.toolStripButtonOdswiez.ToolTipText = "Odświeżenie danych.";
+            this.toolStripButtonOdswiez.Click += new System.EventHandler(this.toolStripButtonOdswiez_Click);
             // 
             // statusStrip1
             // 

@@ -45,7 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxOperator_maszyny = new System.Windows.Forms.TextBox();
             this.groupBoxSortowanie = new System.Windows.Forms.GroupBox();
-            this.radioButtonData_ost_przegl = new System.Windows.Forms.RadioButton();
+            this.radioButtonData_konca_upr = new System.Windows.Forms.RadioButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.buttonSzukaj = new System.Windows.Forms.Button();
             this.textBoxWyszukiwanie = new System.Windows.Forms.TextBox();
@@ -235,7 +235,7 @@
             // groupBoxSortowanie
             // 
             this.groupBoxSortowanie.BackColor = System.Drawing.Color.Bisque;
-            this.groupBoxSortowanie.Controls.Add(this.radioButtonData_ost_przegl);
+            this.groupBoxSortowanie.Controls.Add(this.radioButtonData_konca_upr);
             this.groupBoxSortowanie.ForeColor = System.Drawing.Color.Red;
             this.groupBoxSortowanie.Location = new System.Drawing.Point(12, 46);
             this.groupBoxSortowanie.Name = "groupBoxSortowanie";
@@ -244,17 +244,17 @@
             this.groupBoxSortowanie.TabStop = false;
             this.groupBoxSortowanie.Text = "sortowanie";
             // 
-            // radioButtonData_ost_przegl
+            // radioButtonData_konca_upr
             // 
-            this.radioButtonData_ost_przegl.AutoSize = true;
-            this.radioButtonData_ost_przegl.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonData_ost_przegl.Location = new System.Drawing.Point(6, 24);
-            this.radioButtonData_ost_przegl.Name = "radioButtonData_ost_przegl";
-            this.radioButtonData_ost_przegl.Size = new System.Drawing.Size(133, 17);
-            this.radioButtonData_ost_przegl.TabIndex = 6;
-            this.radioButtonData_ost_przegl.TabStop = true;
-            this.radioButtonData_ost_przegl.Text = "Data końca uprawnień";
-            this.radioButtonData_ost_przegl.UseVisualStyleBackColor = true;
+            this.radioButtonData_konca_upr.AutoSize = true;
+            this.radioButtonData_konca_upr.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonData_konca_upr.Location = new System.Drawing.Point(6, 24);
+            this.radioButtonData_konca_upr.Name = "radioButtonData_konca_upr";
+            this.radioButtonData_konca_upr.Size = new System.Drawing.Size(133, 17);
+            this.radioButtonData_konca_upr.TabIndex = 6;
+            this.radioButtonData_konca_upr.TabStop = true;
+            this.radioButtonData_konca_upr.Text = "Data końca uprawnień";
+            this.radioButtonData_konca_upr.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -419,7 +419,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxOperator_maszyny;
         private System.Windows.Forms.GroupBox groupBoxSortowanie;
-        private System.Windows.Forms.RadioButton radioButtonData_ost_przegl;
+        private System.Windows.Forms.RadioButton radioButtonData_konca_upr;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button buttonSzukaj;
         private System.Windows.Forms.TextBox textBoxWyszukiwanie;
