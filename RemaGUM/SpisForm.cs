@@ -23,7 +23,7 @@ namespace RemaGUM
         private nsAccess2DB.KategoriaBUS _KategoriaBUS;
         private nsAccess2DB.Osoba_zarzadzajacaBUS _Osoba_zarzadzajacaBUS;
         private nsAccess2DB.DzialBUS _DzialBUS;
-        private nsAccess2DB.CzestotliwoscBUS _CzestotliwoscBUS;
+        private nsAccess2DB.WykorzystanieBUS _WykorzystanieBUS;
         private nsAccess2DB.PropozycjaBUS _PropozycjaBUS;
         private nsAccess2DB.Stan_technicznyBUS _Stan_technicznyBUS;
         private nsAccess2DB.Operator_maszynyBUS _Operator_maszynyBUS;
@@ -81,7 +81,7 @@ namespace RemaGUM
                        
 
             _MaszynyBUS = new nsAccess2DB.MaszynyBUS(_connStr);
-            _CzestotliwoscBUS = new nsAccess2DB.CzestotliwoscBUS(_connStr);
+            _WykorzystanieBUS = new nsAccess2DB.WykorzystanieBUS(_connStr);
             _KategoriaBUS = new nsAccess2DB.KategoriaBUS(_connStr);
             _DzialBUS = new nsAccess2DB.DzialBUS(_connStr);
             _PropozycjaBUS = new nsAccess2DB.PropozycjaBUS(_connStr);
@@ -441,30 +441,30 @@ namespace RemaGUM
         }//comboBoxDzial_SelectedIndexChanged
 
         /// <summary>
-        /// wypełnia listbox pozycjami częstotliwości użycia
+        /// wypełnia listbox pozycjami częstotliwości Wykorzystania
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void WypelnijCzestotliwosc()
         {
-            nsAccess2DB.CzestotliwoscVO VO;
+            nsAccess2DB.WykorzystanieVO VO;
             comboBoxWykorzystanie.Items.Clear();
 
-            _CzestotliwoscBUS.select();
-            _CzestotliwoscBUS.top();
-            while (!_CzestotliwoscBUS.eof)
+            _WykorzystanieBUS.select();
+            _WykorzystanieBUS.top();
+            while (!_WykorzystanieBUS.eof)
             {
-                VO = _CzestotliwoscBUS.VO;
-                comboBoxWykorzystanie.Items.Add(VO.Nazwa);
-                _CzestotliwoscBUS.skip();
+                VO = _WykorzystanieBUS.VO;
+                comboBoxWykorzystanie.Items.Add(VO.Wykorzystanie);
+                _WykorzystanieBUS.skip();
             }
         }// wypelnijCzestotliwosc
 
         // przypisuje w combo identyfikator = nazwę częstotliwości wykorzystania
         private void ComboBoxWykorzystanie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _CzestotliwoscBUS.idx = comboBoxWykorzystanie.SelectedIndex;
-            comboBoxWykorzystanie.Tag = _CzestotliwoscBUS.VO.Nazwa;
+            _WykorzystanieBUS.idx = comboBoxWykorzystanie.SelectedIndex;
+            comboBoxWykorzystanie.Tag = _WykorzystanieBUS.VO.Wykorzystanie;
         }//comboboxWykorzystanie_SelectedIndexChanged
               
 

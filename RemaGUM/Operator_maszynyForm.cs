@@ -108,7 +108,7 @@ namespace RemaGUM
             _Operator_maszynyBUS.idx = listBoxOperator_maszyny.SelectedIndex;
             nsAccess2DB.Operator_maszynyVO VO = _Operator_maszynyBUS.VO;
                         
-            listBoxOperator_maszyny.Tag = _Operator_maszynyBUS.VO.ID_operator;
+            listBoxOperator_maszyny.Tag = _Operator_maszynyBUS.VO.ID_op_maszyny;
             textBoxOperator_maszyny.Tag = _Operator_maszynyBUS.VO.Operator_maszyny;
             textBoxNazwa_Dzial.Tag = _Operator_maszynyBUS.VO.Nazwa_dzial;
             textBoxUprawnienie.Tag = _Operator_maszynyBUS.VO.Uprawnienie;

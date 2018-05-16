@@ -865,27 +865,27 @@ namespace nsAccess2DB
 
     }//public class MaszynyBUS
 
-    //////////////////////////////////////////////////////////////////////// Częstotliwość
+    //////////////////////////////////////////////////////////////////////// Wykorzystanie
     /// <summary>
     /// Klasa wymiany danych z tabelą Czestotliwosc.
     /// </summary>
-    public class CzestotliwoscVO
+    public class WykorzystanieVO
     {
-        private string _Czestotliwosc = string.Empty; //100
+        private string _Wykorzystanie = string.Empty; //100
             /// <summary>
-            /// Konstruktor wymiany danych Czestotliwosc
+            /// Konstruktor wymiany danych Wykorzystanie
             /// </summary>
-        public CzestotliwoscVO() { }
+        public WykorzystanieVO() { }
 
-        public string Nazwa
+        public string Wykorzystanie
         {
-            get { return _Czestotliwosc; }
-            set { _Czestotliwosc = value; }
+            get { return _Wykorzystanie; }
+            set { _Wykorzystanie = value; }
         }
-    }//class CzestotliwoscVO
+    }//class WykorzystanieVO
 
-    //Klasa dostępu (Data Access Object) do tabeli Czestotliwosc.
-    public class CzestotliwoscDAO
+    //Klasa dostępu (Data Access Object) do tabeli Wykorzystanie.
+    public class WykorzystanieDAO
     {
         private dbConnection _conn;
         public string _error = string.Empty;
@@ -893,18 +893,18 @@ namespace nsAccess2DB
         /// <constructor>
         /// Konstruktor.
         /// </constructor>
-        public CzestotliwoscDAO(string connString)
+        public WykorzystanieDAO(string connString)
         {
             _conn = new dbConnection(connString);
             _error = _conn._error;
-        }//CzestotliwoscDAO
+        }//WykorzystanieDAO
 
         /// <summary>
         /// Zwraca tabelę spełniającą wartości parametrów.
         /// </summary>
         public DataTable select()
         {
-            string query = "SELECT * FROM Czestotliwosc;";
+            string query = "SELECT * FROM Wykorzystanie;";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
@@ -912,15 +912,15 @@ namespace nsAccess2DB
             return dt;
         }//select
 
-    }//class CzestotliwoscDAO
+    }//class WykorzystanieDAO
 
-    //Warstwa operacji biznesowaych tabeli Czestotliwosc.
-    public class CzestotliwoscBUS
+    //Warstwa operacji biznesowaych tabeli Wykorzystanie.
+    public class WykorzystanieBUS
     {
-        CzestotliwoscDAO _DAO;
+        WykorzystanieDAO _DAO;
 
-        private CzestotliwoscVO[] _VOs = new CzestotliwoscVO[0];    //lista danych
-        private CzestotliwoscVO _VOi = new CzestotliwoscVO();       //dane na pozycji _idx
+        private WykorzystanieVO[] _VOs = new WykorzystanieVO[0];    //lista danych
+        private WykorzystanieVO _VOi = new WykorzystanieVO();       //dane na pozycji _idx
         private int _idx = 0;                       //indeks pozycji
         private bool _eof = false;                  //wskaźnik końca pliku
         private int _count = 0;                     //liczba pozycji
@@ -931,11 +931,11 @@ namespace nsAccess2DB
         /// Konstruktor.
         /// </summary>
         /// <param name="connString">ConnectionStrine.</param>
-        public CzestotliwoscBUS(string connString)
+        public WykorzystanieBUS(string connString)
         {
-            _DAO = new CzestotliwoscDAO(connString);
+            _DAO = new WykorzystanieDAO(connString);
             _error = _DAO._error;
-        }//CzestotliwoscBUS
+        }//WykorzystanieBUS
 
         /// <summary>
         /// Wypełnia tablice.
@@ -943,16 +943,16 @@ namespace nsAccess2DB
         /// <param name="dt">Tabela danych.</param>
         private void fillTable(DataTable dt)
         {
-            CzestotliwoscVO VOi;
-            _VOs = new CzestotliwoscVO[0];
+            WykorzystanieVO VOi;
+            _VOs = new WykorzystanieVO[0];
 
             foreach (DataRow dr in dt.Rows)
             {
                 Array.Resize(ref _VOs, _VOs.Length + 1);
 
-                VOi = new CzestotliwoscVO();
+                VOi = new WykorzystanieVO();
 
-                VOi.Nazwa = dr["Czestotliwosc"].ToString();
+                VOi.Wykorzystanie = dr["Wykorzystanie"].ToString();
 
                 _VOs[_VOs.Length - 1] = VOi;
             }
@@ -1019,7 +1019,7 @@ namespace nsAccess2DB
         /// <summary>
         /// Zwraca daną okrśloną wskaźnikiem pozycji.
         /// </summary>
-        public CzestotliwoscVO VO
+        public WykorzystanieVO VO
         {
             get
             {
@@ -1027,7 +1027,7 @@ namespace nsAccess2DB
                 {
                     return _VOi = _VOs[_idx];
                 }
-                return new CzestotliwoscVO();
+                return new WykorzystanieVO();
             }
         }//VO
 
@@ -1048,13 +1048,13 @@ namespace nsAccess2DB
         /// <summary>
         /// Sprawdza istnienie rekordu.
         /// </summary>
-        /// <param name="Id">Nazwa Czestotliwosc.</param>
+        /// <param name="Id">Nazwa Wykorzystanie.</param>
         /// <returns>Wynik logiczny sprawdzenia.</returns>
-        public bool exists(String Nazwa)
+        public bool exists(String Wykorzystanie)
         {
-            foreach (CzestotliwoscVO VOi in _VOs)
+            foreach (WykorzystanieVO VOi in _VOs)
             {
-                if (VOi.Nazwa == Nazwa) return true;
+                if (VOi.Wykorzystanie == Wykorzystanie) return true;
             }
             return false;
         }//exists
@@ -1062,21 +1062,21 @@ namespace nsAccess2DB
         /// <summary>
         /// Zwraca indeks pozycji.
         /// </summary>
-        /// <param name="Nazwa">Identyfikator maszyny</param>
-        /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora częstotliwości.</returns>
-        public int getIdx(string Nazwa)
+        /// <param name="Wykorzystanie">Identyfikator Wykorzystania maszyny</param>
+        /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora Wykorzystania.</returns>
+        public int getIdx(string Wykorzystanie)
         {
             int idx = -1;
-            foreach (CzestotliwoscVO VOi in _VOs)
+            foreach (WykorzystanieVO VOi in _VOs)
             {
                 idx++;
-                if (VOi.Nazwa == Nazwa) return idx;
+                if (VOi.Wykorzystanie == Wykorzystanie) return idx;
             }
 
             return -1;
         }//getIdx
 
-    }//class CzestotliwoscBUS
+    }//class WykorzystanieBUS
 
     /////////////////////////////////////////////////////////////////////////////////// Kategoria
     /// <summary>
@@ -1938,7 +1938,7 @@ namespace nsAccess2DB
     /// </summary>
     public class Operator_maszynyVO
     {
-        private int _ID_operator = -1;
+        private int _ID_op_maszyny = -1;
         private string _Operator_maszyny = string.Empty; //255
         private int _ID_dzial = 0;
         private string _Nazwa_dzial = string.Empty; //255
@@ -1953,10 +1953,10 @@ namespace nsAccess2DB
         /// Konstruktor wymiany danych z tabelą Operator_maszyny
         /// </summary>
         public Operator_maszynyVO() { }
-        public int ID_operator
+        public int ID_op_maszyny
         {
-            get { return _ID_operator; }
-            set { _ID_operator = value; }
+            get { return _ID_op_maszyny; }
+            set { _ID_op_maszyny = value; }
         }
         public string Operator_maszyny
         {
@@ -2134,7 +2134,7 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool update(nsAccess2DB.Operator_maszynyVO VO)
         {
-            string query = "UPDATE Operator_maszyny SET Operator_maszyny = @Operator_maszyny, ID_dzial = @ID_dzial, Nazwa_dzial = @Nazwa_dzial, Uprawnienie = @Uprawnienie, Data_konca_upr = @Data_konca_upr, Rok = @Rok, Mc = @Mc, Dzien = @Dzien WHERE ID_operator = " + VO.ID_operator.ToString() + ";";
+            string query = "UPDATE Operator_maszyny SET Operator_maszyny = @Operator_maszyny, ID_dzial = @ID_dzial, Nazwa_dzial = @Nazwa_dzial, Uprawnienie = @Uprawnienie, Data_konca_upr = @Data_konca_upr, Rok = @Rok, Mc = @Mc, Dzien = @Dzien WHERE ID_op_maszyny = " + VO.ID_op_maszyny.ToString() + ";";
             OleDbParameter[] parameters = new OleDbParameter[8];
 
             parameters[0] = new OleDbParameter("Operator_maszyny", OleDbType.VarChar, 255);
@@ -2169,11 +2169,11 @@ namespace nsAccess2DB
         /// <summary>
         /// Usuwa rekord.
         /// </summary>
-        /// <param name="ID_operator">Identyfikator.</param>
+        /// <param name="ID_op_maszyny">Identyfikator.</param>
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
-        public bool delete(int ID_operator)
+        public bool delete(int ID_op_maszyny)
         {
-            string query = "DELETE * FROM Operator_maszyny WHERE ID_operator = " + ID_operator.ToString() + ";";
+            string query = "DELETE * FROM Operator_maszyny WHERE ID_operator = " + ID_op_maszyny.ToString() + ";";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             bool b = _conn.executeDeleteQuery(query, parameters);
@@ -2238,7 +2238,7 @@ namespace nsAccess2DB
         /// <returns>Wynik powodzenia akcji.</returns>
         public bool write(nsAccess2DB.Operator_maszynyVO VO)
         {
-            if (exists(VO.ID_operator.ToString()))                   //konwersja na stringa?
+            if (exists(VO.ID_op_maszyny.ToString()))                   //konwersja na stringa?
             {
                 return _DAO.update(VO);
             }
@@ -2261,7 +2261,7 @@ namespace nsAccess2DB
 
                 VOi = new Operator_maszynyVO();
 
-                VOi.ID_operator = int.Parse(dr["ID_operator"].ToString());
+                VOi.ID_op_maszyny = int.Parse(dr["ID_op_maszyny"].ToString());
                 VOi.Operator_maszyny = dr["Operator_maszyny"].ToString();
                 VOi.ID_dzial = int.Parse(dr["ID_dzial"].ToString());
                 VOi.Nazwa_dzial = dr["Nazwa_dzial"].ToString();
@@ -2301,19 +2301,19 @@ namespace nsAccess2DB
         /// <summary>
         /// Wypełnia tablicę.
         /// </summary>
-        /// <param name="ID_operator"></param>
-        public void select(string ID_operator)
+        /// <param name="ID_op_maszyny"></param>
+        public void select(string ID_op_maszyny)
         {
-            fillTable(_DAO.select(ID_operator));
+            fillTable(_DAO.select(ID_op_maszyny));
         }//select
 
         /// <summary>
         /// Usuwa rekord.
         /// </summary>
-        /// <param name="ID_operator"></param>
-        public void delete(int ID_operator)
+        /// <param name="ID_op_maszyny"></param>
+        public void delete(int ID_op_maszyny)
         {
-            _DAO.delete(ID_operator);
+            _DAO.delete(ID_op_maszyny);
         }
 
         /// <summary>
@@ -2420,13 +2420,13 @@ namespace nsAccess2DB
             return -1;
         }//getIdx
 
-        public int getIdx(int ID_operator)
+        public int getIdx(int ID_op_maszyny)
         {
             int idx = -1;
             foreach (Operator_maszynyVO VOi in _VOs)
             {
                 idx++;
-                if (VOi.ID_operator == ID_operator) return idx;
+                if (VOi.ID_op_maszyny == ID_op_maszyny) return idx;
             }
             return -1;
         }//getIdx
