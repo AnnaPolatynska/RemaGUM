@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Xml;
+using System.Diagnostics;
+using System.Threading;
 
 namespace RemaGUM
 {
     public partial class Operator_maszynyForm : Form
     {
-        private string _connStr = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Projects\\RemaGUM\\RemaGUM.mdb"; //połaczenie z bazą danych
+        private string _connString = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Projects\\RemaGUM\\RemaGUM.mdb"; //połaczenie z bazą danych
 
         private string _helpFile = Application.StartupPath + "\\RemaGUM.chm"; //plik pomocy RemaGUM
 
         private nsAccess2DB.Operator_maszynyBUS _Operator_maszynyBUS;
+        private nsAccess2DB.MaszynyBUS _MaszynyBUS;
         
         private ToolTip _tt; //podpowiedzi dla niektórych kontolek
 
@@ -29,7 +32,7 @@ namespace RemaGUM
         {
             InitializeComponent();
             nsRest.Rest rest = new nsRest.Rest();
-            _connStr += rest.dbConnection(_connStr);
+            _connString += rest.dbConnection(_connString);
 
             //dane forlumarza
             listBoxOperator_maszyny.TabIndex = 0;
@@ -49,7 +52,8 @@ namespace RemaGUM
             //sortowanie po radio buttonach
             radioButtonData_konca_upr.TabIndex = 12;
             
-            _Operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connStr);
+            _Operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
+            _MaszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
 
             _Operator_maszynyBUS.select();
             WypelnijOperatorowDanymi();
@@ -67,35 +71,32 @@ namespace RemaGUM
             _tt.SetToolTip(textBoxUprawnienie, "Rodzaj uprawnienia, jakie posiada operator.");
             _tt.SetToolTip(dateTimePickerData_konca_upr, "Data końca uprawnień operatora maszyny.");
             _tt.SetToolTip(listBox_maszyny, "Lista obsługiwanych przez operatora maszyn.");
-
             _tt.SetToolTip(buttonNowa, "Nowa pozycja w bazie.");
             _tt.SetToolTip(buttonZapisz, "Zapis nowej maszyny, przyrządu lub urządzenia lub edycja wybranej pozycji.");
             _tt.SetToolTip(buttonAnuluj, "Anulowanie zmiany.");
             _tt.SetToolTip(buttonUsun, "Usuwa pozycję z bazy.");
-
             _tt.SetToolTip(textBoxWyszukiwanie, "Wpisz czego szukasz.");
             _tt.SetToolTip(buttonSzukaj, "Szukanie w bazie.");
-
             _tt.SetToolTip(radioButtonData_konca_upr, "Sortowanie operatorow po dacie końca uprawnień.");
         }//Operator_maszynyForm()
 
-
+        
         //wyświetla listę operatorów maszyn po imieniu i nazwisku
         private void WypelnijOperatorowDanymi()
         {
             nsAccess2DB.Operator_maszynyVO VO;
-
             listBoxOperator_maszyny.Items.Clear();
             _Operator_maszynyBUS.select();
 
             while (!_Operator_maszynyBUS.eof)
             {
                 VO = _Operator_maszynyBUS.VO;
-                listBoxOperator_maszyny.Items.Add(VO.Operator_maszyny + " - " + VO.Nazwa_dzial);
+                listBoxOperator_maszyny.Items.Add(VO.Operator_maszyny);
                 _Operator_maszynyBUS.skip();
             }
-        }//WypelnijOperatorowDanymi()
 
+        }//WypelnijOperatorowDanymi()
+        
         // TO DO -> wypełnić listBox_maszyny, listą obsługiwanych przez operatora maszyn. (pozyskać dane)
 
         /// <summary>
@@ -142,7 +143,7 @@ namespace RemaGUM
         private void radioButtonData_konca_upr_CheckedChanged(object sender, EventArgs e)
         {
             listBoxOperator_maszyny.Items.Clear();
-            nsAccess2DB.Operator_maszynyBUS operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connStr);
+            nsAccess2DB.Operator_maszynyBUS operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
             _Operator_maszynyBUS.selectQuery("SELECT * FROM Operator_maszyny ORDER BY Operator_maszyny ASC;");
             while (!_Operator_maszynyBUS.eof)
             {
@@ -168,7 +169,7 @@ namespace RemaGUM
         {
             listBoxOperator_maszyny.Items.Clear();
 
-            nsAccess2DB.Operator_maszynyBUS operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connStr);
+            nsAccess2DB.Operator_maszynyBUS operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
             _Operator_maszynyBUS.selectQuery("SELECT * FROM Operator_maszyny WHERE Operator_maszyny LIKE '" + textBoxWyszukiwanie.Text + "%' OR Nazwa_dzial LIKE '%" + textBoxWyszukiwanie.Text + "%';");
             while (!_Operator_maszynyBUS.eof)
             {
@@ -189,7 +190,7 @@ namespace RemaGUM
             textBoxUprawnienie.Text = string.Empty;
             dateTimePickerData_konca_upr.Text = string.Empty;
 
-            WypelnijOperatorowDanymi();
+            //WypelnijOperatorowDanymi();
         }
 
         private void buttonZapisz_Click(object sender, EventArgs e)
@@ -211,14 +212,14 @@ namespace RemaGUM
             textBoxUprawnienie.Text = string.Empty;
             dateTimePickerData_konca_upr.Text = string.Empty;
 
-            WypelnijOperatorowDanymi();
+           // WypelnijOperatorowDanymi();
         }
 
         // button odświez
         private void toolStripButtonOdswiez_Click(object sender, EventArgs e)
         {
             listBoxOperator_maszyny.Items.Clear();
-            WypelnijOperatorowDanymi();
+           // WypelnijOperatorowDanymi();
         }
 
         // button pomocy
