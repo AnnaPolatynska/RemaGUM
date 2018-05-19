@@ -106,8 +106,11 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void listBoxOperator_maszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _Operator_maszynyBUS.idx = listBoxOperator_maszyny.SelectedIndex;
+            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
+
             nsAccess2DB.Operator_maszynyVO VO = _Operator_maszynyBUS.VO;
+            _Operator_maszynyBUS.idx = listBoxOperator_maszyny.SelectedIndex;
+            
                         
             listBoxOperator_maszyny.Tag = _Operator_maszynyBUS.VO.ID_op_maszyny;
             textBoxOperator_maszyny.Tag = _Operator_maszynyBUS.VO.Operator_maszyny;

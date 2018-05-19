@@ -2373,11 +2373,7 @@ namespace nsAccess2DB
         {
             fillTable(_DAO.select(ID_op_maszyny));
         }//select
-       /* public void select(string ID_op_maszyny, string Operator_maszyny, int ID_dzial, string Nazwa_dzial, string Uprawnienie)
-        {
-            fillTable(_DAO.select(ID_op_maszyny, Operator_maszyny, ID_dzial, Nazwa_dzial, Uprawnienie));
-        }
-        */
+       
         /// <summary>
         /// Usuwa rekord.
         /// </summary>
@@ -2497,187 +2493,225 @@ namespace nsAccess2DB
         }//selectQuery
     }//class Operator_maszynyBUS
 
-    
-    /////////////////////////////////////////////////////////////////////////////////// Osoba_zarzadzajaca 
+    //////////////////////////////////////////////////////////////////////         Operator_maszyny_Maszyny
     /// <summary>
-    /// Klasa wymiany danych z tabelą Osoba_zarzadzajaca.
+    /// Klasa wymiany danych z tabelą Operator_maszyny_Maszyny.
     /// </summary>
-    public class Osoba_zarzadzajacaVO
+    public class Operator_maszyny_MaszynyVO
     {
-        private int _ID_os_zarzadzajaca = 0;
-        private string _Osoba_zarzadzajaca = string.Empty; //255
-        private int _ID_dzial = 0;
-        private string _Nazwa_dzial = string.Empty; //255
-        private string _Os_zarz_nazwisko = string.Empty; //255
-        private string _Os_zarz_imie = string.Empty; //255
+        private int _ID_maszyny = -1;
+        private int _ID_op_maszyny = 0;
 
         /// <summary>
-        /// Konstruktor wymiany danych z tabelą Osoba_zarzadzajaca
+        /// Konstruktor wymiany danych z tabelą Operator_maszyny_Maszyny
         /// </summary>
-        public Osoba_zarzadzajacaVO() { }
+        public Operator_maszyny_MaszynyVO() { }
 
-        public int ID_os_zarzadzajaca
+        public int ID_op_maszyny
         {
-            get { return _ID_os_zarzadzajaca; }
-            set { _ID_os_zarzadzajaca = value; }
+            get { return _ID_op_maszyny; }
+            set { _ID_op_maszyny = value; }
         }
-        public string Osoba_zarzadzajaca
+        public int ID_maszyny
         {
-            get { return _Osoba_zarzadzajaca; }
-            set { _Osoba_zarzadzajaca = value; }
-        }
-        public int ID_dzial
-        {
-            get { return _ID_dzial; }
-            set { _ID_dzial = value; }
-        }
-        public string Nazwa_dzial
-        {
-            get { return _Nazwa_dzial; }
-            set { _Nazwa_dzial = value; }
-        }
-        public string Os_zarz_nazwisko
-        {
-            get { return _Os_zarz_nazwisko; }
-            set { _Os_zarz_nazwisko = value; }
-        }
-        public string Os_zarz_imie
-        {
-            get { return _Os_zarz_imie; }
-            set { _Os_zarz_imie = value; }
-        }
-    }//class Osoba_zarzadzajacaVO
+            get { return _ID_maszyny; }
+            set { _ID_maszyny = value; }
+        }//class Operator_maszyny_MaszynyVO
 
-    //Klasa dostępu (Data Access Object) do tabeli Osoba_zarzadzajaca.
-    public class Osoba_zarzadzajacaDAO
+    }    //Klasa dostępu (Data Access Object) do tabeli Operator_maszyny_Maszyny.
+    public class Operator_maszyny_MaszynyDAO
     {
         private dbConnection _conn;
         public string _error = string.Empty;
 
-        /// <constructor>
-        /// Konstruktor.
-        /// </constructor>
-        public Osoba_zarzadzajacaDAO(string connString)
+            /// <constructor>
+            /// Konstruktor.
+            /// </constructor>
+        public Operator_maszyny_MaszynyDAO(string connString)
         {
             _conn = new dbConnection(connString);
             _error = _conn._error;
-        }//Osoba_zarzadzajacaDAO
+        }//Operator_maszyny_MaszynyDAO
+
+
+        /// <summary>
+        ///  Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <returns>Tabela Operator_maszyny_MaszynyDAO.</returns>
+        public DataTable select()
+        {
+            string query = "SELECT * FROM Operator_maszyny_MaszynyDAO;";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select
 
         /// <summary>
         /// Zwraca tabelę spełniającą wartości parametrów.
         /// </summary>
-        public DataTable select()
-        {
-            string query = "SELECT * FROM Osoba_zarzadzajaca;";
+        /// <param name="ID_op_maszyny"></param>
+        /// <returns></returns>
+       public DataTable select(int ID_op_maszyny)
+       {
+            string query = "SELECT * FROM Operator_maszyny WHERE ID_op_maszyny = " + ID_op_maszyny.ToString() + ";";
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+       }//select po nazwie dzialu
 
+       /// <summary>
+       /// Zwraca tabelę spełniającą wartości parametrów.
+       /// </summary>
+       /// <param name="ID_op_maszyny"></param>
+       /// <param name="ID_maszyny"></param>
+       /// <returns></returns>
+       public DataTable select(int ID_op_maszyny, int ID_maszyny)
+       {
+            string query = "SELECT * FROM Operator_maszyny WHERE ID_maszyny = " + ID_maszyny.ToString() + "AND ID_op_maszyny = " + ID_op_maszyny.ToString() + ";";
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
             _error = _conn._error;
             return dt;
-        }//select
-        public DataTable select(int ID_os_zarzadzajaca)
-        {
-            string query = "SELECT * FROM Osoba_zarzadzajaca WHERE ID_os_zarzadzajaca = " + ID_os_zarzadzajaca.ToString() + ";";
-
-            OleDbParameter[] parameters = new OleDbParameter[0];
-            DataTable dt = _conn.executeSelectQuery(query, parameters);
-            _error = _conn._error;
-            return dt;
-        }//select
-        public DataTable select(string query)
-        {
-            OleDbParameter[] parameters = new OleDbParameter[0];
-            DataTable dt = _conn.executeSelectQuery(query, parameters);
-            _error = _conn._error;
-            return dt;
-        }//select
-       
-        public DataTable select(string Os_zarz_imie, string Os_zarz_nazwisko)
-        {
-            string query = "SELECT * FROM Osoba_zarzadzajaca WHERE Os_zarz_imie = " + Os_zarz_imie.ToString() + " AND Os_zarz_nazwisko = " + Os_zarz_nazwisko.ToString() + ";";
-
-            OleDbParameter[] parameters = new OleDbParameter[0];
-            DataTable dt = _conn.executeSelectQuery(query, parameters);
-            _error = _conn._error;
-            return dt;
-        }//select
+       }
 
         /// <summary>
-        /// Wprowadza nowy rekord do tabeli osoba zatrządzająca.
+        /// Wprowadza nowy rekord
         /// </summary>
-        /// <param name="VO">Obiekt wymiany danych.</param>
-        /// <returns>Wartość logiczna powodzenia operacji.</returns>
-        public bool insert(nsAccess2DB.Osoba_zarzadzajacaVO VO)
+        /// <param name="VO">Obiekt wymiany danych (insert)</param>
+        /// <returns>Wartość logiczna powodzenia operacji</returns>
+        public bool insert(nsAccess2DB.Operator_maszyny_MaszynyVO VO)
         {
-            string query = "INSERT INTO Osoba_zarzadzajaca (_ID_os_zarzadzajaca, Osoba_zarzadzajaca, ID_dzial, Nazwa_dzial, Os_zarz_nazwisko, Os_zarz_imie)" +
-                " VALUES (@_ID_os_zarzadzajaca, Osoba_zarzadzajaca, @ID_dzial, @Nazwa_dzial, @Os_zarz_nazwisko, @Os_zarz_imie)";
+            string query = "INSERT INTO Operator_maszyny_Maszyny (ID_op_maszyny, ID_maszyny)" +
+                    "VALUES (@ID_op_maszyny, @ID_maszyny)";
 
-            OleDbParameter[] parameters = new OleDbParameter[6];
+                OleDbParameter[] parameters = new OleDbParameter[1];
+                parameters[0] = new OleDbParameter("ID_op_maszyny", OleDbType.Integer);
+                parameters[0].Value = VO.ID_op_maszyny;
 
-            parameters[0] = new OleDbParameter("_ID_os_zarzadzajaca", OleDbType.Integer);
-            parameters[0].Value = VO.ID_os_zarzadzajaca;
+                parameters[1] = new OleDbParameter("ID_maszyny", OleDbType.Integer);
+                parameters[1].Value = VO.ID_maszyny;
 
-            parameters[1] = new OleDbParameter("Osoba_zarzadzajaca", OleDbType.VarChar, 255);
-            parameters[1].Value = VO.Osoba_zarzadzajaca;
+                bool b = _conn.executeInsertQuery(query, parameters);
+                _error = _conn._error;
+                return b;
+        }//insert
 
-            parameters[2] = new OleDbParameter("ID_dzial", OleDbType.Integer);
-            parameters[2].Value = VO.ID_dzial;
+            /// <summary>
+            ///  Aktualizuje rekord z wyjątkiem ID.
+            /// </summary>
+            /// <param name="VO"></param>
+            /// <returns>Wartość logiczna powodzenia operacji.</returns>
+         public bool update(nsAccess2DB.Operator_maszyny_MaszynyVO VO)
+         {
+            string query = "UPDATE Operator_maszyny_Maszyny SET ID_op_maszyny = @ID_op_maszyny, ID_maszyny = @ID_maszyny WHERE ID_op_maszynyMaszyny = " + VO.ID_op_maszyny.ToString() + ";";
 
-            parameters[3] = new OleDbParameter("Nazwa_dzial", OleDbType.VarChar, 255);
-            parameters[3].Value = VO.Nazwa_dzial;
+            OleDbParameter[] parameters = new OleDbParameter[1];
+            parameters[0] = new OleDbParameter("ID_op_maszyny", OleDbType.Integer);
+            parameters[0].Value = VO.ID_op_maszyny;
 
-            parameters[4] = new OleDbParameter("Os_zarz_nazwisko", OleDbType.VarChar, 255);
-            parameters[4].Value = VO.Os_zarz_nazwisko;
-
-            parameters[5] = new OleDbParameter("Os_zarz_imie", OleDbType.Integer);
-            parameters[5].Value = VO.Os_zarz_imie;
+            parameters[1] = new OleDbParameter("ID_maszyny", OleDbType.Integer);
+            parameters[1].Value = VO.ID_maszyny;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
             return b;
-        }//insert
+         }//update
 
-    }//class Osoba_zarzadzajacaDAO
-    
-    //Warstwa operacji biznesowaych tabeli Osoba_zarzadzajaca     ->    BUS.
-    public class Osoba_zarzadzajacaBUS
+        /// <summary>
+        /// usuwa rekord
+        /// </summary>
+        /// <param name="ID_op_maszyny"></param>
+        /// <param name="ID_maszyny"></param>
+        /// <returns>Wartość logiczna powodzenia operacji.</returns>
+        public bool delete(int ID_op_maszyny, int ID_maszyny)
+         {
+            string query = "DELETE * FROM Operator_maszyny_Maszyny WHERE ID_op_maszyny = " + ID_op_maszyny.ToString() + "AND ID_maszyny = " + ID_maszyny.ToString() +";";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            bool b = _conn.executeDeleteQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+         }//delete
+
+    }//class Operator_maszyny_MaszynyDAO
+
+        //Warstwa operacji biznesowaych tabeli Operator_maszyny_Maszyny BUS.
+    public class Operator_maszyny_MaszynyBUS
     {
-        Osoba_zarzadzajacaDAO _DAO;
+        Operator_maszyny_MaszynyDAO _DAO;
 
-        private Osoba_zarzadzajacaVO[] _VOs = new Osoba_zarzadzajacaVO[0];    //lista danych
-        private Osoba_zarzadzajacaVO _VOi = new Osoba_zarzadzajacaVO();       //dane na pozycji _idx
-        private int _idx = 0;                       //indeks pozycji
-        private bool _eof = false;                  //wskaźnik końca pliku
-        private int _count = 0;                     //liczba pozycji
+        private Operator_maszyny_MaszynyVO[] _VOs = new Operator_maszyny_MaszynyVO[0];    //lista danych
+        private Operator_maszyny_MaszynyVO _VOi = new Operator_maszyny_MaszynyVO();       //dane na pozycji _idx
+        private int _idx = 0;                                             //indeks pozycji
+        private bool _eof = false;                                        //wskaźnik końca pliku
+        private int _count = 0;                                           //liczba pozycji
 
         public string _error = string.Empty;
 
         /// <summary>
         /// Konstruktor.
         /// </summary>
-        /// <param name="connString">ConnectionString.</param>
-        public Osoba_zarzadzajacaBUS(string connString)
+        /// <param name="connString"></param>
+        public Operator_maszyny_MaszynyBUS(string connString)
         {
-            _DAO = new Osoba_zarzadzajacaDAO(connString);
+            _DAO = new Operator_maszyny_MaszynyDAO(connString);
             _error = _DAO._error;
-        }//Osoba_zarzadzajacaBUS
+        }//Operator_maszyny_MaszynyBUS
 
         /// <summary>
-        /// Wypełnia tablice.
+        /// Wprowadza rekord do tabeli.
+        /// </summary>
+        /// <param name="VO">Obiekt wymiany danych.</param>
+        /// <returns>Wartość logiczna powodzenia akcji.</returns>
+        private bool insert(nsAccess2DB.Operator_maszyny_MaszynyVO VO)
+        {
+            bool b = _DAO.insert(VO);
+            _error = _DAO._error;
+            return b;
+        }// insert
+
+        /// <summary>
+        /// Aktualizuje rekord z wyjątkiem numeru protokołu.
+        /// </summary>
+        /// <param name="VO"></param>
+        /// <returns></returns>
+        private bool update(nsAccess2DB.Operator_maszyny_MaszynyVO VO)
+        {
+            bool b = _DAO.update(VO);
+            _error = _DAO._error;
+            return b;
+        }//update
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="VO"></param>
+        /// <returns></returns>
+        public bool delete(nsAccess2DB.Operator_maszyny_MaszynyVO VO)
+        {
+            bool b = _DAO.delete(VO.ID_maszyny, VO.ID_op_maszyny);
+            _error = _DAO._error;
+            return b;
+        }// delete
+
+        /// <summary>
+        /// Wypełnia tablicę.
         /// </summary>
         /// <param name="dt">Tabela danych.</param>
         private void fillTable(DataTable dt)
         {
-            Osoba_zarzadzajacaVO VOi;
-            _VOs = new Osoba_zarzadzajacaVO[0];
+            Operator_maszyny_MaszynyVO VOi;
+            _VOs = new Operator_maszyny_MaszynyVO[0];
 
             foreach (DataRow dr in dt.Rows)
             {
                 Array.Resize(ref _VOs, _VOs.Length + 1);
 
-                VOi = new Osoba_zarzadzajacaVO();
-
-                VOi.Osoba_zarzadzajaca = dr["Osoba_zarzadzajaca"].ToString();
+                VOi = new Operator_maszyny_MaszynyVO();
+                VOi.ID_op_maszyny = int.Parse(dr["ID_op_maszyny"].ToString());
+                VOi.ID_maszyny = int.Parse(dr["ID_maszyny"].ToString());
 
                 _VOs[_VOs.Length - 1] = VOi;
             }
@@ -2691,17 +2725,36 @@ namespace nsAccess2DB
                 _idx = -1;
                 _eof = true;
             }
-
         }//fillTable
 
         /// <summary>
-        /// Wypełnia tablice danych pozycjami.
+        /// Wypełnia tablice pozycjami danych.
         /// </summary>
         public void select()
         {
             fillTable(_DAO.select());
         }//select
 
+        /// <summary>
+        /// Wypełnia tablicę.
+        /// </summary>
+        /// <param name="ID_op_maszyny"></param>
+        public void select(int ID_op_maszyny)
+        {
+            fillTable(_DAO.select(ID_op_maszyny));
+        }//select
+
+        /// <summary>
+        ///  Wypełnia tablice pozycjami danych.
+        /// </summary>
+        /// <param name="ID_Maszyny"></param>
+        /// <param name="ID_operator_maszyny"></param>
+        public void select(int ID_Maszyny, int ID_operator_maszyny)
+        {
+            fillTable(_DAO.select(ID_Maszyny, ID_operator_maszyny));
+        }//select
+
+        
         /// <summary>
         /// Przemieszcza indeks w tablicy danych o jedną pozycję.
         /// </summary>
@@ -2741,67 +2794,316 @@ namespace nsAccess2DB
         {
             get { return _count; }
         }
+       
+    }//class Operator_maszyny_MaszynyBUS
+    
 
+
+        /////////////////////////////////////////////////////////////////////////////////// Osoba_zarzadzajaca 
         /// <summary>
-        /// Zwraca daną okrśloną wskaźnikiem pozycji.
+        /// Klasa wymiany danych z tabelą Osoba_zarzadzajaca.
         /// </summary>
-        public Osoba_zarzadzajacaVO VO
+        public class Osoba_zarzadzajacaVO
         {
-            get
+            private int _ID_os_zarzadzajaca = 0;
+            private string _Osoba_zarzadzajaca = string.Empty; //255
+            private int _ID_dzial = 0;
+            private string _Nazwa_dzial = string.Empty; //255
+            private string _Os_zarz_nazwisko = string.Empty; //255
+            private string _Os_zarz_imie = string.Empty; //255
+
+            /// <summary>
+            /// Konstruktor wymiany danych z tabelą Osoba_zarzadzajaca
+            /// </summary>
+            public Osoba_zarzadzajacaVO() { }
+
+            public int ID_os_zarzadzajaca
             {
-                if (_idx > -1 & _idx < _count)
+                get { return _ID_os_zarzadzajaca; }
+                set { _ID_os_zarzadzajaca = value; }
+            }
+            public string Osoba_zarzadzajaca
+            {
+                get { return _Osoba_zarzadzajaca; }
+                set { _Osoba_zarzadzajaca = value; }
+            }
+            public int ID_dzial
+            {
+                get { return _ID_dzial; }
+                set { _ID_dzial = value; }
+            }
+            public string Nazwa_dzial
+            {
+                get { return _Nazwa_dzial; }
+                set { _Nazwa_dzial = value; }
+            }
+            public string Os_zarz_nazwisko
+            {
+                get { return _Os_zarz_nazwisko; }
+                set { _Os_zarz_nazwisko = value; }
+            }
+            public string Os_zarz_imie
+            {
+                get { return _Os_zarz_imie; }
+                set { _Os_zarz_imie = value; }
+            }
+        }//class Osoba_zarzadzajacaVO
+
+        //Klasa dostępu (Data Access Object) do tabeli Osoba_zarzadzajaca.
+        public class Osoba_zarzadzajacaDAO
+        {
+            private dbConnection _conn;
+            public string _error = string.Empty;
+
+            /// <constructor>
+            /// Konstruktor.
+            /// </constructor>
+            public Osoba_zarzadzajacaDAO(string connString)
+            {
+                _conn = new dbConnection(connString);
+                _error = _conn._error;
+            }//Osoba_zarzadzajacaDAO
+
+            /// <summary>
+            /// Zwraca tabelę spełniającą wartości parametrów.
+            /// </summary>
+            public DataTable select()
+            {
+                string query = "SELECT * FROM Osoba_zarzadzajaca;";
+
+                OleDbParameter[] parameters = new OleDbParameter[0];
+                DataTable dt = _conn.executeSelectQuery(query, parameters);
+                _error = _conn._error;
+                return dt;
+            }//select
+            public DataTable select(int ID_os_zarzadzajaca)
+            {
+                string query = "SELECT * FROM Osoba_zarzadzajaca WHERE ID_os_zarzadzajaca = " + ID_os_zarzadzajaca.ToString() + ";";
+
+                OleDbParameter[] parameters = new OleDbParameter[0];
+                DataTable dt = _conn.executeSelectQuery(query, parameters);
+                _error = _conn._error;
+                return dt;
+            }//select
+            public DataTable select(string query)
+            {
+                OleDbParameter[] parameters = new OleDbParameter[0];
+                DataTable dt = _conn.executeSelectQuery(query, parameters);
+                _error = _conn._error;
+                return dt;
+            }//select
+
+            public DataTable select(string Os_zarz_imie, string Os_zarz_nazwisko)
+            {
+                string query = "SELECT * FROM Osoba_zarzadzajaca WHERE Os_zarz_imie = " + Os_zarz_imie.ToString() + " AND Os_zarz_nazwisko = " + Os_zarz_nazwisko.ToString() + ";";
+
+                OleDbParameter[] parameters = new OleDbParameter[0];
+                DataTable dt = _conn.executeSelectQuery(query, parameters);
+                _error = _conn._error;
+                return dt;
+            }//select
+
+            /// <summary>
+            /// Wprowadza nowy rekord do tabeli osoba zatrządzająca.
+            /// </summary>
+            /// <param name="VO">Obiekt wymiany danych.</param>
+            /// <returns>Wartość logiczna powodzenia operacji.</returns>
+            public bool insert(nsAccess2DB.Osoba_zarzadzajacaVO VO)
+            {
+                string query = "INSERT INTO Osoba_zarzadzajaca (_ID_os_zarzadzajaca, Osoba_zarzadzajaca, ID_dzial, Nazwa_dzial, Os_zarz_nazwisko, Os_zarz_imie)" +
+                    " VALUES (@_ID_os_zarzadzajaca, Osoba_zarzadzajaca, @ID_dzial, @Nazwa_dzial, @Os_zarz_nazwisko, @Os_zarz_imie)";
+
+                OleDbParameter[] parameters = new OleDbParameter[6];
+
+                parameters[0] = new OleDbParameter("_ID_os_zarzadzajaca", OleDbType.Integer);
+                parameters[0].Value = VO.ID_os_zarzadzajaca;
+
+                parameters[1] = new OleDbParameter("Osoba_zarzadzajaca", OleDbType.VarChar, 255);
+                parameters[1].Value = VO.Osoba_zarzadzajaca;
+
+                parameters[2] = new OleDbParameter("ID_dzial", OleDbType.Integer);
+                parameters[2].Value = VO.ID_dzial;
+
+                parameters[3] = new OleDbParameter("Nazwa_dzial", OleDbType.VarChar, 255);
+                parameters[3].Value = VO.Nazwa_dzial;
+
+                parameters[4] = new OleDbParameter("Os_zarz_nazwisko", OleDbType.VarChar, 255);
+                parameters[4].Value = VO.Os_zarz_nazwisko;
+
+                parameters[5] = new OleDbParameter("Os_zarz_imie", OleDbType.Integer);
+                parameters[5].Value = VO.Os_zarz_imie;
+
+                bool b = _conn.executeInsertQuery(query, parameters);
+                _error = _conn._error;
+                return b;
+            }//insert
+
+        }//class Osoba_zarzadzajacaDAO
+
+        //Warstwa operacji biznesowaych tabeli Osoba_zarzadzajaca     ->    BUS.
+        public class Osoba_zarzadzajacaBUS
+        {
+            Osoba_zarzadzajacaDAO _DAO;
+
+            private Osoba_zarzadzajacaVO[] _VOs = new Osoba_zarzadzajacaVO[0];    //lista danych
+            private Osoba_zarzadzajacaVO _VOi = new Osoba_zarzadzajacaVO();       //dane na pozycji _idx
+            private int _idx = 0;                       //indeks pozycji
+            private bool _eof = false;                  //wskaźnik końca pliku
+            private int _count = 0;                     //liczba pozycji
+
+            public string _error = string.Empty;
+
+            /// <summary>
+            /// Konstruktor.
+            /// </summary>
+            /// <param name="connString">ConnectionString.</param>
+            public Osoba_zarzadzajacaBUS(string connString)
+            {
+                _DAO = new Osoba_zarzadzajacaDAO(connString);
+                _error = _DAO._error;
+            }//Osoba_zarzadzajacaBUS
+
+            /// <summary>
+            /// Wypełnia tablice.
+            /// </summary>
+            /// <param name="dt">Tabela danych.</param>
+            private void fillTable(DataTable dt)
+            {
+                Osoba_zarzadzajacaVO VOi;
+                _VOs = new Osoba_zarzadzajacaVO[0];
+
+                foreach (DataRow dr in dt.Rows)
                 {
-                    return _VOi = _VOs[_idx];
-                }
-                return new Osoba_zarzadzajacaVO();
-            }
-        }//VO
+                    Array.Resize(ref _VOs, _VOs.Length + 1);
 
-        /// <summary>
-        /// Ustawia wskaźnik pozycji.
-        /// </summary>
-        public int idx
-        {
-            set
-            {
-                if (value > -1 & value < _count)
+                    VOi = new Osoba_zarzadzajacaVO();
+
+                    VOi.Osoba_zarzadzajaca = dr["Osoba_zarzadzajaca"].ToString();
+
+                    _VOs[_VOs.Length - 1] = VOi;
+                }
+
+                _eof = _VOs.Length == 0;
+                _count = _VOs.Length;
+                if (_count > 0)
+                    _idx = 0;
+                else
                 {
-                    _idx = value;
+                    _idx = -1;
+                    _eof = true;
                 }
-            }
-        }//idx
 
-        /// <summary>
-        /// Sprawdza istnienie rekordu.
-        /// </summary>
-        /// <param name="Id">Osoba_zarzadzajaca.</param>
-        /// <returns>Wynik logiczny sprawdzenia.</returns>
-        public bool exists(String Osoba_zarzadzajaca)
-        {
-            foreach (Osoba_zarzadzajacaVO VOi in _VOs)
+            }//fillTable
+
+            /// <summary>
+            /// Wypełnia tablice danych pozycjami.
+            /// </summary>
+            public void select()
             {
-                if (VOi.Osoba_zarzadzajaca == Osoba_zarzadzajaca) return true;
-            }
-            return false;
-        }//exists
+                fillTable(_DAO.select());
+            }//select
 
-        /// <summary>
-        /// Zwraca indeks pozycji.
-        /// </summary>
-        /// <param name="Osoba_zarzadzajaca">Identyfikator Osoba_zarzadzajaca maszyną</param>
-        /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora Osoba_zarzadzajaca.</returns>
-        public int getIdx(string Osoba_zarzadzajaca)
-        {
-            int idx = -1;
-            foreach (Osoba_zarzadzajacaVO VOi in _VOs)
+            /// <summary>
+            /// Przemieszcza indeks w tablicy danych o jedną pozycję.
+            /// </summary>
+            public void skip()
             {
-                idx++;
-                if (VOi.Osoba_zarzadzajaca == Osoba_zarzadzajaca) return idx;
+                if (_count > 0)
+                {
+                    _idx++;
+                    _eof = _idx >= _count;
+                }
+            }//skip
+
+            /// <summary>
+            /// Przemieszcza indeks w tablicy danych na pozycję pierwszą.
+            /// </summary>
+            public void top()
+            {
+                if (_count > 0)
+                {
+                    _idx = 0;
+                    _eof = false;
+                }
+            }//top
+
+            /// <summary>
+            /// Zmienna logiczna osiągnięcia końca pliku.
+            /// </summary>
+            public bool eof
+            {
+                get { return _eof; }
             }
 
-            return -1;
-        }//getIdx
+            /// <summary>
+            /// Zwraca liczbę pozycji tablicy.
+            /// </summary>
+            public int count
+            {
+                get { return _count; }
+            }
 
-    }//class Osoba_zarzadzajacaBUS
+            /// <summary>
+            /// Zwraca daną okrśloną wskaźnikiem pozycji.
+            /// </summary>
+            public Osoba_zarzadzajacaVO VO
+            {
+                get
+                {
+                    if (_idx > -1 & _idx < _count)
+                    {
+                        return _VOi = _VOs[_idx];
+                    }
+                    return new Osoba_zarzadzajacaVO();
+                }
+            }//VO
+
+            /// <summary>
+            /// Ustawia wskaźnik pozycji.
+            /// </summary>
+            public int idx
+            {
+                set
+                {
+                    if (value > -1 & value < _count)
+                    {
+                        _idx = value;
+                    }
+                }
+            }//idx
+
+            /// <summary>
+            /// Sprawdza istnienie rekordu.
+            /// </summary>
+            /// <param name="Id">Osoba_zarzadzajaca.</param>
+            /// <returns>Wynik logiczny sprawdzenia.</returns>
+            public bool exists(String Osoba_zarzadzajaca)
+            {
+                foreach (Osoba_zarzadzajacaVO VOi in _VOs)
+                {
+                    if (VOi.Osoba_zarzadzajaca == Osoba_zarzadzajaca) return true;
+                }
+                return false;
+            }//exists
+
+            /// <summary>
+            /// Zwraca indeks pozycji.
+            /// </summary>
+            /// <param name="Osoba_zarzadzajaca">Identyfikator Osoba_zarzadzajaca maszyną</param>
+            /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora Osoba_zarzadzajaca.</returns>
+            public int getIdx(string Osoba_zarzadzajaca)
+            {
+                int idx = -1;
+                foreach (Osoba_zarzadzajacaVO VOi in _VOs)
+                {
+                    idx++;
+                    if (VOi.Osoba_zarzadzajaca == Osoba_zarzadzajaca) return idx;
+                }
+
+                return -1;
+            }//getIdx
+
+        }//class Osoba_zarzadzajacaBUS
+   
 
 }//namespace nsAccess2DB
