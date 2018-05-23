@@ -60,12 +60,14 @@
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOdswiez = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel_ID_Operatora = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBoxSortowanie.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.toolStrip.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBoxOperator_maszyny
@@ -418,11 +420,19 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel_ID_Operatora});
             this.statusStrip1.Location = new System.Drawing.Point(0, 525);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(677, 22);
             this.statusStrip1.TabIndex = 50;
             this.statusStrip1.Text = "ID operatora";
+            // 
+            // toolStripStatusLabel_ID_Operatora
+            // 
+            this.toolStripStatusLabel_ID_Operatora.Name = "toolStripStatusLabel_ID_Operatora";
+            this.toolStripStatusLabel_ID_Operatora.Size = new System.Drawing.Size(77, 17);
+            this.toolStripStatusLabel_ID_Operatora.Text = "ID: Operatora";
             // 
             // Operator_maszynyForm
             // 
@@ -448,6 +458,8 @@
             this.groupBox3.PerformLayout();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,5 +497,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonOdswiez;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonSpisForm;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_ID_Operatora;
     }
 }

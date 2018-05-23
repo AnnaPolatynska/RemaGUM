@@ -74,6 +74,10 @@
             this.comboBoxPropozycja = new System.Windows.Forms.ComboBox();
             this.comboBoxWykorzystanie = new System.Windows.Forms.ComboBox();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonSpisForm = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonOs_zarzadzajaca = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonOperator = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOdswiez = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -97,14 +101,10 @@
             this.Materiały = new System.Windows.Forms.TabPage();
             this.Normalia = new System.Windows.Forms.TabPage();
             this.Osoby = new System.Windows.Forms.TabPage();
-            this.groupBoxOperator_maszyny = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
-            this.toolStripButtonOs_zarzadzajaca = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonOperator = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonSpisForm = new System.Windows.Forms.ToolStripButton();
+            this.groupBoxOperator_maszyny = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -117,8 +117,8 @@
             this.Maszyny.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.Osoby.SuspendLayout();
-            this.groupBoxOperator_maszyny.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBoxOperator_maszyny.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -567,6 +567,50 @@
             this.toolStrip.TabIndex = 41;
             this.toolStrip.Text = "toolStrip1";
             // 
+            // toolStripButtonSpisForm
+            // 
+            this.toolStripButtonSpisForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSpisForm.Enabled = false;
+            this.toolStripButtonSpisForm.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSpisForm.Image")));
+            this.toolStripButtonSpisForm.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonSpisForm.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSpisForm.Name = "toolStripButtonSpisForm";
+            this.toolStripButtonSpisForm.RightToLeftAutoMirrorImage = true;
+            this.toolStripButtonSpisForm.Size = new System.Drawing.Size(39, 40);
+            this.toolStripButtonSpisForm.Text = "HOME";
+            this.toolStripButtonSpisForm.ToolTipText = "Powrót do strony startowej";
+            // 
+            // toolStripButtonOs_zarzadzajaca
+            // 
+            this.toolStripButtonOs_zarzadzajaca.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonOs_zarzadzajaca.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOs_zarzadzajaca.Image")));
+            this.toolStripButtonOs_zarzadzajaca.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonOs_zarzadzajaca.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonOs_zarzadzajaca.Name = "toolStripButtonOs_zarzadzajaca";
+            this.toolStripButtonOs_zarzadzajaca.Size = new System.Drawing.Size(37, 40);
+            this.toolStripButtonOs_zarzadzajaca.Text = "toolStripButton1";
+            this.toolStripButtonOs_zarzadzajaca.ToolTipText = "Osoby zarządzające";
+            this.toolStripButtonOs_zarzadzajaca.Click += new System.EventHandler(this.toolStripButtonOs_zarzadzajaca_Click);
+            // 
+            // toolStripButtonOperator
+            // 
+            this.toolStripButtonOperator.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonOperator.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOperator.Image")));
+            this.toolStripButtonOperator.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonOperator.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonOperator.Name = "toolStripButtonOperator";
+            this.toolStripButtonOperator.Size = new System.Drawing.Size(36, 40);
+            this.toolStripButtonOperator.Text = "toolStripButton2";
+            this.toolStripButtonOperator.ToolTipText = "Operatorzy maszyn.";
+            this.toolStripButtonOperator.Click += new System.EventHandler(this.toolStripButtonOperator_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator1.AutoSize = false;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 36);
+            // 
             // toolStripButtonHelp
             // 
             this.toolStripButtonHelp.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonHelp.Image")));
@@ -605,8 +649,8 @@
             // toolStripStatusLabelID
             // 
             this.toolStripStatusLabelID.Name = "toolStripStatusLabelID";
-            this.toolStripStatusLabelID.Size = new System.Drawing.Size(21, 17);
-            this.toolStripStatusLabelID.Text = "ID:";
+            this.toolStripStatusLabelID.Size = new System.Drawing.Size(70, 17);
+            this.toolStripStatusLabelID.Text = "ID Maszyny:";
             // 
             // toolStripStatusLabelIDVal
             // 
@@ -871,31 +915,6 @@
             this.Osoby.Text = "Osoby";
             this.Osoby.UseVisualStyleBackColor = true;
             // 
-            // groupBoxOperator_maszyny
-            // 
-            this.groupBoxOperator_maszyny.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBoxOperator_maszyny.BackColor = System.Drawing.Color.Bisque;
-            this.groupBoxOperator_maszyny.Controls.Add(this.listBox1);
-            this.groupBoxOperator_maszyny.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.groupBoxOperator_maszyny.Location = new System.Drawing.Point(3, 3);
-            this.groupBoxOperator_maszyny.Name = "groupBoxOperator_maszyny";
-            this.groupBoxOperator_maszyny.Size = new System.Drawing.Size(321, 267);
-            this.groupBoxOperator_maszyny.TabIndex = 2;
-            this.groupBoxOperator_maszyny.TabStop = false;
-            this.groupBoxOperator_maszyny.Text = "Lista operatorów maszyn";
-            // 
-            // listBox1
-            // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBox1.BackColor = System.Drawing.Color.Linen;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 23);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(309, 238);
-            this.listBox1.TabIndex = 0;
-            // 
             // groupBox6
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -921,49 +940,30 @@
             this.listBox2.Size = new System.Drawing.Size(309, 238);
             this.listBox2.TabIndex = 0;
             // 
-            // toolStripButtonOs_zarzadzajaca
+            // groupBoxOperator_maszyny
             // 
-            this.toolStripButtonOs_zarzadzajaca.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonOs_zarzadzajaca.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOs_zarzadzajaca.Image")));
-            this.toolStripButtonOs_zarzadzajaca.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonOs_zarzadzajaca.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonOs_zarzadzajaca.Name = "toolStripButtonOs_zarzadzajaca";
-            this.toolStripButtonOs_zarzadzajaca.Size = new System.Drawing.Size(37, 40);
-            this.toolStripButtonOs_zarzadzajaca.Text = "toolStripButton1";
-            this.toolStripButtonOs_zarzadzajaca.ToolTipText = "Osoby zarządzające";
-            this.toolStripButtonOs_zarzadzajaca.Click += new System.EventHandler(this.toolStripButtonOs_zarzadzajaca_Click);
+            this.groupBoxOperator_maszyny.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBoxOperator_maszyny.BackColor = System.Drawing.Color.Bisque;
+            this.groupBoxOperator_maszyny.Controls.Add(this.listBox1);
+            this.groupBoxOperator_maszyny.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.groupBoxOperator_maszyny.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxOperator_maszyny.Name = "groupBoxOperator_maszyny";
+            this.groupBoxOperator_maszyny.Size = new System.Drawing.Size(321, 267);
+            this.groupBoxOperator_maszyny.TabIndex = 2;
+            this.groupBoxOperator_maszyny.TabStop = false;
+            this.groupBoxOperator_maszyny.Text = "Lista operatorów maszyn";
             // 
-            // toolStripButtonOperator
+            // listBox1
             // 
-            this.toolStripButtonOperator.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonOperator.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOperator.Image")));
-            this.toolStripButtonOperator.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonOperator.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonOperator.Name = "toolStripButtonOperator";
-            this.toolStripButtonOperator.Size = new System.Drawing.Size(36, 40);
-            this.toolStripButtonOperator.Text = "toolStripButton2";
-            this.toolStripButtonOperator.ToolTipText = "Operatorzy maszyn.";
-            this.toolStripButtonOperator.Click += new System.EventHandler(this.toolStripButtonOperator_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator1.AutoSize = false;
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 36);
-            // 
-            // toolStripButtonSpisForm
-            // 
-            this.toolStripButtonSpisForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSpisForm.Enabled = false;
-            this.toolStripButtonSpisForm.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSpisForm.Image")));
-            this.toolStripButtonSpisForm.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonSpisForm.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSpisForm.Name = "toolStripButtonSpisForm";
-            this.toolStripButtonSpisForm.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonSpisForm.Size = new System.Drawing.Size(39, 40);
-            this.toolStripButtonSpisForm.Text = "HOME";
-            this.toolStripButtonSpisForm.ToolTipText = "Powrót do strony startowej";
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBox1.BackColor = System.Drawing.Color.Linen;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(6, 23);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(309, 238);
+            this.listBox1.TabIndex = 0;
             // 
             // SpisForm
             // 
@@ -996,8 +996,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.Osoby.ResumeLayout(false);
-            this.groupBoxOperator_maszyny.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
+            this.groupBoxOperator_maszyny.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

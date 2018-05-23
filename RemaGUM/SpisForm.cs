@@ -27,6 +27,7 @@ namespace RemaGUM
         private nsAccess2DB.PropozycjaBUS _PropozycjaBUS;
         private nsAccess2DB.Stan_technicznyBUS _Stan_technicznyBUS;
         private nsAccess2DB.Operator_maszynyBUS _Operator_maszynyBUS;
+        private nsAccess2DB.Operator_maszyny_MaszynyBUS _Operator_maszyny_MaszynyBUS;
 
         private ToolTip _tt; //podpowiedzi dla niektórych kontolek
 
@@ -42,6 +43,7 @@ namespace RemaGUM
             nsRest.Rest rest = new nsRest.Rest();
             _connString += rest.dbConnection(_connString);
 
+            //dane formularza
             listBoxMaszyny.TabIndex = 0;
             comboBoxKategoria.TabIndex = 1;
             textBoxNazwa.TabIndex = 2;
@@ -87,8 +89,10 @@ namespace RemaGUM
             _Stan_technicznyBUS = new nsAccess2DB.Stan_technicznyBUS(_connString);
             _Osoba_zarzadzajacaBUS = new nsAccess2DB.Osoba_zarzadzajacaBUS(_connString);
             _Operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
+            _Operator_maszyny_MaszynyBUS = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
             
             _MaszynyBUS.select();
+            _Operator_maszynyBUS.select();
 
             WypelnijMaszynyNazwami();
             WypelnijOsoba_zarzadzajaca();
@@ -395,17 +399,19 @@ namespace RemaGUM
         }// comboBox_Osoba_zarzadzajaca_SelectedIndexChanged
 
 
+        // wypełnieni tabeli op_maszyny_Maszyny
         private void WypelnijOperator_maszyny()
         {
-            nsAccess2DB.Operator_maszynyVO VO;
+           // nsAccess2DB.Operator_maszyny_MaszynyBUS operator_maszyny_MaszynyBUS = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
+            nsAccess2DB.Operator_maszyny_MaszynyVO operator_maszyny_MaszynyVO;
             comboBoxOperator_maszyny.Items.Clear();
 
             _Operator_maszynyBUS.select();
             _Operator_maszynyBUS.top();
             while (!_Operator_maszynyBUS.eof)
             {
-                VO = _Operator_maszynyBUS.VO;
-                comboBoxOperator_maszyny.Items.Add(VO.Operator_maszyny);
+                operator_maszyny_MaszynyVO = _Operator_maszyny_MaszynyBUS.VO;
+                comboBoxOperator_maszyny.Items.Add(operator_maszyny_MaszynyVO.Operator_maszyny);
                 _Operator_maszynyBUS.skip();
             }
         }// WypelnijOperator_maszyny()
