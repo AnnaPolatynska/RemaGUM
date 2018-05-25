@@ -53,14 +53,13 @@ namespace RemaGUM
             //sortowanie po radio buttonach
             radioButtonData_konca_upr.TabIndex = 12;
 
-   
-
             _Operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
             _Operator_maszyny_MaszynyBUS = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
             _MaszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
 
             _Operator_maszynyBUS.select();
-            
+            _MaszynyBUS.select();
+
 
             WypelnijOperatorowDanymi();
 
@@ -92,13 +91,14 @@ namespace RemaGUM
         {
             nsAccess2DB.Operator_maszyny_MaszynyVO VO;
             listBoxOperator_maszyny.Items.Clear();
-            _Operator_maszynyBUS.select();
+            //_Operator_maszynyBUS.select();
 
-            while (!_Operator_maszynyBUS.eof)
+            _Operator_maszyny_MaszynyBUS.idx = 0;
+            while (!_Operator_maszyny_MaszynyBUS.eof)
             {
                 VO = _Operator_maszyny_MaszynyBUS.VO;
                 listBoxOperator_maszyny.Items.Add(VO.Operator_maszyny);
-                _Operator_maszynyBUS.skip();
+                _Operator_maszyny_MaszynyBUS.skip();
             }
 
         }//WypelnijOperatorowDanymi()
@@ -112,25 +112,18 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void listBoxOperator_maszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
-            nsAccess2DB.Operator_maszynyBUS Operator_maszynyVO = new nsAccess2DB.Operator_maszynyBUS(_connString);
+            //nsAccess2DB.Operator_maszynyBUS operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
             _Operator_maszynyBUS.idx = listBoxOperator_maszyny.SelectedIndex;
-                                    
-            listBoxOperator_maszyny.Tag = _Operator_maszyny_MaszynyBUS.VO.ID_op_maszyny;
-            toolStripStatusLabel_ID_Operatora.Text = _Operator_maszyny_MaszynyBUS.VO.ID_op_maszyny.ToString();
+            listBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.ID_op_maszyny.ToString();
+            toolStripStatusLabel_ID_Operatora.Text = _Operator_maszynyBUS.VO.ID_op_maszyny.ToString();
 
-            textBoxOperator_maszyny.Tag = _Operator_maszyny_MaszynyBUS.VO.Operator_maszyny;
+            textBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.Operator_maszyny;
            
-            //textBoxUprawnienie.Tag = _Operator_maszynyBUS.VO.Uprawnienie;
+            textBoxUprawnienie.Text = _Operator_maszynyBUS.VO.Uprawnienie;
 
-            //dateTimePickerData_konca_upr.Value = new DateTime(_Operator_maszynyBUS.VO.Rok, _Operator_maszynyBUS.VO.Mc, _Operator_maszynyBUS.VO.Dzien);
+            dateTimePickerData_konca_upr.Value = new DateTime(_Operator_maszynyBUS.VO.Rok, _Operator_maszynyBUS.VO.Mc, _Operator_maszynyBUS.VO.Dzien);
          
         }//listBoxOperator_maszyny_SelectedIndexChanged
-       
-
-
-        
-
-
 
             /// /////////////////////////////////////////////// /// ///            toolStripButton
         private void toolStripButtonOs_zarzadzajaca_Click(object sender, EventArgs e)

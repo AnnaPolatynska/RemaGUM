@@ -739,10 +739,12 @@ namespace nsAccess2DB
             fillTable(_DAO.select());
         }//select
 
+        /*
         public void selectFor(int ID_maszyny)
         {
             fillTable(_DAO.selectFor(ID_maszyny));
         }
+        */
         /// <summary>
         /// Wypełnia tablice danych pozycjami.
         /// </summary>
@@ -869,9 +871,6 @@ namespace nsAccess2DB
             }
             return new MaszynyVO();
         }//getVO
-
-
-        
 
         public void selectQuery(string query)
         {
@@ -1960,9 +1959,9 @@ namespace nsAccess2DB
     /// </summary>
     public class Operator_maszynyVO
     {
-        private int _ID_op_maszyny = -1;
+        private int _ID_op_maszyny = 0;
         private string _Operator_maszyny = string.Empty; //255
-        private int _ID_dzial = 0;
+        private int _ID_dzial = -1; 
         private string _Nazwa_dzial = string.Empty; //255
         private string _Uprawnienie = string.Empty; //255
         private int _Rok = 0;
@@ -2075,81 +2074,34 @@ namespace nsAccess2DB
             return dt;
         }//select po nazwie dzialu
 
-        public DataTable select(string Operator_maszyny)
-        {
-            string query = "SELECT * FROM Operator_maszyny WHERE Operator_maszyny = " + Operator_maszyny.ToString() + ";";
-            OleDbParameter[] parameters = new OleDbParameter[0];
-            DataTable dt = _conn.executeSelectQuery(query, parameters);
-            _error = _conn._error;
-            return dt;
-        }
-        
-        public DataTable select(int ID_op_maszyny, string Op_imie, string Op_nazwisko)
-        {
-            string query = "SELECT * FROM Operator_maszyny WHERE ID_op_maszyny = " + ID_op_maszyny.ToString() + " AND Op_imie = " + Op_imie.ToString() + " AND Op_nazwisko = " + Op_nazwisko.ToString() + ";";
-            OleDbParameter[] parameters = new OleDbParameter[0];
-            DataTable dt = _conn.executeSelectQuery(query, parameters);
-            _error = _conn._error;
-            return dt;
-        }
-        
         /// <summary>
         /// Zwraca tabelę spełniającą wartości parametrów.
         /// </summary>
-        /// <param name="Rok"></param>
-        /// <param name="Mc"></param>
-        /// <returns></returns>
-        public DataTable select(int Rok, int Mc)
+        /// <param name="ID_maszyny"></param>
+        /// <returns>Tabela</returns>
+        public DataTable selectFor(int ID_maszyny)
         {
-            string query = "SELECT * FROM Operator_maszyny WHERE Rok = " + Rok.ToString() + " AND Mc = " + Mc.ToString() + ";";
+            string query = "SELECT FROM Operator_maszyny LEFT JOIN(Maszyny LEFT JOIN Operator_maszyny_Maszyny ON Maszyny.ID_maszyny = Operator_maszyny_Maszyny.ID_maszyny) ON Operator_maszyny.ID_op_maszyny = Operator_maszyny_Maszyny.ID_op_maszyny" +
+                " WHERE ([ID_op_maszyny] =" + ID_maszyny.ToString() + ");";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
             _error = _conn._error;
             return dt;
-        }//select po roku i mc
+        } //selectFor
 
-        /// <summary>
-        /// Zwraca tabelę spełniającą wartości parametrów.
-        /// </summary>
-        /// <param name="Rok"></param>
-        /// <param name="Mc"></param>
-        /// <param name="Dzien"></param>
-        /// <returns></returns>
-        public DataTable select(int Rok, int Mc, int Dzien)
+          /// <summary>
+          /// Zwraca tabelę spełniającą wartości parametrów.
+          /// </summary>
+          /// <returns>Tabela.</returns>
+        public DataTable selectQuery(string query)
         {
-            string query = "SELECT * FROM Operator_maszyny WHERE Rok = " + Rok.ToString() + " AND Mc = " + Mc.ToString() + " AND Dzien " + Dzien.ToString() + ";";
-
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
             _error = _conn._error;
             return dt;
-        }//select po roku, mc i dniu
+        }//selectQuery
 
-        /// <summary>
-        /// Zwraca tabelę spełniającą wartości parametrów.
-        /// </summary>
-        /// <param name="ID_op_maszyny"></param>
-        /// <param name="Operator_maszyny"></param>
-        /// <param name="Uprawnienie"></param>
-        /// <param name="Data_konca_upr"></param>
-        /// <param name="Rok"></param>
-        /// <param name="Mc"></param>
-        /// <param name="Dzien"></param>
-        /// <param name="Op_imie"></param>
-        /// <param name="Op_nazwisko"></param>
-        /// <returns></returns>
-        public DataTable select(int ID_op_maszyny, string Operator_maszyny, string Uprawnienie, string Data_konca_upr, int Rok, int Mc, int Dzien, string Op_imie, string Op_nazwisko)
-        {
-            string query = "SELECT * FROM Operator_maszyny WHERE ID_op_maszyny = " + ID_op_maszyny.ToString() + " AND Operator_maszyny = " + Operator_maszyny.ToString() + "AND Uprawnienie = " + Uprawnienie.ToString() + " AND Data_konca_upr = " + Data_konca_upr.ToString() + " AND Rok = " + Rok.ToString() + " AND Mc = " + Mc.ToString() + " AND Dzien " + Dzien.ToString() + ";";
-
-            OleDbParameter[] parameters = new OleDbParameter[0];
-            DataTable dt = _conn.executeSelectQuery(query, parameters);
-            _error = _conn._error;
-            return dt;
-        }
-        
-                   
         /// <summary>
         /// Wprowadza nowy rekord
         /// </summary>
@@ -2196,21 +2148,7 @@ namespace nsAccess2DB
             return b;
         }//insert
         
-        /// <summary>
-        /// Aktualizuje rekordy z wyjątkiem ID_op_maszyny.
-        /// </summary>
-        /// <param name="query">Polecenie aktualizacji.</param>
-        /// <returns>Wartość logiczna powodzenia operacji.</returns>
-        public bool update(string query)
-        {
-            OleDbParameter[] parameters = new OleDbParameter[0];
-
-            bool b = _conn.executeUpdateQuery(query, parameters);
-            _error = _conn._error;
-            return b;
-        }//update
-        
-
+       
         /// <summary>
         ///  Aktualizuje rekord z wyjątkiem ID.
         /// </summary>
@@ -2348,7 +2286,6 @@ namespace nsAccess2DB
 
             foreach (DataRow dr in dt.Rows)
             {
-                Array.Resize(ref _VOs, _VOs.Length + 1);
                 VOi = new Operator_maszynyVO();
 
                 VOi.ID_op_maszyny = int.Parse(dr["ID_op_maszyny"].ToString());
@@ -2367,7 +2304,8 @@ namespace nsAccess2DB
                 VOi.Op_imie = dr["Op_imie"].ToString();
                 VOi.Op_nazwisko = dr["Op_nazwisko"].ToString();
 
-                _VOs[_VOs.Length - 1] = VO;
+                 Array.Resize(ref _VOs, _VOs.Length + 1);
+                _VOs[_VOs.Length - 1] = VOi;
             }
 
             _eof = _VOs.Length == 0;
@@ -2397,7 +2335,20 @@ namespace nsAccess2DB
         {
             fillTable(_DAO.select(ID_op_maszyny));
         }//select
-       
+
+        public void selectFor(int ID_maszyny)
+        {
+            fillTable(_DAO.selectFor(ID_maszyny));
+        }
+
+        /// <summary>
+        /// Wypełnia tablice danych pozycjami.
+        /// </summary>
+        /// <param name="query">Zapytanie sql.</param>
+        public void selectQuery(string query)
+        {
+            fillTable(_DAO.selectQuery(query));
+        }//select
         /// <summary>
         /// Usuwa rekord.
         /// </summary>
@@ -2406,7 +2357,7 @@ namespace nsAccess2DB
         {
             _DAO.delete(ID_op_maszyny);
         }
-
+        
         /// <summary>
         /// Przemieszcza indeks w tablicy danych o jedną pozycję.
         /// </summary>
@@ -2474,6 +2425,10 @@ namespace nsAccess2DB
                     _idx = value;
                 }
             }
+            get
+            {
+                return _idx;
+            }
         }//idx
 
         /// <summary>
@@ -2515,11 +2470,7 @@ namespace nsAccess2DB
             return new Operator_maszynyVO();
         }// getVO
 
-        // dowolne zapytanie z formularza Operator_maszyny
-        public void selectQuery(string query)
-        {
-            fillTable(_DAO.select(query));
-        }//selectQuery
+        
     }//class Operator_maszynyBUS
 
     //////////////////////////////////////////////////////////////////////         Operator_maszyny_Maszyny
@@ -2568,8 +2519,7 @@ namespace nsAccess2DB
             _conn = new dbConnection(connString);
             _error = _conn._error;
         }//Operator_maszyny_MaszynyDAO
-
-      
+  /*            
         /// <summary>
         ///  Zwraca tabelę spełniającą wartości parametrów.
         /// </summary>
@@ -2583,29 +2533,29 @@ namespace nsAccess2DB
             _error = _conn._error;
             return dt;
         }//select
-        
+*/        
 
         /// <summary>
         /// Zwraca tabelę spełniającą wartości parametrów.
         /// </summary>
         /// <param name="ID_op_maszyny"></param>
         /// <returns></returns>
-       public DataTable select(int ID_op_maszyny)
+       public DataTable select(int ID_maszyny)
        {
-            string query = "SELECT * FROM Operator_maszyny_Maszyny WHERE ID_op_maszyny = " + ID_op_maszyny.ToString() + ";";
+            string query = "SELECT * FROM Operator_maszyny_Maszyny WHERE ID_maszyny = " + ID_maszyny.ToString() + ";";
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
             _error = _conn._error;
             return dt;
        }//select
 
-       /// <summary>
-       /// Zwraca tabelę spełniającą wartości parametrów.
-       /// </summary>
-       /// <param name="ID_op_maszyny"></param>
-       /// <param name="ID_maszyny"></param>
-       /// <returns></returns>
-       public DataTable select(int ID_op_maszyny, int ID_maszyny)
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="ID_op_maszyny"></param>
+        /// <param name="ID_maszyny"></param>
+        /// <returns></returns>
+        public DataTable select(int ID_maszyny, int ID_op_maszyny)
        {
             string query = "SELECT * FROM Operator_maszyny_Maszyny WHERE ID_maszyny = " + ID_maszyny.ToString() + "AND ID_op_maszyny = " + ID_op_maszyny.ToString() + ";";
             OleDbParameter[] parameters = new OleDbParameter[0];
@@ -2613,8 +2563,7 @@ namespace nsAccess2DB
             _error = _conn._error;
             return dt;
        }//select
-
-
+      
         /// <summary>
         /// Wprowadza nowy rekord
         /// </summary>
@@ -2671,7 +2620,8 @@ namespace nsAccess2DB
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
             return b;
-        }
+        }//delete
+
         /// <summary>
         /// usuwa rekord
         /// </summary>
@@ -2687,6 +2637,15 @@ namespace nsAccess2DB
             _error = _conn._error;
             return b;
          }//delete
+
+        public DataTable selectQuery(string query)
+        {
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//selectQuery
+
 
     }//class Operator_maszyny_MaszynyDAO
 
@@ -2712,60 +2671,6 @@ namespace nsAccess2DB
             _DAO = new Operator_maszyny_MaszynyDAO(connString);
             _error = _DAO._error;
         }//Operator_maszyny_MaszynyBUS
-        private void add(Operator_maszyny_MaszynyVO VO, ref Operator_maszyny_MaszynyVO[] VOs)
-        {
-            Array.Resize(ref VOs, VOs.Length + 1);
-            VOs[_VOs.Length - 1] = VO;
-        }//add
-        /// <summary>
-        /// Wprowadza rekord do tabeli.
-        /// </summary>
-        /// <param name="VO">Obiekt wymiany danych.</param>
-        /// <returns>Wartość logiczna powodzenia akcji.</returns>
-        public bool insert(int ID_maszyny, int ID_op_maszyny, string Operator_maszyny)
-        {
-            Operator_maszyny_MaszynyVO VO = new Operator_maszyny_MaszynyVO();
-            VO.ID_maszyny = ID_maszyny;
-            VO.ID_op_maszyny = ID_op_maszyny;
-            VO.Operator_maszyny = Operator_maszyny;
-
-            add(VO, ref _VOs);
-
-            return _DAO.insert(VO);
-        }//insert
-
-        /// <summary>
-        /// Aktualizuje rekord z wyjątkiem numeru protokołu.
-        /// </summary>
-        /// <param name="VO"></param>
-        /// <returns></returns>
-        private bool update(nsAccess2DB.Operator_maszyny_MaszynyVO VO)
-        {
-            bool b = _DAO.update(VO);
-            _error = _DAO._error;
-            return b;
-        }//update
-
-        /// <summary>
-        /// Usuwa z tabeli pozycję o wskazanych parametrach.
-        /// </summary>
-        /// <param name="ID_maszyny"></param>
-        /// <returns></returns>
-        public bool delete(int ID_maszyny)
-        {
-            return _DAO.delete(ID_maszyny);
-        }// delete
-
-        /// <summary>
-        /// Usuwa z tabeli pozycję o wskazanych parametrach.
-        /// </summary>
-        /// <param name="ID_maszyny"></param>
-        /// <param name="ID_op_maszyny"></param>
-        /// <returns></returns>
-        public bool delete(int ID_maszyny, int ID_op_maszyny)
-        {
-            return _DAO.delete(ID_maszyny, ID_op_maszyny);
-        }// delete
 
         /// <summary>
         /// Wypełnia tablicę.
@@ -2784,7 +2689,7 @@ namespace nsAccess2DB
                 VOi.ID_op_maszyny = int.Parse(dr["ID_op_maszyny"].ToString());
                 VOi.ID_maszyny = int.Parse(dr["ID_maszyny"].ToString());
                 VOi.Operator_maszyny = dr["Operator_maszyny"].ToString();
-                
+
                 _VOs[_VOs.Length - 1] = VOi;
             }
 
@@ -2799,11 +2704,6 @@ namespace nsAccess2DB
             }
         }//fillTable
 
-        public void select()
-        {
-            fillTable(_DAO.select());
-        }// select
-
         /// <summary>
         /// Wypełnia tablice pozycjami danych.
         /// </summary>
@@ -2811,19 +2711,75 @@ namespace nsAccess2DB
         {
             fillTable(_DAO.select(ID_maszyny));
         }//select
-        
-        /// <summary>
-        ///  Wypełnia tablice pozycjami danych.
-        /// </summary>
-        /// <param name="ID_Maszyny"></param>
-        /// <param name="ID_op_maszyny"></param>
-        public void select(int ID_maszyny, int ID_op_maszyny)
-        {
-            fillTable(_DAO.select(ID_maszyny, ID_op_maszyny));
-        }//select
 
         
+
+
+
         /// <summary>
+        /// Wprowadza rekord do tabeli.
+        /// </summary>
+        /// <param name="ID_maszyny"></param>
+        /// <param name="ID_op_maszyny"></param>
+        /// <param name="Operator_maszyny"></param>
+        /// <returns>Wartość logiczna powodzenia operacji.</returns>
+        public bool insert(int ID_maszyny, int ID_op_maszyny, string Operator_maszyny)
+        {
+            Operator_maszyny_MaszynyVO VO = new Operator_maszyny_MaszynyVO();
+            VO.ID_maszyny = ID_maszyny;
+            VO.ID_op_maszyny = ID_op_maszyny;
+            VO.Operator_maszyny = Operator_maszyny;
+
+            add(VO, ref _VOs);
+
+            return _DAO.insert(VO);
+        }//insert
+
+        /// <summary>
+        /// Aktualizuje rekord z wyjątkiem numeru protokołu.
+        /// </summary>
+        /// <param name="VO"></param>
+        /// <returns>Wartość logiczna powodzenia akcji.</returns>
+        private bool update(nsAccess2DB.Operator_maszyny_MaszynyVO VO)
+        {
+            bool b = _DAO.update(VO);
+            _error = _DAO._error;
+            return b;
+        }//update
+
+        /// <summary>
+        /// Dodaje pozycję do tabeli.
+        /// </summary>
+        /// <param name="VO"></param>
+        /// <param name="VOs"></param>
+        private void add(Operator_maszyny_MaszynyVO VO, ref Operator_maszyny_MaszynyVO[] VOs)
+        {
+            Array.Resize(ref VOs, VOs.Length + 1);
+            VOs[_VOs.Length - 1] = VO;
+        }//add
+
+        /// <summary>
+        /// Usuwa z tabeli pozycję o wskazanych parametrach.
+        /// </summary>
+        /// <param name="ID_maszyny"></param>
+        /// <returns>Wartość logiczna powodzenia akcji.</returns>
+        public bool delete(int ID_maszyny)
+        {
+            return _DAO.delete(ID_maszyny);
+        }// delete
+
+        /// <summary>
+        /// Usuwa z tabeli pozycję o wskazanych parametrach.
+        /// </summary>
+        /// <param name="ID_maszyny"></param>
+        /// <param name="ID_op_maszyny"></param>
+        /// <returns>Wartość logiczna powodzenia akcji.</returns>
+        public bool delete(int ID_maszyny, int ID_op_maszyny)
+        {
+            return _DAO.delete(ID_maszyny, ID_op_maszyny);
+        }// delete
+
+        // <summary>
         /// Przemieszcza indeks w tablicy danych o jedną pozycję.
         /// </summary>
         public void skip()
