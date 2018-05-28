@@ -28,7 +28,7 @@ namespace RemaGUM
         /// <summary>
         /// Konstruktor formularza Operator maszyny.
         /// </summary>
-        /// <param name="connStr">Połaczenie z bazą talela Operator_maszyny.</param>
+        /// <param name="connStr">Połaczenie z bazą talela Nazwa_op_maszyny.</param>
         public Operator_maszynyForm()
         {
             InitializeComponent();
@@ -92,12 +92,13 @@ namespace RemaGUM
             nsAccess2DB.Operator_maszyny_MaszynyVO VO;
             listBoxOperator_maszyny.Items.Clear();
             //_Operator_maszynyBUS.select();
+            _Operator_maszyny_MaszynyBUS.select();
 
             _Operator_maszyny_MaszynyBUS.idx = 0;
             while (!_Operator_maszyny_MaszynyBUS.eof)
             {
                 VO = _Operator_maszyny_MaszynyBUS.VO;
-                listBoxOperator_maszyny.Items.Add(VO.Operator_maszyny);
+                listBoxOperator_maszyny.Items.Add(VO.Nazwa_op_maszyny);
                 _Operator_maszyny_MaszynyBUS.skip();
             }
 
@@ -117,7 +118,7 @@ namespace RemaGUM
             listBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.ID_op_maszyny.ToString();
             toolStripStatusLabel_ID_Operatora.Text = _Operator_maszynyBUS.VO.ID_op_maszyny.ToString();
 
-            textBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.Operator_maszyny;
+            textBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.Nazwa_op_maszyny;
            
             textBoxUprawnienie.Text = _Operator_maszynyBUS.VO.Uprawnienie;
 
@@ -143,10 +144,10 @@ namespace RemaGUM
         {
             listBoxOperator_maszyny.Items.Clear();
             nsAccess2DB.Operator_maszynyBUS operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
-            _Operator_maszynyBUS.selectQuery("SELECT * FROM Operator_maszyny ORDER BY Operator_maszyny ASC;");
+            _Operator_maszynyBUS.selectQuery("SELECT * FROM Nazwa_op_maszyny ORDER BY Nazwa_op_maszyny ASC;");
             while (!_Operator_maszynyBUS.eof)
             {
-                listBoxOperator_maszyny.Items.Add(_Operator_maszynyBUS.VO.Operator_maszyny + " -> " + _Operator_maszynyBUS.VO.Rok + "-" + _Operator_maszynyBUS.VO.Mc + "-" + _Operator_maszynyBUS.VO.Dzien);
+                listBoxOperator_maszyny.Items.Add(_Operator_maszynyBUS.VO.Nazwa_op_maszyny + " -> " + _Operator_maszynyBUS.VO.Rok + "-" + _Operator_maszynyBUS.VO.Mc + "-" + _Operator_maszynyBUS.VO.Dzien);
                 _Operator_maszynyBUS.skip();
             }
 
@@ -169,10 +170,10 @@ namespace RemaGUM
             listBoxOperator_maszyny.Items.Clear();
 
             nsAccess2DB.Operator_maszynyBUS operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
-            _Operator_maszynyBUS.selectQuery("SELECT * FROM Operator_maszyny WHERE Operator_maszyny LIKE '" + textBoxWyszukiwanie.Text + "%' OR Nazwa_dzial LIKE '%" + textBoxWyszukiwanie.Text + "%';");
+            _Operator_maszynyBUS.selectQuery("SELECT * FROM Nazwa_op_maszyny WHERE Nazwa_op_maszyny LIKE '" + textBoxWyszukiwanie.Text + "%' OR Nazwa_dzial LIKE '%" + textBoxWyszukiwanie.Text + "%';");
             while (!_Operator_maszynyBUS.eof)
             {
-                listBoxOperator_maszyny.Items.Add(_Operator_maszynyBUS.VO.Operator_maszyny + " -> " + _Operator_maszynyBUS.VO.Nazwa_dzial);
+                listBoxOperator_maszyny.Items.Add(_Operator_maszynyBUS.VO.Nazwa_op_maszyny + " -> " + _Operator_maszynyBUS.VO.Nazwa_dzial);
                 _Operator_maszynyBUS.skip();
             }
 

@@ -344,7 +344,7 @@ namespace RemaGUM
             comboBoxWykorzystanie.Text = _MaszynyBUS.VO.Wykorzystanie;
             comboBoxStan_techniczny.Text = _MaszynyBUS.VO.Stan_techniczny;
             comboBoxPropozycja.Text = _MaszynyBUS.VO.Propozycja;
-            comboBoxOperator_maszyny.Text = _MaszynyBUS.VO.Operator_maszyny;
+            comboBoxOperator_maszyny.Text = _MaszynyBUS.VO.Nazwa_op_maszyny;
 
         }//listBoxMaszyny_SelectedIndexChanged
 
@@ -411,7 +411,7 @@ namespace RemaGUM
             while (!_Operator_maszynyBUS.eof)
             {
                 operator_maszyny_MaszynyVO = _Operator_maszyny_MaszynyBUS.VO;
-                comboBoxOperator_maszyny.Items.Add(operator_maszyny_MaszynyVO.Operator_maszyny);
+                comboBoxOperator_maszyny.Items.Add(operator_maszyny_MaszynyVO.Nazwa_op_maszyny);
                 _Operator_maszynyBUS.skip();
             }
         }// WypelnijOperator_maszyny()
@@ -675,7 +675,7 @@ namespace RemaGUM
             VO.Wykorzystanie = comboBoxWykorzystanie.Text;
             VO.Stan_techniczny = comboBoxStan_techniczny.Text;
             VO.Propozycja = comboBoxPropozycja.Text;
-            VO.Operator_maszyny = comboBoxOperator_maszyny.Text;
+            VO.Nazwa_op_maszyny = comboBoxOperator_maszyny.Text;
 
             if (toolStripStatusLabelIDVal.Text == string.Empty) //nowa pozycja w tabeli maszyn
             {
