@@ -345,6 +345,14 @@ namespace nsAccess2DB
             _error = _conn._error;
         } //konstruktor MaszynyDAO
 
+        public DataTable selectQuery(string query)
+        {
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//selectQuery
+
         /// <summary>
         /// Zwraca tabelę wszystkich Maszyn.
         /// </summary>
@@ -590,13 +598,7 @@ namespace nsAccess2DB
             return b;
         }// delete
 
-        public DataTable selectQuery(string query)
-        {
-            OleDbParameter[] parameters = new OleDbParameter[0];
-            DataTable dt = _conn.executeSelectQuery(query, parameters);
-            _error = _conn._error;
-            return dt;
-        }//selectQuery
+       
 
     }//class MaszynyDAO
 
@@ -2040,6 +2042,21 @@ namespace nsAccess2DB
             _error = _conn._error;
         }//Operator_maszynyDAO
 
+        //                                                 -------------------------------------> dowolne zapytanie z poziomu Form
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public DataTable selectQuery(string query)
+        {
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//selectQuery
+
 
         /// <summary>
         ///  Zwraca tabelę spełniającą wartości parametrów.
@@ -2085,18 +2102,7 @@ namespace nsAccess2DB
             return dt;
         } //selectFor
 
-          /// <summary>
-          /// Zwraca tabelę spełniającą wartości parametrów.
-          /// </summary>
-          /// <returns>Tabela.</returns>
-        public DataTable selectQuery(string query)
-        {
-            OleDbParameter[] parameters = new OleDbParameter[0];
-            DataTable dt = _conn.executeSelectQuery(query, parameters);
-            _error = _conn._error;
-            return dt;
-        }//selectQuery
-
+         
         /// <summary>
         /// Wprowadza nowy rekord
         /// </summary>
@@ -2233,6 +2239,15 @@ namespace nsAccess2DB
         }//Operator_maszynyBUS
 
         /// <summary>
+        /// Wypełnia tablicę pozycjami danych -------------------------------------> dowolne zapytanie z poziomu Form
+        /// </summary>
+        /// <param name="query"></param>
+        public void selectQuery(string query)
+        {
+            fillTable(_DAO.selectQuery(query));
+        }
+
+        /// <summary>
         /// Wprowadza rekord tabeli.
         /// </summary>
         /// <param name="VO">Obiekt wymiany danych.</param>
@@ -2336,14 +2351,6 @@ namespace nsAccess2DB
             fillTable(_DAO.selectFor(ID_maszyny));
         }
 
-        /// <summary>
-        /// Wypełnia tablice danych pozycjami.
-        /// </summary>
-        /// <param name="query">Zapytanie sql.</param>
-        public void selectQuery(string query)
-        {
-            fillTable(_DAO.selectQuery(query));
-        }//select
         /// <summary>
         /// Usuwa rekord.
         /// </summary>
@@ -2514,7 +2521,23 @@ namespace nsAccess2DB
             _conn = new dbConnection(connString);
             _error = _conn._error;
         }//Operator_maszyny_MaszynyDAO
-          
+
+        //                                                 -------------------------------------> dowolne zapytanie z poziomu Form
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public DataTable selectQuery(string query)
+        {
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//selectQuery
+
+
         /// <summary>
         ///  Zwraca tabelę spełniającą wartości parametrów.
         /// </summary>
@@ -2631,14 +2654,7 @@ namespace nsAccess2DB
             _error = _conn._error;
             return b;
         }//delete
-        //                                                 -------------------------------------> dowolne zapytanie z poziomu Form
-        public DataTable selectQuery(string query)
-        {
-            OleDbParameter[] parameters = new OleDbParameter[0];
-            DataTable dt = _conn.executeSelectQuery(query, parameters);
-            _error = _conn._error;
-            return dt;
-        }//selectQuery
+      
 
 
     }//class Operator_maszyny_MaszynyDAO
@@ -2941,10 +2957,27 @@ namespace nsAccess2DB
                 _error = _conn._error;
             }//Osoba_zarzadzajacaDAO
 
-            /// <summary>
-            /// Zwraca tabelę spełniającą wartości parametrów.
-            /// </summary>
-            public DataTable select()
+
+        //                                                 -------------------------------------> dowolne zapytanie z poziomu Form
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public DataTable selectQuery(string query)
+        {
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//selectQuery
+
+
+         /// <summary>
+         /// Zwraca tabelę spełniającą wartości parametrów.
+         /// </summary>
+        public DataTable select()
             {
                 string query = "SELECT * FROM Osoba_zarzadzajaca;";
 
@@ -2953,33 +2986,7 @@ namespace nsAccess2DB
                 _error = _conn._error;
                 return dt;
             }//select
-            public DataTable select(int ID_os_zarzadzajaca)
-            {
-                string query = "SELECT * FROM Osoba_zarzadzajaca WHERE ID_os_zarzadzajaca = " + ID_os_zarzadzajaca.ToString() + ";";
-
-                OleDbParameter[] parameters = new OleDbParameter[0];
-                DataTable dt = _conn.executeSelectQuery(query, parameters);
-                _error = _conn._error;
-                return dt;
-            }//select
-            public DataTable select(string query)
-            {
-                OleDbParameter[] parameters = new OleDbParameter[0];
-                DataTable dt = _conn.executeSelectQuery(query, parameters);
-                _error = _conn._error;
-                return dt;
-            }//select
-
-            public DataTable select(string Os_zarz_imie, string Os_zarz_nazwisko)
-            {
-                string query = "SELECT * FROM Osoba_zarzadzajaca WHERE Os_zarz_imie = " + Os_zarz_imie.ToString() + " AND Os_zarz_nazwisko = " + Os_zarz_nazwisko.ToString() + ";";
-
-                OleDbParameter[] parameters = new OleDbParameter[0];
-                DataTable dt = _conn.executeSelectQuery(query, parameters);
-                _error = _conn._error;
-                return dt;
-            }//select
-
+           
             /// <summary>
             /// Wprowadza nowy rekord do tabeli osoba zatrządzająca.
             /// </summary>

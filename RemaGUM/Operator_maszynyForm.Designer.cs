@@ -49,7 +49,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxUprawnienie = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxNazwa_Dzial = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxOperator_maszyny = new System.Windows.Forms.TextBox();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
@@ -61,6 +60,7 @@
             this.toolStripButtonOdswiez = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel_ID_Operatora = new System.Windows.Forms.ToolStripStatusLabel();
+            this.comboBoxDzial_operator_maszyny = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -219,6 +219,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox3.Controls.Add(this.comboBoxDzial_operator_maszyny);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.dateTimePickerData_konca_upr);
             this.groupBox3.Controls.Add(this.label4);
@@ -226,7 +227,6 @@
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.textBoxUprawnienie);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.textBoxNazwa_Dzial);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.textBoxOperator_maszyny);
             this.groupBox3.Cursor = System.Windows.Forms.Cursors.Default;
@@ -304,14 +304,6 @@
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 47;
             this.label2.Text = "Dział";
-            // 
-            // textBoxNazwa_Dzial
-            // 
-            this.textBoxNazwa_Dzial.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwa_Dzial.Location = new System.Drawing.Point(6, 84);
-            this.textBoxNazwa_Dzial.Name = "textBoxNazwa_Dzial";
-            this.textBoxNazwa_Dzial.Size = new System.Drawing.Size(321, 20);
-            this.textBoxNazwa_Dzial.TabIndex = 46;
             // 
             // label1
             // 
@@ -434,6 +426,15 @@
             this.toolStripStatusLabel_ID_Operatora.Size = new System.Drawing.Size(77, 17);
             this.toolStripStatusLabel_ID_Operatora.Text = "ID: Operatora";
             // 
+            // comboBoxDzial_operator_maszyny
+            // 
+            this.comboBoxDzial_operator_maszyny.FormattingEnabled = true;
+            this.comboBoxDzial_operator_maszyny.Location = new System.Drawing.Point(6, 85);
+            this.comboBoxDzial_operator_maszyny.Name = "comboBoxDzial_operator_maszyny";
+            this.comboBoxDzial_operator_maszyny.Size = new System.Drawing.Size(319, 21);
+            this.comboBoxDzial_operator_maszyny.TabIndex = 54;
+            this.comboBoxDzial_operator_maszyny.SelectedIndexChanged += new System.EventHandler(this.comboBoxDzial_SelectedIndexChanged);
+            // 
             // Operator_maszynyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -485,7 +486,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxUprawnienie;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxNazwa_Dzial;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePickerData_konca_upr;
@@ -498,5 +498,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonSpisForm;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_ID_Operatora;
+        private System.Windows.Forms.ComboBox comboBoxDzial_operator_maszyny;
     }
 }
