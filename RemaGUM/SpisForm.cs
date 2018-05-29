@@ -402,7 +402,7 @@ namespace RemaGUM
         // wypełnieni tabeli op_maszyny_Maszyny
         private void WypelnijOperator_maszyny()
         {
-           // nsAccess2DB.Operator_maszyny_MaszynyBUS operator_maszyny_MaszynyBUS = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
+            nsAccess2DB.Operator_maszynyVO VO;
             nsAccess2DB.Operator_maszyny_MaszynyVO operator_maszyny_MaszynyVO;
             comboBoxOperator_maszyny.Items.Clear();
 
@@ -410,8 +410,8 @@ namespace RemaGUM
             _Operator_maszynyBUS.top();
             while (!_Operator_maszynyBUS.eof)
             {
-                operator_maszyny_MaszynyVO = _Operator_maszyny_MaszynyBUS.VO;
-                comboBoxOperator_maszyny.Items.Add(operator_maszyny_MaszynyVO.Nazwa_op_maszyny);
+                VO = _Operator_maszynyBUS.VO;
+                comboBoxOperator_maszyny.Items.Add(VO.Nazwa_op_maszyny);
                 _Operator_maszynyBUS.skip();
             }
         }// WypelnijOperator_maszyny()
