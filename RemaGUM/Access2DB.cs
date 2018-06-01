@@ -163,7 +163,7 @@ namespace nsAccess2DB
     ///</summary>
     public class MaszynyVO
     {
-        private int _ID_maszyny = -1;
+        private int _Identyfikator = -1;
         private string _Kategoria = string.Empty; // 100
         private string _Nazwa = string.Empty; // 255
         private string _Typ = string.Empty; // 255
@@ -173,7 +173,7 @@ namespace nsAccess2DB
         private string _Producent = string.Empty; // 255
         private string _Zdjecie1 = string.Empty; // obiekt OLE ????????????????????????????????? zdjęcie
         private string _Rozszerz_zdj1 = string.Empty; // 255
-        private string _Osoba_zarzadzajaca = string.Empty; // 255
+        private string _Nazwa_os_zarzadzajaca = string.Empty; // 255
         private string _Nr_pom = string.Empty; // 255
         private string _Dzial = string.Empty; // 255
         private string _Nr_prot_BHP = string.Empty; // 255
@@ -197,10 +197,10 @@ namespace nsAccess2DB
         //public MaszynyVO (){   }
         public MaszynyVO() { }
         // gettery i settery
-        public int ID_maszyny
+        public int Identyfikator
         {
-            get { return _ID_maszyny; }
-            set { _ID_maszyny = value; }
+            get { return _Identyfikator; }
+            set { _Identyfikator = value; }
         }
         public string Kategoria
         {
@@ -246,10 +246,10 @@ namespace nsAccess2DB
             get { return _Rozszerz_zdj1; }
             set { _Rozszerz_zdj1 = value; }
         }       
-        public string Osoba_zarzadzajaca
+        public string Nazwa_os_zarzadzajaca
         {
-            get { return _Osoba_zarzadzajaca; }
-            set { _Osoba_zarzadzajaca = value; }
+            get { return _Nazwa_os_zarzadzajaca; }
+            set { _Nazwa_os_zarzadzajaca = value; }
         }
         public string Nr_pom {
             get { return _Nr_pom; }
@@ -371,9 +371,9 @@ namespace nsAccess2DB
         /// Zwraca tabelę wszystkich Maszyn po ID.
         /// </summary>
         /// <returns>Tabele.</returns>
-        public DataTable select(int ID_maszyny)
+        public DataTable select(int Identyfikator)
         {
-            string query = "SELECT * FROM Maszyny WHERE ID_maszyny = " + ID_maszyny.ToString() + ";";
+            string query = "SELECT * FROM Maszyny WHERE Identyfikator = " + Identyfikator.ToString() + ";";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
@@ -381,22 +381,7 @@ namespace nsAccess2DB
             return dt;
         }//select po ID
         
-        /// <summary>
-        /// Zwraca tabelę wszystkich Maszyn po ID.
-        /// </summary>
-        /// <param name="ID_maszyny"></param>
-        /// <returns></returns>
-        public DataTable selectFor(int ID_maszyny)
-        {
-            string query = "SELECT FROM Operator_maszyny LEFT JOIN(Maszyny LEFT JOIN Operator_maszyny_Maszyny ON Maszyny.ID_maszyny = Operator_maszyny_Maszyny.ID_maszyny) ON Operator_maszyny.ID_op_maszyny = Operator_maszyny_Maszyny.ID_op_maszyny; " +
-                "WHERE (([ID_maszyny]=" + ID_maszyny.ToString() + ");";
-
-            OleDbParameter[] parameters = new OleDbParameter[0];
-            DataTable dt = _conn.executeSelectQuery(query, parameters);
-            _error = _conn._error;
-            return dt;
-        }//selectFor
-
+        
         /// <summary>
         /// Wprowadza nowy rekord.
         /// </summary>
@@ -404,9 +389,9 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool insert(nsAccess2DB.MaszynyVO VO)
         {
-            string query = "INSERT INTO Maszyny (Kategoria, Nazwa, Typ, Nr_inwentarzowy, Nr_fabryczny, Rok_produkcji, Producent, Zdjecie1, Rozszerz_zdj1, Osoba_zarzadzajaca, Nr_pom, Dzial, Nr_prot_BHP, Data_ost_przegl, Data_kol_przegl, " +
+            string query = "INSERT INTO Maszyny (Kategoria, Nazwa, Typ, Nr_inwentarzowy, Nr_fabryczny, Rok_produkcji, Producent, Zdjecie1, Rozszerz_zdj1, Nazwa_os_zarzadzajaca, Nr_pom, Dzial, Nr_prot_BHP, Data_ost_przegl, Data_kol_przegl, " +
                 "Uwagi, Wykorzystanie, Stan_techniczny, Propozycja, Nazwa_op_maszyny, Rok_ost_przeg, Mc_ost_przeg, Dz_ost_przeg, Rok_kol_przeg, Mc_kol_przeg, Dz_kol_przeg)" +
-                " VALUES (@Kategoria, @Nazwa, @Typ, @Nr_inwentarzowy, @Nr_fabryczny, @Rok_produkcji, @Producent, @Zdjecie1, @Rozszerz_zdj1, @Osoba_zarzadzajaca, @Nr_pom, @Dzial, @Nr_prot_BHP, @Data_ost_przegl, @Data_kol_przegl, " +
+                " VALUES (@Kategoria, @Nazwa, @Typ, @Nr_inwentarzowy, @Nr_fabryczny, @Rok_produkcji, @Producent, @Zdjecie1, @Rozszerz_zdj1, @Nazwa_os_zarzadzajaca, @Nr_pom, @Dzial, @Nr_prot_BHP, @Data_ost_przegl, @Data_kol_przegl, " +
                 "@Uwagi, @Wykorzystanie, @Stan_techniczny, @Propozycja, @Nazwa_op_maszyny, @Rok_ost_przeg, @Mc_ost_przeg, @Dz_ost_przeg, @Rok_kol_przeg, @Mc_kol_przeg, @Dz_kol_przeg);";
 
             OleDbParameter[] parameters = new OleDbParameter[26];
@@ -437,8 +422,8 @@ namespace nsAccess2DB
             parameters[8] = new OleDbParameter("Rozszerz_zdj1", OleDbType.VarChar, 255);
             parameters[8].Value = VO.Rozszerz_zdj1;
 
-            parameters[9] = new OleDbParameter("Osoba_zaradzajaca", OleDbType.VarChar, 255);
-            parameters[9].Value = VO.Osoba_zarzadzajaca;
+            parameters[9] = new OleDbParameter("Nazwa_os_zarzadzajaca", OleDbType.VarChar, 255);
+            parameters[9].Value = VO.Nazwa_os_zarzadzajaca;
 
             parameters[10] = new OleDbParameter("Nr_pom", OleDbType.VarChar, 255);
             parameters[10].Value = VO.Nr_pom;
@@ -500,9 +485,9 @@ namespace nsAccess2DB
         public bool update(nsAccess2DB.MaszynyVO VO)
         {
             string query = "UPDATE Maszyny SET Kategoria = @Kategoria, Nazwa = @Nazwa, Typ = @Typ, Nr_inwentarzowy = @Nr_inwentarzowy, Nr_fabryczny = @Nr_fabryczny, Rok_produkcji = @Rok_produkcji, Producent = @Producent, " +
-                "Zdjecie1 = @Zdjecie1, Rozszerz_zdj1 = @Rozszerz_zdj1, Osoba_zarzadzajaca = @Osoba_zarzadzajaca, Nr_pom = @Nr_pom, Dzial = @Dzial, Nr_prot_BHP = @Nr_prot_BHP, Data_ost_przegl = @Data_ost_przegl, " +
+                "Zdjecie1 = @Zdjecie1, Rozszerz_zdj1 = @Rozszerz_zdj1, Nazwa_os_zarzadzajaca = @Nazwa_os_zarzadzajaca, Nr_pom = @Nr_pom, Dzial = @Dzial, Nr_prot_BHP = @Nr_prot_BHP, Data_ost_przegl = @Data_ost_przegl, " +
                 "Data_kol_przegl = @Data_kol_przegl, Uwagi = @Uwagi, Wykorzystanie = @Wykorzystanie, Stan_techniczny = @Stan_techniczny, Propozycja = @Propozycja, Nazwa_op_maszyny = @Nazwa_op_maszyny, Rok_ost_przeg = @Rok_ost_przeg," +
-                " Mc_ost_przeg = @Mc_ost_przeg, Dz_ost_przeg = @Dz_ost_przeg, Rok_kol_przeg = @Rok_kol_przeg, Mc_kol_przeg = @Mc_kol_przeg, Dz_kol_przeg = @Dz_kol_przeg WHERE ID_maszyny = " + VO.ID_maszyny.ToString() + ";";
+                " Mc_ost_przeg = @Mc_ost_przeg, Dz_ost_przeg = @Dz_ost_przeg, Rok_kol_przeg = @Rok_kol_przeg, Mc_kol_przeg = @Mc_kol_przeg, Dz_kol_przeg = @Dz_kol_przeg WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
 
             OleDbParameter[] parameters = new OleDbParameter[26];
             parameters[0] = new OleDbParameter("Kategoria", OleDbType.VarChar, 100);
@@ -532,8 +517,8 @@ namespace nsAccess2DB
             parameters[8] = new OleDbParameter("Rozszerz_zdj1", OleDbType.VarChar, 255);
             parameters[8].Value = VO.Rozszerz_zdj1;
 
-            parameters[9] = new OleDbParameter("Osoba_zaradzajaca", OleDbType.VarChar, 255);
-            parameters[9].Value = VO.Osoba_zarzadzajaca;
+            parameters[9] = new OleDbParameter("Nazwa_os_zarzadzajaca", OleDbType.VarChar, 255);
+            parameters[9].Value = VO.Nazwa_os_zarzadzajaca;
 
             parameters[10] = new OleDbParameter("Nr_pom", OleDbType.VarChar, 255);
             parameters[10].Value = VO.Nr_pom;
@@ -588,9 +573,9 @@ namespace nsAccess2DB
             return b;
         }//update
 
-        public bool delete(int ID_maszyny)
+        public bool delete(int Identyfikator)
         {
-            string query = "DELETE* FROM Maszyny WHERE ID_Maszyny = " + ID_maszyny.ToString() + ";";
+            string query = "DELETE* FROM Maszyny WHERE Identyfikator = " + Identyfikator.ToString() + ";";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             bool b = _conn.executeDeleteQuery(query, parameters);
@@ -654,7 +639,7 @@ namespace nsAccess2DB
          /// <returns>Wynik powodzenia akcji.</returns>
         public bool write(nsAccess2DB.MaszynyVO VO)
         {
-            if (exists(VO.ID_maszyny))
+            if (exists(VO.Identyfikator))
             {
                 return _DAO.update(VO);
             }
@@ -676,7 +661,7 @@ namespace nsAccess2DB
 
                 VOi = new MaszynyVO();
                
-                VOi.ID_maszyny = int.Parse(dr["ID_maszyny"].ToString());
+                VOi.Identyfikator = int.Parse(dr["Identyfikator"].ToString());
                 VOi.Kategoria = dr["Kategoria"].ToString();
                 VOi.Nazwa = dr["Nazwa"].ToString();
                 VOi.Typ = dr["Typ"].ToString();
@@ -686,7 +671,7 @@ namespace nsAccess2DB
                 VOi.Producent = dr["Producent"].ToString();
                 VOi.Zdjecie1 = dr["Zdjecie1"].ToString();
                 VOi.Rozszerz_zdj1 = dr["Rozszerz_zdj1"].ToString();
-                VOi.Osoba_zarzadzajaca = dr["Osoba_zarzadzajaca"].ToString();
+                VOi.Nazwa_os_zarzadzajaca = dr["Nazwa_os_zarzadzajaca"].ToString();
                 VOi.Nr_pom = dr["Nr_pom"].ToString();
                 VOi.Dzial = dr["Dzial"].ToString();
                 VOi.Nr_prot_BHP = dr["Nr_prot_BHP"].ToString();
@@ -736,23 +721,19 @@ namespace nsAccess2DB
             fillTable(_DAO.select());
         }//select
 
-        /*
-        public void selectFor(int ID_maszyny)
-        {
-            fillTable(_DAO.selectFor(ID_maszyny));
-        }
-        */
+       
         /// <summary>
         /// Wypełnia tablice danych pozycjami.
         /// </summary>
-        /// <param name="ID_maszyny">ID maszyny.</param>
-        public void select(int ID_maszyny)
+        /// <param name="Identyfikator">ID maszyny.</param>
+        public void select(int Identyfikator)
         {
-            fillTable(_DAO.select(ID_maszyny));
+            fillTable(_DAO.select(Identyfikator));
         }//select
 
-        public bool delete(int ID_maszyny) {
-            return _DAO.delete(ID_maszyny);
+        public bool delete(int Identyfikator)
+        {
+            return _DAO.delete(Identyfikator);
         }
 
         /// <summary>
@@ -827,13 +808,13 @@ namespace nsAccess2DB
         /// <summary>
         /// Sprawdza istnienie rekordu.
         /// </summary>
-        /// <param name="ID_maszyny">ID maszyny.</param>
+        /// <param name="Identyfikator">ID maszyny.</param>
         /// <returns>Wynik logiczny sprawdzenia.</returns>
-        private bool exists(int ID_maszyny)
+        private bool exists(int Identyfikator)
         {
             foreach (MaszynyVO VOi in _VOs)
             {
-                if (VOi.ID_maszyny == ID_maszyny) return true;
+                if (VOi.Identyfikator == Identyfikator) return true;
             }
             return false;
         }//exists
@@ -841,15 +822,15 @@ namespace nsAccess2DB
         /// <summary>
         /// Zwraca indeks pozycji.
         /// </summary>
-        /// <param name="ID_maszyny">ID maszyny.</param>
+        /// <param name="Identyfikator">ID maszyny.</param>
         /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora.</returns>
-        public int getIdx(int ID_maszyny)
+        public int getIdx(int Identyfikator)
         {
             int idx = -1;
             foreach (MaszynyVO VOi in _VOs)
             {
                 idx++;
-                if (VOi.ID_maszyny == ID_maszyny) return idx;
+                if (VOi.Identyfikator == Identyfikator) return idx;
             }
 
             return -1;
@@ -858,13 +839,13 @@ namespace nsAccess2DB
         /// <summary>
         /// Zwraca maszynę o wskazanym identyfikatorze.
         /// </summary>
-        /// <param name="ID_maszyny">Identyfikator maszyny.</param>
+        /// <param name="Identyfikator">Identyfikator maszyny.</param>
         /// <returns>Maszyny. Jeśli ID==-1 to maszyny nie znaleziono.</returns>
-        public MaszynyVO GetVO(int ID_maszyny)
+        public MaszynyVO GetVO(int Identyfikator)
         {
             foreach (nsAccess2DB.MaszynyVO VO in _VOs)
             {
-                if (VO.ID_maszyny == ID_maszyny) return VO;
+                if (VO.Identyfikator == Identyfikator) return VO;
             }
             return new MaszynyVO();
         }//getVO
@@ -1956,7 +1937,7 @@ namespace nsAccess2DB
     /// </summary>
     public class Operator_maszynyVO
     {
-        private int _ID_op_maszyny = 0;
+        private int _Identyfikator = 0;
         private string _Nazwa_op_maszyny = string.Empty; //255
         private int _ID_dzial = -1; 
         private string _Nazwa_dzial = string.Empty; //255
@@ -1971,10 +1952,10 @@ namespace nsAccess2DB
         /// Konstruktor wymiany danych z tabelą Nazwa_op_maszyny
         /// </summary>
         public Operator_maszynyVO() { }
-        public int ID_op_maszyny
+        public int Identyfikator
         {
-            get { return _ID_op_maszyny; }
-            set { _ID_op_maszyny = value; }
+            get { return _Identyfikator; }
+            set { _Identyfikator = value; }
         }
         public string Nazwa_op_maszyny
         {
@@ -2077,31 +2058,14 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="ID_op_maszyny"></param>
         /// <returns></returns>
-        public DataTable select(int ID_op_maszyny)
+        public DataTable select(int Identyfikator)
         {
-            string query = "SELECT * FROM Operator_maszyny WHERE ID_op_maszyny = " + ID_op_maszyny.ToString() + ";";
+            string query = "SELECT * FROM Operator_maszyny WHERE ID_op_maszyny = " + Identyfikator.ToString() + ";";
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
             _error = _conn._error;
             return dt;
         }//select po nazwie dzialu
-
-        /// <summary>
-        /// Zwraca tabelę spełniającą wartości parametrów.
-        /// </summary>
-        /// <param name="ID_maszyny"></param>
-        /// <returns>Tabela</returns>
-        public DataTable selectFor(int ID_maszyny)
-        {
-            string query = "SELECT FROM Operator_maszyny LEFT JOIN(Maszyny LEFT JOIN Operator_maszyny_Maszyny ON Maszyny.ID_maszyny = Operator_maszyny_Maszyny.ID_maszyny) ON Operator_maszyny.ID_op_maszyny = Operator_maszyny_Maszyny.ID_op_maszyny " +
-                " WHERE ([ID_op_maszyny] =" + ID_maszyny.ToString() + ");";
-
-            OleDbParameter[] parameters = new OleDbParameter[0];
-            DataTable dt = _conn.executeSelectQuery(query, parameters);
-            _error = _conn._error;
-            return dt;
-        } //selectFor
-
          
         /// <summary>
         /// Wprowadza nowy rekord
@@ -2159,7 +2123,7 @@ namespace nsAccess2DB
         {
            string query = "UPDATE Operator_maszyny SET Nazwa_op_maszyny = @Nazwa_op_maszyny, ID_dzial = @ID_dzial, Nazwa_dzial = @Nazwa_dzial, Uprawnienie = @Uprawnienie, " +
                 "Data_konca_upr = @Data_konca_upr, Rok = @Rok, Mc = @Mc, Dzien = @Dzien " +
-                "WHERE ID_op_maszyny = " + VO.ID_op_maszyny.ToString() + ";";
+                "WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
             
             OleDbParameter[] parameters = new OleDbParameter[10];
 
@@ -2201,11 +2165,11 @@ namespace nsAccess2DB
         /// <summary>
         /// Usuwa rekord.
         /// </summary>
-        /// <param name="ID_op_maszyny">Identyfikator.</param>
+        /// <param name="Identyfikator">Identyfikator.</param>
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
-        public bool delete(int ID_op_maszyny)
+        public bool delete(int Identyfikator)
         {
-            string query = "DELETE * FROM Operator_maszyny WHERE ID_op_maszyny = " + ID_op_maszyny.ToString() + ";";
+            string query = "DELETE * FROM Operator_maszyny WHERE Identyfikator = " + Identyfikator.ToString() + ";";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             bool b = _conn.executeDeleteQuery(query, parameters);
@@ -2278,7 +2242,7 @@ namespace nsAccess2DB
         /// <returns>Wynik powodzenia akcji.</returns>
        public bool write(nsAccess2DB.Operator_maszynyVO VO)
         {
-            if (exists(VO.ID_op_maszyny))
+            if (exists(VO.Identyfikator))
             {
                 return _DAO.update(VO);
             }
@@ -2298,7 +2262,7 @@ namespace nsAccess2DB
             {
                 VOi = new Operator_maszynyVO();
 
-                VOi.ID_op_maszyny = int.Parse(dr["ID_op_maszyny"].ToString());
+                VOi.Identyfikator = int.Parse(dr["Identyfikator"].ToString());
                 VOi.Nazwa_op_maszyny = dr["Nazwa_op_maszyny"].ToString();
                 VOi.ID_dzial = int.Parse(dr["ID_dzial"].ToString());
                 VOi.Nazwa_dzial = dr["Nazwa_dzial"].ToString();
@@ -2340,16 +2304,11 @@ namespace nsAccess2DB
         /// <summary>
         /// Wypełnia tablicę.
         /// </summary>
-        /// <param name="ID_op_maszyny"></param>
-        public void select(int ID_op_maszyny)
+        /// <param name="Identyfikator"></param>
+        public void select(int Identyfikator)
         {
-            fillTable(_DAO.select(ID_op_maszyny));
+            fillTable(_DAO.select(Identyfikator));
         }//select
-
-        public void selectFor(int ID_maszyny)
-        {
-            fillTable(_DAO.selectFor(ID_maszyny));
-        }
 
         /// <summary>
         /// Usuwa rekord.
@@ -2436,13 +2395,13 @@ namespace nsAccess2DB
         /// <summary>
         /// Sprawdza istnienie rekordu.
         /// </summary>
-        /// <param name="ID_op_maszyny">ID operatora maszyny</param>
+        /// <param name="Identyfikator">ID operatora maszyny</param>
         /// <returns>Wynik logiczny sprawdzenia.</returns>
-        public bool exists(int ID_op_maszyny)
+        public bool exists(int Identyfikator)
         {
             foreach (Operator_maszynyVO VOi in _VOs)
             {
-                if (VOi.ID_op_maszyny == ID_op_maszyny) return true;
+                if (VOi.Identyfikator == Identyfikator) return true;
             }
             return false;
         }//exists
@@ -2450,24 +2409,24 @@ namespace nsAccess2DB
         /// <summary>
         /// Zwraca indeks pozycji.
         /// </summary>
-        /// <param name="ID_op_maszyny"></param>
+        /// <param name="Identyfikator"></param>
         /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora.</returns>
-        public int getIdx(int ID_op_maszyny)
+        public int getIdx(int Identyfikator)
         {
             int idx = -1;
             foreach (Operator_maszynyVO VOi in _VOs)
             {
                 idx++;
-                if (VOi.ID_op_maszyny == ID_op_maszyny) return idx;
+                if (VOi.Identyfikator == Identyfikator) return idx;
             }
             return -1;
         }//getIdx
 
-        public Operator_maszynyVO GetVO(int ID_op_maszyny)
+        public Operator_maszynyVO GetVO(int Identyfikator)
         {
             foreach (nsAccess2DB.Operator_maszynyVO VO in _VOs)
             {
-                if (VO.ID_op_maszyny == ID_op_maszyny) return VO;
+                if (VO.Identyfikator == Identyfikator) return VO;
             }
             return new Operator_maszynyVO();
         }// getVO
@@ -2576,7 +2535,7 @@ namespace nsAccess2DB
             /// <returns>Wartość logiczna powodzenia operacji.</returns>
          public bool update(nsAccess2DB.Operator_maszyny_MaszynyVO VO)
          {
-            string query = "UPDATE Operator_maszyny_Maszyny SET ID_op_maszyny = @ID_op_maszyny, ID_maszyny = @ID_maszyny WHERE ID_op_maszynyMaszyny = " + VO.ID_op_maszyny.ToString() + ";";
+            string query = "UPDATE Operator_maszyny_Maszyny SET ID_op_maszyny = @ID_op_maszyny, ID_maszyny = @ID_maszyny WHERE ID_op_maszyny = " + VO.ID_op_maszyny.ToString() + ";";
 
             OleDbParameter[] parameters = new OleDbParameter[2];
             parameters[0] = new OleDbParameter("ID_op_maszyny", OleDbType.Integer);
@@ -2843,8 +2802,8 @@ namespace nsAccess2DB
         /// </summary>
         public class Osoba_zarzadzajacaVO
         {
-            private int _ID_os_zarzadzajaca = 0;
-            private string _Osoba_zarzadzajaca = string.Empty; //255
+            private int _Identyfikator = 0;
+            private string _Nazwa_os_zarzadzajaca = string.Empty; //255
             private int _ID_dzial = 0;
             private string _Nazwa_dzial = string.Empty; //255
             private string _Os_zarz_nazwisko = string.Empty; //255
@@ -2855,15 +2814,15 @@ namespace nsAccess2DB
             /// </summary>
             public Osoba_zarzadzajacaVO() { }
 
-            public int ID_os_zarzadzajaca
+            public int Identyfikator
             {
-                get { return _ID_os_zarzadzajaca; }
-                set { _ID_os_zarzadzajaca = value; }
+                get { return _Identyfikator; }
+                set { _Identyfikator = value; }
             }
-            public string Osoba_zarzadzajaca
-            {
-                get { return _Osoba_zarzadzajaca; }
-                set { _Osoba_zarzadzajaca = value; }
+            public string Nazwa_os_zarzadzajaca
+        {
+                get { return _Nazwa_os_zarzadzajaca; }
+                set { _Nazwa_os_zarzadzajaca = value; }
             }
             public int ID_dzial
             {
@@ -2939,16 +2898,16 @@ namespace nsAccess2DB
             /// <returns>Wartość logiczna powodzenia operacji.</returns>
             public bool insert(nsAccess2DB.Osoba_zarzadzajacaVO VO)
             {
-                string query = "INSERT INTO Osoba_zarzadzajaca (_ID_os_zarzadzajaca, Osoba_zarzadzajaca, ID_dzial, Nazwa_dzial, Os_zarz_nazwisko, Os_zarz_imie)" +
-                    " VALUES (@_ID_os_zarzadzajaca, Osoba_zarzadzajaca, @ID_dzial, @Nazwa_dzial, @Os_zarz_nazwisko, @Os_zarz_imie)";
+                string query = "INSERT INTO Osoba_zarzadzajaca (Identyfikator, Nazwa_os_zarzadzajaca, ID_dzial, Nazwa_dzial, Os_zarz_nazwisko, Os_zarz_imie)" +
+                    " VALUES (@Identyfikator, Nazwa_os_zarzadzajaca, @ID_dzial, @Nazwa_dzial, @Os_zarz_nazwisko, @Os_zarz_imie)";
 
                 OleDbParameter[] parameters = new OleDbParameter[6];
 
-                parameters[0] = new OleDbParameter("_ID_os_zarzadzajaca", OleDbType.Integer);
-                parameters[0].Value = VO.ID_os_zarzadzajaca;
+                parameters[0] = new OleDbParameter("Identyfikator", OleDbType.Integer);
+                parameters[0].Value = VO.Identyfikator;
 
-                parameters[1] = new OleDbParameter("Osoba_zarzadzajaca", OleDbType.VarChar, 255);
-                parameters[1].Value = VO.Osoba_zarzadzajaca;
+                parameters[1] = new OleDbParameter("Nazwa_os_zarzadzajaca", OleDbType.VarChar, 255);
+                parameters[1].Value = VO.Nazwa_os_zarzadzajaca;
 
                 parameters[2] = new OleDbParameter("ID_dzial", OleDbType.Integer);
                 parameters[2].Value = VO.ID_dzial;
@@ -3007,7 +2966,7 @@ namespace nsAccess2DB
 
                     VOi = new Osoba_zarzadzajacaVO();
 
-                    VOi.Osoba_zarzadzajaca = dr["Osoba_zarzadzajaca"].ToString();
+                    VOi.Nazwa_os_zarzadzajaca = dr["Nazwa_os_zarzadzajaca"].ToString();
 
                     _VOs[_VOs.Length - 1] = VOi;
                 }
@@ -3106,27 +3065,27 @@ namespace nsAccess2DB
             /// </summary>
             /// <param name="Id">Osoba_zarzadzajaca.</param>
             /// <returns>Wynik logiczny sprawdzenia.</returns>
-            public bool exists(String Osoba_zarzadzajaca)
+            public bool exists(String Nazwa_os_zarzadzajaca)
             {
                 foreach (Osoba_zarzadzajacaVO VOi in _VOs)
                 {
-                    if (VOi.Osoba_zarzadzajaca == Osoba_zarzadzajaca) return true;
+                    if (VOi.Nazwa_os_zarzadzajaca == Nazwa_os_zarzadzajaca) return true;
                 }
                 return false;
             }//exists
 
-            /// <summary>
-            /// Zwraca indeks pozycji.
-            /// </summary>
-            /// <param name="Osoba_zarzadzajaca">Identyfikator Osoba_zarzadzajaca maszyną</param>
-            /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora Osoba_zarzadzajaca.</returns>
-            public int getIdx(string Osoba_zarzadzajaca)
+        /// <summary>
+        /// Zwraca indeks pozycji.
+        /// </summary>
+        /// <param name="Nazwa_os_zarzadzajaca">Identyfikator Osoba_zarzadzajaca maszyną</param>
+        /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora Osoba_zarzadzajaca.</returns>
+        public int getIdx(string Nazwa_os_zarzadzajaca)
             {
                 int idx = -1;
                 foreach (Osoba_zarzadzajacaVO VOi in _VOs)
                 {
                     idx++;
-                    if (VOi.Osoba_zarzadzajaca == Osoba_zarzadzajaca) return idx;
+                    if (VOi.Nazwa_os_zarzadzajaca == Nazwa_os_zarzadzajaca) return idx;
                 }
 
                 return -1;

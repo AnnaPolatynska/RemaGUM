@@ -136,7 +136,7 @@ namespace RemaGUM
             listBox_maszyny.Items.Clear();
             nsAccess2DB.Operator_maszyny_MaszynyBUS operator_maszyny_MaszynyBUS = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
             nsAccess2DB.MaszynyBUS MaszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-            _Operator_maszyny_MaszynyBUS.selectQuery("SELECT Operator_maszyny_Maszyny.ID_maszyny, Maszyny.Nazwa_op_maszyny, Operator_maszyny_Maszyny.ID_op_maszyny FROM Maszyny INNER JOIN Operator_maszyny_Maszyny ON Maszyny.[ID_maszyny] = Operator_maszyny_Maszyny.[ID_maszyny];");
+            _Operator_maszyny_MaszynyBUS.selectQuery("SELECT Operator_maszyny_Maszyny.ID_maszyny, Operator_maszyny_Maszyny.ID_op_maszyny, Operator_maszyny.Identyfikator AS Operator_maszyny_Identyfikator, Operator_maszyny.Nazwa_op_maszyny AS Operator_maszyny_Nazwa_op_maszyny, Operator_maszyny.ID_dzial, Operator_maszyny.Nazwa_dzial, Operator_maszyny.Uprawnienie, Operator_maszyny.Data_konca_upr, Operator_maszyny.Rok, Operator_maszyny.Mc, Operator_maszyny.Dzien, Operator_maszyny.Op_nazwisko, Operator_maszyny.Op_imie, Maszyny.Identyfikator AS Maszyny_Identyfikator, Maszyny.Kategoria, Maszyny.Nazwa, Maszyny.Typ, Maszyny.Nr_inwentarzowy, Maszyny.Nr_fabryczny, Maszyny.Rok_produkcji, Maszyny.Producent, Maszyny.Zdjecie1, Maszyny.Rozszerz_zdj1, Maszyny.Nazwa_os_zarzadzajaca, Maszyny.Nazwa_op_maszyny AS Maszyny_Nazwa_op_maszyny, Maszyny.Nr_pom, Maszyny.Dzial, Maszyny.Nr_prot_BHP, Maszyny.Data_ost_przegl, Maszyny.Data_kol_przegl, Maszyny.Uwagi, Maszyny.Wykorzystanie, Maszyny.Stan_techniczny, Maszyny.Propozycja, Maszyny.Rok_ost_przeg, Maszyny.Mc_ost_przeg, Maszyny.Dz_ost_przeg, Maszyny.Rok_kol_przeg, Maszyny.Mc_kol_przeg, Maszyny.Dz_kol_przeg FROM Operator_maszyny INNER JOIN(Maszyny INNER JOIN Operator_maszyny_Maszyny ON Maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_maszyny]) ON Operator_maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_op_maszyny];");
 
             while (!_MaszynyBUS.eof)
             {
@@ -161,8 +161,8 @@ namespace RemaGUM
         {
             //nsAccess2DB.Operator_maszynyBUS operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
             _Operator_maszynyBUS.idx = listBoxOperator_maszyny.SelectedIndex;
-            listBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.ID_op_maszyny.ToString();
-            toolStripStatusLabel_ID_Operatora.Text = _Operator_maszynyBUS.VO.ID_op_maszyny.ToString();
+            listBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.Identyfikator.ToString();
+            toolStripStatusLabel_ID_Operatora.Text = _Operator_maszynyBUS.VO.Identyfikator.ToString();
 
             textBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.Nazwa_op_maszyny;
             comboBoxDzial_operator_maszyny.Text = _Operator_maszynyBUS.VO.Nazwa_dzial;

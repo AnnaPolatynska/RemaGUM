@@ -322,8 +322,8 @@ namespace RemaGUM
             nsAccess2DB.MaszynyBUS MaszynyVO = new nsAccess2DB.MaszynyBUS(_connString);
             _MaszynyBUS.idx = listBoxMaszyny.SelectedIndex;
             
-            listBoxMaszyny.Tag = _MaszynyBUS.VO.ID_maszyny;
-            toolStripStatusLabelIDVal.Text = _MaszynyBUS.VO.ID_maszyny.ToString();
+            listBoxMaszyny.Tag = _MaszynyBUS.VO.Identyfikator;
+            toolStripStatusLabelIDVal.Text = _MaszynyBUS.VO.Identyfikator.ToString();
             comboBoxKategoria.Text = _MaszynyBUS.VO.Kategoria;
             textBoxNazwa.Text = _MaszynyBUS.VO.Nazwa;
             textBoxTyp.Text = _MaszynyBUS.VO.Typ;
@@ -332,7 +332,7 @@ namespace RemaGUM
             textBoxRok_produkcji.Text = _MaszynyBUS.VO.Rok_produkcji;
             textBoxProducent.Text = _MaszynyBUS.VO.Producent;
             pictureBox1.Text = _MaszynyBUS.VO.Zdjecie1;
-            comboBoxOsoba_zarzadzajaca.Text = _MaszynyBUS.VO.Osoba_zarzadzajaca;
+            comboBoxOsoba_zarzadzajaca.Text = _MaszynyBUS.VO.Nazwa_os_zarzadzajaca;
             textBoxNr_pom.Text = _MaszynyBUS.VO.Nr_pom;
             comboBoxDzial.Text = _MaszynyBUS.VO.Dzial;
             textBoxNr_prot_BHP.Text = _MaszynyBUS.VO.Nr_prot_BHP;
@@ -388,7 +388,7 @@ namespace RemaGUM
             while (!_Osoba_zarzadzajacaBUS.eof)
             {
                 VO = _Osoba_zarzadzajacaBUS.VO;
-                comboBoxOsoba_zarzadzajaca.Items.Add(VO.Osoba_zarzadzajaca);
+                comboBoxOsoba_zarzadzajaca.Items.Add(VO.Nazwa_os_zarzadzajaca);
                 _Osoba_zarzadzajacaBUS.skip();
             }
         }//WypełnijOsobyOdp()
@@ -655,7 +655,7 @@ namespace RemaGUM
             VO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
             VO.Producent = textBoxProducent.Text.Trim();
             VO.Zdjecie1 = pictureBox1.Text;  /////                ???????????????? obrazek
-            VO.Osoba_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
+            VO.Nazwa_os_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
             VO.Nr_pom = textBoxNr_pom.Text;
             VO.Dzial = comboBoxDzial.Text;
             VO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
@@ -679,10 +679,10 @@ namespace RemaGUM
 
             if (toolStripStatusLabelIDVal.Text == string.Empty) //nowa pozycja w tabeli maszyn
             {
-                VO.ID_maszyny = -1;
+                VO.Identyfikator = -1;
             }
             else
-                VO.ID_maszyny = int.Parse(toolStripStatusLabelIDVal.Text);
+                VO.Identyfikator = int.Parse(toolStripStatusLabelIDVal.Text);
 
             buttonUsun.Enabled = listBoxMaszyny.Items.Count > 0;
 
@@ -692,7 +692,7 @@ namespace RemaGUM
             }
             else
             {
-                listBoxMaszyny.SelectedIndex = _MaszynyBUS.getIdx(VO.ID_maszyny);
+                listBoxMaszyny.SelectedIndex = _MaszynyBUS.getIdx(VO.Identyfikator);
             }
      
              _MaszynyBUS.write(VO);
