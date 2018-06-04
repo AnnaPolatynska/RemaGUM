@@ -320,6 +320,7 @@ namespace RemaGUM
         private void listBoxMaszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.MaszynyBUS MaszynyVO = new nsAccess2DB.MaszynyBUS(_connString);
+            nsAccess2DB.Operator_maszynyBUS Operator_maszynyVO = new nsAccess2DB.Operator_maszynyBUS(_connString);
             _MaszynyBUS.idx = listBoxMaszyny.SelectedIndex;
             
             listBoxMaszyny.Tag = _MaszynyBUS.VO.Identyfikator;
@@ -344,7 +345,7 @@ namespace RemaGUM
             comboBoxWykorzystanie.Text = _MaszynyBUS.VO.Wykorzystanie;
             comboBoxStan_techniczny.Text = _MaszynyBUS.VO.Stan_techniczny;
             comboBoxPropozycja.Text = _MaszynyBUS.VO.Propozycja;
-            comboBoxOperator_maszyny.Text = _MaszynyBUS.VO.Nazwa_op_maszyny;
+            comboBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.Op_nazwisko + " " + _Operator_maszynyBUS.VO.Op_imie;
 
         }//listBoxMaszyny_SelectedIndexChanged
 
