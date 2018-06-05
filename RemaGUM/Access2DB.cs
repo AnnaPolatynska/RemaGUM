@@ -171,8 +171,9 @@ namespace nsAccess2DB
         private string _Nr_fabryczny = string.Empty; // 255
         private string _Rok_produkcji = string.Empty; // 50
         private string _Producent = string.Empty; // 255
-        private string _Zdjecie1 = string.Empty; // obiekt OLE ????????????????????????????????? zdjęcie
-        private string _Rozszerz_zdj1 = string.Empty; // 255
+        private string _Zdjecie = string.Empty;//255
+        private byte[] _Zawartosc_pliku = new byte[] { }; // obiekt OLE - zdjęcie
+        private string _Rozszerz_zdj = string.Empty; // 255
         private string _Nazwa_os_zarzadzajaca = string.Empty; // 255
         private string _Nr_pom = string.Empty; // 255
         private string _Dzial = string.Empty; // 255
@@ -236,15 +237,20 @@ namespace nsAccess2DB
             get { return _Producent; }
             set { _Producent = value; }
         }
-        public string Zdjecie1
+        public string Zdjecie
         {
-            get { return _Zdjecie1; }
-            set { _Zdjecie1 = value; }
+            get { return _Zdjecie; }
+            set { _Zdjecie = value; }
         }
-        public string Rozszerz_zdj1
+        public byte[] Zawartosc_pliku
         {
-            get { return _Rozszerz_zdj1; }
-            set { _Rozszerz_zdj1 = value; }
+            get { return _Zawartosc_pliku; }
+            set { _Zawartosc_pliku = value; }
+        }
+        public string Rozszerz_zdj
+        {
+            get { return _Rozszerz_zdj; }
+            set { _Rozszerz_zdj = value; }
         }       
         public string Nazwa_os_zarzadzajaca
         {
@@ -389,12 +395,12 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool insert(nsAccess2DB.MaszynyVO VO)
         {
-            string query = "INSERT INTO Maszyny (Kategoria, Nazwa, Typ, Nr_inwentarzowy, Nr_fabryczny, Rok_produkcji, Producent, Zdjecie1, Rozszerz_zdj1, Nazwa_os_zarzadzajaca, Nr_pom, Dzial, Nr_prot_BHP, Data_ost_przegl, Data_kol_przegl, " +
+            string query = "INSERT INTO Maszyny (Kategoria, Nazwa, Typ, Nr_inwentarzowy, Nr_fabryczny, Rok_produkcji, Producent, Zdjecie, Zawartosc_pliku, Rozszerz_zdj, Nazwa_os_zarzadzajaca, Nr_pom, Dzial, Nr_prot_BHP, Data_ost_przegl, Data_kol_przegl, " +
                 "Uwagi, Wykorzystanie, Stan_techniczny, Propozycja, Nazwa_op_maszyny, Rok_ost_przeg, Mc_ost_przeg, Dz_ost_przeg, Rok_kol_przeg, Mc_kol_przeg, Dz_kol_przeg)" +
-                " VALUES (@Kategoria, @Nazwa, @Typ, @Nr_inwentarzowy, @Nr_fabryczny, @Rok_produkcji, @Producent, @Zdjecie1, @Rozszerz_zdj1, @Nazwa_os_zarzadzajaca, @Nr_pom, @Dzial, @Nr_prot_BHP, @Data_ost_przegl, @Data_kol_przegl, " +
+                " VALUES (@Kategoria, @Nazwa, @Typ, @Nr_inwentarzowy, @Nr_fabryczny, @Rok_produkcji, @Producent, @Zdjecie, @Zawartosc_pliku, @Rozszerz_zdj, @Nazwa_os_zarzadzajaca, @Nr_pom, @Dzial, @Nr_prot_BHP, @Data_ost_przegl, @Data_kol_przegl, " +
                 "@Uwagi, @Wykorzystanie, @Stan_techniczny, @Propozycja, @Nazwa_op_maszyny, @Rok_ost_przeg, @Mc_ost_przeg, @Dz_ost_przeg, @Rok_kol_przeg, @Mc_kol_przeg, @Dz_kol_przeg);";
 
-            OleDbParameter[] parameters = new OleDbParameter[26];
+            OleDbParameter[] parameters = new OleDbParameter[27];
             parameters[0] = new OleDbParameter("Kategoria", OleDbType.VarChar, 100);
             parameters[0].Value = VO.Kategoria;
 
@@ -416,62 +422,65 @@ namespace nsAccess2DB
             parameters[6] = new OleDbParameter("Producent", OleDbType.VarChar, 255);
             parameters[6].Value = VO.Producent;
 
-            parameters[7] = new OleDbParameter("Zdjecie1", OleDbType.VarChar, 255);
-            parameters[7].Value = VO.Zdjecie1;
+            parameters[7] = new OleDbParameter("Zdjecie", OleDbType.VarChar, 255);
+            parameters[7].Value = VO.Zdjecie;
 
-            parameters[8] = new OleDbParameter("Rozszerz_zdj1", OleDbType.VarChar, 255);
-            parameters[8].Value = VO.Rozszerz_zdj1;
+            parameters[8] = new OleDbParameter("Zawartosc_pliku", OleDbType.VarBinary, 255);
+            parameters[8].Value = VO.Zawartosc_pliku;
 
-            parameters[9] = new OleDbParameter("Nazwa_os_zarzadzajaca", OleDbType.VarChar, 255);
-            parameters[9].Value = VO.Nazwa_os_zarzadzajaca;
+            parameters[9] = new OleDbParameter("Rozszerz_zdj", OleDbType.VarChar, 255);
+            parameters[9].Value = VO.Rozszerz_zdj;
 
-            parameters[10] = new OleDbParameter("Nr_pom", OleDbType.VarChar, 255);
-            parameters[10].Value = VO.Nr_pom;
+            parameters[10] = new OleDbParameter("Nazwa_os_zarzadzajaca", OleDbType.VarChar, 255);
+            parameters[10].Value = VO.Nazwa_os_zarzadzajaca;
+
+            parameters[11] = new OleDbParameter("Nr_pom", OleDbType.VarChar, 255);
+            parameters[11].Value = VO.Nr_pom;
             
-            parameters[11] = new OleDbParameter("Dzial", OleDbType.VarChar, 20);
-            parameters[11].Value = VO.Dzial;
+            parameters[12] = new OleDbParameter("Dzial", OleDbType.VarChar, 20);
+            parameters[12].Value = VO.Dzial;
 
-            parameters[12] = new OleDbParameter("Nr_prot_BHP", OleDbType.VarChar, 20);
-            parameters[12].Value = VO.Nr_prot_BHP;
+            parameters[13] = new OleDbParameter("Nr_prot_BHP", OleDbType.VarChar, 20);
+            parameters[13].Value = VO.Nr_prot_BHP;
 
-            parameters[13] = new OleDbParameter("Data_ost_przegl", OleDbType.Integer);
-            parameters[13].Value = VO.Data_ost_przegl;
+            parameters[14] = new OleDbParameter("Data_ost_przegl", OleDbType.Integer);
+            parameters[14].Value = VO.Data_ost_przegl;
 
-            parameters[14] = new OleDbParameter("Data_kol_przegl", OleDbType.Integer);
-            parameters[14].Value = VO.Data_kol_przegl;
+            parameters[15] = new OleDbParameter("Data_kol_przegl", OleDbType.Integer);
+            parameters[15].Value = VO.Data_kol_przegl;
 
-            parameters[15] = new OleDbParameter("Uwagi", OleDbType.VarChar, 255);
-            parameters[15].Value = VO.Uwagi;
+            parameters[16] = new OleDbParameter("Uwagi", OleDbType.VarChar, 255);
+            parameters[16].Value = VO.Uwagi;
 
-            parameters[16] = new OleDbParameter("Wykorzystanie", OleDbType.VarChar, 20);
-            parameters[16].Value = VO.Wykorzystanie;
+            parameters[17] = new OleDbParameter("Wykorzystanie", OleDbType.VarChar, 20);
+            parameters[17].Value = VO.Wykorzystanie;
 
-            parameters[17] = new OleDbParameter("Stan_techniczny", OleDbType.VarChar, 20);
-            parameters[17].Value = VO.Stan_techniczny;
+            parameters[18] = new OleDbParameter("Stan_techniczny", OleDbType.VarChar, 20);
+            parameters[18].Value = VO.Stan_techniczny;
 
-            parameters[18] = new OleDbParameter("Propozycja", OleDbType.VarChar, 20);
-            parameters[18].Value = VO.Propozycja;
+            parameters[19] = new OleDbParameter("Propozycja", OleDbType.VarChar, 20);
+            parameters[19].Value = VO.Propozycja;
 
-            parameters[19] = new OleDbParameter("Nazwa_op_maszyny", OleDbType.VarChar, 100);
-            parameters[19].Value = VO.Nazwa_op_maszyny;
+            parameters[20] = new OleDbParameter("Nazwa_op_maszyny", OleDbType.VarChar, 100);
+            parameters[20].Value = VO.Nazwa_op_maszyny;
 
-            parameters[20] = new OleDbParameter("Rok_ost_przeg", OleDbType.Integer);
-            parameters[20].Value = VO.Rok_ost_przeg;
+            parameters[21] = new OleDbParameter("Rok_ost_przeg", OleDbType.Integer);
+            parameters[21].Value = VO.Rok_ost_przeg;
 
-            parameters[21] = new OleDbParameter("Mc_ost_przeg", OleDbType.Integer);
-            parameters[21].Value = VO.Mc_ost_przeg;
+            parameters[22] = new OleDbParameter("Mc_ost_przeg", OleDbType.Integer);
+            parameters[22].Value = VO.Mc_ost_przeg;
 
-            parameters[22] = new OleDbParameter("Dz_ost_przeg", OleDbType.Integer);
-            parameters[22].Value = VO.Dz_ost_przeg;
+            parameters[23] = new OleDbParameter("Dz_ost_przeg", OleDbType.Integer);
+            parameters[23].Value = VO.Dz_ost_przeg;
 
-            parameters[23] = new OleDbParameter("Rok_kol_przeg", OleDbType.Integer);
-            parameters[23].Value = VO.Rok_kol_przeg;
+            parameters[24] = new OleDbParameter("Rok_kol_przeg", OleDbType.Integer);
+            parameters[24].Value = VO.Rok_kol_przeg;
 
-            parameters[24] = new OleDbParameter("Mc_kol_przeg", OleDbType.Integer);
-            parameters[24].Value = VO.Mc_kol_przeg;
+            parameters[25] = new OleDbParameter("Mc_kol_przeg", OleDbType.Integer);
+            parameters[25].Value = VO.Mc_kol_przeg;
 
-            parameters[25] = new OleDbParameter("Dz_kol_przeg", OleDbType.Integer);
-            parameters[25].Value = VO.Dz_kol_przeg;
+            parameters[26] = new OleDbParameter("Dz_kol_przeg", OleDbType.Integer);
+            parameters[26].Value = VO.Dz_kol_przeg;
             
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -485,11 +494,11 @@ namespace nsAccess2DB
         public bool update(nsAccess2DB.MaszynyVO VO)
         {
             string query = "UPDATE Maszyny SET Kategoria = @Kategoria, Nazwa = @Nazwa, Typ = @Typ, Nr_inwentarzowy = @Nr_inwentarzowy, Nr_fabryczny = @Nr_fabryczny, Rok_produkcji = @Rok_produkcji, Producent = @Producent, " +
-                "Zdjecie1 = @Zdjecie1, Rozszerz_zdj1 = @Rozszerz_zdj1, Nazwa_os_zarzadzajaca = @Nazwa_os_zarzadzajaca, Nr_pom = @Nr_pom, Dzial = @Dzial, Nr_prot_BHP = @Nr_prot_BHP, Data_ost_przegl = @Data_ost_przegl, " +
+                "Zdjecie = @Zdjecie, Zawartosc_pliku = @Zawartosc_pliku, Rozszerz_zdj = @Rozszerz_zdj, Nazwa_os_zarzadzajaca = @Nazwa_os_zarzadzajaca, Nr_pom = @Nr_pom, Dzial = @Dzial, Nr_prot_BHP = @Nr_prot_BHP, Data_ost_przegl = @Data_ost_przegl, " +
                 "Data_kol_przegl = @Data_kol_przegl, Uwagi = @Uwagi, Wykorzystanie = @Wykorzystanie, Stan_techniczny = @Stan_techniczny, Propozycja = @Propozycja, Nazwa_op_maszyny = @Nazwa_op_maszyny, Rok_ost_przeg = @Rok_ost_przeg," +
                 " Mc_ost_przeg = @Mc_ost_przeg, Dz_ost_przeg = @Dz_ost_przeg, Rok_kol_przeg = @Rok_kol_przeg, Mc_kol_przeg = @Mc_kol_przeg, Dz_kol_przeg = @Dz_kol_przeg WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
 
-            OleDbParameter[] parameters = new OleDbParameter[26];
+            OleDbParameter[] parameters = new OleDbParameter[27];
             parameters[0] = new OleDbParameter("Kategoria", OleDbType.VarChar, 100);
             parameters[0].Value = VO.Kategoria;
 
@@ -511,62 +520,65 @@ namespace nsAccess2DB
             parameters[6] = new OleDbParameter("Producent", OleDbType.VarChar, 255);
             parameters[6].Value = VO.Producent;
 
-            parameters[7] = new OleDbParameter("Zdjecie1", OleDbType.VarChar, 255);
-            parameters[7].Value = VO.Zdjecie1;
+            parameters[7] = new OleDbParameter("Zdjecie", OleDbType.VarChar, 255);
+            parameters[7].Value = VO.Zdjecie;
 
-            parameters[8] = new OleDbParameter("Rozszerz_zdj1", OleDbType.VarChar, 255);
-            parameters[8].Value = VO.Rozszerz_zdj1;
+            parameters[8] = new OleDbParameter("Zawartosc_pliku", OleDbType.VarBinary, 255);
+            parameters[8].Value = VO.Zawartosc_pliku;
 
-            parameters[9] = new OleDbParameter("Nazwa_os_zarzadzajaca", OleDbType.VarChar, 255);
-            parameters[9].Value = VO.Nazwa_os_zarzadzajaca;
+            parameters[9] = new OleDbParameter("Rozszerz_zdj", OleDbType.VarChar, 255);
+            parameters[9].Value = VO.Rozszerz_zdj;
 
-            parameters[10] = new OleDbParameter("Nr_pom", OleDbType.VarChar, 255);
-            parameters[10].Value = VO.Nr_pom;
+            parameters[10] = new OleDbParameter("Nazwa_os_zarzadzajaca", OleDbType.VarChar, 255);
+            parameters[10].Value = VO.Nazwa_os_zarzadzajaca;
 
-            parameters[11] = new OleDbParameter("Dzial", OleDbType.VarChar, 20);
-            parameters[11].Value = VO.Dzial;
+            parameters[11] = new OleDbParameter("Nr_pom", OleDbType.VarChar, 255);
+            parameters[11].Value = VO.Nr_pom;
 
-            parameters[12] = new OleDbParameter("Nr_prot_BHP", OleDbType.VarChar, 20);
-            parameters[12].Value = VO.Nr_prot_BHP;
+            parameters[12] = new OleDbParameter("Dzial", OleDbType.VarChar, 20);
+            parameters[12].Value = VO.Dzial;
 
-            parameters[13] = new OleDbParameter("Data_ost_przegl", OleDbType.Integer);
-            parameters[13].Value = VO.Data_ost_przegl;
+            parameters[13] = new OleDbParameter("Nr_prot_BHP", OleDbType.VarChar, 20);
+            parameters[13].Value = VO.Nr_prot_BHP;
 
-            parameters[14] = new OleDbParameter("Data_kol_przegl", OleDbType.Integer);
-            parameters[14].Value = VO.Data_kol_przegl;
+            parameters[14] = new OleDbParameter("Data_ost_przegl", OleDbType.Integer);
+            parameters[14].Value = VO.Data_ost_przegl;
 
-            parameters[15] = new OleDbParameter("Uwagi", OleDbType.VarChar, 255);
-            parameters[15].Value = VO.Uwagi;
+            parameters[15] = new OleDbParameter("Data_kol_przegl", OleDbType.Integer);
+            parameters[15].Value = VO.Data_kol_przegl;
 
-            parameters[16] = new OleDbParameter("Wykorzystanie", OleDbType.VarChar, 20);
-            parameters[16].Value = VO.Wykorzystanie;
+            parameters[16] = new OleDbParameter("Uwagi", OleDbType.VarChar, 255);
+            parameters[16].Value = VO.Uwagi;
 
-            parameters[17] = new OleDbParameter("Stan_techniczny", OleDbType.VarChar, 20);
-            parameters[17].Value = VO.Stan_techniczny;
+            parameters[17] = new OleDbParameter("Wykorzystanie", OleDbType.VarChar, 20);
+            parameters[17].Value = VO.Wykorzystanie;
 
-            parameters[18] = new OleDbParameter("Propozycja", OleDbType.VarChar, 20);
-            parameters[18].Value = VO.Propozycja;
+            parameters[18] = new OleDbParameter("Stan_techniczny", OleDbType.VarChar, 20);
+            parameters[18].Value = VO.Stan_techniczny;
 
-            parameters[19] = new OleDbParameter("Nazwa_op_maszyny", OleDbType.VarChar, 100);
-            parameters[19].Value = VO.Nazwa_op_maszyny;
+            parameters[19] = new OleDbParameter("Propozycja", OleDbType.VarChar, 20);
+            parameters[19].Value = VO.Propozycja;
 
-            parameters[20] = new OleDbParameter("Rok_ost_przeg", OleDbType.Integer);
-            parameters[20].Value = VO.Rok_ost_przeg;
+            parameters[20] = new OleDbParameter("Nazwa_op_maszyny", OleDbType.VarChar, 100);
+            parameters[20].Value = VO.Nazwa_op_maszyny;
 
-            parameters[21] = new OleDbParameter("Mc_ost_przeg", OleDbType.Integer);
-            parameters[21].Value = VO.Mc_ost_przeg;
+            parameters[21] = new OleDbParameter("Rok_ost_przeg", OleDbType.Integer);
+            parameters[21].Value = VO.Rok_ost_przeg;
 
-            parameters[22] = new OleDbParameter("Dz_ost_przeg", OleDbType.Integer);
-            parameters[22].Value = VO.Dz_ost_przeg;
+            parameters[22] = new OleDbParameter("Mc_ost_przeg", OleDbType.Integer);
+            parameters[22].Value = VO.Mc_ost_przeg;
 
-            parameters[23] = new OleDbParameter("Rok_kol_przeg", OleDbType.Integer);
-            parameters[23].Value = VO.Rok_kol_przeg;
+            parameters[23] = new OleDbParameter("Dz_ost_przeg", OleDbType.Integer);
+            parameters[23].Value = VO.Dz_ost_przeg;
 
-            parameters[24] = new OleDbParameter("Mc_kol_przeg", OleDbType.Integer);
-            parameters[24].Value = VO.Mc_kol_przeg;
+            parameters[24] = new OleDbParameter("Rok_kol_przeg", OleDbType.Integer);
+            parameters[24].Value = VO.Rok_kol_przeg;
 
-            parameters[25] = new OleDbParameter("Dz_kol_przeg", OleDbType.Integer);
-            parameters[25].Value = VO.Dz_kol_przeg;
+            parameters[25] = new OleDbParameter("Mc_kol_przeg", OleDbType.Integer);
+            parameters[25].Value = VO.Mc_kol_przeg;
+
+            parameters[26] = new OleDbParameter("Dz_kol_przeg", OleDbType.Integer);
+            parameters[26].Value = VO.Dz_kol_przeg;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -656,7 +668,7 @@ namespace nsAccess2DB
             _VOs = new MaszynyVO[0];
 
              foreach (DataRow dr in dt.Rows)
-            {
+             {
                 Array.Resize(ref _VOs, _VOs.Length + 1);
 
                 VOi = new MaszynyVO();
@@ -669,8 +681,18 @@ namespace nsAccess2DB
                 VOi.Nr_fabryczny = dr["Nr_fabryczny"].ToString();
                 VOi.Rok_produkcji = dr["Rok_produkcji"].ToString();
                 VOi.Producent = dr["Producent"].ToString();
-                VOi.Zdjecie1 = dr["Zdjecie1"].ToString();
-                VOi.Rozszerz_zdj1 = dr["Rozszerz_zdj1"].ToString();
+                VOi.Zdjecie = dr["Zdjecie"].ToString();
+
+                try
+                {
+                    VOi.Zawartosc_pliku = (byte[])dr["Zawartosc_pliku"];
+                }
+                catch
+                {
+                    VOi.Zawartosc_pliku = new byte[] { };
+                }
+
+                VOi.Rozszerz_zdj = dr["Rozszerz_zdj"].ToString();
                 VOi.Nazwa_os_zarzadzajaca = dr["Nazwa_os_zarzadzajaca"].ToString();
                 VOi.Nr_pom = dr["Nr_pom"].ToString();
                 VOi.Dzial = dr["Dzial"].ToString();
@@ -701,7 +723,7 @@ namespace nsAccess2DB
                 VOi.Dz_kol_przeg = int.Parse(dr["Dz_kol_przeg"].ToString());
 
                 _VOs[_VOs.Length - 1] = VOi;
-            }
+             }
             _eof = _VOs.Length == 0;
             _count = _VOs.Length;
             if (_count > 0)
@@ -2498,13 +2520,44 @@ namespace nsAccess2DB
         /// <returns>Tabela Operator_maszyny_MaszynyDAO.</returns>
         public DataTable select()
         {
-            string query = "SELECT * FROM Operator_maszyny_Maszyny;";
+            string query = "SELECT Maszyny.Nazwa, Operator_maszyny.Identyfikator AS ID_op_maszyny, Maszyny.Identyfikator AS ID_maszyny, Operator_maszyny.Nazwa_op_maszyny FROM Operator_maszyny INNER JOIN(Maszyny INNER JOIN Operator_maszyny_Maszyny ON Maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_maszyny]) ON Operator_maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_op_maszyny];";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
             _error = _conn._error;
             return dt;
         }//select 
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="ID_op_maszyny"></param>
+        /// <returns></returns>
+        public DataTable select(int ID_op_maszyny)
+        {
+            string query = "SELECT Maszyny.Nazwa, Operator_maszyny.Identyfikator AS ID_op_maszyny, Maszyny.Identyfikator AS ID_maszyny, Operator_maszyny.Nazwa_op_maszyny FROM Operator_maszyny INNER JOIN(Maszyny INNER JOIN Operator_maszyny_Maszyny ON Maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_maszyny]) ON Operator_maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_op_maszyny] WHERE(Operator_maszyny_Maszyny.ID_op_maszyny) = " + ID_op_maszyny.ToString() + ";";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="ID_maszyny"></param>
+        /// <param name="ID_op_maszyny"></param>
+        /// <returns></returns>
+        public DataTable select(int ID_maszyny, int ID_op_maszyny)
+        {
+            string query = "SELECT * FROM Operator_maszyny_Maszyny WHERE ID_Maszyny = " + ID_maszyny.ToString() + " AND ID_op_maszyny = " + ID_op_maszyny.ToString() + "; ";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select
 
         /// <summary>
         /// Wprowadza nowy rekord
@@ -2525,7 +2578,6 @@ namespace nsAccess2DB
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
             return b;
-
         }//insert
 
             /// <summary>
@@ -2630,7 +2682,6 @@ namespace nsAccess2DB
             }
         }//fillTable
 
-        
         /// <summary>
         /// Wypełnia tablice pozycjami danych.
         /// </summary>
@@ -2638,6 +2689,29 @@ namespace nsAccess2DB
         {
             fillTable(_DAO.select());
         }//select
+
+        /// <summary>
+        /// Wypełnia tablice pozycjami danych.
+        /// </summary>
+        /// <param name="ID_op_maszyny"></param>
+        public void select(int ID_op_maszyny)
+        {
+            fillTable(_DAO.select(ID_op_maszyny));
+        }//select
+
+        /// <summary>
+        /// Wypełnia tablice pozycjami danych.
+        /// </summary>
+        /// <param name="ID_maszyny"></param>
+        /// <param name="ID_op_maszyny"></param>
+        public void select(int ID_maszyny, int ID_op_maszyny)
+        {
+            fillTable(_DAO.select(ID_maszyny, ID_op_maszyny));
+        }//select
+
+
+
+
 
         /// <summary>
         /// Wypełnia tablicę pozycjami danych -------------------------------------> dowolne zapytanie z poziomu Form

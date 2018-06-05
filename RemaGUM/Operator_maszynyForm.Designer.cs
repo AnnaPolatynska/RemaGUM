@@ -62,8 +62,8 @@
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOdswiez = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel_ID_Operatora = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel_ID_Operatora = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -294,9 +294,9 @@
             this.label4.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label4.Location = new System.Drawing.Point(6, 254);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 13);
+            this.label4.Size = new System.Drawing.Size(216, 13);
             this.label4.TabIndex = 51;
-            this.label4.Text = "Obsługiwane maszyny";
+            this.label4.Text = "Obsługiwane przez tego operatora maszyny:";
             // 
             // listBox_maszyny
             // 
@@ -453,22 +453,23 @@
             this.statusStrip1.TabIndex = 50;
             this.statusStrip1.Text = "ID operatora";
             // 
-            // toolStripStatusLabel_ID_Operatora
-            // 
-            this.toolStripStatusLabel_ID_Operatora.Name = "toolStripStatusLabel_ID_Operatora";
-            this.toolStripStatusLabel_ID_Operatora.Size = new System.Drawing.Size(21, 17);
-            this.toolStripStatusLabel_ID_Operatora.Text = "ID:";
-            // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(124, 17);
             this.toolStripStatusLabel1.Text = "ID operatora maszyny:";
             // 
+            // toolStripStatusLabel_ID_Operatora
+            // 
+            this.toolStripStatusLabel_ID_Operatora.Name = "toolStripStatusLabel_ID_Operatora";
+            this.toolStripStatusLabel_ID_Operatora.Size = new System.Drawing.Size(21, 17);
+            this.toolStripStatusLabel_ID_Operatora.Text = "ID:";
+            // 
             // Operator_maszynyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(677, 587);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip);

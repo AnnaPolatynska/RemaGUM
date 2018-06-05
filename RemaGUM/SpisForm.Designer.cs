@@ -100,6 +100,9 @@
             this.radioButtonNr_inwentarzowy = new System.Windows.Forms.RadioButton();
             this.radioButtonTyp = new System.Windows.Forms.RadioButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.button1 = new System.Windows.Forms.Button();
+            this.linkLabelNazwaZdjecia = new System.Windows.Forms.LinkLabel();
+            this.button2 = new System.Windows.Forms.Button();
             this.toolStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.Maszyny.SuspendLayout();
@@ -245,6 +248,9 @@
             // Maszyny
             // 
             this.Maszyny.BackColor = System.Drawing.Color.Bisque;
+            this.Maszyny.Controls.Add(this.button2);
+            this.Maszyny.Controls.Add(this.linkLabelNazwaZdjecia);
+            this.Maszyny.Controls.Add(this.button1);
             this.Maszyny.Controls.Add(this.groupBox4);
             this.Maszyny.Controls.Add(this.groupBox5);
             this.Maszyny.Controls.Add(this.pictureBox1);
@@ -605,7 +611,7 @@
             // 
             this.pictureBox1.Location = new System.Drawing.Point(758, 69);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(419, 490);
+            this.pictureBox1.Size = new System.Drawing.Size(419, 461);
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
             // 
@@ -895,6 +901,35 @@
             this.tabControl1.Size = new System.Drawing.Size(1197, 820);
             this.tabControl1.TabIndex = 47;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1080, 536);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 23);
+            this.button1.TabIndex = 47;
+            this.button1.Text = "Usuń Zdjęcie";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // linkLabelNazwaZdjecia
+            // 
+            this.linkLabelNazwaZdjecia.AutoSize = true;
+            this.linkLabelNazwaZdjecia.Location = new System.Drawing.Point(759, 546);
+            this.linkLabelNazwaZdjecia.Name = "linkLabelNazwaZdjecia";
+            this.linkLabelNazwaZdjecia.Size = new System.Drawing.Size(76, 13);
+            this.linkLabelNazwaZdjecia.TabIndex = 48;
+            this.linkLabelNazwaZdjecia.TabStop = true;
+            this.linkLabelNazwaZdjecia.Text = "Nazwa zdjęcia";
+            this.linkLabelNazwaZdjecia.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNazwaZdjecia_LinkClicked);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(977, 536);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(97, 23);
+            this.button2.TabIndex = 49;
+            this.button2.Text = "Wgraj/Pokaż Zdjęcie";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -913,6 +948,7 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.Maszyny.ResumeLayout(false);
+            this.Maszyny.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -1003,6 +1039,9 @@
         private System.Windows.Forms.RadioButton radioButtonNr_inwentarzowy;
         private System.Windows.Forms.RadioButton radioButtonTyp;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.LinkLabel linkLabelNazwaZdjecia;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

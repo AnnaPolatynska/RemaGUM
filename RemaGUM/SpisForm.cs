@@ -168,7 +168,7 @@ namespace RemaGUM
             listBoxMaszyny.Items.Clear();
 
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-            _MaszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nazwa ASC;");
+            _MaszynyBUS.select();
             while (!_MaszynyBUS.eof)
             {
                 listBoxMaszyny.Items.Add(_MaszynyBUS.VO.Nazwa);
@@ -332,7 +332,7 @@ namespace RemaGUM
             textBoxNr_fabryczny.Text = _MaszynyBUS.VO.Nr_fabryczny;
             textBoxRok_produkcji.Text = _MaszynyBUS.VO.Rok_produkcji;
             textBoxProducent.Text = _MaszynyBUS.VO.Producent;
-            pictureBox1.Text = _MaszynyBUS.VO.Zdjecie1;
+            pictureBox1.Text = _MaszynyBUS.VO.Zdjecie;
             comboBoxOsoba_zarzadzajaca.Text = _MaszynyBUS.VO.Nazwa_os_zarzadzajaca;
             textBoxNr_pom.Text = _MaszynyBUS.VO.Nr_pom;
             comboBoxDzial.Text = _MaszynyBUS.VO.Dzial;
@@ -655,7 +655,7 @@ namespace RemaGUM
             VO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
             VO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
             VO.Producent = textBoxProducent.Text.Trim();
-            VO.Zdjecie1 = pictureBox1.Text;  /////                ???????????????? obrazek
+            VO.Zdjecie = pictureBox1.Text;  /////                ???????????????? obrazek
             VO.Nazwa_os_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
             VO.Nr_pom = textBoxNr_pom.Text;
             VO.Dzial = comboBoxDzial.Text;
@@ -730,6 +730,54 @@ namespace RemaGUM
         {
             Os_zarzadzajacaForm frame = new Os_zarzadzajacaForm();
             frame.Show();
+        }
+
+        private void linkLabelNazwaZdjecia_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            pokazZdjecie(linkLabelNazwaZdjecia.Text);
+        } //linkLabelNazwaZdjecia_LinkClicked
+
+        /// <summary>
+        /// Zwraca obiekt informacji o napędzie dostepny na stacji.
+        /// </summary>
+        /// <returns>Obiekt informacji o napędzie.</returns>
+        private DirectoryInfo zwrocNaped()
+        {
+            DirectoryInfo di;
+            string[] napedy = new string[] { "C:\\", "D:\\", "E:\\", "F:\\", "G:\\", "H:\\" };
+
+            for (int i = 0; i < napedy.Length; i++)
+            {
+                di = new DirectoryInfo(napedy[i]);
+                if (di.Exists)
+                {
+                    return di;
+                }
+            }
+            return null;
+        }//zwrocNaped
+
+
+        private void pokazZdjecie(string Zdjecie)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+
+                if (Zdjecie.Length == 0)
+                {
+                    MessageBox.Show("Pusta nazwa pliku zapisanego w bazie", "RemaGUM",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Problem z prezentacją załącznika. Błąd: " + ex.Message);
+                Cursor = Cursors.Default;
+            }
+            Cursor = Cursors.Default;
+        
         }
     }// public partial class SpisForm : Form
        
