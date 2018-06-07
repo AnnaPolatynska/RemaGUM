@@ -2520,7 +2520,7 @@ namespace nsAccess2DB
         /// <returns>Tabela Operator_maszyny_MaszynyDAO.</returns>
         public DataTable select()
         {
-            string query = "SELECT Maszyny.Nazwa, Operator_maszyny.Identyfikator AS ID_op_maszyny, Maszyny.Identyfikator AS ID_maszyny, Operator_maszyny.Nazwa_op_maszyny FROM Operator_maszyny INNER JOIN(Maszyny INNER JOIN Operator_maszyny_Maszyny ON Maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_maszyny]) ON Operator_maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_op_maszyny];";
+            string query = "SELECT Operator_maszyny_Maszyny.ID_maszyny, Operator_maszyny_Maszyny.ID_op_maszyny, Operator_maszyny.Op_nazwisko, Operator_maszyny.Op_imie, Maszyny.Nazwa FROM Operator_maszyny RIGHT JOIN(Maszyny INNER JOIN Operator_maszyny_Maszyny ON Maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_maszyny]) ON Operator_maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_op_maszyny];";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
@@ -2535,7 +2535,7 @@ namespace nsAccess2DB
         /// <returns></returns>
         public DataTable select(int ID_op_maszyny)
         {
-            string query = "SELECT Maszyny.Nazwa, Operator_maszyny.Identyfikator AS ID_op_maszyny, Maszyny.Identyfikator AS ID_maszyny, Operator_maszyny.Nazwa_op_maszyny FROM Operator_maszyny INNER JOIN(Maszyny INNER JOIN Operator_maszyny_Maszyny ON Maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_maszyny]) ON Operator_maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_op_maszyny] WHERE(Operator_maszyny_Maszyny.ID_op_maszyny) = " + ID_op_maszyny.ToString() + ";";
+            string query = "SELECT Operator_maszyny_Maszyny.ID_maszyny, Operator_maszyny_Maszyny.ID_op_maszyny, Operator_maszyny.Op_nazwisko, Operator_maszyny.Op_imie, Maszyny.Nazwa FROM Operator_maszyny RIGHT JOIN(Maszyny INNER JOIN Operator_maszyny_Maszyny ON Maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_maszyny]) ON Operator_maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_op_maszyny] WHERE ID_op_maszyny = " + ID_op_maszyny.ToString() + ";";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
@@ -2551,7 +2551,7 @@ namespace nsAccess2DB
         /// <returns></returns>
         public DataTable select(int ID_maszyny, int ID_op_maszyny)
         {
-            string query = "SELECT * FROM Operator_maszyny_Maszyny WHERE ID_Maszyny = " + ID_maszyny.ToString() + " AND ID_op_maszyny = " + ID_op_maszyny.ToString() + "; ";
+            string query = "SELECT Operator_maszyny_Maszyny.ID_maszyny, Operator_maszyny_Maszyny.ID_op_maszyny, Operator_maszyny.Op_nazwisko, Operator_maszyny.Op_imie, Maszyny.Nazwa FROM Operator_maszyny RIGHT JOIN(Maszyny INNER JOIN Operator_maszyny_Maszyny ON Maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_maszyny]) ON Operator_maszyny.[Identyfikator] = Operator_maszyny_Maszyny.[ID_op_maszyny] WHERE ID_maszyny = " + ID_maszyny.ToString() + " AND ID_op_maszyny = " + ID_op_maszyny.ToString() + "; ";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
@@ -2559,6 +2559,7 @@ namespace nsAccess2DB
             return dt;
         }//select
 
+       
         /// <summary>
         /// Wprowadza nowy rekord
         /// </summary>

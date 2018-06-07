@@ -119,9 +119,10 @@ namespace RemaGUM
         //wyświetla listę operatorów maszyn po imieniu i nazwisku
         private void WypelnijOperatorowDanymi()
         {
-            listBoxOperator_maszyny.Items.Clear();
             nsAccess2DB.Operator_maszynyBUS operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
             _Operator_maszynyBUS.selectQuery("SELECT * FROM Operator_maszyny ORDER BY op_nazwisko ASC;");
+            listBoxOperator_maszyny.Items.Clear();
+
             while (!_Operator_maszynyBUS.eof)
             {
                 listBoxOperator_maszyny.Items.Add(_Operator_maszynyBUS.VO.Op_nazwisko + " " + _Operator_maszynyBUS.VO.Op_imie);
@@ -137,18 +138,19 @@ namespace RemaGUM
         // wyświetla listę maszyn dla danego operatora
         private void WypelnijOperatorowMaszynami()
         {
-            listBox_maszyny.Items.Clear();
             nsAccess2DB.Operator_maszyny_MaszynyBUS operator_maszyny_MaszynyBUS = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
             nsAccess2DB.MaszynyBUS MaszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
+            listBox_maszyny.Items.Clear();
+
             _Operator_maszyny_MaszynyBUS.select();
 
             while (!_MaszynyBUS.eof)
             {
-                listBox_maszyny.Items.Add(_MaszynyBUS.VO.Nazwa);
+                listBox_maszyny.Items.Add(MaszynyBUS.VO.Nazwa);
+                
                 _MaszynyBUS.skip();
             }
            
-
             if (listBox_maszyny.Items.Count > 0)
             {
                 listBox_maszyny.SelectedIndex = 0;
@@ -183,24 +185,23 @@ namespace RemaGUM
             toolStripStatusLabel_ID_Operatora.Text = _Operator_maszynyBUS.VO.Identyfikator.ToString(); // ID operatora maszyny
             toolStripStatusLabel_ID_Operatora.Tag = _Operator_maszynyBUS.VO.Identyfikator; // ID operatora maszyny
 
-
             //wypełnij listę maszyn obsługiwanych przez wybranego operatora - zmiana indeksu operatora ma zmieniać listę podległych mu maszyn
-            nsAccess2DB.Operator_maszyny_MaszynyBUS vBUS = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
+            nsAccess2DB.Operator_maszyny_MaszynyBUS OMM_BUS = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
             nsAccess2DB.MaszynyBUS MaszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-            vBUS.select((int)toolStripStatusLabel_ID_Operatora.Tag);
+            
+            OMM_BUS.select((int)toolStripStatusLabel_ID_Operatora.Tag);
 
             listBox_maszyny.Items.Clear();
-            _maszynaTag = new int[vBUS.count];
+            _maszynaTag = new int[OMM_BUS.count];
             int idx = 0;
 
-            while (!vBUS.eof)
+            while (!OMM_BUS.eof)
             {
-                listBox_maszyny.Items.Add(vBUS.VO.ID_maszyny); // zmienić na nazwę maszyny
-                _maszynaTag[idx] = vBUS.VO.ID_maszyny;
-                vBUS.skip();
+                listBox_maszyny.Items.Add(_MaszynyBUS.VO.Nazwa); // zmienić na nazwę maszyny
+                _maszynaTag[idx] = OMM_BUS.VO.ID_maszyny;
+                OMM_BUS.skip();
                 idx++;
             }
-
 
         }//listBoxOperator_maszyny_SelectedIndexChanged
 

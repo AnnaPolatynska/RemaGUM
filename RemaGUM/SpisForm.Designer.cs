@@ -42,6 +42,9 @@
             this.Normalia = new System.Windows.Forms.TabPage();
             this.Materiały = new System.Windows.Forms.TabPage();
             this.Maszyny = new System.Windows.Forms.TabPage();
+            this.buttonPokazZdj = new System.Windows.Forms.Button();
+            this.linkLabelNazwaZdjecia = new System.Windows.Forms.LinkLabel();
+            this.buttonUsunZdj = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.comboBoxOperator_maszyny = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -100,9 +103,6 @@
             this.radioButtonNr_inwentarzowy = new System.Windows.Forms.RadioButton();
             this.radioButtonTyp = new System.Windows.Forms.RadioButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.button1 = new System.Windows.Forms.Button();
-            this.linkLabelNazwaZdjecia = new System.Windows.Forms.LinkLabel();
-            this.button2 = new System.Windows.Forms.Button();
             this.toolStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.Maszyny.SuspendLayout();
@@ -248,9 +248,9 @@
             // Maszyny
             // 
             this.Maszyny.BackColor = System.Drawing.Color.Bisque;
-            this.Maszyny.Controls.Add(this.button2);
+            this.Maszyny.Controls.Add(this.buttonPokazZdj);
             this.Maszyny.Controls.Add(this.linkLabelNazwaZdjecia);
-            this.Maszyny.Controls.Add(this.button1);
+            this.Maszyny.Controls.Add(this.buttonUsunZdj);
             this.Maszyny.Controls.Add(this.groupBox4);
             this.Maszyny.Controls.Add(this.groupBox5);
             this.Maszyny.Controls.Add(this.pictureBox1);
@@ -264,6 +264,35 @@
             this.Maszyny.Size = new System.Drawing.Size(1189, 794);
             this.Maszyny.TabIndex = 0;
             this.Maszyny.Text = "Maszyny";
+            // 
+            // buttonPokazZdj
+            // 
+            this.buttonPokazZdj.Location = new System.Drawing.Point(977, 536);
+            this.buttonPokazZdj.Name = "buttonPokazZdj";
+            this.buttonPokazZdj.Size = new System.Drawing.Size(97, 23);
+            this.buttonPokazZdj.TabIndex = 49;
+            this.buttonPokazZdj.Text = "Wgraj/Pokaż Zdjęcie";
+            this.buttonPokazZdj.UseVisualStyleBackColor = true;
+            // 
+            // linkLabelNazwaZdjecia
+            // 
+            this.linkLabelNazwaZdjecia.AutoSize = true;
+            this.linkLabelNazwaZdjecia.Location = new System.Drawing.Point(759, 546);
+            this.linkLabelNazwaZdjecia.Name = "linkLabelNazwaZdjecia";
+            this.linkLabelNazwaZdjecia.Size = new System.Drawing.Size(76, 13);
+            this.linkLabelNazwaZdjecia.TabIndex = 48;
+            this.linkLabelNazwaZdjecia.TabStop = true;
+            this.linkLabelNazwaZdjecia.Text = "Nazwa zdjęcia";
+            this.linkLabelNazwaZdjecia.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNazwaZdjecia_LinkClicked);
+            // 
+            // buttonUsunZdj
+            // 
+            this.buttonUsunZdj.Location = new System.Drawing.Point(1080, 536);
+            this.buttonUsunZdj.Name = "buttonUsunZdj";
+            this.buttonUsunZdj.Size = new System.Drawing.Size(97, 23);
+            this.buttonUsunZdj.TabIndex = 47;
+            this.buttonUsunZdj.Text = "Usuń Zdjęcie";
+            this.buttonUsunZdj.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -901,35 +930,6 @@
             this.tabControl1.Size = new System.Drawing.Size(1197, 820);
             this.tabControl1.TabIndex = 47;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1080, 536);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 23);
-            this.button1.TabIndex = 47;
-            this.button1.Text = "Usuń Zdjęcie";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // linkLabelNazwaZdjecia
-            // 
-            this.linkLabelNazwaZdjecia.AutoSize = true;
-            this.linkLabelNazwaZdjecia.Location = new System.Drawing.Point(759, 546);
-            this.linkLabelNazwaZdjecia.Name = "linkLabelNazwaZdjecia";
-            this.linkLabelNazwaZdjecia.Size = new System.Drawing.Size(76, 13);
-            this.linkLabelNazwaZdjecia.TabIndex = 48;
-            this.linkLabelNazwaZdjecia.TabStop = true;
-            this.linkLabelNazwaZdjecia.Text = "Nazwa zdjęcia";
-            this.linkLabelNazwaZdjecia.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNazwaZdjecia_LinkClicked);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(977, 536);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(97, 23);
-            this.button2.TabIndex = 49;
-            this.button2.Text = "Wgraj/Pokaż Zdjęcie";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1040,8 +1040,8 @@
         private System.Windows.Forms.RadioButton radioButtonTyp;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.LinkLabel linkLabelNazwaZdjecia;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonUsunZdj;
+        private System.Windows.Forms.Button buttonPokazZdj;
     }
 }
 
