@@ -326,7 +326,7 @@ namespace RemaGUM
             _MaszynyBUS.idx = listBoxMaszyny.SelectedIndex;
             
             listBoxMaszyny.Tag = _MaszynyBUS.VO.Identyfikator;
-            toolStripStatusLabelIDVal.Text = _MaszynyBUS.VO.Identyfikator.ToString();
+            toolStripStatusLabelIDMat.Text = _MaszynyBUS.VO.Identyfikator.ToString();
             comboBoxKategoria.Text = _MaszynyBUS.VO.Kategoria;
             textBoxNazwa.Text = _MaszynyBUS.VO.Nazwa;
             textBoxTyp.Text = _MaszynyBUS.VO.Typ;
@@ -531,7 +531,7 @@ namespace RemaGUM
         //przycisk Nowa czyści formularz
         private void ButtonNowa_Click(object sender, EventArgs e)
         {
-            toolStripStatusLabelIDVal.Text = string.Empty;
+            toolStripStatusLabelIDMat.Text = string.Empty;
 
             comboBoxKategoria.SelectedIndex = -1;
             comboBoxKategoria.Enabled = true;
@@ -696,16 +696,16 @@ namespace RemaGUM
            // Op_VO.Nazwa_op_maszyny = comboBoxOperator_maszyny.Text;
 
 
-            if (toolStripStatusLabelIDVal.Text == string.Empty) //nowa pozycja w tabeli maszyn
+            if (toolStripStatusLabelIDMat.Text == string.Empty) //nowa pozycja w tabeli maszyn
             {
                 M_VO.Identyfikator = -1;
             }
             else
-                M_VO.Identyfikator = int.Parse(toolStripStatusLabelIDVal.Text);
+                M_VO.Identyfikator = int.Parse(toolStripStatusLabelIDMat.Text);
 
             buttonUsun.Enabled = listBoxMaszyny.Items.Count > 0;
 
-            if (toolStripStatusLabelIDVal.Text == string.Empty)
+            if (toolStripStatusLabelIDMat.Text == string.Empty)
             {
                 listBoxMaszyny.SelectedIndex = listBoxMaszyny.Items.Count - 1;
             }
@@ -798,6 +798,7 @@ namespace RemaGUM
             Cursor = Cursors.Default;
         
         }
+
     }// public partial class SpisForm : Form
        
 }//namespace RemaGUM
