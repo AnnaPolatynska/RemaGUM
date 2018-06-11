@@ -43,21 +43,20 @@
             this.Materiały = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxDostawca1 = new System.Windows.Forms.RichTextBox();
             this.comboBoxDostawca1 = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.richTextBoxDodatkowe_informacje = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxDostawca2 = new System.Windows.Forms.RichTextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.linkLabelDostawca2 = new System.Windows.Forms.LinkLabel();
             this.comboBoxDostawca2 = new System.Windows.Forms.ComboBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabelDostawca1 = new System.Windows.Forms.LinkLabel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label36 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxMin_materialu = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxZapotrzebowanie = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -72,15 +71,15 @@
             this.label19 = new System.Windows.Forms.Label();
             this.textBoxStan_magazynowy = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBoxRodzaj = new System.Windows.Forms.TextBox();
+            this.textBoxTyp_materialu = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.textBoxNazwa_materiału = new System.Windows.Forms.TextBox();
-            this.comboBoxTyp = new System.Windows.Forms.ComboBox();
+            this.comboBoxRodzaj = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.buttonSzukaj_material = new System.Windows.Forms.Button();
+            this.textBoxWyszukaj_material = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.listBoxMateriały = new System.Windows.Forms.ListBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -89,9 +88,9 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.radioButtonNazwa_materialu = new System.Windows.Forms.RadioButton();
+            this.radioButtonCena = new System.Windows.Forms.RadioButton();
+            this.radioButtonTyp_materialu = new System.Windows.Forms.RadioButton();
             this.Maszyny = new System.Windows.Forms.TabPage();
             this.buttonPokazZdj = new System.Windows.Forms.Button();
             this.linkLabelNazwaZdjecia = new System.Windows.Forms.LinkLabel();
@@ -157,8 +156,7 @@
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label37 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label40 = new System.Windows.Forms.Label();
+            this.radioButtonIlosc_na_stanie = new System.Windows.Forms.RadioButton();
             this.toolStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.Materiały.SuspendLayout();
@@ -321,18 +319,18 @@
             // groupBox10
             // 
             this.groupBox10.Controls.Add(this.label27);
-            this.groupBox10.Controls.Add(this.richTextBox1);
+            this.groupBox10.Controls.Add(this.richTextBoxDostawca1);
             this.groupBox10.Controls.Add(this.comboBoxDostawca1);
             this.groupBox10.Controls.Add(this.label29);
             this.groupBox10.Controls.Add(this.label28);
-            this.groupBox10.Controls.Add(this.richTextBoxDodatkowe_informacje);
+            this.groupBox10.Controls.Add(this.richTextBoxDostawca2);
             this.groupBox10.Controls.Add(this.label20);
-            this.groupBox10.Controls.Add(this.linkLabel2);
+            this.groupBox10.Controls.Add(this.linkLabelDostawca2);
             this.groupBox10.Controls.Add(this.comboBoxDostawca2);
-            this.groupBox10.Controls.Add(this.linkLabel1);
+            this.groupBox10.Controls.Add(this.linkLabelDostawca1);
             this.groupBox10.Location = new System.Drawing.Point(761, 12);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(396, 475);
+            this.groupBox10.Size = new System.Drawing.Size(396, 612);
             this.groupBox10.TabIndex = 49;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Dostawcy materiałów";
@@ -347,16 +345,14 @@
             this.label27.Text = "Dodatkowe informacje dotyczące dostawcy głównego";
             this.label27.UseMnemonic = false;
             // 
-            // richTextBox1
+            // richTextBoxDostawca1
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.richTextBox1.BackColor = System.Drawing.Color.Linen;
-            this.richTextBox1.Location = new System.Drawing.Point(9, 108);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(381, 149);
-            this.richTextBox1.TabIndex = 45;
-            this.richTextBox1.Text = "";
+            this.richTextBoxDostawca1.BackColor = System.Drawing.Color.Linen;
+            this.richTextBoxDostawca1.Location = new System.Drawing.Point(9, 108);
+            this.richTextBoxDostawca1.Name = "richTextBoxDostawca1";
+            this.richTextBoxDostawca1.Size = new System.Drawing.Size(381, 163);
+            this.richTextBoxDostawca1.TabIndex = 45;
+            this.richTextBoxDostawca1.Text = "";
             // 
             // comboBoxDostawca1
             // 
@@ -370,7 +366,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(13, 330);
+            this.label29.Location = new System.Drawing.Point(10, 402);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(288, 13);
             this.label29.TabIndex = 29;
@@ -386,76 +382,73 @@
             this.label28.TabIndex = 17;
             this.label28.Text = "Dostawca główny";
             // 
-            // richTextBoxDodatkowe_informacje
+            // richTextBoxDostawca2
             // 
-            this.richTextBoxDodatkowe_informacje.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.richTextBoxDostawca2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.richTextBoxDodatkowe_informacje.BackColor = System.Drawing.Color.Linen;
-            this.richTextBoxDodatkowe_informacje.Location = new System.Drawing.Point(7, 345);
-            this.richTextBoxDodatkowe_informacje.Name = "richTextBoxDodatkowe_informacje";
-            this.richTextBoxDodatkowe_informacje.Size = new System.Drawing.Size(381, 124);
-            this.richTextBoxDodatkowe_informacje.TabIndex = 30;
-            this.richTextBoxDodatkowe_informacje.Text = "";
+            this.richTextBoxDostawca2.BackColor = System.Drawing.Color.Linen;
+            this.richTextBoxDostawca2.Location = new System.Drawing.Point(7, 423);
+            this.richTextBoxDostawca2.Name = "richTextBoxDostawca2";
+            this.richTextBoxDostawca2.Size = new System.Drawing.Size(381, 166);
+            this.richTextBoxDostawca2.TabIndex = 30;
+            this.richTextBoxDostawca2.Text = "";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(18, 258);
+            this.label20.Location = new System.Drawing.Point(15, 330);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(117, 13);
             this.label20.TabIndex = 40;
             this.label20.Text = "Dostawca alternatywny";
             // 
-            // linkLabel2
+            // linkLabelDostawca2
             // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(17, 298);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(55, 13);
-            this.linkLabel2.TabIndex = 43;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "linkLabel2";
+            this.linkLabelDostawca2.AutoSize = true;
+            this.linkLabelDostawca2.Location = new System.Drawing.Point(14, 370);
+            this.linkLabelDostawca2.Name = "linkLabelDostawca2";
+            this.linkLabelDostawca2.Size = new System.Drawing.Size(103, 13);
+            this.linkLabelDostawca2.TabIndex = 43;
+            this.linkLabelDostawca2.TabStop = true;
+            this.linkLabelDostawca2.Text = "linkLabelDostawca2";
             // 
             // comboBoxDostawca2
             // 
             this.comboBoxDostawca2.BackColor = System.Drawing.Color.Linen;
             this.comboBoxDostawca2.FormattingEnabled = true;
-            this.comboBoxDostawca2.Location = new System.Drawing.Point(8, 274);
+            this.comboBoxDostawca2.Location = new System.Drawing.Point(5, 346);
             this.comboBoxDostawca2.Name = "comboBoxDostawca2";
             this.comboBoxDostawca2.Size = new System.Drawing.Size(380, 21);
             this.comboBoxDostawca2.TabIndex = 41;
             // 
-            // linkLabel1
+            // linkLabelDostawca1
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(13, 67);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(55, 13);
-            this.linkLabel1.TabIndex = 42;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "linkLabel1";
+            this.linkLabelDostawca1.AutoSize = true;
+            this.linkLabelDostawca1.Location = new System.Drawing.Point(13, 67);
+            this.linkLabelDostawca1.Name = "linkLabelDostawca1";
+            this.linkLabelDostawca1.Size = new System.Drawing.Size(103, 13);
+            this.linkLabelDostawca1.TabIndex = 42;
+            this.linkLabelDostawca1.TabStop = true;
+            this.linkLabelDostawca1.Text = "linkLabelDostawca1";
             // 
             // groupBox6
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox6.Controls.Add(this.groupBox13);
-            this.groupBox6.Controls.Add(this.textBox5);
-            this.groupBox6.Controls.Add(this.label40);
             this.groupBox6.Controls.Add(this.label36);
-            this.groupBox6.Controls.Add(this.textBox3);
+            this.groupBox6.Controls.Add(this.textBoxMin_materialu);
             this.groupBox6.Controls.Add(this.label38);
-            this.groupBox6.Controls.Add(this.label34);
             this.groupBox6.Controls.Add(this.groupBox12);
             this.groupBox6.Controls.Add(this.comboBoxWartosc_jednostkowa);
             this.groupBox6.Controls.Add(this.labelWartosc_jednostkowa);
             this.groupBox6.Controls.Add(this.label19);
             this.groupBox6.Controls.Add(this.textBoxStan_magazynowy);
             this.groupBox6.Controls.Add(this.label22);
-            this.groupBox6.Controls.Add(this.textBoxRodzaj);
+            this.groupBox6.Controls.Add(this.textBoxTyp_materialu);
             this.groupBox6.Controls.Add(this.label23);
             this.groupBox6.Controls.Add(this.textBoxNazwa_materiału);
-            this.groupBox6.Controls.Add(this.comboBoxTyp);
+            this.groupBox6.Controls.Add(this.comboBoxRodzaj);
             this.groupBox6.Controls.Add(this.label26);
             this.groupBox6.Controls.Add(this.label30);
             this.groupBox6.Location = new System.Drawing.Point(336, 71);
@@ -468,50 +461,41 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(230, 406);
+            this.label36.Location = new System.Drawing.Point(227, 430);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(110, 13);
             this.label36.TabIndex = 59;
             this.label36.Text = "Wartośc jednostkowa";
             // 
-            // textBox3
+            // textBoxMin_materialu
             // 
-            this.textBox3.BackColor = System.Drawing.Color.Linen;
-            this.textBox3.Location = new System.Drawing.Point(12, 403);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(196, 20);
-            this.textBox3.TabIndex = 58;
+            this.textBoxMin_materialu.BackColor = System.Drawing.Color.Linen;
+            this.textBoxMin_materialu.Location = new System.Drawing.Point(25, 430);
+            this.textBoxMin_materialu.Name = "textBoxMin_materialu";
+            this.textBoxMin_materialu.Size = new System.Drawing.Size(196, 20);
+            this.textBoxMin_materialu.TabIndex = 58;
             // 
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(12, 387);
+            this.label38.Location = new System.Drawing.Point(22, 414);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(124, 13);
             this.label38.TabIndex = 57;
             this.label38.Text = "Stan minimalny materiału";
             // 
-            // label34
+            // textBoxZapotrzebowanie
             // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(223, 585);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(110, 13);
-            this.label34.TabIndex = 56;
-            this.label34.Text = "Wartośc jednostkowa";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.Linen;
-            this.textBox1.Location = new System.Drawing.Point(16, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 55;
+            this.textBoxZapotrzebowanie.BackColor = System.Drawing.Color.Linen;
+            this.textBoxZapotrzebowanie.Location = new System.Drawing.Point(16, 20);
+            this.textBoxZapotrzebowanie.Name = "textBoxZapotrzebowanie";
+            this.textBoxZapotrzebowanie.Size = new System.Drawing.Size(200, 20);
+            this.textBoxZapotrzebowanie.TabIndex = 55;
             // 
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(15, 0);
+            this.label35.Location = new System.Drawing.Point(15, 4);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(89, 13);
             this.label35.TabIndex = 54;
@@ -521,7 +505,7 @@
             // 
             this.groupBox12.BackColor = System.Drawing.Color.Bisque;
             this.groupBox12.Controls.Add(this.panel1);
-            this.groupBox12.Location = new System.Drawing.Point(6, 251);
+            this.groupBox12.Location = new System.Drawing.Point(6, 271);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(407, 122);
             this.groupBox12.TabIndex = 53;
@@ -598,15 +582,15 @@
             // 
             this.comboBoxWartosc_jednostkowa.BackColor = System.Drawing.Color.Linen;
             this.comboBoxWartosc_jednostkowa.FormattingEnabled = true;
-            this.comboBoxWartosc_jednostkowa.Location = new System.Drawing.Point(165, 175);
+            this.comboBoxWartosc_jednostkowa.Location = new System.Drawing.Point(153, 175);
             this.comboBoxWartosc_jednostkowa.Name = "comboBoxWartosc_jednostkowa";
-            this.comboBoxWartosc_jednostkowa.Size = new System.Drawing.Size(230, 21);
+            this.comboBoxWartosc_jednostkowa.Size = new System.Drawing.Size(162, 21);
             this.comboBoxWartosc_jednostkowa.TabIndex = 49;
             // 
             // labelWartosc_jednostkowa
             // 
             this.labelWartosc_jednostkowa.AutoSize = true;
-            this.labelWartosc_jednostkowa.Location = new System.Drawing.Point(229, 235);
+            this.labelWartosc_jednostkowa.Location = new System.Drawing.Point(234, 235);
             this.labelWartosc_jednostkowa.Name = "labelWartosc_jednostkowa";
             this.labelWartosc_jednostkowa.Size = new System.Drawing.Size(110, 13);
             this.labelWartosc_jednostkowa.TabIndex = 48;
@@ -616,7 +600,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label19.Location = new System.Drawing.Point(16, 19);
+            this.label19.Location = new System.Drawing.Point(26, 19);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(25, 13);
             this.label19.TabIndex = 34;
@@ -625,7 +609,7 @@
             // textBoxStan_magazynowy
             // 
             this.textBoxStan_magazynowy.BackColor = System.Drawing.Color.Linen;
-            this.textBoxStan_magazynowy.Location = new System.Drawing.Point(15, 228);
+            this.textBoxStan_magazynowy.Location = new System.Drawing.Point(28, 228);
             this.textBoxStan_magazynowy.Name = "textBoxStan_magazynowy";
             this.textBoxStan_magazynowy.Size = new System.Drawing.Size(200, 20);
             this.textBoxStan_magazynowy.TabIndex = 38;
@@ -633,24 +617,24 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(15, 121);
+            this.label22.Location = new System.Drawing.Point(25, 73);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(40, 13);
             this.label22.TabIndex = 10;
             this.label22.Text = "Rodzaj";
             // 
-            // textBoxRodzaj
+            // textBoxTyp_materialu
             // 
-            this.textBoxRodzaj.BackColor = System.Drawing.Color.Linen;
-            this.textBoxRodzaj.Location = new System.Drawing.Point(16, 137);
-            this.textBoxRodzaj.Name = "textBoxRodzaj";
-            this.textBoxRodzaj.Size = new System.Drawing.Size(380, 20);
-            this.textBoxRodzaj.TabIndex = 11;
+            this.textBoxTyp_materialu.BackColor = System.Drawing.Color.Linen;
+            this.textBoxTyp_materialu.Location = new System.Drawing.Point(25, 35);
+            this.textBoxTyp_materialu.Name = "textBoxTyp_materialu";
+            this.textBoxTyp_materialu.Size = new System.Drawing.Size(368, 20);
+            this.textBoxTyp_materialu.TabIndex = 11;
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(15, 68);
+            this.label23.Location = new System.Drawing.Point(27, 127);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(88, 13);
             this.label23.TabIndex = 7;
@@ -659,24 +643,24 @@
             // textBoxNazwa_materiału
             // 
             this.textBoxNazwa_materiału.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwa_materiału.Location = new System.Drawing.Point(15, 84);
+            this.textBoxNazwa_materiału.Location = new System.Drawing.Point(27, 143);
             this.textBoxNazwa_materiału.Name = "textBoxNazwa_materiału";
-            this.textBoxNazwa_materiału.Size = new System.Drawing.Size(380, 20);
+            this.textBoxNazwa_materiału.Size = new System.Drawing.Size(366, 20);
             this.textBoxNazwa_materiału.TabIndex = 6;
             // 
-            // comboBoxTyp
+            // comboBoxRodzaj
             // 
-            this.comboBoxTyp.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxTyp.FormattingEnabled = true;
-            this.comboBoxTyp.Location = new System.Drawing.Point(15, 33);
-            this.comboBoxTyp.Name = "comboBoxTyp";
-            this.comboBoxTyp.Size = new System.Drawing.Size(380, 21);
-            this.comboBoxTyp.TabIndex = 31;
+            this.comboBoxRodzaj.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxRodzaj.FormattingEnabled = true;
+            this.comboBoxRodzaj.Location = new System.Drawing.Point(27, 89);
+            this.comboBoxRodzaj.Name = "comboBoxRodzaj";
+            this.comboBoxRodzaj.Size = new System.Drawing.Size(366, 21);
+            this.comboBoxRodzaj.TabIndex = 31;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(16, 178);
+            this.label26.Location = new System.Drawing.Point(25, 175);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(110, 13);
             this.label26.TabIndex = 15;
@@ -685,7 +669,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(12, 215);
+            this.label30.Location = new System.Drawing.Point(27, 215);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(171, 13);
             this.label30.TabIndex = 19;
@@ -694,8 +678,8 @@
             // groupBox7
             // 
             this.groupBox7.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox7.Controls.Add(this.button1);
-            this.groupBox7.Controls.Add(this.textBox9);
+            this.groupBox7.Controls.Add(this.buttonSzukaj_material);
+            this.groupBox7.Controls.Add(this.textBoxWyszukaj_material);
             this.groupBox7.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox7.ForeColor = System.Drawing.Color.Red;
             this.groupBox7.Location = new System.Drawing.Point(336, 8);
@@ -705,24 +689,24 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "wyszukiwanie materiałów po nazwie";
             // 
-            // button1
+            // buttonSzukaj_material
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Location = new System.Drawing.Point(375, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(35, 34);
-            this.button1.TabIndex = 4;
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonSzukaj_material.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSzukaj_material.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj_material.BackgroundImage")));
+            this.buttonSzukaj_material.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSzukaj_material.Location = new System.Drawing.Point(375, 15);
+            this.buttonSzukaj_material.Name = "buttonSzukaj_material";
+            this.buttonSzukaj_material.Size = new System.Drawing.Size(35, 34);
+            this.buttonSzukaj_material.TabIndex = 4;
+            this.buttonSzukaj_material.UseVisualStyleBackColor = false;
             // 
-            // textBox9
+            // textBoxWyszukaj_material
             // 
-            this.textBox9.BackColor = System.Drawing.Color.Linen;
-            this.textBox9.Location = new System.Drawing.Point(6, 23);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(363, 20);
-            this.textBox9.TabIndex = 44;
+            this.textBoxWyszukaj_material.BackColor = System.Drawing.Color.Linen;
+            this.textBoxWyszukaj_material.Location = new System.Drawing.Point(6, 23);
+            this.textBoxWyszukaj_material.Name = "textBoxWyszukaj_material";
+            this.textBoxWyszukaj_material.Size = new System.Drawing.Size(363, 20);
+            this.textBoxWyszukaj_material.TabIndex = 44;
             // 
             // groupBox8
             // 
@@ -810,9 +794,10 @@
             // groupBox11
             // 
             this.groupBox11.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox11.Controls.Add(this.radioButton3);
-            this.groupBox11.Controls.Add(this.radioButton4);
-            this.groupBox11.Controls.Add(this.radioButton7);
+            this.groupBox11.Controls.Add(this.radioButtonIlosc_na_stanie);
+            this.groupBox11.Controls.Add(this.radioButtonNazwa_materialu);
+            this.groupBox11.Controls.Add(this.radioButtonCena);
+            this.groupBox11.Controls.Add(this.radioButtonTyp_materialu);
             this.groupBox11.ForeColor = System.Drawing.Color.Red;
             this.groupBox11.Location = new System.Drawing.Point(9, 8);
             this.groupBox11.Name = "groupBox11";
@@ -821,41 +806,41 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "sortowanie";
             // 
-            // radioButton3
+            // radioButtonNazwa_materialu
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButton3.Location = new System.Drawing.Point(6, 24);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(58, 17);
-            this.radioButton3.TabIndex = 4;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Nazwa";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButtonNazwa_materialu.AutoSize = true;
+            this.radioButtonNazwa_materialu.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonNazwa_materialu.Location = new System.Drawing.Point(6, 24);
+            this.radioButtonNazwa_materialu.Name = "radioButtonNazwa_materialu";
+            this.radioButtonNazwa_materialu.Size = new System.Drawing.Size(58, 17);
+            this.radioButtonNazwa_materialu.TabIndex = 4;
+            this.radioButtonNazwa_materialu.TabStop = true;
+            this.radioButtonNazwa_materialu.Text = "Nazwa";
+            this.radioButtonNazwa_materialu.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // radioButtonCena
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButton4.Location = new System.Drawing.Point(119, 26);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(108, 17);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Nr pomieszczenia";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButtonCena.AutoSize = true;
+            this.radioButtonCena.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonCena.Location = new System.Drawing.Point(119, 26);
+            this.radioButtonCena.Name = "radioButtonCena";
+            this.radioButtonCena.Size = new System.Drawing.Size(50, 17);
+            this.radioButtonCena.TabIndex = 3;
+            this.radioButtonCena.TabStop = true;
+            this.radioButtonCena.Text = "Cena";
+            this.radioButtonCena.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // radioButtonTyp_materialu
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButton7.Location = new System.Drawing.Point(70, 25);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(43, 17);
-            this.radioButton7.TabIndex = 0;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Typ";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButtonTyp_materialu.AutoSize = true;
+            this.radioButtonTyp_materialu.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonTyp_materialu.Location = new System.Drawing.Point(70, 25);
+            this.radioButtonTyp_materialu.Name = "radioButtonTyp_materialu";
+            this.radioButtonTyp_materialu.Size = new System.Drawing.Size(43, 17);
+            this.radioButtonTyp_materialu.TabIndex = 0;
+            this.radioButtonTyp_materialu.TabStop = true;
+            this.radioButtonTyp_materialu.Text = "Typ";
+            this.radioButtonTyp_materialu.UseVisualStyleBackColor = true;
             // 
             // Maszyny
             // 
@@ -1545,9 +1530,9 @@
             // groupBox13
             // 
             this.groupBox13.Controls.Add(this.panel2);
-            this.groupBox13.Location = new System.Drawing.Point(6, 473);
+            this.groupBox13.Location = new System.Drawing.Point(6, 479);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(407, 74);
+            this.groupBox13.Size = new System.Drawing.Size(407, 77);
             this.groupBox13.TabIndex = 60;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Przychód materiału";
@@ -1557,10 +1542,10 @@
             this.panel2.BackColor = System.Drawing.Color.DarkKhaki;
             this.panel2.Controls.Add(this.label37);
             this.panel2.Controls.Add(this.label35);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.textBoxZapotrzebowanie);
             this.panel2.Location = new System.Drawing.Point(6, 19);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(395, 44);
+            this.panel2.Size = new System.Drawing.Size(395, 52);
             this.panel2.TabIndex = 55;
             // 
             // label37
@@ -1572,22 +1557,17 @@
             this.label37.TabIndex = 50;
             this.label37.Text = "Wartośc jednostkowa";
             // 
-            // textBox5
+            // radioButtonIlosc_na_stanie
             // 
-            this.textBox5.BackColor = System.Drawing.Color.Linen;
-            this.textBox5.Location = new System.Drawing.Point(5, 578);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(199, 20);
-            this.textBox5.TabIndex = 24;
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(9, 562);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(223, 13);
-            this.label40.TabIndex = 23;
-            this.label40.Text = "Stan magazynowy po rozchodzie/przychodzie";
+            this.radioButtonIlosc_na_stanie.AutoSize = true;
+            this.radioButtonIlosc_na_stanie.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonIlosc_na_stanie.Location = new System.Drawing.Point(175, 27);
+            this.radioButtonIlosc_na_stanie.Name = "radioButtonIlosc_na_stanie";
+            this.radioButtonIlosc_na_stanie.Size = new System.Drawing.Size(93, 17);
+            this.radioButtonIlosc_na_stanie.TabIndex = 5;
+            this.radioButtonIlosc_na_stanie.TabStop = true;
+            this.radioButtonIlosc_na_stanie.Text = "Ilość na stanie";
+            this.radioButtonIlosc_na_stanie.UseVisualStyleBackColor = true;
             // 
             // SpisForm
             // 
@@ -1725,20 +1705,20 @@
         private System.Windows.Forms.ComboBox comboBoxDostawca1;
         private System.Windows.Forms.TextBox textBoxStan_magazynowy;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBoxRodzaj;
+        private System.Windows.Forms.TextBox textBoxTyp_materialu;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox textBoxNazwa_materiału;
-        private System.Windows.Forms.ComboBox comboBoxTyp;
+        private System.Windows.Forms.ComboBox comboBoxRodzaj;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.RichTextBox richTextBoxDodatkowe_informacje;
+        private System.Windows.Forms.RichTextBox richTextBoxDostawca2;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox textBoxZuzycie;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Button buttonSzukaj_material;
+        private System.Windows.Forms.TextBox textBoxWyszukaj_material;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.ListBox listBoxMateriały;
         private System.Windows.Forms.GroupBox groupBox9;
@@ -1747,33 +1727,31 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.RadioButton radioButtonNazwa_materialu;
+        private System.Windows.Forms.RadioButton radioButtonCena;
+        private System.Windows.Forms.RadioButton radioButtonTyp_materialu;
+        private System.Windows.Forms.LinkLabel linkLabelDostawca2;
+        private System.Windows.Forms.LinkLabel linkLabelDostawca1;
         private System.Windows.Forms.TextBox textBoxOdpad;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label labelWartosc_jednostkowa;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxDostawca1;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.ComboBox comboBoxWartosc_jednostkowa;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxMin_materialu;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxZapotrzebowanie;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.RadioButton radioButtonIlosc_na_stanie;
     }
 }
 
