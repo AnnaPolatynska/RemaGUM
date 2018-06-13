@@ -3167,6 +3167,195 @@ namespace nsAccess2DB
             }//getIdx
 
         }//class Osoba_zarzadzajacaBUS
-   
+    /// <summary>
+    /// Klasa wymiany danych z tabelą Materialy
+    /// </summary>
+    public class MaterialyVO
+    {
+        private int _Identyfikator = -1; 
+        private string _Nazwa_mat = string.Empty; //255
+        private string _Typ_mat = string.Empty;
+        private string _Rodzaj_mat = string.Empty;
+        private string _Jednostka_miar_mat = string.Empty;
+        private string _Dostawca_mat = string.Empty;
+        private int _Stan_mat = 0; // liczba
+        private int _Zuzycie_mat = 0; // liczba
+        private int _Odpad_mat = 0; // liczba
+        private int _Stan_min_mat = 0;// liczba
+        private int _Zapotrzebowanie_mat = 0;// liczba
+        private int _Stan_mag_po_mat = 0;// liczba
+        
+        /// <summary>
+        /// Konstruktor wymiany danych z tabelą Materialy
+        /// </summary>
+        public MaterialyVO() { }
+
+        // gettery i settery
+        public int Identyfikator
+        {
+            get { return _Identyfikator; }
+            set { _Identyfikator = value; }
+        }
+        public string Nazwa_mat
+        {
+            get { return _Nazwa_mat; }
+            set { _Nazwa_mat = value; }
+        }
+        public string Typ_mat
+        {
+            get { return _Typ_mat; }
+            set { _Typ_mat = value; }
+        }
+        public string Rodzaj_mat
+        {
+            get { return _Rodzaj_mat; }
+            set { _Rodzaj_mat = value; }
+        }
+        public string Jednostka_miar_mat
+        {
+            get { return _Jednostka_miar_mat; }
+            set { _Jednostka_miar_mat = value; }
+        }
+        public string Dostawca_mat
+        {
+            get { return _Dostawca_mat; }
+            set { _Dostawca_mat = value; }
+        }
+        public int Stan_mat
+        {
+            get { return _Stan_mat; }
+            set { _Stan_mat = value; }
+        }
+        public int Zuzycie_mat
+        {
+            get { return _Zuzycie_mat; }
+            set { _Zuzycie_mat = value; }
+        }
+        public int Odpad_mat
+        {
+            get { return _Odpad_mat; }
+            set { _Odpad_mat = value; }
+        }
+        public int Stan_min_mat
+        {
+            get { return _Stan_min_mat; }
+            set { _Stan_min_mat = value; }
+        }
+        public int Zapotrzebowanie_mat
+        {
+            get { return _Zapotrzebowanie_mat; }
+            set { _Zapotrzebowanie_mat = value; }
+        }
+        public int Stan_mag_po_mat
+        {
+            get { return _Stan_mag_po_mat; }
+            set { _Stan_mag_po_mat = value; }
+        }
+    } //class MaterialyVO
+
+    public class MaterialyDAO
+    {
+        private dbConnection _conn;
+        public string _error = string.Empty;
+
+        ///<construktor>
+        ///Konstruktor
+        ///</construktor>
+        public MaterialyDAO(string connString)
+        {
+            _conn = new dbConnection(connString);
+            _error = _conn._error;
+        } //konstruktor MaterialyDAO
+
+        public DataTable selectQuery(string query)
+        {
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//selectQuery
+
+        /// <summary>
+        /// Zwraca tabelę wszystkich Materiałów.
+        /// </summary>
+        /// <returns>Tabela Materiałów.</returns>
+        public DataTable select()
+        {
+            string query = "SELECT * FROM Materialy ORDER BY Nazwa_mat ASC";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select
+
+        /// <summary>
+        /// Zwraca tabelę wszystkich Materiałów po ID.
+        /// </summary>
+        /// <returns>Tabela Materiałów.</returns>
+        public DataTable select(int Identyfikator)
+        {
+            string query = "SELECT * FROM Materialy WHERE Identyfikator = " + Identyfikator.ToString() + ";";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select po ID Materialów
+
+        /// <summary>
+        /// Wprowadza nowy rekord.
+        /// </summary>
+        /// <param name="VO">Obiekt wymiany danych.</param>
+        /// <returns>Wartość logiczna powodzenia operacji.</returns>
+        public bool insert(nsAccess2DB.MaterialyVO VO)
+        {
+            string query = "INSERT INTO Materialy(Nazwa_mat, Typ_mat, Rodzaj_mat, Jednostka_miar_mat, Dostawca_mat, Stan_mat, Zuzycie_mat, Odpad_mat, Stan_min_mat, Zapotrzebowanie_mat, Stan_mag_po_mat) VALUES (@Nazwa_mat, @Typ_mat, @Rodzaj_mat, @Jednostka_miar_mat, @Dostawca_mat, @Stan_mat, @Zuzycie_mat, @Odpad_mat, @Stan_min_mat, @Zapotrzebowanie_mat, @Stan_mag_po_mat);";
+
+            OleDbParameter[] parameters = new OleDbParameter[11];
+            parameters[0] = new OleDbParameter("Nazwa_mat", OleDbType.VarChar, 255);
+            parameters[0].Value = VO.Nazwa_mat;
+
+            parameters[1] = new OleDbParameter("Typ_mat", OleDbType.VarChar, 255);
+            parameters[1].Value = VO.Typ_mat;
+
+            parameters[2] = new OleDbParameter("Rodzaj_mat", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Rodzaj_mat;
+
+            parameters[3] = new OleDbParameter("Jednostka_miar_mat", OleDbType.VarChar, 100);
+            parameters[3].Value = VO.Jednostka_miar_mat;
+
+            parameters[4] = new OleDbParameter("Dostawca_mat", OleDbType.VarChar, 255);
+            parameters[4].Value = VO.Dostawca_mat;
+
+            parameters[5] = new OleDbParameter("Stan_mat", OleDbType.VarChar, 255);
+            parameters[5].Value = VO.Stan_mat;
+
+            parameters[6] = new OleDbParameter("Zuzycie_mat", OleDbType.VarChar, 255);
+            parameters[6].Value = VO.Zuzycie_mat;
+
+            parameters[7] = new OleDbParameter("Odpad_mat", OleDbType.VarChar, 255);
+            parameters[7].Value = VO.Odpad_mat;
+
+            parameters[8] = new OleDbParameter("Stan_min_mat", OleDbType.Integer);
+            parameters[8].Value = VO.Stan_min_mat;
+
+            parameters[9] = new OleDbParameter("Zapotrzebowanie_mat", OleDbType.VarChar, 255);
+            parameters[9].Value = VO.Zapotrzebowanie_mat;
+
+            parameters[10] = new OleDbParameter("Stan_mag_po_mat", OleDbType.VarChar, 255);
+            parameters[10].Value = VO.Stan_mag_po_mat;
+            bool b = _conn.executeInsertQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }//insert
+
+
+        //Nazwa_mat, Typ_mat, Rodzaj_mat, Jednostka_miar_mat, Dostawca_mat, Stan_mat, Zuzycie_mat, Odpad_mat, Stan_min_mat, Zapotrzebowanie_mat, Stan_mag_po_mat
+
+
+    
+    }
+
 
 }//namespace nsAccess2DB
