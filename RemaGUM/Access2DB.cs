@@ -3167,6 +3167,10 @@ namespace nsAccess2DB
             }//getIdx
 
         }//class Osoba_zarzadzajacaBUS
+
+    ///////////////////////////////////////////////////////////////// klasa wymiany danych z tabelą Materialy
+
+    // ---------------------------------------------------------- MateriałyVO
     /// <summary>
     /// Klasa wymiany danych z tabelą Materialy
     /// </summary>
@@ -3253,6 +3257,7 @@ namespace nsAccess2DB
         }
     } //class MaterialyVO
 
+    // --------------------------------------------klasa dostępu (Data Access Object) do tabeli Materiały DAO
     public class MaterialyDAO
     {
         private dbConnection _conn;
@@ -3350,12 +3355,305 @@ namespace nsAccess2DB
             return b;
         }//insert
 
+        /// <summary>
+        /// Aktualizuje rekord z wyjątkiem Identyfikatora
+        /// </summary>
+        /// <param name="VO">Obiekt wymiany danych.</param>
+        /// <returns>Wartość logiczna powodzenia operacji.</returns>
+        public bool update(nsAccess2DB.MaterialyVO VO)
+        {
+            string query = "UPDATE Materialy SET Nazwa_mat = @Nazwa_mat, Typ_mat = @Typ_mat, Rodzaj_mat = @Rodzaj_mat, Jednostka_miar_mat = @Jednostka_miar_mat, Dostawca_mat = @Dostawca_mat, Stan_mat = @Stan_mat, Zuzycie_mat = @Zuzycie_mat, Odpad_mat = @Odpad_mat, Stan_min_mat = @Stan_min_mat, Zapotrzebowanie_mat = @Zapotrzebowanie_mat, Stan_mag_po_mat = @Stan_mag_po_mat WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
 
-        //Nazwa_mat, Typ_mat, Rodzaj_mat, Jednostka_miar_mat, Dostawca_mat, Stan_mat, Zuzycie_mat, Odpad_mat, Stan_min_mat, Zapotrzebowanie_mat, Stan_mag_po_mat
+            OleDbParameter[] parameters = new OleDbParameter[11];
+            parameters[0] = new OleDbParameter("Nazwa_mat", OleDbType.VarChar, 255);
+            parameters[0].Value = VO.Nazwa_mat;
+
+            parameters[1] = new OleDbParameter("Typ_mat", OleDbType.VarChar, 255);
+            parameters[1].Value = VO.Typ_mat;
+
+            parameters[2] = new OleDbParameter("Rodzaj_mat", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Rodzaj_mat;
+
+            parameters[3] = new OleDbParameter("Jednostka_miar_mat", OleDbType.VarChar, 100);
+            parameters[3].Value = VO.Jednostka_miar_mat;
+
+            parameters[4] = new OleDbParameter("Dostawca_mat", OleDbType.VarChar, 255);
+            parameters[4].Value = VO.Dostawca_mat;
+
+            parameters[5] = new OleDbParameter("Stan_mat", OleDbType.VarChar, 255);
+            parameters[5].Value = VO.Stan_mat;
+
+            parameters[6] = new OleDbParameter("Zuzycie_mat", OleDbType.VarChar, 255);
+            parameters[6].Value = VO.Zuzycie_mat;
+
+            parameters[7] = new OleDbParameter("Odpad_mat", OleDbType.VarChar, 255);
+            parameters[7].Value = VO.Odpad_mat;
+
+            parameters[8] = new OleDbParameter("Stan_min_mat", OleDbType.Integer);
+            parameters[8].Value = VO.Stan_min_mat;
+
+            parameters[9] = new OleDbParameter("Zapotrzebowanie_mat", OleDbType.VarChar, 255);
+            parameters[9].Value = VO.Zapotrzebowanie_mat;
+
+            parameters[10] = new OleDbParameter("Stan_mag_po_mat", OleDbType.VarChar, 255);
+            parameters[10].Value = VO.Stan_mag_po_mat;
+            bool b = _conn.executeInsertQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }//update
+
+        public bool delete(int Identyfikator)
+        {
+            string query = "DELETE * FROM Materialy WHERE Identyfikator = " + Identyfikator.ToString() + ";";
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            bool b = _conn.executeDeleteQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }//delete
+    }//clasa MaterialyDAO
+
+    // ---------------------------------------------------------> BUS - warstawa operacji biznesowych tabeli Materialy
+    public class MaterialyBUS
+    {
+        MaterialyDAO _DAO;
+        private MaterialyVO[] _VOs = new MaterialyVO[0];//lista danych
+        private MaterialyVO _VOi = new MaterialyVO();        //dane na pozycji _idx
+        private int _idx = 0;                           //indeks pozycji
+        private bool _eof = false;                      //wskaźnik końca pliku
+        private int _count = 0;                         //liczba pozycji
+        public string _error = string.Empty;
+
+        /// <summary>
+        /// Konstruktor.
+        /// </summary>
+        /// <param name="connString"></param>
+        public MaterialyBUS(string connString)
+        {
+        _DAO = new MaterialyDAO(connString);
+        _error = _DAO._error;
+        }// konstruktor MaterailyBUS
+
+        /// <summary>
+        /// Wprowadza rekord do tabeli.
+        /// </summary>
+        /// <param name="VO">Obiekt wymiany danych.</param>
+        /// <returns>Wartość logiczna powodzenia akcji.</returns>
+        private bool insert(nsAccess2DB.MaterialyVO VO)
+        {
+            bool b = _DAO.insert(VO);
+            _error = _DAO._error;
+            return b;
+        }//insert
+
+        /// <summary>
+        /// Aktualizuje rekord z wyjątkiem ID czynności.
+        /// </summary>
+        /// <param name="VO"></param>
+        /// <returns>Wartość logiczna powodzenia akcji.</returns>
+        private bool update(nsAccess2DB.MaterialyVO VO)
+        {
+            bool b = _DAO.update(VO);
+            _error = _DAO._error;
+            return b;
+        }// update
+
+        /// <summary>
+        /// Dodaje lub aktualizuje rekord.
+        /// </summary>
+        /// <param name="VO">Obiekt wymiany danych.</param>
+        /// <returns>Wynik powodzenia akcji.</returns>
+        public bool write(nsAccess2DB.MaterialyVO VO)
+        {
+            if (exists(VO.Identyfikator))
+            {
+                return _DAO.update(VO);
+            }
+            return _DAO.insert(VO);
+        }//write
+
+        /// <summary>
+        /// Wypełnia tablice.
+        /// </summary>
+        /// <param name="dt">Tabela danych.</param>
+        private void fillTable(DataTable dt)
+        {
+            MaterialyVO VOi;
+            _VOs = new MaterialyVO[0];
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Array.Resize(ref _VOs, _VOs.Length + 1);
+
+                VOi = new MaterialyVO();
+
+                VOi.Nazwa_mat = dr["Nazwa_mat"].ToString();
+                VOi.Typ_mat = dr["Typ_mat"].ToString();
+                VOi.Rodzaj_mat = dr["Rodzaj_mat"].ToString();
+                VOi.Jednostka_miar_mat = dr["Jednostka_miar_mat"].ToString();
+                VOi.Dostawca_mat = dr["Dostawca_mat"].ToString();
+                VOi.Stan_mat = int.Parse (dr["Stan_mat"].ToString());
+                VOi.Zuzycie_mat = int.Parse(dr["Zuzycie_mat"].ToString());
+                VOi.Odpad_mat = int.Parse(dr["Odpad_mat"].ToString());
+                VOi.Stan_min_mat = int.Parse(dr["Stan_min_mat"].ToString());
+                VOi.Zapotrzebowanie_mat = int.Parse(dr["Zapotrzebowanie_mat "].ToString());
+                VOi.Stan_mag_po_mat = int.Parse(dr["Stan_mag_po_mat"].ToString());
+
+                _VOs[_VOs.Length - 1] = VOi;
+            }
+            _eof = _VOs.Length == 0;
+            _count = _VOs.Length;
+            if (_count > 0)
+                _idx = 0;
+            else
+            {
+                _idx = -1;
+                _eof = true;
+            }
+        }//fillTable
+
+        /// <summary>
+        /// Wypełnia tablice danych pozycjami.
+        /// </summary>
+        public void select()
+        {
+            fillTable(_DAO.select());
+        }//select
 
 
-    
-    }
+        /// <summary>
+        /// Wypełnia tablice danych pozycjami.
+        /// </summary>
+        /// <param name="Identyfikator">ID maszyny.</param>
+        public void select(int Identyfikator)
+        {
+            fillTable(_DAO.select(Identyfikator));
+        }//select
 
+        public bool delete(int Identyfikator)
+        {
+            return _DAO.delete(Identyfikator);
+        }
+
+        /// <summary>
+        /// Przemieszcza indeks w tablicy danych o jedną pozycję.
+        /// </summary>
+        public void skip()
+        {
+            if (_count > 0)
+            {
+                _idx++;
+                _eof = _idx >= _count;
+            }
+        }//skip
+
+        /// <summary>
+        /// Przemieszcza indeks w tablicy danych na pozycję pierwszą.
+        /// </summary>
+        public void top()
+        {
+            if (_count > 0)
+            {
+                _idx = 0;
+                _eof = false;
+            }
+        }//top
+
+        /// <summary>
+        /// Zmienna logiczna osiągnięcia końca pliku.
+        /// </summary>
+        public bool eof
+        {
+            get { return _eof; }
+        }
+
+        /// <summary>
+        /// Zwraca liczbę pozycji tablicy.
+        /// </summary>
+        public int count
+        {
+            get { return _count; }
+        }
+
+        /// <summary>
+        /// Zwraca daną okrśloną wskaźnikiem pozycji.
+        /// </summary>
+        public MaterialyVO VO
+        {
+            get
+            {
+                if (_idx > -1 & _idx < _count)
+                {
+                    return _VOi = _VOs[_idx];
+                }
+                return new MaterialyVO();
+            }
+        }//MaszynyVO
+
+        /// <summary>
+        /// Ustawia wskaźnik pozycji.
+        /// </summary>
+        public int idx
+        {
+            set
+            {
+                if (value > -1 & value < _count)
+                {
+                    _idx = value;
+                }
+            }
+        }//idx
+
+        /// <summary>
+        /// Sprawdza istnienie rekordu.
+        /// </summary>
+        /// <param name="Identyfikator">Identyfikator Materiału</param>
+        /// <returns>Wynik logiczny sprawdzenia.</returns>
+        private bool exists(int Identyfikator)
+        {
+            foreach (MaterialyVO VOi in _VOs)
+            {
+                if (VOi.Identyfikator == Identyfikator) return true;
+            }
+            return false;
+        }//exists
+
+        /// <summary>
+        /// Zwraca indeks pozycji.
+        /// </summary>
+        /// <param name="Identyfikator">Identyfikator Materiału.</param>
+        /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora.</returns>
+        public int getIdx(int Identyfikator)
+        {
+            int idx = -1;
+            foreach (MaterialyVO VOi in _VOs)
+            {
+                idx++;
+                if (VOi.Identyfikator == Identyfikator) return idx;
+            }
+
+            return -1;
+        }//getIdx
+
+        /// <summary>
+        /// Zwraca material o wskazanym identyfikatorze.
+        /// </summary>
+        /// <param name="Identyfikator">Identyfikator Materiału.</param>
+        /// <returns>Materialy. Jeśli ID == -1 to materialu nie znaleziono.</returns>
+        public MaterialyVO GetVO(int Identyfikator)
+        {
+            foreach (nsAccess2DB.MaterialyVO VO in _VOs)
+            {
+                if (VO.Identyfikator == Identyfikator) return VO;
+            }
+            return new MaterialyVO();
+        }//getVO
+
+        public void selectQuery(string query)
+        {
+            fillTable(_DAO.selectQuery(query));
+        }//selectQuery
+
+      
+    }// clasa MaterialyBUS
 
 }//namespace nsAccess2DB
