@@ -29,6 +29,8 @@ namespace RemaGUM
         private nsAccess2DB.Operator_maszynyBUS _Operator_maszynyBUS;
         private nsAccess2DB.Operator_maszyny_MaszynyBUS _Operator_maszyny_MaszynyBUS;
 
+        private nsAccess2DB.MaterialyBUS _MaterialyBUS;
+
         private ToolTip _tt; //podpowiedzi dla niektórych kontolek
 
         private int _interwalPrzegladow = 2;    //w latach
@@ -43,6 +45,7 @@ namespace RemaGUM
             nsRest.Rest rest = new nsRest.Rest();
             _connString += rest.dbConnection(_connString);
 
+            //------------------------------------ Zakładka Maszyny
             //dane formularza
             listBoxMaszyny.TabIndex = 0;
             comboBoxKategoria.TabIndex = 1;
@@ -80,7 +83,40 @@ namespace RemaGUM
             //wyszukiwanie po wpisanej nazwie ???
             textBoxWyszukiwanie.TabIndex = 30;
             buttonSzukaj.TabIndex = 31;
-           
+            // -------------------------------------- Zakładka materiały
+            //dane formularza
+            listBoxMaterialy.TabIndex = 32;
+            textBoxTyp_materialu.TabIndex = 33;
+            comboBoxRodzaj.TabIndex = 34;
+            textBoxNazwa_materialu.TabIndex = 35;
+            comboBoxJednostka_mat.TabIndex = 36;
+            textBoxMagazyn_mat.TabIndex = 37;
+            textBoxZuzycie.TabIndex = 38;
+            textBoxOdpad.TabIndex = 39;
+            textBoxMin_materialu.TabIndex = 40;
+            textBoxZapotrzebowanie.TabIndex = 41;
+            // dane dostawców
+            comboBoxDostawca1.TabIndex = 42;
+            linkLabelDostawca1.TabIndex = 43;
+            richTextBoxDostawca1.TabIndex = 44;
+            comboBoxDostawca2.TabIndex = 45;
+            linkLabelDostawca2.TabIndex = 46;
+            richTextBoxDostawca2.TabIndex = 47;
+            //przyciski zapisz/edytuj itp
+            buttonNowa_mat.TabIndex = 48;
+            buttonZapisz_mat.TabIndex = 49;
+            buttonAnuluj_mat.TabIndex = 50;
+            buttonUsun_mat.TabIndex = 51;
+            //sortowanie po radio buttonach
+            radioButtonNazwa_mat.TabIndex = 52;
+            radioButtonTyp_mat.TabIndex = 53;
+            radioButtonCena_mat.TabIndex = 54;
+            radioButtonMagazyn_ilosc_mat.TabIndex = 55;
+            //wyszukiwanie po wpisanej nazwie
+            textBoxWyszukaj_mat.TabIndex = 56;
+            buttonSzukaj_mat.TabIndex = 57;
+
+
             _MaszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             _WykorzystanieBUS = new nsAccess2DB.WykorzystanieBUS(_connString);
             _KategoriaBUS = new nsAccess2DB.KategoriaBUS(_connString);
@@ -90,7 +126,8 @@ namespace RemaGUM
             _Osoba_zarzadzajacaBUS = new nsAccess2DB.Osoba_zarzadzajacaBUS(_connString);
             _Operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
             _Operator_maszyny_MaszynyBUS = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
-            
+            _MaterialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
+
             _MaszynyBUS.select();
             _Operator_maszynyBUS.select();
 
@@ -799,42 +836,7 @@ namespace RemaGUM
         
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox11_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox8_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox7_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox6_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox10_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox9_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox14_Enter(object sender, EventArgs e)
+        private void SpisForm_Load(object sender, EventArgs e)
         {
 
         }

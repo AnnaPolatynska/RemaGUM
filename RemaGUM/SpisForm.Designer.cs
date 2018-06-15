@@ -40,6 +40,57 @@
             this.toolStripStatusLabelID = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelIDMat = new System.Windows.Forms.ToolStripStatusLabel();
             this.Normalia = new System.Windows.Forms.TabPage();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.richTextBoxDostawca1_norm = new System.Windows.Forms.RichTextBox();
+            this.comboBoxDostawca1_norm = new System.Windows.Forms.ComboBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.richTextBoxDostawca2_norm = new System.Windows.Forms.RichTextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.linkLabelDostawca2_norm = new System.Windows.Forms.LinkLabel();
+            this.comboBoxDostawca2_norm = new System.Windows.Forms.ComboBox();
+            this.linkLabelDostawca1_norm = new System.Windows.Forms.LinkLabel();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label44 = new System.Windows.Forms.Label();
+            this.textBoxZuzycie_norm = new System.Windows.Forms.TextBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.textBoxZapotrzebowanie_norm = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.textBoxStan_min_norm = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.comboBoxJednostka_norm = new System.Windows.Forms.ComboBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.textBoxMagazyn_norm = new System.Windows.Forms.TextBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.textBoxTyp_norm = new System.Windows.Forms.TextBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.textBoxNazwa_norm = new System.Windows.Forms.TextBox();
+            this.comboBoxRodzaj_norm = new System.Windows.Forms.ComboBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.buttonSzukaj_norm = new System.Windows.Forms.Button();
+            this.textBoxSzukaj_norm = new System.Windows.Forms.TextBox();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.listBoxNormalia = new System.Windows.Forms.ListBox();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.buttonNowa_norm = new System.Windows.Forms.Button();
+            this.buttonUsun_norm = new System.Windows.Forms.Button();
+            this.buttonZapisz_norm = new System.Windows.Forms.Button();
+            this.buttonAnuluj_norm = new System.Windows.Forms.Button();
+            this.groupBox21 = new System.Windows.Forms.GroupBox();
+            this.radioButtonIlosc_norm = new System.Windows.Forms.RadioButton();
+            this.radioButtonNazwa_norm = new System.Windows.Forms.RadioButton();
+            this.radioButtonCena_norm = new System.Windows.Forms.RadioButton();
+            this.radioButtonTyp_norm = new System.Windows.Forms.RadioButton();
             this.Materiały = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label27 = new System.Windows.Forms.Label();
@@ -76,25 +127,25 @@
             this.label22 = new System.Windows.Forms.Label();
             this.textBoxTyp_materialu = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.textBoxNazwa_materiału = new System.Windows.Forms.TextBox();
+            this.textBoxNazwa_materialu = new System.Windows.Forms.TextBox();
             this.comboBoxRodzaj = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.buttonSzukaj_material = new System.Windows.Forms.Button();
-            this.textBoxWyszukaj_material = new System.Windows.Forms.TextBox();
+            this.buttonSzukaj_mat = new System.Windows.Forms.Button();
+            this.textBoxWyszukaj_mat = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.listBoxMateriały = new System.Windows.Forms.ListBox();
+            this.listBoxMaterialy = new System.Windows.Forms.ListBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.buttonNowa_mat = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.buttonUsun_mat = new System.Windows.Forms.Button();
+            this.buttonZapisz_mat = new System.Windows.Forms.Button();
+            this.buttonAnuluj_mat = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.radioButtonIlosc_na_stanie = new System.Windows.Forms.RadioButton();
-            this.radioButtonNazwa_materialu = new System.Windows.Forms.RadioButton();
-            this.radioButtonCena = new System.Windows.Forms.RadioButton();
-            this.radioButtonTyp_materialu = new System.Windows.Forms.RadioButton();
+            this.radioButtonMagazyn_ilosc_mat = new System.Windows.Forms.RadioButton();
+            this.radioButtonNazwa_mat = new System.Windows.Forms.RadioButton();
+            this.radioButtonCena_mat = new System.Windows.Forms.RadioButton();
+            this.radioButtonTyp_mat = new System.Windows.Forms.RadioButton();
             this.Maszyny = new System.Windows.Forms.TabPage();
             this.buttonPokazZdj = new System.Windows.Forms.Button();
             this.linkLabelNazwaZdjecia = new System.Windows.Forms.LinkLabel();
@@ -157,60 +208,19 @@
             this.radioButtonNr_inwentarzowy = new System.Windows.Forms.RadioButton();
             this.radioButtonTyp = new System.Windows.Forms.RadioButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.richTextBoxDostawca1_norm = new System.Windows.Forms.RichTextBox();
-            this.comboBoxDostawca1_norm = new System.Windows.Forms.ComboBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.richTextBoxDostawca2_norm = new System.Windows.Forms.RichTextBox();
-            this.label39 = new System.Windows.Forms.Label();
-            this.linkLabelDostawca2_norm = new System.Windows.Forms.LinkLabel();
-            this.comboBoxDostawca2_norm = new System.Windows.Forms.ComboBox();
-            this.linkLabelDostawca1_norm = new System.Windows.Forms.LinkLabel();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.textBoxZapotrzebowanie_norm = new System.Windows.Forms.TextBox();
-            this.label42 = new System.Windows.Forms.Label();
-            this.textBoxStan_min_norm = new System.Windows.Forms.TextBox();
-            this.label43 = new System.Windows.Forms.Label();
-            this.comboBoxJednostka_norm = new System.Windows.Forms.ComboBox();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.textBoxMagazyn_norm = new System.Windows.Forms.TextBox();
-            this.label50 = new System.Windows.Forms.Label();
-            this.textBoxTyp_norm = new System.Windows.Forms.TextBox();
-            this.label51 = new System.Windows.Forms.Label();
-            this.textBoxNazwa_norm = new System.Windows.Forms.TextBox();
-            this.comboBoxRodzaj_norm = new System.Windows.Forms.ComboBox();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.buttonSzukaj_norm = new System.Windows.Forms.Button();
-            this.textBoxSzukaj_norm = new System.Windows.Forms.TextBox();
-            this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.listBoxNormalia = new System.Windows.Forms.ListBox();
-            this.groupBox20 = new System.Windows.Forms.GroupBox();
-            this.buttonNowa_norm = new System.Windows.Forms.Button();
-            this.buttonUsun_norm = new System.Windows.Forms.Button();
-            this.buttonZapisz_norm = new System.Windows.Forms.Button();
-            this.buttonAnuluj_norm = new System.Windows.Forms.Button();
-            this.groupBox21 = new System.Windows.Forms.GroupBox();
-            this.radioButtonIlosc_norm = new System.Windows.Forms.RadioButton();
-            this.radioButtonNazwa_norm = new System.Windows.Forms.RadioButton();
-            this.radioButtonCena_norm = new System.Windows.Forms.RadioButton();
-            this.radioButtonTyp_norm = new System.Windows.Forms.RadioButton();
-            this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label44 = new System.Windows.Forms.Label();
-            this.textBoxZuzycie_norm = new System.Windows.Forms.TextBox();
-            this.label46 = new System.Windows.Forms.Label();
             this.toolStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.Normalia.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            this.groupBox17.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            this.groupBox19.SuspendLayout();
+            this.groupBox20.SuspendLayout();
+            this.groupBox21.SuspendLayout();
             this.Materiały.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -231,16 +241,6 @@
             this.groupBox3.SuspendLayout();
             this.groupBoxSortowanie.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.groupBox14.SuspendLayout();
-            this.groupBox15.SuspendLayout();
-            this.groupBox16.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.groupBox18.SuspendLayout();
-            this.groupBox19.SuspendLayout();
-            this.groupBox20.SuspendLayout();
-            this.groupBox21.SuspendLayout();
-            this.groupBox17.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -368,6 +368,547 @@
             this.Normalia.Text = "Normalia";
             this.Normalia.UseVisualStyleBackColor = true;
             // 
+            // groupBox14
+            // 
+            this.groupBox14.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox14.Controls.Add(this.label25);
+            this.groupBox14.Controls.Add(this.richTextBoxDostawca1_norm);
+            this.groupBox14.Controls.Add(this.comboBoxDostawca1_norm);
+            this.groupBox14.Controls.Add(this.label32);
+            this.groupBox14.Controls.Add(this.label34);
+            this.groupBox14.Controls.Add(this.richTextBoxDostawca2_norm);
+            this.groupBox14.Controls.Add(this.label39);
+            this.groupBox14.Controls.Add(this.linkLabelDostawca2_norm);
+            this.groupBox14.Controls.Add(this.comboBoxDostawca2_norm);
+            this.groupBox14.Controls.Add(this.linkLabelDostawca1_norm);
+            this.groupBox14.Location = new System.Drawing.Point(755, 17);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(396, 612);
+            this.groupBox14.TabIndex = 55;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Dostawcy normaliów";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(15, 92);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(314, 13);
+            this.label25.TabIndex = 44;
+            this.label25.Text = "Dodatkowe informacje dotyczące głównego dostawcy normaliów";
+            this.label25.UseMnemonic = false;
+            // 
+            // richTextBoxDostawca1_norm
+            // 
+            this.richTextBoxDostawca1_norm.BackColor = System.Drawing.Color.Linen;
+            this.richTextBoxDostawca1_norm.Location = new System.Drawing.Point(9, 108);
+            this.richTextBoxDostawca1_norm.Name = "richTextBoxDostawca1_norm";
+            this.richTextBoxDostawca1_norm.Size = new System.Drawing.Size(381, 163);
+            this.richTextBoxDostawca1_norm.TabIndex = 45;
+            this.richTextBoxDostawca1_norm.Text = "";
+            // 
+            // comboBoxDostawca1_norm
+            // 
+            this.comboBoxDostawca1_norm.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxDostawca1_norm.FormattingEnabled = true;
+            this.comboBoxDostawca1_norm.Location = new System.Drawing.Point(6, 43);
+            this.comboBoxDostawca1_norm.Name = "comboBoxDostawca1_norm";
+            this.comboBoxDostawca1_norm.Size = new System.Drawing.Size(380, 21);
+            this.comboBoxDostawca1_norm.TabIndex = 39;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(10, 402);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(338, 13);
+            this.label32.TabIndex = 29;
+            this.label32.Text = "Dodatkowe informacje dotyczące alternatywnego dostawcy normaliów";
+            this.label32.UseMnemonic = false;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(7, 27);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(93, 13);
+            this.label34.TabIndex = 17;
+            this.label34.Text = "Dostawca główny";
+            // 
+            // richTextBoxDostawca2_norm
+            // 
+            this.richTextBoxDostawca2_norm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.richTextBoxDostawca2_norm.BackColor = System.Drawing.Color.Linen;
+            this.richTextBoxDostawca2_norm.Location = new System.Drawing.Point(7, 423);
+            this.richTextBoxDostawca2_norm.Name = "richTextBoxDostawca2_norm";
+            this.richTextBoxDostawca2_norm.Size = new System.Drawing.Size(381, 166);
+            this.richTextBoxDostawca2_norm.TabIndex = 30;
+            this.richTextBoxDostawca2_norm.Text = "";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(15, 330);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(117, 13);
+            this.label39.TabIndex = 40;
+            this.label39.Text = "Dostawca alternatywny";
+            // 
+            // linkLabelDostawca2_norm
+            // 
+            this.linkLabelDostawca2_norm.AutoSize = true;
+            this.linkLabelDostawca2_norm.Location = new System.Drawing.Point(14, 370);
+            this.linkLabelDostawca2_norm.Name = "linkLabelDostawca2_norm";
+            this.linkLabelDostawca2_norm.Size = new System.Drawing.Size(55, 13);
+            this.linkLabelDostawca2_norm.TabIndex = 43;
+            this.linkLabelDostawca2_norm.TabStop = true;
+            this.linkLabelDostawca2_norm.Text = "linkLabel1";
+            // 
+            // comboBoxDostawca2_norm
+            // 
+            this.comboBoxDostawca2_norm.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxDostawca2_norm.FormattingEnabled = true;
+            this.comboBoxDostawca2_norm.Location = new System.Drawing.Point(5, 346);
+            this.comboBoxDostawca2_norm.Name = "comboBoxDostawca2_norm";
+            this.comboBoxDostawca2_norm.Size = new System.Drawing.Size(380, 21);
+            this.comboBoxDostawca2_norm.TabIndex = 41;
+            // 
+            // linkLabelDostawca1_norm
+            // 
+            this.linkLabelDostawca1_norm.AutoSize = true;
+            this.linkLabelDostawca1_norm.Location = new System.Drawing.Point(13, 67);
+            this.linkLabelDostawca1_norm.Name = "linkLabelDostawca1_norm";
+            this.linkLabelDostawca1_norm.Size = new System.Drawing.Size(55, 13);
+            this.linkLabelDostawca1_norm.TabIndex = 42;
+            this.linkLabelDostawca1_norm.TabStop = true;
+            this.linkLabelDostawca1_norm.Text = "linkLabel2";
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox15.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox15.Controls.Add(this.groupBox17);
+            this.groupBox15.Controls.Add(this.groupBox16);
+            this.groupBox15.Controls.Add(this.label42);
+            this.groupBox15.Controls.Add(this.textBoxStan_min_norm);
+            this.groupBox15.Controls.Add(this.label43);
+            this.groupBox15.Controls.Add(this.comboBoxJednostka_norm);
+            this.groupBox15.Controls.Add(this.label48);
+            this.groupBox15.Controls.Add(this.label49);
+            this.groupBox15.Controls.Add(this.textBoxMagazyn_norm);
+            this.groupBox15.Controls.Add(this.label50);
+            this.groupBox15.Controls.Add(this.textBoxTyp_norm);
+            this.groupBox15.Controls.Add(this.label51);
+            this.groupBox15.Controls.Add(this.textBoxNazwa_norm);
+            this.groupBox15.Controls.Add(this.comboBoxRodzaj_norm);
+            this.groupBox15.Controls.Add(this.label52);
+            this.groupBox15.Controls.Add(this.label53);
+            this.groupBox15.Location = new System.Drawing.Point(330, 76);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(419, 615);
+            this.groupBox15.TabIndex = 58;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Opis normaliów warsztatowych";
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox17.Controls.Add(this.panel4);
+            this.groupBox17.Location = new System.Drawing.Point(7, 355);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(407, 83);
+            this.groupBox17.TabIndex = 61;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Rozchód normaliów warsztatowych";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.LightSalmon;
+            this.panel4.Controls.Add(this.label44);
+            this.panel4.Controls.Add(this.textBoxZuzycie_norm);
+            this.panel4.Controls.Add(this.label46);
+            this.panel4.Location = new System.Drawing.Point(6, 19);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(395, 55);
+            this.panel4.TabIndex = 54;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(234, 30);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(110, 13);
+            this.label44.TabIndex = 50;
+            this.label44.Text = "Wartośc jednostkowa";
+            // 
+            // textBoxZuzycie_norm
+            // 
+            this.textBoxZuzycie_norm.BackColor = System.Drawing.Color.Linen;
+            this.textBoxZuzycie_norm.Location = new System.Drawing.Point(17, 23);
+            this.textBoxZuzycie_norm.Name = "textBoxZuzycie_norm";
+            this.textBoxZuzycie_norm.Size = new System.Drawing.Size(199, 20);
+            this.textBoxZuzycie_norm.TabIndex = 24;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(15, 7);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(83, 13);
+            this.label46.TabIndex = 23;
+            this.label46.Text = "Bieżące zużycie";
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.panel3);
+            this.groupBox16.Location = new System.Drawing.Point(7, 461);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(407, 77);
+            this.groupBox16.TabIndex = 60;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Zapotrzebowanie na normalia warsztatowe";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.DarkKhaki;
+            this.panel3.Controls.Add(this.label40);
+            this.panel3.Controls.Add(this.label41);
+            this.panel3.Controls.Add(this.textBoxZapotrzebowanie_norm);
+            this.panel3.Location = new System.Drawing.Point(6, 19);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(395, 52);
+            this.panel3.TabIndex = 55;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(234, 19);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(110, 13);
+            this.label40.TabIndex = 50;
+            this.label40.Text = "Wartośc jednostkowa";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(15, 4);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(89, 13);
+            this.label41.TabIndex = 54;
+            this.label41.Text = "Zapotrzebowanie";
+            // 
+            // textBoxZapotrzebowanie_norm
+            // 
+            this.textBoxZapotrzebowanie_norm.BackColor = System.Drawing.Color.Linen;
+            this.textBoxZapotrzebowanie_norm.Location = new System.Drawing.Point(16, 20);
+            this.textBoxZapotrzebowanie_norm.Name = "textBoxZapotrzebowanie_norm";
+            this.textBoxZapotrzebowanie_norm.Size = new System.Drawing.Size(200, 20);
+            this.textBoxZapotrzebowanie_norm.TabIndex = 55;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(229, 317);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(110, 13);
+            this.label42.TabIndex = 59;
+            this.label42.Text = "Wartośc jednostkowa";
+            // 
+            // textBoxStan_min_norm
+            // 
+            this.textBoxStan_min_norm.BackColor = System.Drawing.Color.Linen;
+            this.textBoxStan_min_norm.Location = new System.Drawing.Point(24, 314);
+            this.textBoxStan_min_norm.Name = "textBoxStan_min_norm";
+            this.textBoxStan_min_norm.Size = new System.Drawing.Size(196, 20);
+            this.textBoxStan_min_norm.TabIndex = 58;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(28, 295);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(127, 13);
+            this.label43.TabIndex = 57;
+            this.label43.Text = "Stan minimalny normaliów";
+            // 
+            // comboBoxJednostka_norm
+            // 
+            this.comboBoxJednostka_norm.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxJednostka_norm.FormattingEnabled = true;
+            this.comboBoxJednostka_norm.Location = new System.Drawing.Point(231, 191);
+            this.comboBoxJednostka_norm.Name = "comboBoxJednostka_norm";
+            this.comboBoxJednostka_norm.Size = new System.Drawing.Size(162, 21);
+            this.comboBoxJednostka_norm.TabIndex = 49;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(229, 261);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(110, 13);
+            this.label48.TabIndex = 48;
+            this.label48.Text = "Wartośc jednostkowa";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label49.Location = new System.Drawing.Point(28, 19);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(25, 13);
+            this.label49.TabIndex = 34;
+            this.label49.Text = "Typ";
+            // 
+            // textBoxMagazyn_norm
+            // 
+            this.textBoxMagazyn_norm.BackColor = System.Drawing.Color.Linen;
+            this.textBoxMagazyn_norm.Location = new System.Drawing.Point(23, 254);
+            this.textBoxMagazyn_norm.Name = "textBoxMagazyn_norm";
+            this.textBoxMagazyn_norm.Size = new System.Drawing.Size(200, 20);
+            this.textBoxMagazyn_norm.TabIndex = 38;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(28, 73);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(40, 13);
+            this.label50.TabIndex = 10;
+            this.label50.Text = "Rodzaj";
+            // 
+            // textBoxTyp_norm
+            // 
+            this.textBoxTyp_norm.BackColor = System.Drawing.Color.Linen;
+            this.textBoxTyp_norm.Location = new System.Drawing.Point(25, 35);
+            this.textBoxTyp_norm.Name = "textBoxTyp_norm";
+            this.textBoxTyp_norm.Size = new System.Drawing.Size(368, 20);
+            this.textBoxTyp_norm.TabIndex = 11;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(28, 127);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(40, 13);
+            this.label51.TabIndex = 7;
+            this.label51.Text = "Nazwa";
+            // 
+            // textBoxNazwa_norm
+            // 
+            this.textBoxNazwa_norm.BackColor = System.Drawing.Color.Linen;
+            this.textBoxNazwa_norm.Location = new System.Drawing.Point(27, 143);
+            this.textBoxNazwa_norm.Name = "textBoxNazwa_norm";
+            this.textBoxNazwa_norm.Size = new System.Drawing.Size(366, 20);
+            this.textBoxNazwa_norm.TabIndex = 6;
+            // 
+            // comboBoxRodzaj_norm
+            // 
+            this.comboBoxRodzaj_norm.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxRodzaj_norm.FormattingEnabled = true;
+            this.comboBoxRodzaj_norm.Location = new System.Drawing.Point(27, 89);
+            this.comboBoxRodzaj_norm.Name = "comboBoxRodzaj_norm";
+            this.comboBoxRodzaj_norm.Size = new System.Drawing.Size(366, 21);
+            this.comboBoxRodzaj_norm.TabIndex = 31;
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(28, 191);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(110, 13);
+            this.label52.TabIndex = 15;
+            this.label52.Text = "Wartość jednostkowa";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(28, 238);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(213, 13);
+            this.label53.TabIndex = 19;
+            this.label53.Text = "Normalia dostępne na stanie magazynowym";
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox18.Controls.Add(this.buttonSzukaj_norm);
+            this.groupBox18.Controls.Add(this.textBoxSzukaj_norm);
+            this.groupBox18.Cursor = System.Windows.Forms.Cursors.Default;
+            this.groupBox18.ForeColor = System.Drawing.Color.Red;
+            this.groupBox18.Location = new System.Drawing.Point(330, 13);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(419, 57);
+            this.groupBox18.TabIndex = 57;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "wyszukiwanie normaliów po nazwie";
+            // 
+            // buttonSzukaj_norm
+            // 
+            this.buttonSzukaj_norm.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSzukaj_norm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj_norm.BackgroundImage")));
+            this.buttonSzukaj_norm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSzukaj_norm.Location = new System.Drawing.Point(375, 15);
+            this.buttonSzukaj_norm.Name = "buttonSzukaj_norm";
+            this.buttonSzukaj_norm.Size = new System.Drawing.Size(35, 34);
+            this.buttonSzukaj_norm.TabIndex = 4;
+            this.buttonSzukaj_norm.UseVisualStyleBackColor = false;
+            // 
+            // textBoxSzukaj_norm
+            // 
+            this.textBoxSzukaj_norm.BackColor = System.Drawing.Color.Linen;
+            this.textBoxSzukaj_norm.Location = new System.Drawing.Point(6, 23);
+            this.textBoxSzukaj_norm.Name = "textBoxSzukaj_norm";
+            this.textBoxSzukaj_norm.Size = new System.Drawing.Size(363, 20);
+            this.textBoxSzukaj_norm.TabIndex = 44;
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox19.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox19.Controls.Add(this.listBoxNormalia);
+            this.groupBox19.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.groupBox19.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.groupBox19.Location = new System.Drawing.Point(3, 76);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(321, 615);
+            this.groupBox19.TabIndex = 53;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "Lista Normaliów";
+            // 
+            // listBoxNormalia
+            // 
+            this.listBoxNormalia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBoxNormalia.BackColor = System.Drawing.Color.Linen;
+            this.listBoxNormalia.FormattingEnabled = true;
+            this.listBoxNormalia.Location = new System.Drawing.Point(6, 19);
+            this.listBoxNormalia.Name = "listBoxNormalia";
+            this.listBoxNormalia.Size = new System.Drawing.Size(309, 589);
+            this.listBoxNormalia.TabIndex = 0;
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox20.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox20.Controls.Add(this.buttonNowa_norm);
+            this.groupBox20.Controls.Add(this.buttonUsun_norm);
+            this.groupBox20.Controls.Add(this.buttonZapisz_norm);
+            this.groupBox20.Controls.Add(this.buttonAnuluj_norm);
+            this.groupBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox20.ForeColor = System.Drawing.Color.Red;
+            this.groupBox20.Location = new System.Drawing.Point(755, 635);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(396, 56);
+            this.groupBox20.TabIndex = 54;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "edycja spisu";
+            // 
+            // buttonNowa_norm
+            // 
+            this.buttonNowa_norm.BackColor = System.Drawing.Color.Linen;
+            this.buttonNowa_norm.Location = new System.Drawing.Point(9, 19);
+            this.buttonNowa_norm.Name = "buttonNowa_norm";
+            this.buttonNowa_norm.Size = new System.Drawing.Size(75, 23);
+            this.buttonNowa_norm.TabIndex = 2;
+            this.buttonNowa_norm.Text = "nowa";
+            this.buttonNowa_norm.UseVisualStyleBackColor = false;
+            // 
+            // buttonUsun_norm
+            // 
+            this.buttonUsun_norm.BackColor = System.Drawing.Color.Linen;
+            this.buttonUsun_norm.Location = new System.Drawing.Point(315, 19);
+            this.buttonUsun_norm.Name = "buttonUsun_norm";
+            this.buttonUsun_norm.Size = new System.Drawing.Size(75, 23);
+            this.buttonUsun_norm.TabIndex = 4;
+            this.buttonUsun_norm.Text = "usuń";
+            this.buttonUsun_norm.UseVisualStyleBackColor = false;
+            // 
+            // buttonZapisz_norm
+            // 
+            this.buttonZapisz_norm.BackColor = System.Drawing.Color.Linen;
+            this.buttonZapisz_norm.Location = new System.Drawing.Point(119, 19);
+            this.buttonZapisz_norm.Name = "buttonZapisz_norm";
+            this.buttonZapisz_norm.Size = new System.Drawing.Size(75, 23);
+            this.buttonZapisz_norm.TabIndex = 3;
+            this.buttonZapisz_norm.Text = "zapisz";
+            this.buttonZapisz_norm.UseVisualStyleBackColor = false;
+            // 
+            // buttonAnuluj_norm
+            // 
+            this.buttonAnuluj_norm.BackColor = System.Drawing.Color.Linen;
+            this.buttonAnuluj_norm.Location = new System.Drawing.Point(221, 19);
+            this.buttonAnuluj_norm.Name = "buttonAnuluj_norm";
+            this.buttonAnuluj_norm.Size = new System.Drawing.Size(75, 23);
+            this.buttonAnuluj_norm.TabIndex = 3;
+            this.buttonAnuluj_norm.Text = "anuluj";
+            this.buttonAnuluj_norm.UseVisualStyleBackColor = false;
+            // 
+            // groupBox21
+            // 
+            this.groupBox21.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox21.Controls.Add(this.radioButtonIlosc_norm);
+            this.groupBox21.Controls.Add(this.radioButtonNazwa_norm);
+            this.groupBox21.Controls.Add(this.radioButtonCena_norm);
+            this.groupBox21.Controls.Add(this.radioButtonTyp_norm);
+            this.groupBox21.ForeColor = System.Drawing.Color.Red;
+            this.groupBox21.Location = new System.Drawing.Point(3, 5);
+            this.groupBox21.Name = "groupBox21";
+            this.groupBox21.Size = new System.Drawing.Size(321, 57);
+            this.groupBox21.TabIndex = 56;
+            this.groupBox21.TabStop = false;
+            this.groupBox21.Text = "sortowanie";
+            // 
+            // radioButtonIlosc_norm
+            // 
+            this.radioButtonIlosc_norm.AutoSize = true;
+            this.radioButtonIlosc_norm.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonIlosc_norm.Location = new System.Drawing.Point(175, 27);
+            this.radioButtonIlosc_norm.Name = "radioButtonIlosc_norm";
+            this.radioButtonIlosc_norm.Size = new System.Drawing.Size(93, 17);
+            this.radioButtonIlosc_norm.TabIndex = 5;
+            this.radioButtonIlosc_norm.TabStop = true;
+            this.radioButtonIlosc_norm.Text = "Ilość na stanie";
+            this.radioButtonIlosc_norm.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonNazwa_norm
+            // 
+            this.radioButtonNazwa_norm.AutoSize = true;
+            this.radioButtonNazwa_norm.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonNazwa_norm.Location = new System.Drawing.Point(6, 24);
+            this.radioButtonNazwa_norm.Name = "radioButtonNazwa_norm";
+            this.radioButtonNazwa_norm.Size = new System.Drawing.Size(58, 17);
+            this.radioButtonNazwa_norm.TabIndex = 4;
+            this.radioButtonNazwa_norm.TabStop = true;
+            this.radioButtonNazwa_norm.Text = "Nazwa";
+            this.radioButtonNazwa_norm.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCena_norm
+            // 
+            this.radioButtonCena_norm.AutoSize = true;
+            this.radioButtonCena_norm.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonCena_norm.Location = new System.Drawing.Point(119, 26);
+            this.radioButtonCena_norm.Name = "radioButtonCena_norm";
+            this.radioButtonCena_norm.Size = new System.Drawing.Size(50, 17);
+            this.radioButtonCena_norm.TabIndex = 3;
+            this.radioButtonCena_norm.TabStop = true;
+            this.radioButtonCena_norm.Text = "Cena";
+            this.radioButtonCena_norm.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTyp_norm
+            // 
+            this.radioButtonTyp_norm.AutoSize = true;
+            this.radioButtonTyp_norm.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonTyp_norm.Location = new System.Drawing.Point(70, 25);
+            this.radioButtonTyp_norm.Name = "radioButtonTyp_norm";
+            this.radioButtonTyp_norm.Size = new System.Drawing.Size(43, 17);
+            this.radioButtonTyp_norm.TabIndex = 0;
+            this.radioButtonTyp_norm.TabStop = true;
+            this.radioButtonTyp_norm.Text = "Typ";
+            this.radioButtonTyp_norm.UseVisualStyleBackColor = true;
+            // 
             // Materiały
             // 
             this.Materiały.BackColor = System.Drawing.Color.Bisque;
@@ -402,7 +943,6 @@
             this.groupBox10.TabIndex = 49;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Dostawcy materiałów";
-            this.groupBox10.Enter += new System.EventHandler(this.groupBox10_Enter);
             // 
             // label27
             // 
@@ -516,7 +1056,7 @@
             this.groupBox6.Controls.Add(this.label22);
             this.groupBox6.Controls.Add(this.textBoxTyp_materialu);
             this.groupBox6.Controls.Add(this.label23);
-            this.groupBox6.Controls.Add(this.textBoxNazwa_materiału);
+            this.groupBox6.Controls.Add(this.textBoxNazwa_materialu);
             this.groupBox6.Controls.Add(this.comboBoxRodzaj);
             this.groupBox6.Controls.Add(this.label26);
             this.groupBox6.Controls.Add(this.label30);
@@ -526,7 +1066,6 @@
             this.groupBox6.TabIndex = 52;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Opis materiału";
-            this.groupBox6.Enter += new System.EventHandler(this.groupBox6_Enter);
             // 
             // groupBox13
             // 
@@ -740,13 +1279,13 @@
             this.label23.TabIndex = 7;
             this.label23.Text = "Nazwa Materiału";
             // 
-            // textBoxNazwa_materiału
+            // textBoxNazwa_materialu
             // 
-            this.textBoxNazwa_materiału.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwa_materiału.Location = new System.Drawing.Point(27, 143);
-            this.textBoxNazwa_materiału.Name = "textBoxNazwa_materiału";
-            this.textBoxNazwa_materiału.Size = new System.Drawing.Size(366, 20);
-            this.textBoxNazwa_materiału.TabIndex = 6;
+            this.textBoxNazwa_materialu.BackColor = System.Drawing.Color.Linen;
+            this.textBoxNazwa_materialu.Location = new System.Drawing.Point(27, 143);
+            this.textBoxNazwa_materialu.Name = "textBoxNazwa_materialu";
+            this.textBoxNazwa_materialu.Size = new System.Drawing.Size(366, 20);
+            this.textBoxNazwa_materialu.TabIndex = 6;
             // 
             // comboBoxRodzaj
             // 
@@ -778,8 +1317,8 @@
             // groupBox7
             // 
             this.groupBox7.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox7.Controls.Add(this.buttonSzukaj_material);
-            this.groupBox7.Controls.Add(this.textBoxWyszukaj_material);
+            this.groupBox7.Controls.Add(this.buttonSzukaj_mat);
+            this.groupBox7.Controls.Add(this.textBoxWyszukaj_mat);
             this.groupBox7.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox7.ForeColor = System.Drawing.Color.Red;
             this.groupBox7.Location = new System.Drawing.Point(336, 8);
@@ -788,33 +1327,32 @@
             this.groupBox7.TabIndex = 51;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "wyszukiwanie materiałów po nazwie";
-            this.groupBox7.Enter += new System.EventHandler(this.groupBox7_Enter);
             // 
-            // buttonSzukaj_material
+            // buttonSzukaj_mat
             // 
-            this.buttonSzukaj_material.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonSzukaj_material.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj_material.BackgroundImage")));
-            this.buttonSzukaj_material.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSzukaj_material.Location = new System.Drawing.Point(375, 15);
-            this.buttonSzukaj_material.Name = "buttonSzukaj_material";
-            this.buttonSzukaj_material.Size = new System.Drawing.Size(35, 34);
-            this.buttonSzukaj_material.TabIndex = 4;
-            this.buttonSzukaj_material.UseVisualStyleBackColor = false;
+            this.buttonSzukaj_mat.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSzukaj_mat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj_mat.BackgroundImage")));
+            this.buttonSzukaj_mat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSzukaj_mat.Location = new System.Drawing.Point(375, 15);
+            this.buttonSzukaj_mat.Name = "buttonSzukaj_mat";
+            this.buttonSzukaj_mat.Size = new System.Drawing.Size(35, 34);
+            this.buttonSzukaj_mat.TabIndex = 4;
+            this.buttonSzukaj_mat.UseVisualStyleBackColor = false;
             // 
-            // textBoxWyszukaj_material
+            // textBoxWyszukaj_mat
             // 
-            this.textBoxWyszukaj_material.BackColor = System.Drawing.Color.Linen;
-            this.textBoxWyszukaj_material.Location = new System.Drawing.Point(6, 23);
-            this.textBoxWyszukaj_material.Name = "textBoxWyszukaj_material";
-            this.textBoxWyszukaj_material.Size = new System.Drawing.Size(363, 20);
-            this.textBoxWyszukaj_material.TabIndex = 44;
+            this.textBoxWyszukaj_mat.BackColor = System.Drawing.Color.Linen;
+            this.textBoxWyszukaj_mat.Location = new System.Drawing.Point(6, 23);
+            this.textBoxWyszukaj_mat.Name = "textBoxWyszukaj_mat";
+            this.textBoxWyszukaj_mat.Size = new System.Drawing.Size(363, 20);
+            this.textBoxWyszukaj_mat.TabIndex = 44;
             // 
             // groupBox8
             // 
             this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox8.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox8.Controls.Add(this.listBoxMateriały);
+            this.groupBox8.Controls.Add(this.listBoxMaterialy);
             this.groupBox8.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.groupBox8.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox8.Location = new System.Drawing.Point(9, 71);
@@ -823,27 +1361,26 @@
             this.groupBox8.TabIndex = 47;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Lista Materiałów";
-            this.groupBox8.Enter += new System.EventHandler(this.groupBox8_Enter);
             // 
-            // listBoxMateriały
+            // listBoxMaterialy
             // 
-            this.listBoxMateriały.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listBoxMaterialy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBoxMateriały.BackColor = System.Drawing.Color.Linen;
-            this.listBoxMateriały.FormattingEnabled = true;
-            this.listBoxMateriały.Location = new System.Drawing.Point(6, 19);
-            this.listBoxMateriały.Name = "listBoxMateriały";
-            this.listBoxMateriały.Size = new System.Drawing.Size(309, 589);
-            this.listBoxMateriały.TabIndex = 0;
+            this.listBoxMaterialy.BackColor = System.Drawing.Color.Linen;
+            this.listBoxMaterialy.FormattingEnabled = true;
+            this.listBoxMaterialy.Location = new System.Drawing.Point(6, 19);
+            this.listBoxMaterialy.Name = "listBoxMaterialy";
+            this.listBoxMaterialy.Size = new System.Drawing.Size(309, 589);
+            this.listBoxMaterialy.TabIndex = 0;
             // 
             // groupBox9
             // 
             this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox9.BackColor = System.Drawing.Color.Bisque;
             this.groupBox9.Controls.Add(this.buttonNowa_mat);
-            this.groupBox9.Controls.Add(this.button3);
-            this.groupBox9.Controls.Add(this.button4);
-            this.groupBox9.Controls.Add(this.button5);
+            this.groupBox9.Controls.Add(this.buttonUsun_mat);
+            this.groupBox9.Controls.Add(this.buttonZapisz_mat);
+            this.groupBox9.Controls.Add(this.buttonAnuluj_mat);
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox9.ForeColor = System.Drawing.Color.Red;
             this.groupBox9.Location = new System.Drawing.Point(761, 630);
@@ -852,7 +1389,6 @@
             this.groupBox9.TabIndex = 48;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "edycja spisu";
-            this.groupBox9.Enter += new System.EventHandler(this.groupBox9_Enter);
             // 
             // buttonNowa_mat
             // 
@@ -864,43 +1400,43 @@
             this.buttonNowa_mat.Text = "nowa";
             this.buttonNowa_mat.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // buttonUsun_mat
             // 
-            this.button3.BackColor = System.Drawing.Color.Linen;
-            this.button3.Location = new System.Drawing.Point(315, 19);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "usuń";
-            this.button3.UseVisualStyleBackColor = false;
+            this.buttonUsun_mat.BackColor = System.Drawing.Color.Linen;
+            this.buttonUsun_mat.Location = new System.Drawing.Point(315, 19);
+            this.buttonUsun_mat.Name = "buttonUsun_mat";
+            this.buttonUsun_mat.Size = new System.Drawing.Size(75, 23);
+            this.buttonUsun_mat.TabIndex = 4;
+            this.buttonUsun_mat.Text = "usuń";
+            this.buttonUsun_mat.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // buttonZapisz_mat
             // 
-            this.button4.BackColor = System.Drawing.Color.Linen;
-            this.button4.Location = new System.Drawing.Point(119, 19);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "zapisz";
-            this.button4.UseVisualStyleBackColor = false;
+            this.buttonZapisz_mat.BackColor = System.Drawing.Color.Linen;
+            this.buttonZapisz_mat.Location = new System.Drawing.Point(119, 19);
+            this.buttonZapisz_mat.Name = "buttonZapisz_mat";
+            this.buttonZapisz_mat.Size = new System.Drawing.Size(75, 23);
+            this.buttonZapisz_mat.TabIndex = 3;
+            this.buttonZapisz_mat.Text = "zapisz";
+            this.buttonZapisz_mat.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // buttonAnuluj_mat
             // 
-            this.button5.BackColor = System.Drawing.Color.Linen;
-            this.button5.Location = new System.Drawing.Point(221, 19);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "anuluj";
-            this.button5.UseVisualStyleBackColor = false;
+            this.buttonAnuluj_mat.BackColor = System.Drawing.Color.Linen;
+            this.buttonAnuluj_mat.Location = new System.Drawing.Point(221, 19);
+            this.buttonAnuluj_mat.Name = "buttonAnuluj_mat";
+            this.buttonAnuluj_mat.Size = new System.Drawing.Size(75, 23);
+            this.buttonAnuluj_mat.TabIndex = 3;
+            this.buttonAnuluj_mat.Text = "anuluj";
+            this.buttonAnuluj_mat.UseVisualStyleBackColor = false;
             // 
             // groupBox11
             // 
             this.groupBox11.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox11.Controls.Add(this.radioButtonIlosc_na_stanie);
-            this.groupBox11.Controls.Add(this.radioButtonNazwa_materialu);
-            this.groupBox11.Controls.Add(this.radioButtonCena);
-            this.groupBox11.Controls.Add(this.radioButtonTyp_materialu);
+            this.groupBox11.Controls.Add(this.radioButtonMagazyn_ilosc_mat);
+            this.groupBox11.Controls.Add(this.radioButtonNazwa_mat);
+            this.groupBox11.Controls.Add(this.radioButtonCena_mat);
+            this.groupBox11.Controls.Add(this.radioButtonTyp_mat);
             this.groupBox11.ForeColor = System.Drawing.Color.Red;
             this.groupBox11.Location = new System.Drawing.Point(9, 8);
             this.groupBox11.Name = "groupBox11";
@@ -908,55 +1444,54 @@
             this.groupBox11.TabIndex = 50;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "sortowanie";
-            this.groupBox11.Enter += new System.EventHandler(this.groupBox11_Enter);
             // 
-            // radioButtonIlosc_na_stanie
+            // radioButtonMagazyn_ilosc_mat
             // 
-            this.radioButtonIlosc_na_stanie.AutoSize = true;
-            this.radioButtonIlosc_na_stanie.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonIlosc_na_stanie.Location = new System.Drawing.Point(175, 27);
-            this.radioButtonIlosc_na_stanie.Name = "radioButtonIlosc_na_stanie";
-            this.radioButtonIlosc_na_stanie.Size = new System.Drawing.Size(93, 17);
-            this.radioButtonIlosc_na_stanie.TabIndex = 5;
-            this.radioButtonIlosc_na_stanie.TabStop = true;
-            this.radioButtonIlosc_na_stanie.Text = "Ilość na stanie";
-            this.radioButtonIlosc_na_stanie.UseVisualStyleBackColor = true;
+            this.radioButtonMagazyn_ilosc_mat.AutoSize = true;
+            this.radioButtonMagazyn_ilosc_mat.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonMagazyn_ilosc_mat.Location = new System.Drawing.Point(175, 27);
+            this.radioButtonMagazyn_ilosc_mat.Name = "radioButtonMagazyn_ilosc_mat";
+            this.radioButtonMagazyn_ilosc_mat.Size = new System.Drawing.Size(93, 17);
+            this.radioButtonMagazyn_ilosc_mat.TabIndex = 5;
+            this.radioButtonMagazyn_ilosc_mat.TabStop = true;
+            this.radioButtonMagazyn_ilosc_mat.Text = "Ilość na stanie";
+            this.radioButtonMagazyn_ilosc_mat.UseVisualStyleBackColor = true;
             // 
-            // radioButtonNazwa_materialu
+            // radioButtonNazwa_mat
             // 
-            this.radioButtonNazwa_materialu.AutoSize = true;
-            this.radioButtonNazwa_materialu.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNazwa_materialu.Location = new System.Drawing.Point(6, 24);
-            this.radioButtonNazwa_materialu.Name = "radioButtonNazwa_materialu";
-            this.radioButtonNazwa_materialu.Size = new System.Drawing.Size(58, 17);
-            this.radioButtonNazwa_materialu.TabIndex = 4;
-            this.radioButtonNazwa_materialu.TabStop = true;
-            this.radioButtonNazwa_materialu.Text = "Nazwa";
-            this.radioButtonNazwa_materialu.UseVisualStyleBackColor = true;
+            this.radioButtonNazwa_mat.AutoSize = true;
+            this.radioButtonNazwa_mat.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonNazwa_mat.Location = new System.Drawing.Point(6, 24);
+            this.radioButtonNazwa_mat.Name = "radioButtonNazwa_mat";
+            this.radioButtonNazwa_mat.Size = new System.Drawing.Size(58, 17);
+            this.radioButtonNazwa_mat.TabIndex = 4;
+            this.radioButtonNazwa_mat.TabStop = true;
+            this.radioButtonNazwa_mat.Text = "Nazwa";
+            this.radioButtonNazwa_mat.UseVisualStyleBackColor = true;
             // 
-            // radioButtonCena
+            // radioButtonCena_mat
             // 
-            this.radioButtonCena.AutoSize = true;
-            this.radioButtonCena.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonCena.Location = new System.Drawing.Point(119, 26);
-            this.radioButtonCena.Name = "radioButtonCena";
-            this.radioButtonCena.Size = new System.Drawing.Size(50, 17);
-            this.radioButtonCena.TabIndex = 3;
-            this.radioButtonCena.TabStop = true;
-            this.radioButtonCena.Text = "Cena";
-            this.radioButtonCena.UseVisualStyleBackColor = true;
+            this.radioButtonCena_mat.AutoSize = true;
+            this.radioButtonCena_mat.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonCena_mat.Location = new System.Drawing.Point(119, 26);
+            this.radioButtonCena_mat.Name = "radioButtonCena_mat";
+            this.radioButtonCena_mat.Size = new System.Drawing.Size(50, 17);
+            this.radioButtonCena_mat.TabIndex = 3;
+            this.radioButtonCena_mat.TabStop = true;
+            this.radioButtonCena_mat.Text = "Cena";
+            this.radioButtonCena_mat.UseVisualStyleBackColor = true;
             // 
-            // radioButtonTyp_materialu
+            // radioButtonTyp_mat
             // 
-            this.radioButtonTyp_materialu.AutoSize = true;
-            this.radioButtonTyp_materialu.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonTyp_materialu.Location = new System.Drawing.Point(70, 25);
-            this.radioButtonTyp_materialu.Name = "radioButtonTyp_materialu";
-            this.radioButtonTyp_materialu.Size = new System.Drawing.Size(43, 17);
-            this.radioButtonTyp_materialu.TabIndex = 0;
-            this.radioButtonTyp_materialu.TabStop = true;
-            this.radioButtonTyp_materialu.Text = "Typ";
-            this.radioButtonTyp_materialu.UseVisualStyleBackColor = true;
+            this.radioButtonTyp_mat.AutoSize = true;
+            this.radioButtonTyp_mat.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonTyp_mat.Location = new System.Drawing.Point(70, 25);
+            this.radioButtonTyp_mat.Name = "radioButtonTyp_mat";
+            this.radioButtonTyp_mat.Size = new System.Drawing.Size(43, 17);
+            this.radioButtonTyp_mat.TabIndex = 0;
+            this.radioButtonTyp_mat.TabStop = true;
+            this.radioButtonTyp_mat.Text = "Typ";
+            this.radioButtonTyp_mat.UseVisualStyleBackColor = true;
             // 
             // Maszyny
             // 
@@ -1642,549 +2177,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1191, 820);
             this.tabControl1.TabIndex = 47;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox14.Controls.Add(this.label25);
-            this.groupBox14.Controls.Add(this.richTextBoxDostawca1_norm);
-            this.groupBox14.Controls.Add(this.comboBoxDostawca1_norm);
-            this.groupBox14.Controls.Add(this.label32);
-            this.groupBox14.Controls.Add(this.label34);
-            this.groupBox14.Controls.Add(this.richTextBoxDostawca2_norm);
-            this.groupBox14.Controls.Add(this.label39);
-            this.groupBox14.Controls.Add(this.linkLabelDostawca2_norm);
-            this.groupBox14.Controls.Add(this.comboBoxDostawca2_norm);
-            this.groupBox14.Controls.Add(this.linkLabelDostawca1_norm);
-            this.groupBox14.Location = new System.Drawing.Point(755, 17);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(396, 612);
-            this.groupBox14.TabIndex = 55;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Dostawcy normaliów";
-            this.groupBox14.Enter += new System.EventHandler(this.groupBox14_Enter);
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(15, 92);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(314, 13);
-            this.label25.TabIndex = 44;
-            this.label25.Text = "Dodatkowe informacje dotyczące głównego dostawcy normaliów";
-            this.label25.UseMnemonic = false;
-            // 
-            // richTextBoxDostawca1_norm
-            // 
-            this.richTextBoxDostawca1_norm.BackColor = System.Drawing.Color.Linen;
-            this.richTextBoxDostawca1_norm.Location = new System.Drawing.Point(9, 108);
-            this.richTextBoxDostawca1_norm.Name = "richTextBoxDostawca1_norm";
-            this.richTextBoxDostawca1_norm.Size = new System.Drawing.Size(381, 163);
-            this.richTextBoxDostawca1_norm.TabIndex = 45;
-            this.richTextBoxDostawca1_norm.Text = "";
-            // 
-            // comboBoxDostawca1_norm
-            // 
-            this.comboBoxDostawca1_norm.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxDostawca1_norm.FormattingEnabled = true;
-            this.comboBoxDostawca1_norm.Location = new System.Drawing.Point(6, 43);
-            this.comboBoxDostawca1_norm.Name = "comboBoxDostawca1_norm";
-            this.comboBoxDostawca1_norm.Size = new System.Drawing.Size(380, 21);
-            this.comboBoxDostawca1_norm.TabIndex = 39;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(10, 402);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(338, 13);
-            this.label32.TabIndex = 29;
-            this.label32.Text = "Dodatkowe informacje dotyczące alternatywnego dostawcy normaliów";
-            this.label32.UseMnemonic = false;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(7, 27);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(93, 13);
-            this.label34.TabIndex = 17;
-            this.label34.Text = "Dostawca główny";
-            // 
-            // richTextBoxDostawca2_norm
-            // 
-            this.richTextBoxDostawca2_norm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.richTextBoxDostawca2_norm.BackColor = System.Drawing.Color.Linen;
-            this.richTextBoxDostawca2_norm.Location = new System.Drawing.Point(7, 423);
-            this.richTextBoxDostawca2_norm.Name = "richTextBoxDostawca2_norm";
-            this.richTextBoxDostawca2_norm.Size = new System.Drawing.Size(381, 166);
-            this.richTextBoxDostawca2_norm.TabIndex = 30;
-            this.richTextBoxDostawca2_norm.Text = "";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(15, 330);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(117, 13);
-            this.label39.TabIndex = 40;
-            this.label39.Text = "Dostawca alternatywny";
-            // 
-            // linkLabelDostawca2_norm
-            // 
-            this.linkLabelDostawca2_norm.AutoSize = true;
-            this.linkLabelDostawca2_norm.Location = new System.Drawing.Point(14, 370);
-            this.linkLabelDostawca2_norm.Name = "linkLabelDostawca2_norm";
-            this.linkLabelDostawca2_norm.Size = new System.Drawing.Size(55, 13);
-            this.linkLabelDostawca2_norm.TabIndex = 43;
-            this.linkLabelDostawca2_norm.TabStop = true;
-            this.linkLabelDostawca2_norm.Text = "linkLabel1";
-            // 
-            // comboBoxDostawca2_norm
-            // 
-            this.comboBoxDostawca2_norm.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxDostawca2_norm.FormattingEnabled = true;
-            this.comboBoxDostawca2_norm.Location = new System.Drawing.Point(5, 346);
-            this.comboBoxDostawca2_norm.Name = "comboBoxDostawca2_norm";
-            this.comboBoxDostawca2_norm.Size = new System.Drawing.Size(380, 21);
-            this.comboBoxDostawca2_norm.TabIndex = 41;
-            // 
-            // linkLabelDostawca1_norm
-            // 
-            this.linkLabelDostawca1_norm.AutoSize = true;
-            this.linkLabelDostawca1_norm.Location = new System.Drawing.Point(13, 67);
-            this.linkLabelDostawca1_norm.Name = "linkLabelDostawca1_norm";
-            this.linkLabelDostawca1_norm.Size = new System.Drawing.Size(55, 13);
-            this.linkLabelDostawca1_norm.TabIndex = 42;
-            this.linkLabelDostawca1_norm.TabStop = true;
-            this.linkLabelDostawca1_norm.Text = "linkLabel2";
-            // 
-            // groupBox15
-            // 
-            this.groupBox15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox15.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox15.Controls.Add(this.groupBox17);
-            this.groupBox15.Controls.Add(this.groupBox16);
-            this.groupBox15.Controls.Add(this.label42);
-            this.groupBox15.Controls.Add(this.textBoxStan_min_norm);
-            this.groupBox15.Controls.Add(this.label43);
-            this.groupBox15.Controls.Add(this.comboBoxJednostka_norm);
-            this.groupBox15.Controls.Add(this.label48);
-            this.groupBox15.Controls.Add(this.label49);
-            this.groupBox15.Controls.Add(this.textBoxMagazyn_norm);
-            this.groupBox15.Controls.Add(this.label50);
-            this.groupBox15.Controls.Add(this.textBoxTyp_norm);
-            this.groupBox15.Controls.Add(this.label51);
-            this.groupBox15.Controls.Add(this.textBoxNazwa_norm);
-            this.groupBox15.Controls.Add(this.comboBoxRodzaj_norm);
-            this.groupBox15.Controls.Add(this.label52);
-            this.groupBox15.Controls.Add(this.label53);
-            this.groupBox15.Location = new System.Drawing.Point(330, 76);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(419, 615);
-            this.groupBox15.TabIndex = 58;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Opis normaliów warsztatowych";
-            // 
-            // groupBox16
-            // 
-            this.groupBox16.Controls.Add(this.panel3);
-            this.groupBox16.Location = new System.Drawing.Point(7, 461);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(407, 77);
-            this.groupBox16.TabIndex = 60;
-            this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "Zapotrzebowanie na normalia warsztatowe";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.DarkKhaki;
-            this.panel3.Controls.Add(this.label40);
-            this.panel3.Controls.Add(this.label41);
-            this.panel3.Controls.Add(this.textBoxZapotrzebowanie_norm);
-            this.panel3.Location = new System.Drawing.Point(6, 19);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(395, 52);
-            this.panel3.TabIndex = 55;
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(234, 19);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(110, 13);
-            this.label40.TabIndex = 50;
-            this.label40.Text = "Wartośc jednostkowa";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(15, 4);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(89, 13);
-            this.label41.TabIndex = 54;
-            this.label41.Text = "Zapotrzebowanie";
-            // 
-            // textBoxZapotrzebowanie_norm
-            // 
-            this.textBoxZapotrzebowanie_norm.BackColor = System.Drawing.Color.Linen;
-            this.textBoxZapotrzebowanie_norm.Location = new System.Drawing.Point(16, 20);
-            this.textBoxZapotrzebowanie_norm.Name = "textBoxZapotrzebowanie_norm";
-            this.textBoxZapotrzebowanie_norm.Size = new System.Drawing.Size(200, 20);
-            this.textBoxZapotrzebowanie_norm.TabIndex = 55;
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(229, 317);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(110, 13);
-            this.label42.TabIndex = 59;
-            this.label42.Text = "Wartośc jednostkowa";
-            // 
-            // textBoxStan_min_norm
-            // 
-            this.textBoxStan_min_norm.BackColor = System.Drawing.Color.Linen;
-            this.textBoxStan_min_norm.Location = new System.Drawing.Point(24, 314);
-            this.textBoxStan_min_norm.Name = "textBoxStan_min_norm";
-            this.textBoxStan_min_norm.Size = new System.Drawing.Size(196, 20);
-            this.textBoxStan_min_norm.TabIndex = 58;
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(28, 295);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(127, 13);
-            this.label43.TabIndex = 57;
-            this.label43.Text = "Stan minimalny normaliów";
-            // 
-            // comboBoxJednostka_norm
-            // 
-            this.comboBoxJednostka_norm.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxJednostka_norm.FormattingEnabled = true;
-            this.comboBoxJednostka_norm.Location = new System.Drawing.Point(231, 191);
-            this.comboBoxJednostka_norm.Name = "comboBoxJednostka_norm";
-            this.comboBoxJednostka_norm.Size = new System.Drawing.Size(162, 21);
-            this.comboBoxJednostka_norm.TabIndex = 49;
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(229, 261);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(110, 13);
-            this.label48.TabIndex = 48;
-            this.label48.Text = "Wartośc jednostkowa";
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label49.Location = new System.Drawing.Point(28, 19);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(25, 13);
-            this.label49.TabIndex = 34;
-            this.label49.Text = "Typ";
-            // 
-            // textBoxMagazyn_norm
-            // 
-            this.textBoxMagazyn_norm.BackColor = System.Drawing.Color.Linen;
-            this.textBoxMagazyn_norm.Location = new System.Drawing.Point(23, 254);
-            this.textBoxMagazyn_norm.Name = "textBoxMagazyn_norm";
-            this.textBoxMagazyn_norm.Size = new System.Drawing.Size(200, 20);
-            this.textBoxMagazyn_norm.TabIndex = 38;
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(28, 73);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(40, 13);
-            this.label50.TabIndex = 10;
-            this.label50.Text = "Rodzaj";
-            // 
-            // textBoxTyp_norm
-            // 
-            this.textBoxTyp_norm.BackColor = System.Drawing.Color.Linen;
-            this.textBoxTyp_norm.Location = new System.Drawing.Point(25, 35);
-            this.textBoxTyp_norm.Name = "textBoxTyp_norm";
-            this.textBoxTyp_norm.Size = new System.Drawing.Size(368, 20);
-            this.textBoxTyp_norm.TabIndex = 11;
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(28, 127);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(40, 13);
-            this.label51.TabIndex = 7;
-            this.label51.Text = "Nazwa";
-            // 
-            // textBoxNazwa_norm
-            // 
-            this.textBoxNazwa_norm.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwa_norm.Location = new System.Drawing.Point(27, 143);
-            this.textBoxNazwa_norm.Name = "textBoxNazwa_norm";
-            this.textBoxNazwa_norm.Size = new System.Drawing.Size(366, 20);
-            this.textBoxNazwa_norm.TabIndex = 6;
-            // 
-            // comboBoxRodzaj_norm
-            // 
-            this.comboBoxRodzaj_norm.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxRodzaj_norm.FormattingEnabled = true;
-            this.comboBoxRodzaj_norm.Location = new System.Drawing.Point(27, 89);
-            this.comboBoxRodzaj_norm.Name = "comboBoxRodzaj_norm";
-            this.comboBoxRodzaj_norm.Size = new System.Drawing.Size(366, 21);
-            this.comboBoxRodzaj_norm.TabIndex = 31;
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(28, 191);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(110, 13);
-            this.label52.TabIndex = 15;
-            this.label52.Text = "Wartość jednostkowa";
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(28, 238);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(213, 13);
-            this.label53.TabIndex = 19;
-            this.label53.Text = "Normalia dostępne na stanie magazynowym";
-            // 
-            // groupBox18
-            // 
-            this.groupBox18.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox18.Controls.Add(this.buttonSzukaj_norm);
-            this.groupBox18.Controls.Add(this.textBoxSzukaj_norm);
-            this.groupBox18.Cursor = System.Windows.Forms.Cursors.Default;
-            this.groupBox18.ForeColor = System.Drawing.Color.Red;
-            this.groupBox18.Location = new System.Drawing.Point(330, 13);
-            this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(419, 57);
-            this.groupBox18.TabIndex = 57;
-            this.groupBox18.TabStop = false;
-            this.groupBox18.Text = "wyszukiwanie normaliów po nazwie";
-            // 
-            // buttonSzukaj_norm
-            // 
-            this.buttonSzukaj_norm.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonSzukaj_norm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj_norm.BackgroundImage")));
-            this.buttonSzukaj_norm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSzukaj_norm.Location = new System.Drawing.Point(375, 15);
-            this.buttonSzukaj_norm.Name = "buttonSzukaj_norm";
-            this.buttonSzukaj_norm.Size = new System.Drawing.Size(35, 34);
-            this.buttonSzukaj_norm.TabIndex = 4;
-            this.buttonSzukaj_norm.UseVisualStyleBackColor = false;
-            // 
-            // textBoxSzukaj_norm
-            // 
-            this.textBoxSzukaj_norm.BackColor = System.Drawing.Color.Linen;
-            this.textBoxSzukaj_norm.Location = new System.Drawing.Point(6, 23);
-            this.textBoxSzukaj_norm.Name = "textBoxSzukaj_norm";
-            this.textBoxSzukaj_norm.Size = new System.Drawing.Size(363, 20);
-            this.textBoxSzukaj_norm.TabIndex = 44;
-            // 
-            // groupBox19
-            // 
-            this.groupBox19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox19.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox19.Controls.Add(this.listBoxNormalia);
-            this.groupBox19.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.groupBox19.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.groupBox19.Location = new System.Drawing.Point(3, 76);
-            this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(321, 615);
-            this.groupBox19.TabIndex = 53;
-            this.groupBox19.TabStop = false;
-            this.groupBox19.Text = "Lista Normaliów";
-            // 
-            // listBoxNormalia
-            // 
-            this.listBoxNormalia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBoxNormalia.BackColor = System.Drawing.Color.Linen;
-            this.listBoxNormalia.FormattingEnabled = true;
-            this.listBoxNormalia.Location = new System.Drawing.Point(6, 19);
-            this.listBoxNormalia.Name = "listBoxNormalia";
-            this.listBoxNormalia.Size = new System.Drawing.Size(309, 589);
-            this.listBoxNormalia.TabIndex = 0;
-            // 
-            // groupBox20
-            // 
-            this.groupBox20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox20.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox20.Controls.Add(this.buttonNowa_norm);
-            this.groupBox20.Controls.Add(this.buttonUsun_norm);
-            this.groupBox20.Controls.Add(this.buttonZapisz_norm);
-            this.groupBox20.Controls.Add(this.buttonAnuluj_norm);
-            this.groupBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox20.ForeColor = System.Drawing.Color.Red;
-            this.groupBox20.Location = new System.Drawing.Point(755, 635);
-            this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(396, 56);
-            this.groupBox20.TabIndex = 54;
-            this.groupBox20.TabStop = false;
-            this.groupBox20.Text = "edycja spisu";
-            // 
-            // buttonNowa_norm
-            // 
-            this.buttonNowa_norm.BackColor = System.Drawing.Color.Linen;
-            this.buttonNowa_norm.Location = new System.Drawing.Point(9, 19);
-            this.buttonNowa_norm.Name = "buttonNowa_norm";
-            this.buttonNowa_norm.Size = new System.Drawing.Size(75, 23);
-            this.buttonNowa_norm.TabIndex = 2;
-            this.buttonNowa_norm.Text = "nowa";
-            this.buttonNowa_norm.UseVisualStyleBackColor = false;
-            // 
-            // buttonUsun_norm
-            // 
-            this.buttonUsun_norm.BackColor = System.Drawing.Color.Linen;
-            this.buttonUsun_norm.Location = new System.Drawing.Point(315, 19);
-            this.buttonUsun_norm.Name = "buttonUsun_norm";
-            this.buttonUsun_norm.Size = new System.Drawing.Size(75, 23);
-            this.buttonUsun_norm.TabIndex = 4;
-            this.buttonUsun_norm.Text = "usuń";
-            this.buttonUsun_norm.UseVisualStyleBackColor = false;
-            // 
-            // buttonZapisz_norm
-            // 
-            this.buttonZapisz_norm.BackColor = System.Drawing.Color.Linen;
-            this.buttonZapisz_norm.Location = new System.Drawing.Point(119, 19);
-            this.buttonZapisz_norm.Name = "buttonZapisz_norm";
-            this.buttonZapisz_norm.Size = new System.Drawing.Size(75, 23);
-            this.buttonZapisz_norm.TabIndex = 3;
-            this.buttonZapisz_norm.Text = "zapisz";
-            this.buttonZapisz_norm.UseVisualStyleBackColor = false;
-            // 
-            // buttonAnuluj_norm
-            // 
-            this.buttonAnuluj_norm.BackColor = System.Drawing.Color.Linen;
-            this.buttonAnuluj_norm.Location = new System.Drawing.Point(221, 19);
-            this.buttonAnuluj_norm.Name = "buttonAnuluj_norm";
-            this.buttonAnuluj_norm.Size = new System.Drawing.Size(75, 23);
-            this.buttonAnuluj_norm.TabIndex = 3;
-            this.buttonAnuluj_norm.Text = "anuluj";
-            this.buttonAnuluj_norm.UseVisualStyleBackColor = false;
-            // 
-            // groupBox21
-            // 
-            this.groupBox21.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox21.Controls.Add(this.radioButtonIlosc_norm);
-            this.groupBox21.Controls.Add(this.radioButtonNazwa_norm);
-            this.groupBox21.Controls.Add(this.radioButtonCena_norm);
-            this.groupBox21.Controls.Add(this.radioButtonTyp_norm);
-            this.groupBox21.ForeColor = System.Drawing.Color.Red;
-            this.groupBox21.Location = new System.Drawing.Point(3, 5);
-            this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Size = new System.Drawing.Size(321, 57);
-            this.groupBox21.TabIndex = 56;
-            this.groupBox21.TabStop = false;
-            this.groupBox21.Text = "sortowanie";
-            // 
-            // radioButtonIlosc_norm
-            // 
-            this.radioButtonIlosc_norm.AutoSize = true;
-            this.radioButtonIlosc_norm.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonIlosc_norm.Location = new System.Drawing.Point(175, 27);
-            this.radioButtonIlosc_norm.Name = "radioButtonIlosc_norm";
-            this.radioButtonIlosc_norm.Size = new System.Drawing.Size(93, 17);
-            this.radioButtonIlosc_norm.TabIndex = 5;
-            this.radioButtonIlosc_norm.TabStop = true;
-            this.radioButtonIlosc_norm.Text = "Ilość na stanie";
-            this.radioButtonIlosc_norm.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonNazwa_norm
-            // 
-            this.radioButtonNazwa_norm.AutoSize = true;
-            this.radioButtonNazwa_norm.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNazwa_norm.Location = new System.Drawing.Point(6, 24);
-            this.radioButtonNazwa_norm.Name = "radioButtonNazwa_norm";
-            this.radioButtonNazwa_norm.Size = new System.Drawing.Size(58, 17);
-            this.radioButtonNazwa_norm.TabIndex = 4;
-            this.radioButtonNazwa_norm.TabStop = true;
-            this.radioButtonNazwa_norm.Text = "Nazwa";
-            this.radioButtonNazwa_norm.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonCena_norm
-            // 
-            this.radioButtonCena_norm.AutoSize = true;
-            this.radioButtonCena_norm.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonCena_norm.Location = new System.Drawing.Point(119, 26);
-            this.radioButtonCena_norm.Name = "radioButtonCena_norm";
-            this.radioButtonCena_norm.Size = new System.Drawing.Size(50, 17);
-            this.radioButtonCena_norm.TabIndex = 3;
-            this.radioButtonCena_norm.TabStop = true;
-            this.radioButtonCena_norm.Text = "Cena";
-            this.radioButtonCena_norm.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonTyp_norm
-            // 
-            this.radioButtonTyp_norm.AutoSize = true;
-            this.radioButtonTyp_norm.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonTyp_norm.Location = new System.Drawing.Point(70, 25);
-            this.radioButtonTyp_norm.Name = "radioButtonTyp_norm";
-            this.radioButtonTyp_norm.Size = new System.Drawing.Size(43, 17);
-            this.radioButtonTyp_norm.TabIndex = 0;
-            this.radioButtonTyp_norm.TabStop = true;
-            this.radioButtonTyp_norm.Text = "Typ";
-            this.radioButtonTyp_norm.UseVisualStyleBackColor = true;
-            // 
-            // groupBox17
-            // 
-            this.groupBox17.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox17.Controls.Add(this.panel4);
-            this.groupBox17.Location = new System.Drawing.Point(7, 355);
-            this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(407, 83);
-            this.groupBox17.TabIndex = 61;
-            this.groupBox17.TabStop = false;
-            this.groupBox17.Text = "Rozchód normaliów warsztatowych";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.LightSalmon;
-            this.panel4.Controls.Add(this.label44);
-            this.panel4.Controls.Add(this.textBoxZuzycie_norm);
-            this.panel4.Controls.Add(this.label46);
-            this.panel4.Location = new System.Drawing.Point(6, 19);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(395, 55);
-            this.panel4.TabIndex = 54;
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(234, 30);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(110, 13);
-            this.label44.TabIndex = 50;
-            this.label44.Text = "Wartośc jednostkowa";
-            // 
-            // textBoxZuzycie_norm
-            // 
-            this.textBoxZuzycie_norm.BackColor = System.Drawing.Color.Linen;
-            this.textBoxZuzycie_norm.Location = new System.Drawing.Point(17, 23);
-            this.textBoxZuzycie_norm.Name = "textBoxZuzycie_norm";
-            this.textBoxZuzycie_norm.Size = new System.Drawing.Size(199, 20);
-            this.textBoxZuzycie_norm.TabIndex = 24;
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(15, 7);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(83, 13);
-            this.label46.TabIndex = 23;
-            this.label46.Text = "Bieżące zużycie";
             // 
             // SpisForm
             // 
@@ -2199,11 +2191,28 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SpisForm";
             this.Text = "RemaGUM - spis maszyn";
+            this.Load += new System.EventHandler(this.SpisForm_Load);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.Normalia.ResumeLayout(false);
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
+            this.groupBox17.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.groupBox16.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox18.PerformLayout();
+            this.groupBox19.ResumeLayout(false);
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox21.ResumeLayout(false);
+            this.groupBox21.PerformLayout();
             this.Materiały.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
@@ -2235,22 +2244,6 @@
             this.groupBoxSortowanie.ResumeLayout(false);
             this.groupBoxSortowanie.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
-            this.groupBox16.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.groupBox18.ResumeLayout(false);
-            this.groupBox18.PerformLayout();
-            this.groupBox19.ResumeLayout(false);
-            this.groupBox20.ResumeLayout(false);
-            this.groupBox21.ResumeLayout(false);
-            this.groupBox21.PerformLayout();
-            this.groupBox17.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2341,7 +2334,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox textBoxTyp_materialu;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBoxNazwa_materiału;
+        private System.Windows.Forms.TextBox textBoxNazwa_materialu;
         private System.Windows.Forms.ComboBox comboBoxRodzaj;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.RichTextBox richTextBoxDostawca2;
@@ -2351,19 +2344,19 @@
         private System.Windows.Forms.TextBox textBoxZuzycie;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button buttonSzukaj_material;
-        private System.Windows.Forms.TextBox textBoxWyszukaj_material;
+        private System.Windows.Forms.Button buttonSzukaj_mat;
+        private System.Windows.Forms.TextBox textBoxWyszukaj_mat;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.ListBox listBoxMateriały;
+        private System.Windows.Forms.ListBox listBoxMaterialy;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Button buttonNowa_mat;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buttonUsun_mat;
+        private System.Windows.Forms.Button buttonZapisz_mat;
+        private System.Windows.Forms.Button buttonAnuluj_mat;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.RadioButton radioButtonNazwa_materialu;
-        private System.Windows.Forms.RadioButton radioButtonCena;
-        private System.Windows.Forms.RadioButton radioButtonTyp_materialu;
+        private System.Windows.Forms.RadioButton radioButtonNazwa_mat;
+        private System.Windows.Forms.RadioButton radioButtonCena_mat;
+        private System.Windows.Forms.RadioButton radioButtonTyp_mat;
         private System.Windows.Forms.LinkLabel linkLabelDostawca2;
         private System.Windows.Forms.LinkLabel linkLabelDostawca1;
         private System.Windows.Forms.TextBox textBoxOdpad;
@@ -2385,7 +2378,7 @@
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.RadioButton radioButtonIlosc_na_stanie;
+        private System.Windows.Forms.RadioButton radioButtonMagazyn_ilosc_mat;
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.RichTextBox richTextBoxDostawca1_norm;
