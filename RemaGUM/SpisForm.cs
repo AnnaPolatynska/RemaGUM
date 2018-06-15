@@ -46,7 +46,7 @@ namespace RemaGUM
             _connString += rest.dbConnection(_connString);
 
             //------------------------------------ Zakładka Maszyny
-            //dane formularza
+            //dane formularza Maszyny
             listBoxMaszyny.TabIndex = 0;
             comboBoxKategoria.TabIndex = 1;
             textBoxNazwa.TabIndex = 2;
@@ -64,7 +64,7 @@ namespace RemaGUM
             dateTimePickerData_ost_przegl.TabIndex = 14;
             dateTimePickerData_kol_przegl.TabIndex = 15;
             richTextBoxUwagi.TabIndex = 16;
-            //ankietka
+            //ankietka dot. Maszyn
             comboBoxWykorzystanie.TabIndex = 17;
             comboBoxStan_techniczny.TabIndex = 18;
             comboBoxPropozycja.TabIndex = 19;
@@ -73,18 +73,18 @@ namespace RemaGUM
             buttonZapisz.TabIndex = 21;
             buttonAnuluj.TabIndex = 22;
             buttonUsun.TabIndex = 23;
-            //sortowanie po radio buttonach
+            //sortowanie Maszyn po radio buttonach
             radioButtonTyp.TabIndex = 24;
             radioButtonNr_inwentarzowy.TabIndex = 25;
             radioButtonNr_fabryczny.TabIndex = 26;
             radioButtonNr_pomieszczenia.TabIndex = 27;
             radioButtonNazwa.TabIndex = 28;
             radioButtonData_kol_przegladu.TabIndex = 29;
-            //wyszukiwanie po wpisanej nazwie ???
+            //wyszukiwanie Maszyny po wpisanej nazwie 
             textBoxWyszukiwanie.TabIndex = 30;
             buttonSzukaj.TabIndex = 31;
-            // -------------------------------------- Zakładka materiały
-            //dane formularza
+            // -------------------------------------- Zakładka Materiały
+            //dane formularza Materiały
             listBoxMaterialy.TabIndex = 32;
             textBoxTyp_materialu.TabIndex = 33;
             comboBoxRodzaj.TabIndex = 34;
@@ -95,7 +95,7 @@ namespace RemaGUM
             textBoxOdpad.TabIndex = 39;
             textBoxMin_materialu.TabIndex = 40;
             textBoxZapotrzebowanie.TabIndex = 41;
-            // dane dostawców
+            //dane dostawców Materiałów
             comboBoxDostawca1.TabIndex = 42;
             linkLabelDostawca1.TabIndex = 43;
             richTextBoxDostawca1.TabIndex = 44;
@@ -107,12 +107,12 @@ namespace RemaGUM
             buttonZapisz_mat.TabIndex = 49;
             buttonAnuluj_mat.TabIndex = 50;
             buttonUsun_mat.TabIndex = 51;
-            //sortowanie po radio buttonach
+            //sortowanie Materiału po radio buttonach
             radioButtonNazwa_mat.TabIndex = 52;
             radioButtonTyp_mat.TabIndex = 53;
             radioButtonCena_mat.TabIndex = 54;
             radioButtonMagazyn_ilosc_mat.TabIndex = 55;
-            //wyszukiwanie po wpisanej nazwie
+            //wyszukiwanie Materiału po wpisanej nazwie
             textBoxWyszukaj_mat.TabIndex = 56;
             buttonSzukaj_mat.TabIndex = 57;
 
@@ -135,12 +135,12 @@ namespace RemaGUM
             WypelnijOsoba_zarzadzajaca();
             WypelnijCzestotliwosc();
             WypelnijKategorie();
-            WypelnijDzial();            
+            WypelnijDzial();
             WypelnijPropozycje();
             WypelnijStan_techniczny();
             WypelnijOperator_maszyny();
-           
-           if (listBoxMaszyny.Items.Count > 0)
+
+            if (listBoxMaszyny.Items.Count > 0)
             {
                 listBoxMaszyny.SelectedIndex = 0;
             }
@@ -181,8 +181,42 @@ namespace RemaGUM
             _tt.SetToolTip(buttonSzukaj, "Szukanie w bazie.");
             
         }//public SpisForm()
-               
-        //  //  //  //  //  //  //  wyświetlanie w liście maszyn
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TabControl v = (TabControl)sender;
+            Cursor.Current = Cursors.WaitCursor;
+
+            //zakładka Maszyny
+            if (v.SelectedIndex == 0)
+            {
+                WypelnijMaszynyNazwami();
+                WypelnijOsoba_zarzadzajaca();
+                WypelnijCzestotliwosc();
+                WypelnijKategorie();
+                WypelnijDzial();
+                WypelnijPropozycje();
+                WypelnijStan_techniczny();
+                WypelnijOperator_maszyny();
+            }
+
+            // zakładka Materialy
+            if (v.SelectedIndex == 1)
+            {
+                WypelnijMaterialyNazwami();
+            }
+
+            // zakładka Normalia
+            if (v.SelectedIndex == 2)
+            {
+
+            }
+            Cursor.Current = Cursors.Default;
+        } //tabControl1_SelectedIndexChanged
+
+
+
+        //  //  //  //  //  //  //  -------------------------wyświetlanie w liście maszyn
         //wyświetla listę maszyn po nazwie
         private void WypelnijMaszynyNazwami()
         {
@@ -193,11 +227,26 @@ namespace RemaGUM
             while (!_MaszynyBUS.eof)
             {
                 VO = _MaszynyBUS.VO;
-                listBoxMaszyny.Items.Add(VO.Nazwa+ " - " + _MaszynyBUS.VO.Nr_fabryczny.ToString());
+                listBoxMaszyny.Items.Add(VO.Nazwa + " - " + _MaszynyBUS.VO.Nr_fabryczny.ToString());
                 _MaszynyBUS.skip();
             }
            
         }//wypelnijMaszynyNazwami
+
+        // wyświetla listę Materiałów po nazwie
+        private void WypelnijMaterialyNazwami()
+        {
+            nsAccess2DB.MaterialyVO VO;
+            listBoxMaterialy.Items.Clear();
+            _MaterialyBUS.select();
+
+            while (!_MaterialyBUS.eof)
+            {
+                VO = _MaterialyBUS.VO;
+                listBoxMaterialy.Items.Add(VO.Nazwa_mat + " - " + _MaterialyBUS.VO.Stan_mat + " " + _MaterialyBUS.VO.Jednostka_miar_mat);
+                _MaterialyBUS.skip();
+            }
+        }
 
         //////////////////////////////////////////////////////////////         Rabio buttony
         private void radioButtonNazwa_CheckedChanged(object sender, EventArgs e)
@@ -392,6 +441,37 @@ namespace RemaGUM
             //comboBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.Op_nazwisko + " " + _Operator_maszynyBUS.VO.Op_imie;
 
         }//listBoxMaszyny_SelectedIndexChanged
+
+        /// <summary>
+        /// zmiana indeksu w list box Materialy.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listBoxMaterialy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nsAccess2DB.MaterialyBUS MatVO = new nsAccess2DB.MaterialyBUS(_connString);
+
+            _MaterialyBUS.idx = listBoxMaterialy.SelectedIndex;
+            listBoxMaterialy.Tag = _MaterialyBUS.VO.Identyfikator;
+            textBoxTyp_materialu.Text = _MaterialyBUS.VO.Typ_mat;
+            comboBoxRodzaj.Text = _MaterialyBUS.VO.Rodzaj_mat;
+            textBoxNazwa_materialu.Text = _MaterialyBUS.VO.Nazwa_mat;
+            comboBoxJednostka_mat.Text = _MaterialyBUS.VO.Jednostka_miar_mat;
+            textBoxMagazyn_mat.Text = _MaterialyBUS.VO.Stan_mat.ToString();
+            textBoxZuzycie.Text = _MaterialyBUS.VO.Zuzycie_mat.ToString();
+            textBoxOdpad.Text = _MaterialyBUS.VO.Odpad_mat.ToString();
+            textBoxMin_materialu.Text = _MaterialyBUS.VO.Stan_min_mat.ToString();
+            textBoxZapotrzebowanie.Text = _MaterialyBUS.VO.Zapotrzebowanie_mat.ToString();
+            //dane dostawców Materiałów
+            comboBoxDostawca1.Text = _MaterialyBUS.VO.Dostawca_mat;
+            //TODO         linkLabelDostawca1.Text = _MaterialyBUS.VO.Dostawca_mat;
+            //richTextBoxDostawca1.Text = _MaterialyBUS.VO.Dostawca_mat;
+            comboBoxDostawca2.Text = _MaterialyBUS.VO.Dostawca_mat;
+            //linkLabelDostawca2.;
+            //richTextBoxDostawca2.;
+             
+            
+        } // listBoxMaterialy_SelectedIndexChanged
 
         // // // // // //  // /list boxy z tabeli accessa
 

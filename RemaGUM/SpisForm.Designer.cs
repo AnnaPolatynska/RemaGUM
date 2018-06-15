@@ -208,6 +208,8 @@
             this.radioButtonNr_inwentarzowy = new System.Windows.Forms.RadioButton();
             this.radioButtonTyp = new System.Windows.Forms.RadioButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel_ID_Mat = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.Normalia.SuspendLayout();
@@ -334,7 +336,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelID,
-            this.toolStripStatusLabelIDMat});
+            this.toolStripStatusLabelIDMat,
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel_ID_Mat});
             this.statusStrip1.Location = new System.Drawing.Point(0, 874);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1196, 22);
@@ -344,14 +348,14 @@
             // toolStripStatusLabelID
             // 
             this.toolStripStatusLabelID.Name = "toolStripStatusLabelID";
-            this.toolStripStatusLabelID.Size = new System.Drawing.Size(74, 17);
-            this.toolStripStatusLabelID.Text = "ID materiału:";
+            this.toolStripStatusLabelID.Size = new System.Drawing.Size(70, 17);
+            this.toolStripStatusLabelID.Text = "ID maszyny:";
             // 
             // toolStripStatusLabelIDMat
             // 
             this.toolStripStatusLabelIDMat.Name = "toolStripStatusLabelIDMat";
-            this.toolStripStatusLabelIDMat.Size = new System.Drawing.Size(70, 17);
-            this.toolStripStatusLabelIDMat.Text = "id materiału";
+            this.toolStripStatusLabelIDMat.Size = new System.Drawing.Size(66, 17);
+            this.toolStripStatusLabelIDMat.Text = "id maszyny";
             // 
             // Normalia
             // 
@@ -2177,6 +2181,19 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1191, 820);
             this.tabControl1.TabIndex = 47;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(77, 17);
+            this.toolStripStatusLabel1.Text = "ID materiału: ";
+            // 
+            // toolStripStatusLabel_ID_Mat
+            // 
+            this.toolStripStatusLabel_ID_Mat.Name = "toolStripStatusLabel_ID_Mat";
+            this.toolStripStatusLabel_ID_Mat.Size = new System.Drawing.Size(43, 17);
+            this.toolStripStatusLabel_ID_Mat.Text = "id_mat";
             // 
             // SpisForm
             // 
@@ -2430,6 +2447,8 @@
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox textBoxZuzycie_norm;
         private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_ID_Mat;
     }
 }
 

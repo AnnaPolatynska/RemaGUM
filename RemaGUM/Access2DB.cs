@@ -3286,7 +3286,7 @@ namespace nsAccess2DB
         /// <returns>Tabela Materiałów.</returns>
         public DataTable select()
         {
-            string query = "SELECT * FROM Materialy ORDER BY Nazwa_mat ASC";
+            string query = "SELECT * FROM Materialy;";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
@@ -3315,7 +3315,7 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool insert(nsAccess2DB.MaterialyVO VO)
         {
-            string query = "INSERT INTO Materialy(Nazwa_mat, Typ_mat, Rodzaj_mat, Jednostka_miar_mat, Dostawca_mat, Stan_mat, Zuzycie_mat, Odpad_mat, Stan_min_mat, Zapotrzebowanie_mat, Stan_mag_po_mat) VALUES (@Nazwa_mat, @Typ_mat, @Rodzaj_mat, @Jednostka_miar_mat, @Dostawca_mat, @Stan_mat, @Zuzycie_mat, @Odpad_mat, @Stan_min_mat, @Zapotrzebowanie_mat, @Stan_mag_po_mat);";
+            string query = "INSERT INTO Materialy (Nazwa_mat, Typ_mat, Rodzaj_mat, Jednostka_miar_mat, Dostawca_mat, Stan_mat, Zuzycie_mat, Odpad_mat, Stan_min_mat, Zapotrzebowanie_mat, Stan_mag_po_mat) VALUES (@Nazwa_mat, @Typ_mat, @Rodzaj_mat, @Jednostka_miar_mat, @Dostawca_mat, @Stan_mat, @Zuzycie_mat, @Odpad_mat, @Stan_min_mat, @Zapotrzebowanie_mat, @Stan_mag_po_mat);";
 
             OleDbParameter[] parameters = new OleDbParameter[11];
             parameters[0] = new OleDbParameter("Nazwa_mat", OleDbType.VarChar, 255);
@@ -3333,23 +3333,24 @@ namespace nsAccess2DB
             parameters[4] = new OleDbParameter("Dostawca_mat", OleDbType.VarChar, 255);
             parameters[4].Value = VO.Dostawca_mat;
 
-            parameters[5] = new OleDbParameter("Stan_mat", OleDbType.VarChar, 255);
+            parameters[5] = new OleDbParameter("Stan_mat", OleDbType.Integer);
             parameters[5].Value = VO.Stan_mat;
 
-            parameters[6] = new OleDbParameter("Zuzycie_mat", OleDbType.VarChar, 255);
+            parameters[6] = new OleDbParameter("Zuzycie_mat", OleDbType.Integer);
             parameters[6].Value = VO.Zuzycie_mat;
 
-            parameters[7] = new OleDbParameter("Odpad_mat", OleDbType.VarChar, 255);
+            parameters[7] = new OleDbParameter("Odpad_mat", OleDbType.Integer);
             parameters[7].Value = VO.Odpad_mat;
 
             parameters[8] = new OleDbParameter("Stan_min_mat", OleDbType.Integer);
             parameters[8].Value = VO.Stan_min_mat;
 
-            parameters[9] = new OleDbParameter("Zapotrzebowanie_mat", OleDbType.VarChar, 255);
+            parameters[9] = new OleDbParameter("Zapotrzebowanie_mat", OleDbType.Integer);
             parameters[9].Value = VO.Zapotrzebowanie_mat;
 
-            parameters[10] = new OleDbParameter("Stan_mag_po_mat", OleDbType.VarChar, 255);
+            parameters[10] = new OleDbParameter("Stan_mag_po_mat", OleDbType.Integer);
             parameters[10].Value = VO.Stan_mag_po_mat;
+
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
             return b;
@@ -3380,23 +3381,24 @@ namespace nsAccess2DB
             parameters[4] = new OleDbParameter("Dostawca_mat", OleDbType.VarChar, 255);
             parameters[4].Value = VO.Dostawca_mat;
 
-            parameters[5] = new OleDbParameter("Stan_mat", OleDbType.VarChar, 255);
+            parameters[5] = new OleDbParameter("Stan_mat", OleDbType.Integer);
             parameters[5].Value = VO.Stan_mat;
 
-            parameters[6] = new OleDbParameter("Zuzycie_mat", OleDbType.VarChar, 255);
+            parameters[6] = new OleDbParameter("Zuzycie_mat", OleDbType.Integer);
             parameters[6].Value = VO.Zuzycie_mat;
 
-            parameters[7] = new OleDbParameter("Odpad_mat", OleDbType.VarChar, 255);
+            parameters[7] = new OleDbParameter("Odpad_mat", OleDbType.Integer);
             parameters[7].Value = VO.Odpad_mat;
 
             parameters[8] = new OleDbParameter("Stan_min_mat", OleDbType.Integer);
             parameters[8].Value = VO.Stan_min_mat;
 
-            parameters[9] = new OleDbParameter("Zapotrzebowanie_mat", OleDbType.VarChar, 255);
+            parameters[9] = new OleDbParameter("Zapotrzebowanie_mat", OleDbType.Integer);
             parameters[9].Value = VO.Zapotrzebowanie_mat;
 
-            parameters[10] = new OleDbParameter("Stan_mag_po_mat", OleDbType.VarChar, 255);
+            parameters[10] = new OleDbParameter("Stan_mag_po_mat", OleDbType.Integer);
             parameters[10].Value = VO.Stan_mag_po_mat;
+
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
             return b;
@@ -3431,7 +3433,7 @@ namespace nsAccess2DB
         {
         _DAO = new MaterialyDAO(connString);
         _error = _DAO._error;
-        }// konstruktor MaterailyBUS
+        }// konstruktor MateralyBUS
 
         /// <summary>
         /// Wprowadza rekord do tabeli.
@@ -3446,7 +3448,7 @@ namespace nsAccess2DB
         }//insert
 
         /// <summary>
-        /// Aktualizuje rekord z wyjątkiem ID czynności.
+        /// Aktualizuje rekord z wyjątkiem Identyfikatora czynności.
         /// </summary>
         /// <param name="VO"></param>
         /// <returns>Wartość logiczna powodzenia akcji.</returns>
@@ -3495,7 +3497,7 @@ namespace nsAccess2DB
                 VOi.Zuzycie_mat = int.Parse(dr["Zuzycie_mat"].ToString());
                 VOi.Odpad_mat = int.Parse(dr["Odpad_mat"].ToString());
                 VOi.Stan_min_mat = int.Parse(dr["Stan_min_mat"].ToString());
-                VOi.Zapotrzebowanie_mat = int.Parse(dr["Zapotrzebowanie_mat "].ToString());
+                VOi.Zapotrzebowanie_mat = int.Parse(dr["Zapotrzebowanie_mat"].ToString());
                 VOi.Stan_mag_po_mat = int.Parse(dr["Stan_mag_po_mat"].ToString());
 
                 _VOs[_VOs.Length - 1] = VOi;
@@ -3523,7 +3525,7 @@ namespace nsAccess2DB
         /// <summary>
         /// Wypełnia tablice danych pozycjami.
         /// </summary>
-        /// <param name="Identyfikator">ID maszyny.</param>
+        /// <param name="Identyfikator">Identyfikator Materiału.</param>
         public void select(int Identyfikator)
         {
             fillTable(_DAO.select(Identyfikator));
