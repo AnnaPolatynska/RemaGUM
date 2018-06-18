@@ -3858,9 +3858,217 @@ namespace nsAccess2DB
 
             return -1;
         }//getIdx
-
-
-
     }//class Jednostka_miarBUS
+
+     /////////////////////////////////////////////////////////////////////////// Rodzaj mat
+     /// <summary>
+     /// Klasa wymiany danych z tabelą Rodzaj materiału.
+     /// </summary>
+    public class Rodzaj_matVO
+    {
+          private string _Nazwa_rodzaj_mat; // 255
+
+            /// <summary>
+            /// Konstruktor wymiany danych z tabelą Rodzaj_mat
+            /// </summary>
+        public Rodzaj_matVO() { }
+
+        public string Nazwa_rodzaj_mat
+        {
+            get { return _Nazwa_rodzaj_mat; }
+            set { _Nazwa_rodzaj_mat = value; }
+        }
+    }//class Rodzaj_matVO
+    
+    //Klasa dostępu (Data Access Object) do tabeli Rodzaj_mat.
+    public class Rodzaj_matDAO
+    {
+        private dbConnection _conn;
+        public string _error = string.Empty;
+
+            /// <summary>
+            /// Konstruktor.
+            /// </summary>
+            /// <param name="connString"></param>
+        public Rodzaj_matDAO(string connString)
+        {
+             _conn = new dbConnection(connString);
+             _error = _conn._error;
+        }// Rodzaj_matDAO
+
+        public DataTable select()
+        {
+            string query = "SELECT * from Rodzaj_matDAO;";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }// select
+
+    }// class Rodzaj_matDAO
+        // -------------------------// // // // // // // BUS / // // // // Warstwa operacji biznesowaych tabeli Rodzaj_mat.
+    public class Rodzaj_matBUS
+    {
+        Rodzaj_matDAO _DAO;
+
+        private Rodzaj_matVO[] _VOs = new Rodzaj_matVO[0];    //lista danych
+        private Rodzaj_matVO _VOi = new Rodzaj_matVO();       //dane na pozycji _idx
+        private int _idx = 0;                       //indeks pozycji
+        private bool _eof = false;                  //wskaźnik końca pliku
+        private int _count = 0;                     //liczba pozycji
+
+        public string _error = string.Empty;
+
+            /// <summary>
+            /// Konstruktor.
+            /// </summary>
+            /// <param name="connString">ConnectionString.</param>
+        public Rodzaj_matBUS(string connString)
+        {
+            _DAO = new Rodzaj_matDAO(connString);
+            _error = _DAO._error;
+        }//Rodzaj_matBUS
+
+            /// <summary>
+            /// Wypełnia tablice.
+            /// </summary>
+            /// <param name="dt">Tabela danych.</param>
+            private void fillTable(DataTable dt)
+            {
+                Rodzaj_matVO VOi;
+                _VOs = new Rodzaj_matVO[0];
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    Array.Resize(ref _VOs, _VOs.Length + 1);
+
+                    VOi = new Rodzaj_matVO();
+
+                    VOi.Nazwa_rodzaj_mat = dr["Nazwa_rodzaj_mat"].ToString();
+
+                    _VOs[_VOs.Length - 1] = VOi;
+                }
+
+                _eof = _VOs.Length == 0;
+                _count = _VOs.Length;
+                if (_count > 0)
+                    _idx = 0;
+                else
+                {
+                    _idx = -1;
+                    _eof = true;
+                }
+
+            }//fillTable
+
+            /// <summary>
+            /// Wypełnia tablice danych pozycjami.
+            /// </summary>
+            public void select()
+            {
+                fillTable(_DAO.select());
+            }//select
+
+            /// <summary>
+            /// Przemieszcza indeks w tablicy danych o jedną pozycję.
+            /// </summary>
+            public void skip()
+            {
+                if (_count > 0)
+                {
+                    _idx++;
+                    _eof = _idx >= _count;
+                }
+            }//skip
+
+            /// <summary>
+            /// Przemieszcza indeks w tablicy danych na pozycję pierwszą.
+            /// </summary>
+            public void top()
+            {
+                if (_count > 0)
+                {
+                    _idx = 0;
+                    _eof = false;
+                }
+            }//top
+
+            /// <summary>
+            /// Zmienna logiczna osiągnięcia końca pliku.
+            /// </summary>
+            public bool eof
+            {
+                get { return _eof; }
+            }
+
+            /// <summary>
+            /// Zwraca liczbę pozycji tablicy.
+            /// </summary>
+            public int count
+            {
+                get { return _count; }
+            }
+
+            /// <summary>
+            /// Zwraca daną okrśloną wskaźnikiem pozycji.
+            /// </summary>
+            public Rodzaj_matVO VO
+            {
+                get
+                {
+                    if (_idx > -1 & _idx < _count)
+                    {
+                        return _VOi = _VOs[_idx];
+                    }
+                    return new Rodzaj_matVO();
+                }
+            }//VO
+
+            /// <summary>
+            /// Ustawia wskaźnik pozycji.
+            /// </summary>
+            public int idx
+            {
+                set
+                {
+                    if (value > -1 & value < _count)
+                    {
+                        _idx = value;
+                    }
+                }
+            }//idx
+
+            /// <summary>
+            /// Sprawdza istnienie rekordu.
+            /// </summary>
+            /// <param name="id">Nazwa rodzaju materiału.</param>
+            /// <returns>Wynik logiczny sprawdzenia.</returns>
+            public bool exists(String Nazwa_rodzaj_mat)
+            {
+                foreach (Rodzaj_matVO VOi in _VOs)
+                {
+                    if (VOi.Nazwa_rodzaj_mat == Nazwa_rodzaj_mat) return true;
+                }
+                return false;
+            }//exists
+
+            /// <summary>
+            /// Zwraca indeks pozycji.
+            /// </summary>
+            /// <param name="Nazwa_rodzaj_mat">Identyfikator Nazwa_rodzaj_mat</param>
+            /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora Nazwa_rodzaj_mat.</returns>
+            public int getIdx(string Nazwa_rodzaj_mat)
+            {
+                int idx = -1;
+                foreach (Rodzaj_matVO VOi in _VOs)
+                {
+                    idx++;
+                    if (VOi.Nazwa_rodzaj_mat == Nazwa_rodzaj_mat) return idx;
+                }
+
+                return -1;
+            }//getIdx
+        }//class Nazwa_rodzaj_matBUS
 
 }//namespace nsAccess2DB
