@@ -1376,6 +1376,7 @@
             this.listBoxMaterialy.Name = "listBoxMaterialy";
             this.listBoxMaterialy.Size = new System.Drawing.Size(309, 589);
             this.listBoxMaterialy.TabIndex = 0;
+            this.listBoxMaterialy.SelectedIndexChanged += new System.EventHandler(this.listBoxMaterialy_SelectedIndexChanged);
             // 
             // groupBox9
             // 
@@ -1403,6 +1404,7 @@
             this.buttonNowa_mat.TabIndex = 2;
             this.buttonNowa_mat.Text = "nowa";
             this.buttonNowa_mat.UseVisualStyleBackColor = false;
+            this.buttonNowa_mat.Click += new System.EventHandler(this.ButtonNowa_mat_Click);
             // 
             // buttonUsun_mat
             // 
@@ -1413,6 +1415,7 @@
             this.buttonUsun_mat.TabIndex = 4;
             this.buttonUsun_mat.Text = "usuń";
             this.buttonUsun_mat.UseVisualStyleBackColor = false;
+            this.buttonUsun_mat.Click += new System.EventHandler(this.buttonUsun_mat_Click);
             // 
             // buttonZapisz_mat
             // 
@@ -1433,6 +1436,7 @@
             this.buttonAnuluj_mat.TabIndex = 3;
             this.buttonAnuluj_mat.Text = "anuluj";
             this.buttonAnuluj_mat.UseVisualStyleBackColor = false;
+            this.buttonAnuluj_mat.Click += new System.EventHandler(this.buttonAnuluj_mat_Click);
             // 
             // groupBox11
             // 
