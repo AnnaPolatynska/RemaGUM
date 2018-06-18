@@ -28,8 +28,9 @@ namespace RemaGUM
         private nsAccess2DB.Stan_technicznyBUS _Stan_technicznyBUS;
         private nsAccess2DB.Operator_maszynyBUS _Operator_maszynyBUS;
         private nsAccess2DB.Operator_maszyny_MaszynyBUS _Operator_maszyny_MaszynyBUS;
-
+        
         private nsAccess2DB.MaterialyBUS _MaterialyBUS;
+        private nsAccess2DB.Jednostka_miarBUS _Jednostka_miarBUS;
 
         private ToolTip _tt; //podpowiedzi dla niektórych kontolek
 
@@ -127,6 +128,7 @@ namespace RemaGUM
             _Operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
             _Operator_maszyny_MaszynyBUS = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
             _MaterialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
+            _Jednostka_miarBUS = new nsAccess2DB.Jednostka_miarBUS(_connString);
 
             _MaszynyBUS.select();
             _Operator_maszynyBUS.select();
@@ -139,6 +141,7 @@ namespace RemaGUM
             WypelnijPropozycje();
             WypelnijStan_techniczny();
             WypelnijOperator_maszyny();
+            WypelnijJednostka_miar();
 
             if (listBoxMaszyny.Items.Count > 0)
             {
@@ -204,6 +207,7 @@ namespace RemaGUM
             if (v.SelectedIndex == 1)
             {
                 WypelnijMaterialyNazwami();
+                WypelnijJednostka_miar();
             }
 
             // zakładka Normalia
@@ -642,11 +646,33 @@ namespace RemaGUM
         private void comboBoxStan_techniczny_SelectedIndexChanged(object sender, EventArgs e)
         {
             _Stan_technicznyBUS.idx = comboBoxStan_techniczny.SelectedIndex;
-        }
+        }// comboBoxStan_techniczny_SelectedIndexChanged
+
+        private void WypelnijJednostka_miar()
+        {
+            nsAccess2DB.Jednostka_miarVO VO;
+            comboBoxJednostka_mat.Items.Clear();
+
+            _Jednostka_miarBUS.select();
+            _Jednostka_miarBUS.top();
+            while (!_Jednostka_miarBUS.eof)
+            {
+                VO = _Jednostka_miarBUS.VO;
+                comboBoxJednostka_mat.Items.Add(VO.Nazwa_jednostka_miar);
+                _Jednostka_miarBUS.skip();
+            }
+        }// WypelnijJednostka_miar()
+
+        private void comboBoxJednostka_mat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _Jednostka_miarBUS.idx = comboBoxJednostka_mat.SelectedIndex;
+        }// comboBoxJednostka_mat_SelectedIndexChanged
+
+
 
         ///////////////////////////////////////////////////////////////////// // // // ///  Przyciski
         // --------- --------------------------------------- Formularz Maszyny
-            //przycisk Nowa czyści formularz
+        //przycisk Nowa czyści formularz
         private void ButtonNowa_Click(object sender, EventArgs e)
         {
             toolStripStatusLabelID.Text = string.Empty;

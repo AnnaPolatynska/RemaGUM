@@ -3655,7 +3655,212 @@ namespace nsAccess2DB
             fillTable(_DAO.selectQuery(query));
         }//selectQuery
 
-      
     }// clasa MaterialyBUS
+
+    ////////////////////////////////////////////////////////////////////////////////// Jednostka_miar
+    /// <summary>
+    /// Klasa wymiany danych z tabelą Jednostka_miar
+    /// </summary>
+    public class Jednostka_miarVO
+    {
+        private string _Nazwa_jednostka_miar = string.Empty;
+        /// <summary>
+        /// Konstruktor wymiany danych z tabelą Jednostka_miar
+        /// </summary>
+        public Jednostka_miarVO() { }
+        public string Nazwa_jednostka_miar
+        {
+            get { return _Nazwa_jednostka_miar; }
+            set { _Nazwa_jednostka_miar = value; }
+        }
+    }//class Jednostak_miarVO
+
+    public class Jednostka_miarDAO
+    {
+        private dbConnection _conn;
+        public string _error = string.Empty;
+
+        /// <constructor>
+        /// Konstruktor.
+        /// </constructor>
+        public Jednostka_miarDAO(string connString)
+        {
+            _conn = new dbConnection(connString);
+            _error = _conn._error;
+        }// Jednostka_miarDAO
+        public DataTable select()
+        {
+            string query = "SELECT * FROM Jednostka_miar;";
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select
+
+    }//class Jednostka_miarDAO
+
+    public class Jednostka_miarBUS
+    {
+        Jednostka_miarDAO _DAO;
+
+        private Jednostka_miarVO[] _VOs = new Jednostka_miarVO[0];//lista danych
+        private Jednostka_miarVO _VOi = new Jednostka_miarVO();       //dane na pozycji _idx
+        private int _idx = 0;                       //indeks pozycji
+        private bool _eof = false;                  //wskaźnik końca pliku
+        private int _count = 0;                     //liczba pozycji
+
+        public string _error = string.Empty;
+
+        /// <summary>
+        /// Konstruktor.
+        /// </summary>
+        /// <param name="connString">ConnectionString.</param>
+        public Jednostka_miarBUS(string connString)
+        {
+            _DAO = new Jednostka_miarDAO(connString);
+            _error = _DAO._error;
+        }//KategoriaBUS
+
+        /// <summary>
+        /// Wypełnia tablice.
+        /// </summary>
+        /// <param name="dt">Tabela danych.</param>
+        private void fillTable(DataTable dt)
+        {
+            Jednostka_miarVO VOi;
+            _VOs = new Jednostka_miarVO[0];
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Array.Resize(ref _VOs, _VOs.Length + 1);
+
+                VOi = new Jednostka_miarVO();
+
+                VOi.Nazwa_jednostka_miar = dr["Nazwa_jednostka_miar"].ToString();
+
+                _VOs[_VOs.Length - 1] = VOi;
+            }
+
+            _eof = _VOs.Length == 0;
+            _count = _VOs.Length;
+            if (_count > 0)
+                _idx = 0;
+            else
+            {
+                _idx = -1;
+                _eof = true;
+            }
+        }//fillTable
+        /// <summary>
+        /// Wypełnia tablice danych pozycjami.
+        /// </summary>
+        public void select()
+        {
+            fillTable(_DAO.select());
+        }//select
+
+        /// <summary>
+        /// Przemieszcza indeks w tablicy danych o jedną pozycję.
+        /// </summary>
+        public void skip()
+        {
+            if (_count > 0)
+            {
+                _idx++;
+                _eof = _idx >= _count;
+            }
+        }//skip
+
+        /// <summary>
+        /// Przemieszcza indeks w tablicy danych na pozycję pierwszą.
+        /// </summary>
+        public void top()
+        {
+            if (_count > 0)
+            {
+                _idx = 0;
+                _eof = false;
+            }
+        }//top
+
+        /// <summary>
+        /// Zmienna logiczna osiągnięcia końca pliku.
+        /// </summary>
+        public bool eof
+        {
+            get { return _eof; }
+        }
+
+        /// <summary>
+        /// Zwraca liczbę pozycji tablicy.
+        /// </summary>
+        public int count
+        {
+            get { return _count; }
+        }
+
+        /// <summary>
+        /// Zwraca daną okrśloną wskaźnikiem pozycji.
+        /// </summary>
+        public Jednostka_miarVO VO
+        {
+            get
+            {
+                if (_idx > -1 & _idx < _count)
+                {
+                    return _VOi = _VOs[_idx];
+                }
+                return new Jednostka_miarVO();
+            }
+        }//VO
+
+        /// <summary>
+        /// Ustawia wskaźnik pozycji.
+        /// </summary>
+        public int idx
+        {
+            set
+            {
+                if (value > -1 & value < _count)
+                {
+                    _idx = value;
+                }
+            }
+        }//idx
+
+        /// <summary>
+        /// Sprawdza istnienie rekordu.
+        /// </summary>
+        /// <param name="Id">Nazwa_jednostka_miar.</param>
+        /// <returns>Wynik logiczny sprawdzenia.</returns>
+        public bool exists(String Nazwa_jednostka_miar)
+        {
+            foreach (Jednostka_miarVO VOi in _VOs)
+            {
+                if (VOi.Nazwa_jednostka_miar == Nazwa_jednostka_miar) return true;
+            }
+            return false;
+        }//exists
+
+        /// <summary>
+        /// Zwraca indeks pozycji.
+        /// </summary>
+        /// <param name="Nazwa_jednostka_miar">Identyfikator Jednostka_miar</param>
+        /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora jednostki miar.</returns>
+        public int getIdx(string Nazwa_jednostka_miar)
+        {
+            int idx = -1;
+            foreach (Jednostka_miarVO VOi in _VOs)
+            {
+                idx++;
+                if (VOi.Nazwa_jednostka_miar == Nazwa_jednostka_miar) return idx;
+            }
+
+            return -1;
+        }//getIdx
+
+
+
+    }//class Jednostka_miarBUS
 
 }//namespace nsAccess2DB
