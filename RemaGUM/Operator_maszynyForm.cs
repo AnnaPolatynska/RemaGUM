@@ -204,8 +204,8 @@ namespace RemaGUM
             }
 
         }//listBoxOperator_maszyny_SelectedIndexChanged
+      
 
-        
         /// /////////////////////////////////////////////// /// ///            toolStripButton
         private void toolStripButtonOs_zarzadzajaca_Click(object sender, EventArgs e)
         {

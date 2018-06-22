@@ -3898,7 +3898,7 @@ namespace nsAccess2DB
 
         public DataTable select()
         {
-            string query = "SELECT * from Rodzaj_matDAO;";
+            string query = "SELECT * from Rodzaj_mat;";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);

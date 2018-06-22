@@ -38,9 +38,9 @@
             this.toolStripButtonOdswiez = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelID = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelIDMat = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelID_Maszyny = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel_ID_Mat = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelID_Materialu = new System.Windows.Forms.ToolStripStatusLabel();
             this.Normalia = new System.Windows.Forms.TabPage();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -336,9 +336,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelID,
-            this.toolStripStatusLabelIDMat,
+            this.toolStripStatusLabelID_Maszyny,
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabel_ID_Mat});
+            this.toolStripStatusLabelID_Materialu});
             this.statusStrip1.Location = new System.Drawing.Point(0, 874);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1196, 22);
@@ -351,11 +351,11 @@
             this.toolStripStatusLabelID.Size = new System.Drawing.Size(70, 17);
             this.toolStripStatusLabelID.Text = "ID maszyny:";
             // 
-            // toolStripStatusLabelIDMat
+            // toolStripStatusLabelID_Maszyny
             // 
-            this.toolStripStatusLabelIDMat.Name = "toolStripStatusLabelIDMat";
-            this.toolStripStatusLabelIDMat.Size = new System.Drawing.Size(66, 17);
-            this.toolStripStatusLabelIDMat.Text = "id maszyny";
+            this.toolStripStatusLabelID_Maszyny.Name = "toolStripStatusLabelID_Maszyny";
+            this.toolStripStatusLabelID_Maszyny.Size = new System.Drawing.Size(66, 17);
+            this.toolStripStatusLabelID_Maszyny.Text = "id maszyny";
             // 
             // toolStripStatusLabel1
             // 
@@ -363,11 +363,11 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(77, 17);
             this.toolStripStatusLabel1.Text = "ID materiału: ";
             // 
-            // toolStripStatusLabel_ID_Mat
+            // toolStripStatusLabelID_Materialu
             // 
-            this.toolStripStatusLabel_ID_Mat.Name = "toolStripStatusLabel_ID_Mat";
-            this.toolStripStatusLabel_ID_Mat.Size = new System.Drawing.Size(43, 17);
-            this.toolStripStatusLabel_ID_Mat.Text = "id_mat";
+            this.toolStripStatusLabelID_Materialu.Name = "toolStripStatusLabelID_Materialu";
+            this.toolStripStatusLabelID_Materialu.Size = new System.Drawing.Size(43, 17);
+            this.toolStripStatusLabelID_Materialu.Text = "id_mat";
             // 
             // Normalia
             // 
@@ -1312,6 +1312,7 @@
             this.comboBoxRodzaj.Name = "comboBoxRodzaj";
             this.comboBoxRodzaj.Size = new System.Drawing.Size(366, 21);
             this.comboBoxRodzaj.TabIndex = 31;
+            this.comboBoxRodzaj.SelectedIndexChanged += new System.EventHandler(this.comboBoxRodzaj_SelectedIndexChanged);
             // 
             // label26
             // 
@@ -2276,7 +2277,7 @@
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelIDMat;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID_Maszyny;
         private System.Windows.Forms.ToolStripButton toolStripButtonHelp;
         private System.Windows.Forms.ToolStripButton toolStripButtonOdswiez;
         private System.Windows.Forms.ToolStripButton toolStripButtonOs_zarzadzajaca;
@@ -2453,7 +2454,7 @@
         private System.Windows.Forms.TextBox textBoxZuzycie_norm;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_ID_Mat;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID_Materialu;
     }
 }
 
