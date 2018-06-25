@@ -4069,6 +4069,389 @@ namespace nsAccess2DB
 
                 return -1;
             }//getIdx
-        }//class Nazwa_rodzaj_matBUS
+        }//class Rodzaj_matBUS
+    /// <summary>
+    /// /////////////////////////////////////////////////////tabela Dostawca_Material
+    /// </summary>
+    public class Dostawca_MaterialVO
+    {
+        private int _Identyfikator = 0;
+        private int _ID_material = 0;
+        private int _ID_dostawca_mat = 0;
+        /// <summary>
+        /// Konstruktor wymiany danych z tabelą Dostawca_MaterialVO
+        /// </summary>
+        public Dostawca_MaterialVO() { }
+
+        public int Identyfikator
+        {
+            get { return _Identyfikator; }
+            set { _Identyfikator = value; }
+        }
+        public int ID_material
+        {
+            get { return _ID_material; }
+            set { _ID_material = value; }
+        }
+        public int ID_dostawca_mat
+        {
+            get { return _ID_dostawca_mat; }
+            set { _ID_dostawca_mat = value; }
+        }
+    }//class Dostawca_MaterialVO
+    // // // // // // // // // // // // klasa dostępu (Data Access Object) do tabeli Nazwa_op_maszyny.
+    public class Dostawca_MaterialDAO
+    {
+        private dbConnection _conn;
+        public string _error = string.Empty;
+
+        /// <constructor>
+        /// Konstruktor.
+        /// </constructor>
+        public Dostawca_MaterialDAO(string connString)
+        {
+            _conn = new dbConnection(connString);
+            _error = _conn._error;
+        }//Dostawca_MaterialDAO
+        
+        // -------------------------------------> dowolne zapytanie z poziomu Form
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public DataTable selectQuery(string query)
+        {
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//selectQuery
+         /// <summary>
+         ///  Zwraca tabelę spełniającą wartości parametrów.
+         /// </summary>
+         /// <returns>Tabela Dostawca_Material.</returns>
+        public DataTable select()
+        {
+            string query = "SELECT * FROM Dostawca_Material;";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="ID_material"></param>
+        /// <returns>Tabela Dostawca_Material</returns>
+        public DataTable select(int ID_material)
+        {
+            string query = "SELECT * FROM Dostawca_Material WHERE ID_material = " + ID_material.ToString() +";";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select
+
+        public DataTable select(int ID_material, int ID_dostawca_mat)
+        {
+            string query = "SELECT * FROM Dostawca_Material WHERE ID_material = " + ID_material.ToString() + " AND ID_dostawca_mat = " + ID_dostawca_mat.ToString() + ";";
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select
+
+        /// <summary>
+        /// Wprowadza nowy rekord
+        /// </summary>
+        /// <param name="VO">Obiekt wymiany danych (insert)</param>
+        /// <returns>Wartość logiczna powodzenia operacji</returns>
+        public bool insert(nsAccess2DB.Dostawca_MaterialVO VO)
+        {
+            string query = "INSERT INTO Dostawca_Material (ID_material, ID_dostawca_mat) " +
+                "VALUES (@ID_material, @ID_dostawca_mat)";
+
+            OleDbParameter[] parameters = new OleDbParameter[2];
+            parameters[0] = new OleDbParameter("ID_material", OleDbType.Integer);
+            parameters[0].Value = VO.ID_material;
+
+            parameters[1] = new OleDbParameter("ID_dostawca_mat", OleDbType.Integer);
+            parameters[1].Value = VO.ID_dostawca_mat;
+
+            bool b = _conn.executeInsertQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }// insert
+
+        /// <summary>
+        ///  Aktualizuje rekord z wyjątkiem ID.
+        /// </summary>
+        /// <param name="VO">obiekt wymiany danych</param>
+        /// <returns>Wartość logiczna powodzenia operacji.</returns>
+        public bool update(nsAccess2DB.Dostawca_MaterialVO VO)
+        {
+            string query = "UPDATE Dostawca_Material SET ID_material = @ID_material, ID_dostawca_mat = @ID_dostawca_mat WHERE ID_material = " + VO.ID_material.ToString() + ";";
+            OleDbParameter[] parameters = new OleDbParameter[2];
+            parameters[0] = new OleDbParameter("ID_material", OleDbType.Integer);
+            parameters[0].Value = VO.ID_material;
+
+            parameters[1] = new OleDbParameter("ID_dostawca_mat", OleDbType.Integer);
+            parameters[1].Value = VO.ID_dostawca_mat;
+
+            bool b = _conn.executeInsertQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }// update
+
+        /// <summary>
+        /// usuwa rekord
+        /// </summary>
+        /// <param name="ID_material"></param>
+        /// <returns>Wartośc logiczna powodzenia operacji.</returns>
+        public bool delete(int ID_material)
+        {
+            string query = "DELETE * FROM Dostawca_Material WHERE ID_material = " + ID_material.ToString() + ";";
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            bool b = _conn.executeDeleteQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }// delete
+
+        /// <summary>
+        ///  usuwa rekord
+        /// </summary>
+        /// <param name="ID_material"></param>
+        /// <param name="ID_dostawca_mat"></param>
+        /// <returns>Wartośc logiczna powodzenia operacji.</returns>
+        public bool delete(int ID_material, int ID_dostawca_mat)
+        {
+            string query = "DELETE * FROM Dostawca_Material WHERE ID_material = " + ID_material.ToString() + 
+                " AND ID_dostawca_mat = " + ID_dostawca_mat.ToString() + ";";
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            bool b = _conn.executeDeleteQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }// delete
+    }//class Dostawca_MaterialDAO
+
+    // // // // // // // // Warstwa operacji biznesowych tabeli Dostawca_Material BUS.
+    public class Dostawca_MaterialBUS
+    {
+        Dostawca_MaterialDAO _DAO;
+
+        private Dostawca_MaterialVO[] _VOs = new Dostawca_MaterialVO[0]; // lista danych
+        private Dostawca_MaterialVO _VOi = new Dostawca_MaterialVO(); // dane na pozycji _idx
+        private int _idx = 0;
+        private bool _eof = false;
+        private int _count = 0;
+        public string _error = string.Empty;
+
+        /// <summary>
+        /// Konstruktor.
+        /// </summary>
+        /// <param name="connString"></param>
+        public Dostawca_MaterialBUS(string connString)
+        {
+            _DAO = new Dostawca_MaterialDAO(connString);
+            _error = _DAO._error;
+        } //operator Dostawca_MaterialBUS
+
+        /// <summary>
+        /// Wypełnia tablicę
+        /// </summary>
+        /// <param name="dt">Tabela danych.</param>
+        private void fillTable(DataTable dt)
+        {
+            Dostawca_MaterialVO VOi;
+            _VOs = new Dostawca_MaterialVO[0];
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Array.Resize(ref _VOs, _VOs.Length + 1);
+
+                VOi = new Dostawca_MaterialVO();
+                VOi.ID_dostawca_mat = int.Parse(dr["ID_dostawca_mat"].ToString());
+                VOi.ID_material = int.Parse(dr["ID_material"].ToString());
+                _VOs[_VOs.Length - 1] = VOi;
+            }
+
+            _eof = _VOs.Length == 0;
+            _count = _VOs.Length;
+            if (_count > 0)
+                _idx = 0;
+            else
+            {
+                _idx = -1;
+                _eof = true;
+            }
+        }// fillTable
+
+        public void select()
+        {
+            fillTable(_DAO.select());
+        }// select
+
+        public void select(int ID_material)
+        {
+            fillTable(_DAO.select(ID_material));
+        }// select
+
+        public void select(int ID_material, int ID_dostawca_mat)
+        {
+            fillTable(_DAO.select(ID_material, ID_dostawca_mat));
+        }
+        /// <summary>
+        /// Wypełnia tablicę pozycjami danych -------------------------------------> dowolne zapytanie z poziomu Form
+        /// </summary>
+        /// <param name="query"></param>
+        public void selectQuery(string query)
+        {
+            fillTable(_DAO.selectQuery(query));
+        }// selectQuery
+
+        /// <summary>
+        /// Wprowadza rekord do tabeli.
+        /// </summary>
+        /// <param name="ID_material"></param>
+        /// <param name="ID_dostawca_mat"></param>
+        /// <returns>Wartośc logiczna powodzenia operacji.</returns>
+        public bool insert(int ID_material, int ID_dostawca_mat)
+        {
+            Dostawca_MaterialVO VO = new Dostawca_MaterialVO();
+            VO.ID_dostawca_mat = ID_dostawca_mat;
+            VO.ID_material = ID_material;
+
+            add(VO, ref _VOs);
+            return _DAO.insert(VO);
+        }// insert
+
+        /// <summary>
+        /// Aktualizuje rekord z wyjatkiem numeru protokołu.
+        /// </summary>
+        /// <param name="VO"></param>
+        /// <returns>Wartośc logiczna powodzenia akcji.</returns>
+        private bool update(nsAccess2DB.Dostawca_MaterialVO VO)
+        {
+            bool b = _DAO.update(VO);
+            _error = _DAO._error;
+            return b;
+        }// update
+
+        /// <summary>
+        /// Dodaje pozycje tabeli Dostawca_Material.
+        /// </summary>
+        /// <param name="VO"></param>
+        /// <param name="VOs"></param>
+        private void add(Dostawca_MaterialVO VO, ref Dostawca_MaterialVO[] VOs)
+        {
+            Array.Resize(ref _VOs, _VOs.Length + 1);
+            _VOs[_VOs.Length - 1] = VO;
+        }// add
+
+        /// <summary>
+        /// Usuwa z tabeli pozycję o wskazanych parametrach.
+        /// </summary>
+        /// <param name="ID_material"></param>
+        /// <returns>Wartość logiczna powodzenia akcji.</returns>
+        public bool delete(int ID_material)
+        {
+            return _DAO.delete(ID_material);
+        }// delete
+
+        /// <summary>
+        ///  Usuwa z tabeli pozycję o wskazanych parametrach.
+        /// </summary>
+        /// <param name="ID_material"></param>
+        /// <param name="ID_dostawca_mat"></param>
+        /// <returns>Wartość logiczna powodzenia akcji.</returns>
+        public bool delete(int ID_material, int ID_dostawca_mat)
+        {
+            return _DAO.delete(ID_material);
+        }// delete
+
+        // <summary>
+        /// Przemieszcza indeks w tablicy danych o jedną pozycję.
+        /// </summary>
+        public void skip()
+        {
+            if (_count > 0)
+            {
+                _idx++;
+                _eof = _idx >= _count;
+            }
+        }//skip
+
+        /// <summary>
+        /// Przemieszcza indeks w tablicy danych na pozycję pierwszą.
+        /// </summary>
+        public void top()
+        {
+            if (_count > 0)
+            {
+                _idx = 0;
+                _eof = false;
+            }
+        }//top
+
+        /// <summary>
+        /// Zmienna logiczna osiągnięcia końca pliku.
+        /// </summary>
+        public bool eof
+        {
+            get { return _eof; }
+        }
+
+        /// <summary>
+        /// Zwraca liczbę pozycji tablicy.
+        /// </summary>
+        public int count
+        {
+            get { return _count; }
+        }
+
+        /// <summary>
+        /// Zwraca dane okreslone wskaźnikiem pozycji.
+        /// </summary>
+        public Dostawca_MaterialVO VO
+        {
+            get
+            {
+                if (_idx > -1 & _idx < _count)
+                {
+                    return _VOi = _VOs[_idx];
+                }
+                return new Dostawca_MaterialVO();
+            }
+        }// VO
+
+        /// <summary>
+        /// Ustawia wskaźnik pozycji.
+        /// </summary>
+        public int idx
+        {
+            set
+            {
+                if (value > -1 & value < _count)
+                {
+                    _idx = value;
+                }
+            }
+        }//idx
+
+        public bool exist(int ID_material, int ID_dostawca_mat)
+        {
+            foreach (Dostawca_MaterialVO VOi in _VOs)
+            {
+                if (VOi.ID_material == ID_material & VOi.ID_dostawca_mat == VOi.ID_dostawca_mat)
+                    return true;
+            }
+            return false;
+        }// exist
+    }// class Dostawca_MaterialBUS
+
 
 }//namespace nsAccess2DB

@@ -28,7 +28,6 @@ namespace RemaGUM
         private nsAccess2DB.Stan_technicznyBUS _Stan_technicznyBUS;
         private nsAccess2DB.Operator_maszynyBUS _Operator_maszynyBUS;
         private nsAccess2DB.Operator_maszyny_MaszynyBUS _Operator_maszyny_MaszynyBUS;
-        
         private nsAccess2DB.MaterialyBUS _MaterialyBUS;
         private nsAccess2DB.Jednostka_miarBUS _Jednostka_miarBUS;
         private nsAccess2DB.Rodzaj_matBUS _Rodzaj_matBUS;
@@ -724,7 +723,7 @@ namespace RemaGUM
         //przycisk Nowa czyści formularz
         private void ButtonNowa_Click(object sender, EventArgs e)
         {
-            toolStripStatusLabelID.Text = string.Empty;
+            toolStripStatusLabelID_Maszyny.Text = string.Empty;
 
             comboBoxKategoria.SelectedIndex = -1;
             comboBoxKategoria.Enabled = true;
@@ -895,7 +894,7 @@ namespace RemaGUM
 
             buttonUsun.Enabled = listBoxMaszyny.Items.Count > 0;
 
-            if (toolStripStatusLabelID.Text == string.Empty)
+            if (toolStripStatusLabelID_Maszyny.Text == string.Empty)
             {
                 listBoxMaszyny.SelectedIndex = listBoxMaszyny.Items.Count - 1;
             }
@@ -913,7 +912,7 @@ namespace RemaGUM
         // --------- --------------------------------------- Formularz Materialy
         private void ButtonNowa_mat_Click(object sender, EventArgs e)
         {
-            toolStripStatusLabelID_Maszyny.Text = string.Empty;
+            toolStripStatusLabelID_Materialu.Text = string.Empty;
 
             textBoxTyp_materialu.Text = string.Empty;
 
@@ -1145,10 +1144,7 @@ namespace RemaGUM
         
         }
 
-        private void SpisForm_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }// public partial class SpisForm : Form
        
 }//namespace RemaGUM

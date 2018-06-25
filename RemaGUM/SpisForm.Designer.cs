@@ -2214,7 +2214,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SpisForm";
             this.Text = "RemaGUM - spis maszyn";
-            this.Load += new System.EventHandler(this.SpisForm_Load);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
