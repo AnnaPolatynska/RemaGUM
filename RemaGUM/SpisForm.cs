@@ -31,6 +31,9 @@ namespace RemaGUM
         private nsAccess2DB.MaterialyBUS _MaterialyBUS;
         private nsAccess2DB.Jednostka_miarBUS _Jednostka_miarBUS;
         private nsAccess2DB.Rodzaj_matBUS _Rodzaj_matBUS;
+        private nsAccess2DB.Dostawca_MaterialBUS _Dostawca_MaterialBUS;
+        private nsAccess2DB.Dostawca_matBUS _Dostawca_matBUS;
+
 
         private ToolTip _tt; //podpowiedzi dla niektórych kontolek
 
@@ -150,6 +153,12 @@ namespace RemaGUM
                 listBoxMaszyny.SelectedIndex = 0;
             }
 
+            if (listBoxMaterialy.Items.Count > 0)
+            {
+                listBoxMaterialy.SelectedIndex = 0;
+            }
+
+
             _tt = new ToolTip();
             _tt.SetToolTip(listBoxMaszyny, "Lista maszyn, przyrządów i urządzeń itp.");
             _tt.SetToolTip(comboBoxKategoria, "Kategoria maszyn, przyrządów, urządzeń np. maszyny warsztatowe, lub przyrządy pomiarowe.");
@@ -237,7 +246,7 @@ namespace RemaGUM
                 WypelnijMaterialyNazwami();
                 WypelnijJednostka_miar();
                 WypelnijRodzaj_mat();
-
+                
                 if (listBoxMaterialy.Items.Count > 0)
                 {
                     listBoxMaterialy.SelectedIndex = 0;
@@ -447,9 +456,9 @@ namespace RemaGUM
             nsAccess2DB.Operator_maszyny_MaszynyBUS OMMVO = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
 
             _MaszynyBUS.idx = listBoxMaszyny.SelectedIndex;
-            
+
+            toolStripStatusLabelID_Maszyny.Text = _MaszynyBUS.VO.Identyfikator.ToString(); // toolStripStatusLabelID_Maszyny
             listBoxMaszyny.Tag = _MaszynyBUS.VO.Identyfikator;
-            toolStripStatusLabelID_Maszyny.Text = _MaszynyBUS.VO.Identyfikator.ToString();
             comboBoxKategoria.Text = _MaszynyBUS.VO.Kategoria;
             textBoxNazwa.Text = _MaszynyBUS.VO.Nazwa;
             textBoxTyp.Text = _MaszynyBUS.VO.Typ;
@@ -474,8 +483,8 @@ namespace RemaGUM
             comboBoxPropozycja.Text = _MaszynyBUS.VO.Propozycja;
 
             comboBoxOperator_maszyny.Text = _MaszynyBUS.VO.Nazwa_op_maszyny; // nazwa operatora maszyny z tabeli Maszyny
-            //comboBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.Nazwa_op_maszyny;
-            //comboBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.Op_nazwisko + " " + _Operator_maszynyBUS.VO.Op_imie;
+            comboBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.Nazwa_op_maszyny;
+            comboBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.Op_nazwisko + " " + _Operator_maszynyBUS.VO.Op_imie;
 
         }//listBoxMaszyny_SelectedIndexChanged
 
@@ -486,9 +495,10 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void listBoxMaterialy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            nsAccess2DB.MaterialyBUS MatVO = new nsAccess2DB.MaterialyBUS(_connString);
-
+           
             _MaterialyBUS.idx = listBoxMaterialy.SelectedIndex;
+
+            toolStripStatusLabelID_Materialu.Text = _MaterialyBUS.VO.Identyfikator.ToString(); //  toolStripStatusLabelID_Materialu
             listBoxMaterialy.Tag = _MaterialyBUS.VO.Identyfikator;
             textBoxTyp_materialu.Text = _MaterialyBUS.VO.Typ_mat;
             comboBoxRodzaj.Text = _MaterialyBUS.VO.Rodzaj_mat;
@@ -502,13 +512,16 @@ namespace RemaGUM
             //dane dostawców Materiałów
             comboBoxDostawca1.Text = _MaterialyBUS.VO.Dostawca_mat;
             
-            //TODO         linkLabelDostawca1.Text = _MaterialyBUS.VO.Dostawca_mat;
-            //richTextBoxDostawca1.Text = _MaterialyBUS.VO.Dostawca_mat;
+            //linkLabelDostawca1.Text = _Dostawca_matBUS.VO.Link_dostawca_mat;
+            //richTextBoxDostawca1.Text = _Dostawca_matBUS.VO.Dod_info_dostawca_mat;
+
             comboBoxDostawca2.Text = _MaterialyBUS.VO.Dostawca_mat;
-            //linkLabelDostawca2.;
-            //richTextBoxDostawca2.;
-            toolStripStatusLabelID_Materialu.Text = _MaterialyBUS.VO.Identyfikator.ToString();
-           
+            //linkLabelDostawca2.Text = _Dostawca_matBUS.VO.Link_dostawca_mat;
+            //richTextBoxDostawca2.Text = _Dostawca_matBUS.VO.Dod_info_dostawca_mat;
+
+
+            
+
         } // listBoxMaterialy_SelectedIndexChanged
 
         // // // // // //  // /list boxy z tabeli accessa
