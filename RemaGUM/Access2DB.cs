@@ -2698,15 +2698,15 @@ namespace nsAccess2DB
         /// <param name="ID_maszyny"></param>
         /// <param name="ID_op_maszyny"></param>
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
-        public bool insert(int ID_maszyny, int ID_op_maszyny)
+
+
+
+        public bool insert(nsAccess2DB.Operator_maszyny_MaszynyVO VO)
         {
-            Operator_maszyny_MaszynyVO VO = new Operator_maszyny_MaszynyVO();
-            VO.ID_maszyny = ID_maszyny;
-            VO.ID_op_maszyny = ID_op_maszyny;
+            bool b = _DAO.insert(VO);
+            _error = _DAO._error;
+            return b;
 
-            add(VO, ref _VOs);
-
-            return _DAO.insert(VO);
         }//insert
 
         /// <summary>
@@ -2726,9 +2726,12 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="ID_maszyny"></param>
         /// <returns>Wartość logiczna powodzenia akcji.</returns>
-        public bool delete(int ID_maszyny)
+        public bool delete(nsAccess2DB.Operator_maszyny_MaszynyVO VO)
         {
-            return _DAO.delete(ID_maszyny);
+            bool b = _DAO.delete(VO.ID_maszyny, VO.ID_op_maszyny);
+            _error = _DAO._error;
+            return b;
+
         }// delete
 
         /// <summary>
@@ -2849,11 +2852,11 @@ namespace nsAccess2DB
         /// <param name="ID_maszyny"></param>
         /// <param name="ID_op_maszyny"></param>
         /// <returns>Wartość logiczna istnienia pozycji.</returns>
-        public bool exists(int ID_maszyny)
+        public bool exists(int ID_maszyny, int ID_op_maszyny)  //*****************************************
         {
             foreach (Operator_maszyny_MaszynyVO VOi in _VOs)
             {
-                if (VOi.ID_maszyny == ID_maszyny) return true;
+                if (VOi.ID_maszyny == ID_maszyny & VOi.ID_op_maszyny == ID_op_maszyny) return true; //***********************
             }
             return false;
         }//exists
@@ -2890,7 +2893,7 @@ namespace nsAccess2DB
 
         public bool write(nsAccess2DB.Operator_maszyny_MaszynyVO VO)
         {
-            if (exists(VO.ID_maszyny))
+            if (exists(VO.ID_maszyny, VO.ID_op_maszyny)) //**************************************************************
             {
                 return _DAO.update(VO);
             }

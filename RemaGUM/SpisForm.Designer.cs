@@ -153,7 +153,6 @@
             this.linkLabelNazwaZdjecia = new System.Windows.Forms.LinkLabel();
             this.buttonUsunZdj = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.comboBoxOperator_maszyny = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -210,6 +209,7 @@
             this.radioButtonNr_inwentarzowy = new System.Windows.Forms.RadioButton();
             this.radioButtonTyp = new System.Windows.Forms.RadioButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.checkedListBoxOperator_maszyny = new System.Windows.Forms.CheckedListBox();
             this.toolStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.Normalia.SuspendLayout();
@@ -339,7 +339,7 @@
             this.toolStripStatusLabelID_Maszyny,
             this.toolStripStatusLabel1,
             this.toolStripStatusLabelID_Materialu});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 874);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 916);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1196, 22);
             this.statusStrip1.TabIndex = 42;
@@ -1531,7 +1531,7 @@
             this.Maszyny.Location = new System.Drawing.Point(4, 22);
             this.Maszyny.Name = "Maszyny";
             this.Maszyny.Padding = new System.Windows.Forms.Padding(3);
-            this.Maszyny.Size = new System.Drawing.Size(1183, 794);
+            this.Maszyny.Size = new System.Drawing.Size(1183, 836);
             this.Maszyny.TabIndex = 0;
             this.Maszyny.Text = "Maszyny";
             // 
@@ -1568,7 +1568,7 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox4.Controls.Add(this.comboBoxOperator_maszyny);
+            this.groupBox4.Controls.Add(this.checkedListBoxOperator_maszyny);
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.label3);
@@ -1600,20 +1600,10 @@
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Location = new System.Drawing.Point(333, 69);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(419, 716);
+            this.groupBox4.Size = new System.Drawing.Size(419, 758);
             this.groupBox4.TabIndex = 46;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dane maszyny";
-            // 
-            // comboBoxOperator_maszyny
-            // 
-            this.comboBoxOperator_maszyny.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxOperator_maszyny.FormattingEnabled = true;
-            this.comboBoxOperator_maszyny.Location = new System.Drawing.Point(15, 450);
-            this.comboBoxOperator_maszyny.Name = "comboBoxOperator_maszyny";
-            this.comboBoxOperator_maszyny.Size = new System.Drawing.Size(380, 21);
-            this.comboBoxOperator_maszyny.TabIndex = 41;
-            this.comboBoxOperator_maszyny.SelectedIndexChanged += new System.EventHandler(this.comboBox_Operator_maszyny_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -1628,7 +1618,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(16, 434);
+            this.label17.Location = new System.Drawing.Point(16, 435);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(91, 13);
             this.label17.TabIndex = 40;
@@ -1664,9 +1654,9 @@
             // textBoxNr_pom
             // 
             this.textBoxNr_pom.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_pom.Location = new System.Drawing.Point(15, 508);
+            this.textBoxNr_pom.Location = new System.Drawing.Point(15, 595);
             this.textBoxNr_pom.Name = "textBoxNr_pom";
-            this.textBoxNr_pom.Size = new System.Drawing.Size(380, 20);
+            this.textBoxNr_pom.Size = new System.Drawing.Size(156, 20);
             this.textBoxNr_pom.TabIndex = 38;
             // 
             // label4
@@ -1707,9 +1697,9 @@
             // 
             this.comboBoxDzial.BackColor = System.Drawing.Color.Linen;
             this.comboBoxDzial.FormattingEnabled = true;
-            this.comboBoxDzial.Location = new System.Drawing.Point(15, 556);
+            this.comboBoxDzial.Location = new System.Drawing.Point(206, 595);
             this.comboBoxDzial.Name = "comboBoxDzial";
-            this.comboBoxDzial.Size = new System.Drawing.Size(380, 21);
+            this.comboBoxDzial.Size = new System.Drawing.Size(189, 21);
             this.comboBoxDzial.TabIndex = 33;
             this.comboBoxDzial.SelectedIndexChanged += new System.EventHandler(this.comboBoxDzial_SelectedIndexChanged);
             // 
@@ -1779,9 +1769,9 @@
             this.richTextBoxUwagi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxUwagi.BackColor = System.Drawing.Color.Linen;
-            this.richTextBoxUwagi.Location = new System.Drawing.Point(15, 658);
+            this.richTextBoxUwagi.Location = new System.Drawing.Point(15, 702);
             this.richTextBoxUwagi.Name = "richTextBoxUwagi";
-            this.richTextBoxUwagi.Size = new System.Drawing.Size(380, 44);
+            this.richTextBoxUwagi.Size = new System.Drawing.Size(380, 42);
             this.richTextBoxUwagi.TabIndex = 30;
             this.richTextBoxUwagi.Text = "";
             // 
@@ -1814,7 +1804,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(15, 642);
+            this.label14.Location = new System.Drawing.Point(15, 683);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(37, 13);
             this.label14.TabIndex = 29;
@@ -1823,7 +1813,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(16, 492);
+            this.label9.Location = new System.Drawing.Point(16, 579);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 13);
             this.label9.TabIndex = 19;
@@ -1832,7 +1822,7 @@
             // textBoxNr_prot_BHP
             // 
             this.textBoxNr_prot_BHP.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(15, 611);
+            this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(15, 651);
             this.textBoxNr_prot_BHP.Name = "textBoxNr_prot_BHP";
             this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(380, 20);
             this.textBoxNr_prot_BHP.TabIndex = 24;
@@ -1840,7 +1830,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(15, 540);
+            this.label10.Location = new System.Drawing.Point(203, 579);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(32, 13);
             this.label10.TabIndex = 21;
@@ -1866,7 +1856,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 595);
+            this.label11.Location = new System.Drawing.Point(15, 635);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(109, 13);
             this.label11.TabIndex = 23;
@@ -1923,7 +1913,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox1.Location = new System.Drawing.Point(6, 69);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(321, 716);
+            this.groupBox1.Size = new System.Drawing.Size(321, 758);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lista";
@@ -1936,7 +1926,7 @@
             this.listBoxMaszyny.FormattingEnabled = true;
             this.listBoxMaszyny.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaszyny.Name = "listBoxMaszyny";
-            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 693);
+            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 732);
             this.listBoxMaszyny.TabIndex = 0;
             this.listBoxMaszyny.SelectedIndexChanged += new System.EventHandler(this.listBoxMaszyny_SelectedIndexChanged);
             // 
@@ -1950,7 +1940,7 @@
             this.groupBox2.Controls.Add(this.buttonAnuluj);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox2.ForeColor = System.Drawing.Color.Red;
-            this.groupBox2.Location = new System.Drawing.Point(758, 729);
+            this.groupBox2.Location = new System.Drawing.Point(758, 771);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(419, 56);
             this.groupBox2.TabIndex = 5;
@@ -2012,9 +2002,9 @@
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Location = new System.Drawing.Point(758, 565);
+            this.groupBox3.Location = new System.Drawing.Point(758, 604);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(419, 158);
+            this.groupBox3.Size = new System.Drawing.Size(419, 161);
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Stan techniczny i częstotliwość wykorzystania";
@@ -2197,9 +2187,17 @@
             this.tabControl1.Location = new System.Drawing.Point(5, 51);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1191, 820);
+            this.tabControl1.Size = new System.Drawing.Size(1191, 862);
             this.tabControl1.TabIndex = 47;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            // 
+            // checkedListBoxOperator_maszyny
+            // 
+            this.checkedListBoxOperator_maszyny.FormattingEnabled = true;
+            this.checkedListBoxOperator_maszyny.Location = new System.Drawing.Point(15, 451);
+            this.checkedListBoxOperator_maszyny.Name = "checkedListBoxOperator_maszyny";
+            this.checkedListBoxOperator_maszyny.Size = new System.Drawing.Size(380, 124);
+            this.checkedListBoxOperator_maszyny.TabIndex = 41;
             // 
             // SpisForm
             // 
@@ -2207,7 +2205,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Bisque;
-            this.ClientSize = new System.Drawing.Size(1196, 896);
+            this.ClientSize = new System.Drawing.Size(1196, 938);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip);
@@ -2287,7 +2285,6 @@
         private System.Windows.Forms.TabPage Materiały;
         private System.Windows.Forms.TabPage Maszyny;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ComboBox comboBoxOperator_maszyny;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label3;
@@ -2454,6 +2451,7 @@
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID_Materialu;
+        private System.Windows.Forms.CheckedListBox checkedListBoxOperator_maszyny;
     }
 }
 

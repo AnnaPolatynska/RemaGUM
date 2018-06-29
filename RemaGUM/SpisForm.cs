@@ -34,6 +34,7 @@ namespace RemaGUM
         private nsAccess2DB.Dostawca_MaterialBUS _Dostawca_MaterialBUS;
         private nsAccess2DB.Dostawca_matBUS _Dostawca_matBUS;
 
+        private int[] _operatorTag; // przechowuje identyfikatory osób //********************************************
 
         private ToolTip _tt; //podpowiedzi dla niektórych kontolek
 
@@ -61,7 +62,7 @@ namespace RemaGUM
             textBoxProducent.TabIndex = 7;
             pictureBox1.TabIndex = 8;
             comboBoxOsoba_zarzadzajaca.TabIndex = 9;
-            comboBoxOperator_maszyny.TabIndex = 10;
+            checkedListBoxOperator_maszyny.TabIndex = 10; 
             textBoxNr_pom.TabIndex = 11;
             comboBoxDzial.TabIndex = 12;
             textBoxNr_prot_BHP.TabIndex = 13;
@@ -170,7 +171,7 @@ namespace RemaGUM
             _tt.SetToolTip(textBoxProducent, "Producent maszyny, przyrządu lub urządzenia.");
             _tt.SetToolTip(pictureBox1, "Zdjęcie maszyny, przyrządu lub urządzenia.");
             _tt.SetToolTip(comboBoxOsoba_zarzadzajaca, "Opiekun maszyny.");
-            _tt.SetToolTip(comboBoxOperator_maszyny, "Główna osoba użytkująca maszynę (posiadająca odpowiednie uprawnienia).");
+            _tt.SetToolTip(checkedListBoxOperator_maszyny, "Główna osoba użytkująca maszynę (posiadająca odpowiednie uprawnienia).");
             _tt.SetToolTip(textBoxNr_pom, "Numer pomieszczenia GUM, gdzie znajuje się maszyna, przyrząd lub urządzenie.");
             _tt.SetToolTip(comboBoxDzial, "Nazwa dział  lista maszyn, przyrządów i urządzeń itp.");
             _tt.SetToolTip(textBoxNr_prot_BHP, "Numer nadany w protokole kontroli dostosowania maszyny do minimalnych wymagań w zakresie BHP z dnia 12.06.2006 r.");
@@ -262,9 +263,7 @@ namespace RemaGUM
             Cursor.Current = Cursors.Default;
         } //tabControl1_SelectedIndexChanged
 
-
-
-        //  //  //  //  //  //  //  -------------------------wyświetlanie w liście maszyn
+        //  //  //  //  //  //  //  -------------------------wyświetlanie w zakładce Maszyny.
         //wyświetla listę maszyn po nazwie
         private void WypelnijMaszynyNazwami()
         {
@@ -281,6 +280,25 @@ namespace RemaGUM
            
         }//wypelnijMaszynyNazwami
 
+        //**************************************cały moduł*********************************************
+       private void wypelnijOperatorowMaszyn(CheckedListBox v)
+        {
+            v.Items.Clear();
+            nsAccess2DB.Operator_maszynyBUS operator_MaszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
+
+            _operatorTag = new int[operator_MaszynyBUS.count];
+
+            int idx = 0;
+            while (!operator_MaszynyBUS.eof)
+            {
+                v.Items.Add(operator_MaszynyBUS.VO.Op_nazwisko + " " + operator_MaszynyBUS.VO.Op_imie);
+                _operatorTag[idx] = operator_MaszynyBUS.VO.Identyfikator;
+                idx++;
+                operator_MaszynyBUS.skip();
+            }
+        } // wypelnijOperatorowMaszyn
+        
+        //  //  //  //  //  //  //  -------------------------wyświetlanie w zakładce Materiały.
         // wyświetla listę Materiałów po nazwie
         private void WypelnijMaterialyNazwami()
         {
@@ -291,9 +309,11 @@ namespace RemaGUM
             while (!_MaterialyBUS.eof)
             {
                 VO = _MaterialyBUS.VO;
-                listBoxMaterialy.Items.Add(VO.Nazwa_mat + " - " + _MaterialyBUS.VO.Stan_mat + " " + _MaterialyBUS.VO.Jednostka_miar_mat);
+                listBoxMaterialy.Items.Add(VO.Nazwa_mat + " - " + VO.Stan_mat + " " + VO.Jednostka_miar_mat);
                 _MaterialyBUS.skip();
             }
+
+            
         }
         // Wyswietla listę rodzajów materiałów
       
@@ -451,15 +471,12 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void listBoxMaszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
-            nsAccess2DB.MaszynyBUS MaszynyVO = new nsAccess2DB.MaszynyBUS(_connString);
-            nsAccess2DB.Operator_maszynyBUS Operator_maszynyVO = new nsAccess2DB.Operator_maszynyBUS(_connString);
-            nsAccess2DB.Operator_maszyny_MaszynyBUS OMMVO = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
-
             _MaszynyBUS.idx = listBoxMaszyny.SelectedIndex;
 
             toolStripStatusLabelID_Maszyny.Text = _MaszynyBUS.VO.Identyfikator.ToString(); // toolStripStatusLabelID_Maszyny
             listBoxMaszyny.Tag = _MaszynyBUS.VO.Identyfikator;
             comboBoxKategoria.Text = _MaszynyBUS.VO.Kategoria;
+
             textBoxNazwa.Text = _MaszynyBUS.VO.Nazwa;
             textBoxTyp.Text = _MaszynyBUS.VO.Typ;
             textBoxNr_inwentarzowy.Text = _MaszynyBUS.VO.Nr_inwentarzowy;
@@ -473,19 +490,23 @@ namespace RemaGUM
             textBoxNr_pom.Text = _MaszynyBUS.VO.Nr_pom;
             comboBoxDzial.Text = _MaszynyBUS.VO.Dzial;
             textBoxNr_prot_BHP.Text = _MaszynyBUS.VO.Nr_prot_BHP;
-            
+
             dateTimePickerData_ost_przegl.Value = new DateTime(_MaszynyBUS.VO.Rok_ost_przeg, _MaszynyBUS.VO.Mc_ost_przeg, _MaszynyBUS.VO.Dz_ost_przeg);
             dateTimePickerData_kol_przegl.Value = new DateTime(_MaszynyBUS.VO.Rok_kol_przeg, _MaszynyBUS.VO.Mc_kol_przeg, _MaszynyBUS.VO.Dz_kol_przeg);
-           
+
             richTextBoxUwagi.Text = _MaszynyBUS.VO.Uwagi;
             comboBoxWykorzystanie.Text = _MaszynyBUS.VO.Wykorzystanie;
             comboBoxStan_techniczny.Text = _MaszynyBUS.VO.Stan_techniczny;
             comboBoxPropozycja.Text = _MaszynyBUS.VO.Propozycja;
 
-            comboBoxOperator_maszyny.Text = _MaszynyBUS.VO.Nazwa_op_maszyny; // nazwa operatora maszyny z tabeli Maszyny
-            comboBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.Nazwa_op_maszyny;
-            comboBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.Op_nazwisko + " " + _Operator_maszynyBUS.VO.Op_imie;
-
+            // wypełnia operatorów maszyny w polu checkedListBoxOperator_maszyny.   // ***************moduł CheckedListBoxOperator_maszyny******************************************
+            checkedListBoxOperator_maszyny.Items.Clear();
+            while (!_Operator_maszynyBUS.eof)
+            {
+                checkedListBoxOperator_maszyny.Items.Add(_Operator_maszynyBUS.VO.Op_nazwisko + " " + _Operator_maszynyBUS.VO.Op_imie, _Operator_maszyny_MaszynyBUS.exists(_Operator_maszynyBUS.VO.Identyfikator, (int)listBoxMaszyny.Tag));
+                _Operator_maszynyBUS.skip();
+            }
+            
         }//listBoxMaszyny_SelectedIndexChanged
 
         /// <summary>
@@ -512,15 +533,17 @@ namespace RemaGUM
             //dane dostawców Materiałów
             comboBoxDostawca1.Text = _MaterialyBUS.VO.Dostawca_mat;
             
+            //TODO zrobić kwerendę z dostawcami i ją uruchomić
             //linkLabelDostawca1.Text = _Dostawca_matBUS.VO.Link_dostawca_mat;
             //richTextBoxDostawca1.Text = _Dostawca_matBUS.VO.Dod_info_dostawca_mat;
 
             comboBoxDostawca2.Text = _MaterialyBUS.VO.Dostawca_mat;
+            //TODO zrobić kwerendę z dostawcami i ją uruchomić
             //linkLabelDostawca2.Text = _Dostawca_matBUS.VO.Link_dostawca_mat;
             //richTextBoxDostawca2.Text = _Dostawca_matBUS.VO.Dod_info_dostawca_mat;
 
 
-            
+
 
         } // listBoxMaterialy_SelectedIndexChanged
 
@@ -572,28 +595,22 @@ namespace RemaGUM
         }// comboBox_Osoba_zarzadzajaca_SelectedIndexChanged
 
 
-        // wypełnienia dane słownikowe w comboBoxOperator_maszyny z tabeli Operator_maszyny nazwiskiem i imieniem operatora
+        // wypełnienia dane słownikowe w checkedListBoxOperator_maszyny z tabeli Operator_maszyny nazwiskiem i imieniem operatora
         private void WypelnijOperator_maszyny()
         {
             nsAccess2DB.Operator_maszynyVO VO;
-            //nsAccess2DB.Operator_maszyny_MaszynyVO operator_maszyny_MaszynyVO;
-            comboBoxOperator_maszyny.Items.Clear();
+           
+            checkedListBoxOperator_maszyny.Items.Clear(); 
 
             _Operator_maszynyBUS.select();
             _Operator_maszynyBUS.top();
             while (!_Operator_maszynyBUS.eof)
             {
                 VO = _Operator_maszynyBUS.VO;
-                comboBoxOperator_maszyny.Items.Add(VO.Op_nazwisko + " " + VO.Op_imie); // dane słownikowe nazwisko + imię
+                checkedListBoxOperator_maszyny.Items.Add(VO.Op_nazwisko + " " + VO.Op_imie); // dane słownikowe nazwisko + imię  ********************************
                 _Operator_maszynyBUS.skip();
             }
         }// WypelnijOperator_maszyny()
-
-        private void comboBox_Operator_maszyny_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _Operator_maszynyBUS.idx = comboBoxOperator_maszyny.SelectedIndex;
-        }// comboBox_Operator_maszyny_SelectedIndexChanged
-
 
         /// <summary>
         /// wypełnia listbox Działami w których znajdują się maszyny
@@ -783,13 +800,15 @@ namespace RemaGUM
             comboBoxPropozycja.SelectedIndex = 0;
             comboBoxPropozycja.Refresh();
 
-            comboBoxOperator_maszyny.SelectedIndex = -1;
-            comboBoxOperator_maszyny.Enabled = true;
-            comboBoxOperator_maszyny.SelectedIndex = 0;
-            comboBoxOperator_maszyny.Refresh();
+            wypelnijOperatorowMaszyn(checkedListBoxOperator_maszyny); //************************************
+           
+            for (int i = 0; i < checkedListBoxOperator_maszyny.Items.Count; i++)
+            {
+                checkedListBoxOperator_maszyny.SetItemCheckState(i, CheckState.Unchecked);
+            }
             
-            buttonAnuluj.Enabled = true;
             WypelnijMaszynyNazwami();
+
         }//ButtonNowa_Click
                
         private void buttonAnuluj_Click(object sender, EventArgs e)
@@ -814,8 +833,22 @@ namespace RemaGUM
             comboBoxWykorzystanie.Text = string.Empty;
             comboBoxStan_techniczny.Text = string.Empty;
             comboBoxPropozycja.Text = string.Empty;
-            comboBoxOperator_maszyny.Text = string.Empty;
+            /*
+            //*********************************************
+            checkedListBoxOperator_maszyny.Enabled = true; // nieaktywne pole checkedListBoxOperator_maszyny
+            nsAccess2DB.Operator_maszyny_MaszynyBUS operator_Maszyny_MaszynyBUS = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
+            operator_Maszyny_MaszynyBUS.select((int)listBoxMaszyny.Tag);
 
+            nsAccess2DB.Operator_maszynyBUS operator_MaszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
+            
+            checkedListBoxOperator_maszyny.Items.Clear();
+            while (!operator_MaszynyBUS.eof)
+            {
+                checkedListBoxOperator_maszyny.Items.Add(operator_MaszynyBUS.VO.Op_nazwisko + " " + operator_MaszynyBUS.VO.Op_imie, operator_Maszyny_MaszynyBUS.exists((int)listBoxMaszyny.Tag, operator_MaszynyBUS.VO.Identyfikator));
+                operator_MaszynyBUS.skip();
+            }
+            //**************************************
+            */
             WypelnijMaszynyNazwami();
             listBoxMaszyny.SelectedIndex = idx;
         }//buttonAnuluj_Click
@@ -842,7 +875,8 @@ namespace RemaGUM
             comboBoxWykorzystanie.Text = string.Empty;
             comboBoxStan_techniczny.Text = string.Empty;
             comboBoxPropozycja.Text = string.Empty;
-            comboBoxOperator_maszyny.Text = string.Empty;
+
+            checkedListBoxOperator_maszyny.Items.Clear(); /////***********************************************
             
             WypelnijMaszynyNazwami();
         }//buttonUsun_Click
@@ -861,49 +895,76 @@ namespace RemaGUM
             }
 
             buttonNowa.Enabled = true;
-                     
-            nsAccess2DB.MaszynyVO M_VO = new nsAccess2DB.MaszynyVO();
-            nsAccess2DB.Operator_maszynyVO Op_VO = new nsAccess2DB.Operator_maszynyVO();
-            nsAccess2DB.Operator_maszyny_MaszynyVO OMM_VO = new nsAccess2DB.Operator_maszyny_MaszynyVO();
+            
+             //*****************************************************
+            nsAccess2DB.Operator_maszynyVO operator_MaszynyVO = new nsAccess2DB.Operator_maszynyVO();
+            nsAccess2DB.MaszynyVO maszynyVO = new nsAccess2DB.MaszynyVO();
+            nsAccess2DB.Operator_maszyny_MaszynyVO operator_maszyny_MaszynyVO; //= new nsAccess2DB.Operator_maszyny_MaszynyVO();
 
-            M_VO.Kategoria = comboBoxKategoria.Text;
-            M_VO.Nazwa = textBoxNazwa.Text.Trim();
-            M_VO.Typ = textBoxTyp.Text.Trim();
-            M_VO.Nr_inwentarzowy = textBoxNr_inwentarzowy.Text.Trim();
-            M_VO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
-            M_VO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
-            M_VO.Producent = textBoxProducent.Text.Trim();
-            M_VO.Zdjecie = pictureBox1.Text;  /////                ???????????????? obrazek
-            M_VO.Nazwa_os_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
-            M_VO.Nr_pom = textBoxNr_pom.Text;
-            M_VO.Dzial = comboBoxDzial.Text;
-            M_VO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
-            M_VO.Rok_ost_przeg = dateTimePickerData_ost_przegl.Value.Year;
-            M_VO.Mc_ost_przeg = dateTimePickerData_ost_przegl.Value.Month;
-            M_VO.Dz_ost_przeg = dateTimePickerData_ost_przegl.Value.Day;
-            M_VO.Data_ost_przegl = int.Parse(M_VO.Rok_ost_przeg.ToString() + M_VO.Mc_ost_przeg.ToString("00") + M_VO.Dz_ost_przeg.ToString("00"));
+            maszynyVO.Kategoria = comboBoxKategoria.Text;
+            maszynyVO.Nazwa = textBoxNazwa.Text.Trim();
+            maszynyVO.Typ = textBoxTyp.Text.Trim();
+            maszynyVO.Nr_inwentarzowy = textBoxNr_inwentarzowy.Text.Trim();
+            maszynyVO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
+            maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
+            maszynyVO.Producent = textBoxProducent.Text.Trim();
+            maszynyVO.Zdjecie = pictureBox1.Text;  /////                ???????????????? obrazek
+            maszynyVO.Nazwa_os_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
+            maszynyVO.Nr_pom = textBoxNr_pom.Text;
+            maszynyVO.Dzial = comboBoxDzial.Text;
+            maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
+            maszynyVO.Rok_ost_przeg = dateTimePickerData_ost_przegl.Value.Year;
+            maszynyVO.Mc_ost_przeg = dateTimePickerData_ost_przegl.Value.Month;
+            maszynyVO.Dz_ost_przeg = dateTimePickerData_ost_przegl.Value.Day;
+            maszynyVO.Data_ost_przegl = int.Parse(maszynyVO.Rok_ost_przeg.ToString() + maszynyVO.Mc_ost_przeg.ToString("00") + maszynyVO.Dz_ost_przeg.ToString("00"));
 
             DateTime dt = new DateTime(dateTimePickerData_ost_przegl.Value.Ticks); // dodaje interwał przeglądów do data_ost_przegl
             dt = dt.AddYears(_interwalPrzegladow);
 
-            M_VO.Rok_kol_przeg = dt.Year;
-            M_VO.Mc_kol_przeg = dt.Month;
-            M_VO.Dz_kol_przeg = dt.Day;
-            M_VO.Data_kol_przegl = int.Parse(dt.Year.ToString() + dt.Month.ToString("00") + dt.Day.ToString("00"));
-            M_VO.Uwagi = richTextBoxUwagi.Text.Trim();
-            M_VO.Wykorzystanie = comboBoxWykorzystanie.Text;
-            M_VO.Stan_techniczny = comboBoxStan_techniczny.Text;
-            M_VO.Propozycja = comboBoxPropozycja.Text;
-
-            M_VO.Nazwa_op_maszyny = comboBoxOperator_maszyny.Text.Trim();
-           // Op_VO.Nazwa_op_maszyny = comboBoxOperator_maszyny.Text;
-
-            if (toolStripStatusLabelID_Maszyny.Text == string.Empty) //nowa pozycja w tabeli maszyn
+            maszynyVO.Rok_kol_przeg = dt.Year;
+            maszynyVO.Mc_kol_przeg = dt.Month;
+            maszynyVO.Dz_kol_przeg = dt.Day;
+            maszynyVO.Data_kol_przegl = int.Parse(dt.Year.ToString() + dt.Month.ToString("00") + dt.Day.ToString("00"));
+            maszynyVO.Uwagi = richTextBoxUwagi.Text.Trim();
+            maszynyVO.Wykorzystanie = comboBoxWykorzystanie.Text;
+            maszynyVO.Stan_techniczny = comboBoxStan_techniczny.Text;
+            maszynyVO.Propozycja = comboBoxPropozycja.Text;
+            
+            // Zapis operatorów/operatora maszyny przypisanych do maszyny.
+            int idx = 0;
+            while (!_Operator_maszynyBUS.eof)
             {
-                M_VO.Identyfikator = -1;
+                operator_maszyny_MaszynyVO = new nsAccess2DB.Operator_maszyny_MaszynyVO();
+                operator_maszyny_MaszynyVO.ID_op_maszyny = _Operator_maszynyBUS.VO.Identyfikator;
+                operator_maszyny_MaszynyVO.ID_maszyny = (int)listBoxMaszyny.Tag;
+
+                if (checkedListBoxOperator_maszyny.GetItemChecked(idx))
+                {
+                    if (!_Operator_maszyny_MaszynyBUS.exists(operator_maszyny_MaszynyVO.ID_op_maszyny, operator_maszyny_MaszynyVO.ID_maszyny))
+                    {
+                        _Operator_maszyny_MaszynyBUS.insert(operator_maszyny_MaszynyVO);
+                    }
+                }
+                else
+                {
+                    if(_Operator_maszyny_MaszynyBUS.exists(operator_maszyny_MaszynyVO.ID_op_maszyny, operator_maszyny_MaszynyVO.ID_maszyny))
+                    {
+                        _Operator_maszyny_MaszynyBUS.delete(operator_maszyny_MaszynyVO);
+                    }
+                }
+                _Operator_maszynyBUS.skip();
+                idx++;
+            }
+
+
+
+            //Dopisanie nowej pozycji w tabeli maszyn.
+            if (toolStripStatusLabelID_Maszyny.Text == string.Empty) 
+            {
+                _MaszynyBUS.VO.Identyfikator = -1;
             }
             else
-                M_VO.Identyfikator = int.Parse(toolStripStatusLabelID_Maszyny.Text);
+                _MaszynyBUS.VO.Identyfikator = int.Parse(toolStripStatusLabelID_Maszyny.Text);
 
             buttonUsun.Enabled = listBoxMaszyny.Items.Count > 0;
 
@@ -913,10 +974,10 @@ namespace RemaGUM
             }
             else
             {
-                listBoxMaszyny.SelectedIndex = _MaszynyBUS.getIdx(M_VO.Identyfikator);
+                listBoxMaszyny.SelectedIndex = _MaszynyBUS.getIdx(_MaszynyBUS.VO.Identyfikator);
             }
-     
-             _MaszynyBUS.write(M_VO);
+    
+             //_MaszynyBUS.write(maszynyBUS.VO);
       
             MessageBox.Show("Pozycja zapisana w bazie", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
             WypelnijMaszynyNazwami();
