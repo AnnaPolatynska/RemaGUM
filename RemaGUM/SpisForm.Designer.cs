@@ -153,6 +153,7 @@
             this.linkLabelNazwaZdjecia = new System.Windows.Forms.LinkLabel();
             this.buttonUsunZdj = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.checkedListBoxOperator_maszyny = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -209,7 +210,6 @@
             this.radioButtonNr_inwentarzowy = new System.Windows.Forms.RadioButton();
             this.radioButtonTyp = new System.Windows.Forms.RadioButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.checkedListBoxOperator_maszyny = new System.Windows.Forms.CheckedListBox();
             this.toolStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.Normalia.SuspendLayout();
@@ -379,7 +379,7 @@
             this.Normalia.Controls.Add(this.groupBox21);
             this.Normalia.Location = new System.Drawing.Point(4, 22);
             this.Normalia.Name = "Normalia";
-            this.Normalia.Size = new System.Drawing.Size(1183, 794);
+            this.Normalia.Size = new System.Drawing.Size(1183, 836);
             this.Normalia.TabIndex = 2;
             this.Normalia.Text = "Normalia";
             this.Normalia.UseVisualStyleBackColor = true;
@@ -937,7 +937,7 @@
             this.Materiały.Location = new System.Drawing.Point(4, 22);
             this.Materiały.Name = "Materiały";
             this.Materiały.Padding = new System.Windows.Forms.Padding(3);
-            this.Materiały.Size = new System.Drawing.Size(1183, 794);
+            this.Materiały.Size = new System.Drawing.Size(1183, 836);
             this.Materiały.TabIndex = 1;
             this.Materiały.Text = "Materiały";
             // 
@@ -1605,6 +1605,14 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dane maszyny";
             // 
+            // checkedListBoxOperator_maszyny
+            // 
+            this.checkedListBoxOperator_maszyny.FormattingEnabled = true;
+            this.checkedListBoxOperator_maszyny.Location = new System.Drawing.Point(15, 451);
+            this.checkedListBoxOperator_maszyny.Name = "checkedListBoxOperator_maszyny";
+            this.checkedListBoxOperator_maszyny.Size = new System.Drawing.Size(380, 124);
+            this.checkedListBoxOperator_maszyny.TabIndex = 41;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -2190,14 +2198,6 @@
             this.tabControl1.Size = new System.Drawing.Size(1191, 862);
             this.tabControl1.TabIndex = 47;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            // 
-            // checkedListBoxOperator_maszyny
-            // 
-            this.checkedListBoxOperator_maszyny.FormattingEnabled = true;
-            this.checkedListBoxOperator_maszyny.Location = new System.Drawing.Point(15, 451);
-            this.checkedListBoxOperator_maszyny.Name = "checkedListBoxOperator_maszyny";
-            this.checkedListBoxOperator_maszyny.Size = new System.Drawing.Size(380, 124);
-            this.checkedListBoxOperator_maszyny.TabIndex = 41;
             // 
             // SpisForm
             // 
