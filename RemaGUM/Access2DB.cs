@@ -365,7 +365,7 @@ namespace nsAccess2DB
         /// <returns>Tabele.</returns>
         public DataTable select()
         {
-            string query = "SELECT * FROM Maszyny ORDER BY Nazwa ASC";
+            string query = "SELECT * FROM Maszyny";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
@@ -2531,11 +2531,11 @@ namespace nsAccess2DB
         /// <summary>
         /// Zwraca tabelę spełniającą wartości parametrów.
         /// </summary>
-        /// <param name="ID_op_maszyny"></param>
+        /// <param name="ID_maszyny"></param>
         /// <returns></returns>
-        public DataTable select(int ID_op_maszyny)
+        public DataTable select(int ID_maszyny)
         {
-            string query = "SELECT * FROM Operator_maszyny_Maszyny WHERE ID_op_maszyny = " + ID_op_maszyny.ToString() + ";"; 
+            string query = "SELECT * FROM Operator_maszyny_Maszyny WHERE ID_maszyny = " + ID_maszyny.ToString() + ";"; 
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
@@ -2667,10 +2667,10 @@ namespace nsAccess2DB
         /// <summary>
         /// Wypełnia tablice pozycjami danych.
         /// </summary>
-        /// <param name="ID_op_maszyny"></param>
-        public void select(int ID_op_maszyny)
+        /// <param name="ID_maszyny"></param>
+        public void select(int ID_maszyny)
         {
-            fillTable(_DAO.select(ID_op_maszyny));
+            fillTable(_DAO.select(ID_maszyny));
         }//select
 
         /// <summary>

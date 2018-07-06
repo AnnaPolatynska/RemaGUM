@@ -153,7 +153,7 @@
             this.linkLabelNazwaZdjecia = new System.Windows.Forms.LinkLabel();
             this.buttonUsunZdj = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.checkedListBoxOperator_maszyny = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBoxOperatorzy_maszyn = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -1568,7 +1568,7 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox4.Controls.Add(this.checkedListBoxOperator_maszyny);
+            this.groupBox4.Controls.Add(this.checkedListBoxOperatorzy_maszyn);
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.label3);
@@ -1605,13 +1605,13 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dane maszyny";
             // 
-            // checkedListBoxOperator_maszyny
+            // checkedListBoxOperatorzy_maszyn
             // 
-            this.checkedListBoxOperator_maszyny.FormattingEnabled = true;
-            this.checkedListBoxOperator_maszyny.Location = new System.Drawing.Point(15, 451);
-            this.checkedListBoxOperator_maszyny.Name = "checkedListBoxOperator_maszyny";
-            this.checkedListBoxOperator_maszyny.Size = new System.Drawing.Size(380, 124);
-            this.checkedListBoxOperator_maszyny.TabIndex = 41;
+            this.checkedListBoxOperatorzy_maszyn.FormattingEnabled = true;
+            this.checkedListBoxOperatorzy_maszyn.Location = new System.Drawing.Point(15, 451);
+            this.checkedListBoxOperatorzy_maszyn.Name = "checkedListBoxOperatorzy_maszyn";
+            this.checkedListBoxOperatorzy_maszyn.Size = new System.Drawing.Size(380, 124);
+            this.checkedListBoxOperatorzy_maszyn.TabIndex = 41;
             // 
             // label1
             // 
@@ -2451,7 +2451,7 @@
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID_Materialu;
-        private System.Windows.Forms.CheckedListBox checkedListBoxOperator_maszyny;
+        private System.Windows.Forms.CheckedListBox checkedListBoxOperatorzy_maszyn;
     }
 }
 
