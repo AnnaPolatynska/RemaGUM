@@ -802,11 +802,12 @@ namespace RemaGUM
             comboBoxPropozycja.SelectedIndex = 0;
             comboBoxPropozycja.Refresh();
 
+            checkedListBoxOperatorzy_maszyn.Items.Clear(); //czyści check-boxy w checkedListBoxOperatorzy_maszyn
+
             //WypelnijOperatorow_maszyn(checkedListBoxOperator_maszyny); //************************************
             _MaszynyBUS.select();
             _Operator_maszyny_MaszynyBUS.select((int)listBoxMaszyny.Tag);
            
-
             for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
             {
                 checkedListBoxOperatorzy_maszyn.SetItemChecked(i, false);
@@ -878,6 +879,7 @@ namespace RemaGUM
             checkedListBoxOperatorzy_maszyn.Items.Clear(); /////***********************************************
             
             WypelnijMaszynyNazwami();
+            WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);
         }//buttonUsun_Click
 
         /// <summary>
@@ -896,7 +898,7 @@ namespace RemaGUM
 
             nsAccess2DB.Operator_maszynyVO operator_MaszynyVO = new nsAccess2DB.Operator_maszynyVO();
             nsAccess2DB.MaszynyVO maszynyVO = new nsAccess2DB.MaszynyVO();
-            nsAccess2DB.Operator_maszyny_MaszynyVO operator_maszyny_MaszynyVO; //= new nsAccess2DB.Operator_maszyny_MaszynyVO();
+            nsAccess2DB.Operator_maszyny_MaszynyVO operator_maszyny_MaszynyVO = new nsAccess2DB.Operator_maszyny_MaszynyVO();
 
             maszynyVO.Kategoria = comboBoxKategoria.Text;
             maszynyVO.Nazwa = textBoxNazwa.Text.Trim();
@@ -926,40 +928,66 @@ namespace RemaGUM
             maszynyVO.Wykorzystanie = comboBoxWykorzystanie.Text;
             maszynyVO.Stan_techniczny = comboBoxStan_techniczny.Text;
             maszynyVO.Propozycja = comboBoxPropozycja.Text;
-            
+
             // Zapis operatorów/operatora maszyny przypisanych do maszyny.
-            int idx = 0;
-            while (!_Operator_maszynyBUS.eof)
+            nsAccess2DB.Operator_maszynyBUS _operator_MaszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
+
+            //_MaszynyBUS.write(maszynyVO);
+            _Operator_maszyny_MaszynyBUS.write(operator_maszyny_MaszynyVO);
+            int maszynaId = _MaszynyBUS.VO.Identyfikator;
+
+            _Operator_maszyny_MaszynyBUS.delete(_MaszynyBUS.VO.Identyfikator);
+            _Operator_maszynyBUS.select();
+
+
+            for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
             {
-                operator_maszyny_MaszynyVO = new nsAccess2DB.Operator_maszyny_MaszynyVO();
-                operator_maszyny_MaszynyVO.ID_op_maszyny = _Operator_maszynyBUS.VO.Identyfikator;
-                operator_maszyny_MaszynyVO.ID_maszyny = (int)listBoxMaszyny.Tag;
- 
-                if (checkedListBoxOperatorzy_maszyn.GetItemChecked(idx))
+                if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
                 {
-                    if (!_Operator_maszyny_MaszynyBUS.exists(operator_maszyny_MaszynyVO.ID_op_maszyny, operator_maszyny_MaszynyVO.ID_maszyny))
-                    {
-                        _Operator_maszyny_MaszynyBUS.insert(operator_maszyny_MaszynyVO);
-                    }
+                    _Operator_maszynyBUS.idx = i;
+                    _Operator_maszyny_MaszynyBUS.insert(_MaszynyBUS.VO.Identyfikator, _Operator_maszynyBUS.VO.Identyfikator);
                 }
-                else
-                {
-                    if(_Operator_maszyny_MaszynyBUS.exists(operator_maszyny_MaszynyVO.ID_op_maszyny, operator_maszyny_MaszynyVO.ID_maszyny))
-                    {
-                        _Operator_maszyny_MaszynyBUS.delete(operator_maszyny_MaszynyVO);
-                    }
-                }
-                idx++;
-                _Operator_maszynyBUS.skip();
-             
             }
 
+            listBoxMaszyny.SelectedIndex = _MaszynyBUS.getIdx(maszynaId);
+
+
+            //**************
+            //_MaszynyBUS.select((int)listBoxMaszyny.Tag);
+
+            //int idx = 0;
+            //while (!_Operator_maszynyBUS.eof)
+            //{
+            //    operator_maszyny_MaszynyVO = new nsAccess2DB.Operator_maszyny_MaszynyVO();
+            //    operator_maszyny_MaszynyVO.ID_op_maszyny = _Operator_maszynyBUS.VO.Identyfikator;
+            //    operator_maszyny_MaszynyVO.ID_maszyny = (int)listBoxMaszyny.Tag;
+
+            //    if (checkedListBoxOperatorzy_maszyn.GetItemChecked(idx))
+            //    {
+            //        if (!_Operator_maszyny_MaszynyBUS.exists(operator_maszyny_MaszynyVO.ID_op_maszyny, operator_maszyny_MaszynyVO.ID_maszyny))
+            //        {
+            //            _Operator_maszyny_MaszynyBUS.insert(maszynyVO.Identyfikator, operator_MaszynyVO.Identyfikator);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        if (_Operator_maszyny_MaszynyBUS.exists(operator_maszyny_MaszynyVO.ID_op_maszyny, operator_maszyny_MaszynyVO.ID_maszyny))
+            //        {
+            //            _Operator_maszyny_MaszynyBUS.delete(operator_maszyny_MaszynyVO.ID_op_maszyny);
+            //        }
+            //    }
+            //    idx++;
+            //    _Operator_maszynyBUS.skip();
+
+            //}
+
             //Dopisanie nowej pozycji w tabeli maszyn.
-            if (toolStripStatusLabelID_Maszyny.Text == string.Empty) 
+            if (toolStripStatusLabelID_Maszyny.Text == string.Empty) //nowa pozycja w tabeli maszyn
             {
                 _MaszynyBUS.VO.Identyfikator = -1;
             }
             else
+            
                 _MaszynyBUS.VO.Identyfikator = int.Parse(toolStripStatusLabelID_Maszyny.Text);
 
             buttonUsun.Enabled = listBoxMaszyny.Items.Count > 0;
@@ -972,8 +1000,7 @@ namespace RemaGUM
             {
                 listBoxMaszyny.SelectedIndex = _MaszynyBUS.getIdx(_MaszynyBUS.VO.Identyfikator);
             }
-    
-             //_MaszynyBUS.write(maszynyBUS.VO);
+            _MaszynyBUS.write(_MaszynyBUS.VO);
       
             MessageBox.Show("Pozycja zapisana w bazie", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
             WypelnijMaszynyNazwami();

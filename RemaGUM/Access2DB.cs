@@ -2692,20 +2692,21 @@ namespace nsAccess2DB
             fillTable(_DAO.selectQuery(query));
         }// selectQuery
 
+
         /// <summary>
         /// Wprowadza rekord do tabeli.
         /// </summary>
         /// <param name="ID_maszyny"></param>
         /// <param name="ID_op_maszyny"></param>
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
-
-
-
-        public bool insert(nsAccess2DB.Operator_maszyny_MaszynyVO VO)
+        public bool insert(int ID_maszyny, int ID_op_maszyny)
         {
-            bool b = _DAO.insert(VO);
-            _error = _DAO._error;
-            return b;
+            Operator_maszyny_MaszynyVO VO = new Operator_maszyny_MaszynyVO();
+            VO.ID_maszyny = ID_maszyny;
+            VO.ID_op_maszyny = ID_op_maszyny;
+
+            add(VO, ref _VOs);
+            return _DAO.insert(VO);
 
         }//insert
 
@@ -2721,11 +2722,20 @@ namespace nsAccess2DB
             return b;
         }//update
 
+
         /// <summary>
         /// Usuwa z tabeli pozycję o wskazanych parametrach.
         /// </summary>
-        /// <param name="ID_maszyny"></param>
+        /// <param name="ID_op_maszyny"></param>
         /// <returns>Wartość logiczna powodzenia akcji.</returns>
+        public bool delete(int ID_op_maszyny)
+        {
+            bool b = _DAO.delete(VO.ID_op_maszyny);
+            _error = _DAO._error;
+            return b;
+        }// delete
+
+       
         public bool delete(nsAccess2DB.Operator_maszyny_MaszynyVO VO)
         {
             bool b = _DAO.delete(VO.ID_maszyny, VO.ID_op_maszyny);
