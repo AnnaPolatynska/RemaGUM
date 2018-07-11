@@ -36,11 +36,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOdswiez = new System.Windows.Forms.ToolStripButton();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabelID = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelID_Maszyny = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelID_Materialu = new System.Windows.Forms.ToolStripStatusLabel();
             this.Normalia = new System.Windows.Forms.TabPage();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -94,6 +89,9 @@
             this.radioButtonCena_norm = new System.Windows.Forms.RadioButton();
             this.radioButtonTyp_norm = new System.Windows.Forms.RadioButton();
             this.Materiały = new System.Windows.Forms.TabPage();
+            this.statusStrip4 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelID_Materialu = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label27 = new System.Windows.Forms.Label();
             this.richTextBoxDostawca1 = new System.Windows.Forms.RichTextBox();
@@ -149,6 +147,9 @@
             this.radioButtonCena_mat = new System.Windows.Forms.RadioButton();
             this.radioButtonTyp_mat = new System.Windows.Forms.RadioButton();
             this.Maszyny = new System.Windows.Forms.TabPage();
+            this.statusStrip3 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelID_Maszyny = new System.Windows.Forms.ToolStripStatusLabel();
             this.buttonPokazZdj = new System.Windows.Forms.Button();
             this.linkLabelNazwaZdjecia = new System.Windows.Forms.LinkLabel();
             this.buttonUsunZdj = new System.Windows.Forms.Button();
@@ -210,8 +211,36 @@
             this.radioButtonNr_inwentarzowy = new System.Windows.Forms.RadioButton();
             this.radioButtonTyp = new System.Windows.Forms.RadioButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.Operatorzy_maszyn = new System.Windows.Forms.TabPage();
+            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel_ID_Operatora = new System.Windows.Forms.ToolStripStatusLabel();
+            this.groupBox22 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.listBoxOperator_maszyny = new System.Windows.Forms.ListBox();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.textBoxNazwisko = new System.Windows.Forms.TextBox();
+            this.comboBoxDzial_operator_maszyny = new System.Windows.Forms.ComboBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.dateTimePickerData_konca_upr = new System.Windows.Forms.DateTimePicker();
+            this.label54 = new System.Windows.Forms.Label();
+            this.listBox_maszyny = new System.Windows.Forms.ListBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.textBoxUprawnienie = new System.Windows.Forms.TextBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.textBoxImie = new System.Windows.Forms.TextBox();
+            this.groupBox26 = new System.Windows.Forms.GroupBox();
+            this.radioButtonData_konca_upr = new System.Windows.Forms.RadioButton();
             this.toolStrip.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.Normalia.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox15.SuspendLayout();
@@ -224,6 +253,7 @@
             this.groupBox20.SuspendLayout();
             this.groupBox21.SuspendLayout();
             this.Materiały.SuspendLayout();
+            this.statusStrip4.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox13.SuspendLayout();
@@ -235,6 +265,7 @@
             this.groupBox9.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.Maszyny.SuspendLayout();
+            this.statusStrip3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -243,6 +274,13 @@
             this.groupBox3.SuspendLayout();
             this.groupBoxSortowanie.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.Operatorzy_maszyn.SuspendLayout();
+            this.statusStrip2.SuspendLayout();
+            this.groupBox22.SuspendLayout();
+            this.groupBox23.SuspendLayout();
+            this.groupBox24.SuspendLayout();
+            this.groupBox25.SuspendLayout();
+            this.groupBox26.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -260,7 +298,7 @@
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip.Size = new System.Drawing.Size(1196, 43);
+            this.toolStrip.Size = new System.Drawing.Size(1207, 43);
             this.toolStrip.TabIndex = 41;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -332,43 +370,6 @@
             this.toolStripButtonOdswiez.ToolTipText = "Odświeżenie danych.";
             this.toolStripButtonOdswiez.Click += new System.EventHandler(this.toolStripButtonOdswiez_Click);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelID,
-            this.toolStripStatusLabelID_Maszyny,
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabelID_Materialu});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 916);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1196, 22);
-            this.statusStrip1.TabIndex = 42;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabelID
-            // 
-            this.toolStripStatusLabelID.Name = "toolStripStatusLabelID";
-            this.toolStripStatusLabelID.Size = new System.Drawing.Size(70, 17);
-            this.toolStripStatusLabelID.Text = "ID maszyny:";
-            // 
-            // toolStripStatusLabelID_Maszyny
-            // 
-            this.toolStripStatusLabelID_Maszyny.Name = "toolStripStatusLabelID_Maszyny";
-            this.toolStripStatusLabelID_Maszyny.Size = new System.Drawing.Size(66, 17);
-            this.toolStripStatusLabelID_Maszyny.Text = "id maszyny";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(77, 17);
-            this.toolStripStatusLabel1.Text = "ID materiału: ";
-            // 
-            // toolStripStatusLabelID_Materialu
-            // 
-            this.toolStripStatusLabelID_Materialu.Name = "toolStripStatusLabelID_Materialu";
-            this.toolStripStatusLabelID_Materialu.Size = new System.Drawing.Size(43, 17);
-            this.toolStripStatusLabelID_Materialu.Text = "id_mat";
-            // 
             // Normalia
             // 
             this.Normalia.Controls.Add(this.groupBox14);
@@ -379,7 +380,7 @@
             this.Normalia.Controls.Add(this.groupBox21);
             this.Normalia.Location = new System.Drawing.Point(4, 22);
             this.Normalia.Name = "Normalia";
-            this.Normalia.Size = new System.Drawing.Size(1183, 836);
+            this.Normalia.Size = new System.Drawing.Size(1194, 760);
             this.Normalia.TabIndex = 2;
             this.Normalia.Text = "Normalia";
             this.Normalia.UseVisualStyleBackColor = true;
@@ -523,7 +524,7 @@
             this.groupBox15.Controls.Add(this.label53);
             this.groupBox15.Location = new System.Drawing.Point(330, 76);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(419, 615);
+            this.groupBox15.Size = new System.Drawing.Size(419, 539);
             this.groupBox15.TabIndex = 58;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Opis normaliów warsztatowych";
@@ -789,7 +790,7 @@
             this.groupBox19.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox19.Location = new System.Drawing.Point(3, 76);
             this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(321, 615);
+            this.groupBox19.Size = new System.Drawing.Size(321, 539);
             this.groupBox19.TabIndex = 53;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Lista Normaliów";
@@ -802,7 +803,7 @@
             this.listBoxNormalia.FormattingEnabled = true;
             this.listBoxNormalia.Location = new System.Drawing.Point(6, 19);
             this.listBoxNormalia.Name = "listBoxNormalia";
-            this.listBoxNormalia.Size = new System.Drawing.Size(309, 589);
+            this.listBoxNormalia.Size = new System.Drawing.Size(309, 511);
             this.listBoxNormalia.TabIndex = 0;
             // 
             // groupBox20
@@ -815,7 +816,7 @@
             this.groupBox20.Controls.Add(this.buttonAnuluj_norm);
             this.groupBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox20.ForeColor = System.Drawing.Color.Red;
-            this.groupBox20.Location = new System.Drawing.Point(755, 635);
+            this.groupBox20.Location = new System.Drawing.Point(755, 559);
             this.groupBox20.Name = "groupBox20";
             this.groupBox20.Size = new System.Drawing.Size(396, 56);
             this.groupBox20.TabIndex = 54;
@@ -928,6 +929,7 @@
             // Materiały
             // 
             this.Materiały.BackColor = System.Drawing.Color.Bisque;
+            this.Materiały.Controls.Add(this.statusStrip4);
             this.Materiały.Controls.Add(this.groupBox10);
             this.Materiały.Controls.Add(this.groupBox6);
             this.Materiały.Controls.Add(this.groupBox7);
@@ -937,9 +939,32 @@
             this.Materiały.Location = new System.Drawing.Point(4, 22);
             this.Materiały.Name = "Materiały";
             this.Materiały.Padding = new System.Windows.Forms.Padding(3);
-            this.Materiały.Size = new System.Drawing.Size(1183, 836);
+            this.Materiały.Size = new System.Drawing.Size(1194, 760);
             this.Materiały.TabIndex = 1;
             this.Materiały.Text = "Materiały";
+            // 
+            // statusStrip4
+            // 
+            this.statusStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel3,
+            this.toolStripStatusLabelID_Materialu});
+            this.statusStrip4.Location = new System.Drawing.Point(3, 735);
+            this.statusStrip4.Name = "statusStrip4";
+            this.statusStrip4.Size = new System.Drawing.Size(1188, 22);
+            this.statusStrip4.TabIndex = 53;
+            this.statusStrip4.Text = "statusStrip4";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(77, 17);
+            this.toolStripStatusLabel3.Text = "ID materiału: ";
+            // 
+            // toolStripStatusLabelID_Materialu
+            // 
+            this.toolStripStatusLabelID_Materialu.Name = "toolStripStatusLabelID_Materialu";
+            this.toolStripStatusLabelID_Materialu.Size = new System.Drawing.Size(43, 17);
+            this.toolStripStatusLabelID_Materialu.Text = "id_mat";
             // 
             // groupBox10
             // 
@@ -1078,7 +1103,7 @@
             this.groupBox6.Controls.Add(this.label30);
             this.groupBox6.Location = new System.Drawing.Point(336, 71);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(419, 615);
+            this.groupBox6.Size = new System.Drawing.Size(419, 539);
             this.groupBox6.TabIndex = 52;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Opis materiału";
@@ -1375,7 +1400,7 @@
             this.groupBox8.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox8.Location = new System.Drawing.Point(9, 71);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(321, 615);
+            this.groupBox8.Size = new System.Drawing.Size(321, 539);
             this.groupBox8.TabIndex = 47;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Lista Materiałów";
@@ -1388,7 +1413,7 @@
             this.listBoxMaterialy.FormattingEnabled = true;
             this.listBoxMaterialy.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaterialy.Name = "listBoxMaterialy";
-            this.listBoxMaterialy.Size = new System.Drawing.Size(309, 589);
+            this.listBoxMaterialy.Size = new System.Drawing.Size(309, 511);
             this.listBoxMaterialy.TabIndex = 0;
             this.listBoxMaterialy.SelectedIndexChanged += new System.EventHandler(this.listBoxMaterialy_SelectedIndexChanged);
             // 
@@ -1402,7 +1427,7 @@
             this.groupBox9.Controls.Add(this.buttonAnuluj_mat);
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox9.ForeColor = System.Drawing.Color.Red;
-            this.groupBox9.Location = new System.Drawing.Point(761, 630);
+            this.groupBox9.Location = new System.Drawing.Point(761, 554);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(396, 56);
             this.groupBox9.TabIndex = 48;
@@ -1518,6 +1543,7 @@
             // Maszyny
             // 
             this.Maszyny.BackColor = System.Drawing.Color.Bisque;
+            this.Maszyny.Controls.Add(this.statusStrip3);
             this.Maszyny.Controls.Add(this.buttonPokazZdj);
             this.Maszyny.Controls.Add(this.linkLabelNazwaZdjecia);
             this.Maszyny.Controls.Add(this.buttonUsunZdj);
@@ -1531,9 +1557,32 @@
             this.Maszyny.Location = new System.Drawing.Point(4, 22);
             this.Maszyny.Name = "Maszyny";
             this.Maszyny.Padding = new System.Windows.Forms.Padding(3);
-            this.Maszyny.Size = new System.Drawing.Size(1183, 836);
+            this.Maszyny.Size = new System.Drawing.Size(1194, 892);
             this.Maszyny.TabIndex = 0;
             this.Maszyny.Text = "Maszyny";
+            // 
+            // statusStrip3
+            // 
+            this.statusStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel4,
+            this.toolStripStatusLabelID_Maszyny});
+            this.statusStrip3.Location = new System.Drawing.Point(3, 867);
+            this.statusStrip3.Name = "statusStrip3";
+            this.statusStrip3.Size = new System.Drawing.Size(1188, 22);
+            this.statusStrip3.TabIndex = 58;
+            this.statusStrip3.Text = "ID operatora";
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(70, 17);
+            this.toolStripStatusLabel4.Text = "ID maszyny:";
+            // 
+            // toolStripStatusLabelID_Maszyny
+            // 
+            this.toolStripStatusLabelID_Maszyny.Name = "toolStripStatusLabelID_Maszyny";
+            this.toolStripStatusLabelID_Maszyny.Size = new System.Drawing.Size(66, 17);
+            this.toolStripStatusLabelID_Maszyny.Text = "id maszyny";
             // 
             // buttonPokazZdj
             // 
@@ -1600,7 +1649,7 @@
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Location = new System.Drawing.Point(333, 69);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(419, 758);
+            this.groupBox4.Size = new System.Drawing.Size(419, 788);
             this.groupBox4.TabIndex = 46;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dane maszyny";
@@ -1610,7 +1659,7 @@
             this.checkedListBoxOperatorzy_maszyn.FormattingEnabled = true;
             this.checkedListBoxOperatorzy_maszyn.Location = new System.Drawing.Point(15, 451);
             this.checkedListBoxOperatorzy_maszyn.Name = "checkedListBoxOperatorzy_maszyn";
-            this.checkedListBoxOperatorzy_maszyn.Size = new System.Drawing.Size(380, 124);
+            this.checkedListBoxOperatorzy_maszyn.Size = new System.Drawing.Size(380, 94);
             this.checkedListBoxOperatorzy_maszyn.TabIndex = 41;
             // 
             // label1
@@ -1626,7 +1675,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(16, 435);
+            this.label17.Location = new System.Drawing.Point(15, 435);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(91, 13);
             this.label17.TabIndex = 40;
@@ -1662,7 +1711,7 @@
             // textBoxNr_pom
             // 
             this.textBoxNr_pom.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_pom.Location = new System.Drawing.Point(15, 595);
+            this.textBoxNr_pom.Location = new System.Drawing.Point(15, 594);
             this.textBoxNr_pom.Name = "textBoxNr_pom";
             this.textBoxNr_pom.Size = new System.Drawing.Size(156, 20);
             this.textBoxNr_pom.TabIndex = 38;
@@ -1705,7 +1754,7 @@
             // 
             this.comboBoxDzial.BackColor = System.Drawing.Color.Linen;
             this.comboBoxDzial.FormattingEnabled = true;
-            this.comboBoxDzial.Location = new System.Drawing.Point(206, 595);
+            this.comboBoxDzial.Location = new System.Drawing.Point(206, 594);
             this.comboBoxDzial.Name = "comboBoxDzial";
             this.comboBoxDzial.Size = new System.Drawing.Size(189, 21);
             this.comboBoxDzial.TabIndex = 33;
@@ -1777,9 +1826,9 @@
             this.richTextBoxUwagi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxUwagi.BackColor = System.Drawing.Color.Linen;
-            this.richTextBoxUwagi.Location = new System.Drawing.Point(15, 702);
+            this.richTextBoxUwagi.Location = new System.Drawing.Point(16, 688);
             this.richTextBoxUwagi.Name = "richTextBoxUwagi";
-            this.richTextBoxUwagi.Size = new System.Drawing.Size(380, 42);
+            this.richTextBoxUwagi.Size = new System.Drawing.Size(380, 87);
             this.richTextBoxUwagi.TabIndex = 30;
             this.richTextBoxUwagi.Text = "";
             // 
@@ -1812,7 +1861,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(15, 683);
+            this.label14.Location = new System.Drawing.Point(15, 672);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(37, 13);
             this.label14.TabIndex = 29;
@@ -1821,7 +1870,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(16, 579);
+            this.label9.Location = new System.Drawing.Point(12, 578);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 13);
             this.label9.TabIndex = 19;
@@ -1830,15 +1879,15 @@
             // textBoxNr_prot_BHP
             // 
             this.textBoxNr_prot_BHP.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(15, 651);
+            this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(16, 639);
             this.textBoxNr_prot_BHP.Name = "textBoxNr_prot_BHP";
-            this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(380, 20);
+            this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(377, 20);
             this.textBoxNr_prot_BHP.TabIndex = 24;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(203, 579);
+            this.label10.Location = new System.Drawing.Point(199, 578);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(32, 13);
             this.label10.TabIndex = 21;
@@ -1864,7 +1913,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 635);
+            this.label11.Location = new System.Drawing.Point(16, 625);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(109, 13);
             this.label11.TabIndex = 23;
@@ -1921,7 +1970,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox1.Location = new System.Drawing.Point(6, 69);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(321, 758);
+            this.groupBox1.Size = new System.Drawing.Size(321, 788);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lista";
@@ -1934,7 +1983,7 @@
             this.listBoxMaszyny.FormattingEnabled = true;
             this.listBoxMaszyny.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaszyny.Name = "listBoxMaszyny";
-            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 732);
+            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 745);
             this.listBoxMaszyny.TabIndex = 0;
             this.listBoxMaszyny.SelectedIndexChanged += new System.EventHandler(this.listBoxMaszyny_SelectedIndexChanged);
             // 
@@ -1948,7 +1997,7 @@
             this.groupBox2.Controls.Add(this.buttonAnuluj);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox2.ForeColor = System.Drawing.Color.Red;
-            this.groupBox2.Location = new System.Drawing.Point(758, 771);
+            this.groupBox2.Location = new System.Drawing.Point(758, 801);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(419, 56);
             this.groupBox2.TabIndex = 5;
@@ -2010,9 +2059,9 @@
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Location = new System.Drawing.Point(758, 604);
+            this.groupBox3.Location = new System.Drawing.Point(758, 565);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(419, 161);
+            this.groupBox3.Size = new System.Drawing.Size(419, 230);
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Stan techniczny i częstotliwość wykorzystania";
@@ -2192,12 +2241,326 @@
             this.tabControl1.Controls.Add(this.Maszyny);
             this.tabControl1.Controls.Add(this.Materiały);
             this.tabControl1.Controls.Add(this.Normalia);
+            this.tabControl1.Controls.Add(this.Operatorzy_maszyn);
             this.tabControl1.Location = new System.Drawing.Point(5, 51);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1191, 862);
+            this.tabControl1.Size = new System.Drawing.Size(1202, 918);
             this.tabControl1.TabIndex = 47;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            // 
+            // Operatorzy_maszyn
+            // 
+            this.Operatorzy_maszyn.BackColor = System.Drawing.Color.Bisque;
+            this.Operatorzy_maszyn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Operatorzy_maszyn.Controls.Add(this.statusStrip2);
+            this.Operatorzy_maszyn.Controls.Add(this.groupBox22);
+            this.Operatorzy_maszyn.Controls.Add(this.groupBox23);
+            this.Operatorzy_maszyn.Controls.Add(this.groupBox24);
+            this.Operatorzy_maszyn.Controls.Add(this.groupBox25);
+            this.Operatorzy_maszyn.Controls.Add(this.groupBox26);
+            this.Operatorzy_maszyn.Location = new System.Drawing.Point(4, 22);
+            this.Operatorzy_maszyn.Name = "Operatorzy_maszyn";
+            this.Operatorzy_maszyn.Size = new System.Drawing.Size(1194, 760);
+            this.Operatorzy_maszyn.TabIndex = 3;
+            this.Operatorzy_maszyn.Text = "Operatorzy maszyn";
+            // 
+            // statusStrip2
+            // 
+            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel_ID_Operatora});
+            this.statusStrip2.Location = new System.Drawing.Point(0, 738);
+            this.statusStrip2.Name = "statusStrip2";
+            this.statusStrip2.Size = new System.Drawing.Size(1194, 22);
+            this.statusStrip2.TabIndex = 57;
+            this.statusStrip2.Text = "ID operatora";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(124, 17);
+            this.toolStripStatusLabel2.Text = "ID operatora maszyny:";
+            // 
+            // toolStripStatusLabel_ID_Operatora
+            // 
+            this.toolStripStatusLabel_ID_Operatora.Name = "toolStripStatusLabel_ID_Operatora";
+            this.toolStripStatusLabel_ID_Operatora.Size = new System.Drawing.Size(21, 17);
+            this.toolStripStatusLabel_ID_Operatora.Text = "ID:";
+            // 
+            // groupBox22
+            // 
+            this.groupBox22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox22.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox22.Controls.Add(this.button1);
+            this.groupBox22.Controls.Add(this.button2);
+            this.groupBox22.Controls.Add(this.button3);
+            this.groupBox22.Controls.Add(this.button4);
+            this.groupBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox22.ForeColor = System.Drawing.Color.Red;
+            this.groupBox22.Location = new System.Drawing.Point(348, 667);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(333, 56);
+            this.groupBox22.TabIndex = 52;
+            this.groupBox22.TabStop = false;
+            this.groupBox22.Text = "edycja spisu";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Linen;
+            this.button1.Location = new System.Drawing.Point(9, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "nowa";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Linen;
+            this.button2.Location = new System.Drawing.Point(252, 19);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "usuń";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Linen;
+            this.button3.Location = new System.Drawing.Point(90, 19);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "zapisz";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Linen;
+            this.button4.Location = new System.Drawing.Point(171, 19);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "anuluj";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // groupBox23
+            // 
+            this.groupBox23.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox23.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox23.Controls.Add(this.listBoxOperator_maszyny);
+            this.groupBox23.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.groupBox23.Location = new System.Drawing.Point(12, 76);
+            this.groupBox23.Name = "groupBox23";
+            this.groupBox23.Size = new System.Drawing.Size(330, 647);
+            this.groupBox23.TabIndex = 51;
+            this.groupBox23.TabStop = false;
+            this.groupBox23.Text = "Operatorzy maszyn";
+            // 
+            // listBoxOperator_maszyny
+            // 
+            this.listBoxOperator_maszyny.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBoxOperator_maszyny.BackColor = System.Drawing.Color.Linen;
+            this.listBoxOperator_maszyny.FormattingEnabled = true;
+            this.listBoxOperator_maszyny.Location = new System.Drawing.Point(15, 35);
+            this.listBoxOperator_maszyny.Name = "listBoxOperator_maszyny";
+            this.listBoxOperator_maszyny.Size = new System.Drawing.Size(309, 602);
+            this.listBoxOperator_maszyny.TabIndex = 0;
+            // 
+            // groupBox24
+            // 
+            this.groupBox24.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox24.Controls.Add(this.button5);
+            this.groupBox24.Controls.Add(this.textBox1);
+            this.groupBox24.Cursor = System.Windows.Forms.Cursors.Default;
+            this.groupBox24.ForeColor = System.Drawing.Color.Red;
+            this.groupBox24.Location = new System.Drawing.Point(348, 15);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(333, 57);
+            this.groupBox24.TabIndex = 53;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "wyszukiwanie po nazwie";
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button5.Location = new System.Drawing.Point(290, 17);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(35, 34);
+            this.button5.TabIndex = 4;
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.Linen;
+            this.textBox1.Location = new System.Drawing.Point(6, 23);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(278, 20);
+            this.textBox1.TabIndex = 44;
+            // 
+            // groupBox25
+            // 
+            this.groupBox25.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox25.Controls.Add(this.label45);
+            this.groupBox25.Controls.Add(this.textBoxNazwisko);
+            this.groupBox25.Controls.Add(this.comboBoxDzial_operator_maszyny);
+            this.groupBox25.Controls.Add(this.label47);
+            this.groupBox25.Controls.Add(this.dateTimePickerData_konca_upr);
+            this.groupBox25.Controls.Add(this.label54);
+            this.groupBox25.Controls.Add(this.listBox_maszyny);
+            this.groupBox25.Controls.Add(this.label55);
+            this.groupBox25.Controls.Add(this.textBoxUprawnienie);
+            this.groupBox25.Controls.Add(this.label56);
+            this.groupBox25.Controls.Add(this.label57);
+            this.groupBox25.Controls.Add(this.textBoxImie);
+            this.groupBox25.Cursor = System.Windows.Forms.Cursors.Default;
+            this.groupBox25.ForeColor = System.Drawing.Color.Red;
+            this.groupBox25.Location = new System.Drawing.Point(348, 78);
+            this.groupBox25.Name = "groupBox25";
+            this.groupBox25.Size = new System.Drawing.Size(333, 583);
+            this.groupBox25.TabIndex = 55;
+            this.groupBox25.TabStop = false;
+            this.groupBox25.Text = "Dane operatora maszyny";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label45.Location = new System.Drawing.Point(6, 70);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(53, 13);
+            this.label45.TabIndex = 56;
+            this.label45.Text = "Nazwisko";
+            // 
+            // textBoxNazwisko
+            // 
+            this.textBoxNazwisko.BackColor = System.Drawing.Color.Linen;
+            this.textBoxNazwisko.Location = new System.Drawing.Point(6, 86);
+            this.textBoxNazwisko.Name = "textBoxNazwisko";
+            this.textBoxNazwisko.Size = new System.Drawing.Size(321, 20);
+            this.textBoxNazwisko.TabIndex = 55;
+            // 
+            // comboBoxDzial_operator_maszyny
+            // 
+            this.comboBoxDzial_operator_maszyny.FormattingEnabled = true;
+            this.comboBoxDzial_operator_maszyny.Location = new System.Drawing.Point(6, 128);
+            this.comboBoxDzial_operator_maszyny.Name = "comboBoxDzial_operator_maszyny";
+            this.comboBoxDzial_operator_maszyny.Size = new System.Drawing.Size(319, 21);
+            this.comboBoxDzial_operator_maszyny.TabIndex = 54;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label47.Location = new System.Drawing.Point(6, 209);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(115, 13);
+            this.label47.TabIndex = 53;
+            this.label47.Text = "Data końca uprawnień";
+            // 
+            // dateTimePickerData_konca_upr
+            // 
+            this.dateTimePickerData_konca_upr.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateTimePickerData_konca_upr.Location = new System.Drawing.Point(6, 225);
+            this.dateTimePickerData_konca_upr.Name = "dateTimePickerData_konca_upr";
+            this.dateTimePickerData_konca_upr.Size = new System.Drawing.Size(128, 20);
+            this.dateTimePickerData_konca_upr.TabIndex = 52;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label54.Location = new System.Drawing.Point(6, 254);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(216, 13);
+            this.label54.TabIndex = 51;
+            this.label54.Text = "Obsługiwane przez tego operatora maszyny:";
+            // 
+            // listBox_maszyny
+            // 
+            this.listBox_maszyny.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBox_maszyny.BackColor = System.Drawing.Color.Linen;
+            this.listBox_maszyny.FormattingEnabled = true;
+            this.listBox_maszyny.Location = new System.Drawing.Point(6, 270);
+            this.listBox_maszyny.Name = "listBox_maszyny";
+            this.listBox_maszyny.Size = new System.Drawing.Size(321, 303);
+            this.listBox_maszyny.TabIndex = 50;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label55.Location = new System.Drawing.Point(6, 161);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(66, 13);
+            this.label55.TabIndex = 49;
+            this.label55.Text = "Uprawnienia";
+            // 
+            // textBoxUprawnienie
+            // 
+            this.textBoxUprawnienie.BackColor = System.Drawing.Color.Linen;
+            this.textBoxUprawnienie.Location = new System.Drawing.Point(6, 177);
+            this.textBoxUprawnienie.Name = "textBoxUprawnienie";
+            this.textBoxUprawnienie.Size = new System.Drawing.Size(321, 20);
+            this.textBoxUprawnienie.TabIndex = 48;
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label56.Location = new System.Drawing.Point(6, 111);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(32, 13);
+            this.label56.TabIndex = 47;
+            this.label56.Text = "Dział";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label57.Location = new System.Drawing.Point(6, 19);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(26, 13);
+            this.label57.TabIndex = 45;
+            this.label57.Text = "Imię";
+            // 
+            // textBoxImie
+            // 
+            this.textBoxImie.BackColor = System.Drawing.Color.Linen;
+            this.textBoxImie.Location = new System.Drawing.Point(6, 35);
+            this.textBoxImie.Name = "textBoxImie";
+            this.textBoxImie.Size = new System.Drawing.Size(321, 20);
+            this.textBoxImie.TabIndex = 44;
+            // 
+            // groupBox26
+            // 
+            this.groupBox26.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox26.Controls.Add(this.radioButtonData_konca_upr);
+            this.groupBox26.ForeColor = System.Drawing.Color.Red;
+            this.groupBox26.Location = new System.Drawing.Point(12, 13);
+            this.groupBox26.Name = "groupBox26";
+            this.groupBox26.Size = new System.Drawing.Size(330, 57);
+            this.groupBox26.TabIndex = 54;
+            this.groupBox26.TabStop = false;
+            this.groupBox26.Text = "sortowanie";
+            // 
+            // radioButtonData_konca_upr
+            // 
+            this.radioButtonData_konca_upr.AutoSize = true;
+            this.radioButtonData_konca_upr.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonData_konca_upr.Location = new System.Drawing.Point(6, 19);
+            this.radioButtonData_konca_upr.Name = "radioButtonData_konca_upr";
+            this.radioButtonData_konca_upr.Size = new System.Drawing.Size(133, 17);
+            this.radioButtonData_konca_upr.TabIndex = 6;
+            this.radioButtonData_konca_upr.TabStop = true;
+            this.radioButtonData_konca_upr.Text = "Data końca uprawnień";
+            this.radioButtonData_konca_upr.UseVisualStyleBackColor = true;
             // 
             // SpisForm
             // 
@@ -2205,17 +2568,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Bisque;
-            this.ClientSize = new System.Drawing.Size(1196, 938);
+            this.ClientSize = new System.Drawing.Size(1207, 969);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SpisForm";
             this.Text = "RemaGUM - spis maszyn";
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.Normalia.ResumeLayout(false);
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
@@ -2234,6 +2594,9 @@
             this.groupBox21.ResumeLayout(false);
             this.groupBox21.PerformLayout();
             this.Materiały.ResumeLayout(false);
+            this.Materiały.PerformLayout();
+            this.statusStrip4.ResumeLayout(false);
+            this.statusStrip4.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -2252,6 +2615,8 @@
             this.groupBox11.PerformLayout();
             this.Maszyny.ResumeLayout(false);
             this.Maszyny.PerformLayout();
+            this.statusStrip3.ResumeLayout(false);
+            this.statusStrip3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -2264,6 +2629,18 @@
             this.groupBoxSortowanie.ResumeLayout(false);
             this.groupBoxSortowanie.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.Operatorzy_maszyn.ResumeLayout(false);
+            this.Operatorzy_maszyn.PerformLayout();
+            this.statusStrip2.ResumeLayout(false);
+            this.statusStrip2.PerformLayout();
+            this.groupBox22.ResumeLayout(false);
+            this.groupBox23.ResumeLayout(false);
+            this.groupBox24.ResumeLayout(false);
+            this.groupBox24.PerformLayout();
+            this.groupBox25.ResumeLayout(false);
+            this.groupBox25.PerformLayout();
+            this.groupBox26.ResumeLayout(false);
+            this.groupBox26.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2272,9 +2649,6 @@
 
         #endregion
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID_Maszyny;
         private System.Windows.Forms.ToolStripButton toolStripButtonHelp;
         private System.Windows.Forms.ToolStripButton toolStripButtonOdswiez;
         private System.Windows.Forms.ToolStripButton toolStripButtonOs_zarzadzajaca;
@@ -2449,9 +2823,42 @@
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox textBoxZuzycie_norm;
         private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID_Materialu;
         private System.Windows.Forms.CheckedListBox checkedListBoxOperatorzy_maszyn;
+        private System.Windows.Forms.TabPage Operatorzy_maszyn;
+        private System.Windows.Forms.StatusStrip statusStrip2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_ID_Operatora;
+        private System.Windows.Forms.GroupBox groupBox22;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.GroupBox groupBox23;
+        private System.Windows.Forms.ListBox listBoxOperator_maszyny;
+        private System.Windows.Forms.GroupBox groupBox24;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox groupBox25;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.TextBox textBoxNazwisko;
+        private System.Windows.Forms.ComboBox comboBoxDzial_operator_maszyny;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.DateTimePicker dateTimePickerData_konca_upr;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.ListBox listBox_maszyny;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.TextBox textBoxUprawnienie;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.TextBox textBoxImie;
+        private System.Windows.Forms.GroupBox groupBox26;
+        private System.Windows.Forms.RadioButton radioButtonData_konca_upr;
+        private System.Windows.Forms.StatusStrip statusStrip3;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID_Maszyny;
+        private System.Windows.Forms.StatusStrip statusStrip4;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID_Materialu;
     }
 }
 

@@ -387,6 +387,15 @@ namespace nsAccess2DB
             return dt;
         }//select po ID
 
+        public DataTable selectNazwa(string Nazwa)
+        {
+            string query = "SELECT * FROM Maszyny WHERE Nazwa = " + Nazwa.ToString() + ";";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        } //selectNazwa
 
         /// <summary>
         /// Wprowadza nowy rekord.
@@ -635,6 +644,15 @@ namespace nsAccess2DB
         {
             fillTable(_DAO.select(Identyfikator));
         }//select
+
+        /// <summary>
+        ///  Wypełnia tablice danych pozycjami.
+        /// </summary>
+        /// <param name="Nazwa"></param>
+        public void selectNazwa(string Nazwa)
+        {
+            fillTable(_DAO.selectNazwa(Nazwa));
+        } //selectNazwa
 
         /// <summary>
         /// Dowolne zapytanie z formularza.
@@ -2558,6 +2576,8 @@ namespace nsAccess2DB
             _error = _conn._error;
             return dt;
         }//select
+
+       
 
         /// <summary>
         /// Wprowadza nowy rekord
