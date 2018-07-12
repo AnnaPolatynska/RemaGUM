@@ -819,21 +819,6 @@ namespace RemaGUM
                 checkedListBoxOperatorzy_maszyn.SetItemChecked(i, false);
             }
 
-
-
-            //_Operator_maszyny_MaszynyBUS.select((int)listBoxMaszyny.Tag);
-            //int idx;
-            //while (!_Operator_maszyny_MaszynyBUS.eof)
-            //{
-
-            //    idx = _Operator_maszynyBUS.getIdx(_Operator_maszyny_MaszynyBUS.VO.ID_maszyny);
-            //    if (idx > -1)
-            //    {
-            //        checkedListBoxOperatorzy_maszyn.SetItemChecked(idx, true);
-            //    }
-            //    _Operator_maszyny_MaszynyBUS.skip();
-            //}
-
             _statusForm = (int)_status.nowy;
 
             WypelnijMaszynyNazwami();
@@ -915,77 +900,77 @@ namespace RemaGUM
                 MessageBox.Show("Uzupełnij nazwę maszyny.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
 
-            //if (_statusForm == (int)_status.nowy)
-            //{
-            //    maszynyBUS.selectNazwa(textBoxNazwa.Text.Trim());
-            //    if (maszynyBUS.count > 0)
-            //    {
-            //        MessageBox.Show("Nazwa maszyny występuje już w bazie", "RemaGUM",
-            //            MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        return;
-            //    }
-            //}
-            //if (_statusForm == (int)_status.edycja)
-            //{
-            //    maszynyBUS.selectNazwa(textBoxNazwa.Text.Trim());
-
-            //    if (maszynyBUS.count > 0)
-            //    {
-            //        if (maszynyBUS.VO.Identyfikator != _MaszynyBUS.VO.Identyfikator)
-            //        {
-            //            MessageBox.Show("Nazwa maszyny występuje już w bazie", "RemaGUM",
-            //               MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //            return;
-            //        }
-            //    }
-            //}
-            
             nsAccess2DB.Operator_maszynyVO operator_MaszynyVO = new nsAccess2DB.Operator_maszynyVO();
             nsAccess2DB.MaszynyVO maszynyVO = new nsAccess2DB.MaszynyVO();
             nsAccess2DB.Operator_maszyny_MaszynyVO operator_maszyny_MaszynyVO = new nsAccess2DB.Operator_maszyny_MaszynyVO();
-            if (_statusForm == (int)_status.edycja & textBoxNazwa.Text.Trim() != null) maszynyVO.Identyfikator = (int)textBoxNazwa.Tag;
 
-            maszynyVO.Kategoria = comboBoxKategoria.Text;
-            maszynyVO.Nazwa = textBoxNazwa.Text.Trim();
-            maszynyVO.Typ = textBoxTyp.Text.Trim();
-            maszynyVO.Nr_inwentarzowy = textBoxNr_inwentarzowy.Text.Trim();
-            maszynyVO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
-            maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
-            maszynyVO.Producent = textBoxProducent.Text.Trim();
-            maszynyVO.Zdjecie = pictureBox1.Text;  /////                ???????????????? obrazek
-            maszynyVO.Nazwa_os_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
-            maszynyVO.Nr_pom = textBoxNr_pom.Text;
-            maszynyVO.Dzial = comboBoxDzial.Text;
-            maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
-            maszynyVO.Rok_ost_przeg = dateTimePickerData_ost_przegl.Value.Year;
-            maszynyVO.Mc_ost_przeg = dateTimePickerData_ost_przegl.Value.Month;
-            maszynyVO.Dz_ost_przeg = dateTimePickerData_ost_przegl.Value.Day;
-            maszynyVO.Data_ost_przegl = int.Parse(maszynyVO.Rok_ost_przeg.ToString() + maszynyVO.Mc_ost_przeg.ToString("00") + maszynyVO.Dz_ost_przeg.ToString("00"));
-            DateTime dt = new DateTime(dateTimePickerData_ost_przegl.Value.Ticks); // dodaje interwał przeglądów do data_ost_przegl
-            dt = dt.AddYears(_interwalPrzegladow);
-            maszynyVO.Rok_kol_przeg = dt.Year;
-            maszynyVO.Mc_kol_przeg = dt.Month;
-            maszynyVO.Dz_kol_przeg = dt.Day;
-            maszynyVO.Data_kol_przegl = int.Parse(dt.Year.ToString() + dt.Month.ToString("00") + dt.Day.ToString("00"));
-            maszynyVO.Uwagi = richTextBoxUwagi.Text.Trim();
-            maszynyVO.Wykorzystanie = comboBoxWykorzystanie.Text;
-            maszynyVO.Stan_techniczny = comboBoxStan_techniczny.Text;
-            maszynyVO.Propozycja = comboBoxPropozycja.Text;
+            if (_statusForm == (int)_status.nowy)
+            {
+                maszynyVO.Kategoria = comboBoxKategoria.Text;
+                maszynyVO.Nazwa = textBoxNazwa.Text.Trim();
+                maszynyVO.Typ = textBoxTyp.Text.Trim();
+                maszynyVO.Nr_inwentarzowy = textBoxNr_inwentarzowy.Text.Trim();
+                maszynyVO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
+                maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
+                maszynyVO.Producent = textBoxProducent.Text.Trim();
+                maszynyVO.Zdjecie = pictureBox1.Text;  /////                ???????????????? obrazek
+                maszynyVO.Nazwa_os_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
+                maszynyVO.Nr_pom = textBoxNr_pom.Text;
+                maszynyVO.Dzial = comboBoxDzial.Text;
+                maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
+                maszynyVO.Rok_ost_przeg = dateTimePickerData_ost_przegl.Value.Year;
+                maszynyVO.Mc_ost_przeg = dateTimePickerData_ost_przegl.Value.Month;
+                maszynyVO.Dz_ost_przeg = dateTimePickerData_ost_przegl.Value.Day;
+                maszynyVO.Data_ost_przegl = int.Parse(maszynyVO.Rok_ost_przeg.ToString() + maszynyVO.Mc_ost_przeg.ToString("00") + maszynyVO.Dz_ost_przeg.ToString("00"));
+                DateTime dt = new DateTime(dateTimePickerData_ost_przegl.Value.Ticks); // dodaje interwał przeglądów do data_ost_przegl
+                dt = dt.AddYears(_interwalPrzegladow);
+                maszynyVO.Rok_kol_przeg = dt.Year;
+                maszynyVO.Mc_kol_przeg = dt.Month;
+                maszynyVO.Dz_kol_przeg = dt.Day;
+                maszynyVO.Data_kol_przegl = int.Parse(dt.Year.ToString() + dt.Month.ToString("00") + dt.Day.ToString("00"));
+                maszynyVO.Uwagi = richTextBoxUwagi.Text.Trim();
+                maszynyVO.Wykorzystanie = comboBoxWykorzystanie.Text;
+                maszynyVO.Stan_techniczny = comboBoxStan_techniczny.Text;
+                maszynyVO.Propozycja = comboBoxPropozycja.Text;
+            }//if - nowy
+            else if (_statusForm == (int)_status.edycja)
+            {
+                maszynyVO.Identyfikator = (int)listBoxMaszyny.Tag;
+
+                maszynyVO.Kategoria = comboBoxKategoria.Text;
+                maszynyVO.Nazwa = textBoxNazwa.Text.Trim();
+                maszynyVO.Typ = textBoxTyp.Text.Trim();
+                maszynyVO.Nr_inwentarzowy = textBoxNr_inwentarzowy.Text.Trim();
+                maszynyVO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
+                maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
+                maszynyVO.Producent = textBoxProducent.Text.Trim();
+                maszynyVO.Zdjecie = pictureBox1.Text;  /////                ???????????????? obrazek
+                maszynyVO.Nazwa_os_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
+                maszynyVO.Nr_pom = textBoxNr_pom.Text;
+                maszynyVO.Dzial = comboBoxDzial.Text;
+                maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
+                maszynyVO.Rok_ost_przeg = dateTimePickerData_ost_przegl.Value.Year;
+                maszynyVO.Mc_ost_przeg = dateTimePickerData_ost_przegl.Value.Month;
+                maszynyVO.Dz_ost_przeg = dateTimePickerData_ost_przegl.Value.Day;
+                maszynyVO.Data_ost_przegl = int.Parse(maszynyVO.Rok_ost_przeg.ToString() + maszynyVO.Mc_ost_przeg.ToString("00") + maszynyVO.Dz_ost_przeg.ToString("00"));
+                DateTime dt = new DateTime(dateTimePickerData_ost_przegl.Value.Ticks); // dodaje interwał przeglądów do data_ost_przegl
+                dt = dt.AddYears(_interwalPrzegladow);
+                maszynyVO.Rok_kol_przeg = dt.Year;
+                maszynyVO.Mc_kol_przeg = dt.Month;
+                maszynyVO.Dz_kol_przeg = dt.Day;
+                maszynyVO.Data_kol_przegl = int.Parse(dt.Year.ToString() + dt.Month.ToString("00") + dt.Day.ToString("00"));
+                maszynyVO.Uwagi = richTextBoxUwagi.Text.Trim();
+                maszynyVO.Wykorzystanie = comboBoxWykorzystanie.Text;
+                maszynyVO.Stan_techniczny = comboBoxStan_techniczny.Text;
+                maszynyVO.Propozycja = comboBoxPropozycja.Text;
+            }//else if - edycja
 
             _MaszynyBUS.write(maszynyVO);
             
+            _Operator_maszyny_MaszynyBUS.delete(_MaszynyBUS.VO.Identyfikator);
             // Zapis operatorów/operatora maszyny przypisanych do maszyny.
-            nsAccess2DB.Operator_maszynyBUS _operator_MaszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
-
-            
-            //_Operator_maszyny_MaszynyBUS.write(operator_maszyny_MaszynyVO);
-            int maszynaId = _MaszynyBUS.VO.Identyfikator;
-
-            
             _Operator_maszynyBUS.select();
-
 
             for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
             {
@@ -995,12 +980,10 @@ namespace RemaGUM
                     _Operator_maszyny_MaszynyBUS.insert(_MaszynyBUS.VO.Identyfikator, _Operator_maszynyBUS.VO.Identyfikator);
                 }
             }
-            _Operator_maszyny_MaszynyBUS.delete(_MaszynyBUS.VO.Identyfikator);
             
-            
-            // Wybierz operatorów maszyn.  
-           // listBoxMaszyny.SelectedIndex = _MaszynyBUS.getIdx(maszynaId);
-           
+            //Wybierz na liście maszynę.
+            _MaszynyBUS.select();
+            listBoxMaszyny.SelectedIndex = _MaszynyBUS.getIdx(_MaszynyBUS.VO.Identyfikator);// Wybierz operatorów maszyn.
 
             MessageBox.Show("Pozycja zapisana w bazie", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
             WypelnijMaszynyNazwami();
