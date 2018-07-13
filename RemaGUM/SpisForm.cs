@@ -767,7 +767,6 @@ namespace RemaGUM
         {
            // toolStripStatusLabelID_Maszyny.Text = "";
            
-
             comboBoxKategoria.SelectedIndex = -1;
             comboBoxKategoria.Enabled = true;
             comboBoxKategoria.SelectedIndex = 0;
@@ -821,7 +820,7 @@ namespace RemaGUM
 
             _statusForm = (int)_status.nowy;
 
-            WypelnijMaszynyNazwami();
+            //WypelnijMaszynyNazwami();
 
         }//ButtonNowa_Click
                
@@ -901,12 +900,20 @@ namespace RemaGUM
                 return;
             }
 
-            nsAccess2DB.Operator_maszynyVO operator_MaszynyVO = new nsAccess2DB.Operator_maszynyVO();
+            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             nsAccess2DB.MaszynyVO maszynyVO = new nsAccess2DB.MaszynyVO();
+
+            nsAccess2DB.Operator_maszynyVO operator_MaszynyVO = new nsAccess2DB.Operator_maszynyVO();
             nsAccess2DB.Operator_maszyny_MaszynyVO operator_maszyny_MaszynyVO = new nsAccess2DB.Operator_maszyny_MaszynyVO();
 
+            
             if (_statusForm == (int)_status.nowy)
             {
+                //maszynyBUS.write(maszynyVO);
+                maszynyBUS.select();
+                maszynyBUS.idx = maszynyBUS.count - 1;
+                maszynyVO.Identyfikator = maszynyBUS.VO.Identyfikator + 1;
+
                 maszynyVO.Kategoria = comboBoxKategoria.Text;
                 maszynyVO.Nazwa = textBoxNazwa.Text.Trim();
                 maszynyVO.Typ = textBoxTyp.Text.Trim();
@@ -933,6 +940,7 @@ namespace RemaGUM
                 maszynyVO.Wykorzystanie = comboBoxWykorzystanie.Text;
                 maszynyVO.Stan_techniczny = comboBoxStan_techniczny.Text;
                 maszynyVO.Propozycja = comboBoxPropozycja.Text;
+
             }//if - nowy
             else if (_statusForm == (int)_status.edycja)
             {
@@ -966,9 +974,7 @@ namespace RemaGUM
                 maszynyVO.Propozycja = comboBoxPropozycja.Text;
             }//else if - edycja
 
-            _MaszynyBUS.write(maszynyVO);
-            
-            _Operator_maszyny_MaszynyBUS.delete(_MaszynyBUS.VO.Identyfikator);
+             _Operator_maszyny_MaszynyBUS.delete(_Operator_maszynyBUS.VO.Identyfikator);
             // Zapis operatorów/operatora maszyny przypisanych do maszyny.
             _Operator_maszynyBUS.select();
 
@@ -977,13 +983,20 @@ namespace RemaGUM
                 if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
                 {
                     _Operator_maszynyBUS.idx = i;
-                    _Operator_maszyny_MaszynyBUS.insert(_MaszynyBUS.VO.Identyfikator, _Operator_maszynyBUS.VO.Identyfikator);
+                    if (_statusForm == (int)_status.edycja)
+                    {
+                        _Operator_maszyny_MaszynyBUS.insert(maszynyBUS.VO.Identyfikator, _Operator_maszynyBUS.VO.Identyfikator);
+                    }
+                    else if (_statusForm == (int)_status.nowy)
+                    {
+                        _Operator_maszyny_MaszynyBUS.insert(maszynyVO.Identyfikator, _Operator_maszynyBUS.VO.Identyfikator);
+                    }
                 }
             }
-            
+            maszynyBUS.write(maszynyVO);
             //Wybierz na liście maszynę.
-            _MaszynyBUS.select();
-            listBoxMaszyny.SelectedIndex = _MaszynyBUS.getIdx(_MaszynyBUS.VO.Identyfikator);// Wybierz operatorów maszyn.
+            maszynyBUS.select();
+            listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// Wybierz operatorów maszyn.
 
             MessageBox.Show("Pozycja zapisana w bazie", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
             WypelnijMaszynyNazwami();

@@ -2626,9 +2626,9 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="ID_maszyny"></param>
         /// <returns></returns>
-        public bool delete(int ID_maszyny)
+        public bool delete(int ID_op_maszyny)
         {
-            string query = "DELETE * FROM Operator_maszyny_Maszyny WHERE ID_maszyny = " + ID_maszyny.ToString() + ";";
+            string query = "DELETE * FROM Operator_maszyny_Maszyny WHERE ID_op_maszyny = " + ID_op_maszyny.ToString() + ";";
             OleDbParameter[] parameters = new OleDbParameter[0];
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
@@ -2750,7 +2750,7 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia akcji.</returns>
         public bool delete(int ID_op_maszyny)
         {
-            bool b = _DAO.delete(VO.ID_op_maszyny);
+            bool b = _DAO.delete(ID_op_maszyny);
             _error = _DAO._error;
             return b;
         }// delete
