@@ -2626,9 +2626,9 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="ID_maszyny"></param>
         /// <returns></returns>
-        public bool delete(int ID_op_maszyny)
+        public bool delete(int ID_maszyny)
         {
-            string query = "DELETE * FROM Operator_maszyny_Maszyny WHERE ID_op_maszyny = " + ID_op_maszyny.ToString() + ";";
+            string query = "DELETE * FROM Operator_maszyny_Maszyny WHERE ID_op_maszyny = " + ID_maszyny.ToString() + ";";
             OleDbParameter[] parameters = new OleDbParameter[0];
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
@@ -2733,9 +2733,10 @@ namespace nsAccess2DB
         /// <summary>
         /// Aktualizuje rekord z wyjątkiem numeru protokołu.
         /// </summary>
-        /// <param name="VO"></param>
+        /// <param name="ID_maszyny"></param>
+        /// <param name="ID_op_maszyny"></param>
         /// <returns>Wartość logiczna powodzenia akcji.</returns>
-        private bool update(nsAccess2DB.Operator_maszyny_MaszynyVO VO)
+        private bool update(int ID_maszyny, int ID_op_maszyny)
         {
             bool b = _DAO.update(VO);
             _error = _DAO._error;
@@ -2746,22 +2747,12 @@ namespace nsAccess2DB
         /// <summary>
         /// Usuwa z tabeli pozycję o wskazanych parametrach.
         /// </summary>
-        /// <param name="ID_op_maszyny"></param>
+        /// <param name="ID_maszyny"></param>
         /// <returns>Wartość logiczna powodzenia akcji.</returns>
-        public bool delete(int ID_op_maszyny)
+        public bool delete(int ID_maszyny)
         {
-            bool b = _DAO.delete(ID_op_maszyny);
-            _error = _DAO._error;
-            return b;
-        }// delete
-
-       
-        public bool delete(nsAccess2DB.Operator_maszyny_MaszynyVO VO)
-        {
-            bool b = _DAO.delete(VO.ID_maszyny, VO.ID_op_maszyny);
-            _error = _DAO._error;
-            return b;
-
+           return _DAO.delete(ID_maszyny);
+           
         }// delete
 
         /// <summary>
@@ -2773,6 +2764,7 @@ namespace nsAccess2DB
         public bool delete(int ID_maszyny, int ID_op_maszyny)
         {
             return _DAO.delete(ID_maszyny, ID_op_maszyny);
+
         }// delete
 
         /// <summary>
