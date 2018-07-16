@@ -822,7 +822,8 @@ namespace nsAccess2DB
             {
                 if (_idx > -1 & _idx < _count)
                 {
-                    return _VOi = _VOs[_idx];
+                    _VOi = _VOs[_idx];
+                    return _VOi;
                 }
                 return new MaszynyVO();
             }
@@ -2628,7 +2629,7 @@ namespace nsAccess2DB
         /// <returns></returns>
         public bool delete(int ID_maszyny)
         {
-            string query = "DELETE * FROM Operator_maszyny_Maszyny WHERE ID_op_maszyny = " + ID_maszyny.ToString() + ";";
+            string query = "DELETE * FROM Operator_maszyny_Maszyny WHERE ID_maszyny = " + ID_maszyny.ToString() + ";";
             OleDbParameter[] parameters = new OleDbParameter[0];
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;

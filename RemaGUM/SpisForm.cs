@@ -942,6 +942,8 @@ namespace RemaGUM
                 maszynyVO.Stan_techniczny = comboBoxStan_techniczny.Text;
                 maszynyVO.Propozycja = comboBoxPropozycja.Text;
 
+                maszynyBUS.write(maszynyVO);
+
             }//if - nowy
             else if (_statusForm == (int)_status.edycja)
             {
@@ -981,17 +983,18 @@ namespace RemaGUM
                     maszynyVO.Wykorzystanie = comboBoxWykorzystanie.Text;
                     maszynyVO.Stan_techniczny = comboBoxStan_techniczny.Text;
                     maszynyVO.Propozycja = comboBoxPropozycja.Text;
+
+                    maszynyBUS.write(maszynyVO);
+
+                    operator_maszyny_MaszynyBUS.delete(maszynyBUS.VO.Identyfikator);
                 }
             }//else if - edycja
 
-            maszynyBUS.write(maszynyVO);
-            int maszynaID = maszynyBUS.VO.Identyfikator;
-            operator_maszyny_MaszynyBUS.delete(maszynyBUS.VO.Identyfikator, operator_maszynyBUS.VO.Identyfikator);
-            operator_maszyny_MaszynyBUS.delete(maszynyBUS.VO.Identyfikator);
-            
+            operator_maszyny_MaszynyBUS.select(maszynyVO.Identyfikator);
+
             // Zapis operatorów/operatora maszyny przypisanych do maszyny.
             operator_maszynyBUS.select();
-            //operator_maszyny_MaszynyBUS.select();
+          
             
             for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
             {
@@ -1000,7 +1003,7 @@ namespace RemaGUM
                     operator_maszynyBUS.idx = i;
                     if (_statusForm == (int)_status.edycja)
                     {
-                        operator_maszyny_MaszynyBUS.insert(maszynyVO.Identyfikator, operator_maszynyBUS.VO.Identyfikator);
+                        operator_maszyny_MaszynyBUS.insert(maszynyBUS.VO.Identyfikator, operator_maszynyBUS.VO.Identyfikator);
                     }
                     else if (_statusForm == (int)_status.nowy)
                     {
@@ -1010,11 +1013,6 @@ namespace RemaGUM
             }
            
             //Wybierz na liście maszynę.
-            maszynyBUS.select();
-
-            
-
-
             listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// Wybierz operatorów maszyn.
 
             MessageBox.Show("Pozycja zapisana w bazie", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
