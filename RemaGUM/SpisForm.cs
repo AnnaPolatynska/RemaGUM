@@ -858,8 +858,6 @@ namespace RemaGUM
         {
             try
             {
-                _MaszynyBUS.delete((int)listBoxMaszyny.Tag);
-
                 comboBoxKategoria.Text = string.Empty;
                 textBoxNazwa.Text = string.Empty;
                 textBoxTyp.Text = string.Empty;
@@ -878,13 +876,15 @@ namespace RemaGUM
                 comboBoxWykorzystanie.Text = string.Empty;
                 comboBoxStan_techniczny.Text = string.Empty;
                 comboBoxPropozycja.Text = string.Empty;
-
-                checkedListBoxOperatorzy_maszyn.Items.Clear(); /////***********************************************
-                _statusForm = (int)_status.edycja;
             }
             catch { }
+
+            _MaszynyBUS.delete((int)listBoxMaszyny.Tag);// usunięcie z tabeli maszyna
+            _Operator_maszyny_MaszynyBUS.delete((int)listBoxMaszyny.Tag); // usunięcie z tabeli relacji maszyna operator
+
             WypelnijMaszynyNazwami();
             WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);
+            _statusForm = (int)_status.edycja;
         }//buttonUsun_Click
 
         /// <summary>
@@ -943,8 +943,21 @@ namespace RemaGUM
                 maszynyVO.Propozycja = comboBoxPropozycja.Text;
 
                 maszynyBUS.write(maszynyVO);
+                operator_maszyny_MaszynyBUS.select(maszynyVO.Identyfikator);
+                
+                // Zapis operatorów/operatora maszyny przypisanych do maszyny.
+                operator_maszynyBUS.select();
 
+                for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
+                {
+                    if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
+                    {
+                        operator_maszynyBUS.idx = i;
+                        operator_maszyny_MaszynyBUS.insert(maszynyBUS.VO.Identyfikator, operator_maszynyBUS.VO.Identyfikator);
+                    }
+                }
             }//if - nowy
+
             else if (_statusForm == (int)_status.edycja)
             {
                 maszynyBUS.select((int)listBoxMaszyny.Tag);
@@ -987,36 +1000,50 @@ namespace RemaGUM
                     maszynyBUS.write(maszynyVO);
 
                     operator_maszyny_MaszynyBUS.delete(maszynyBUS.VO.Identyfikator);
+                    operator_maszyny_MaszynyBUS.select(maszynyBUS.VO.Identyfikator);
+
+                    // Zapis operatorów/operatora maszyny przypisanych do maszyny.
+                    operator_maszynyBUS.select();
+
+                    for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
+                    {
+                        if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
+                        {
+                            operator_maszynyBUS.idx = i;
+                            operator_maszyny_MaszynyBUS.insert(maszynyVO.Identyfikator, operator_maszynyBUS.VO.Identyfikator);
+                        }
+                    }
                 }
             }//else if - edycja
 
-            operator_maszyny_MaszynyBUS.select(maszynyVO.Identyfikator);
+            //operator_maszyny_MaszynyBUS.select(maszynyVO.Identyfikator);
 
             // Zapis operatorów/operatora maszyny przypisanych do maszyny.
-            operator_maszynyBUS.select();
+            //operator_maszynyBUS.select();
           
             
-            for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
-            {
-                if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
-                { 
-                    operator_maszynyBUS.idx = i;
-                    if (_statusForm == (int)_status.edycja)
-                    {
-                        operator_maszyny_MaszynyBUS.insert(maszynyBUS.VO.Identyfikator, operator_maszynyBUS.VO.Identyfikator);
-                    }
-                    else if (_statusForm == (int)_status.nowy)
-                    {
-                        operator_maszyny_MaszynyBUS.insert(maszynyVO.Identyfikator, operator_maszynyBUS.VO.Identyfikator);
-                    }
-                }
-            }
+            //for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
+            //{
+            //    if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
+            //    { 
+            //        operator_maszynyBUS.idx = i;
+            //        if (_statusForm == (int)_status.edycja)
+            //        {
+            //            operator_maszyny_MaszynyBUS.insert(maszynyBUS.VO.Identyfikator, operator_maszynyBUS.VO.Identyfikator);
+            //        }
+            //        else if (_statusForm == (int)_status.nowy)
+            //        {
+            //            operator_maszyny_MaszynyBUS.insert(maszynyVO.Identyfikator, operator_maszynyBUS.VO.Identyfikator);
+            //        }
+            //    }
+            //}
            
             //Wybierz na liście maszynę.
-            listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// Wybierz operatorów maszyn.
+            WypelnijMaszynyNazwami();
+            listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator + 1);// ustawienie zaznaczenia w tabeli maszyn.
 
             MessageBox.Show("Pozycja zapisana w bazie", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            WypelnijMaszynyNazwami();
+            
 
             _statusForm = (int)_status.edycja;
         }//buttonZapisz_Click
