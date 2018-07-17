@@ -19,8 +19,8 @@ namespace RemaGUM
 
         private string _helpFile = Application.StartupPath + "\\RemaGUM.chm"; //plik pomocy RemaGUM
 
-        private nsAccess2DB.Operator_maszynyBUS _Operator_maszynyBUS;
-        private nsAccess2DB.Operator_maszyny_MaszynyBUS _Operator_maszyny_MaszynyBUS;
+        private nsAccess2DB.OperatorBUS _OperatorBUS;
+        private nsAccess2DB.Maszyny_OperatorBUS _Maszyny_OperatorBUS;
         private nsAccess2DB.MaszynyBUS _MaszynyBUS;
         private nsAccess2DB.DzialBUS _DzialBUS;
 
@@ -31,7 +31,7 @@ namespace RemaGUM
         /// <summary>
         /// Konstruktor formularza Operator maszyny.
         /// </summary>
-        /// <param name="connStr">Połaczenie z bazą talela Nazwa_op_maszyny.</param>
+        /// <param name="connStr">Połaczenie z bazą talela Nazwa_operatora.</param>
         public Operator_maszynyForm()
         {
             InitializeComponent();
@@ -58,13 +58,13 @@ namespace RemaGUM
             //sortowanie po radio buttonach
             radioButtonData_konca_upr.TabIndex = 13;
 
-            _Operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
-            _Operator_maszyny_MaszynyBUS = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
+            _OperatorBUS = new nsAccess2DB.OperatorBUS(_connString);
+            _Maszyny_OperatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
             _MaszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             _DzialBUS = new nsAccess2DB.DzialBUS(_connString);
 
-            _Operator_maszynyBUS.select();
-            _Operator_maszyny_MaszynyBUS.select();
+            _OperatorBUS.select();
+            _Maszyny_OperatorBUS.select();
             _MaszynyBUS.select();
 
             WypelnijOperatorowDanymi();
@@ -119,14 +119,14 @@ namespace RemaGUM
         //wyświetla listę operatorów maszyn po imieniu i nazwisku
         private void WypelnijOperatorowDanymi()
         {
-            nsAccess2DB.Operator_maszynyBUS operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
-            _Operator_maszynyBUS.selectQuery("SELECT * FROM Operator_maszyny ORDER BY op_nazwisko ASC;");
+            nsAccess2DB.OperatorBUS operator_maszynyBUS = new nsAccess2DB.OperatorBUS(_connString);
+            _OperatorBUS.selectQuery("SELECT * FROM Operator ORDER BY op_nazwisko ASC;");
             listBoxOperator_maszyny.Items.Clear();
 
-            while (!_Operator_maszynyBUS.eof)
+            while (!_OperatorBUS.eof)
             {
-                listBoxOperator_maszyny.Items.Add(_Operator_maszynyBUS.VO.Op_nazwisko + " " + _Operator_maszynyBUS.VO.Op_imie);
-                _Operator_maszynyBUS.skip();
+                listBoxOperator_maszyny.Items.Add(_OperatorBUS.VO.Op_nazwisko + " " + _OperatorBUS.VO.Op_imie);
+                _OperatorBUS.skip();
             }
 
             if (listBoxOperator_maszyny.Items.Count > 0)
@@ -138,11 +138,11 @@ namespace RemaGUM
         // wyświetla listę maszyn dla danego operatora
         private void WypelnijOperatorowMaszynami()
         {
-            nsAccess2DB.Operator_maszyny_MaszynyBUS operator_maszyny_MaszynyBUS = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
+            nsAccess2DB.Maszyny_OperatorBUS operator_maszyny_MaszynyBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
             nsAccess2DB.MaszynyBUS MaszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             listBox_maszyny.Items.Clear();
 
-            _Operator_maszyny_MaszynyBUS.select();
+            _Maszyny_OperatorBUS.select();
 
             while (!_MaszynyBUS.eof)
             {
@@ -166,8 +166,8 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void listBoxOperator_maszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _Operator_maszynyBUS.idx = listBoxOperator_maszyny.SelectedIndex;
-            listBoxOperator_maszyny.Text = _Operator_maszynyBUS.VO.Identyfikator.ToString();
+            _OperatorBUS.idx = listBoxOperator_maszyny.SelectedIndex;
+            listBoxOperator_maszyny.Text = _OperatorBUS.VO.Identyfikator.ToString();
 
             ListBox lb = (ListBox)sender;
             if (lb.SelectedIndex < 0)
@@ -175,18 +175,18 @@ namespace RemaGUM
                 return;
             }
       
-            // listBox_maszyny.Text = _Operator_maszyny_MaszynyBUS.VO.ID_op_maszyny.ToString();
+            // listBox_maszyny.Text = _Maszyny_OperatorBUS.VO.ID_op_maszyny.ToString();
 
-            textBoxImie.Text = _Operator_maszynyBUS.VO.Op_imie;
-            textBoxNazwisko.Text = _Operator_maszynyBUS.VO.Op_nazwisko;
-            comboBoxDzial_operator_maszyny.Text = _Operator_maszynyBUS.VO.Nazwa_dzial;
-            textBoxUprawnienie.Text = _Operator_maszynyBUS.VO.Uprawnienie;
-            dateTimePickerData_konca_upr.Value = new DateTime(_Operator_maszynyBUS.VO.Rok, _Operator_maszynyBUS.VO.Mc, _Operator_maszynyBUS.VO.Dzien);
-            toolStripStatusLabel_ID_Operatora.Text = _Operator_maszynyBUS.VO.Identyfikator.ToString(); // ID operatora maszyny
-            toolStripStatusLabel_ID_Operatora.Tag = _Operator_maszynyBUS.VO.Identyfikator; // ID operatora maszyny
+            textBoxImie.Text = _OperatorBUS.VO.Op_imie;
+            textBoxNazwisko.Text = _OperatorBUS.VO.Op_nazwisko;
+            comboBoxDzial_operator_maszyny.Text = _OperatorBUS.VO.Nazwa_dzial;
+            textBoxUprawnienie.Text = _OperatorBUS.VO.Uprawnienie;
+            dateTimePickerData_konca_upr.Value = new DateTime(_OperatorBUS.VO.Rok, _OperatorBUS.VO.Mc, _OperatorBUS.VO.Dzien);
+            toolStripStatusLabel_ID_Operatora.Text = _OperatorBUS.VO.Identyfikator.ToString(); // ID operatora maszyny
+            toolStripStatusLabel_ID_Operatora.Tag = _OperatorBUS.VO.Identyfikator; // ID operatora maszyny
 
             //wypełnij listę maszyn obsługiwanych przez wybranego operatora - zmiana indeksu operatora ma zmieniać listę podległych mu maszyn
-            nsAccess2DB.Operator_maszyny_MaszynyBUS OMM_BUS = new nsAccess2DB.Operator_maszyny_MaszynyBUS(_connString);
+            nsAccess2DB.Maszyny_OperatorBUS OMM_BUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
             nsAccess2DB.MaszynyBUS MaszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             
             OMM_BUS.select((int)toolStripStatusLabel_ID_Operatora.Tag);
@@ -223,12 +223,12 @@ namespace RemaGUM
         private void radioButtonData_konca_upr_CheckedChanged(object sender, EventArgs e)
         {
             listBoxOperator_maszyny.Items.Clear();
-            nsAccess2DB.Operator_maszynyBUS operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
-            _Operator_maszynyBUS.selectQuery("SELECT * FROM Operator_maszyny ORDER BY Op_nazwisko ASC;");
-            while (!_Operator_maszynyBUS.eof)
+            nsAccess2DB.OperatorBUS operator_maszynyBUS = new nsAccess2DB.OperatorBUS(_connString);
+            _OperatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Op_nazwisko ASC;");
+            while (!_OperatorBUS.eof)
             {
-                listBoxOperator_maszyny.Items.Add(_Operator_maszynyBUS.VO.Op_imie + " " + _Operator_maszynyBUS.VO.Op_nazwisko + " -> " + _Operator_maszynyBUS.VO.Rok + "-" + _Operator_maszynyBUS.VO.Mc + "-" + _Operator_maszynyBUS.VO.Dzien);
-                _Operator_maszynyBUS.skip();
+                listBoxOperator_maszyny.Items.Add(_OperatorBUS.VO.Op_imie + " " + _OperatorBUS.VO.Op_nazwisko + " -> " + _OperatorBUS.VO.Rok + "-" + _OperatorBUS.VO.Mc + "-" + _OperatorBUS.VO.Dzien);
+                _OperatorBUS.skip();
             }
 
             if (listBoxOperator_maszyny.Items.Count > 0)
@@ -249,12 +249,12 @@ namespace RemaGUM
         {
             listBoxOperator_maszyny.Items.Clear();
 
-            nsAccess2DB.Operator_maszynyBUS operator_maszynyBUS = new nsAccess2DB.Operator_maszynyBUS(_connString);
-            _Operator_maszynyBUS.selectQuery("SELECT * FROM Operator_maszyny WHERE Op_nazwisko LIKE '" + textBoxWyszukiwanie.Text + "%' OR Op_imie LIKE '%" + textBoxWyszukiwanie.Text + "%';");
-            while (!_Operator_maszynyBUS.eof)
+            nsAccess2DB.OperatorBUS operator_maszynyBUS = new nsAccess2DB.OperatorBUS(_connString);
+            _OperatorBUS.selectQuery("SELECT * FROM Operator WHERE Op_nazwisko LIKE '" + textBoxWyszukiwanie.Text + "%' OR Op_imie LIKE '%" + textBoxWyszukiwanie.Text + "%';");
+            while (!_OperatorBUS.eof)
             {
-                listBoxOperator_maszyny.Items.Add(_Operator_maszynyBUS.VO.Nazwa_op_maszyny + " -> " + _Operator_maszynyBUS.VO.Nazwa_dzial);
-                _Operator_maszynyBUS.skip();
+                listBoxOperator_maszyny.Items.Add(_OperatorBUS.VO.Nazwa_operatora + " -> " + _OperatorBUS.VO.Nazwa_dzial);
+                _OperatorBUS.skip();
             }
 
             if (listBoxOperator_maszyny.Items.Count > 0)
@@ -297,7 +297,7 @@ namespace RemaGUM
             buttonNowa.Enabled = true; //nieaktywny przycisk nowa przy zapisie
             buttonUsun.Enabled = true; //nieaktywny przycisk Usuń przy zapisie
 
-            nsAccess2DB.Operator_maszynyVO VO = new nsAccess2DB.Operator_maszynyVO();
+            nsAccess2DB.OperatorVO VO = new nsAccess2DB.OperatorVO();
             VO.Op_imie = textBoxImie.Text;
             VO.Op_nazwisko = textBoxNazwisko.Text;
             VO.Nazwa_dzial = comboBoxDzial_operator_maszyny.Text;
@@ -322,11 +322,11 @@ namespace RemaGUM
             }
             else
             {
-                listBoxOperator_maszyny.SelectedIndex = _Operator_maszynyBUS.getIdx(VO.Identyfikator);
+                listBoxOperator_maszyny.SelectedIndex = _OperatorBUS.getIdx(VO.Identyfikator);
             }
 
-            _Operator_maszynyBUS.write(VO);
-            //  _Operator_maszyny_MaszynyBUS.write(VO);
+            _OperatorBUS.write(VO);
+            //  _Maszyny_OperatorBUS.write(VO);
             //TODO write w Operator_maszyny_Maszyny
 
             MessageBox.Show("Pozycja zapisana w bazie", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -351,7 +351,7 @@ namespace RemaGUM
 
         private void buttonUsun_Click(object sender, EventArgs e)
         {
-            _Operator_maszynyBUS.delete((int)listBoxOperator_maszyny.Tag);
+            _OperatorBUS.delete((int)listBoxOperator_maszyny.Tag);
             textBoxImie.Text = string.Empty;
             comboBoxDzial_operator_maszyny.Text = string.Empty;
             textBoxUprawnienie.Text = string.Empty;
