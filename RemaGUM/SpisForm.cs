@@ -858,6 +858,8 @@ namespace RemaGUM
         {
             try
             {
+                _MaszynyBUS.delete((int)listBoxMaszyny.Tag);
+
                 comboBoxKategoria.Text = string.Empty;
                 textBoxNazwa.Text = string.Empty;
                 textBoxTyp.Text = string.Empty;
@@ -876,15 +878,13 @@ namespace RemaGUM
                 comboBoxWykorzystanie.Text = string.Empty;
                 comboBoxStan_techniczny.Text = string.Empty;
                 comboBoxPropozycja.Text = string.Empty;
+
+                checkedListBoxOperatorzy_maszyn.Items.Clear(); /////***********************************************
+                _statusForm = (int)_status.edycja;
             }
             catch { }
-
-            _MaszynyBUS.delete((int)listBoxMaszyny.Tag);// usunięcie z tabeli maszyna
-            _Operator_maszyny_MaszynyBUS.delete((int)listBoxMaszyny.Tag); // usunięcie z tabeli relacji maszyna operator
-
             WypelnijMaszynyNazwami();
             WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);
-            _statusForm = (int)_status.edycja;
         }//buttonUsun_Click
 
         /// <summary>
@@ -953,11 +953,11 @@ namespace RemaGUM
                     if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
                     {
                         operator_maszynyBUS.idx = i;
-                        operator_maszyny_MaszynyBUS.insert(maszynyBUS.VO.Identyfikator, operator_maszynyBUS.VO.Identyfikator);
+                        operator_maszyny_MaszynyBUS.insert(maszynyVO.Identyfikator, operator_maszynyBUS.VO.Identyfikator);
                     }
                 }
-            }//if - nowy
 
+            }//if - nowy
             else if (_statusForm == (int)_status.edycja)
             {
                 maszynyBUS.select((int)listBoxMaszyny.Tag);
@@ -1000,7 +1000,7 @@ namespace RemaGUM
                     maszynyBUS.write(maszynyVO);
 
                     operator_maszyny_MaszynyBUS.delete(maszynyBUS.VO.Identyfikator);
-                    operator_maszyny_MaszynyBUS.select(maszynyBUS.VO.Identyfikator);
+                    operator_maszyny_MaszynyBUS.select(maszynyVO.Identyfikator);
 
                     // Zapis operatorów/operatora maszyny przypisanych do maszyny.
                     operator_maszynyBUS.select();
