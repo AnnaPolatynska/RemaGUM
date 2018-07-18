@@ -19,6 +19,8 @@ namespace RemaGUM
       
         private string _helpFile = Application.StartupPath + "\\RemaGUM.chm"; //plik pomocy RemaGUM
 
+        private byte[] _zawartoscPliku; //dane odczytane z pliku zdjęcia
+
         enum _status { edycja, nowy, usun, zapisz, anuluj };  //status działania formularza
         private byte _statusForm; // wartośc statusu formularza
 
@@ -296,6 +298,15 @@ namespace RemaGUM
          /// <param name="e"></param>
         private void listBoxMaszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try
+            {
+                if (File.Exists(_MaszynyBUS.VO.Zdjecie))
+                {
+                    File.Delete(_MaszynyBUS.VO.Zdjecie);
+                }
+            }
+            catch { }
+
             _MaszynyBUS.idx = listBoxMaszyny.SelectedIndex;
 
             toolStripStatusLabelID_Maszyny.Text = _MaszynyBUS.VO.Identyfikator.ToString(); // toolStripStatusLabelID_Maszyny
@@ -308,7 +319,17 @@ namespace RemaGUM
             textBoxNr_fabryczny.Text = _MaszynyBUS.VO.Nr_fabryczny;
             textBoxRok_produkcji.Text = _MaszynyBUS.VO.Rok_produkcji;
             textBoxProducent.Text = _MaszynyBUS.VO.Producent;
-            pictureBox1.Text = _MaszynyBUS.VO.Zdjecie;
+
+            linkLabelNazwaZdjecia.Text = _MaszynyBUS.VO.Zdjecie;// zdjęcie nazwa
+            
+           _zawartoscPliku = _MaszynyBUS.VO.Zawartosc_pliku; //zawartość zdjęcia
+
+            //MemoryStream mStream = new MemoryStream();
+            //pictureBox1.Image.Save(System.Drawing.Imaging.ImageFormat.Bmp);
+            //_MaszynyBUS.VO.Zawartosc_pliku.ToArray();
+            //pictureBox1.Image = 
+
+
 
             comboBoxOsoba_zarzadzajaca.Text = _MaszynyBUS.VO.Nazwa_os_zarzadzajaca;
 
@@ -829,7 +850,11 @@ namespace RemaGUM
             textBoxNr_fabryczny.Text = string.Empty;
             textBoxRok_produkcji.Text = string.Empty;
             textBoxProducent.Text = string.Empty;
-            pictureBox1.Text = string.Empty;
+
+            linkLabelNazwaZdjecia.Text = _MaszynyBUS.VO.Zdjecie;
+            _zawartoscPliku = _MaszynyBUS.VO.Zawartosc_pliku;
+            //pictureBox1.Text = string.Empty;
+
             comboBoxOsoba_zarzadzajaca.Text = string.Empty;
             textBoxNr_pom.Text = string.Empty;
             comboBoxDzial.Text = string.Empty;
@@ -964,6 +989,8 @@ namespace RemaGUM
                 }
                 else
                 {
+                    if (_zawartoscPliku == null) _zawartoscPliku = new byte[] { }; // zapisz nowy plik zdjęcia podczas edycji maszyny.
+
                     maszynyVO.Identyfikator = (int)listBoxMaszyny.Tag;
                     maszynyVO.Kategoria = comboBoxKategoria.Text;
                     maszynyVO.Nazwa = textBoxNazwa.Text.Trim();
@@ -972,7 +999,10 @@ namespace RemaGUM
                     maszynyVO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
                     maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
                     maszynyVO.Producent = textBoxProducent.Text.Trim();
-                    maszynyVO.Zdjecie = pictureBox1.Text;  /////                ???????????????? obrazek
+
+                    maszynyVO.Zdjecie = pictureBox1.Text;  //zdjęcie nazwa                ???????????????? zdjęcie
+                    maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
+
                     maszynyVO.Nazwa_os_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
                     maszynyVO.Nr_pom = textBoxNr_pom.Text;
                     maszynyVO.Dzial = comboBoxDzial.Text;
@@ -1223,11 +1253,26 @@ namespace RemaGUM
             Os_zarzadzajacaForm frame = new Os_zarzadzajacaForm();
             frame.Show();
         }
-
+        /// <summary>
+        /// Ppokazuje zdjęcie po kliknięciu na link.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void linkLabelNazwaZdjecia_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             pokazZdjecie(linkLabelNazwaZdjecia.Text);
         } //linkLabelNazwaZdjecia_LinkClicked
+
+        /// <summary>
+        /// Sprawdza istnienie zdjęcia.
+        /// </summary>
+        /// <param name="zdjecie"></param>
+        /// <returns>Zwraca wartość logiczną istnienia pliku.</returns>
+        private bool zdjecieIstnieje(string zdjecie)
+        {
+            FileInfo fi = new FileInfo(zdjecie);
+            return fi.Exists;
+        }// zdjecieIstnieje
 
         /// <summary>
         /// Zwraca obiekt informacji o napędzie dostepny na stacji.
@@ -1249,27 +1294,76 @@ namespace RemaGUM
             return null;
         }//zwrocNaped
 
-        private void pokazZdjecie(string Zdjecie)
+        private bool dirIstnieje(string sciezka)
+        {
+            DirectoryInfo di = new DirectoryInfo(sciezka);
+            return di.Exists;
+        }//dirIstnieje
+        /// <summary>
+        /// Tworzy plik - zdjęcia na dysku.
+        /// </summary>
+        /// <param name="zdjecie"></param>
+        private void zapiszZdjecieNaDysku(string zdjecie)
+        {
+            FileStream fs = new FileStream(zdjecie, FileMode.OpenOrCreate, FileAccess.Read);
+            _zawartoscPliku = new byte[fs.Length];
+            fs.Read(_zawartoscPliku, 0, System.Convert.ToInt32(fs.Length));
+            fs.Close();
+
+        }//zapiszZdjecieNaDysku
+
+        private void pokazZdjecie(string zdjecie)
         {
             try
             {
                 Cursor = Cursors.WaitCursor;
 
-                if (Zdjecie.Length == 0)
+                if (zdjecie.Length == 0)
                 {
-                    MessageBox.Show("Pusta nazwa pliku zapisanego w bazie", "RemaGUM",
+                    MessageBox.Show("Pusta nazwa zdjęcia zapisanego w bazie", "RemaGUM",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                DirectoryInfo di = zwrocNaped(); //napęd dostępny na stacji.
+                if (di != null)
+                {
+                    
 
-            }
-            catch (Exception ex)
+                }
+            }catch (Exception ex)
             {
-                MessageBox.Show("Problem z prezentacją załącznika. Błąd: " + ex.Message);
+                MessageBox.Show("Problem z prezentacją zdjęcia. Błąd: " + ex.Message);
                 Cursor = Cursors.Default;
             }
             Cursor = Cursors.Default;
-        
-        }
+        }//pokazZdjecie
+
+        //button Wgraj/pokaż
+        private void buttonPokazZdj_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "wybierz *.* plik";
+            ofd.Filter = "pliki (*.*)|*.*|wszystkie pliki (*.*)|*.*";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    FileStream fs = new FileStream(ofd.FileName, FileMode.OpenOrCreate, FileAccess.Read);
+                    _zawartoscPliku = new byte[fs.Length];
+                    fs.Read(_zawartoscPliku, 0, System.Convert.ToInt32(fs.Length));
+
+                    fs.Close();
+
+                    FileInfo fi = new FileInfo(ofd.FileName);
+                    linkLabelNazwaZdjecia.Text = fi.Name;
+                    _MaszynyBUS.VO.Zawartosc_pliku = _zawartoscPliku; //zawartosc zdjęcia
+                    _MaszynyBUS.VO.Zdjecie = fi.Name;// nazwa zdjęcia
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Problem z prezentacją zdjęcia. Błąd: " + ex.Message);
+                }
+            }
+        }//buttonPokazZdj_Click
 
     }// public partial class SpisForm : Form
        

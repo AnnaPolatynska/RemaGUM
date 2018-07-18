@@ -380,7 +380,7 @@
             this.Normalia.Controls.Add(this.groupBox21);
             this.Normalia.Location = new System.Drawing.Point(4, 22);
             this.Normalia.Name = "Normalia";
-            this.Normalia.Size = new System.Drawing.Size(1194, 760);
+            this.Normalia.Size = new System.Drawing.Size(1194, 892);
             this.Normalia.TabIndex = 2;
             this.Normalia.Text = "Normalia";
             this.Normalia.UseVisualStyleBackColor = true;
@@ -939,7 +939,7 @@
             this.Materiały.Location = new System.Drawing.Point(4, 22);
             this.Materiały.Name = "Materiały";
             this.Materiały.Padding = new System.Windows.Forms.Padding(3);
-            this.Materiały.Size = new System.Drawing.Size(1194, 760);
+            this.Materiały.Size = new System.Drawing.Size(1194, 892);
             this.Materiały.TabIndex = 1;
             this.Materiały.Text = "Materiały";
             // 
@@ -948,7 +948,7 @@
             this.statusStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel3,
             this.toolStripStatusLabelID_Materialu});
-            this.statusStrip4.Location = new System.Drawing.Point(3, 735);
+            this.statusStrip4.Location = new System.Drawing.Point(3, 867);
             this.statusStrip4.Name = "statusStrip4";
             this.statusStrip4.Size = new System.Drawing.Size(1188, 22);
             this.statusStrip4.TabIndex = 53;
@@ -1592,6 +1592,7 @@
             this.buttonPokazZdj.TabIndex = 49;
             this.buttonPokazZdj.Text = "Wgraj/Pokaż Zdjęcie";
             this.buttonPokazZdj.UseVisualStyleBackColor = true;
+            this.buttonPokazZdj.Click += new System.EventHandler(this.buttonPokazZdj_Click);
             // 
             // linkLabelNazwaZdjecia
             // 
@@ -2261,7 +2262,7 @@
             this.Operatorzy_maszyn.Controls.Add(this.groupBox26);
             this.Operatorzy_maszyn.Location = new System.Drawing.Point(4, 22);
             this.Operatorzy_maszyn.Name = "Operatorzy_maszyn";
-            this.Operatorzy_maszyn.Size = new System.Drawing.Size(1194, 760);
+            this.Operatorzy_maszyn.Size = new System.Drawing.Size(1194, 892);
             this.Operatorzy_maszyn.TabIndex = 3;
             this.Operatorzy_maszyn.Text = "Operatorzy maszyn";
             // 
@@ -2270,7 +2271,7 @@
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel_ID_Operatora});
-            this.statusStrip2.Location = new System.Drawing.Point(0, 738);
+            this.statusStrip2.Location = new System.Drawing.Point(0, 870);
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Size = new System.Drawing.Size(1194, 22);
             this.statusStrip2.TabIndex = 57;
