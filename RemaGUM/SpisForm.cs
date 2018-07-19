@@ -21,6 +21,9 @@ namespace RemaGUM
 
         private byte[] _zawartoscPliku; //dane odczytane z pliku zdjęcia
 
+        string _dirNazwa = "tempRemaGUM"; //nazwa katalogu tymczasowego
+        string _dirPelnaNazwa = string.Empty; // katalog tymczasowy - pelna nazwa
+
         enum _status { edycja, nowy, usun, zapisz, anuluj };  //status działania formularza
         private byte _statusForm; // wartośc statusu formularza
 
@@ -793,7 +796,9 @@ namespace RemaGUM
             textBoxNr_fabryczny.Text = string.Empty;
             textBoxRok_produkcji.Text = string.Empty;
             textBoxProducent.Text = string.Empty;
-            pictureBox1.Text = string.Empty;
+
+            linkLabelNazwaZdjecia.Text = string.Empty;
+            _zawartoscPliku = new byte[] { };
 
             comboBoxOsoba_zarzadzajaca.SelectedIndex = -1;
             comboBoxOsoba_zarzadzajaca.Enabled = true;
@@ -927,8 +932,10 @@ namespace RemaGUM
             nsAccess2DB.OperatorVO operatorVO = new nsAccess2DB.OperatorVO();
             nsAccess2DB.Maszyny_OperatorVO operator_maszynyVO = new nsAccess2DB.Maszyny_OperatorVO();
 
+            if (_zawartoscPliku == null) _zawartoscPliku = new byte[] { }; // zapisz nowy plik zdjęcia podczas edycji maszyny.
             if (_statusForm == (int)_status.nowy)
             {
+                
                 //maszynyBUS.write(maszynyVO);
                 maszynyBUS.select();
                 maszynyBUS.idx = maszynyBUS.count - 1;
@@ -941,7 +948,10 @@ namespace RemaGUM
                 maszynyVO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
                 maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
                 maszynyVO.Producent = textBoxProducent.Text.Trim();
-                maszynyVO.Zdjecie = pictureBox1.Text;  /////                ???????????????? obrazek
+
+                maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa                ???????????????? zdjęcie
+                maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
+
                 maszynyVO.Nazwa_os_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
                 maszynyVO.Nr_pom = textBoxNr_pom.Text;
                 maszynyVO.Dzial = comboBoxDzial.Text;
@@ -989,7 +999,7 @@ namespace RemaGUM
                 }
                 else
                 {
-                    if (_zawartoscPliku == null) _zawartoscPliku = new byte[] { }; // zapisz nowy plik zdjęcia podczas edycji maszyny.
+                    
 
                     maszynyVO.Identyfikator = (int)listBoxMaszyny.Tag;
                     maszynyVO.Kategoria = comboBoxKategoria.Text;
@@ -1000,7 +1010,7 @@ namespace RemaGUM
                     maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
                     maszynyVO.Producent = textBoxProducent.Text.Trim();
 
-                    maszynyVO.Zdjecie = pictureBox1.Text;  //zdjęcie nazwa                ???????????????? zdjęcie
+                    maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa                ???????????????? zdjęcie
                     maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
 
                     maszynyVO.Nazwa_os_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
@@ -1326,10 +1336,33 @@ namespace RemaGUM
                 DirectoryInfo di = zwrocNaped(); //napęd dostępny na stacji.
                 if (di != null)
                 {
-                    
+                    _dirPelnaNazwa = di.FullName + _dirNazwa;
+                    string pelnaNazwaPliku = _dirPelnaNazwa + "\\" + zdjecie;
 
+                    if (zdjecieIstnieje(pelnaNazwaPliku))
+                    {
+                        System.Diagnostics.Process.Start(pelnaNazwaPliku);
+                        return;
+                    }
+
+                    if (!dirIstnieje(_dirPelnaNazwa))
+                    {
+                        Directory.CreateDirectory(_dirPelnaNazwa);
+                    }
+
+                    if (dirIstnieje(_dirPelnaNazwa))
+                    {
+                        int dlugosc = _zawartoscPliku.Length;
+
+                        FileStream fs = new FileStream(pelnaNazwaPliku, FileMode.OpenOrCreate, FileAccess.Write);
+                        fs.Write(_zawartoscPliku, 0, dlugosc);
+                        fs.Close();
+
+                        System.Diagnostics.Process.Start(pelnaNazwaPliku);
+                    }
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Problem z prezentacją zdjęcia. Błąd: " + ex.Message);
                 Cursor = Cursors.Default;
@@ -1364,6 +1397,13 @@ namespace RemaGUM
                 }
             }
         }//buttonPokazZdj_Click
+
+        private void buttonUsunZdj_Click(object sender, EventArgs e)
+        {
+            _MaszynyBUS.VO.Zawartosc_pliku = new byte[] { };
+            _MaszynyBUS.VO.Zdjecie = string.Empty;
+            linkLabelNazwaZdjecia.Text = string.Empty;
+        }//buttonUsunZdj_Click
 
     }// public partial class SpisForm : Form
        

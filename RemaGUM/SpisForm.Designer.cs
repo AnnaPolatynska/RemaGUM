@@ -1613,6 +1613,7 @@
             this.buttonUsunZdj.TabIndex = 47;
             this.buttonUsunZdj.Text = "Usuń Zdjęcie";
             this.buttonUsunZdj.UseVisualStyleBackColor = true;
+            this.buttonUsunZdj.Click += new System.EventHandler(this.buttonUsunZdj_Click);
             // 
             // groupBox4
             // 
