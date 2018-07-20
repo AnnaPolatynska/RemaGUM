@@ -30,10 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpisForm));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonSpisForm = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonOs_zarzadzajaca = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonOperator = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOdswiez = new System.Windows.Forms.ToolStripButton();
             this.Normalia = new System.Windows.Forms.TabPage();
@@ -216,12 +212,12 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_ID_Operatora = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonNowaOperator = new System.Windows.Forms.Button();
+            this.buttonUsunOperator = new System.Windows.Forms.Button();
+            this.buttonZapiszOperator = new System.Windows.Forms.Button();
+            this.buttonAnulujOperator = new System.Windows.Forms.Button();
             this.groupBox23 = new System.Windows.Forms.GroupBox();
-            this.listBoxOperator_maszyny = new System.Windows.Forms.ListBox();
+            this.listBoxOperator = new System.Windows.Forms.ListBox();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -288,10 +284,6 @@
             this.toolStrip.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.toolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonSpisForm,
-            this.toolStripButtonOs_zarzadzajaca,
-            this.toolStripButtonOperator,
-            this.toolStripSeparator1,
             this.toolStripButtonHelp,
             this.toolStripButtonOdswiez});
             this.toolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
@@ -301,50 +293,6 @@
             this.toolStrip.Size = new System.Drawing.Size(1207, 43);
             this.toolStrip.TabIndex = 41;
             this.toolStrip.Text = "toolStrip1";
-            // 
-            // toolStripButtonSpisForm
-            // 
-            this.toolStripButtonSpisForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSpisForm.Enabled = false;
-            this.toolStripButtonSpisForm.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSpisForm.Image")));
-            this.toolStripButtonSpisForm.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonSpisForm.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSpisForm.Name = "toolStripButtonSpisForm";
-            this.toolStripButtonSpisForm.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonSpisForm.Size = new System.Drawing.Size(39, 40);
-            this.toolStripButtonSpisForm.Text = "HOME";
-            this.toolStripButtonSpisForm.ToolTipText = "Powrót do strony startowej";
-            // 
-            // toolStripButtonOs_zarzadzajaca
-            // 
-            this.toolStripButtonOs_zarzadzajaca.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonOs_zarzadzajaca.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOs_zarzadzajaca.Image")));
-            this.toolStripButtonOs_zarzadzajaca.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonOs_zarzadzajaca.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonOs_zarzadzajaca.Name = "toolStripButtonOs_zarzadzajaca";
-            this.toolStripButtonOs_zarzadzajaca.Size = new System.Drawing.Size(37, 40);
-            this.toolStripButtonOs_zarzadzajaca.Text = "toolStripButton1";
-            this.toolStripButtonOs_zarzadzajaca.ToolTipText = "Osoby zarządzające";
-            this.toolStripButtonOs_zarzadzajaca.Click += new System.EventHandler(this.toolStripButtonOs_zarzadzajaca_Click);
-            // 
-            // toolStripButtonOperator
-            // 
-            this.toolStripButtonOperator.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonOperator.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOperator.Image")));
-            this.toolStripButtonOperator.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonOperator.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonOperator.Name = "toolStripButtonOperator";
-            this.toolStripButtonOperator.Size = new System.Drawing.Size(36, 40);
-            this.toolStripButtonOperator.Text = "toolStripButton2";
-            this.toolStripButtonOperator.ToolTipText = "Operatorzy maszyn.";
-            this.toolStripButtonOperator.Click += new System.EventHandler(this.toolStripButtonOperator_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator1.AutoSize = false;
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 36);
             // 
             // toolStripButtonHelp
             // 
@@ -361,12 +309,14 @@
             // 
             // toolStripButtonOdswiez
             // 
+            this.toolStripButtonOdswiez.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripButtonOdswiez.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonOdswiez.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOdswiez.Image")));
             this.toolStripButtonOdswiez.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonOdswiez.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonOdswiez.Name = "toolStripButtonOdswiez";
             this.toolStripButtonOdswiez.Size = new System.Drawing.Size(40, 40);
+            this.toolStripButtonOdswiez.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.toolStripButtonOdswiez.ToolTipText = "Odświeżenie danych.";
             this.toolStripButtonOdswiez.Click += new System.EventHandler(this.toolStripButtonOdswiez_Click);
             // 
@@ -2254,7 +2204,6 @@
             // Operatorzy_maszyn
             // 
             this.Operatorzy_maszyn.BackColor = System.Drawing.Color.Bisque;
-            this.Operatorzy_maszyn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Operatorzy_maszyn.Controls.Add(this.statusStrip2);
             this.Operatorzy_maszyn.Controls.Add(this.groupBox22);
             this.Operatorzy_maszyn.Controls.Add(this.groupBox23);
@@ -2294,10 +2243,10 @@
             // 
             this.groupBox22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox22.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox22.Controls.Add(this.button1);
-            this.groupBox22.Controls.Add(this.button2);
-            this.groupBox22.Controls.Add(this.button3);
-            this.groupBox22.Controls.Add(this.button4);
+            this.groupBox22.Controls.Add(this.buttonNowaOperator);
+            this.groupBox22.Controls.Add(this.buttonUsunOperator);
+            this.groupBox22.Controls.Add(this.buttonZapiszOperator);
+            this.groupBox22.Controls.Add(this.buttonAnulujOperator);
             this.groupBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox22.ForeColor = System.Drawing.Color.Red;
             this.groupBox22.Location = new System.Drawing.Point(348, 667);
@@ -2307,52 +2256,56 @@
             this.groupBox22.TabStop = false;
             this.groupBox22.Text = "edycja spisu";
             // 
-            // button1
+            // buttonNowaOperator
             // 
-            this.button1.BackColor = System.Drawing.Color.Linen;
-            this.button1.Location = new System.Drawing.Point(9, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "nowa";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonNowaOperator.BackColor = System.Drawing.Color.Linen;
+            this.buttonNowaOperator.Location = new System.Drawing.Point(9, 19);
+            this.buttonNowaOperator.Name = "buttonNowaOperator";
+            this.buttonNowaOperator.Size = new System.Drawing.Size(75, 23);
+            this.buttonNowaOperator.TabIndex = 2;
+            this.buttonNowaOperator.Text = "nowa";
+            this.buttonNowaOperator.UseVisualStyleBackColor = false;
+            this.buttonNowaOperator.Click += new System.EventHandler(this.buttonNowaOperator_Click);
             // 
-            // button2
+            // buttonUsunOperator
             // 
-            this.button2.BackColor = System.Drawing.Color.Linen;
-            this.button2.Location = new System.Drawing.Point(252, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "usuń";
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonUsunOperator.BackColor = System.Drawing.Color.Linen;
+            this.buttonUsunOperator.Location = new System.Drawing.Point(252, 19);
+            this.buttonUsunOperator.Name = "buttonUsunOperator";
+            this.buttonUsunOperator.Size = new System.Drawing.Size(75, 23);
+            this.buttonUsunOperator.TabIndex = 4;
+            this.buttonUsunOperator.Text = "usuń";
+            this.buttonUsunOperator.UseVisualStyleBackColor = false;
+            this.buttonUsunOperator.Click += new System.EventHandler(this.buttonUsunOperator_Click);
             // 
-            // button3
+            // buttonZapiszOperator
             // 
-            this.button3.BackColor = System.Drawing.Color.Linen;
-            this.button3.Location = new System.Drawing.Point(90, 19);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "zapisz";
-            this.button3.UseVisualStyleBackColor = false;
+            this.buttonZapiszOperator.BackColor = System.Drawing.Color.Linen;
+            this.buttonZapiszOperator.Location = new System.Drawing.Point(90, 19);
+            this.buttonZapiszOperator.Name = "buttonZapiszOperator";
+            this.buttonZapiszOperator.Size = new System.Drawing.Size(75, 23);
+            this.buttonZapiszOperator.TabIndex = 3;
+            this.buttonZapiszOperator.Text = "zapisz";
+            this.buttonZapiszOperator.UseVisualStyleBackColor = false;
+            this.buttonZapiszOperator.Click += new System.EventHandler(this.buttonZapiszOperator_Click);
             // 
-            // button4
+            // buttonAnulujOperator
             // 
-            this.button4.BackColor = System.Drawing.Color.Linen;
-            this.button4.Location = new System.Drawing.Point(171, 19);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "anuluj";
-            this.button4.UseVisualStyleBackColor = false;
+            this.buttonAnulujOperator.BackColor = System.Drawing.Color.Linen;
+            this.buttonAnulujOperator.Location = new System.Drawing.Point(171, 19);
+            this.buttonAnulujOperator.Name = "buttonAnulujOperator";
+            this.buttonAnulujOperator.Size = new System.Drawing.Size(75, 23);
+            this.buttonAnulujOperator.TabIndex = 3;
+            this.buttonAnulujOperator.Text = "anuluj";
+            this.buttonAnulujOperator.UseVisualStyleBackColor = false;
+            this.buttonAnulujOperator.Click += new System.EventHandler(this.buttonAnulujOperator_Click);
             // 
             // groupBox23
             // 
             this.groupBox23.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox23.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox23.Controls.Add(this.listBoxOperator_maszyny);
+            this.groupBox23.Controls.Add(this.listBoxOperator);
             this.groupBox23.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox23.Location = new System.Drawing.Point(12, 76);
             this.groupBox23.Name = "groupBox23";
@@ -2361,16 +2314,16 @@
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "Operatorzy maszyn";
             // 
-            // listBoxOperator_maszyny
+            // listBoxOperator
             // 
-            this.listBoxOperator_maszyny.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listBoxOperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBoxOperator_maszyny.BackColor = System.Drawing.Color.Linen;
-            this.listBoxOperator_maszyny.FormattingEnabled = true;
-            this.listBoxOperator_maszyny.Location = new System.Drawing.Point(15, 35);
-            this.listBoxOperator_maszyny.Name = "listBoxOperator_maszyny";
-            this.listBoxOperator_maszyny.Size = new System.Drawing.Size(309, 602);
-            this.listBoxOperator_maszyny.TabIndex = 0;
+            this.listBoxOperator.BackColor = System.Drawing.Color.Linen;
+            this.listBoxOperator.FormattingEnabled = true;
+            this.listBoxOperator.Location = new System.Drawing.Point(15, 35);
+            this.listBoxOperator.Name = "listBoxOperator";
+            this.listBoxOperator.Size = new System.Drawing.Size(309, 602);
+            this.listBoxOperator.TabIndex = 0;
             // 
             // groupBox24
             // 
@@ -2653,10 +2606,6 @@
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripButton toolStripButtonHelp;
         private System.Windows.Forms.ToolStripButton toolStripButtonOdswiez;
-        private System.Windows.Forms.ToolStripButton toolStripButtonOs_zarzadzajaca;
-        private System.Windows.Forms.ToolStripButton toolStripButtonOperator;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButtonSpisForm;
         private System.Windows.Forms.TabPage Normalia;
         private System.Windows.Forms.TabPage Materiały;
         private System.Windows.Forms.TabPage Maszyny;
@@ -2831,12 +2780,12 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_ID_Operatora;
         private System.Windows.Forms.GroupBox groupBox22;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonNowaOperator;
+        private System.Windows.Forms.Button buttonUsunOperator;
+        private System.Windows.Forms.Button buttonZapiszOperator;
+        private System.Windows.Forms.Button buttonAnulujOperator;
         private System.Windows.Forms.GroupBox groupBox23;
-        private System.Windows.Forms.ListBox listBoxOperator_maszyny;
+        private System.Windows.Forms.ListBox listBoxOperator;
         private System.Windows.Forms.GroupBox groupBox24;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox1;

@@ -118,7 +118,6 @@
             this.toolStripButtonOperator.Size = new System.Drawing.Size(36, 40);
             this.toolStripButtonOperator.Text = "toolStripButton2";
             this.toolStripButtonOperator.ToolTipText = "Operatorzy maszyn.";
-            this.toolStripButtonOperator.Click += new System.EventHandler(this.toolStripButtonOperator_Click);
             // 
             // toolStripSeparator1
             // 

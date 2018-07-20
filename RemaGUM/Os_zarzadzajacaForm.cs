@@ -23,10 +23,6 @@ namespace RemaGUM
             frame.Show();
         }
 
-        private void toolStripButtonOperator_Click(object sender, EventArgs e)
-        {
-            Operator_maszynyForm frame = new Operator_maszynyForm();
-            frame.Show();
-        }
+       
     }
 }

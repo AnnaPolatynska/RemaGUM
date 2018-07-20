@@ -121,42 +121,6 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolStripButtonSpisForm.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACMAAAAkCAYAAAAD3IPhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD+SURBVFhH7Y6BCoNADEP9/5922nF4tml6moPJtgcFTdL0
-        lvVB/Mhjlq0aDYG7Cugh+xC4O0J2pH9APwTuVlSHvI8yHdzNQEf66WGeg7seX+zLRzwCd3v6I6yU5dje
-        Bnd3WDnjxh5P3Sg8cXEfJy6WlAz2nR2/RBYvM9B7qAPhKZA77z8fcKGpkFvvLxKYDrl1fDVcYDqk//+Y
-        L35My2TDIJmoVoXNryaD+FEdLasmg/hRFcoMwY+qUGYIflSFMkPwoyqUGYIfVaHMEPyoCmWG4EdVKDME
-        P6pCmSH4UW3hajJQFg0gqmgRTQbKogEkqltEk4GyfhJy5wM86DHr+gJSLUeoSbIEbAAAAABJRU5ErkJg
-        gg==
-</value>
-  </data>
-  <data name="toolStripButtonOs_zarzadzajaca.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACEAAAAkCAYAAAAHKVPcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFwSURBVFhHzZULEoMwCER7dI/mzWxwgKxropjQz5vZKRAC
-        +Etf2x+QM8SrlFGt66rBOHNDQHPWk2HKjufsDRqNWdFBSvYAjYZdBYhlAdG74AoQywKeDhF5JCVzAGtS
-        WJal+g19fAhpIEN4I2ysdoSpIbzJnX9DLIuBZn7VHT/C0BDYyB+FYr787u9LgKEhdu6uMngXhPEhhE4j
-        uQt8h66YH6Lo0FBjT5gfonA4K4RvDbFfPTZWLP6Rx3FoCs0lbg09R6Dcq6F0Rx9sfiok8YKfmuqL3cw1
-        EecIA4VPYMGebUAdrnXMlsQENQ8pWTPQLlQPiqSIwRitVw8LZIjBGK1XDwtkiMEYrVcPC2SIgRi/nHWF
-        izTkmxtrJzEQmxrCOBzTPTEUwy+ornCRlozWGovhGPhg6eYsMRwDHyzdnCWGY+CDpZuzxHAMfLB0c5aY
-        ixy3wp9eVAzHwHcrcwg7B0wSs797jBluYcK3ZNRxfsa2vQEqMf0K05L5WQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="toolStripButtonOperator.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF4SURBVFhHxZQLDgIxCEQ9+h5tb7ZC7VSKUGAbsy+ZqEBh
-        +omv62G2DJzn2bTDLQNt6IuWQhuUVh/HMQ9WunMatDKJMdBVgVy1NSRSkrhSNG1XoGKscfQqniGuUk29
-        e7beR+ZNUKXPz2tnMTrW47p+20D06iNtG7CaVvSfKyjorwb4eji/qtky4N2/19QzEpmgKgcs7p9RI8B1
-        MI/1K0IDOGqGP/FdI3NyzbaBCW5mNGx1Vs6pl7jZ0VTAsR9THTNH6716sLQ3HmKRNjSxeyZREe9CMwwk
-        CKsqzQYF00mb+YbVa0tVlk6hYJZJW4UJr/n051Mgf1bEOIku83eRkgHAg3jH0J3BIDTAzbHTaBDqKqZ8
-        A+JopbzGGK7V3sYCqpqRjfj7qjHn2gAjb/Wy+FQC2YAFdDwj4MU7I2LuFOh4oOnYVU6fBEU7qnAqNnIr
-        TUNUTr8JinZUIQuNzNNZaHUCTYLvL0rwQikAAzrvaWLRl5ntPMDDBq7rDXCLTLHdGR18AAAAAElFTkSu
-        QmCC
-</value>
-  </data>
   <data name="toolStripButtonHelp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACIAAAAeCAYAAABJ/8wUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -210,6 +174,9 @@
   <metadata name="statusStrip4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>470, 17</value>
   </metadata>
+  <metadata name="statusStrip4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>470, 17</value>
+  </metadata>
   <data name="buttonSzukaj_mat.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACQAAAAjCAYAAAD8BaggAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -239,6 +206,9 @@
         AAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="statusStrip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>354, 17</value>
+  </metadata>
   <metadata name="statusStrip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>354, 17</value>
   </metadata>
