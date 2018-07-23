@@ -206,11 +206,11 @@
             this.radioButtonNr_fabryczny = new System.Windows.Forms.RadioButton();
             this.radioButtonNr_inwentarzowy = new System.Windows.Forms.RadioButton();
             this.radioButtonTyp = new System.Windows.Forms.RadioButton();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControlZakładki = new System.Windows.Forms.TabControl();
             this.Operatorzy_maszyn = new System.Windows.Forms.TabPage();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel_ID_Operatora = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelIDOperatora = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
             this.buttonNowaOperator = new System.Windows.Forms.Button();
             this.buttonUsunOperator = new System.Windows.Forms.Button();
@@ -219,23 +219,23 @@
             this.groupBox23 = new System.Windows.Forms.GroupBox();
             this.listBoxOperator = new System.Windows.Forms.ListBox();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonSzukajOperator = new System.Windows.Forms.Button();
+            this.textBoxWyszukiwanieOperator = new System.Windows.Forms.TextBox();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
             this.label45 = new System.Windows.Forms.Label();
-            this.textBoxNazwisko = new System.Windows.Forms.TextBox();
-            this.comboBoxDzial_operator_maszyny = new System.Windows.Forms.ComboBox();
+            this.textBoxNazwiskoOperator = new System.Windows.Forms.TextBox();
+            this.comboBoxDzialOperator = new System.Windows.Forms.ComboBox();
             this.label47 = new System.Windows.Forms.Label();
-            this.dateTimePickerData_konca_upr = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerDataKoncaUprOp = new System.Windows.Forms.DateTimePicker();
             this.label54 = new System.Windows.Forms.Label();
-            this.listBox_maszyny = new System.Windows.Forms.ListBox();
+            this.listBoxMaszynyOperatora = new System.Windows.Forms.ListBox();
             this.label55 = new System.Windows.Forms.Label();
-            this.textBoxUprawnienie = new System.Windows.Forms.TextBox();
+            this.textBoxUprawnienieOperator = new System.Windows.Forms.TextBox();
             this.label56 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
-            this.textBoxImie = new System.Windows.Forms.TextBox();
+            this.textBoxImieOperator = new System.Windows.Forms.TextBox();
             this.groupBox26 = new System.Windows.Forms.GroupBox();
-            this.radioButtonData_konca_upr = new System.Windows.Forms.RadioButton();
+            this.radioButtonDataKoncaUprOp = new System.Windows.Forms.RadioButton();
             this.toolStrip.SuspendLayout();
             this.Normalia.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -269,7 +269,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBoxSortowanie.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabControlZakładki.SuspendLayout();
             this.Operatorzy_maszyn.SuspendLayout();
             this.statusStrip2.SuspendLayout();
             this.groupBox22.SuspendLayout();
@@ -2184,22 +2184,22 @@
             this.radioButtonTyp.UseVisualStyleBackColor = true;
             this.radioButtonTyp.CheckedChanged += new System.EventHandler(this.radioButton_Typ_CheckedChanged);
             // 
-            // tabControl1
+            // tabControlZakładki
             // 
-            this.tabControl1.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabControlZakładki.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.tabControlZakładki.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.Maszyny);
-            this.tabControl1.Controls.Add(this.Materiały);
-            this.tabControl1.Controls.Add(this.Normalia);
-            this.tabControl1.Controls.Add(this.Operatorzy_maszyn);
-            this.tabControl1.Location = new System.Drawing.Point(5, 51);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1202, 918);
-            this.tabControl1.TabIndex = 47;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabControlZakładki.Controls.Add(this.Maszyny);
+            this.tabControlZakładki.Controls.Add(this.Materiały);
+            this.tabControlZakładki.Controls.Add(this.Normalia);
+            this.tabControlZakładki.Controls.Add(this.Operatorzy_maszyn);
+            this.tabControlZakładki.Location = new System.Drawing.Point(5, 51);
+            this.tabControlZakładki.Name = "tabControlZakładki";
+            this.tabControlZakładki.SelectedIndex = 0;
+            this.tabControlZakładki.Size = new System.Drawing.Size(1202, 918);
+            this.tabControlZakładki.TabIndex = 47;
+            this.tabControlZakładki.SelectedIndexChanged += new System.EventHandler(this.tabControlZakladki_SelectedIndexChanged);
             // 
             // Operatorzy_maszyn
             // 
@@ -2220,7 +2220,7 @@
             // 
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel2,
-            this.toolStripStatusLabel_ID_Operatora});
+            this.toolStripStatusLabelIDOperatora});
             this.statusStrip2.Location = new System.Drawing.Point(0, 870);
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Size = new System.Drawing.Size(1194, 22);
@@ -2233,11 +2233,11 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(124, 17);
             this.toolStripStatusLabel2.Text = "ID operatora maszyny:";
             // 
-            // toolStripStatusLabel_ID_Operatora
+            // toolStripStatusLabelIDOperatora
             // 
-            this.toolStripStatusLabel_ID_Operatora.Name = "toolStripStatusLabel_ID_Operatora";
-            this.toolStripStatusLabel_ID_Operatora.Size = new System.Drawing.Size(21, 17);
-            this.toolStripStatusLabel_ID_Operatora.Text = "ID:";
+            this.toolStripStatusLabelIDOperatora.Name = "toolStripStatusLabelIDOperatora";
+            this.toolStripStatusLabelIDOperatora.Size = new System.Drawing.Size(21, 17);
+            this.toolStripStatusLabelIDOperatora.Text = "ID:";
             // 
             // groupBox22
             // 
@@ -2324,12 +2324,13 @@
             this.listBoxOperator.Name = "listBoxOperator";
             this.listBoxOperator.Size = new System.Drawing.Size(309, 602);
             this.listBoxOperator.TabIndex = 0;
+            this.listBoxOperator.SelectedIndexChanged += new System.EventHandler(this.listBoxOperator_maszyny_SelectedIndexChanged);
             // 
             // groupBox24
             // 
             this.groupBox24.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox24.Controls.Add(this.button5);
-            this.groupBox24.Controls.Add(this.textBox1);
+            this.groupBox24.Controls.Add(this.buttonSzukajOperator);
+            this.groupBox24.Controls.Add(this.textBoxWyszukiwanieOperator);
             this.groupBox24.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox24.ForeColor = System.Drawing.Color.Red;
             this.groupBox24.Location = new System.Drawing.Point(348, 15);
@@ -2339,40 +2340,40 @@
             this.groupBox24.TabStop = false;
             this.groupBox24.Text = "wyszukiwanie po nazwie";
             // 
-            // button5
+            // buttonSzukajOperator
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button5.Location = new System.Drawing.Point(290, 17);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(35, 34);
-            this.button5.TabIndex = 4;
-            this.button5.UseVisualStyleBackColor = false;
+            this.buttonSzukajOperator.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSzukajOperator.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukajOperator.BackgroundImage")));
+            this.buttonSzukajOperator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSzukajOperator.Location = new System.Drawing.Point(290, 17);
+            this.buttonSzukajOperator.Name = "buttonSzukajOperator";
+            this.buttonSzukajOperator.Size = new System.Drawing.Size(35, 34);
+            this.buttonSzukajOperator.TabIndex = 4;
+            this.buttonSzukajOperator.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // textBoxWyszukiwanieOperator
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Linen;
-            this.textBox1.Location = new System.Drawing.Point(6, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(278, 20);
-            this.textBox1.TabIndex = 44;
+            this.textBoxWyszukiwanieOperator.BackColor = System.Drawing.Color.Linen;
+            this.textBoxWyszukiwanieOperator.Location = new System.Drawing.Point(6, 23);
+            this.textBoxWyszukiwanieOperator.Name = "textBoxWyszukiwanieOperator";
+            this.textBoxWyszukiwanieOperator.Size = new System.Drawing.Size(278, 20);
+            this.textBoxWyszukiwanieOperator.TabIndex = 44;
             // 
             // groupBox25
             // 
             this.groupBox25.BackColor = System.Drawing.Color.Bisque;
             this.groupBox25.Controls.Add(this.label45);
-            this.groupBox25.Controls.Add(this.textBoxNazwisko);
-            this.groupBox25.Controls.Add(this.comboBoxDzial_operator_maszyny);
+            this.groupBox25.Controls.Add(this.textBoxNazwiskoOperator);
+            this.groupBox25.Controls.Add(this.comboBoxDzialOperator);
             this.groupBox25.Controls.Add(this.label47);
-            this.groupBox25.Controls.Add(this.dateTimePickerData_konca_upr);
+            this.groupBox25.Controls.Add(this.dateTimePickerDataKoncaUprOp);
             this.groupBox25.Controls.Add(this.label54);
-            this.groupBox25.Controls.Add(this.listBox_maszyny);
+            this.groupBox25.Controls.Add(this.listBoxMaszynyOperatora);
             this.groupBox25.Controls.Add(this.label55);
-            this.groupBox25.Controls.Add(this.textBoxUprawnienie);
+            this.groupBox25.Controls.Add(this.textBoxUprawnienieOperator);
             this.groupBox25.Controls.Add(this.label56);
             this.groupBox25.Controls.Add(this.label57);
-            this.groupBox25.Controls.Add(this.textBoxImie);
+            this.groupBox25.Controls.Add(this.textBoxImieOperator);
             this.groupBox25.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox25.ForeColor = System.Drawing.Color.Red;
             this.groupBox25.Location = new System.Drawing.Point(348, 78);
@@ -2392,21 +2393,21 @@
             this.label45.TabIndex = 56;
             this.label45.Text = "Nazwisko";
             // 
-            // textBoxNazwisko
+            // textBoxNazwiskoOperator
             // 
-            this.textBoxNazwisko.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwisko.Location = new System.Drawing.Point(6, 86);
-            this.textBoxNazwisko.Name = "textBoxNazwisko";
-            this.textBoxNazwisko.Size = new System.Drawing.Size(321, 20);
-            this.textBoxNazwisko.TabIndex = 55;
+            this.textBoxNazwiskoOperator.BackColor = System.Drawing.Color.Linen;
+            this.textBoxNazwiskoOperator.Location = new System.Drawing.Point(6, 86);
+            this.textBoxNazwiskoOperator.Name = "textBoxNazwiskoOperator";
+            this.textBoxNazwiskoOperator.Size = new System.Drawing.Size(321, 20);
+            this.textBoxNazwiskoOperator.TabIndex = 55;
             // 
-            // comboBoxDzial_operator_maszyny
+            // comboBoxDzialOperator
             // 
-            this.comboBoxDzial_operator_maszyny.FormattingEnabled = true;
-            this.comboBoxDzial_operator_maszyny.Location = new System.Drawing.Point(6, 128);
-            this.comboBoxDzial_operator_maszyny.Name = "comboBoxDzial_operator_maszyny";
-            this.comboBoxDzial_operator_maszyny.Size = new System.Drawing.Size(319, 21);
-            this.comboBoxDzial_operator_maszyny.TabIndex = 54;
+            this.comboBoxDzialOperator.FormattingEnabled = true;
+            this.comboBoxDzialOperator.Location = new System.Drawing.Point(6, 128);
+            this.comboBoxDzialOperator.Name = "comboBoxDzialOperator";
+            this.comboBoxDzialOperator.Size = new System.Drawing.Size(319, 21);
+            this.comboBoxDzialOperator.TabIndex = 54;
             // 
             // label47
             // 
@@ -2418,13 +2419,13 @@
             this.label47.TabIndex = 53;
             this.label47.Text = "Data końca uprawnień";
             // 
-            // dateTimePickerData_konca_upr
+            // dateTimePickerDataKoncaUprOp
             // 
-            this.dateTimePickerData_konca_upr.CalendarMonthBackground = System.Drawing.Color.Linen;
-            this.dateTimePickerData_konca_upr.Location = new System.Drawing.Point(6, 225);
-            this.dateTimePickerData_konca_upr.Name = "dateTimePickerData_konca_upr";
-            this.dateTimePickerData_konca_upr.Size = new System.Drawing.Size(128, 20);
-            this.dateTimePickerData_konca_upr.TabIndex = 52;
+            this.dateTimePickerDataKoncaUprOp.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateTimePickerDataKoncaUprOp.Location = new System.Drawing.Point(6, 225);
+            this.dateTimePickerDataKoncaUprOp.Name = "dateTimePickerDataKoncaUprOp";
+            this.dateTimePickerDataKoncaUprOp.Size = new System.Drawing.Size(128, 20);
+            this.dateTimePickerDataKoncaUprOp.TabIndex = 52;
             // 
             // label54
             // 
@@ -2436,16 +2437,16 @@
             this.label54.TabIndex = 51;
             this.label54.Text = "Obsługiwane przez tego operatora maszyny:";
             // 
-            // listBox_maszyny
+            // listBoxMaszynyOperatora
             // 
-            this.listBox_maszyny.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listBoxMaszynyOperatora.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBox_maszyny.BackColor = System.Drawing.Color.Linen;
-            this.listBox_maszyny.FormattingEnabled = true;
-            this.listBox_maszyny.Location = new System.Drawing.Point(6, 270);
-            this.listBox_maszyny.Name = "listBox_maszyny";
-            this.listBox_maszyny.Size = new System.Drawing.Size(321, 303);
-            this.listBox_maszyny.TabIndex = 50;
+            this.listBoxMaszynyOperatora.BackColor = System.Drawing.Color.Linen;
+            this.listBoxMaszynyOperatora.FormattingEnabled = true;
+            this.listBoxMaszynyOperatora.Location = new System.Drawing.Point(6, 270);
+            this.listBoxMaszynyOperatora.Name = "listBoxMaszynyOperatora";
+            this.listBoxMaszynyOperatora.Size = new System.Drawing.Size(321, 303);
+            this.listBoxMaszynyOperatora.TabIndex = 50;
             // 
             // label55
             // 
@@ -2457,13 +2458,13 @@
             this.label55.TabIndex = 49;
             this.label55.Text = "Uprawnienia";
             // 
-            // textBoxUprawnienie
+            // textBoxUprawnienieOperator
             // 
-            this.textBoxUprawnienie.BackColor = System.Drawing.Color.Linen;
-            this.textBoxUprawnienie.Location = new System.Drawing.Point(6, 177);
-            this.textBoxUprawnienie.Name = "textBoxUprawnienie";
-            this.textBoxUprawnienie.Size = new System.Drawing.Size(321, 20);
-            this.textBoxUprawnienie.TabIndex = 48;
+            this.textBoxUprawnienieOperator.BackColor = System.Drawing.Color.Linen;
+            this.textBoxUprawnienieOperator.Location = new System.Drawing.Point(6, 177);
+            this.textBoxUprawnienieOperator.Name = "textBoxUprawnienieOperator";
+            this.textBoxUprawnienieOperator.Size = new System.Drawing.Size(321, 20);
+            this.textBoxUprawnienieOperator.TabIndex = 48;
             // 
             // label56
             // 
@@ -2485,18 +2486,18 @@
             this.label57.TabIndex = 45;
             this.label57.Text = "Imię";
             // 
-            // textBoxImie
+            // textBoxImieOperator
             // 
-            this.textBoxImie.BackColor = System.Drawing.Color.Linen;
-            this.textBoxImie.Location = new System.Drawing.Point(6, 35);
-            this.textBoxImie.Name = "textBoxImie";
-            this.textBoxImie.Size = new System.Drawing.Size(321, 20);
-            this.textBoxImie.TabIndex = 44;
+            this.textBoxImieOperator.BackColor = System.Drawing.Color.Linen;
+            this.textBoxImieOperator.Location = new System.Drawing.Point(6, 35);
+            this.textBoxImieOperator.Name = "textBoxImieOperator";
+            this.textBoxImieOperator.Size = new System.Drawing.Size(321, 20);
+            this.textBoxImieOperator.TabIndex = 44;
             // 
             // groupBox26
             // 
             this.groupBox26.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox26.Controls.Add(this.radioButtonData_konca_upr);
+            this.groupBox26.Controls.Add(this.radioButtonDataKoncaUprOp);
             this.groupBox26.ForeColor = System.Drawing.Color.Red;
             this.groupBox26.Location = new System.Drawing.Point(12, 13);
             this.groupBox26.Name = "groupBox26";
@@ -2505,17 +2506,17 @@
             this.groupBox26.TabStop = false;
             this.groupBox26.Text = "sortowanie";
             // 
-            // radioButtonData_konca_upr
+            // radioButtonDataKoncaUprOp
             // 
-            this.radioButtonData_konca_upr.AutoSize = true;
-            this.radioButtonData_konca_upr.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonData_konca_upr.Location = new System.Drawing.Point(6, 19);
-            this.radioButtonData_konca_upr.Name = "radioButtonData_konca_upr";
-            this.radioButtonData_konca_upr.Size = new System.Drawing.Size(133, 17);
-            this.radioButtonData_konca_upr.TabIndex = 6;
-            this.radioButtonData_konca_upr.TabStop = true;
-            this.radioButtonData_konca_upr.Text = "Data końca uprawnień";
-            this.radioButtonData_konca_upr.UseVisualStyleBackColor = true;
+            this.radioButtonDataKoncaUprOp.AutoSize = true;
+            this.radioButtonDataKoncaUprOp.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonDataKoncaUprOp.Location = new System.Drawing.Point(6, 19);
+            this.radioButtonDataKoncaUprOp.Name = "radioButtonDataKoncaUprOp";
+            this.radioButtonDataKoncaUprOp.Size = new System.Drawing.Size(133, 17);
+            this.radioButtonDataKoncaUprOp.TabIndex = 6;
+            this.radioButtonDataKoncaUprOp.TabStop = true;
+            this.radioButtonDataKoncaUprOp.Text = "Data końca uprawnień";
+            this.radioButtonDataKoncaUprOp.UseVisualStyleBackColor = true;
             // 
             // SpisForm
             // 
@@ -2524,7 +2525,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(1207, 969);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlZakładki);
             this.Controls.Add(this.toolStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SpisForm";
@@ -2583,7 +2584,7 @@
             this.groupBox3.PerformLayout();
             this.groupBoxSortowanie.ResumeLayout(false);
             this.groupBoxSortowanie.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlZakładki.ResumeLayout(false);
             this.Operatorzy_maszyn.ResumeLayout(false);
             this.Operatorzy_maszyn.PerformLayout();
             this.statusStrip2.ResumeLayout(false);
@@ -2665,7 +2666,7 @@
         private System.Windows.Forms.RadioButton radioButtonNr_fabryczny;
         private System.Windows.Forms.RadioButton radioButtonNr_inwentarzowy;
         private System.Windows.Forms.RadioButton radioButtonTyp;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControlZakładki;
         private System.Windows.Forms.LinkLabel linkLabelNazwaZdjecia;
         private System.Windows.Forms.Button buttonUsunZdj;
         private System.Windows.Forms.Button buttonPokazZdj;
@@ -2778,7 +2779,7 @@
         private System.Windows.Forms.TabPage Operatorzy_maszyn;
         private System.Windows.Forms.StatusStrip statusStrip2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_ID_Operatora;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelIDOperatora;
         private System.Windows.Forms.GroupBox groupBox22;
         private System.Windows.Forms.Button buttonNowaOperator;
         private System.Windows.Forms.Button buttonUsunOperator;
@@ -2787,23 +2788,23 @@
         private System.Windows.Forms.GroupBox groupBox23;
         private System.Windows.Forms.ListBox listBoxOperator;
         private System.Windows.Forms.GroupBox groupBox24;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonSzukajOperator;
+        private System.Windows.Forms.TextBox textBoxWyszukiwanieOperator;
         private System.Windows.Forms.GroupBox groupBox25;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.TextBox textBoxNazwisko;
-        private System.Windows.Forms.ComboBox comboBoxDzial_operator_maszyny;
+        private System.Windows.Forms.TextBox textBoxNazwiskoOperator;
+        private System.Windows.Forms.ComboBox comboBoxDzialOperator;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.DateTimePicker dateTimePickerData_konca_upr;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDataKoncaUprOp;
         private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.ListBox listBox_maszyny;
+        private System.Windows.Forms.ListBox listBoxMaszynyOperatora;
         private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.TextBox textBoxUprawnienie;
+        private System.Windows.Forms.TextBox textBoxUprawnienieOperator;
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.TextBox textBoxImie;
+        private System.Windows.Forms.TextBox textBoxImieOperator;
         private System.Windows.Forms.GroupBox groupBox26;
-        private System.Windows.Forms.RadioButton radioButtonData_konca_upr;
+        private System.Windows.Forms.RadioButton radioButtonDataKoncaUprOp;
         private System.Windows.Forms.StatusStrip statusStrip3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID_Maszyny;
