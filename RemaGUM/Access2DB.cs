@@ -2700,7 +2700,6 @@ namespace nsAccess2DB
             fillTable(_DAO.selectQuery(query));
         }// selectQuery
 
-
         /// <summary>
         /// Wprowadza rekord do tabeli.
         /// </summary>
