@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Access2DB.cs" />
+    <Compile Include="DocInDb.cs" />
     <Compile Include="Os_zarzadzajacaForm.cs">
       <SubType>Form</SubType>
     </Compile>

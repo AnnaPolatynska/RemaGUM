@@ -379,6 +379,7 @@ namespace RemaGUM
             
            _zawartoscPliku = _MaszynyBUS.VO.Zawartosc_pliku; //zawartość zdjęcia
 
+            //wyświetlanie pliku w pictureBox1
             //MemoryStream mStream = new MemoryStream();
             //pictureBox1.Image.Save(System.Drawing.Imaging.ImageFormat.Bmp);
             //_MaszynyBUS.VO.Zawartosc_pliku.ToArray();
@@ -1664,8 +1665,6 @@ namespace RemaGUM
             WypelnijOperatorowDanymi();
             
         }// buttonUsunOperator_Click
-
-       
     }// public partial class SpisForm : Form
        
 }//namespace RemaGUM
