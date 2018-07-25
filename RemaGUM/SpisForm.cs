@@ -1088,15 +1088,58 @@ namespace RemaGUM
         {
             Os_zarzadzajacaForm frame = new Os_zarzadzajacaForm();
             frame.Show();
-        }
+        }// toolStripButtonOs_zarzadzajaca_Click
+
+
+
+
+
+
         /// <summary>
-        /// Ppokazuje zdjęcie po kliknięciu na link.
+        /// Pokazuje zdjęcie po kliknięciu na link.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void linkLabelNazwaZdjecia_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            pokazZdjecie(linkLabelNazwaZdjecia.Text);
+            Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                if (!Directory.Exists(_dirNazwa))
+                {
+                    Directory.CreateDirectory(_dirNazwa);
+                }
+                nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
+                maszynyBUS.selectZdjecie(maszynyBUS.VO.Zdjecie);
+                //maszynyBUS.selectZdjecie("szlifierka2.jpg");
+
+                if (maszynyBUS.count > 0)
+                {
+                    nsAccess2DB.MaszynyVO maszynyVO = maszynyBUS.VO;
+                    nsDocInDb.docInDb docInDb = new nsDocInDb.docInDb();
+                    docInDb.dirNazwa = _dirNazwa;
+                    docInDb.zdjecieNazwa = maszynyVO.Zdjecie; //nazwa zdjęcia.
+                    docInDb.zapiszNaNaped(maszynyVO.Zawartosc_pliku);
+
+                    string zdjecie = _dirNazwa + "\\" + maszynyVO.Zdjecie;
+                    if (File.Exists(zdjecie))
+                    {
+                        Help.ShowHelp(this, zdjecie);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Cursor = Cursors.Default;
+                MessageBox.Show("Problem z prezentacją dokumentu. Błąd: " + ex.Message, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            Cursor = Cursors.Default;
+
+            //pokazZdjecie(linkLabelNazwaZdjecia.Text);
+
         } //linkLabelNazwaZdjecia_LinkClicked
 
         /// <summary>
@@ -1104,99 +1147,105 @@ namespace RemaGUM
         /// </summary>
         /// <param name="zdjecie"></param>
         /// <returns>Zwraca wartość logiczną istnienia pliku.</returns>
-        private bool zdjecieIstnieje(string zdjecie)
-        {
-            FileInfo fi = new FileInfo(zdjecie);
-            return fi.Exists;
-        }// zdjecieIstnieje
+        //private bool zdjecieIstnieje(string zdjecie)
+        //{
+        //    FileInfo fi = new FileInfo(zdjecie);
+        //    return fi.Exists;
+        //}// zdjecieIstnieje
+
+        ///// <summary>
+        ///// Zwraca obiekt informacji o napędzie dostepny na stacji.
+        ///// </summary>
+        ///// <returns>Obiekt informacji o napędzie.</returns>
+        //private DirectoryInfo zwrocNaped()
+        //{
+        //    DirectoryInfo di;
+        //    string[] napedy = new string[] { "C:\\", "D:\\", "E:\\", "F:\\", "G:\\", "H:\\" };
+
+        //    for (int i = 0; i < napedy.Length; i++)
+        //    {
+        //        di = new DirectoryInfo(napedy[i]);
+        //        if (di.Exists)
+        //        {
+        //            return di;
+        //        }
+        //    }
+        //    return null;
+        //}//zwrocNaped
+
+        //private bool dirIstnieje(string sciezka)
+        //{
+        //    DirectoryInfo di = new DirectoryInfo(sciezka);
+        //    return di.Exists;
+        //}//dirIstnieje
+        ///// <summary>
+        ///// Tworzy plik - zdjęcia na dysku.
+        ///// </summary>
+        ///// <param name="zdjecie"></param>
+        //private void zapiszZdjecieNaDysku(string zdjecie)
+        //{
+        //    FileStream fs = new FileStream(zdjecie, FileMode.OpenOrCreate, FileAccess.Read);
+        //    _zawartoscPliku = new byte[fs.Length];
+        //    fs.Read(_zawartoscPliku, 0, System.Convert.ToInt32(fs.Length));
+        //    fs.Close();
+
+        //}//zapiszZdjecieNaDysku
+
+        //private void pokazZdjecie(string zdjecie)
+        //{
+        //    try
+        //    {
+        //        Cursor = Cursors.WaitCursor;
+
+        //        if (zdjecie.Length == 0)
+        //        {
+        //            MessageBox.Show("Pusta nazwa zdjęcia zapisanego w bazie", "RemaGUM",
+        //            MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        }
+        //        DirectoryInfo di = zwrocNaped(); //napęd dostępny na stacji.
+        //        if (di != null)
+        //        {
+        //            _dirPelnaNazwa = di.FullName + _dirNazwa;
+        //            string pelnaNazwaPliku = _dirPelnaNazwa + "\\" + zdjecie;
+
+        //            if (zdjecieIstnieje(pelnaNazwaPliku))
+        //            {
+        //                System.Diagnostics.Process.Start(pelnaNazwaPliku);
+        //                return;
+        //            }
+
+        //            if (!dirIstnieje(_dirPelnaNazwa))
+        //            {
+        //                Directory.CreateDirectory(_dirPelnaNazwa);
+        //            }
+
+        //            if (dirIstnieje(_dirPelnaNazwa))
+        //            {
+        //                int dlugosc = _zawartoscPliku.Length;
+
+        //                FileStream fs = new FileStream(pelnaNazwaPliku, FileMode.OpenOrCreate, FileAccess.Write);
+        //                fs.Write(_zawartoscPliku, 0, dlugosc);
+        //                fs.Close();
+
+        //                System.Diagnostics.Process.Start(pelnaNazwaPliku);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Problem z prezentacją zdjęcia. Błąd: " + ex.Message);
+        //        Cursor = Cursors.Default;
+        //    }
+        //    Cursor = Cursors.Default;
+        //}//pokazZdjecie
+
+       
 
         /// <summary>
-        /// Zwraca obiekt informacji o napędzie dostepny na stacji.
+        /// button Wgraj/pokaż
         /// </summary>
-        /// <returns>Obiekt informacji o napędzie.</returns>
-        private DirectoryInfo zwrocNaped()
-        {
-            DirectoryInfo di;
-            string[] napedy = new string[] { "C:\\", "D:\\", "E:\\", "F:\\", "G:\\", "H:\\" };
-
-            for (int i = 0; i < napedy.Length; i++)
-            {
-                di = new DirectoryInfo(napedy[i]);
-                if (di.Exists)
-                {
-                    return di;
-                }
-            }
-            return null;
-        }//zwrocNaped
-
-        private bool dirIstnieje(string sciezka)
-        {
-            DirectoryInfo di = new DirectoryInfo(sciezka);
-            return di.Exists;
-        }//dirIstnieje
-        /// <summary>
-        /// Tworzy plik - zdjęcia na dysku.
-        /// </summary>
-        /// <param name="zdjecie"></param>
-        private void zapiszZdjecieNaDysku(string zdjecie)
-        {
-            FileStream fs = new FileStream(zdjecie, FileMode.OpenOrCreate, FileAccess.Read);
-            _zawartoscPliku = new byte[fs.Length];
-            fs.Read(_zawartoscPliku, 0, System.Convert.ToInt32(fs.Length));
-            fs.Close();
-
-        }//zapiszZdjecieNaDysku
-
-        private void pokazZdjecie(string zdjecie)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-
-                if (zdjecie.Length == 0)
-                {
-                    MessageBox.Show("Pusta nazwa zdjęcia zapisanego w bazie", "RemaGUM",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                DirectoryInfo di = zwrocNaped(); //napęd dostępny na stacji.
-                if (di != null)
-                {
-                    _dirPelnaNazwa = di.FullName + _dirNazwa;
-                    string pelnaNazwaPliku = _dirPelnaNazwa + "\\" + zdjecie;
-
-                    if (zdjecieIstnieje(pelnaNazwaPliku))
-                    {
-                        System.Diagnostics.Process.Start(pelnaNazwaPliku);
-                        return;
-                    }
-
-                    if (!dirIstnieje(_dirPelnaNazwa))
-                    {
-                        Directory.CreateDirectory(_dirPelnaNazwa);
-                    }
-
-                    if (dirIstnieje(_dirPelnaNazwa))
-                    {
-                        int dlugosc = _zawartoscPliku.Length;
-
-                        FileStream fs = new FileStream(pelnaNazwaPliku, FileMode.OpenOrCreate, FileAccess.Write);
-                        fs.Write(_zawartoscPliku, 0, dlugosc);
-                        fs.Close();
-
-                        System.Diagnostics.Process.Start(pelnaNazwaPliku);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Problem z prezentacją zdjęcia. Błąd: " + ex.Message);
-                Cursor = Cursors.Default;
-            }
-            Cursor = Cursors.Default;
-        }//pokazZdjecie
-
-        //button Wgraj/pokaż
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonPokazZdj_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -1226,8 +1275,8 @@ namespace RemaGUM
 
         private void buttonUsunZdj_Click(object sender, EventArgs e)
         {
-            _MaszynyBUS.VO.Zawartosc_pliku = new byte[] { };
-            _MaszynyBUS.VO.Zdjecie = string.Empty;
+            _MaszynyBUS.VO.Zawartosc_pliku = new byte[] { }; // zawartość pliku zdjęcia.
+            _MaszynyBUS.VO.Zdjecie = string.Empty; // nazwa zdjęcia.
             linkLabelNazwaZdjecia.Text = string.Empty;
         }//buttonUsunZdj_Click
 

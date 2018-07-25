@@ -172,7 +172,7 @@ namespace nsAccess2DB
         private string _Rok_produkcji = string.Empty; // 50
         private string _Producent = string.Empty; // 255
         private string _Zdjecie = string.Empty;//255
-        private byte[] _Zawartosc_pliku = new byte[] { }; // obiekt OLE - zdjęcie
+        private byte[] _Zawartosc_pliku = new byte[]{ }; // obiekt OLE - zdjęcie
         private string _Rozszerz_zdj = string.Empty; // 255
         private string _Nazwa_os_zarzadzajaca = string.Empty; // 255
         private string _Nr_pom = string.Empty; // 255
@@ -383,13 +383,28 @@ namespace nsAccess2DB
 
         public DataTable selectNazwa(string Nazwa)
         {
-            string query = "SELECT * FROM Maszyny WHERE Nazwa = " + Nazwa.ToString() + ";";
+            string query = "SELECT * FROM Maszyny WHERE Nazwa = '" + Nazwa.ToString() + "';";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
             _error = _conn._error;
             return dt;
         } //selectNazwa
+
+        /// <summary>
+        /// Zwraca z tabeli Maszyny Zdjęcie wybranej maszyny.
+        /// </summary>
+        /// <param name="Zdjecie"></param>
+        /// <returns></returns>
+        public DataTable selectZdjecie(string Zdjecie)
+        {
+            string query = "SELECT * FROM Maszyny WHERE Zdjecie = '" + Zdjecie.ToString() + "';";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        } //selectZdjecie
 
         /// <summary>
         /// Wprowadza nowy rekord.
@@ -428,7 +443,7 @@ namespace nsAccess2DB
             parameters[7] = new OleDbParameter("Zdjecie", OleDbType.VarChar, 255);
             parameters[7].Value = VO.Zdjecie;
 
-            parameters[8] = new OleDbParameter("Zawartosc_pliku", OleDbType.VarBinary, 255);
+            parameters[8] = new OleDbParameter("Zawartosc_pliku", OleDbType.VarBinary);
             parameters[8].Value = VO.Zawartosc_pliku;
 
             parameters[9] = new OleDbParameter("Rozszerz_zdj", OleDbType.VarChar, 255);
@@ -493,8 +508,7 @@ namespace nsAccess2DB
          /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool update(nsAccess2DB.MaszynyVO VO)
         {
-            string query = "UPDATE Maszyny SET Kategoria = @Kategoria, Nazwa = @Nazwa, Typ = @Typ, Nr_inwentarzowy = @Nr_inwentarzowy, Nr_fabryczny = @Nr_fabryczny, Rok_produkcji = @Rok_produkcji, Producent = @Producent, " +
-                "Zdjecie = @Zdjecie, Zawartosc_pliku = @Zawartosc_pliku, Rozszerz_zdj = @Rozszerz_zdj, Nazwa_os_zarzadzajaca = @Nazwa_os_zarzadzajaca, Nr_pom = @Nr_pom, Dzial = @Dzial, Nr_prot_BHP = @Nr_prot_BHP, Data_ost_przegl = @Data_ost_przegl, " +
+            string query = "UPDATE Maszyny SET Kategoria = @Kategoria, Nazwa = @Nazwa, Typ = @Typ, Nr_inwentarzowy = @Nr_inwentarzowy, Nr_fabryczny = @Nr_fabryczny, Rok_produkcji = @Rok_produkcji, Producent = @Producent, Zdjecie = @Zdjecie, Zawartosc_pliku = @Zawartosc_pliku, Rozszerz_zdj = @Rozszerz_zdj, Nazwa_os_zarzadzajaca = @Nazwa_os_zarzadzajaca, Nr_pom = @Nr_pom, Dzial = @Dzial, Nr_prot_BHP = @Nr_prot_BHP, Data_ost_przegl = @Data_ost_przegl, " +
                 "Data_kol_przegl = @Data_kol_przegl, Uwagi = @Uwagi, Wykorzystanie = @Wykorzystanie, Stan_techniczny = @Stan_techniczny, Propozycja = @Propozycja, Rok_ost_przeg = @Rok_ost_przeg," +
                 " Mc_ost_przeg = @Mc_ost_przeg, Dz_ost_przeg = @Dz_ost_przeg, Rok_kol_przeg = @Rok_kol_przeg, Mc_kol_przeg = @Mc_kol_przeg, Dz_kol_przeg = @Dz_kol_przeg WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
 
@@ -523,7 +537,7 @@ namespace nsAccess2DB
             parameters[7] = new OleDbParameter("Zdjecie", OleDbType.VarChar, 255);
             parameters[7].Value = VO.Zdjecie;
 
-            parameters[8] = new OleDbParameter("Zawartosc_pliku", OleDbType.VarBinary, 255);
+            parameters[8] = new OleDbParameter("Zawartosc_pliku", OleDbType.VarBinary);
             parameters[8].Value = VO.Zawartosc_pliku;
 
             parameters[9] = new OleDbParameter("Rozszerz_zdj", OleDbType.VarChar, 255);
@@ -641,6 +655,15 @@ namespace nsAccess2DB
         {
             fillTable(_DAO.selectNazwa(Nazwa));
         } //selectNazwa
+
+        /// <summary>
+        /// Wypełnia tablice danych pozycjami.
+        /// </summary>
+        /// <param name="Zdjecie"></param>
+        public void selectZdjecie(string Zdjecie)
+        {
+            fillTable(_DAO.selectZdjecie(Zdjecie));
+        }// selectZdjecie
 
         /// <summary>
         /// Dowolne zapytanie z formularza.
