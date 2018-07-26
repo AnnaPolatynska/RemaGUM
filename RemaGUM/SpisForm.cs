@@ -285,7 +285,7 @@ namespace RemaGUM
         private void tabControlZakladki_SelectedIndexChanged(object sender, EventArgs e)
         {
             TabControl v = (TabControl)sender;
-            Cursor.Current = Cursors.WaitCursor;
+            //Cursor.Current = Cursors.WaitCursor;
 
             //zakładka Maszyny
             if (v.SelectedIndex == 0)
@@ -296,6 +296,7 @@ namespace RemaGUM
                 WypelnijDzial();
                 WypelnijPropozycje();
                 WypelnijStan_techniczny();
+                      
             }
 
             // zakładka Materialy
@@ -376,16 +377,8 @@ namespace RemaGUM
             textBoxProducent.Text = _MaszynyBUS.VO.Producent;
 
             linkLabelNazwaZdjecia.Text = _MaszynyBUS.VO.Zdjecie;// zdjęcie nazwa
-            
            _zawartoscPliku = _MaszynyBUS.VO.Zawartosc_pliku; //zawartość zdjęcia
-
-            //wyświetlanie pliku w pictureBox1
-            //MemoryStream mStream = new MemoryStream();
-            //pictureBox1.Image.Save(System.Drawing.Imaging.ImageFormat.Bmp);
-            //_MaszynyBUS.VO.Zawartosc_pliku.ToArray();
-            //pictureBox1.Image = maszynyBUS.VO.Zawartosc_pliku);
-
-
+            pokazZdjecie(linkLabelNazwaZdjecia.Text);
 
             comboBoxOsoba_zarzadzajaca.Text = _MaszynyBUS.VO.Nazwa_os_zarzadzajaca;
 
@@ -979,9 +972,7 @@ namespace RemaGUM
                 }
                 else
                 {
-
-
-                    maszynyVO.Identyfikator = (int)listBoxMaszyny.Tag;
+                   maszynyVO.Identyfikator = (int)listBoxMaszyny.Tag;
                     maszynyVO.Kategoria = comboBoxKategoria.Text;
                     maszynyVO.Nazwa = textBoxNazwa.Text.Trim();
                     maszynyVO.Typ = textBoxTyp.Text.Trim();
@@ -1031,28 +1022,6 @@ namespace RemaGUM
                 }
                 listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
             }//else if - edycja
-
-            //maszyny_operatorBUS.select(maszynyVO.Identyfikator);
-
-            // Zapis operatorów/operatora maszyny przypisanych do maszyny.
-            //operatorBUS.select();
-
-
-            //for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
-            //{
-            //    if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
-            //    { 
-            //        operatorBUS.idx = i;
-            //        if (_statusForm == (int)_status.edycja)
-            //        {
-            //            maszyny_operatorBUS.insert(maszynyBUS.VO.Identyfikator, operatorBUS.VO.Identyfikator);
-            //        }
-            //        else if (_statusForm == (int)_status.nowy)
-            //        {
-            //            maszyny_operatorBUS.insert(maszynyVO.Identyfikator, operatorBUS.VO.Identyfikator);
-            //        }
-            //    }
-            //}
 
             //Wybierz na liście maszynę.
             WypelnijMaszynyNazwami();
@@ -1106,8 +1075,7 @@ namespace RemaGUM
         } //linkLabelNazwaZdjecia_LinkClicked
 
         private void pokazZdjecie(string Zdjecie)   
-        { Cursor = Cursors.WaitCursor;
-        
+        {         
             try
             {
                 if (!Directory.Exists(_dirNazwa))
@@ -1126,14 +1094,10 @@ namespace RemaGUM
                 string zdjecie = _dirNazwa + "\\" + maszynyBUS.VO.Zdjecie;
                 if (File.Exists(zdjecie))
                 {
-                    //System.Diagnostics.Process.Start(zdjecie);
-
                     //Bitmap bmp = (Bitmap)Bitmap.FromFile(zdjecie);
 
                     pictureBox1.Image = Bitmap.FromFile(zdjecie);
                     return;
-
-                    //Help.ShowHelp(this, zdjecie);
                 }
 
                 //maszynyBUS.selectZdjecie(maszynyBUS.VO.Zdjecie);
@@ -1737,6 +1701,8 @@ namespace RemaGUM
             WypelnijOperatorowDanymi();
             
         }// buttonUsunOperator_Click
+
+      
     }// public partial class SpisForm : Form
        
 }//namespace RemaGUM
