@@ -21,7 +21,7 @@ namespace RemaGUM
 
         private byte[] _zawartoscPliku; //dane odczytane z pliku zdjęcia
 
-        string _dirNazwa = "tempRemaGUM"; //nazwa katalogu tymczasowego
+        string _dirNazwa =  "C:\\tempRemaGUM"; //nazwa katalogu tymczasowego
         string _dirPelnaNazwa = string.Empty; // katalog tymczasowy - pelna nazwa
 
         enum _status { edycja, nowy, usun, zapisz, anuluj };  //status działania formularza
@@ -383,7 +383,7 @@ namespace RemaGUM
             //MemoryStream mStream = new MemoryStream();
             //pictureBox1.Image.Save(System.Drawing.Imaging.ImageFormat.Bmp);
             //_MaszynyBUS.VO.Zawartosc_pliku.ToArray();
-            //pictureBox1.Image = 
+            //pictureBox1.Image = maszynyBUS.VO.Zawartosc_pliku);
 
 
 
@@ -931,7 +931,7 @@ namespace RemaGUM
 
                 maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa                ???????????????? zdjęcie
                 maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
-
+               
                 maszynyVO.Nazwa_os_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
                 maszynyVO.Nr_pom = textBoxNr_pom.Text;
                 maszynyVO.Dzial = comboBoxDzial.Text;
@@ -1102,8 +1102,12 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void linkLabelNazwaZdjecia_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
+            pokazZdjecie(linkLabelNazwaZdjecia.Text);
+        } //linkLabelNazwaZdjecia_LinkClicked
 
+        private void pokazZdjecie(string Zdjecie)   
+        { Cursor = Cursors.WaitCursor;
+        
             try
             {
                 if (!Directory.Exists(_dirNazwa))
@@ -1111,36 +1115,55 @@ namespace RemaGUM
                     Directory.CreateDirectory(_dirNazwa);
                 }
                 nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-                maszynyBUS.selectZdjecie(maszynyBUS.VO.Zdjecie);
+                maszynyBUS.select();
+
+                maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
+
+                nsDocInDb.docInDb docInDb = new nsDocInDb.docInDb();
+                docInDb.dirNazwa = _dirNazwa;
+                docInDb.zdjecieNazwa = maszynyBUS.VO.Zdjecie;
+                docInDb.zapiszNaNaped(maszynyBUS.VO.Zawartosc_pliku);
+                string zdjecie = _dirNazwa + "\\" + maszynyBUS.VO.Zdjecie;
+                if (File.Exists(zdjecie))
+                {
+                    //System.Diagnostics.Process.Start(zdjecie);
+
+                    //Bitmap bmp = (Bitmap)Bitmap.FromFile(zdjecie);
+
+                    pictureBox1.Image = Bitmap.FromFile(zdjecie);
+                    return;
+
+                    //Help.ShowHelp(this, zdjecie);
+                }
+
+                //maszynyBUS.selectZdjecie(maszynyBUS.VO.Zdjecie);
                 //maszynyBUS.selectZdjecie("szlifierka2.jpg");
 
-                if (maszynyBUS.count > 0)
-                {
-                    nsAccess2DB.MaszynyVO maszynyVO = maszynyBUS.VO;
-                    nsDocInDb.docInDb docInDb = new nsDocInDb.docInDb();
-                    docInDb.dirNazwa = _dirNazwa;
-                    docInDb.zdjecieNazwa = maszynyVO.Zdjecie; //nazwa zdjęcia.
-                    docInDb.zapiszNaNaped(maszynyVO.Zawartosc_pliku);
+                //if (maszynyBUS.count > 0)
+                //{
+                //    nsAccess2DB.MaszynyVO maszynyVO = maszynyBUS.VO;
+                //    nsDocInDb.docInDb docInDb = new nsDocInDb.docInDb();
+                //    docInDb.dirNazwa = _dirNazwa;
+                //    docInDb.zdjecieNazwa = maszynyVO.Zdjecie; //nazwa zdjęcia.
+                //    docInDb.zapiszNaNaped(maszynyVO.Zawartosc_pliku);
 
-                    string zdjecie = _dirNazwa + "\\" + maszynyVO.Zdjecie;
-                    if (File.Exists(zdjecie))
-                    {
-                        Help.ShowHelp(this, zdjecie);
-                    }
-
-                }
+                //    string zdjecie = _dirNazwa + "\\" + maszynyVO.Zdjecie;
+                //    if (File.Exists(zdjecie))
+                //    {
+                //        Help.ShowHelp(this, zdjecie);
+                //    }
+                //}
             }
             catch (Exception ex)
             {
                 Cursor = Cursors.Default;
                 MessageBox.Show("Problem z prezentacją dokumentu. Błąd: " + ex.Message, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
             Cursor = Cursors.Default;
 
-            //pokazZdjecie(linkLabelNazwaZdjecia.Text);
+        }//pokazZdjecie
 
-        } //linkLabelNazwaZdjecia_LinkClicked
+      
 
         /// <summary>
         /// Sprawdza istnienie zdjęcia.
@@ -1239,7 +1262,7 @@ namespace RemaGUM
         //    Cursor = Cursors.Default;
         //}//pokazZdjecie
 
-       
+
 
         /// <summary>
         /// button Wgraj/pokaż
@@ -1275,8 +1298,8 @@ namespace RemaGUM
 
         private void buttonUsunZdj_Click(object sender, EventArgs e)
         {
-            _MaszynyBUS.VO.Zawartosc_pliku = new byte[] { }; // zawartość pliku zdjęcia.
             _MaszynyBUS.VO.Zdjecie = string.Empty; // nazwa zdjęcia.
+            _MaszynyBUS.VO.Zawartosc_pliku = new byte[0] { }; // zawartość pliku zdjęcia.
             linkLabelNazwaZdjecia.Text = string.Empty;
         }//buttonUsunZdj_Click
 

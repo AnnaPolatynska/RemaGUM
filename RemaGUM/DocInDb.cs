@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using System.IO;
 
 namespace nsDocInDb
 {
+    /// <summary>
+    /// Zapis na napęd i odczyt z napędu pliku zdjęcia - ma zastosowanie do wymiany plików w ramach bazy danych MS ACCESS.
+    /// </summary>
     class docInDb
     {
         string _dirNazwa = string.Empty; // Pełna nazwa katalogu tymczasowego, do którego zapisywane są pliki z BD.

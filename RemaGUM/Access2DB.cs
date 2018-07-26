@@ -172,7 +172,7 @@ namespace nsAccess2DB
         private string _Rok_produkcji = string.Empty; // 50
         private string _Producent = string.Empty; // 255
         private string _Zdjecie = string.Empty;//255
-        private byte[] _Zawartosc_pliku = new byte[]{ }; // obiekt OLE - zdjęcie
+        private byte[] _Zawartosc_pliku = new byte[]{}; // obiekt OLE - zdjęcie
         private string _Rozszerz_zdj = string.Empty; // 255
         private string _Nazwa_os_zarzadzajaca = string.Empty; // 255
         private string _Nr_pom = string.Empty; // 255
@@ -738,7 +738,7 @@ namespace nsAccess2DB
                 }
                 catch
                 {
-                    VOi.Zawartosc_pliku = new byte[] { };
+                    VOi.Zawartosc_pliku = new byte[]{};
                 }
 
                 VOi.Rozszerz_zdj = dr["Rozszerz_zdj"].ToString();
