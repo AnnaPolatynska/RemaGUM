@@ -16,12 +16,12 @@ namespace RemaGUM
     public partial class SpisForm : Form
     {
         private string _connString = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Projects\\RemaGUM\\RemaGUM.mdb"; //połaczenie z bazą danych
-      
+
         private string _helpFile = Application.StartupPath + "\\RemaGUM.chm"; //plik pomocy RemaGUM
 
         private byte[] _zawartoscPliku; //dane odczytane z pliku zdjęcia
 
-        string _dirNazwa =  "C:\\tempRemaGUM"; //nazwa katalogu tymczasowego
+        string _dirNazwa = "C:\\tempRemaGUM"; //nazwa katalogu tymczasowego
         string _dirPelnaNazwa = string.Empty; // katalog tymczasowy - pelna nazwa
 
         enum _status { edycja, nowy, usun, zapisz, anuluj };  //status działania formularza
@@ -50,7 +50,7 @@ namespace RemaGUM
         private ToolTip _tt; //podpowiedzi dla niektórych kontolek
 
         private int _interwalPrzegladow = 2;    //w latach
-        
+
         /// <summary>
         /// Konstruktor formularza.
         /// </summary>
@@ -75,7 +75,7 @@ namespace RemaGUM
             textBoxProducent.TabIndex = 7;
             pictureBox1.TabIndex = 8;
             comboBoxOsoba_zarzadzajaca.TabIndex = 9;
-            checkedListBoxOperatorzy_maszyn.TabIndex = 10; 
+            checkedListBoxOperatorzy_maszyn.TabIndex = 10;
             textBoxNr_pom.TabIndex = 11;
             comboBoxDzial.TabIndex = 12;
             textBoxNr_prot_BHP.TabIndex = 13;
@@ -275,7 +275,13 @@ namespace RemaGUM
             _tt.SetToolTip(textBoxWyszukiwanieOperator, "Wpisz nazwisko operatora, którego szukasz.");
             _tt.SetToolTip(buttonSzukajOperator, "Szukanie w bazie operatora.");
             _tt.SetToolTip(radioButtonDataKoncaUprOp, "Sortowanie operatorow po dacie końca uprawnień.");
+
         }//public SpisForm()
+
+        public void Komunikat()
+        {
+            MessageBox.Show("Pozycja zapisana w bazie", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }// Komunikat
 
         /// <summary>
         /// Wyświetla komponenty w zależności od indeksu zakładki.
@@ -296,7 +302,7 @@ namespace RemaGUM
                 WypelnijDzial();
                 WypelnijPropozycje();
                 WypelnijStan_techniczny();
-                      
+
             }
 
             // zakładka Materialy
@@ -305,7 +311,7 @@ namespace RemaGUM
                 WypelnijMaterialyNazwami();
                 WypelnijJednostka_miar();
                 WypelnijRodzaj_mat();
-                
+
                 if (listBoxMaterialy.Items.Count > 0)
                 {
                     listBoxMaterialy.SelectedIndex = 0;
@@ -319,7 +325,7 @@ namespace RemaGUM
             }
 
             if (v.SelectedIndex == 3)
-            { 
+            {
                 WypelnijOperatorowDanymi();
                 WypelnijOperatorowMaszynami();
                 WypelnijDzialOperatora();
@@ -327,7 +333,7 @@ namespace RemaGUM
             Cursor.Current = Cursors.Default;
         } //tabControl1_SelectedIndexChanged
 
-       //  //  //  //  //  //  //  //  //  //  //  //  //-------------------------wyświetlanie w zakładce Maszyny.
+        //  //  //  //  //  //  //  //  //  //  //  //  //-------------------------wyświetlanie w zakładce Maszyny.
 
         // --------------------------------------- wypełnianie listBoxMaszyny
         //wyświetla listę maszyn po nazwie
@@ -347,11 +353,11 @@ namespace RemaGUM
             }
         }//wypelnijMaszynyNazwami
 
-         /// <summary>
-         /// zmiana indeksu w list box maszyny
-         /// </summary>
-         /// <param name="sender"></param>
-         /// <param name="e"></param>
+        /// <summary>
+        /// zmiana indeksu w list box maszyny
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBoxMaszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -377,7 +383,7 @@ namespace RemaGUM
             textBoxProducent.Text = _MaszynyBUS.VO.Producent;
 
             linkLabelNazwaZdjecia.Text = _MaszynyBUS.VO.Zdjecie;// zdjęcie nazwa
-           _zawartoscPliku = _MaszynyBUS.VO.Zawartosc_pliku; //zawartość zdjęcia
+            _zawartoscPliku = _MaszynyBUS.VO.Zawartosc_pliku; //zawartość zdjęcia
             pokazZdjecie(linkLabelNazwaZdjecia.Text);
 
             comboBoxOsoba_zarzadzajaca.Text = _MaszynyBUS.VO.Nazwa_os_zarzadzajaca;
@@ -395,7 +401,7 @@ namespace RemaGUM
             comboBoxPropozycja.Text = _MaszynyBUS.VO.Propozycja;
 
             // wypełnia operatorów maszyny w polu checkedListBoxOperatorzy_maszyn.    *****************************
-          
+
             _OperatorBUS.select();
             _Maszyny_OperatorBUS.select((int)listBoxMaszyny.Tag);
 
@@ -413,7 +419,7 @@ namespace RemaGUM
                 _Maszyny_OperatorBUS.skip();
             }
 
-            }//listBoxMaszyny_SelectedIndexChanged
+        }//listBoxMaszyny_SelectedIndexChanged
 
 
         //************* wypełnia CheckedListBox nazwiskami i imionami operatorów maszyn.
@@ -430,7 +436,7 @@ namespace RemaGUM
                 operatorBUS.skip();
             }
 
-            if(v.Items.Count > 0)
+            if (v.Items.Count > 0)
             {
                 operatorBUS.idx = 0;
                 v.SelectedIndex = 0;
@@ -924,7 +930,7 @@ namespace RemaGUM
 
                 maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa                ???????????????? zdjęcie
                 maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
-               
+
                 maszynyVO.Nazwa_os_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
                 maszynyVO.Nr_pom = textBoxNr_pom.Text;
                 maszynyVO.Dzial = comboBoxDzial.Text;
@@ -972,7 +978,7 @@ namespace RemaGUM
                 }
                 else
                 {
-                   maszynyVO.Identyfikator = (int)listBoxMaszyny.Tag;
+                    maszynyVO.Identyfikator = (int)listBoxMaszyny.Tag;
                     maszynyVO.Kategoria = comboBoxKategoria.Text;
                     maszynyVO.Nazwa = textBoxNazwa.Text.Trim();
                     maszynyVO.Typ = textBoxTyp.Text.Trim();
@@ -1026,8 +1032,8 @@ namespace RemaGUM
             //Wybierz na liście maszynę.
             WypelnijMaszynyNazwami();
 
-
-            MessageBox.Show("Pozycja zapisana w bazie", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Komunikat();
+            
 
 
             _statusForm = (int)_status.edycja;
@@ -1505,7 +1511,7 @@ namespace RemaGUM
 
             _MaterialyBUS.write(Mat_VO);
 
-            MessageBox.Show("Pozycja zapisana w bazie", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Komunikat();
             WypelnijMaterialyNazwami();
         }//buttonZapisz_mat_Click
 
@@ -1663,7 +1669,7 @@ namespace RemaGUM
             _Maszyny_OperatorBUS.write(_Maszyny_OperatorBUS.VO);
             //TODO write w Operator_maszyny_Maszyny
 
-            MessageBox.Show("Pozycja zapisana w bazie", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Komunikat();
 
             WypelnijOperatorowDanymi();
             WypelnijOperatorowMaszynami();
