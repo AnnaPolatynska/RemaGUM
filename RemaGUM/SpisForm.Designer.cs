@@ -2354,6 +2354,7 @@
             this.buttonSzukajOperator.Size = new System.Drawing.Size(35, 34);
             this.buttonSzukajOperator.TabIndex = 4;
             this.buttonSzukajOperator.UseVisualStyleBackColor = false;
+            this.buttonSzukajOperator.Click += new System.EventHandler(this.buttonSzukajOperator_Click);
             // 
             // textBoxWyszukiwanieOperator
             // 

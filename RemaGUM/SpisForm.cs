@@ -1049,6 +1049,7 @@ namespace RemaGUM
         private void toolStripButtonOdswiez_Click(object sender, EventArgs e)
         {
             WypelnijMaszynyNazwami();
+            WypelnijOperatorowDanymi();
         }//toolStripButtonOdswiez_Click
 
         private void toolStripButtonHelp_Click(object sender, EventArgs e)
@@ -1420,14 +1421,14 @@ namespace RemaGUM
         //wyświetla listę operatorów maszyn po imieniu i nazwisku
         private void WypelnijOperatorowDanymi()
         {
-            nsAccess2DB.OperatorBUS operator_maszynyBUS = new nsAccess2DB.OperatorBUS(_connString);
-            _OperatorBUS.selectQuery("SELECT * FROM Operator;");
+            nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
+            operatorBUS.selectQuery("SELECT * FROM Operator;");
             listBoxOperator.Items.Clear();
 
-            while (!_OperatorBUS.eof)
+            while (!operatorBUS.eof)
             {
-                listBoxOperator.Items.Add(_OperatorBUS.VO.Op_nazwisko + " " + _OperatorBUS.VO.Op_imie);
-                _OperatorBUS.skip();
+                listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
+                operatorBUS.skip();
             }
 
             if (listBoxOperator.Items.Count > 0)
@@ -1604,7 +1605,28 @@ namespace RemaGUM
             WypelnijOperatorowDanymi();
             
         }// buttonUsunOperator_Cli
-       
+
+        private void buttonSzukajOperator_Click(object sender, EventArgs e)
+        {
+            listBoxOperator.Items.Clear();
+
+            nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
+            operatorBUS.selectQuery("SELECT * FROM Operator WHERE Op_nazwisko LIKE '" + textBoxWyszukiwanieOperator.Text + "%' OR Op_imie LIKE '" + textBoxWyszukiwanieOperator.Text + "%';");
+           
+            while (!operatorBUS.eof)
+            {
+                listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
+                operatorBUS.skip();
+            }
+
+            if (listBoxOperator.Items.Count > 0)
+            {
+                listBoxOperator.SelectedIndex = 0;
+            }
+
+            
+        }// buttonSzukajOperator_Click
+
     }// public partial class SpisForm : Form
        
 }//namespace RemaGUM
