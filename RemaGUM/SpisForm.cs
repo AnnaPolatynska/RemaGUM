@@ -278,11 +278,6 @@ namespace RemaGUM
 
         }//public SpisForm()
 
-        public void Komunikat()
-        {
-            MessageBox.Show("Pozycja zapisana w bazie", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }// Komunikat
-
         private void pokazKomunikat(string tresc)
         {
             Frame frame = new Frame(tresc);
@@ -1043,9 +1038,8 @@ namespace RemaGUM
             //Wybierz na liście maszynę.
             WypelnijMaszynyNazwami();
 
-            Komunikat();
-            
-
+            pokazKomunikat("Pozycja zapisana w bazie");
+           
 
             _statusForm = (int)_status.edycja;
         }//buttonZapisz_Click
@@ -1123,7 +1117,7 @@ namespace RemaGUM
                     pictureBox1.Image = null;
                     //MessageBox.Show("Maszyna nie posiada zdjęcia w bazie danych.", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    pokazKomunikat("Maszyna nie posiada zdjęcia w bazie danych."); // wyskakujący komunikat.
+                   // pokazKomunikat("Maszyna nie posiada zdjęcia w bazie danych."); // wyskakujący komunikat.
                 }
 
 
@@ -1416,7 +1410,8 @@ namespace RemaGUM
 
             _MaterialyBUS.write(Mat_VO);
 
-            Komunikat();
+            pokazKomunikat("Pozycja zapisana w bazie");
+
             WypelnijMaterialyNazwami();
         }//buttonZapisz_mat_Click
 
@@ -1574,7 +1569,7 @@ namespace RemaGUM
             _Maszyny_OperatorBUS.write(_Maszyny_OperatorBUS.VO);
             //TODO write w Operator_maszyny_Maszyny
 
-            Komunikat();
+            pokazKomunikat("Pozycja zapisana w bazie");
 
             WypelnijOperatorowDanymi();
             WypelnijOperatorowMaszynami();

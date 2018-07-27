@@ -1540,7 +1540,7 @@
             this.buttonPokazZdj.Name = "buttonPokazZdj";
             this.buttonPokazZdj.Size = new System.Drawing.Size(97, 23);
             this.buttonPokazZdj.TabIndex = 49;
-            this.buttonPokazZdj.Text = "Wgraj/Pokaż Zdjęcie";
+            this.buttonPokazZdj.Text = "Wgraj zdjęcie";
             this.buttonPokazZdj.UseVisualStyleBackColor = true;
             this.buttonPokazZdj.Click += new System.EventHandler(this.buttonPokazZdj_Click);
             // 
@@ -1561,7 +1561,7 @@
             this.buttonUsunZdj.Name = "buttonUsunZdj";
             this.buttonUsunZdj.Size = new System.Drawing.Size(97, 23);
             this.buttonUsunZdj.TabIndex = 47;
-            this.buttonUsunZdj.Text = "Usuń Zdjęcie";
+            this.buttonUsunZdj.Text = "Usuń zdjęcie";
             this.buttonUsunZdj.UseVisualStyleBackColor = true;
             this.buttonUsunZdj.Click += new System.EventHandler(this.buttonUsunZdj_Click);
             // 
@@ -1938,7 +1938,7 @@
             this.listBoxMaszyny.FormattingEnabled = true;
             this.listBoxMaszyny.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaszyny.Name = "listBoxMaszyny";
-            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 745);
+            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 758);
             this.listBoxMaszyny.TabIndex = 0;
             this.listBoxMaszyny.SelectedIndexChanged += new System.EventHandler(this.listBoxMaszyny_SelectedIndexChanged);
             // 

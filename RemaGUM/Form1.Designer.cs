@@ -35,12 +35,12 @@
             // 
             this.labelTekst.AutoSize = true;
             this.labelTekst.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.labelTekst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelTekst.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelTekst.ForeColor = System.Drawing.Color.Red;
             this.labelTekst.Location = new System.Drawing.Point(11, 20);
             this.labelTekst.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTekst.Name = "labelTekst";
-            this.labelTekst.Size = new System.Drawing.Size(48, 20);
+            this.labelTekst.Size = new System.Drawing.Size(60, 24);
             this.labelTekst.TabIndex = 1;
             this.labelTekst.Text = "Tekst";
             // 
@@ -48,7 +48,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Bisque;
+            this.BackColor = System.Drawing.Color.OldLace;
             this.ClientSize = new System.Drawing.Size(368, 58);
             this.Controls.Add(this.labelTekst);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
