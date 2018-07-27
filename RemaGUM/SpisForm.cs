@@ -967,7 +967,7 @@ namespace RemaGUM
                     if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
                     {
                         operatorBUS.idx = i;
-                        maszyny_operatorBUS.insert(maszynyBUS.VO.Identyfikator + 1, operatorBUS.VO.Identyfikator);
+                        maszyny_operatorBUS.insert(maszynyBUS.VO.Identyfikator + 1, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
                     }
                 }
                 listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
@@ -1028,7 +1028,7 @@ namespace RemaGUM
                         if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
                         {
                             operatorBUS.idx = i;
-                            maszyny_operatorBUS.insert(maszynyVO.Identyfikator, operatorBUS.VO.Identyfikator);
+                            maszyny_operatorBUS.insert(maszynyVO.Identyfikator, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
                         }
                     }
                 }
@@ -1459,17 +1459,19 @@ namespace RemaGUM
             nsAccess2DB.Maszyny_OperatorBUS maszyny_OperatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             listBoxMaszynyOperatora.Items.Clear();
-
+      //TODO
             maszynyBUS.select();
-            maszyny_OperatorBUS.select();
+            maszyny_OperatorBUS.selectOperator();
 
           
             _maszynaTag = new int[maszyny_OperatorBUS.count];// przechowuje ID_maszyny.
+
+
             int idx = 0;
 
             while (!maszyny_OperatorBUS.eof)
             {
-                listBoxMaszynyOperatora.Items.Add(maszyny_OperatorBUS.VO.ID_maszyny); //TODO zmienić na nazwę maszyny
+                listBoxMaszynyOperatora.Items.Add(maszyny_OperatorBUS.VO.Maszyny_nazwa); //TODO zmienić na nazwę maszyny
                 _maszynaTag[idx] = maszyny_OperatorBUS.VO.ID_maszyny;
                 maszyny_OperatorBUS.skip();
                 idx++;
@@ -1606,9 +1608,8 @@ namespace RemaGUM
 
             WypelnijOperatorowDanymi();
             
-        }// buttonUsunOperator_Click
-
-      
+        }// buttonUsunOperator_Cli
+       
     }// public partial class SpisForm : Form
        
 }//namespace RemaGUM

@@ -2494,6 +2494,7 @@ namespace nsAccess2DB
     {
         private int _ID_maszyny = -1;
         private int _ID_op_maszyny = -1;
+        private string _Maszyny_nazwa = string.Empty;
 
 
         /// <summary>
@@ -2510,6 +2511,11 @@ namespace nsAccess2DB
         {
             get { return _ID_maszyny; }
             set { _ID_maszyny = value; }
+        }
+        public string Maszyny_nazwa
+        {
+            get { return _Maszyny_nazwa; }
+            set { _Maszyny_nazwa = value; }
         }
     }//class Maszyny_OperatorVO
 
@@ -2588,7 +2594,29 @@ namespace nsAccess2DB
             return dt;
         }//select
 
-       
+        public DataTable selectOperator()
+        {
+            string query = "SELECT * FROM Maszyny_Operator;";
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        } // selectOperator
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="ID_op_maszyny"></param>
+        /// <returns></returns>
+        public DataTable selectOperator(int ID_op_maszyny)
+        {
+            string query = "SELECT * FROM Maszyny_Operator WHERE ID_op_maszyny = " + ID_op_maszyny.ToString() + ";";
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        } // selectOperator
+
 
         /// <summary>
         /// Wprowadza nowy rekord
@@ -2597,14 +2625,17 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji</returns>
         public bool insert(nsAccess2DB.Maszyny_OperatorVO VO)
         {
-            string query = "INSERT INTO Maszyny_Operator (ID_op_maszyny, ID_maszyny)" +
-                    "VALUES (@ID_op_maszyny, @ID_maszyny)";
-            OleDbParameter[] parameters = new OleDbParameter[2];
+            string query = "INSERT INTO Maszyny_Operator (ID_op_maszyny, ID_maszyny, Maszyny_nazwa)" +
+                    "VALUES (@ID_op_maszyny, @ID_maszyny, @Maszyny_nazwa)";
+            OleDbParameter[] parameters = new OleDbParameter[3];
             parameters[0] = new OleDbParameter("ID_op_maszyny", OleDbType.Integer);
             parameters[0].Value = VO.ID_op_maszyny;
 
             parameters[1] = new OleDbParameter("ID_maszyny", OleDbType.Integer);
             parameters[1].Value = VO.ID_maszyny;
+
+            parameters[2] = new OleDbParameter("Maszyny_nazwa", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Maszyny_nazwa;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -2618,14 +2649,17 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool update(nsAccess2DB.Maszyny_OperatorVO VO)
         {
-            string query = "UPDATE Maszyny_Operator SET ID_op_maszyny = @ID_op_maszyny, ID_maszyny = @ID_maszyny WHERE ID_op_maszyny = " + VO.ID_op_maszyny.ToString() + ";";
+            string query = "UPDATE Maszyny_Operator SET ID_op_maszyny = @ID_op_maszyny, Maszyny_nazwa = @Maszyny_nazwa, ID_maszyny = @ID_maszyny WHERE ID_op_maszyny = " + VO.ID_op_maszyny.ToString() + ";";
 
-            OleDbParameter[] parameters = new OleDbParameter[2];
+            OleDbParameter[] parameters = new OleDbParameter[3];
             parameters[0] = new OleDbParameter("ID_op_maszyny", OleDbType.Integer);
             parameters[0].Value = VO.ID_op_maszyny;
 
             parameters[1] = new OleDbParameter("ID_maszyny", OleDbType.Integer);
             parameters[1].Value = VO.ID_maszyny;
+
+            parameters[2] = new OleDbParameter("Maszyny_nazwa", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Maszyny_nazwa;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -2705,7 +2739,7 @@ namespace nsAccess2DB
         }//select
 
         /// <summary>
-        /// Wypełnia tablice pozycjami danych.
+        /// Wypełnia tablicę pozycjami danych.
         /// </summary>
         /// <param name="ID_maszyny"></param>
         /// <param name="ID_op_maszyny"></param>
@@ -2713,6 +2747,22 @@ namespace nsAccess2DB
         {
             fillTable(_DAO.select(ID_maszyny, ID_op_maszyny));
         }//select
+
+        /// <summary>
+        /// Wypełnia tablicę pozycjami danych.
+        /// </summary>
+        internal void selectOperator()
+        {
+            fillTable(_DAO.selectOperator());
+        }
+        /// <summary>
+        /// Wypełnia tablicę pozycjami danych.
+        /// </summary>
+        /// <param name="ID_operator"></param>
+        public void selectOperator(int ID_operator)
+        {
+            fillTable(_DAO.selectOperator(ID_operator));
+        }//selectOperator
 
         /// <summary>
         /// Wypełnia tablicę pozycjami danych -------------------------------------> dowolne zapytanie z poziomu Form
@@ -2723,17 +2773,20 @@ namespace nsAccess2DB
             fillTable(_DAO.selectQuery(query));
         }// selectQuery
 
+        
         /// <summary>
         /// Wprowadza rekord do tabeli.
         /// </summary>
         /// <param name="ID_maszyny"></param>
         /// <param name="ID_op_maszyny"></param>
+        /// <param name="Maszyny_nazwa"></param>
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
-        public bool insert(int ID_maszyny, int ID_op_maszyny)
+        public bool insert(int ID_maszyny, int ID_op_maszyny, string Maszyny_nazwa)
         {
             Maszyny_OperatorVO VO = new Maszyny_OperatorVO();
             VO.ID_maszyny = ID_maszyny;
             VO.ID_op_maszyny = ID_op_maszyny;
+            VO.Maszyny_nazwa = Maszyny_nazwa;
 
             add(VO, ref _VOs);
             return _DAO.insert(VO);
@@ -2745,8 +2798,9 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="ID_maszyny"></param>
         /// <param name="ID_op_maszyny"></param>
+        /// <param name="Maszyny_nazwa"></param>
         /// <returns>Wartość logiczna powodzenia akcji.</returns>
-        private bool update(int ID_maszyny, int ID_op_maszyny)
+        private bool update(int ID_maszyny, int ID_op_maszyny, string Maszyny_nazwa)
         {
             bool b = _DAO.update(VO);
             _error = _DAO._error;
@@ -2793,7 +2847,8 @@ namespace nsAccess2DB
                 VOi = new Maszyny_OperatorVO();
                 VOi.ID_op_maszyny = int.Parse(dr["ID_op_maszyny"].ToString());
                 VOi.ID_maszyny = int.Parse(dr["ID_maszyny"].ToString());
-
+                VOi.Maszyny_nazwa = dr["Maszyny_nazwa"].ToString();
+                
                 _VOs[_VOs.Length - 1] = VOi;
             }
 
@@ -2884,11 +2939,11 @@ namespace nsAccess2DB
         /// <param name="ID_maszyny"></param>
         /// <param name="ID_op_maszyny"></param>
         /// <returns>Wartość logiczna istnienia pozycji.</returns>
-        public bool exists(int ID_maszyny, int ID_op_maszyny)  //*****************************************
+        public bool exists(int ID_maszyny, int ID_op_maszyny)
         {
             foreach (Maszyny_OperatorVO VOi in _VOs)
             {
-                if (VOi.ID_maszyny == ID_maszyny & VOi.ID_op_maszyny == ID_op_maszyny) return true; //***********************
+                if (VOi.ID_maszyny == ID_maszyny & VOi.ID_op_maszyny == ID_op_maszyny) return true;
             }
             return false;
         }//exists
@@ -2925,7 +2980,7 @@ namespace nsAccess2DB
 
         public bool write(nsAccess2DB.Maszyny_OperatorVO VO)
         {
-            if (exists(VO.ID_maszyny, VO.ID_op_maszyny)) //**************************************************************
+            if (exists(VO.ID_maszyny, VO.ID_op_maszyny))
             {
                 return _DAO.update(VO);
             }
@@ -2943,6 +2998,7 @@ namespace nsAccess2DB
             VOs[_VOs.Length - 1] = VO;
         }//add
 
+       
     }//class Maszyny_OperatorBUS
 
 
