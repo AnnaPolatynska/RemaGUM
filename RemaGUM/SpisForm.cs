@@ -1452,23 +1452,19 @@ namespace RemaGUM
             comboBoxDzialOperator.Text = _OperatorBUS.VO.Nazwa_dzial;
             textBoxUprawnienieOperator.Text = _OperatorBUS.VO.Uprawnienie;
             dateTimePickerDataKoncaUprOp.Value = new DateTime(_OperatorBUS.VO.Rok, _OperatorBUS.VO.Mc, _OperatorBUS.VO.Dzien);
-
             toolStripStatusLabelIDOperatora.Text = _OperatorBUS.VO.Identyfikator.ToString(); // ID operatora maszyny
 
-            //wypełnij listę maszyn obsługiwanych przez wybranego operatora - zmiana indeksu operatora ma zmieniać listę podległych mu maszyn.
+            //wypełnia listę maszyn obsługiwanych przez wybranego operatora - zmiana indeksu operatora ma zmieniać listę podległych mu maszyn.
             nsAccess2DB.Maszyny_OperatorBUS maszyny_OperatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             listBoxMaszynyOperatora.Items.Clear();
-      //TODO
+     
             maszynyBUS.select();
-            maszyny_OperatorBUS.selectOperator();
+            maszyny_OperatorBUS.selectOperator((int)listBoxOperator.Tag);
 
-          
             _maszynaTag = new int[maszyny_OperatorBUS.count];// przechowuje ID_maszyny.
 
-
             int idx = 0;
-
             while (!maszyny_OperatorBUS.eof)
             {
                 listBoxMaszynyOperatora.Items.Add(maszyny_OperatorBUS.VO.Maszyny_nazwa); //TODO zmienić na nazwę maszyny
@@ -1476,7 +1472,6 @@ namespace RemaGUM
                 maszyny_OperatorBUS.skip();
                 idx++;
             }
-
         }//listBoxOperator_maszyny_SelectedIndexChanged
 
         // wyświetla listę maszyn dla danego operatora
