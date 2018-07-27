@@ -58,6 +58,12 @@
   <ItemGroup>
     <Compile Include="Access2DB.cs" />
     <Compile Include="DocInDb.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Os_zarzadzajacaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Os_zarzadzajacaForm.resx">
       <DependentUpon>Os_zarzadzajacaForm.cs</DependentUpon>
     </EmbeddedResource>
