@@ -1990,8 +1990,7 @@ namespace nsAccess2DB
     {
         private int _Identyfikator = 0;
         private string _Nazwa_operatora = string.Empty; //255
-        private int _ID_dzial = -1;
-        private string _Nazwa_dzial = string.Empty; //255
+        private string _Dzial = string.Empty; //255
         private string _Uprawnienie = string.Empty; //255
         private int _Rok = 0;
         private int _Mc = 0;
@@ -2023,15 +2022,10 @@ namespace nsAccess2DB
             get { return _Op_nazwisko; }
             set { _Op_nazwisko = value; }
         }
-        public int ID_dzial
+        public string Dzial
         {
-            get { return _ID_dzial; }
-            set { _ID_dzial = value; }
-        }
-        public string Nazwa_dzial
-        {
-            get { return _Nazwa_dzial; }
-            set { _Nazwa_dzial = value; }
+            get { return _Dzial; }
+            set { _Dzial = value; }
         }
         public string Uprawnienie
         {
@@ -2124,39 +2118,36 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji</returns>
         public bool insert(nsAccess2DB.OperatorVO VO)
         {
-            string query = "INSERT INTO Operator (Nazwa_operatora, ID_dzial, Nazwa_dzial, Uprawnienie, Data_konca_upr, Rok, Mc, Dzien, Op_imie, Op_nazwisko)" +
-                "VALUES (@Nazwa_operatora, @ID_dzial, @Nazwa_dzial, @Uprawnienie, @Data_konca_upr, @Rok, @Mc, @Dzien, @Op_imie, @Op_nazwisko)";
+            string query = "INSERT INTO Operator (Nazwa_operatora, Dzial, Uprawnienie, Data_konca_upr, Rok, Mc, Dzien, Op_imie, Op_nazwisko)" +
+                "VALUES (@Nazwa_operatora, @Dzial, @Uprawnienie, @Data_konca_upr, @Rok, @Mc, @Dzien, @Op_imie, @Op_nazwisko)";
 
-            OleDbParameter[] parameters = new OleDbParameter[10];
+            OleDbParameter[] parameters = new OleDbParameter[9];
             parameters[0] = new OleDbParameter("Nazwa_operatora", OleDbType.VarChar, 255);
             parameters[0].Value = VO.Nazwa_operatora;
 
-            parameters[1] = new OleDbParameter("ID_dzial", OleDbType.Integer);
-            parameters[1].Value = VO.ID_dzial;
+            parameters[1] = new OleDbParameter("Dzial", OleDbType.VarChar, 255);
+            parameters[1].Value = VO.Dzial;
 
-            parameters[2] = new OleDbParameter("Nazwa_dzial", OleDbType.VarChar, 255);
-            parameters[2].Value = VO.Nazwa_dzial;
+            parameters[2] = new OleDbParameter("Uprawnienie", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Uprawnienie;
 
-            parameters[3] = new OleDbParameter("Uprawnienie", OleDbType.VarChar, 255);
-            parameters[3].Value = VO.Uprawnienie;
+            parameters[3] = new OleDbParameter("Data_konca_upr", OleDbType.VarChar, 255);
+            parameters[3].Value = VO.Data_konca_upr;
 
-            parameters[4] = new OleDbParameter("Data_konca_upr", OleDbType.VarChar, 255);
-            parameters[4].Value = VO.Data_konca_upr;
+            parameters[4] = new OleDbParameter("Rok", OleDbType.Integer);
+            parameters[4].Value = VO.Rok;
 
-            parameters[5] = new OleDbParameter("Rok", OleDbType.Integer);
-            parameters[5].Value = VO.Rok;
+            parameters[5] = new OleDbParameter("Mc", OleDbType.Integer);
+            parameters[5].Value = VO.Mc;
 
-            parameters[6] = new OleDbParameter("Mc", OleDbType.Integer);
-            parameters[6].Value = VO.Mc;
+            parameters[6] = new OleDbParameter("Dzien", OleDbType.Integer);
+            parameters[6].Value = VO.Dzien;
 
-            parameters[7] = new OleDbParameter("Dzien", OleDbType.Integer);
-            parameters[7].Value = VO.Dzien;
+            parameters[7] = new OleDbParameter("Op_imie", OleDbType.VarChar, 255);
+            parameters[7].Value = VO.Op_imie;
 
-            parameters[8] = new OleDbParameter("Op_imie", OleDbType.VarChar, 255);
-            parameters[8].Value = VO.Op_imie;
-
-            parameters[9] = new OleDbParameter("Op_nazwisko", OleDbType.VarChar, 255);
-            parameters[9].Value = VO.Op_nazwisko;
+            parameters[8] = new OleDbParameter("Op_nazwisko", OleDbType.VarChar, 255);
+            parameters[8].Value = VO.Op_nazwisko;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -2170,41 +2161,37 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool update(nsAccess2DB.OperatorVO VO)
         {
-            string query = "UPDATE Operator SET Nazwa_operatora = @Nazwa_operatora, ID_dzial = @ID_dzial, Nazwa_dzial = @Nazwa_dzial, Uprawnienie = @Uprawnienie, " +
+            string query = "UPDATE Operator SET Nazwa_operatora = @Nazwa_operatora, Dzial = @Dzial, Uprawnienie = @Uprawnienie, " +
                  "Data_konca_upr = @Data_konca_upr, Rok = @Rok, Mc = @Mc, Dzien = @Dzien " +
                  "WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
 
-            OleDbParameter[] parameters = new OleDbParameter[10];
-
+            OleDbParameter[] parameters = new OleDbParameter[9];
             parameters[0] = new OleDbParameter("Nazwa_operatora", OleDbType.VarChar, 255);
             parameters[0].Value = VO.Nazwa_operatora;
 
-            parameters[1] = new OleDbParameter("ID_dzial", OleDbType.Integer);
-            parameters[1].Value = VO.ID_dzial;
+            parameters[1] = new OleDbParameter("Dzial", OleDbType.VarChar, 255);
+            parameters[1].Value = VO.Dzial;
 
-            parameters[2] = new OleDbParameter("Nazwa_dzial", OleDbType.VarChar, 255);
-            parameters[2].Value = VO.Nazwa_dzial;
+            parameters[2] = new OleDbParameter("Uprawnienie", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Uprawnienie;
 
-            parameters[3] = new OleDbParameter("Uprawnienie", OleDbType.VarChar, 255);
-            parameters[3].Value = VO.Uprawnienie;
+            parameters[3] = new OleDbParameter("Data_konca_upr", OleDbType.VarChar, 255);
+            parameters[3].Value = VO.Data_konca_upr;
 
-            parameters[4] = new OleDbParameter("Data_konca_upr", OleDbType.VarChar, 255);
-            parameters[4].Value = VO.Data_konca_upr;
+            parameters[4] = new OleDbParameter("Rok", OleDbType.Integer);
+            parameters[4].Value = VO.Rok;
 
-            parameters[5] = new OleDbParameter("Rok", OleDbType.Integer);
-            parameters[5].Value = VO.Rok;
+            parameters[5] = new OleDbParameter("Mc", OleDbType.Integer);
+            parameters[5].Value = VO.Mc;
 
-            parameters[6] = new OleDbParameter("Mc", OleDbType.Integer);
-            parameters[6].Value = VO.Mc;
+            parameters[6] = new OleDbParameter("Dzien", OleDbType.Integer);
+            parameters[6].Value = VO.Dzien;
 
-            parameters[7] = new OleDbParameter("Dzien", OleDbType.Integer);
-            parameters[7].Value = VO.Dzien;
+            parameters[7] = new OleDbParameter("Op_imie", OleDbType.VarChar, 255);
+            parameters[7].Value = VO.Op_imie;
 
-            parameters[8] = new OleDbParameter("Op_imie", OleDbType.VarChar, 255);
-            parameters[8].Value = VO.Op_imie;
-
-            parameters[9] = new OleDbParameter("Op_nazwisko", OleDbType.VarChar, 255);
-            parameters[9].Value = VO.Op_nazwisko;
+            parameters[8] = new OleDbParameter("Op_nazwisko", OleDbType.VarChar, 255);
+            parameters[8].Value = VO.Op_nazwisko;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -2325,8 +2312,7 @@ namespace nsAccess2DB
 
                 VOi.Identyfikator = int.Parse(dr["Identyfikator"].ToString());
                 VOi.Nazwa_operatora = dr["Nazwa_operatora"].ToString();
-                VOi.ID_dzial = int.Parse(dr["ID_dzial"].ToString());
-                VOi.Nazwa_dzial = dr["Nazwa_dzial"].ToString();
+                VOi.Dzial = dr["Dzial"].ToString();
                 VOi.Uprawnienie = dr["Uprawnienie"].ToString();
                 try
                 {
@@ -3011,8 +2997,7 @@ namespace nsAccess2DB
     {
         private int _Identyfikator = 0;
         private string _Nazwa_os_zarzadzajaca = string.Empty; //255
-        private int _ID_dzial = 0;
-        private string _Nazwa_dzial = string.Empty; //255
+        private string _Dzial = string.Empty; //255
         private string _Os_zarz_nazwisko = string.Empty; //255
         private string _Os_zarz_imie = string.Empty; //255
 
@@ -3031,15 +3016,10 @@ namespace nsAccess2DB
             get { return _Nazwa_os_zarzadzajaca; }
             set { _Nazwa_os_zarzadzajaca = value; }
         }
-        public int ID_dzial
+        public string Dzial
         {
-            get { return _ID_dzial; }
-            set { _ID_dzial = value; }
-        }
-        public string Nazwa_dzial
-        {
-            get { return _Nazwa_dzial; }
-            set { _Nazwa_dzial = value; }
+            get { return _Dzial; }
+            set { _Dzial = value; }
         }
         public string Os_zarz_nazwisko
         {
@@ -3118,25 +3098,22 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool insert(nsAccess2DB.Osoba_zarzadzajacaVO VO)
         {
-            string query = "INSERT INTO Osoba_zarzadzajaca (Nazwa_os_zarzadzajaca, ID_dzial, Nazwa_dzial, Os_zarz_nazwisko, Os_zarz_imie)" +
-                " VALUES (@Nazwa_os_zarzadzajaca, @ID_dzial, @Nazwa_dzial, @Os_zarz_nazwisko, @Os_zarz_imie)";
+            string query = "INSERT INTO Osoba_zarzadzajaca (Nazwa_os_zarzadzajaca, Dzial, Os_zarz_nazwisko, Os_zarz_imie)" +
+                " VALUES (@Nazwa_os_zarzadzajaca, @Dzial, @Os_zarz_nazwisko, @Os_zarz_imie)";
 
-            OleDbParameter[] parameters = new OleDbParameter[5];
+            OleDbParameter[] parameters = new OleDbParameter[4];
 
             parameters[0] = new OleDbParameter("Nazwa_os_zarzadzajaca", OleDbType.VarChar, 255);
             parameters[0].Value = VO.Nazwa_os_zarzadzajaca;
 
-            parameters[1] = new OleDbParameter("ID_dzial", OleDbType.Integer);
-            parameters[1].Value = VO.ID_dzial;
+            parameters[1] = new OleDbParameter("Dzial", OleDbType.VarChar, 255);
+            parameters[1].Value = VO.Dzial;
 
-            parameters[2] = new OleDbParameter("Nazwa_dzial", OleDbType.VarChar, 255);
-            parameters[2].Value = VO.Nazwa_dzial;
+            parameters[2] = new OleDbParameter("Os_zarz_nazwisko", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Os_zarz_nazwisko;
 
-            parameters[3] = new OleDbParameter("Os_zarz_nazwisko", OleDbType.VarChar, 255);
-            parameters[3].Value = VO.Os_zarz_nazwisko;
-
-            parameters[4] = new OleDbParameter("Os_zarz_imie", OleDbType.Integer);
-            parameters[4].Value = VO.Os_zarz_imie;
+            parameters[3] = new OleDbParameter("Os_zarz_imie", OleDbType.Integer);
+            parameters[3].Value = VO.Os_zarz_imie;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -3150,24 +3127,21 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool update(nsAccess2DB.Osoba_zarzadzajacaVO VO)
         {
-            string query = "UPDATE Osoba_zarzadzajaca SET Nazwa_os_zarzadzajaca = @Nazwa_os_zarzadzajaca, ID_dzial = @ID_dzial, Nazwa_dzial = @Nazwa_dzial, Os_zarz_nazwisko = @Os_zarz_nazwisko, Os_zarz_imie = @Os_zarz_imie WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
+            string query = "UPDATE Osoba_zarzadzajaca SET Nazwa_os_zarzadzajaca = @Nazwa_os_zarzadzajaca, Dzial = @Dzial, Os_zarz_nazwisko = @Os_zarz_nazwisko, Os_zarz_imie = @Os_zarz_imie WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
          
-            OleDbParameter[] parameters = new OleDbParameter[5];
+            OleDbParameter[] parameters = new OleDbParameter[4];
 
             parameters[0] = new OleDbParameter("Nazwa_os_zarzadzajaca", OleDbType.VarChar, 255);
             parameters[0].Value = VO.Nazwa_os_zarzadzajaca;
 
-            parameters[1] = new OleDbParameter("ID_dzial", OleDbType.Integer);
-            parameters[1].Value = VO.ID_dzial;
+            parameters[1] = new OleDbParameter("Dzial", OleDbType.VarChar, 255);
+            parameters[1].Value = VO.Dzial;
 
-            parameters[2] = new OleDbParameter("Nazwa_dzial", OleDbType.VarChar, 255);
-            parameters[2].Value = VO.Nazwa_dzial;
+            parameters[2] = new OleDbParameter("Os_zarz_nazwisko", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Os_zarz_nazwisko;
 
-            parameters[3] = new OleDbParameter("Os_zarz_nazwisko", OleDbType.VarChar, 255);
-            parameters[3].Value = VO.Os_zarz_nazwisko;
-
-            parameters[4] = new OleDbParameter("Os_zarz_imie", OleDbType.Integer);
-            parameters[4].Value = VO.Os_zarz_imie;
+            parameters[3] = new OleDbParameter("Os_zarz_imie", OleDbType.Integer);
+            parameters[3].Value = VO.Os_zarz_imie;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -3290,8 +3264,7 @@ namespace nsAccess2DB
 
                 VOi.Identyfikator = int.Parse(dr["Identyfikator"].ToString());
                 VOi.Nazwa_os_zarzadzajaca = dr["Nazwa_os_zarzadzajaca"].ToString();
-                VOi.ID_dzial = int.Parse(dr["ID_dzial"].ToString());
-                VOi.Nazwa_dzial = dr["Nazwa_dzial"].ToString();
+                VOi.Dzial = dr["Dzial"].ToString();
                 VOi.Os_zarz_nazwisko = dr["Os_zarz_nazwisko"].ToString();
                 VOi.Os_zarz_imie = dr["Os_zarz_imie"].ToString();
                 _VOs[_VOs.Length - 1] = VOi;
