@@ -2522,6 +2522,7 @@
             this.radioButtonDataKoncaUprOp.TabStop = true;
             this.radioButtonDataKoncaUprOp.Text = "Data końca uprawnień";
             this.radioButtonDataKoncaUprOp.UseVisualStyleBackColor = true;
+            this.radioButtonDataKoncaUprOp.CheckedChanged += new System.EventHandler(this.radioButtonDataKoncaUprOp_CheckedChanged);
             // 
             // SpisForm
             // 

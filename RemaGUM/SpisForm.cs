@@ -1627,6 +1627,26 @@ namespace RemaGUM
             
         }// buttonSzukajOperator_Click
 
+        private void radioButtonDataKoncaUprOp_CheckedChanged(object sender, EventArgs e)
+        {
+            listBoxOperator.Items.Clear();
+            
+            nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
+            operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Data_konca_upr ASC;");
+
+            while (!operatorBUS.eof)
+            {
+                listBoxOperator.Items.Add(operatorBUS.VO.Dzien + " - " + operatorBUS.VO.Mc + " - " + operatorBUS.VO.Rok + " (" + operatorBUS.VO.Uprawnienie + ") " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
+                operatorBUS.skip();
+            }
+
+            if (listBoxOperator.Items.Count > 0)
+            {
+                listBoxOperator.SelectedIndex = 0;
+            }
+        } //radioButtonDataKoncaUprOp_CheckedChanged
+
+
     }// public partial class SpisForm : Form
        
 }//namespace RemaGUM
