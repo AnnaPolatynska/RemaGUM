@@ -1451,6 +1451,9 @@ namespace RemaGUM
             listBoxMaszynyOperatora.Items.Clear();
      
             maszynyBUS.select();
+
+
+
             maszyny_OperatorBUS.selectOperator((int)listBoxOperator.Tag);
 
             _maszynaTag = new int[maszyny_OperatorBUS.count];// przechowuje ID_maszyny.
@@ -1530,17 +1533,68 @@ namespace RemaGUM
             buttonNowa.Enabled = true; //nieaktywny przycisk nowa przy zapisie
             buttonUsun.Enabled = true; //nieaktywny przycisk Usuń przy zapisie
 
-            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
             nsAccess2DB.Maszyny_OperatorBUS maszyny_operatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
+            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
 
-            nsAccess2DB.MaszynyVO maszynyVO = new nsAccess2DB.MaszynyVO();
             nsAccess2DB.OperatorVO operatorVO = new nsAccess2DB.OperatorVO();
             nsAccess2DB.Maszyny_OperatorVO maszyny_operatorVO = new nsAccess2DB.Maszyny_OperatorVO();
+            nsAccess2DB.MaszynyVO maszynyVO = new nsAccess2DB.MaszynyVO();
 
-            //if (_statusForm == (int)_status.nowy)
+            if (_statusForm == (int)_status.nowy)
+            {
+                operatorBUS.select();
+                operatorBUS.idx = operatorBUS.count - 1;
+                operatorVO.Identyfikator = operatorBUS.VO.Identyfikator + 1;
+
+                operatorVO.Op_imie = textBoxImieOperator.Text.Trim();
+                operatorVO.Op_nazwisko = textBoxNazwiskoOperator.Text.Trim();
+                operatorVO.Dzial = comboBoxDzialOperator.Text.Trim();
+                operatorVO.Uprawnienie = textBoxUprawnienieOperator.Text.Trim();
+                operatorVO.Rok = dateTimePickerDataKoncaUprOp.Value.Year;
+                operatorVO.Mc = dateTimePickerDataKoncaUprOp.Value.Month;
+                operatorVO.Dzien = dateTimePickerDataKoncaUprOp.Value.Day;
+                //operatorVO.Data_konca_upr = int.Parse(operatorVO.Rok.ToString() + operatorVO.Mc.ToString("00") + operatorVO.Dzien.ToString("00"));
+                operatorVO.Data_konca_upr = dateTimePickerDataKoncaUprOp.Value;
+
+                //TODO komunikat o zbliżającej się dacie kończ uprawnień operatora. Ustal jak być powinno.
+                //DateTime dt = new DateTime(dateTimePickerDataKoncaUprOp.Value.Ticks);
+                //dt = dt.AddDays(31);
+
+                //operatorVO.Identyfikator = int.Parse(toolStripStatusLabelIDOperatora.Text);
+
+                operatorBUS.write(operatorVO);
+                maszyny_operatorBUS.select(operatorVO.Identyfikator);
+                maszynyBUS.select();
+            }
+            else if (_statusForm == (int)_status.edycja)
+            {
+                operatorBUS.select((int)listBoxOperator.Tag);
+
+                operatorVO.Identyfikator = (int)listBoxOperator.Tag;
+                operatorVO.Op_imie = textBoxImieOperator.Text.Trim();
+                operatorVO.Op_nazwisko = textBoxNazwiskoOperator.Text.Trim();
+                operatorVO.Dzial = comboBoxDzialOperator.Text.Trim();
+                operatorVO.Uprawnienie = textBoxUprawnienieOperator.Text.Trim();
+                operatorVO.Rok = dateTimePickerDataKoncaUprOp.Value.Year;
+                operatorVO.Mc = dateTimePickerDataKoncaUprOp.Value.Month;
+                operatorVO.Dzien = dateTimePickerDataKoncaUprOp.Value.Day;
+                operatorVO.Data_konca_upr = dateTimePickerDataKoncaUprOp.Value;
+
+                operatorBUS.write(operatorVO);
+                maszyny_operatorBUS.delete(operatorVO.Identyfikator);
+                maszyny_operatorBUS.selectOperator(operatorVO.Identyfikator);
+            }
+
+
+
+
+
+            //if (toolStripStatusLabelIDOperatora.Text == string.Empty) //nowa pozycja w tabeli operator maszyny
             //{
+            //    operatorVO.Identyfikator = -1;
             //    operatorBUS.select();
+            //    listBoxOperator.SelectedIndex = listBoxOperator.Items.Count - 1;
             //    operatorBUS.idx = operatorBUS.count - 1;
 
             //    operatorVO.Op_imie = textBoxImieOperator.Text;
@@ -1559,62 +1613,31 @@ namespace RemaGUM
             //    operatorBUS.write(operatorVO);
             //    maszyny_operatorBUS.selectOperator(maszyny_operatorVO.ID_maszyny);
             //    maszyny_operatorBUS.select(maszyny_operatorVO.ID_op_maszyny);
-
             //}
+            //else
+            //{
+            //    operatorVO.Identyfikator = int.Parse(toolStripStatusLabelIDOperatora.Text);
+            //    listBoxOperator.SelectedIndex = operatorBUS.getIdx(operatorVO.Identyfikator);
+            //    operatorBUS.select();
+            //    //operatorBUS.idx = operatorBUS.count - 1;
 
+            //    operatorVO.Op_imie = textBoxImieOperator.Text;
+            //    operatorVO.Op_nazwisko = textBoxNazwiskoOperator.Text;
+            //    operatorVO.Dzial = comboBoxDzialOperator.Text;
+            //    operatorVO.Uprawnienie = textBoxUprawnienieOperator.Text;
+            //    operatorVO.Rok = dateTimePickerDataKoncaUprOp.Value.Year;
+            //    operatorVO.Mc = dateTimePickerDataKoncaUprOp.Value.Month;
+            //    operatorVO.Dzien = dateTimePickerDataKoncaUprOp.Value.Day;
+            //    operatorVO.Data_konca_upr = (operatorVO.Rok.ToString() + operatorVO.Mc.ToString("00") + operatorVO.Dzien.ToString("00"));
 
+            //    //TODO komunikat o zbliżającej się dacie kończ uprawnień operatora. Ustal jak być powinno.
+            //    //DateTime dt = new DateTime(dateTimePickerDataKoncaUprOp.Value.Ticks);
+            //    //dt = dt.AddDays(31);
 
-            
-
-         
-            if (toolStripStatusLabelIDOperatora.Text == string.Empty) //nowa pozycja w tabeli operator maszyny
-            {
-                operatorVO.Identyfikator = -1;
-                operatorBUS.select();
-                listBoxOperator.SelectedIndex = listBoxOperator.Items.Count - 1;
-                operatorBUS.idx = operatorBUS.count - 1;
-
-                operatorVO.Op_imie = textBoxImieOperator.Text;
-                operatorVO.Op_nazwisko = textBoxNazwiskoOperator.Text;
-                operatorVO.Dzial = comboBoxDzialOperator.Text;
-                operatorVO.Uprawnienie = textBoxUprawnienieOperator.Text;
-                operatorVO.Rok = dateTimePickerDataKoncaUprOp.Value.Year;
-                operatorVO.Mc = dateTimePickerDataKoncaUprOp.Value.Month;
-                operatorVO.Dzien = dateTimePickerDataKoncaUprOp.Value.Day;
-                operatorVO.Data_konca_upr = (operatorVO.Rok.ToString() + operatorVO.Mc.ToString("00") + operatorVO.Dzien.ToString("00"));
-
-                //TODO komunikat o zbliżającej się dacie kończ uprawnień operatora. Ustal jak być powinno.
-                //DateTime dt = new DateTime(dateTimePickerDataKoncaUprOp.Value.Ticks);
-                //dt = dt.AddDays(31);
-
-                operatorBUS.write(operatorVO);
-                maszyny_operatorBUS.selectOperator(maszyny_operatorVO.ID_maszyny);
-                maszyny_operatorBUS.select(maszyny_operatorVO.ID_op_maszyny);
-            }
-            else
-            {
-                operatorVO.Identyfikator = int.Parse(toolStripStatusLabelIDOperatora.Text);
-                listBoxOperator.SelectedIndex = operatorBUS.getIdx(operatorVO.Identyfikator);
-                operatorBUS.select();
-                //operatorBUS.idx = operatorBUS.count - 1;
-
-                operatorVO.Op_imie = textBoxImieOperator.Text;
-                operatorVO.Op_nazwisko = textBoxNazwiskoOperator.Text;
-                operatorVO.Dzial = comboBoxDzialOperator.Text;
-                operatorVO.Uprawnienie = textBoxUprawnienieOperator.Text;
-                operatorVO.Rok = dateTimePickerDataKoncaUprOp.Value.Year;
-                operatorVO.Mc = dateTimePickerDataKoncaUprOp.Value.Month;
-                operatorVO.Dzien = dateTimePickerDataKoncaUprOp.Value.Day;
-                operatorVO.Data_konca_upr = (operatorVO.Rok.ToString() + operatorVO.Mc.ToString("00") + operatorVO.Dzien.ToString("00"));
-
-                //TODO komunikat o zbliżającej się dacie kończ uprawnień operatora. Ustal jak być powinno.
-                //DateTime dt = new DateTime(dateTimePickerDataKoncaUprOp.Value.Ticks);
-                //dt = dt.AddDays(31);
-
-                operatorBUS.write(operatorVO);
-                maszyny_operatorBUS.selectOperator(maszyny_operatorVO.ID_maszyny);
-                maszyny_operatorBUS.select(maszyny_operatorVO.ID_op_maszyny);
-            }
+            //    operatorBUS.write(operatorVO);
+            //    maszyny_operatorBUS.selectOperator(maszyny_operatorVO.ID_maszyny);
+            //    maszyny_operatorBUS.select(maszyny_operatorVO.ID_op_maszyny);
+            //}
 
         
 
@@ -1661,8 +1684,8 @@ namespace RemaGUM
             }
             catch { }
             
-            _OperatorBUS.delete((int)listBoxMaszynyOperatora.Tag); //usunięcie pozycji z tabeli operator maszyny.
-            _Maszyny_OperatorBUS.delete((int)listBoxMaszynyOperatora.Tag); // usunięcie relacji z tabeli Maszyny_Operator.
+            _OperatorBUS.delete(_OperatorBUS.VO.Identyfikator); //usunięcie pozycji z tabeli operator maszyny.
+           // _Maszyny_OperatorBUS.delete((int)listBoxMaszynyOperatora.Tag); // usunięcie relacji z tabeli Maszyny_Operator.
 
             WypelnijOperatorowDanymi();
             WypelnijOperatorowMaszynami();
@@ -1695,11 +1718,11 @@ namespace RemaGUM
             listBoxOperator.Items.Clear();
             
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
-            operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Data_konca_upr ASC;");
+            operatorBUS.selectQuery("SELECT * FROM Operator;");
 
             while (!operatorBUS.eof)
             {
-                listBoxOperator.Items.Add(operatorBUS.VO.Dzien + " - " + operatorBUS.VO.Mc + " - " + operatorBUS.VO.Rok + " (" + operatorBUS.VO.Uprawnienie + ") " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
+                listBoxOperator.Items.Add(operatorBUS.VO.Dzien + operatorBUS.VO.Mc + operatorBUS.VO.Rok + operatorBUS.VO.Uprawnienie + operatorBUS.VO.Op_nazwisko + operatorBUS.VO.Op_imie);
                 operatorBUS.skip();
             }
 
@@ -1730,6 +1753,7 @@ namespace RemaGUM
             comboBoxDzialOperator.Tag = _DzialBUS.VO.Nazwa;
         }//comboBoxDzial_SelectedIndexChanged
 
+      
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM
