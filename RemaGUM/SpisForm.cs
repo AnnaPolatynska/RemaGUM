@@ -28,8 +28,7 @@ namespace RemaGUM
         private byte _statusForm; // wartośc statusu formularza
 
         private int[] _maszynaTag; // przechowuje identyfikatory maszyn.
-        private int[] _operatorTag; // przechowuje identyfikatory operatorów.
-
+        
         private nsAccess2DB.MaszynyBUS _MaszynyBUS;
         private nsAccess2DB.KategoriaBUS _KategoriaBUS;
         private nsAccess2DB.Osoba_zarzadzajacaBUS _Osoba_zarzadzajacaBUS;
@@ -356,17 +355,19 @@ namespace RemaGUM
         //wyświetla listę maszyn po nazwie
         private void WypelnijMaszynyNazwami()
         {
+            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
+
             nsAccess2DB.MaszynyVO VO;
             listBoxMaszyny.Items.Clear();
-            _MaszynyBUS.select();
+            maszynyBUS.select();
 
-            while (!_MaszynyBUS.eof)
+            while (!maszynyBUS.eof)
             {
                 int idx = 0;
-                VO = _MaszynyBUS.VO;
-                listBoxMaszyny.Items.Add(VO.Nazwa + " - " + _MaszynyBUS.VO.Nr_fabryczny.ToString());
+                VO = maszynyBUS.VO;
+                listBoxMaszyny.Items.Add(VO.Nazwa + " - " + maszynyBUS.VO.Nr_fabryczny.ToString());
                 idx++;
-                _MaszynyBUS.skip();
+                maszynyBUS.skip();
             }
         }//wypelnijMaszynyNazwami
 
@@ -377,6 +378,7 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void listBoxMaszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             try
             {
                 if (File.Exists(_MaszynyBUS.VO.Zdjecie))
@@ -385,7 +387,7 @@ namespace RemaGUM
                 }
             }
             catch { }
-
+           
             _MaszynyBUS.idx = listBoxMaszyny.SelectedIndex;
 
             toolStripStatusLabelID_Maszyny.Text = _MaszynyBUS.VO.Identyfikator.ToString(); // toolStripStatusLabelID_Maszyny
@@ -472,42 +474,46 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void WypelnijKategorie()
         {
+            nsAccess2DB.KategoriaBUS kategoriaBUS = new nsAccess2DB.KategoriaBUS(_connString);
             nsAccess2DB.KategoriaVO VO;
             comboBoxKategoria.Items.Clear();
 
-            _KategoriaBUS.select();
-            _KategoriaBUS.top();
-            while (!_KategoriaBUS.eof)
+            kategoriaBUS.select();
+            kategoriaBUS.top();
+            while (!kategoriaBUS.eof)
             {
-                VO = _KategoriaBUS.VO;
+                VO = kategoriaBUS.VO;
                 comboBoxKategoria.Items.Add(VO.NazwaKategoria);
-                _KategoriaBUS.skip();
+                kategoriaBUS.skip();
             }
         }//WypelnijKategorie
 
         private void comboBoxKategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _KategoriaBUS.idx = comboBoxKategoria.SelectedIndex;
+            nsAccess2DB.KategoriaBUS kategoriaBUS = new nsAccess2DB.KategoriaBUS(_connString);
+            kategoriaBUS.idx = comboBoxKategoria.SelectedIndex;
         }//comboBoxKategoria_SelectedIndexChanged
 
         private void WypelnijOsoba_zarzadzajaca()
         {
+            nsAccess2DB.Osoba_zarzadzajacaBUS osoba_ZarzadzajacaBUS = new nsAccess2DB.Osoba_zarzadzajacaBUS(_connString);
             nsAccess2DB.Osoba_zarzadzajacaVO VO;
             comboBoxOsoba_zarzadzajaca.Items.Clear();
 
-            _Osoba_zarzadzajacaBUS.select();
-            _Osoba_zarzadzajacaBUS.top();
-            while (!_Osoba_zarzadzajacaBUS.eof)
+            osoba_ZarzadzajacaBUS.select();
+            osoba_ZarzadzajacaBUS.top();
+            while (!osoba_ZarzadzajacaBUS.eof)
             {
-                VO = _Osoba_zarzadzajacaBUS.VO;
+                VO = osoba_ZarzadzajacaBUS.VO;
                 comboBoxOsoba_zarzadzajaca.Items.Add(VO.Nazwa_os_zarzadzajaca);
-                _Osoba_zarzadzajacaBUS.skip();
+                osoba_ZarzadzajacaBUS.skip();
             }
         }//WypełnijOsobyOdp()
 
         private void comboBox_Osoba_zarzadzajaca_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _Osoba_zarzadzajacaBUS.idx = comboBoxOsoba_zarzadzajaca.SelectedIndex;
+            nsAccess2DB.Osoba_zarzadzajacaBUS osoba_ZarzadzajacaBUS = new nsAccess2DB.Osoba_zarzadzajacaBUS(_connString);
+            osoba_ZarzadzajacaBUS.idx = comboBoxOsoba_zarzadzajaca.SelectedIndex;
         }// comboBox_Osoba_zarzadzajaca_SelectedIndexChanged
 
         //////////////////////////////////////////////////////////////         Rabio buttony
@@ -516,11 +522,11 @@ namespace RemaGUM
             listBoxMaszyny.Items.Clear();
 
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-            _MaszynyBUS.select();
-            while (!_MaszynyBUS.eof)
+            maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nazwa ASC;");
+            while (!maszynyBUS.eof)
             {
-                listBoxMaszyny.Items.Add(_MaszynyBUS.VO.Nazwa);
-                _MaszynyBUS.skip();
+                listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa);
+                maszynyBUS.skip();
             }
 
             if (listBoxMaszyny.Items.Count > 0)
