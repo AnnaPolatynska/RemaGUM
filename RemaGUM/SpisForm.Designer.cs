@@ -2432,6 +2432,7 @@
             this.dateTimePickerDataKoncaUprOp.Name = "dateTimePickerDataKoncaUprOp";
             this.dateTimePickerDataKoncaUprOp.Size = new System.Drawing.Size(128, 20);
             this.dateTimePickerDataKoncaUprOp.TabIndex = 52;
+            // 
             // label54
             // 
             this.label54.AutoSize = true;
