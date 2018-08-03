@@ -29,20 +29,6 @@ namespace RemaGUM
 
         private int[] _maszynaTag; // przechowuje identyfikatory maszyn.
         
-        //private nsAccess2DB.MaszynyBUS _MaszynyBUS;
-        //private nsAccess2DB.KategoriaBUS kategoriaBUS;
-        //private nsAccess2DB.Osoba_zarzadzajacaBUS _Osoba_zarzadzajacaBUS;
-        //private nsAccess2DB.DzialBUS _DzialBUS;
-        //private nsAccess2DB.WykorzystanieBUS _WykorzystanieBUS;
-        //private nsAccess2DB.PropozycjaBUS _PropozycjaBUS;
-        //private nsAccess2DB.OperatorBUS _OperatorBUS;
-        //private nsAccess2DB.Maszyny_OperatorBUS _Maszyny_OperatorBUS;
-        //private nsAccess2DB.MaterialyBUS _MaterialyBUS;
-        //private nsAccess2DB.Jednostka_miarBUS _Jednostka_miarBUS;
-        //private nsAccess2DB.Rodzaj_matBUS _Rodzaj_matBUS;
-        //private nsAccess2DB.Dostawca_MaterialBUS _Dostawca_MaterialBUS;
-        //private nsAccess2DB.Dostawca_matBUS _Dostawca_matBUS;
-
         private ToolTip _tt; //podpowiedzi dla niektórych kontolek
 
         private int _interwalPrzegladow = 2;    //w latach
@@ -59,22 +45,7 @@ namespace RemaGUM
 
             _statusForm = (int)_status.edycja;
 
-            //_MaszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-            //_WykorzystanieBUS = new nsAccess2DB.WykorzystanieBUS(_connString);
-            //kategoriaBUS = new nsAccess2DB.KategoriaBUS(_connString);
-            //_DzialBUS = new nsAccess2DB.DzialBUS(_connString);
-            //_PropozycjaBUS = new nsAccess2DB.PropozycjaBUS(_connString);
-            //_Osoba_zarzadzajacaBUS = new nsAccess2DB.Osoba_zarzadzajacaBUS(_connString);
-            //_OperatorBUS = new nsAccess2DB.OperatorBUS(_connString);
-            //_Maszyny_OperatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
-            //_MaterialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
-            //_Jednostka_miarBUS = new nsAccess2DB.Jednostka_miarBUS(_connString);
-            //_Rodzaj_matBUS = new nsAccess2DB.Rodzaj_matBUS(_connString);
-
-            //_MaszynyBUS.select();
-           // _OperatorBUS.select();
-            //_Maszyny_OperatorBUS.select();
-
+            
             WypelnijMaszynyNazwami();
             WypelnijCzestotliwosc();
             WypelnijKategorie();
@@ -177,8 +148,8 @@ namespace RemaGUM
             //wyszukiwanie
             textBoxWyszukiwanieOperator.TabIndex = 69;
             buttonSzukajOperator.TabIndex = 70;
-            //sortowanie po radio buttonach
-            radioButtonDataKoncaUprOp.TabIndex = 71;
+            //sortowanie po comboBoxOperator
+            comboBoxOperator.TabIndex = 71;
 
            
 
@@ -259,7 +230,7 @@ namespace RemaGUM
             _tt.SetToolTip(buttonUsunOperator, "Usuwa pozycję z bazy.");
             _tt.SetToolTip(textBoxWyszukiwanieOperator, "Wpisz nazwisko operatora, którego szukasz.");
             _tt.SetToolTip(buttonSzukajOperator, "Szukanie w bazie operatora.");
-            _tt.SetToolTip(radioButtonDataKoncaUprOp, "Sortowanie operatorow po dacie końca uprawnień.");
+            _tt.SetToolTip(comboBoxOperator, "Sortowanie operatorow po dacie końca uprawnień.");
 
         }//public SpisForm()
         
@@ -1687,25 +1658,56 @@ namespace RemaGUM
             
         }// buttonSzukajOperator_Click
 
-        private void radioButtonDataKoncaUprOp_CheckedChanged(object sender, EventArgs e)
+        private void comboBoxOperator_SelectedIndexChanged(object sender, EventArgs e)
         {
             listBoxOperator.Items.Clear();
-            
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
-            operatorBUS.selectQuery("SELECT * FROM Operator;");
 
-            while (!operatorBUS.eof)
+            // sortowanie po dacie końca uprawnień
+            if (comboBoxOperator.SelectedIndex == 0)
             {
-                listBoxOperator.Items.Add(operatorBUS.VO.Dzien + operatorBUS.VO.Mc + operatorBUS.VO.Rok + operatorBUS.VO.Uprawnienie + operatorBUS.VO.Op_nazwisko + operatorBUS.VO.Op_imie);
-                operatorBUS.skip();
+                operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Data_konca_upr;");
+                while (!operatorBUS.eof)
+                {
+                    listBoxOperator.Items.Add(operatorBUS.VO.Dzien + ":" + operatorBUS.VO.Mc + ":" + operatorBUS.VO.Rok + " " + operatorBUS.VO.Uprawnienie + " - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
+                    operatorBUS.skip();
+                }
+            }
+            if (comboBoxOperator.SelectedIndex == 1)
+            {
+                operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Op_nazwisko;");
+                while (!operatorBUS.eof)
+                {
+                    listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
+                    operatorBUS.skip();
+                }
+            }
+            if (comboBoxOperator.SelectedIndex == 2)
+            {
+                operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Uprawnienie;");
+                while (!operatorBUS.eof)
+                {
+                    listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie + " - " + operatorBUS.VO.Uprawnienie);
+                    operatorBUS.skip();
+                }
+            }
+            if (comboBoxOperator.SelectedIndex == 3)
+            {
+                operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Dzial;");
+                while (!operatorBUS.eof)
+                {
+                    listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie + " - " + operatorBUS.VO.Dzial);
+                    operatorBUS.skip();
+                }
             }
 
             if (listBoxOperator.Items.Count > 0)
             {
                 listBoxOperator.SelectedIndex = 0;
             }
-        } //radioButtonDataKoncaUprOp_CheckedChanged
+        }//comboBoxOperator_SelectedIndexChanged
 
+    
         // ----------------------------------------Operator
         private void WypelnijDzialOperatora()
         {

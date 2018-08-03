@@ -235,7 +235,7 @@
             this.label57 = new System.Windows.Forms.Label();
             this.textBoxImieOperator = new System.Windows.Forms.TextBox();
             this.groupBox26 = new System.Windows.Forms.GroupBox();
-            this.radioButtonDataKoncaUprOp = new System.Windows.Forms.RadioButton();
+            this.comboBoxOperator = new System.Windows.Forms.ComboBox();
             this.toolStrip.SuspendLayout();
             this.Normalia.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -2326,7 +2326,7 @@
             this.listBoxOperator.FormattingEnabled = true;
             this.listBoxOperator.Location = new System.Drawing.Point(15, 35);
             this.listBoxOperator.Name = "listBoxOperator";
-            this.listBoxOperator.Size = new System.Drawing.Size(309, 602);
+            this.listBoxOperator.Size = new System.Drawing.Size(299, 602);
             this.listBoxOperator.TabIndex = 0;
             this.listBoxOperator.SelectedIndexChanged += new System.EventHandler(this.listBoxOperator_maszyny_SelectedIndexChanged);
             // 
@@ -2504,7 +2504,7 @@
             // groupBox26
             // 
             this.groupBox26.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox26.Controls.Add(this.radioButtonDataKoncaUprOp);
+            this.groupBox26.Controls.Add(this.comboBoxOperator);
             this.groupBox26.ForeColor = System.Drawing.Color.Red;
             this.groupBox26.Location = new System.Drawing.Point(12, 13);
             this.groupBox26.Name = "groupBox26";
@@ -2513,18 +2513,19 @@
             this.groupBox26.TabStop = false;
             this.groupBox26.Text = "sortowanie";
             // 
-            // radioButtonDataKoncaUprOp
+            // comboBoxOperator
             // 
-            this.radioButtonDataKoncaUprOp.AutoSize = true;
-            this.radioButtonDataKoncaUprOp.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonDataKoncaUprOp.Location = new System.Drawing.Point(6, 19);
-            this.radioButtonDataKoncaUprOp.Name = "radioButtonDataKoncaUprOp";
-            this.radioButtonDataKoncaUprOp.Size = new System.Drawing.Size(133, 17);
-            this.radioButtonDataKoncaUprOp.TabIndex = 6;
-            this.radioButtonDataKoncaUprOp.TabStop = true;
-            this.radioButtonDataKoncaUprOp.Text = "Data końca uprawnień";
-            this.radioButtonDataKoncaUprOp.UseVisualStyleBackColor = true;
-            this.radioButtonDataKoncaUprOp.CheckedChanged += new System.EventHandler(this.radioButtonDataKoncaUprOp_CheckedChanged);
+            this.comboBoxOperator.FormattingEnabled = true;
+            this.comboBoxOperator.Items.AddRange(new object[] {
+            "Data końca uprawnień",
+            "Nazwisko",
+            "Uprawnienia",
+            "Dział"});
+            this.comboBoxOperator.Location = new System.Drawing.Point(15, 19);
+            this.comboBoxOperator.Name = "comboBoxOperator";
+            this.comboBoxOperator.Size = new System.Drawing.Size(299, 21);
+            this.comboBoxOperator.TabIndex = 7;
+            this.comboBoxOperator.SelectedIndexChanged += new System.EventHandler(this.comboBoxOperator_SelectedIndexChanged);
             // 
             // SpisForm
             // 
@@ -2604,7 +2605,6 @@
             this.groupBox25.ResumeLayout(false);
             this.groupBox25.PerformLayout();
             this.groupBox26.ResumeLayout(false);
-            this.groupBox26.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2812,13 +2812,13 @@
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.TextBox textBoxImieOperator;
         private System.Windows.Forms.GroupBox groupBox26;
-        private System.Windows.Forms.RadioButton radioButtonDataKoncaUprOp;
         private System.Windows.Forms.StatusStrip statusStrip3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID_Maszyny;
         private System.Windows.Forms.StatusStrip statusStrip4;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID_Materialu;
+        private System.Windows.Forms.ComboBox comboBoxOperator;
     }
 }
 
