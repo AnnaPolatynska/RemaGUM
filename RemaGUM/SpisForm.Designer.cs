@@ -930,7 +930,7 @@
             this.groupBox10.Controls.Add(this.linkLabelDostawca1);
             this.groupBox10.Location = new System.Drawing.Point(761, 12);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(396, 612);
+            this.groupBox10.Size = new System.Drawing.Size(425, 637);
             this.groupBox10.TabIndex = 49;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Dostawcy materiałów";
@@ -938,7 +938,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(15, 92);
+            this.label27.Location = new System.Drawing.Point(11, 101);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(264, 13);
             this.label27.TabIndex = 44;
@@ -948,9 +948,9 @@
             // richTextBoxDostawca1
             // 
             this.richTextBoxDostawca1.BackColor = System.Drawing.Color.Linen;
-            this.richTextBoxDostawca1.Location = new System.Drawing.Point(9, 108);
+            this.richTextBoxDostawca1.Location = new System.Drawing.Point(10, 117);
             this.richTextBoxDostawca1.Name = "richTextBoxDostawca1";
-            this.richTextBoxDostawca1.Size = new System.Drawing.Size(381, 163);
+            this.richTextBoxDostawca1.Size = new System.Drawing.Size(378, 168);
             this.richTextBoxDostawca1.TabIndex = 45;
             this.richTextBoxDostawca1.Text = "";
             // 
@@ -989,7 +989,7 @@
             this.richTextBoxDostawca2.BackColor = System.Drawing.Color.Linen;
             this.richTextBoxDostawca2.Location = new System.Drawing.Point(7, 423);
             this.richTextBoxDostawca2.Name = "richTextBoxDostawca2";
-            this.richTextBoxDostawca2.Size = new System.Drawing.Size(381, 166);
+            this.richTextBoxDostawca2.Size = new System.Drawing.Size(381, 205);
             this.richTextBoxDostawca2.TabIndex = 30;
             this.richTextBoxDostawca2.Text = "";
             // 
@@ -1024,7 +1024,7 @@
             // linkLabelDostawca1
             // 
             this.linkLabelDostawca1.AutoSize = true;
-            this.linkLabelDostawca1.Location = new System.Drawing.Point(13, 67);
+            this.linkLabelDostawca1.Location = new System.Drawing.Point(14, 78);
             this.linkLabelDostawca1.Name = "linkLabelDostawca1";
             this.linkLabelDostawca1.Size = new System.Drawing.Size(103, 13);
             this.linkLabelDostawca1.TabIndex = 42;
@@ -1053,7 +1053,7 @@
             this.groupBox6.Controls.Add(this.label30);
             this.groupBox6.Location = new System.Drawing.Point(336, 71);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(419, 539);
+            this.groupBox6.Size = new System.Drawing.Size(419, 642);
             this.groupBox6.TabIndex = 52;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Opis materiału";
@@ -1061,7 +1061,7 @@
             // groupBox13
             // 
             this.groupBox13.Controls.Add(this.panel2);
-            this.groupBox13.Location = new System.Drawing.Point(6, 479);
+            this.groupBox13.Location = new System.Drawing.Point(6, 544);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(407, 77);
             this.groupBox13.TabIndex = 60;
@@ -1331,6 +1331,7 @@
             this.buttonSzukaj_mat.Size = new System.Drawing.Size(35, 34);
             this.buttonSzukaj_mat.TabIndex = 4;
             this.buttonSzukaj_mat.UseVisualStyleBackColor = false;
+            this.buttonSzukaj_mat.Click += new System.EventHandler(this.buttonSzukaj_mat_Click);
             // 
             // textBoxWyszukaj_mat
             // 
@@ -1350,7 +1351,7 @@
             this.groupBox8.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox8.Location = new System.Drawing.Point(9, 71);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(321, 539);
+            this.groupBox8.Size = new System.Drawing.Size(321, 642);
             this.groupBox8.TabIndex = 47;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Lista Materiałów";
@@ -1363,7 +1364,7 @@
             this.listBoxMaterialy.FormattingEnabled = true;
             this.listBoxMaterialy.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaterialy.Name = "listBoxMaterialy";
-            this.listBoxMaterialy.Size = new System.Drawing.Size(309, 511);
+            this.listBoxMaterialy.Size = new System.Drawing.Size(309, 602);
             this.listBoxMaterialy.TabIndex = 0;
             this.listBoxMaterialy.SelectedIndexChanged += new System.EventHandler(this.listBoxMaterialy_SelectedIndexChanged);
             // 
@@ -1377,7 +1378,7 @@
             this.groupBox9.Controls.Add(this.buttonAnuluj_mat);
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox9.ForeColor = System.Drawing.Color.Red;
-            this.groupBox9.Location = new System.Drawing.Point(761, 554);
+            this.groupBox9.Location = new System.Drawing.Point(766, 657);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(396, 56);
             this.groupBox9.TabIndex = 48;
@@ -2517,6 +2518,7 @@
             // 
             this.comboBoxOperator.FormattingEnabled = true;
             this.comboBoxOperator.Items.AddRange(new object[] {
+            "BRAK",
             "Data końca uprawnień",
             "Nazwisko",
             "Uprawnienia",

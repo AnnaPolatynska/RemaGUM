@@ -33,6 +33,8 @@ namespace RemaGUM
 
         private int _interwalPrzegladow = 2;    //w latach
 
+        private nsAccess2DB.OperatorBUS _OperatorBUS;
+
         /// <summary>
         /// Konstruktor formularza.
         /// </summary>
@@ -45,7 +47,8 @@ namespace RemaGUM
 
             _statusForm = (int)_status.edycja;
 
-            
+            _OperatorBUS = new nsAccess2DB.OperatorBUS(_connString);
+
             WypelnijMaszynyNazwami();
             WypelnijCzestotliwosc();
             WypelnijKategorie();
@@ -259,16 +262,6 @@ namespace RemaGUM
             if (v.SelectedIndex == 0)
             {
                 WypelnijMaszynyNazwami();
-                if (listBoxMaszyny.Items.Count > 0)
-                {
-                    listBoxMaszyny.SelectedIndex = 0;
-                }
-
-                //_MaszynyBUS.select();
-                //_OperatorBUS.select();
-                //_Maszyny_OperatorBUS.select();
-
-                WypelnijMaszynyNazwami();
                 WypelnijCzestotliwosc();
                 WypelnijKategorie();
                 WypelnijDzial();
@@ -277,6 +270,10 @@ namespace RemaGUM
                 WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);// wypełniam operatorów maszyn na poczatku uruchomienia programu.
                 WypelnijOsoba_zarzadzajaca();
 
+                if (listBoxMaszyny.Items.Count > 0)
+                {
+                    listBoxMaszyny.SelectedIndex = 0;
+                }
             }// Zakładka Maszyny.
 
             // --------------------------------- Zakładka Materialy.
@@ -301,15 +298,14 @@ namespace RemaGUM
             // --------------------------------- Zakładka operator.
             if (v.SelectedIndex == 3)
             {
-                
                 WypelnijOperatorowDanymi();
+                WypelnijDzialOperatora();
                 if (listBoxOperator.Items.Count > 0)
                 {
                     listBoxOperator.SelectedIndex = 0;
                 }
-
-                WypelnijDzialOperatora();
-
+                comboBoxOperator.SelectedIndex = 0;// ustawia listę wyboru na 1 pozycji sortowania
+                
             }// Zakładka operator
 
             Cursor.Current = Cursors.Default;
@@ -372,7 +368,6 @@ namespace RemaGUM
             linkLabelNazwaZdjecia.Text = maszynyBUS.VO.Zdjecie;// zdjęcie nazwa
             _zawartoscPliku = maszynyBUS.VO.Zawartosc_pliku; //zawartość zdjęcia
             pokazZdjecie(linkLabelNazwaZdjecia.Text); // zmiana zdjęcia przy zmianie indeksu maszyny.
-
 
             comboBoxOsoba_zarzadzajaca.Text = maszynyBUS.VO.Nazwa_os_zarzadzajaca;
 
@@ -1158,7 +1153,8 @@ namespace RemaGUM
 
 
 
-        //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  ------------wyświetlanie w zakładce Materiały.
+        //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // //  //  //  //  //  //  //  //  wyświetlanie w zakładce Materiały.
+        
         // --------------------------------------- wypełnianie  listBoxMaterialy.
         // wyświetla listę Materiałów po nazwie
         private void WypelnijMaterialyNazwami()
@@ -1184,6 +1180,8 @@ namespace RemaGUM
         private void listBoxMaterialy_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
+            materialyBUS.select();
+
             materialyBUS.idx = listBoxMaterialy.SelectedIndex;
 
             toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString(); //  toolStripStatusLabelID_Materialu
@@ -1201,13 +1199,13 @@ namespace RemaGUM
             comboBoxDostawca1.Text = materialyBUS.VO.Dostawca_mat;
 
             //TODO zrobić kwerendę z dostawcami i ją uruchomić
-            //linkLabelDostawca1.Text = _Dostawca_matBUS.kategoriaVO.Link_dostawca_mat;
-            //richTextBoxDostawca1.Text = _Dostawca_matBUS.kategoriaVO.Dod_info_dostawca_mat;
+            //linkLabelDostawca1.Text = dostawca_matBUS.kategoriaVO.Link_dostawca_mat;
+            //richTextBoxDostawca1.Text = dostawca_matBUS.kategoriaVO.Dod_info_dostawca_mat;
 
             comboBoxDostawca2.Text = materialyBUS.VO.Dostawca_mat;
             //TODO zrobić kwerendę z dostawcami i ją uruchomić
-            //linkLabelDostawca2.Text = _Dostawca_matBUS.kategoriaVO.Link_dostawca_mat;
-            //richTextBoxDostawca2.Text = _Dostawca_matBUS.kategoriaVO.Dod_info_dostawca_mat;
+            //linkLabelDostawca2.Text = dostawca_matBUS.kategoriaVO.Link_dostawca_mat;
+            //richTextBoxDostawca2.Text = dostawca_matBUS.kategoriaVO.Dod_info_dostawca_mat;
 
         } // listBoxMaterialy_SelectedIndexChanged
 
@@ -1259,7 +1257,7 @@ namespace RemaGUM
         // --------- --------------------------------------- Formularz Materialy
         private void ButtonNowa_mat_Click(object sender, EventArgs e)
         {
-            toolStripStatusLabelID_Materialu.Text = string.Empty;
+            //toolStripStatusLabelID_Materialu.Text = string.Empty;
 
             textBoxTyp_materialu.Text = string.Empty;
 
@@ -1300,7 +1298,10 @@ namespace RemaGUM
             richTextBoxDostawca2.Text = string.Empty;
 
             buttonAnuluj.Enabled = true;
-            WypelnijMaterialyNazwami();
+
+            _statusForm = (int)_status.nowy;
+
+            //WypelnijMaterialyNazwami();
         }//ButtonNowa_Click
 
         private void buttonAnuluj_mat_Click(object sender, EventArgs e)
@@ -1380,22 +1381,22 @@ namespace RemaGUM
             Mat_VO.Stan_min_mat = int.Parse(textBoxMin_materialu.Text.Trim());
             Mat_VO.Zapotrzebowanie_mat = int.Parse(textBoxZapotrzebowanie.Text.Trim());
 
-            if (toolStripStatusLabelID_Maszyny.Text == string.Empty) //nowa pozycja w tabeli materialów
+            if (toolStripStatusLabelID_Materialu.Text == string.Empty) //nowa pozycja w tabeli materialów
             {
                 Mat_VO.Identyfikator = -1;
             }
             else
-                Mat_VO.Identyfikator = int.Parse(toolStripStatusLabelID_Maszyny.Text);
+                Mat_VO.Identyfikator = int.Parse(toolStripStatusLabelID_Materialu.Text);
 
             buttonUsun.Enabled = listBoxMaterialy.Items.Count > 0;
 
-            if (toolStripStatusLabelID_Maszyny.Text == string.Empty)
+            if (toolStripStatusLabelID_Materialu.Text == string.Empty)
             {
                 listBoxMaterialy.SelectedIndex = listBoxMaterialy.Items.Count - 1;
             }
             else
             {
-                listBoxMaszyny.SelectedIndex = materialyBUS.getIdx(Mat_VO.Identyfikator);
+                listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(Mat_VO.Identyfikator);
             }
 
             materialyBUS.write(Mat_VO);
@@ -1404,6 +1405,32 @@ namespace RemaGUM
 
             WypelnijMaterialyNazwami();
         }//buttonZapisz_mat_Click
+
+
+        private void buttonSzukaj_mat_Click(object sender, EventArgs e)
+        {
+            listBoxMaterialy.Items.Clear();
+
+            nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
+            materialyBUS.selectQuery("SELECT * FROM Materialy WHERE Nazwa_mat LIKE'" + textBoxWyszukaj_mat + "%' OR Rodzaj_mat LIKE '%" + textBoxWyszukaj_mat + "%';");
+            while (!materialyBUS.eof)
+            {
+                listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " " + materialyBUS.VO.Rodzaj_mat);
+                materialyBUS.skip();
+            }
+            if (listBoxMaterialy.Items.Count > 0)
+            {
+                listBoxMaterialy.SelectedIndex = 0;
+            }
+        }// button buttonSzukaj_mat_Click
+
+
+
+
+
+
+
+
 
 
         //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  ---------------------------Operatorzy maszyn.
@@ -1433,7 +1460,7 @@ namespace RemaGUM
          /// <param name="e"></param>
         private void listBoxOperator_maszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
-            nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
+           nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
             operatorBUS.select();
 
             operatorBUS.idx = listBoxOperator.SelectedIndex;
@@ -1566,33 +1593,44 @@ namespace RemaGUM
 
                 //operatorVO.Identyfikator = int.Parse(toolStripStatusLabelIDOperatora.Text);
 
-                operatorBUS.write(operatorVO);
-                maszyny_operatorBUS.selectOperator(operatorVO.Identyfikator);
+                operatorBUS.write(operatorBUS.VO);
+                maszyny_operatorBUS.selectOperator(operatorBUS.VO.Identyfikator);
                 maszynyBUS.select();
+
+                listBoxOperator.SelectedIndex = operatorBUS.getIdx(operatorBUS.VO.Identyfikator); // usatwia zaznaczenie w tab operator.
             }
             else if (_statusForm == (int)_status.edycja)
             {
                 operatorBUS.select((int)listBoxOperator.Tag);
+                if (operatorBUS.count < 1)
+                {
+                    MessageBox.Show("Operator o identyfikatorze " + listBoxOperator.Tag.ToString() + "nie istnieje w bazie operatorów", "RemaGUM",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    operatorVO.Identyfikator = (int)listBoxOperator.Tag;
+                    operatorVO.Op_imie = textBoxImieOperator.Text.Trim();
+                    operatorVO.Op_nazwisko = textBoxNazwiskoOperator.Text.Trim();
+                    operatorVO.Dzial = comboBoxDzialOperator.Text.Trim();
+                    operatorVO.Uprawnienie = textBoxUprawnienieOperator.Text.Trim();
+                    operatorVO.Rok = dateTimePickerDataKoncaUprOp.Value.Year;
+                    operatorVO.Mc = dateTimePickerDataKoncaUprOp.Value.Month;
+                    operatorVO.Dzien = dateTimePickerDataKoncaUprOp.Value.Day;
+                    operatorVO.Data_konca_upr = dateTimePickerDataKoncaUprOp.Value;
 
-                operatorVO.Identyfikator = (int)listBoxOperator.Tag;
-                operatorVO.Op_imie = textBoxImieOperator.Text.Trim();
-                operatorVO.Op_nazwisko = textBoxNazwiskoOperator.Text.Trim();
-                operatorVO.Dzial = comboBoxDzialOperator.Text.Trim();
-                operatorVO.Uprawnienie = textBoxUprawnienieOperator.Text.Trim();
-                operatorVO.Rok = dateTimePickerDataKoncaUprOp.Value.Year;
-                operatorVO.Mc = dateTimePickerDataKoncaUprOp.Value.Month;
-                operatorVO.Dzien = dateTimePickerDataKoncaUprOp.Value.Day;
-                operatorVO.Data_konca_upr = dateTimePickerDataKoncaUprOp.Value;
-
-                operatorBUS.write(operatorVO);
-                maszyny_operatorBUS.delete(operatorVO.Identyfikator);
-                maszyny_operatorBUS.selectOperator(operatorVO.Identyfikator);
-            }
-            
-            pokazKomunikat("Pozycja zapisana w bazie");
+                    operatorBUS.write(operatorBUS.VO);
+                    maszyny_operatorBUS.delete(operatorBUS.VO.Identyfikator);
+                    maszyny_operatorBUS.selectOperator(operatorBUS.VO.Identyfikator);
+                }
+                listBoxOperator.SelectedIndex = operatorBUS.getIdx(operatorBUS.VO.Identyfikator); // usatwia zaznaczenie w tab operator.
+            }// else if - edycja
 
             WypelnijOperatorowDanymi();
             WypelnijOperatorowMaszynami();
+
+            pokazKomunikat("Pozycja zapisana w bazie");
 
             _statusForm = (int)_status.edycja;
 
@@ -1658,6 +1696,7 @@ namespace RemaGUM
             
         }// buttonSzukajOperator_Click
 
+
         private void comboBoxOperator_SelectedIndexChanged(object sender, EventArgs e)
         {
             listBoxOperator.Items.Clear();
@@ -1666,6 +1705,10 @@ namespace RemaGUM
             // sortowanie po dacie końca uprawnień
             if (comboBoxOperator.SelectedIndex == 0)
             {
+                WypelnijOperatorowDanymi();
+            }
+                if (comboBoxOperator.SelectedIndex == 1)
+            {
                 operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Data_konca_upr;");
                 while (!operatorBUS.eof)
                 {
@@ -1673,7 +1716,7 @@ namespace RemaGUM
                     operatorBUS.skip();
                 }
             }
-            if (comboBoxOperator.SelectedIndex == 1)
+            if (comboBoxOperator.SelectedIndex == 2)
             {
                 operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Op_nazwisko;");
                 while (!operatorBUS.eof)
@@ -1682,7 +1725,7 @@ namespace RemaGUM
                     operatorBUS.skip();
                 }
             }
-            if (comboBoxOperator.SelectedIndex == 2)
+            if (comboBoxOperator.SelectedIndex == 3)
             {
                 operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Uprawnienie;");
                 while (!operatorBUS.eof)
@@ -1691,7 +1734,7 @@ namespace RemaGUM
                     operatorBUS.skip();
                 }
             }
-            if (comboBoxOperator.SelectedIndex == 3)
+            if (comboBoxOperator.SelectedIndex == 4)
             {
                 operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Dzial;");
                 while (!operatorBUS.eof)
@@ -1731,7 +1774,6 @@ namespace RemaGUM
             comboBoxDzialOperator.Tag = dzialBUS.VO.Nazwa;
         }//comboBoxDzial_SelectedIndexChanged
 
-       
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM
