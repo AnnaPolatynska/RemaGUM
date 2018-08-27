@@ -17,7 +17,7 @@ namespace RemaGUM
     {
         private string _connString = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Projects\\RemaGUM\\RemaGUM.mdb"; //połaczenie z bazą danych
 
-        private string _helpFile = Application.StartupPath + "\\RemaGUM.chm"; //plik pomocy RemaGUM
+        private string _helpFile = Application.StartupPath + "\\pomoc.chm"; //plik pomocy RemaGUM
 
         private byte[] _zawartoscPliku; //dane odczytane z pliku zdjęcia
 
@@ -1774,6 +1774,7 @@ namespace RemaGUM
             comboBoxDzialOperator.Tag = dzialBUS.VO.Nazwa;
         }//comboBoxDzial_SelectedIndexChanged
 
+        
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM

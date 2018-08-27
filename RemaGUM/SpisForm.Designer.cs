@@ -236,6 +236,9 @@
             this.textBoxImieOperator = new System.Windows.Forms.TextBox();
             this.groupBox26 = new System.Windows.Forms.GroupBox();
             this.comboBoxOperator = new System.Windows.Forms.ComboBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusNormalia = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelIDNormaliow = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip.SuspendLayout();
             this.Normalia.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -277,6 +280,7 @@
             this.groupBox24.SuspendLayout();
             this.groupBox25.SuspendLayout();
             this.groupBox26.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -322,6 +326,8 @@
             // 
             // Normalia
             // 
+            this.Normalia.BackColor = System.Drawing.Color.Bisque;
+            this.Normalia.Controls.Add(this.statusStrip1);
             this.Normalia.Controls.Add(this.groupBox14);
             this.Normalia.Controls.Add(this.groupBox15);
             this.Normalia.Controls.Add(this.groupBox18);
@@ -330,10 +336,9 @@
             this.Normalia.Controls.Add(this.groupBox21);
             this.Normalia.Location = new System.Drawing.Point(4, 22);
             this.Normalia.Name = "Normalia";
-            this.Normalia.Size = new System.Drawing.Size(1212, 892);
+            this.Normalia.Size = new System.Drawing.Size(1212, 890);
             this.Normalia.TabIndex = 2;
             this.Normalia.Text = "Normalia";
-            this.Normalia.UseVisualStyleBackColor = true;
             // 
             // groupBox14
             // 
@@ -474,7 +479,7 @@
             this.groupBox15.Controls.Add(this.label53);
             this.groupBox15.Location = new System.Drawing.Point(330, 76);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(419, 539);
+            this.groupBox15.Size = new System.Drawing.Size(419, 537);
             this.groupBox15.TabIndex = 58;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Opis normaliów warsztatowych";
@@ -532,7 +537,7 @@
             this.groupBox16.Controls.Add(this.panel3);
             this.groupBox16.Location = new System.Drawing.Point(7, 461);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(407, 77);
+            this.groupBox16.Size = new System.Drawing.Size(407, 92);
             this.groupBox16.TabIndex = 60;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Zapotrzebowanie na normalia warsztatowe";
@@ -740,7 +745,7 @@
             this.groupBox19.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox19.Location = new System.Drawing.Point(3, 76);
             this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(321, 539);
+            this.groupBox19.Size = new System.Drawing.Size(321, 537);
             this.groupBox19.TabIndex = 53;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Lista Normaliów";
@@ -753,7 +758,7 @@
             this.listBoxNormalia.FormattingEnabled = true;
             this.listBoxNormalia.Location = new System.Drawing.Point(6, 19);
             this.listBoxNormalia.Name = "listBoxNormalia";
-            this.listBoxNormalia.Size = new System.Drawing.Size(309, 511);
+            this.listBoxNormalia.Size = new System.Drawing.Size(309, 498);
             this.listBoxNormalia.TabIndex = 0;
             // 
             // groupBox20
@@ -766,7 +771,7 @@
             this.groupBox20.Controls.Add(this.buttonAnuluj_norm);
             this.groupBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox20.ForeColor = System.Drawing.Color.Red;
-            this.groupBox20.Location = new System.Drawing.Point(755, 559);
+            this.groupBox20.Location = new System.Drawing.Point(755, 557);
             this.groupBox20.Name = "groupBox20";
             this.groupBox20.Size = new System.Drawing.Size(396, 56);
             this.groupBox20.TabIndex = 54;
@@ -889,7 +894,7 @@
             this.Materiały.Location = new System.Drawing.Point(4, 22);
             this.Materiały.Name = "Materiały";
             this.Materiały.Padding = new System.Windows.Forms.Padding(3);
-            this.Materiały.Size = new System.Drawing.Size(1212, 892);
+            this.Materiały.Size = new System.Drawing.Size(1212, 890);
             this.Materiały.TabIndex = 1;
             this.Materiały.Text = "Materiały";
             // 
@@ -898,7 +903,7 @@
             this.statusStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel3,
             this.toolStripStatusLabelID_Materialu});
-            this.statusStrip4.Location = new System.Drawing.Point(3, 867);
+            this.statusStrip4.Location = new System.Drawing.Point(3, 865);
             this.statusStrip4.Name = "statusStrip4";
             this.statusStrip4.Size = new System.Drawing.Size(1206, 22);
             this.statusStrip4.TabIndex = 53;
@@ -1053,7 +1058,7 @@
             this.groupBox6.Controls.Add(this.label30);
             this.groupBox6.Location = new System.Drawing.Point(336, 71);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(419, 642);
+            this.groupBox6.Size = new System.Drawing.Size(419, 640);
             this.groupBox6.TabIndex = 52;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Opis materiału";
@@ -1351,7 +1356,7 @@
             this.groupBox8.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox8.Location = new System.Drawing.Point(9, 71);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(321, 642);
+            this.groupBox8.Size = new System.Drawing.Size(321, 640);
             this.groupBox8.TabIndex = 47;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Lista Materiałów";
@@ -1364,7 +1369,7 @@
             this.listBoxMaterialy.FormattingEnabled = true;
             this.listBoxMaterialy.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaterialy.Name = "listBoxMaterialy";
-            this.listBoxMaterialy.Size = new System.Drawing.Size(309, 602);
+            this.listBoxMaterialy.Size = new System.Drawing.Size(309, 589);
             this.listBoxMaterialy.TabIndex = 0;
             this.listBoxMaterialy.SelectedIndexChanged += new System.EventHandler(this.listBoxMaterialy_SelectedIndexChanged);
             // 
@@ -1378,7 +1383,7 @@
             this.groupBox9.Controls.Add(this.buttonAnuluj_mat);
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox9.ForeColor = System.Drawing.Color.Red;
-            this.groupBox9.Location = new System.Drawing.Point(766, 657);
+            this.groupBox9.Location = new System.Drawing.Point(766, 655);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(396, 56);
             this.groupBox9.TabIndex = 48;
@@ -1508,7 +1513,7 @@
             this.Maszyny.Location = new System.Drawing.Point(4, 22);
             this.Maszyny.Name = "Maszyny";
             this.Maszyny.Padding = new System.Windows.Forms.Padding(3);
-            this.Maszyny.Size = new System.Drawing.Size(1212, 892);
+            this.Maszyny.Size = new System.Drawing.Size(1212, 890);
             this.Maszyny.TabIndex = 0;
             this.Maszyny.Text = "Maszyny";
             // 
@@ -1517,7 +1522,7 @@
             this.statusStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel4,
             this.toolStripStatusLabelID_Maszyny});
-            this.statusStrip3.Location = new System.Drawing.Point(3, 867);
+            this.statusStrip3.Location = new System.Drawing.Point(3, 865);
             this.statusStrip3.Name = "statusStrip3";
             this.statusStrip3.Size = new System.Drawing.Size(1206, 22);
             this.statusStrip3.TabIndex = 58;
@@ -1602,7 +1607,7 @@
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Location = new System.Drawing.Point(333, 69);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(419, 788);
+            this.groupBox4.Size = new System.Drawing.Size(419, 786);
             this.groupBox4.TabIndex = 46;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dane maszyny";
@@ -1781,7 +1786,7 @@
             this.richTextBoxUwagi.BackColor = System.Drawing.Color.Linen;
             this.richTextBoxUwagi.Location = new System.Drawing.Point(16, 688);
             this.richTextBoxUwagi.Name = "richTextBoxUwagi";
-            this.richTextBoxUwagi.Size = new System.Drawing.Size(380, 87);
+            this.richTextBoxUwagi.Size = new System.Drawing.Size(380, 85);
             this.richTextBoxUwagi.TabIndex = 30;
             this.richTextBoxUwagi.Text = "";
             // 
@@ -1926,7 +1931,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox1.Location = new System.Drawing.Point(6, 69);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(321, 788);
+            this.groupBox1.Size = new System.Drawing.Size(321, 786);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lista";
@@ -1939,7 +1944,7 @@
             this.listBoxMaszyny.FormattingEnabled = true;
             this.listBoxMaszyny.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaszyny.Name = "listBoxMaszyny";
-            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 758);
+            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 745);
             this.listBoxMaszyny.TabIndex = 0;
             this.listBoxMaszyny.SelectedIndexChanged += new System.EventHandler(this.listBoxMaszyny_SelectedIndexChanged);
             // 
@@ -1953,7 +1958,7 @@
             this.groupBox2.Controls.Add(this.buttonAnuluj);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox2.ForeColor = System.Drawing.Color.Red;
-            this.groupBox2.Location = new System.Drawing.Point(758, 801);
+            this.groupBox2.Location = new System.Drawing.Point(758, 799);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(419, 56);
             this.groupBox2.TabIndex = 5;
@@ -2018,7 +2023,7 @@
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Location = new System.Drawing.Point(758, 565);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(437, 230);
+            this.groupBox3.Size = new System.Drawing.Size(437, 228);
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Stan techniczny i częstotliwość wykorzystania";
@@ -2202,7 +2207,7 @@
             this.tabControlZakładki.Location = new System.Drawing.Point(5, 51);
             this.tabControlZakładki.Name = "tabControlZakładki";
             this.tabControlZakładki.SelectedIndex = 0;
-            this.tabControlZakładki.Size = new System.Drawing.Size(1220, 918);
+            this.tabControlZakładki.Size = new System.Drawing.Size(1220, 916);
             this.tabControlZakładki.TabIndex = 47;
             this.tabControlZakładki.SelectedIndexChanged += new System.EventHandler(this.tabControlZakladki_SelectedIndexChanged);
             // 
@@ -2217,7 +2222,7 @@
             this.Operatorzy_maszyn.Controls.Add(this.groupBox26);
             this.Operatorzy_maszyn.Location = new System.Drawing.Point(4, 22);
             this.Operatorzy_maszyn.Name = "Operatorzy_maszyn";
-            this.Operatorzy_maszyn.Size = new System.Drawing.Size(1212, 892);
+            this.Operatorzy_maszyn.Size = new System.Drawing.Size(1212, 890);
             this.Operatorzy_maszyn.TabIndex = 3;
             this.Operatorzy_maszyn.Text = "Operatorzy maszyn";
             // 
@@ -2226,7 +2231,7 @@
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel2,
             this.toolStripStatusLabelIDOperatora});
-            this.statusStrip2.Location = new System.Drawing.Point(0, 870);
+            this.statusStrip2.Location = new System.Drawing.Point(0, 868);
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Size = new System.Drawing.Size(1212, 22);
             this.statusStrip2.TabIndex = 57;
@@ -2254,7 +2259,7 @@
             this.groupBox22.Controls.Add(this.buttonAnulujOperator);
             this.groupBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox22.ForeColor = System.Drawing.Color.Red;
-            this.groupBox22.Location = new System.Drawing.Point(348, 667);
+            this.groupBox22.Location = new System.Drawing.Point(348, 665);
             this.groupBox22.Name = "groupBox22";
             this.groupBox22.Size = new System.Drawing.Size(333, 56);
             this.groupBox22.TabIndex = 52;
@@ -2314,7 +2319,7 @@
             this.groupBox23.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox23.Location = new System.Drawing.Point(12, 76);
             this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(330, 647);
+            this.groupBox23.Size = new System.Drawing.Size(330, 645);
             this.groupBox23.TabIndex = 51;
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "Operatorzy maszyn";
@@ -2327,7 +2332,7 @@
             this.listBoxOperator.FormattingEnabled = true;
             this.listBoxOperator.Location = new System.Drawing.Point(15, 35);
             this.listBoxOperator.Name = "listBoxOperator";
-            this.listBoxOperator.Size = new System.Drawing.Size(299, 602);
+            this.listBoxOperator.Size = new System.Drawing.Size(299, 589);
             this.listBoxOperator.TabIndex = 0;
             this.listBoxOperator.SelectedIndexChanged += new System.EventHandler(this.listBoxOperator_maszyny_SelectedIndexChanged);
             // 
@@ -2529,6 +2534,29 @@
             this.comboBoxOperator.TabIndex = 7;
             this.comboBoxOperator.SelectedIndexChanged += new System.EventHandler(this.comboBoxOperator_SelectedIndexChanged);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusNormalia,
+            this.toolStripStatusLabelIDNormaliow});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 868);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1212, 22);
+            this.statusStrip1.TabIndex = 59;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusNormalia
+            // 
+            this.toolStripStatusNormalia.Name = "toolStripStatusNormalia";
+            this.toolStripStatusNormalia.Size = new System.Drawing.Size(86, 17);
+            this.toolStripStatusNormalia.Text = "ID Normaliów: ";
+            // 
+            // toolStripStatusLabelIDNormaliow
+            // 
+            this.toolStripStatusLabelIDNormaliow.Name = "toolStripStatusLabelIDNormaliow";
+            this.toolStripStatusLabelIDNormaliow.Size = new System.Drawing.Size(77, 17);
+            this.toolStripStatusLabelIDNormaliow.Text = "IDNormaliow";
+            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2544,6 +2572,7 @@
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.Normalia.ResumeLayout(false);
+            this.Normalia.PerformLayout();
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
             this.groupBox15.ResumeLayout(false);
@@ -2607,6 +2636,8 @@
             this.groupBox25.ResumeLayout(false);
             this.groupBox25.PerformLayout();
             this.groupBox26.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2821,6 +2852,9 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelID_Materialu;
         private System.Windows.Forms.ComboBox comboBoxOperator;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusNormalia;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelIDNormaliow;
     }
 }
 
