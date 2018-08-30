@@ -33,6 +33,9 @@
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOdswiez = new System.Windows.Forms.ToolStripButton();
             this.Normalia = new System.Windows.Forms.TabPage();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusNormalia = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelIDNormaliow = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.label25 = new System.Windows.Forms.Label();
             this.richTextBoxDostawca1_norm = new System.Windows.Forms.RichTextBox();
@@ -236,11 +239,9 @@
             this.textBoxImieOperator = new System.Windows.Forms.TextBox();
             this.groupBox26 = new System.Windows.Forms.GroupBox();
             this.comboBoxOperator = new System.Windows.Forms.ComboBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusNormalia = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelIDNormaliow = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip.SuspendLayout();
             this.Normalia.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox17.SuspendLayout();
@@ -280,7 +281,6 @@
             this.groupBox24.SuspendLayout();
             this.groupBox25.SuspendLayout();
             this.groupBox26.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -339,6 +339,29 @@
             this.Normalia.Size = new System.Drawing.Size(1212, 890);
             this.Normalia.TabIndex = 2;
             this.Normalia.Text = "Normalia";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusNormalia,
+            this.toolStripStatusLabelIDNormaliow});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 868);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1212, 22);
+            this.statusStrip1.TabIndex = 59;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusNormalia
+            // 
+            this.toolStripStatusNormalia.Name = "toolStripStatusNormalia";
+            this.toolStripStatusNormalia.Size = new System.Drawing.Size(86, 17);
+            this.toolStripStatusNormalia.Text = "ID Normaliów: ";
+            // 
+            // toolStripStatusLabelIDNormaliow
+            // 
+            this.toolStripStatusLabelIDNormaliow.Name = "toolStripStatusLabelIDNormaliow";
+            this.toolStripStatusLabelIDNormaliow.Size = new System.Drawing.Size(77, 17);
+            this.toolStripStatusLabelIDNormaliow.Text = "IDNormaliow";
             // 
             // groupBox14
             // 
@@ -2111,7 +2134,6 @@
             this.radioButtonData_ost_przegl.Name = "radioButtonData_ost_przegl";
             this.radioButtonData_ost_przegl.Size = new System.Drawing.Size(149, 17);
             this.radioButtonData_ost_przegl.TabIndex = 6;
-            this.radioButtonData_ost_przegl.TabStop = true;
             this.radioButtonData_ost_przegl.Text = "Data ostatniego przeglądu";
             this.radioButtonData_ost_przegl.UseVisualStyleBackColor = true;
             this.radioButtonData_ost_przegl.CheckedChanged += new System.EventHandler(this.radioButtonData_ost_przegladu_CheckedChanged);
@@ -2124,7 +2146,6 @@
             this.radioButtonData_kol_przegladu.Name = "radioButtonData_kol_przegladu";
             this.radioButtonData_kol_przegladu.Size = new System.Drawing.Size(146, 17);
             this.radioButtonData_kol_przegladu.TabIndex = 5;
-            this.radioButtonData_kol_przegladu.TabStop = true;
             this.radioButtonData_kol_przegladu.Text = "Data kolejnego przeglądu";
             this.radioButtonData_kol_przegladu.UseVisualStyleBackColor = true;
             this.radioButtonData_kol_przegladu.CheckedChanged += new System.EventHandler(this.radioButtonData_kol_przegladu_CheckedChanged);
@@ -2137,7 +2158,6 @@
             this.radioButtonNazwa.Name = "radioButtonNazwa";
             this.radioButtonNazwa.Size = new System.Drawing.Size(58, 17);
             this.radioButtonNazwa.TabIndex = 4;
-            this.radioButtonNazwa.TabStop = true;
             this.radioButtonNazwa.Text = "Nazwa";
             this.radioButtonNazwa.UseVisualStyleBackColor = true;
             this.radioButtonNazwa.CheckedChanged += new System.EventHandler(this.radioButtonNazwa_CheckedChanged);
@@ -2150,7 +2170,6 @@
             this.radioButtonNr_pomieszczenia.Name = "radioButtonNr_pomieszczenia";
             this.radioButtonNr_pomieszczenia.Size = new System.Drawing.Size(108, 17);
             this.radioButtonNr_pomieszczenia.TabIndex = 3;
-            this.radioButtonNr_pomieszczenia.TabStop = true;
             this.radioButtonNr_pomieszczenia.Text = "Nr pomieszczenia";
             this.radioButtonNr_pomieszczenia.UseVisualStyleBackColor = true;
             this.radioButtonNr_pomieszczenia.CheckedChanged += new System.EventHandler(this.radioButton_Nr_Pomieszczenia_CheckedChanged);
@@ -2163,7 +2182,6 @@
             this.radioButtonNr_fabryczny.Name = "radioButtonNr_fabryczny";
             this.radioButtonNr_fabryczny.Size = new System.Drawing.Size(84, 17);
             this.radioButtonNr_fabryczny.TabIndex = 2;
-            this.radioButtonNr_fabryczny.TabStop = true;
             this.radioButtonNr_fabryczny.Text = "Nr fabryczny";
             this.radioButtonNr_fabryczny.UseVisualStyleBackColor = true;
             this.radioButtonNr_fabryczny.CheckedChanged += new System.EventHandler(this.radioButtonNr_fabrycznyCheckedChanged);
@@ -2176,7 +2194,6 @@
             this.radioButtonNr_inwentarzowy.Name = "radioButtonNr_inwentarzowy";
             this.radioButtonNr_inwentarzowy.Size = new System.Drawing.Size(103, 17);
             this.radioButtonNr_inwentarzowy.TabIndex = 1;
-            this.radioButtonNr_inwentarzowy.TabStop = true;
             this.radioButtonNr_inwentarzowy.Text = "Nr inwentarzowy";
             this.radioButtonNr_inwentarzowy.UseVisualStyleBackColor = true;
             this.radioButtonNr_inwentarzowy.CheckedChanged += new System.EventHandler(this.radioButton_Nr_Inwentarzowy_CheckedChanged);
@@ -2189,7 +2206,6 @@
             this.radioButtonTyp.Name = "radioButtonTyp";
             this.radioButtonTyp.Size = new System.Drawing.Size(43, 17);
             this.radioButtonTyp.TabIndex = 0;
-            this.radioButtonTyp.TabStop = true;
             this.radioButtonTyp.Text = "Typ";
             this.radioButtonTyp.UseVisualStyleBackColor = true;
             this.radioButtonTyp.CheckedChanged += new System.EventHandler(this.radioButton_Typ_CheckedChanged);
@@ -2534,29 +2550,6 @@
             this.comboBoxOperator.TabIndex = 7;
             this.comboBoxOperator.SelectedIndexChanged += new System.EventHandler(this.comboBoxOperator_SelectedIndexChanged);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusNormalia,
-            this.toolStripStatusLabelIDNormaliow});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 868);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1212, 22);
-            this.statusStrip1.TabIndex = 59;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusNormalia
-            // 
-            this.toolStripStatusNormalia.Name = "toolStripStatusNormalia";
-            this.toolStripStatusNormalia.Size = new System.Drawing.Size(86, 17);
-            this.toolStripStatusNormalia.Text = "ID Normaliów: ";
-            // 
-            // toolStripStatusLabelIDNormaliow
-            // 
-            this.toolStripStatusLabelIDNormaliow.Name = "toolStripStatusLabelIDNormaliow";
-            this.toolStripStatusLabelIDNormaliow.Size = new System.Drawing.Size(77, 17);
-            this.toolStripStatusLabelIDNormaliow.Text = "IDNormaliow";
-            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2573,6 +2566,8 @@
             this.toolStrip.PerformLayout();
             this.Normalia.ResumeLayout(false);
             this.Normalia.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
             this.groupBox15.ResumeLayout(false);
@@ -2636,8 +2631,6 @@
             this.groupBox25.ResumeLayout(false);
             this.groupBox25.PerformLayout();
             this.groupBox26.ResumeLayout(false);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
