@@ -1560,8 +1560,7 @@
             // toolStripStatusLabelID_Maszyny
             // 
             this.toolStripStatusLabelID_Maszyny.Name = "toolStripStatusLabelID_Maszyny";
-            this.toolStripStatusLabelID_Maszyny.Size = new System.Drawing.Size(66, 17);
-            this.toolStripStatusLabelID_Maszyny.Text = "id maszyny";
+            this.toolStripStatusLabelID_Maszyny.Size = new System.Drawing.Size(0, 17);
             // 
             // buttonPokazZdj
             // 
