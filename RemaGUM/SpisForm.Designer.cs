@@ -2538,11 +2538,10 @@
             // 
             this.comboBoxOperator.FormattingEnabled = true;
             this.comboBoxOperator.Items.AddRange(new object[] {
-            "BRAK",
-            "Data końca uprawnień",
             "Nazwisko",
+            "Dział",
             "Uprawnienia",
-            "Dział"});
+            "Data końca uprawnień"});
             this.comboBoxOperator.Location = new System.Drawing.Point(15, 19);
             this.comboBoxOperator.Name = "comboBoxOperator";
             this.comboBoxOperator.Size = new System.Drawing.Size(299, 21);
