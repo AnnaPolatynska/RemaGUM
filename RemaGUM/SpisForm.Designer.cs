@@ -1622,11 +1622,9 @@
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.textBoxNr_prot_BHP);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.textBoxRok_produkcji);
             this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Location = new System.Drawing.Point(333, 69);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(419, 786);
@@ -1639,7 +1637,7 @@
             this.checkedListBoxOperatorzy_maszyn.FormattingEnabled = true;
             this.checkedListBoxOperatorzy_maszyn.Location = new System.Drawing.Point(15, 451);
             this.checkedListBoxOperatorzy_maszyn.Name = "checkedListBoxOperatorzy_maszyn";
-            this.checkedListBoxOperatorzy_maszyn.Size = new System.Drawing.Size(380, 94);
+            this.checkedListBoxOperatorzy_maszyn.Size = new System.Drawing.Size(380, 199);
             this.checkedListBoxOperatorzy_maszyn.TabIndex = 41;
             // 
             // label1
@@ -1691,7 +1689,7 @@
             // textBoxNr_pom
             // 
             this.textBoxNr_pom.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_pom.Location = new System.Drawing.Point(15, 594);
+            this.textBoxNr_pom.Location = new System.Drawing.Point(19, 685);
             this.textBoxNr_pom.Name = "textBoxNr_pom";
             this.textBoxNr_pom.Size = new System.Drawing.Size(156, 20);
             this.textBoxNr_pom.TabIndex = 38;
@@ -1734,7 +1732,7 @@
             // 
             this.comboBoxDzial.BackColor = System.Drawing.Color.Linen;
             this.comboBoxDzial.FormattingEnabled = true;
-            this.comboBoxDzial.Location = new System.Drawing.Point(206, 594);
+            this.comboBoxDzial.Location = new System.Drawing.Point(210, 685);
             this.comboBoxDzial.Name = "comboBoxDzial";
             this.comboBoxDzial.Size = new System.Drawing.Size(189, 21);
             this.comboBoxDzial.TabIndex = 33;
@@ -1806,9 +1804,9 @@
             this.richTextBoxUwagi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxUwagi.BackColor = System.Drawing.Color.Linen;
-            this.richTextBoxUwagi.Location = new System.Drawing.Point(16, 688);
+            this.richTextBoxUwagi.Location = new System.Drawing.Point(16, 730);
             this.richTextBoxUwagi.Name = "richTextBoxUwagi";
-            this.richTextBoxUwagi.Size = new System.Drawing.Size(380, 85);
+            this.richTextBoxUwagi.Size = new System.Drawing.Size(380, 43);
             this.richTextBoxUwagi.TabIndex = 30;
             this.richTextBoxUwagi.Text = "";
             // 
@@ -1841,7 +1839,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(15, 672);
+            this.label14.Location = new System.Drawing.Point(15, 714);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(37, 13);
             this.label14.TabIndex = 29;
@@ -1850,7 +1848,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 578);
+            this.label9.Location = new System.Drawing.Point(16, 669);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 13);
             this.label9.TabIndex = 19;
@@ -1859,15 +1857,15 @@
             // textBoxNr_prot_BHP
             // 
             this.textBoxNr_prot_BHP.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(16, 639);
+            this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(6, 184);
             this.textBoxNr_prot_BHP.Name = "textBoxNr_prot_BHP";
-            this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(377, 20);
+            this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(394, 20);
             this.textBoxNr_prot_BHP.TabIndex = 24;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(203, 578);
+            this.label10.Location = new System.Drawing.Point(207, 669);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(163, 13);
             this.label10.TabIndex = 21;
@@ -1893,7 +1891,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(16, 625);
+            this.label11.Location = new System.Drawing.Point(6, 168);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(109, 13);
             this.label11.TabIndex = 23;
@@ -1966,7 +1964,7 @@
             this.listBoxMaszyny.FormattingEnabled = true;
             this.listBoxMaszyny.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaszyny.Name = "listBoxMaszyny";
-            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 745);
+            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 758);
             this.listBoxMaszyny.TabIndex = 0;
             this.listBoxMaszyny.SelectedIndexChanged += new System.EventHandler(this.listBoxMaszyny_SelectedIndexChanged);
             // 
@@ -2043,9 +2041,11 @@
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Location = new System.Drawing.Point(758, 565);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.textBoxNr_prot_BHP);
+            this.groupBox3.Location = new System.Drawing.Point(758, 583);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(437, 228);
+            this.groupBox3.Size = new System.Drawing.Size(437, 210);
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Stan techniczny i częstotliwość wykorzystania";
