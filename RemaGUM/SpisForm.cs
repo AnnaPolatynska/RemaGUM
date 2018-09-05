@@ -459,7 +459,10 @@ namespace RemaGUM
             }
             catch { }
         }//listBoxMaszyny_SelectedIndexChanged
-
+              
+        /// <summary>
+        /// Odświeża listę maszyn w listBoxMaszyny
+        /// </summary>
         private void OdswiezListeMaszyn()
         {
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
@@ -481,7 +484,7 @@ namespace RemaGUM
 
             v.Items.Clear();
             operatorBUS.select();
-            maszyny_OperatorBUS.select();
+           // maszyny_OperatorBUS.select();
 
             while (!operatorBUS.eof)
             {
@@ -948,7 +951,6 @@ namespace RemaGUM
             if (_zawartoscPliku == null) _zawartoscPliku = new byte[] { }; // zapisz nowy plik zdjęcia podczas edycji maszyny.
             if (_statusForm == (int)_status.nowy)
             {
-
                 //maszynyBUS.write(maszynyVO);
                 maszynyBUS.select();
                 maszynyBUS.idx = maszynyBUS.count - 1;
@@ -962,7 +964,7 @@ namespace RemaGUM
                 maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
                 maszynyVO.Producent = textBoxProducent.Text.Trim();
 
-                maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa                ???????????????? zdjęcie
+                maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
                 maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
 
                 maszynyVO.Nazwa_os_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
@@ -1050,7 +1052,6 @@ namespace RemaGUM
 
                     // Zapis operatorów/operatora maszyny przypisanych do maszyny.
                     operatorBUS.select();
-
                     for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
                     {
                         if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
@@ -1060,8 +1061,9 @@ namespace RemaGUM
                         }
                     }
                 }
-                listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
+            listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
             }//else if - edycja
+
             WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);
 
             buttonNowa.Enabled = true;
@@ -1793,6 +1795,7 @@ namespace RemaGUM
         private void buttonUsunOperator_Click(object sender, EventArgs e)
         {
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
+            nsAccess2DB.Maszyny_OperatorBUS maszyny_OperatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
             try
             {
                 textBoxImieOperator.Text = string.Empty;
@@ -1803,11 +1806,12 @@ namespace RemaGUM
                 listBoxMaszynyOperatora.Items.Clear();
             }
             catch { }
-            
-            operatorBUS.delete(operatorBUS.VO.Identyfikator); //usunięcie pozycji z tabeli operator maszyny.
-                                                              // _Maszyny_OperatorBUS.delete((int)listBoxMaszynyOperatora.Tag); // usunięcie relacji z tabeli Maszyny_Operator.
-            //comboBoxOperator.SelectedIndex = 1;// odświeża listę operatorów
-            //comboBoxOperator.SelectedIndex = 0;
+
+            operatorBUS.delete((int)listBoxOperator.Tag); // usunięcie operatora maszyny z tabeli operator.
+            maszyny_OperatorBUS.delete((int)listBoxOperator.Tag);// usunięcie relacji z tabeli Maszyny_Operator.
+
+            comboBoxOperator.SelectedIndex = 1;// odświeża listę operatorów
+            comboBoxOperator.SelectedIndex = 0;
             //WypelnijOperatorowDanymi();
 
         }// buttonUsunOperator_Cli
