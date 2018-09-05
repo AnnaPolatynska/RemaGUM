@@ -266,6 +266,7 @@ namespace RemaGUM
                 WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);// wypełniam operatorów maszyn na poczatku uruchomienia programu.
                 WypelnijOsoba_zarzadzajaca();
 
+
                 if (listBoxMaszyny.Items.Count > 0)
                 {
                     listBoxMaszyny.SelectedIndex = 0;
@@ -296,12 +297,13 @@ namespace RemaGUM
             {
                 comboBoxOperator.SelectedIndex = 0;//ustawia sortowanie po nazwisku operatora
                 WypelnijDzialOperatora();
+
                 if (listBoxOperator.Items.Count > 0)
                 {
                     listBoxOperator.SelectedIndex = 0;
                 }
-                comboBoxOperator.SelectedIndex = 0;// ustawia listę wyboru na 1 pozycji sortowania
-                
+
+
             }// Zakładka operator
 
             Cursor.Current = Cursors.Default;
@@ -318,33 +320,64 @@ namespace RemaGUM
         private void CzyscDaneMaszyny()
         {
             toolStripStatusLabelID_Maszyny.Text = "";
-            comboBoxKategoria.Text = string.Empty;
-            textBoxNazwa.Text = string.Empty;
-            textBoxTyp.Text = string.Empty;
-            textBoxNr_inwentarzowy.Text = string.Empty;
-            textBoxNr_fabryczny.Text = string.Empty;
-            textBoxRok_produkcji.Text = string.Empty;
-            textBoxProducent.Text = string.Empty;
-
-            pictureBox1.Image = null;
-            comboBoxOsoba_zarzadzajaca.Text = string.Empty;
-            textBoxNr_pom.Text = string.Empty;
-            comboBoxDzial.Text = string.Empty;
-            textBoxNr_prot_BHP.Text = string.Empty;
-            dateTimePickerData_ost_przegl.Text = string.Empty;
-            dateTimePickerData_kol_przegl.Text = string.Empty;
-            richTextBoxUwagi.Text = string.Empty;
-            comboBoxWykorzystanie.Text = string.Empty;
-            comboBoxStan_techniczny.Text = string.Empty;
-            comboBoxPropozycja.Text = string.Empty;
-
-            //czyści checkedListBoxOperatorzy_maszyn
-            for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++) //czyści checkboxy operatorzy maszyny
+            try
             {
-                checkedListBoxOperatorzy_maszyn.SetItemChecked(i, false);
+                comboBoxKategoria.SelectedIndex = -1;
+                comboBoxKategoria.Enabled = true;
+                comboBoxKategoria.SelectedIndex = 0;
+                comboBoxKategoria.Refresh();
+
+                textBoxNazwa.Text = string.Empty;
+                textBoxTyp.Text = string.Empty;
+                textBoxNr_inwentarzowy.Text = string.Empty;
+                textBoxNr_fabryczny.Text = string.Empty;
+                textBoxRok_produkcji.Text = string.Empty;
+                textBoxProducent.Text = string.Empty;
+
+                linkLabelNazwaZdjecia.Text = string.Empty;
+                pictureBox1.Image = null;
+                _zawartoscPliku = new byte[] { };
+
+                comboBoxOsoba_zarzadzajaca.SelectedIndex = -1;
+                comboBoxOsoba_zarzadzajaca.Enabled = true;
+                comboBoxOsoba_zarzadzajaca.SelectedIndex = 0;
+                comboBoxOsoba_zarzadzajaca.Refresh();
+
+                textBoxNr_pom.Text = string.Empty;
+
+                comboBoxDzial.SelectedIndex = -1;
+                comboBoxDzial.Enabled = true;
+                comboBoxDzial.SelectedIndex = 0;
+                comboBoxDzial.Refresh();
+
+                textBoxNr_prot_BHP.Text = string.Empty;
+                dateTimePickerData_ost_przegl.Text = string.Empty;
+                dateTimePickerData_kol_przegl.Text = string.Empty;
+                richTextBoxUwagi.Text = string.Empty;
+
+                comboBoxWykorzystanie.SelectedIndex = -1;
+                comboBoxWykorzystanie.Enabled = true;
+                comboBoxWykorzystanie.SelectedIndex = 0;
+                comboBoxWykorzystanie.Refresh();
+
+                comboBoxStan_techniczny.SelectedIndex = -1;
+                comboBoxStan_techniczny.Enabled = true;
+                comboBoxStan_techniczny.SelectedIndex = 0;
+                comboBoxStan_techniczny.Refresh();
+
+                comboBoxPropozycja.SelectedIndex = -1;
+                comboBoxPropozycja.Enabled = true;
+                comboBoxPropozycja.SelectedIndex = 0;
+                comboBoxPropozycja.Refresh();
+
+                //czyści checkedListBoxOperatorzy_maszyn
+                for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++) //czyści checkboxy operatorzy maszyny
+                {
+                    checkedListBoxOperatorzy_maszyn.SetItemChecked(i, false);
+                }
             }
-            _zawartoscPliku = new byte[] { }; //Czyści pictureBox1
-            linkLabelNazwaZdjecia.Text = string.Empty;
+            catch { }
+
         }// CzyscDaneMaszyny()
 
         /// <summary>
@@ -806,60 +839,7 @@ namespace RemaGUM
         //przycisk Nowa czyści formularz
         private void ButtonNowa_Click(object sender, EventArgs e)
         {
-            toolStripStatusLabelID_Maszyny.Text = "";
-          
-            comboBoxKategoria.SelectedIndex = -1;
-            comboBoxKategoria.Enabled = true;
-            comboBoxKategoria.SelectedIndex = 0;
-            comboBoxKategoria.Refresh();
-
-            textBoxNazwa.Text = string.Empty;
-            textBoxTyp.Text = string.Empty;
-            textBoxNr_inwentarzowy.Text = string.Empty;
-            textBoxNr_fabryczny.Text = string.Empty;
-            textBoxRok_produkcji.Text = string.Empty;
-            textBoxProducent.Text = string.Empty;
-
-            linkLabelNazwaZdjecia.Text = string.Empty;
-            pictureBox1.Image = null;
-            _zawartoscPliku = new byte[] { };
-
-            comboBoxOsoba_zarzadzajaca.SelectedIndex = -1;
-            comboBoxOsoba_zarzadzajaca.Enabled = true;
-            comboBoxOsoba_zarzadzajaca.SelectedIndex = 0;
-            comboBoxOsoba_zarzadzajaca.Refresh();
-
-            textBoxNr_pom.Text = string.Empty;
-
-            comboBoxDzial.SelectedIndex = -1;
-            comboBoxDzial.Enabled = true;
-            comboBoxDzial.SelectedIndex = 0;
-            comboBoxDzial.Refresh();
-
-            textBoxNr_prot_BHP.Text = string.Empty;
-            dateTimePickerData_ost_przegl.Text = string.Empty;
-            dateTimePickerData_kol_przegl.Text = string.Empty;
-            richTextBoxUwagi.Text = string.Empty;
-
-            comboBoxWykorzystanie.SelectedIndex = -1;
-            comboBoxWykorzystanie.Enabled = true;
-            comboBoxWykorzystanie.SelectedIndex = 0;
-            comboBoxWykorzystanie.Refresh();
-
-            comboBoxStan_techniczny.SelectedIndex = -1;
-            comboBoxStan_techniczny.Enabled = true;
-            comboBoxStan_techniczny.SelectedIndex = 0;
-            comboBoxStan_techniczny.Refresh();
-
-            comboBoxPropozycja.SelectedIndex = -1;
-            comboBoxPropozycja.Enabled = true;
-            comboBoxPropozycja.SelectedIndex = 0;
-            comboBoxPropozycja.Refresh();
-
-            for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++) //czyści checkboxy operatorzy maszyny
-            {
-                checkedListBoxOperatorzy_maszyn.SetItemChecked(i, false);
-            }
+            CzyscDaneMaszyny();
 
             buttonNowa.Enabled = false;
             buttonZapisz.Enabled = true;
@@ -1558,7 +1538,12 @@ namespace RemaGUM
             toolStripStatusLabelIDOperatora.Text = "";
             textBoxImieOperator.Text = string.Empty;
             textBoxNazwiskoOperator.Text = string.Empty;
-            comboBoxDzialOperator.Text = string.Empty;
+
+            comboBoxDzialOperator.SelectedIndex = -1;
+            comboBoxDzialOperator.Enabled = true;
+            comboBoxDzialOperator.SelectedIndex = 0;
+            comboBoxDzialOperator.Refresh();
+
             textBoxUprawnienieOperator.Text = string.Empty;
             dateTimePickerDataKoncaUprOp.Text = string.Empty;
             listBoxMaszynyOperatora.Items.Clear();
@@ -1683,7 +1668,7 @@ namespace RemaGUM
         private void buttonNowaOperator_Click(object sender, EventArgs e)
         {
             CzyscDaneOperatora();
-
+            
             buttonNowaOperator.Enabled = false;
             buttonZapiszOperator.Enabled = true;
             buttonAnulujOperator.Enabled = true;
