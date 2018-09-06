@@ -1723,9 +1723,9 @@ namespace RemaGUM
 
                 operatorBUS.write(operatorVO);
                 maszyny_operatorBUS.selectOperator(operatorVO.Identyfikator);
-                maszynyBUS.select();
+                operatorBUS.select();
 
-                listBoxOperator.SelectedIndex = operatorBUS.getIdx(operatorBUS.VO.Identyfikator); // usatwia zaznaczenie w tab operator.
+                listBoxOperator.SelectedIndex = operatorBUS.getIdx(operatorBUS.VO.Identyfikator); // ustawia zaznaczenie w tab operator.
             }// if nowy
             else if (_statusForm == (int)_status.edycja)
             {
@@ -1748,14 +1748,17 @@ namespace RemaGUM
                     operatorVO.Dzien = dateTimePickerDataKoncaUprOp.Value.Day;
                     operatorVO.Data_konca_upr = dateTimePickerDataKoncaUprOp.Value;
 
-                    operatorBUS.write(operatorBUS.VO);
-                    maszyny_operatorBUS.delete(operatorBUS.VO.Identyfikator);
-                    maszyny_operatorBUS.selectOperator(operatorBUS.VO.Identyfikator);
+                    operatorBUS.write(operatorVO);
+                    operatorBUS.delete(operatorBUS.VO.Identyfikator);
+                    //maszyny_operatorBUS.selectOperator();
+                    operatorBUS.select(operatorBUS.VO.Identyfikator);
+
+                    listBoxOperator.SelectedIndex = operatorBUS.getIdx(operatorBUS.VO.Identyfikator); // usatwia zaznaczenie w tab operator.
                 }
-                listBoxOperator.SelectedIndex = operatorBUS.getIdx(operatorBUS.VO.Identyfikator); // usatwia zaznaczenie w tab operator.
+                
             }// else if - edycja
 
-            //WypelnijOperatorowMaszynami();
+            WypelnijOperatorowMaszynami();
             OdswiezOperatorowMaszyn();
 
             pokazKomunikat("Pozycja zapisana w bazie");

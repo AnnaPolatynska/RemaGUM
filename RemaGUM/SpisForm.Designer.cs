@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpisForm));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonOdswiez = new System.Windows.Forms.ToolStripButton();
             this.Normalia = new System.Windows.Forms.TabPage();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusNormalia = new System.Windows.Forms.ToolStripStatusLabel();
@@ -178,11 +177,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBoxNr_prot_BHP = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBoxRok_produkcji = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.buttonSzukaj = new System.Windows.Forms.Button();
             this.textBoxWyszukiwanie = new System.Windows.Forms.TextBox();
@@ -201,6 +198,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxNr_prot_BHP = new System.Windows.Forms.TextBox();
             this.groupBoxSortowanie = new System.Windows.Forms.GroupBox();
             this.radioButtonData_ost_przegl = new System.Windows.Forms.RadioButton();
             this.radioButtonData_kol_przegladu = new System.Windows.Forms.RadioButton();
@@ -288,13 +287,12 @@
             this.toolStrip.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.toolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonHelp,
-            this.toolStripButtonOdswiez});
+            this.toolStripButtonHelp});
             this.toolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip.Size = new System.Drawing.Size(1207, 43);
+            this.toolStrip.Size = new System.Drawing.Size(1207, 37);
             this.toolStrip.TabIndex = 41;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -310,19 +308,6 @@
             this.toolStripButtonHelp.Size = new System.Drawing.Size(38, 34);
             this.toolStripButtonHelp.ToolTipText = "Pomoc programu.";
             this.toolStripButtonHelp.Click += new System.EventHandler(this.toolStripButtonHelp_Click);
-            // 
-            // toolStripButtonOdswiez
-            // 
-            this.toolStripButtonOdswiez.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonOdswiez.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonOdswiez.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOdswiez.Image")));
-            this.toolStripButtonOdswiez.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonOdswiez.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonOdswiez.Name = "toolStripButtonOdswiez";
-            this.toolStripButtonOdswiez.Size = new System.Drawing.Size(40, 40);
-            this.toolStripButtonOdswiez.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.toolStripButtonOdswiez.ToolTipText = "Odświeżenie danych.";
-            this.toolStripButtonOdswiez.Click += new System.EventHandler(this.toolStripButtonOdswiez_Click);
             // 
             // Normalia
             // 
@@ -1854,14 +1839,6 @@
             this.label9.TabIndex = 19;
             this.label9.Text = "Nr pomieszczenia";
             // 
-            // textBoxNr_prot_BHP
-            // 
-            this.textBoxNr_prot_BHP.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(6, 184);
-            this.textBoxNr_prot_BHP.Name = "textBoxNr_prot_BHP";
-            this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(394, 20);
-            this.textBoxNr_prot_BHP.TabIndex = 24;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -1887,15 +1864,6 @@
             this.label5.Size = new System.Drawing.Size(73, 13);
             this.label5.TabIndex = 12;
             this.label5.Text = "Rok produkcji";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 168);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(109, 13);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "Nr wg protokołu BHP";
             // 
             // groupBox5
             // 
@@ -2106,6 +2074,23 @@
             this.label18.Size = new System.Drawing.Size(59, 13);
             this.label18.TabIndex = 33;
             this.label18.Text = "Propozycja";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 168);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(109, 13);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Nr wg protokołu BHP";
+            // 
+            // textBoxNr_prot_BHP
+            // 
+            this.textBoxNr_prot_BHP.BackColor = System.Drawing.Color.Linen;
+            this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(6, 184);
+            this.textBoxNr_prot_BHP.Name = "textBoxNr_prot_BHP";
+            this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(394, 20);
+            this.textBoxNr_prot_BHP.TabIndex = 24;
             // 
             // groupBoxSortowanie
             // 
@@ -2638,7 +2623,6 @@
         #endregion
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripButton toolStripButtonHelp;
-        private System.Windows.Forms.ToolStripButton toolStripButtonOdswiez;
         private System.Windows.Forms.TabPage Normalia;
         private System.Windows.Forms.TabPage Materiały;
         private System.Windows.Forms.TabPage Maszyny;

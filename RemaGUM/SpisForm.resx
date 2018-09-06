@@ -131,20 +131,6 @@
         mhcAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="toolStripButtonOdswiez.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEvSURBVFhHzZZJFoQgDET76B7Nm9mItpJQGcDQ8t/LJkOl
-        QBZ+tskYY+jTLxtqaFmWw8zbhtZ1vY28aQgaOSPXOkjT7WhGYDRgdksnJe/FEd4bS90KXBjBe5TwmEqd
-        Ag2C8BMK+XyzCsckQ1pgQeZKSh1eY+BqgwAC3qRTs6pUjzWSQheaTtQbHUO9VE8BQLKegccY+jRbNEff
-        zoWx4++GrK9AM0pjFNMZyih7aEZpDEXZQzNF43RvaL5HDZpDKPTRoclWy30Ihn6dLQeEoW4c2lWW31LU
-        W/LqVoYyxWAOjiKI4Gag5olSUQSkPKDFzI5YRULX76eU57C+HAZqBzydEugzEg0Hzq57qSeQMS9JwYf3
-        tp6Y2UkqHQww8iPGUCDPDA2gSzXq8yDGHLObbfsC9aAZUbKyROQAAAAASUVORK5CYII=
-</value>
-  </data>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>586, 17</value>
-  </metadata>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>586, 17</value>
   </metadata>
@@ -177,9 +163,6 @@
         AAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="statusStrip4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>470, 17</value>
-  </metadata>
   <metadata name="statusStrip4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>470, 17</value>
   </metadata>
@@ -247,9 +230,6 @@
   <metadata name="statusStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>238, 17</value>
   </metadata>
-  <metadata name="statusStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>238, 17</value>
-  </metadata>
   <data name="buttonSzukajOperator.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACQAAAAjCAYAAAD8BaggAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -279,9 +259,6 @@
         AAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="listBoxMaszynyOperatora.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="listBoxMaszynyOperatora.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
