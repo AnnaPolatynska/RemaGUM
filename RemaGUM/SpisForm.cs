@@ -215,7 +215,6 @@ namespace RemaGUM
             _tt.SetToolTip(buttonUsun_mat, "Usuwa pozycję z bazy.");
             _tt.SetToolTip(textBoxWyszukaj_mat, "Wpisz jakiego materiału szukasz.");
             _tt.SetToolTip(buttonSzukaj_mat, "Szukanie w bazie materiałów.");
-
             //---------------------------------------Zakładka operator
             _tt = new ToolTip();
             _tt.SetToolTip(listBoxOperator, "Lista wszystkich operatorów maszyn.");
@@ -258,6 +257,7 @@ namespace RemaGUM
             // ----------------------------------Zakładka Maszyny.
             if (v.SelectedIndex == 0)
             {
+                OdswiezListeMaszyn();
                 WypelnijCzestotliwosc();
                 WypelnijKategorie();
                 WypelnijDzial();
@@ -265,7 +265,6 @@ namespace RemaGUM
                 WypelnijStan_techniczny();
                 WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);// wypełniam operatorów maszyn na poczatku uruchomienia programu.
                 WypelnijOsoba_zarzadzajaca();
-
 
                 if (listBoxMaszyny.Items.Count > 0)
                 {
@@ -295,6 +294,7 @@ namespace RemaGUM
             // --------------------------------- Zakładka operator.
             if (v.SelectedIndex == 3)
             {
+                WypelnijOperatorowDanymi();
                 comboBoxOperator.SelectedIndex = 0;//ustawia sortowanie po nazwisku operatora
                 WypelnijDzialOperatora();
 
@@ -504,7 +504,7 @@ namespace RemaGUM
 
             while (!maszynyBUS.eof)
             {
-                listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa + maszynyBUS.VO.Nr_fabryczny);
+                listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa + " -> " + maszynyBUS.VO.Nr_fabryczny);
                 maszynyBUS.skip();
             }
         }// OdswiezListeMaszyn()
