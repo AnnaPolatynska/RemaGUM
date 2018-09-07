@@ -388,16 +388,16 @@ namespace RemaGUM
         private void listBoxMaszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-           //listBoxMaszyny.Items.Clear();
+            listBoxMaszyny.Items.Clear();
 
-            //uaktualnienie danych maszyny po zmianie sposobu sortowania
+           // uaktualnienie danych maszyny po zmianie sposobu sortowania
             if (radioButtonNazwa.Checked)
             {
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nazwa ASC;");
                 maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
                 toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
             }
-            else if (radioButtonTyp.Checked)
+            if (radioButtonTyp.Checked)
             {
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Typ ASC;");
                 maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
@@ -433,6 +433,19 @@ namespace RemaGUM
                 maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
                 toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
             }
+
+            else if (buttonSzukajMaszynyWasClicked)// po kliknięciu przycisku szukaj ma SELECT po wyszukiwanej frazie.
+            {
+                maszynyBUS.selectQuery("SELECT * FROM Maszyny WHERE Nazwa LIKE '" + textBoxWyszukiwanie.Text + "%' OR Nazwa LIKE '%" + textBoxWyszukiwanie.Text + "%';");
+                maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
+                toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
+
+                buttonSzukajMaszynyWasClicked = false;
+            }
+
+
+
+
 
             try
             {
@@ -703,6 +716,7 @@ namespace RemaGUM
             }
         }//radioButton_Nr_Pomieszczenia_CheckedChanged
 
+        private bool buttonSzukajMaszynyWasClicked = false;
         /// <summary>
         /// wyszukuje maszynę po wpisaniu dowolnego ciągu wyrazów
         /// </summary>
@@ -720,13 +734,18 @@ namespace RemaGUM
                 listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa + " -> " + maszynyBUS.VO.Nr_inwentarzowy);
                 maszynyBUS.skip();
             }
+            
+           buttonSzukajMaszynyWasClicked = true;
 
-            if (listBoxMaszyny.Items.Count > 0)
+           if (listBoxMaszyny.Items.Count > 0)
             {
                 listBoxMaszyny.SelectedIndex = 0;
             }
+            maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
+            toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString(); // toolStripStatusLabelID_Maszyny
+            listBoxMaszyny.Tag = maszynyBUS.VO.Identyfikator;
 
-        }//buttonSzukaj_Click
+    }//buttonSzukaj_Click
 
         /// <summary>
         /// wypełnia listbox Działami w których znajdują się maszyny
@@ -1749,16 +1768,15 @@ namespace RemaGUM
                     operatorVO.Data_konca_upr = dateTimePickerDataKoncaUprOp.Value;
 
                     operatorBUS.write(operatorVO);
+
                     operatorBUS.delete(operatorBUS.VO.Identyfikator);
-                    //maszyny_operatorBUS.selectOperator();
                     operatorBUS.select(operatorBUS.VO.Identyfikator);
 
-                    listBoxOperator.SelectedIndex = operatorBUS.getIdx(operatorBUS.VO.Identyfikator); // usatwia zaznaczenie w tab operator.
                 }
-                
+                listBoxOperator.SelectedIndex = operatorBUS.getIdx(operatorBUS.VO.Identyfikator); // usatwia zaznaczenie w tab operator. 
             }// else if - edycja
 
-            WypelnijOperatorowMaszynami();
+            //WypelnijOperatorowMaszynami();
             OdswiezOperatorowMaszyn();
 
             pokazKomunikat("Pozycja zapisana w bazie");
@@ -1806,23 +1824,34 @@ namespace RemaGUM
 
         private void buttonSzukajOperator_Click(object sender, EventArgs e)
         {
-            listBoxOperator.Items.Clear();
+            //listBoxOperator.Items.Clear();
 
-            nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
-            operatorBUS.selectQuery("SELECT * FROM Operator WHERE Op_nazwisko LIKE '" + textBoxWyszukiwanieOperator.Text + "%' OR Op_imie LIKE '" + textBoxWyszukiwanieOperator.Text + "%';");
-           
-            while (!operatorBUS.eof)
+            //nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
+            //operatorBUS.selectQuery("SELECT * FROM Operator WHERE Op_nazwisko LIKE '" + textBoxWyszukiwanieOperator.Text + "%' OR Op_imie LIKE '" + textBoxWyszukiwanieOperator.Text + "%';");
+
+            //while (!operatorBUS.eof)
+            //{
+            //    listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
+            //    operatorBUS.skip();
+            //}
+
+            //if (listBoxOperator.Items.Count > 0)
+            //{
+            //    listBoxOperator.SelectedIndex = 0;
+            //}
+            textBoxWyszukiwanieOperator.Text = textBoxWyszukiwanieOperator.Text.Trim();
+
+            if (textBoxWyszukiwanieOperator.Text == string.Empty)
             {
-                listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
-                operatorBUS.skip();
+                pokazKomunikat("Szukanie anulowane, nie wpisano tekstu do wyszukania.");
+                return;
             }
 
-            if (listBoxOperator.Items.Count > 0)
-            {
-                listBoxOperator.SelectedIndex = 0;
-            }
+            nsAccess2DB.OperatorVO operatorVO;
+            string S1 = textBoxWyszukiwanieOperator.Text.ToUpper();
 
-            
+
+
         }// buttonSzukajOperator_Click
 
 
