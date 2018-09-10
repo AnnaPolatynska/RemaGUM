@@ -1533,8 +1533,8 @@ namespace RemaGUM
 
         //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  ---------------------------Operatorzy maszyn.
         int _operatorSzukIdx = 0;
-            
-            //wyświetla listę operatorów maszyn po imieniu i nazwisku
+       
+        //wyświetla listę operatorów maszyn po imieniu i nazwisku
         private void WypelnijOperatorowDanymi()
         {
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
@@ -1592,6 +1592,7 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void listBoxOperator_maszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
             // uaktualnia dane operatorów maszyn po zmianie ich sortowania.
             if (comboBoxOperator.SelectedIndex == 0)
@@ -1623,6 +1624,9 @@ namespace RemaGUM
                 operatorBUS.selectQuery("SELECT * FROM Operator WHERE Op_nazwisko LIKE '" + textBoxWyszukiwanieOperator.Text + "%' OR Op_imie LIKE '" + textBoxWyszukiwanieOperator.Text + "%';");
                 operatorBUS.idx = listBoxOperator.SelectedIndex;
                 toolStripStatusLabelIDOperatora.Text = operatorBUS.VO.Identyfikator.ToString();
+                buttonSzukajOperator.Enabled = true;
+
+
             }
 
 
@@ -1695,7 +1699,7 @@ namespace RemaGUM
 
 
         // -------------------  Przyciski w zakładce Operator.
-
+        
         private void buttonNowaOperator_Click(object sender, EventArgs e)
         {
             CzyscDaneOperatora();
@@ -1877,7 +1881,8 @@ namespace RemaGUM
                     listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
                     operatorBUS.skip();
                 }
-                // WypelnijOperatorowDanymi();
+                textBoxWyszukiwanieOperator.Enabled = false;
+                buttonSzukajOperator.Enabled = false;
             }
                 if (comboBoxOperator.SelectedIndex == 1)
             {
@@ -1886,7 +1891,9 @@ namespace RemaGUM
                 {
                     listBoxOperator.Items.Add(operatorBUS.VO.Dzial + " - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
                     operatorBUS.skip();
-                }  
+                }
+                textBoxWyszukiwanieOperator.Enabled = false;
+                buttonSzukajOperator.Enabled = false;
             }
             if (comboBoxOperator.SelectedIndex == 2)
             {
@@ -1896,6 +1903,8 @@ namespace RemaGUM
                     listBoxOperator.Items.Add(operatorBUS.VO.Uprawnienie + " - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
                     operatorBUS.skip();
                 }
+                textBoxWyszukiwanieOperator.Enabled = false;
+                buttonSzukajOperator.Enabled = false;
             }
             if (comboBoxOperator.SelectedIndex == 3)
             {
@@ -1905,8 +1914,17 @@ namespace RemaGUM
                     listBoxOperator.Items.Add(operatorBUS.VO.Dzien + ":" + operatorBUS.VO.Mc + ":" + operatorBUS.VO.Rok + " - (" + operatorBUS.VO.Uprawnienie + ") - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
                     operatorBUS.skip();
                 }
+                textBoxWyszukiwanieOperator.Enabled = false;
+                buttonSzukajOperator.Enabled = false;
             }
-
+            if (comboBoxOperator.SelectedIndex == 4)
+            {
+                operatorBUS.selectQuery("SELECT * FROM Operator WHERE Op_nazwisko LIKE '" + textBoxWyszukiwanieOperator.Text + "%' OR Op_imie LIKE '" + textBoxWyszukiwanieOperator.Text + "%';");
+                operatorBUS.idx = listBoxOperator.SelectedIndex;
+                toolStripStatusLabelIDOperatora.Text = operatorBUS.VO.Identyfikator.ToString();
+                textBoxWyszukiwanieOperator.Enabled = true;
+                buttonSzukajOperator.Enabled = true;
+            }
             if (listBoxOperator.Items.Count > 0)
             {
                 listBoxOperator.SelectedIndex = 0;
