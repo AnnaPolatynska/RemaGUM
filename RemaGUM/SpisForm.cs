@@ -294,8 +294,8 @@ namespace RemaGUM
             // --------------------------------- Zakładka operator.
             if (v.SelectedIndex == 3)
             {
-                WypelnijOperatorowDanymi();
                 comboBoxOperator.SelectedIndex = 0;//ustawia sortowanie po nazwisku operatora
+                WypelnijOperatorowDanymi();
                 WypelnijDzialOperatora();
 
                 if (listBoxOperator.Items.Count > 0)
@@ -388,9 +388,18 @@ namespace RemaGUM
         private void listBoxMaszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-            listBoxMaszyny.Items.Clear();
+            //listBoxMaszyny.Items.Clear();
+            if (buttonSzukajMaszynyWasClicked)// po kliknięciu przycisku szukaj ma SELECT po wyszukiwanej frazie.
+            {
+                maszynyBUS.selectQuery("SELECT * FROM Maszyny WHERE Nazwa LIKE '" + textBoxWyszukiwanie.Text + "%' OR Nazwa LIKE '%" + textBoxWyszukiwanie.Text + "%';");
+                maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
+                toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
 
-           // uaktualnienie danych maszyny po zmianie sposobu sortowania
+                buttonSzukajMaszynyWasClicked = false;
+            }
+            else
+            { 
+            // uaktualnienie danych maszyny po zmianie sposobu sortowania
             if (radioButtonNazwa.Checked)
             {
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nazwa ASC;");
@@ -433,15 +442,8 @@ namespace RemaGUM
                 maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
                 toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
             }
-
-            else if (buttonSzukajMaszynyWasClicked)// po kliknięciu przycisku szukaj ma SELECT po wyszukiwanej frazie.
-            {
-                maszynyBUS.selectQuery("SELECT * FROM Maszyny WHERE Nazwa LIKE '" + textBoxWyszukiwanie.Text + "%' OR Nazwa LIKE '%" + textBoxWyszukiwanie.Text + "%';");
-                maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
-                toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
-
-                buttonSzukajMaszynyWasClicked = false;
             }
+            
 
 
 
@@ -1530,12 +1532,14 @@ namespace RemaGUM
 
 
         //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  ---------------------------Operatorzy maszyn.
-        //wyświetla listę operatorów maszyn po imieniu i nazwisku
+        int _operatorSzukIdx = 0;
+            
+            //wyświetla listę operatorów maszyn po imieniu i nazwisku
         private void WypelnijOperatorowDanymi()
         {
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
             listBoxOperator.Items.Clear();
-            operatorBUS.selectQuery("SELECT * FROM Operator;");
+            operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Op_nazwisko ASC;");
            
             while (!operatorBUS.eof)
             {
@@ -1614,6 +1618,14 @@ namespace RemaGUM
                 operatorBUS.idx = listBoxOperator.SelectedIndex;
                 toolStripStatusLabelIDOperatora.Text = operatorBUS.VO.Identyfikator.ToString();
             }
+            else if (comboBoxOperator.SelectedIndex == 4) //szukanie po ciągu znaków z imienia lub nazwiska.
+            {
+                operatorBUS.selectQuery("SELECT * FROM Operator WHERE Op_nazwisko LIKE '" + textBoxWyszukiwanieOperator.Text + "%' OR Op_imie LIKE '" + textBoxWyszukiwanieOperator.Text + "%';");
+                operatorBUS.idx = listBoxOperator.SelectedIndex;
+                toolStripStatusLabelIDOperatora.Text = operatorBUS.VO.Identyfikator.ToString();
+            }
+
+
 
             try
             {
@@ -1766,16 +1778,23 @@ namespace RemaGUM
                     operatorVO.Mc = dateTimePickerDataKoncaUprOp.Value.Month;
                     operatorVO.Dzien = dateTimePickerDataKoncaUprOp.Value.Day;
                     operatorVO.Data_konca_upr = dateTimePickerDataKoncaUprOp.Value;
-
+                    
                     operatorBUS.write(operatorVO);
 
-                    operatorBUS.delete(operatorBUS.VO.Identyfikator);
                     operatorBUS.select(operatorBUS.VO.Identyfikator);
-
                 }
-                listBoxOperator.SelectedIndex = operatorBUS.getIdx(operatorBUS.VO.Identyfikator); // usatwia zaznaczenie w tab operator. 
+            listBoxOperator.SelectedIndex = operatorBUS.getIdx(operatorBUS.VO.Identyfikator); // usatwia zaznaczenie w tab operator. 
             }// else if - edycja
 
+            WypelnijOperatorowDanymi();
+
+            comboBoxOperator.SelectedIndex = 0;
+
+            buttonNowaOperator.Enabled = true;
+            buttonZapiszOperator.Enabled = true;
+            buttonAnulujOperator.Enabled = true;
+            buttonUsunOperator.Enabled = true;
+            
             //WypelnijOperatorowMaszynami();
             OdswiezOperatorowMaszyn();
 
@@ -1792,7 +1811,7 @@ namespace RemaGUM
             buttonNowaOperator.Enabled = true;
             buttonZapiszOperator.Enabled = true;
             buttonAnulujOperator.Enabled = true;
-            //buttonUsunOperator.Enabled = false;
+            buttonUsunOperator.Enabled = false;
 
             _statusForm = (int)_status.edycja;
 
@@ -1824,32 +1843,21 @@ namespace RemaGUM
 
         private void buttonSzukajOperator_Click(object sender, EventArgs e)
         {
-            //listBoxOperator.Items.Clear();
+            listBoxOperator.Items.Clear();
 
-            //nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
-            //operatorBUS.selectQuery("SELECT * FROM Operator WHERE Op_nazwisko LIKE '" + textBoxWyszukiwanieOperator.Text + "%' OR Op_imie LIKE '" + textBoxWyszukiwanieOperator.Text + "%';");
+            nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
+            operatorBUS.selectQuery("SELECT * FROM Operator WHERE Op_nazwisko LIKE '" + textBoxWyszukiwanieOperator.Text + "%' OR Op_imie LIKE '" + textBoxWyszukiwanieOperator.Text + "%';");
 
-            //while (!operatorBUS.eof)
-            //{
-            //    listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
-            //    operatorBUS.skip();
-            //}
-
-            //if (listBoxOperator.Items.Count > 0)
-            //{
-            //    listBoxOperator.SelectedIndex = 0;
-            //}
-            textBoxWyszukiwanieOperator.Text = textBoxWyszukiwanieOperator.Text.Trim();
-
-            if (textBoxWyszukiwanieOperator.Text == string.Empty)
+            while (!operatorBUS.eof)
             {
-                pokazKomunikat("Szukanie anulowane, nie wpisano tekstu do wyszukania.");
-                return;
+                listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
+                operatorBUS.skip();
             }
 
-            nsAccess2DB.OperatorVO operatorVO;
-            string S1 = textBoxWyszukiwanieOperator.Text.ToUpper();
-
+            if (listBoxOperator.Items.Count > 0)
+            {
+                listBoxOperator.SelectedIndex = 0;
+            }
 
 
         }// buttonSzukajOperator_Click
@@ -1876,7 +1884,7 @@ namespace RemaGUM
                 operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Dzial;");
                 while (!operatorBUS.eof)
                 {
-                    listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie + " - " + operatorBUS.VO.Dzial);
+                    listBoxOperator.Items.Add(operatorBUS.VO.Dzial + " - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
                     operatorBUS.skip();
                 }  
             }
@@ -1885,7 +1893,7 @@ namespace RemaGUM
                 operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Uprawnienie;");
                 while (!operatorBUS.eof)
                 {
-                    listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie + " - " + operatorBUS.VO.Uprawnienie);
+                    listBoxOperator.Items.Add(operatorBUS.VO.Uprawnienie + " - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
                     operatorBUS.skip();
                 }
             }
@@ -1894,7 +1902,7 @@ namespace RemaGUM
                 operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Data_konca_upr;");
                 while (!operatorBUS.eof)
                 {
-                    listBoxOperator.Items.Add(operatorBUS.VO.Dzien + ":" + operatorBUS.VO.Mc + ":" + operatorBUS.VO.Rok + " " + operatorBUS.VO.Uprawnienie + " - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
+                    listBoxOperator.Items.Add(operatorBUS.VO.Dzien + ":" + operatorBUS.VO.Mc + ":" + operatorBUS.VO.Rok + " - (" + operatorBUS.VO.Uprawnienie + ") - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
                     operatorBUS.skip();
                 }
             }

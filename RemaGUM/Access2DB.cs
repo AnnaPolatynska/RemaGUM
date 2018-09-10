@@ -2153,9 +2153,7 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool update(nsAccess2DB.OperatorVO VO)
         {
-            string query = "UPDATE Operator SET Dzial = @Dzial, Uprawnienie = @Uprawnienie, " +
-                 "Data_konca_upr = @Data_konca_upr, Rok = @Rok, Mc = @Mc, Dzien = @Dzien " +
-                 "WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
+            string query = "UPDATE Operator SET Dzial = @Dzial, Uprawnienie = @Uprawnienie, Data_konca_upr = @Data_konca_upr, Rok = @Rok, Mc = @Mc, Dzien = @Dzien, Op_imie = @Op_imie, Op_nazwisko = @Op_nazwisko WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
 
             OleDbParameter[] parameters = new OleDbParameter[8];
 
@@ -4719,7 +4717,7 @@ namespace nsAccess2DB
             return new Dostawca_MaterialVO();
         }// GetVO
 
-        // // // // // // TODO
+       
         /*
         public bool write(nsAccess2DB.Dostawca_MaterialVO VO)
         {

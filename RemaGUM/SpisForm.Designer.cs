@@ -2517,7 +2517,7 @@
             this.groupBox26.Size = new System.Drawing.Size(330, 57);
             this.groupBox26.TabIndex = 54;
             this.groupBox26.TabStop = false;
-            this.groupBox26.Text = "sortowanie";
+            this.groupBox26.Text = "sortowanie / wyszukiwanie";
             // 
             // comboBoxOperator
             // 
@@ -2526,7 +2526,8 @@
             "Nazwisko",
             "Dział",
             "Uprawnienia",
-            "Data końca uprawnień"});
+            "Data końca uprawnień",
+            "WYSZUKAJ"});
             this.comboBoxOperator.Location = new System.Drawing.Point(15, 19);
             this.comboBoxOperator.Name = "comboBoxOperator";
             this.comboBoxOperator.Size = new System.Drawing.Size(299, 21);
