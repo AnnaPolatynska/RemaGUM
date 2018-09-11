@@ -182,7 +182,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.buttonSzukaj = new System.Windows.Forms.Button();
-            this.radioButtonSzukaj = new System.Windows.Forms.RadioButton();
             this.textBoxWyszukiwanie = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -1610,9 +1609,9 @@
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.textBoxRok_produkcji);
             this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Location = new System.Drawing.Point(333, 92);
+            this.groupBox4.Location = new System.Drawing.Point(333, 80);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(419, 763);
+            this.groupBox4.Size = new System.Drawing.Size(419, 775);
             this.groupBox4.TabIndex = 46;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dane maszyny";
@@ -1791,7 +1790,7 @@
             this.richTextBoxUwagi.BackColor = System.Drawing.Color.Linen;
             this.richTextBoxUwagi.Location = new System.Drawing.Point(16, 730);
             this.richTextBoxUwagi.Name = "richTextBoxUwagi";
-            this.richTextBoxUwagi.Size = new System.Drawing.Size(380, 20);
+            this.richTextBoxUwagi.Size = new System.Drawing.Size(380, 32);
             this.richTextBoxUwagi.TabIndex = 30;
             this.richTextBoxUwagi.Text = "";
             // 
@@ -1892,18 +1891,6 @@
             this.buttonSzukaj.TabIndex = 4;
             this.buttonSzukaj.UseVisualStyleBackColor = false;
             this.buttonSzukaj.Click += new System.EventHandler(this.buttonSzukaj_Click);
-            // 
-            // radioButtonSzukaj
-            // 
-            this.radioButtonSzukaj.AutoSize = true;
-            this.radioButtonSzukaj.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonSzukaj.Location = new System.Drawing.Point(347, 23);
-            this.radioButtonSzukaj.Name = "radioButtonSzukaj";
-            this.radioButtonSzukaj.Size = new System.Drawing.Size(66, 17);
-            this.radioButtonSzukaj.TabIndex = 5;
-            this.radioButtonSzukaj.Text = "SZUKAJ";
-            this.radioButtonSzukaj.UseVisualStyleBackColor = true;
-            this.radioButtonSzukaj.CheckedChanged += new System.EventHandler(this.radioButtonSzukaj_CheckedChanged);
             // 
             // textBoxWyszukiwanie
             // 
@@ -2108,7 +2095,6 @@
             // 
             this.groupBoxSortowanie.BackColor = System.Drawing.Color.Bisque;
             this.groupBoxSortowanie.Controls.Add(this.radioButtonData_ost_przegl);
-            this.groupBoxSortowanie.Controls.Add(this.radioButtonSzukaj);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNazwa);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_pomieszczenia);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_fabryczny);
@@ -2117,7 +2103,7 @@
             this.groupBoxSortowanie.ForeColor = System.Drawing.Color.Red;
             this.groupBoxSortowanie.Location = new System.Drawing.Point(333, 6);
             this.groupBoxSortowanie.Name = "groupBoxSortowanie";
-            this.groupBoxSortowanie.Size = new System.Drawing.Size(419, 85);
+            this.groupBoxSortowanie.Size = new System.Drawing.Size(419, 68);
             this.groupBoxSortowanie.TabIndex = 43;
             this.groupBoxSortowanie.TabStop = false;
             this.groupBoxSortowanie.Text = "sortowanie";
@@ -2126,7 +2112,7 @@
             // 
             this.radioButtonData_ost_przegl.AutoSize = true;
             this.radioButtonData_ost_przegl.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonData_ost_przegl.Location = new System.Drawing.Point(147, 63);
+            this.radioButtonData_ost_przegl.Location = new System.Drawing.Point(259, 42);
             this.radioButtonData_ost_przegl.Name = "radioButtonData_ost_przegl";
             this.radioButtonData_ost_przegl.Size = new System.Drawing.Size(149, 17);
             this.radioButtonData_ost_przegl.TabIndex = 6;
@@ -2150,7 +2136,7 @@
             // 
             this.radioButtonNr_pomieszczenia.AutoSize = true;
             this.radioButtonNr_pomieszczenia.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNr_pomieszczenia.Location = new System.Drawing.Point(147, 40);
+            this.radioButtonNr_pomieszczenia.Location = new System.Drawing.Point(259, 19);
             this.radioButtonNr_pomieszczenia.Name = "radioButtonNr_pomieszczenia";
             this.radioButtonNr_pomieszczenia.Size = new System.Drawing.Size(108, 17);
             this.radioButtonNr_pomieszczenia.TabIndex = 3;
@@ -2162,7 +2148,7 @@
             // 
             this.radioButtonNr_fabryczny.AutoSize = true;
             this.radioButtonNr_fabryczny.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNr_fabryczny.Location = new System.Drawing.Point(6, 63);
+            this.radioButtonNr_fabryczny.Location = new System.Drawing.Point(132, 16);
             this.radioButtonNr_fabryczny.Name = "radioButtonNr_fabryczny";
             this.radioButtonNr_fabryczny.Size = new System.Drawing.Size(84, 17);
             this.radioButtonNr_fabryczny.TabIndex = 2;
@@ -2174,7 +2160,7 @@
             // 
             this.radioButtonNr_inwentarzowy.AutoSize = true;
             this.radioButtonNr_inwentarzowy.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNr_inwentarzowy.Location = new System.Drawing.Point(147, 17);
+            this.radioButtonNr_inwentarzowy.Location = new System.Drawing.Point(132, 40);
             this.radioButtonNr_inwentarzowy.Name = "radioButtonNr_inwentarzowy";
             this.radioButtonNr_inwentarzowy.Size = new System.Drawing.Size(103, 17);
             this.radioButtonNr_inwentarzowy.TabIndex = 1;
@@ -2222,7 +2208,7 @@
             this.Operatorzy_maszyn.Controls.Add(this.groupBox26);
             this.Operatorzy_maszyn.Location = new System.Drawing.Point(4, 22);
             this.Operatorzy_maszyn.Name = "Operatorzy_maszyn";
-            this.Operatorzy_maszyn.Size = new System.Drawing.Size(1212, 890);
+            this.Operatorzy_maszyn.Size = new System.Drawing.Size(1217, 890);
             this.Operatorzy_maszyn.TabIndex = 3;
             this.Operatorzy_maszyn.Text = "Operatorzy maszyn";
             // 
@@ -2233,7 +2219,7 @@
             this.toolStripStatusLabelIDOperatora});
             this.statusStrip2.Location = new System.Drawing.Point(0, 868);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(1212, 22);
+            this.statusStrip2.Size = new System.Drawing.Size(1217, 22);
             this.statusStrip2.TabIndex = 57;
             this.statusStrip2.Text = "ID operatora";
             // 
@@ -2676,7 +2662,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox groupBoxSortowanie;
         private System.Windows.Forms.RadioButton radioButtonData_ost_przegl;
-        private System.Windows.Forms.RadioButton radioButtonSzukaj;
         private System.Windows.Forms.RadioButton radioButtonNazwa;
         private System.Windows.Forms.RadioButton radioButtonNr_pomieszczenia;
         private System.Windows.Forms.RadioButton radioButtonNr_fabryczny;

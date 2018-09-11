@@ -28,7 +28,8 @@ namespace RemaGUM
         private byte _statusForm; // wartośc statusu formularza
 
         private int[] _maszynaTag; // przechowuje identyfikatory maszyn.
-        
+        int _maszynaSzukajIdx = 0; // indeks szukanej maszyny.
+
         private ToolTip _tt; //podpowiedzi dla niektórych kontolek
 
         private int _interwalPrzegladow = 2;    //w latach
@@ -98,7 +99,6 @@ namespace RemaGUM
             radioButtonNr_pomieszczenia.TabIndex = 27;
             radioButtonNazwa.TabIndex = 28;
             radioButtonData_ost_przegl.TabIndex = 29;
-            radioButtonSzukaj.TabIndex = 30;
             //wyszukiwanie Maszyny po wpisanej nazwie 
             textBoxWyszukiwanie.TabIndex = 31;
             buttonSzukaj.TabIndex = 32;
@@ -186,7 +186,6 @@ namespace RemaGUM
             _tt.SetToolTip(radioButtonNr_pomieszczenia, "Sortuj po numerze pomieszczenia.");
             _tt.SetToolTip(radioButtonNazwa, "Sortuj po nazwie maszyny, przyrządu lub urządzenia.");
             _tt.SetToolTip(radioButtonData_ost_przegl, "Sortuj po dacie ostatniego przegladu.");
-            _tt.SetToolTip(radioButtonSzukaj, "Sortuj po dacie kolejnego przeglądu.");
             _tt.SetToolTip(textBoxWyszukiwanie, "Wpisz jakiej maszyny szukasz.");
             _tt.SetToolTip(buttonSzukaj, "Szukanie w bazie maszyn.");
             // -------------------------------------- Zakładka Materiały
@@ -388,15 +387,9 @@ namespace RemaGUM
         {
            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             //listBoxMaszyny.Items.Clear();
-
-            if (radioButtonSzukaj.Checked) //Wyszukiwanie maszyny po wpisanej frazie.
-            {
-                maszynyBUS.selectQuery("SELECT * FROM Maszyny WHERE Nazwa LIKE '" + textBoxWyszukiwanie.Text + "%' OR Nazwa LIKE '%" + textBoxWyszukiwanie.Text + "%';");
-                maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
-                toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
-            }
+                        
             // uaktualnienie danych maszyny po zmianie sposobu sortowania
-            else if (radioButtonNazwa.Checked)
+            if (radioButtonNazwa.Checked)
             {
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nazwa ASC;");
                 maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
@@ -598,8 +591,6 @@ namespace RemaGUM
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa + " -> "+ maszynyBUS.VO.Nr_fabryczny);
                     maszynyBUS.skip();
                 }
-                textBoxWyszukiwanie.Enabled = false;
-                buttonSzukaj.Enabled = false;
             }
         }//radioButtonNazwa_CheckedChanged
 
@@ -617,8 +608,6 @@ namespace RemaGUM
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Nr_inwentarzowy + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
-                textBoxWyszukiwanie.Enabled = false;
-                buttonSzukaj.Enabled = false;
             }
          }//radioButton_Nr_Inwentarzowy_CheckedChanged
 
@@ -636,8 +625,7 @@ namespace RemaGUM
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Typ + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
-                textBoxWyszukiwanie.Enabled = false;
-                buttonSzukaj.Enabled = false;
+                
             }
         }//radioButton_Typ_CheckedChanged
         private void radioButtonNr_fabrycznyCheckedChanged(object sender, EventArgs e)
@@ -654,8 +642,7 @@ namespace RemaGUM
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Nr_fabryczny + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
-                textBoxWyszukiwanie.Enabled = false;
-                buttonSzukaj.Enabled = false;
+                
             }
         }//radioButtonNr_fabrycznyCheckedChanged
 
@@ -673,8 +660,7 @@ namespace RemaGUM
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Nr_pom + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
-                textBoxWyszukiwanie.Enabled = false;
-                buttonSzukaj.Enabled = false;
+               
             }
         }//radioButton_Nr_Pomieszczenia_CheckedChanged
 
@@ -692,29 +678,10 @@ namespace RemaGUM
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Dz_ost_przeg + "-" + maszynyBUS.VO.Mc_ost_przeg + "-" + maszynyBUS.VO.Rok_ost_przeg + " r. -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
-                textBoxWyszukiwanie.Enabled = false;
-                buttonSzukaj.Enabled = false;
+                
             }
         }//radioButton_Nr_Pomieszczenia_CheckedChanged
 
-        private void radioButtonSzukaj_CheckedChanged(object sender, EventArgs e)
-        {
-            listBoxMaszyny.Items.Clear();
-            CzyscDaneMaszyny();
-
-            //nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-            //maszynyBUS.selectQuery("SELECT * FROM Maszyny WHERE Nazwa LIKE '" + textBoxWyszukiwanie.Text + "%' OR Nazwa LIKE '%" + textBoxWyszukiwanie.Text + "%';");
-            //while (!maszynyBUS.eof)
-            //{
-            //    listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa);
-            //    maszynyBUS.skip();
-            //}
-            textBoxWyszukiwanie.Enabled = true;
-            buttonSzukaj.Enabled = true;
-            //TODO radio button szukaj w maszynach.
-        }//radioButtonSzukaj_CheckedChanged
-
-        //private bool buttonSzukajMaszynyWasClicked = false;
         /// <summary>
         /// wyszukuje maszynę po wpisaniu dowolnego ciągu wyrazów
         /// </summary>
@@ -722,25 +689,43 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
-            listBoxMaszyny.Items.Clear();
+            //textBoxWyszukiwanie.Text = textBoxWyszukiwanie.Text.Trim();
 
-            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-            maszynyBUS.selectQuery("SELECT * FROM Maszyny WHERE Nazwa LIKE '" + textBoxWyszukiwanie.Text + "%' OR Nazwa LIKE '%" + textBoxWyszukiwanie.Text + "%';");
-            //Nr_inwentarzowy LIKE '" + textBoxWyszukiwanie.Text + "%' OR
-            while (!maszynyBUS.eof)
-            {
-                listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa + " -> " + maszynyBUS.VO.Nr_inwentarzowy);
-                maszynyBUS.skip();
-            }
-            
-          // buttonSzukajMaszynyWasClicked = true;
-           if (listBoxMaszyny.Items.Count > 0)
-            {
-                listBoxMaszyny.SelectedIndex = 0;
-            }
-            maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
-            toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString(); // toolStripStatusLabelID_Maszyny
-            listBoxMaszyny.Tag = maszynyBUS.VO.Identyfikator;
+            //if (textBoxWyszukiwanie.Text == string.Empty)
+            //{
+            //    pokazKomunikat("Proszę wpisać tekst do wyszukania. Szukanie anulowane.");
+            //    return;
+            //}
+            //nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
+            //string S1 = textBoxWyszukiwanie.Text.ToUpper();
+            //string S2;
+
+            //if (_maszynaSzukajIdx >= maszynyBUS.count)
+            //{
+
+            //}
+            //pokazKomunikat("nie znaleziono tekstu - powtórz szukanie");
+
+
+            // listBoxMaszyny.Items.Clear();
+
+            // nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
+            // maszynyBUS.selectQuery("SELECT * FROM Maszyny WHERE Nazwa LIKE '" + textBoxWyszukiwanie.Text + "%' OR Nazwa LIKE '%" + textBoxWyszukiwanie.Text + "%';");
+            // //Nr_inwentarzowy LIKE '" + textBoxWyszukiwanie.Text + "%' OR
+            // while (!maszynyBUS.eof)
+            // {
+            //     listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa + " -> " + maszynyBUS.VO.Nr_inwentarzowy);
+            //     maszynyBUS.skip();
+            // }
+
+
+            //if (listBoxMaszyny.Items.Count > 0)
+            // {
+            //     listBoxMaszyny.SelectedIndex = 0;
+            // }
+            // maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
+            // toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString(); // toolStripStatusLabelID_Maszyny
+            // listBoxMaszyny.Tag = maszynyBUS.VO.Identyfikator;
         }//buttonSzukaj_Click
 
         /// <summary>
@@ -1158,12 +1143,7 @@ namespace RemaGUM
                     maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
                     toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
                 }
-                else if (radioButtonSzukaj.Checked)
-                {
-                    maszynyBUS.selectQuery("SELECT * FROM Maszyny WHERE Nazwa LIKE '" + textBoxWyszukiwanie.Text + "%' OR Nazwa LIKE '%" + textBoxWyszukiwanie.Text + "%'; ");
-                    maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
-                    toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
-                }
+                
 
                 //Uaktualnia ID i dane maszyny po Sortowaniu();
                 maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
@@ -1187,7 +1167,7 @@ namespace RemaGUM
                 {
                     pictureBox1.Image = null;
                     // MessageBox.Show("Maszyna nie posiada zdjęcia w bazie danych.", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //pokazKomunikat("Maszyna nie posiada zdjęcia w bazie danych."); // wyskakujący komunikat.
+                    //pokazKomunikat("Wybrana maszyna nie posiada zdjęcia w bazie danych."); // wyskakujący komunikat.
                 }
             }
             catch (Exception ex)
