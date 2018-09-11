@@ -154,7 +154,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.checkedListBoxOperatorzy_maszyn = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxOsoba_zarzadzajaca = new System.Windows.Forms.ComboBox();
             this.textBoxTyp = new System.Windows.Forms.TextBox();
@@ -182,6 +182,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.buttonSzukaj = new System.Windows.Forms.Button();
+            this.radioButtonSzukaj = new System.Windows.Forms.RadioButton();
             this.textBoxWyszukiwanie = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -202,7 +203,6 @@
             this.textBoxNr_prot_BHP = new System.Windows.Forms.TextBox();
             this.groupBoxSortowanie = new System.Windows.Forms.GroupBox();
             this.radioButtonData_ost_przegl = new System.Windows.Forms.RadioButton();
-            this.radioButtonData_kol_przegladu = new System.Windows.Forms.RadioButton();
             this.radioButtonNazwa = new System.Windows.Forms.RadioButton();
             this.radioButtonNr_pomieszczenia = new System.Windows.Forms.RadioButton();
             this.radioButtonNr_fabryczny = new System.Windows.Forms.RadioButton();
@@ -292,7 +292,7 @@
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip.Size = new System.Drawing.Size(1207, 37);
+            this.toolStrip.Size = new System.Drawing.Size(1212, 37);
             this.toolStrip.TabIndex = 41;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -1521,7 +1521,7 @@
             this.Maszyny.Location = new System.Drawing.Point(4, 22);
             this.Maszyny.Name = "Maszyny";
             this.Maszyny.Padding = new System.Windows.Forms.Padding(3);
-            this.Maszyny.Size = new System.Drawing.Size(1212, 890);
+            this.Maszyny.Size = new System.Drawing.Size(1217, 890);
             this.Maszyny.TabIndex = 0;
             this.Maszyny.Text = "Maszyny";
             // 
@@ -1532,7 +1532,7 @@
             this.toolStripStatusLabelID_Maszyny});
             this.statusStrip3.Location = new System.Drawing.Point(3, 865);
             this.statusStrip3.Name = "statusStrip3";
-            this.statusStrip3.Size = new System.Drawing.Size(1206, 22);
+            this.statusStrip3.Size = new System.Drawing.Size(1211, 22);
             this.statusStrip3.TabIndex = 58;
             this.statusStrip3.Text = "ID operatora";
             // 
@@ -1549,7 +1549,7 @@
             // 
             // buttonPokazZdj
             // 
-            this.buttonPokazZdj.Location = new System.Drawing.Point(977, 536);
+            this.buttonPokazZdj.Location = new System.Drawing.Point(977, 566);
             this.buttonPokazZdj.Name = "buttonPokazZdj";
             this.buttonPokazZdj.Size = new System.Drawing.Size(97, 23);
             this.buttonPokazZdj.TabIndex = 49;
@@ -1560,7 +1560,7 @@
             // linkLabelNazwaZdjecia
             // 
             this.linkLabelNazwaZdjecia.AutoSize = true;
-            this.linkLabelNazwaZdjecia.Location = new System.Drawing.Point(759, 546);
+            this.linkLabelNazwaZdjecia.Location = new System.Drawing.Point(758, 579);
             this.linkLabelNazwaZdjecia.Name = "linkLabelNazwaZdjecia";
             this.linkLabelNazwaZdjecia.Size = new System.Drawing.Size(76, 13);
             this.linkLabelNazwaZdjecia.TabIndex = 48;
@@ -1570,7 +1570,7 @@
             // 
             // buttonUsunZdj
             // 
-            this.buttonUsunZdj.Location = new System.Drawing.Point(1080, 536);
+            this.buttonUsunZdj.Location = new System.Drawing.Point(1080, 566);
             this.buttonUsunZdj.Name = "buttonUsunZdj";
             this.buttonUsunZdj.Size = new System.Drawing.Size(97, 23);
             this.buttonUsunZdj.TabIndex = 47;
@@ -1584,7 +1584,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox4.Controls.Add(this.checkedListBoxOperatorzy_maszyn);
             this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.label17);
+            this.groupBox4.Controls.Add(this.label58);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.comboBoxOsoba_zarzadzajaca);
             this.groupBox4.Controls.Add(this.textBoxTyp);
@@ -1610,9 +1610,9 @@
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.textBoxRok_produkcji);
             this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Location = new System.Drawing.Point(333, 69);
+            this.groupBox4.Location = new System.Drawing.Point(333, 92);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(419, 786);
+            this.groupBox4.Size = new System.Drawing.Size(419, 763);
             this.groupBox4.TabIndex = 46;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dane maszyny";
@@ -1620,7 +1620,7 @@
             // checkedListBoxOperatorzy_maszyn
             // 
             this.checkedListBoxOperatorzy_maszyn.FormattingEnabled = true;
-            this.checkedListBoxOperatorzy_maszyn.Location = new System.Drawing.Point(15, 451);
+            this.checkedListBoxOperatorzy_maszyn.Location = new System.Drawing.Point(15, 458);
             this.checkedListBoxOperatorzy_maszyn.Name = "checkedListBoxOperatorzy_maszyn";
             this.checkedListBoxOperatorzy_maszyn.Size = new System.Drawing.Size(380, 199);
             this.checkedListBoxOperatorzy_maszyn.TabIndex = 41;
@@ -1629,25 +1629,25 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label1.Location = new System.Drawing.Point(16, 19);
+            this.label1.Location = new System.Drawing.Point(16, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 34;
             this.label1.Text = "Kategoria ";
             // 
-            // label17
+            // label58
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(15, 435);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(91, 13);
-            this.label17.TabIndex = 40;
-            this.label17.Text = "Operator maszyny";
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(13, 435);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(91, 13);
+            this.label58.TabIndex = 40;
+            this.label58.Text = "Operator maszyny";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 117);
+            this.label3.Location = new System.Drawing.Point(15, 123);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(25, 13);
             this.label3.TabIndex = 9;
@@ -1657,7 +1657,7 @@
             // 
             this.comboBoxOsoba_zarzadzajaca.BackColor = System.Drawing.Color.Linen;
             this.comboBoxOsoba_zarzadzajaca.FormattingEnabled = true;
-            this.comboBoxOsoba_zarzadzajaca.Location = new System.Drawing.Point(15, 394);
+            this.comboBoxOsoba_zarzadzajaca.Location = new System.Drawing.Point(15, 400);
             this.comboBoxOsoba_zarzadzajaca.Name = "comboBoxOsoba_zarzadzajaca";
             this.comboBoxOsoba_zarzadzajaca.Size = new System.Drawing.Size(380, 21);
             this.comboBoxOsoba_zarzadzajaca.TabIndex = 39;
@@ -1666,7 +1666,7 @@
             // textBoxTyp
             // 
             this.textBoxTyp.BackColor = System.Drawing.Color.Linen;
-            this.textBoxTyp.Location = new System.Drawing.Point(15, 133);
+            this.textBoxTyp.Location = new System.Drawing.Point(15, 139);
             this.textBoxTyp.Name = "textBoxTyp";
             this.textBoxTyp.Size = new System.Drawing.Size(380, 20);
             this.textBoxTyp.TabIndex = 8;
@@ -1674,7 +1674,7 @@
             // textBoxNr_pom
             // 
             this.textBoxNr_pom.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_pom.Location = new System.Drawing.Point(19, 685);
+            this.textBoxNr_pom.Location = new System.Drawing.Point(15, 685);
             this.textBoxNr_pom.Name = "textBoxNr_pom";
             this.textBoxNr_pom.Size = new System.Drawing.Size(156, 20);
             this.textBoxNr_pom.TabIndex = 38;
@@ -1682,7 +1682,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 222);
+            this.label4.Location = new System.Drawing.Point(15, 228);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 13);
             this.label4.TabIndex = 10;
@@ -1691,7 +1691,7 @@
             // textBoxNr_inwentarzowy
             // 
             this.textBoxNr_inwentarzowy.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_inwentarzowy.Location = new System.Drawing.Point(15, 238);
+            this.textBoxNr_inwentarzowy.Location = new System.Drawing.Point(15, 244);
             this.textBoxNr_inwentarzowy.Name = "textBoxNr_inwentarzowy";
             this.textBoxNr_inwentarzowy.Size = new System.Drawing.Size(380, 20);
             this.textBoxNr_inwentarzowy.TabIndex = 11;
@@ -1699,7 +1699,7 @@
             // dateTimePickerData_kol_przegl
             // 
             this.dateTimePickerData_kol_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
-            this.dateTimePickerData_kol_przegl.Location = new System.Drawing.Point(259, 187);
+            this.dateTimePickerData_kol_przegl.Location = new System.Drawing.Point(259, 193);
             this.dateTimePickerData_kol_przegl.Name = "dateTimePickerData_kol_przegl";
             this.dateTimePickerData_kol_przegl.Size = new System.Drawing.Size(136, 20);
             this.dateTimePickerData_kol_przegl.TabIndex = 37;
@@ -1707,7 +1707,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 68);
+            this.label2.Location = new System.Drawing.Point(16, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 7;
@@ -1726,7 +1726,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 275);
+            this.label6.Location = new System.Drawing.Point(16, 281);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 13);
             this.label6.TabIndex = 13;
@@ -1735,7 +1735,7 @@
             // dateTimePickerData_ost_przegl
             // 
             this.dateTimePickerData_ost_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
-            this.dateTimePickerData_ost_przegl.Location = new System.Drawing.Point(107, 187);
+            this.dateTimePickerData_ost_przegl.Location = new System.Drawing.Point(107, 193);
             this.dateTimePickerData_ost_przegl.Name = "dateTimePickerData_ost_przegl";
             this.dateTimePickerData_ost_przegl.Size = new System.Drawing.Size(128, 20);
             this.dateTimePickerData_ost_przegl.TabIndex = 36;
@@ -1743,7 +1743,7 @@
             // textBoxNazwa
             // 
             this.textBoxNazwa.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwa.Location = new System.Drawing.Point(15, 84);
+            this.textBoxNazwa.Location = new System.Drawing.Point(15, 90);
             this.textBoxNazwa.Name = "textBoxNazwa";
             this.textBoxNazwa.Size = new System.Drawing.Size(380, 20);
             this.textBoxNazwa.TabIndex = 6;
@@ -1751,7 +1751,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(257, 171);
+            this.label13.Location = new System.Drawing.Point(257, 177);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(138, 13);
             this.label13.TabIndex = 27;
@@ -1760,7 +1760,7 @@
             // textBoxNr_fabryczny
             // 
             this.textBoxNr_fabryczny.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_fabryczny.Location = new System.Drawing.Point(15, 291);
+            this.textBoxNr_fabryczny.Location = new System.Drawing.Point(15, 297);
             this.textBoxNr_fabryczny.Name = "textBoxNr_fabryczny";
             this.textBoxNr_fabryczny.Size = new System.Drawing.Size(380, 20);
             this.textBoxNr_fabryczny.TabIndex = 14;
@@ -1769,7 +1769,7 @@
             // 
             this.comboBoxKategoria.BackColor = System.Drawing.Color.Linen;
             this.comboBoxKategoria.FormattingEnabled = true;
-            this.comboBoxKategoria.Location = new System.Drawing.Point(15, 33);
+            this.comboBoxKategoria.Location = new System.Drawing.Point(15, 39);
             this.comboBoxKategoria.Name = "comboBoxKategoria";
             this.comboBoxKategoria.Size = new System.Drawing.Size(380, 21);
             this.comboBoxKategoria.TabIndex = 31;
@@ -1778,7 +1778,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 325);
+            this.label7.Location = new System.Drawing.Point(16, 331);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 13);
             this.label7.TabIndex = 15;
@@ -1791,14 +1791,14 @@
             this.richTextBoxUwagi.BackColor = System.Drawing.Color.Linen;
             this.richTextBoxUwagi.Location = new System.Drawing.Point(16, 730);
             this.richTextBoxUwagi.Name = "richTextBoxUwagi";
-            this.richTextBoxUwagi.Size = new System.Drawing.Size(380, 43);
+            this.richTextBoxUwagi.Size = new System.Drawing.Size(380, 20);
             this.richTextBoxUwagi.TabIndex = 30;
             this.richTextBoxUwagi.Text = "";
             // 
             // textBoxProducent
             // 
             this.textBoxProducent.BackColor = System.Drawing.Color.Linen;
-            this.textBoxProducent.Location = new System.Drawing.Point(15, 341);
+            this.textBoxProducent.Location = new System.Drawing.Point(15, 347);
             this.textBoxProducent.Name = "textBoxProducent";
             this.textBoxProducent.Size = new System.Drawing.Size(380, 20);
             this.textBoxProducent.TabIndex = 16;
@@ -1806,7 +1806,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(104, 171);
+            this.label12.Location = new System.Drawing.Point(104, 177);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(131, 13);
             this.label12.TabIndex = 25;
@@ -1815,7 +1815,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 378);
+            this.label8.Location = new System.Drawing.Point(16, 384);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(103, 13);
             this.label8.TabIndex = 17;
@@ -1851,7 +1851,7 @@
             // textBoxRok_produkcji
             // 
             this.textBoxRok_produkcji.BackColor = System.Drawing.Color.Linen;
-            this.textBoxRok_produkcji.Location = new System.Drawing.Point(15, 187);
+            this.textBoxRok_produkcji.Location = new System.Drawing.Point(15, 193);
             this.textBoxRok_produkcji.Name = "textBoxRok_produkcji";
             this.textBoxRok_produkcji.Size = new System.Drawing.Size(86, 20);
             this.textBoxRok_produkcji.TabIndex = 15;
@@ -1859,7 +1859,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 171);
+            this.label5.Location = new System.Drawing.Point(15, 177);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 13);
             this.label5.TabIndex = 12;
@@ -1876,7 +1876,7 @@
             this.groupBox5.ForeColor = System.Drawing.Color.Red;
             this.groupBox5.Location = new System.Drawing.Point(758, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(437, 57);
+            this.groupBox5.Size = new System.Drawing.Size(424, 57);
             this.groupBox5.TabIndex = 45;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "wyszukiwanie po nazwie";
@@ -1886,26 +1886,38 @@
             this.buttonSzukaj.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonSzukaj.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj.BackgroundImage")));
             this.buttonSzukaj.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSzukaj.Location = new System.Drawing.Point(375, 15);
+            this.buttonSzukaj.Location = new System.Drawing.Point(374, 15);
             this.buttonSzukaj.Name = "buttonSzukaj";
             this.buttonSzukaj.Size = new System.Drawing.Size(35, 34);
             this.buttonSzukaj.TabIndex = 4;
             this.buttonSzukaj.UseVisualStyleBackColor = false;
             this.buttonSzukaj.Click += new System.EventHandler(this.buttonSzukaj_Click);
             // 
+            // radioButtonSzukaj
+            // 
+            this.radioButtonSzukaj.AutoSize = true;
+            this.radioButtonSzukaj.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonSzukaj.Location = new System.Drawing.Point(347, 23);
+            this.radioButtonSzukaj.Name = "radioButtonSzukaj";
+            this.radioButtonSzukaj.Size = new System.Drawing.Size(66, 17);
+            this.radioButtonSzukaj.TabIndex = 5;
+            this.radioButtonSzukaj.Text = "SZUKAJ";
+            this.radioButtonSzukaj.UseVisualStyleBackColor = true;
+            this.radioButtonSzukaj.CheckedChanged += new System.EventHandler(this.radioButtonSzukaj_CheckedChanged);
+            // 
             // textBoxWyszukiwanie
             // 
             this.textBoxWyszukiwanie.BackColor = System.Drawing.Color.Linen;
-            this.textBoxWyszukiwanie.Location = new System.Drawing.Point(6, 23);
+            this.textBoxWyszukiwanie.Location = new System.Drawing.Point(9, 23);
             this.textBoxWyszukiwanie.Name = "textBoxWyszukiwanie";
-            this.textBoxWyszukiwanie.Size = new System.Drawing.Size(363, 20);
+            this.textBoxWyszukiwanie.Size = new System.Drawing.Size(359, 20);
             this.textBoxWyszukiwanie.TabIndex = 44;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(758, 69);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(419, 461);
+            this.pictureBox1.Size = new System.Drawing.Size(419, 491);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
@@ -1917,9 +1929,9 @@
             this.groupBox1.BackColor = System.Drawing.Color.Bisque;
             this.groupBox1.Controls.Add(this.listBoxMaszyny);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.groupBox1.Location = new System.Drawing.Point(6, 69);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(321, 786);
+            this.groupBox1.Size = new System.Drawing.Size(321, 849);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lista";
@@ -1932,7 +1944,7 @@
             this.listBoxMaszyny.FormattingEnabled = true;
             this.listBoxMaszyny.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaszyny.Name = "listBoxMaszyny";
-            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 758);
+            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 810);
             this.listBoxMaszyny.TabIndex = 0;
             this.listBoxMaszyny.SelectedIndexChanged += new System.EventHandler(this.listBoxMaszyny_SelectedIndexChanged);
             // 
@@ -2011,9 +2023,9 @@
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.textBoxNr_prot_BHP);
-            this.groupBox3.Location = new System.Drawing.Point(758, 583);
+            this.groupBox3.Location = new System.Drawing.Point(758, 595);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(437, 210);
+            this.groupBox3.Size = new System.Drawing.Size(424, 198);
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Stan techniczny i częstotliwość wykorzystania";
@@ -2022,7 +2034,7 @@
             // 
             this.comboBoxPropozycja.BackColor = System.Drawing.Color.Linen;
             this.comboBoxPropozycja.FormattingEnabled = true;
-            this.comboBoxPropozycja.Location = new System.Drawing.Point(9, 122);
+            this.comboBoxPropozycja.Location = new System.Drawing.Point(9, 121);
             this.comboBoxPropozycja.Name = "comboBoxPropozycja";
             this.comboBoxPropozycja.Size = new System.Drawing.Size(399, 21);
             this.comboBoxPropozycja.TabIndex = 41;
@@ -2032,7 +2044,7 @@
             // 
             this.comboBoxWykorzystanie.BackColor = System.Drawing.Color.Linen;
             this.comboBoxWykorzystanie.FormattingEnabled = true;
-            this.comboBoxWykorzystanie.Location = new System.Drawing.Point(9, 82);
+            this.comboBoxWykorzystanie.Location = new System.Drawing.Point(9, 81);
             this.comboBoxWykorzystanie.Name = "comboBoxWykorzystanie";
             this.comboBoxWykorzystanie.Size = new System.Drawing.Size(399, 21);
             this.comboBoxWykorzystanie.TabIndex = 40;
@@ -2042,7 +2054,7 @@
             // 
             this.comboBoxStan_techniczny.BackColor = System.Drawing.Color.Linen;
             this.comboBoxStan_techniczny.FormattingEnabled = true;
-            this.comboBoxStan_techniczny.Location = new System.Drawing.Point(9, 42);
+            this.comboBoxStan_techniczny.Location = new System.Drawing.Point(9, 41);
             this.comboBoxStan_techniczny.Name = "comboBoxStan_techniczny";
             this.comboBoxStan_techniczny.Size = new System.Drawing.Size(399, 21);
             this.comboBoxStan_techniczny.TabIndex = 38;
@@ -2051,7 +2063,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 66);
+            this.label15.Location = new System.Drawing.Point(6, 65);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(140, 13);
             this.label15.TabIndex = 30;
@@ -2060,7 +2072,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 26);
+            this.label16.Location = new System.Drawing.Point(6, 25);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(135, 13);
             this.label16.TabIndex = 31;
@@ -2069,7 +2081,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 106);
+            this.label18.Location = new System.Drawing.Point(6, 105);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(59, 13);
             this.label18.TabIndex = 33;
@@ -2078,7 +2090,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 168);
+            this.label11.Location = new System.Drawing.Point(9, 149);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(109, 13);
             this.label11.TabIndex = 23;
@@ -2087,7 +2099,7 @@
             // textBoxNr_prot_BHP
             // 
             this.textBoxNr_prot_BHP.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(6, 184);
+            this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(9, 165);
             this.textBoxNr_prot_BHP.Name = "textBoxNr_prot_BHP";
             this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(394, 20);
             this.textBoxNr_prot_BHP.TabIndex = 24;
@@ -2096,16 +2108,16 @@
             // 
             this.groupBoxSortowanie.BackColor = System.Drawing.Color.Bisque;
             this.groupBoxSortowanie.Controls.Add(this.radioButtonData_ost_przegl);
-            this.groupBoxSortowanie.Controls.Add(this.radioButtonData_kol_przegladu);
+            this.groupBoxSortowanie.Controls.Add(this.radioButtonSzukaj);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNazwa);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_pomieszczenia);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_fabryczny);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_inwentarzowy);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonTyp);
             this.groupBoxSortowanie.ForeColor = System.Drawing.Color.Red;
-            this.groupBoxSortowanie.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxSortowanie.Location = new System.Drawing.Point(333, 6);
             this.groupBoxSortowanie.Name = "groupBoxSortowanie";
-            this.groupBoxSortowanie.Size = new System.Drawing.Size(746, 57);
+            this.groupBoxSortowanie.Size = new System.Drawing.Size(419, 85);
             this.groupBoxSortowanie.TabIndex = 43;
             this.groupBoxSortowanie.TabStop = false;
             this.groupBoxSortowanie.Text = "sortowanie";
@@ -2114,7 +2126,7 @@
             // 
             this.radioButtonData_ost_przegl.AutoSize = true;
             this.radioButtonData_ost_przegl.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonData_ost_przegl.Location = new System.Drawing.Point(421, 25);
+            this.radioButtonData_ost_przegl.Location = new System.Drawing.Point(147, 63);
             this.radioButtonData_ost_przegl.Name = "radioButtonData_ost_przegl";
             this.radioButtonData_ost_przegl.Size = new System.Drawing.Size(149, 17);
             this.radioButtonData_ost_przegl.TabIndex = 6;
@@ -2122,23 +2134,11 @@
             this.radioButtonData_ost_przegl.UseVisualStyleBackColor = true;
             this.radioButtonData_ost_przegl.CheckedChanged += new System.EventHandler(this.radioButtonData_ost_przegladu_CheckedChanged);
             // 
-            // radioButtonData_kol_przegladu
-            // 
-            this.radioButtonData_kol_przegladu.AutoSize = true;
-            this.radioButtonData_kol_przegladu.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonData_kol_przegladu.Location = new System.Drawing.Point(576, 24);
-            this.radioButtonData_kol_przegladu.Name = "radioButtonData_kol_przegladu";
-            this.radioButtonData_kol_przegladu.Size = new System.Drawing.Size(146, 17);
-            this.radioButtonData_kol_przegladu.TabIndex = 5;
-            this.radioButtonData_kol_przegladu.Text = "Data kolejnego przeglądu";
-            this.radioButtonData_kol_przegladu.UseVisualStyleBackColor = true;
-            this.radioButtonData_kol_przegladu.CheckedChanged += new System.EventHandler(this.radioButtonData_kol_przegladu_CheckedChanged);
-            // 
             // radioButtonNazwa
             // 
             this.radioButtonNazwa.AutoSize = true;
             this.radioButtonNazwa.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNazwa.Location = new System.Drawing.Point(6, 24);
+            this.radioButtonNazwa.Location = new System.Drawing.Point(6, 15);
             this.radioButtonNazwa.Name = "radioButtonNazwa";
             this.radioButtonNazwa.Size = new System.Drawing.Size(58, 17);
             this.radioButtonNazwa.TabIndex = 4;
@@ -2150,7 +2150,7 @@
             // 
             this.radioButtonNr_pomieszczenia.AutoSize = true;
             this.radioButtonNr_pomieszczenia.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNr_pomieszczenia.Location = new System.Drawing.Point(307, 25);
+            this.radioButtonNr_pomieszczenia.Location = new System.Drawing.Point(147, 40);
             this.radioButtonNr_pomieszczenia.Name = "radioButtonNr_pomieszczenia";
             this.radioButtonNr_pomieszczenia.Size = new System.Drawing.Size(108, 17);
             this.radioButtonNr_pomieszczenia.TabIndex = 3;
@@ -2162,7 +2162,7 @@
             // 
             this.radioButtonNr_fabryczny.AutoSize = true;
             this.radioButtonNr_fabryczny.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNr_fabryczny.Location = new System.Drawing.Point(119, 25);
+            this.radioButtonNr_fabryczny.Location = new System.Drawing.Point(6, 63);
             this.radioButtonNr_fabryczny.Name = "radioButtonNr_fabryczny";
             this.radioButtonNr_fabryczny.Size = new System.Drawing.Size(84, 17);
             this.radioButtonNr_fabryczny.TabIndex = 2;
@@ -2174,7 +2174,7 @@
             // 
             this.radioButtonNr_inwentarzowy.AutoSize = true;
             this.radioButtonNr_inwentarzowy.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNr_inwentarzowy.Location = new System.Drawing.Point(209, 25);
+            this.radioButtonNr_inwentarzowy.Location = new System.Drawing.Point(147, 17);
             this.radioButtonNr_inwentarzowy.Name = "radioButtonNr_inwentarzowy";
             this.radioButtonNr_inwentarzowy.Size = new System.Drawing.Size(103, 17);
             this.radioButtonNr_inwentarzowy.TabIndex = 1;
@@ -2186,7 +2186,7 @@
             // 
             this.radioButtonTyp.AutoSize = true;
             this.radioButtonTyp.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonTyp.Location = new System.Drawing.Point(70, 25);
+            this.radioButtonTyp.Location = new System.Drawing.Point(6, 40);
             this.radioButtonTyp.Name = "radioButtonTyp";
             this.radioButtonTyp.Size = new System.Drawing.Size(43, 17);
             this.radioButtonTyp.TabIndex = 0;
@@ -2207,7 +2207,7 @@
             this.tabControlZakładki.Location = new System.Drawing.Point(5, 51);
             this.tabControlZakładki.Name = "tabControlZakładki";
             this.tabControlZakładki.SelectedIndex = 0;
-            this.tabControlZakładki.Size = new System.Drawing.Size(1220, 916);
+            this.tabControlZakładki.Size = new System.Drawing.Size(1225, 916);
             this.tabControlZakładki.TabIndex = 47;
             this.tabControlZakładki.SelectedIndexChanged += new System.EventHandler(this.tabControlZakladki_SelectedIndexChanged);
             // 
@@ -2540,7 +2540,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Bisque;
-            this.ClientSize = new System.Drawing.Size(1207, 969);
+            this.ClientSize = new System.Drawing.Size(1212, 969);
             this.Controls.Add(this.tabControlZakładki);
             this.Controls.Add(this.toolStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2629,7 +2629,6 @@
         private System.Windows.Forms.TabPage Maszyny;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBoxOsoba_zarzadzajaca;
         private System.Windows.Forms.TextBox textBoxTyp;
@@ -2677,7 +2676,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox groupBoxSortowanie;
         private System.Windows.Forms.RadioButton radioButtonData_ost_przegl;
-        private System.Windows.Forms.RadioButton radioButtonData_kol_przegladu;
+        private System.Windows.Forms.RadioButton radioButtonSzukaj;
         private System.Windows.Forms.RadioButton radioButtonNazwa;
         private System.Windows.Forms.RadioButton radioButtonNr_pomieszczenia;
         private System.Windows.Forms.RadioButton radioButtonNr_fabryczny;
@@ -2831,6 +2830,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusNormalia;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelIDNormaliow;
+        private System.Windows.Forms.Label label58;
     }
 }
 
