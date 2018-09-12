@@ -35,6 +35,7 @@ namespace RemaGUM
         private int _interwalPrzegladow = 2;    //w latach
 
         private nsAccess2DB.OperatorBUS _OperatorBUS;
+        private nsAccess2DB.MaszynyBUS _maszynyBUS;
 
         /// <summary>
         /// Konstruktor formularza.
@@ -49,6 +50,7 @@ namespace RemaGUM
             _statusForm = (int)_status.edycja;
 
             _OperatorBUS = new nsAccess2DB.OperatorBUS(_connString);
+            _maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
 
             radioButtonNazwa.Checked = true; // przy starcie programu zaznaczone sortowanie po nazwie.
             WypelnijCzestotliwosc();
@@ -689,23 +691,99 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
-            //textBoxWyszukiwanie.Text = textBoxWyszukiwanie.Text.Trim();
+            textBoxWyszukiwanie.Text = textBoxWyszukiwanie.Text.Trim();
 
-            //if (textBoxWyszukiwanie.Text == string.Empty)
-            //{
-            //    pokazKomunikat("Proszę wpisać tekst do wyszukania. Szukanie anulowane.");
-            //    return;
-            //}
-            //nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-            //string S1 = textBoxWyszukiwanie.Text.ToUpper();
-            //string S2;
+            if (textBoxWyszukiwanie.Text == string.Empty)
+            {
+                pokazKomunikat("Proszę wpisać tekst do pola wyszukiwania. Szukanie anulowane.");
+                return;
+            }
+            Cursor.Current = Cursors.WaitCursor;
 
-            //if (_maszynaSzukajIdx >= maszynyBUS.count)
-            //{
+            nsAccess2DB.MaszynyVO maszynyVO;
+            string s1 = textBoxWyszukiwanie.Text.ToUpper();
+            string s2;
 
-            //}
-            //pokazKomunikat("nie znaleziono tekstu - powtórz szukanie");
+            labelNazwaMaszyny.ForeColor = Color.Black;
+            labelTypMaszyny.ForeColor = Color.Black;
+            labelNrInwentarzowyMaszyny.ForeColor = Color.Black;
+            labelNrFabrycznyMaszyny.ForeColor = Color.Black;
+            labelProducentMaszyny.ForeColor = Color.Black;
+            
+            if (_maszynaSzukajIdx >= _maszynyBUS.count)
+            {
+                pokazKomunikat("Szukam od początku listy maszyn.");
+                _maszynaSzukajIdx = 0;
+            }
+            for (int i = _maszynaSzukajIdx; i < _maszynyBUS.count; i++)
+            {
+                _maszynyBUS.idx = i;
+                maszynyVO = _maszynyBUS.VO;
+               
+                for (int j = 0; j < 5; j++)
+                {
+                    s2 = maszynyVO.Nazwa.ToUpper();
+                    if (j == 0)
+                    {
+                        s2 = maszynyVO.Nazwa.ToUpper();
+                    }
+                    if (j == 1)
+                    {
+                        s2 = maszynyVO.Typ.ToUpper();
+                    }
+                    if (j == 2)
+                    {
+                        s2 = maszynyVO.Nr_inwentarzowy.ToUpper();
+                    }
+                    if (j == 3)
+                    {
+                        s2 = maszynyVO.Nr_fabryczny.ToUpper();
+                    }
+                    if (j == 4)
+                    {
+                        s2 = maszynyVO.Producent.ToUpper();
+                    }
 
+                    if (s1.Contains(s1))
+                    {
+                        listBoxMaszyny.SelectedIndex = i;
+
+                        if (j == 0)
+                        {
+                            labelNazwaMaszyny.ForeColor = Color.Red;
+                        }
+                        if (j == 1)
+                        {
+                            labelTypMaszyny.ForeColor = Color.Red;
+                        }
+                        if(j == 2)
+                        {
+                            labelNrInwentarzowyMaszyny.ForeColor = Color.Red;
+                        }
+                        if (j == 3)
+                        {
+                            labelNrFabrycznyMaszyny.ForeColor = Color.Red;
+                        }
+                        if (j == 4)
+                        {
+                            labelProducentMaszyny.ForeColor = Color.Red;
+                        }
+                        _maszynaSzukajIdx = i + 1;
+
+                        this.Cursor = Cursors.Default;
+                        this.Refresh();
+
+                        pokazKomunikat("tekst znaleziony");
+
+                        return;
+                    }
+                }// for (int j = 0 ...
+            }// for (int i = _maszynaSzukajIdx; ...
+
+            _maszynaSzukajIdx = _maszynyBUS.count;
+
+            pokazKomunikat("nie znaleziono tekstu - powtórz szukanie");
+            Cursor.Current = Cursors.Default;
 
             // listBoxMaszyny.Items.Clear();
 
@@ -1504,7 +1582,7 @@ namespace RemaGUM
 
 
         //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  ---------------------------Operatorzy maszyn.
-        int _operatorSzukIdx = 0;
+        
        
         //wyświetla listę operatorów maszyn po imieniu i nazwisku
         private void WypelnijOperatorowDanymi()
@@ -1816,7 +1894,7 @@ namespace RemaGUM
         private void buttonSzukajOperator_Click(object sender, EventArgs e)
         {
             listBoxOperator.Items.Clear();
-
+            comboBoxOperator.SelectedIndex = 4;
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
             operatorBUS.selectQuery("SELECT * FROM Operator WHERE Op_nazwisko LIKE '" + textBoxWyszukiwanieOperator.Text + "%' OR Op_imie LIKE '" + textBoxWyszukiwanieOperator.Text + "%';");
 
@@ -1830,8 +1908,6 @@ namespace RemaGUM
             {
                 listBoxOperator.SelectedIndex = 0;
             }
-
-
         }// buttonSzukajOperator_Click
 
 
@@ -1849,8 +1925,6 @@ namespace RemaGUM
                     listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
                     operatorBUS.skip();
                 }
-                textBoxWyszukiwanieOperator.Enabled = false;
-                buttonSzukajOperator.Enabled = false;
             }
                 if (comboBoxOperator.SelectedIndex == 1)
             {
@@ -1860,8 +1934,6 @@ namespace RemaGUM
                     listBoxOperator.Items.Add(operatorBUS.VO.Dzial + " - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
                     operatorBUS.skip();
                 }
-                textBoxWyszukiwanieOperator.Enabled = false;
-                buttonSzukajOperator.Enabled = false;
             }
             if (comboBoxOperator.SelectedIndex == 2)
             {
@@ -1871,8 +1943,6 @@ namespace RemaGUM
                     listBoxOperator.Items.Add(operatorBUS.VO.Uprawnienie + " - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
                     operatorBUS.skip();
                 }
-                textBoxWyszukiwanieOperator.Enabled = false;
-                buttonSzukajOperator.Enabled = false;
             }
             if (comboBoxOperator.SelectedIndex == 3)
             {
@@ -1882,17 +1952,15 @@ namespace RemaGUM
                     listBoxOperator.Items.Add(operatorBUS.VO.Dzien + ":" + operatorBUS.VO.Mc + ":" + operatorBUS.VO.Rok + " - (" + operatorBUS.VO.Uprawnienie + ") - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
                     operatorBUS.skip();
                 }
-                textBoxWyszukiwanieOperator.Enabled = false;
-                buttonSzukajOperator.Enabled = false;
             }
             if (comboBoxOperator.SelectedIndex == 4)
             {
                 operatorBUS.selectQuery("SELECT * FROM Operator WHERE Op_nazwisko LIKE '" + textBoxWyszukiwanieOperator.Text + "%' OR Op_imie LIKE '" + textBoxWyszukiwanieOperator.Text + "%';");
                 operatorBUS.idx = listBoxOperator.SelectedIndex;
                 toolStripStatusLabelIDOperatora.Text = operatorBUS.VO.Identyfikator.ToString();
-                textBoxWyszukiwanieOperator.Enabled = true;
-                buttonSzukajOperator.Enabled = true;
             }
+            
+
             if (listBoxOperator.Items.Count > 0)
             {
                 listBoxOperator.SelectedIndex = 0;

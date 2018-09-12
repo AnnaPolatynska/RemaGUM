@@ -153,33 +153,33 @@
             this.buttonUsunZdj = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.checkedListBoxOperatorzy_maszyn = new System.Windows.Forms.CheckedListBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBoxRok_produkcji = new System.Windows.Forms.TextBox();
             this.label58 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.labelTypMaszyny = new System.Windows.Forms.Label();
+            this.dateTimePickerData_ost_przegl = new System.Windows.Forms.DateTimePicker();
             this.comboBoxOsoba_zarzadzajaca = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerData_kol_przegl = new System.Windows.Forms.DateTimePicker();
             this.textBoxTyp = new System.Windows.Forms.TextBox();
             this.textBoxNr_pom = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelNrInwentarzowyMaszyny = new System.Windows.Forms.Label();
             this.textBoxNr_inwentarzowy = new System.Windows.Forms.TextBox();
-            this.dateTimePickerData_kol_przegl = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelNazwaMaszyny = new System.Windows.Forms.Label();
             this.comboBoxDzial = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePickerData_ost_przegl = new System.Windows.Forms.DateTimePicker();
+            this.labelNrFabrycznyMaszyny = new System.Windows.Forms.Label();
             this.textBoxNazwa = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.textBoxNr_fabryczny = new System.Windows.Forms.TextBox();
             this.comboBoxKategoria = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelProducentMaszyny = new System.Windows.Forms.Label();
             this.richTextBoxUwagi = new System.Windows.Forms.RichTextBox();
             this.textBoxProducent = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBoxRok_produkcji = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.buttonSzukaj = new System.Windows.Forms.Button();
             this.textBoxWyszukiwanie = new System.Windows.Forms.TextBox();
@@ -320,7 +320,7 @@
             this.Normalia.Controls.Add(this.groupBox21);
             this.Normalia.Location = new System.Drawing.Point(4, 22);
             this.Normalia.Name = "Normalia";
-            this.Normalia.Size = new System.Drawing.Size(1212, 890);
+            this.Normalia.Size = new System.Drawing.Size(1217, 890);
             this.Normalia.TabIndex = 2;
             this.Normalia.Text = "Normalia";
             // 
@@ -331,7 +331,7 @@
             this.toolStripStatusLabelIDNormaliow});
             this.statusStrip1.Location = new System.Drawing.Point(0, 868);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1212, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1217, 22);
             this.statusStrip1.TabIndex = 59;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -901,7 +901,7 @@
             this.Materiały.Location = new System.Drawing.Point(4, 22);
             this.Materiały.Name = "Materiały";
             this.Materiały.Padding = new System.Windows.Forms.Padding(3);
-            this.Materiały.Size = new System.Drawing.Size(1212, 890);
+            this.Materiały.Size = new System.Drawing.Size(1217, 890);
             this.Materiały.TabIndex = 1;
             this.Materiały.Text = "Materiały";
             // 
@@ -912,7 +912,7 @@
             this.toolStripStatusLabelID_Materialu});
             this.statusStrip4.Location = new System.Drawing.Point(3, 865);
             this.statusStrip4.Name = "statusStrip4";
-            this.statusStrip4.Size = new System.Drawing.Size(1206, 22);
+            this.statusStrip4.Size = new System.Drawing.Size(1211, 22);
             this.statusStrip4.TabIndex = 53;
             this.statusStrip4.Text = "statusStrip4";
             // 
@@ -1582,33 +1582,33 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox4.Controls.Add(this.checkedListBoxOperatorzy_maszyn);
+            this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.textBoxRok_produkcji);
             this.groupBox4.Controls.Add(this.label58);
-            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.labelTypMaszyny);
+            this.groupBox4.Controls.Add(this.dateTimePickerData_ost_przegl);
             this.groupBox4.Controls.Add(this.comboBoxOsoba_zarzadzajaca);
+            this.groupBox4.Controls.Add(this.dateTimePickerData_kol_przegl);
             this.groupBox4.Controls.Add(this.textBoxTyp);
             this.groupBox4.Controls.Add(this.textBoxNr_pom);
-            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.labelNrInwentarzowyMaszyny);
             this.groupBox4.Controls.Add(this.textBoxNr_inwentarzowy);
-            this.groupBox4.Controls.Add(this.dateTimePickerData_kol_przegl);
-            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.labelNazwaMaszyny);
             this.groupBox4.Controls.Add(this.comboBoxDzial);
-            this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Controls.Add(this.dateTimePickerData_ost_przegl);
+            this.groupBox4.Controls.Add(this.labelNrFabrycznyMaszyny);
             this.groupBox4.Controls.Add(this.textBoxNazwa);
-            this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.textBoxNr_fabryczny);
             this.groupBox4.Controls.Add(this.comboBoxKategoria);
-            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.labelProducentMaszyny);
             this.groupBox4.Controls.Add(this.richTextBoxUwagi);
             this.groupBox4.Controls.Add(this.textBoxProducent);
-            this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.textBoxRok_produkcji);
-            this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Location = new System.Drawing.Point(333, 80);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(419, 775);
@@ -1624,6 +1624,15 @@
             this.checkedListBoxOperatorzy_maszyn.Size = new System.Drawing.Size(380, 199);
             this.checkedListBoxOperatorzy_maszyn.TabIndex = 41;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(15, 336);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Rok produkcji";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -1634,6 +1643,14 @@
             this.label1.TabIndex = 34;
             this.label1.Text = "Kategoria ";
             // 
+            // textBoxRok_produkcji
+            // 
+            this.textBoxRok_produkcji.BackColor = System.Drawing.Color.Linen;
+            this.textBoxRok_produkcji.Location = new System.Drawing.Point(15, 352);
+            this.textBoxRok_produkcji.Name = "textBoxRok_produkcji";
+            this.textBoxRok_produkcji.Size = new System.Drawing.Size(86, 20);
+            this.textBoxRok_produkcji.TabIndex = 15;
+            // 
             // label58
             // 
             this.label58.AutoSize = true;
@@ -1643,14 +1660,40 @@
             this.label58.TabIndex = 40;
             this.label58.Text = "Operator maszyny";
             // 
-            // label3
+            // label12
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 123);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Typ";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(104, 336);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(131, 13);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "Data ostatniego przegladu";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(257, 336);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(138, 13);
+            this.label13.TabIndex = 27;
+            this.label13.Text = "Data nastepnego przeglądu";
+            // 
+            // labelTypMaszyny
+            // 
+            this.labelTypMaszyny.AutoSize = true;
+            this.labelTypMaszyny.Location = new System.Drawing.Point(15, 123);
+            this.labelTypMaszyny.Name = "labelTypMaszyny";
+            this.labelTypMaszyny.Size = new System.Drawing.Size(25, 13);
+            this.labelTypMaszyny.TabIndex = 9;
+            this.labelTypMaszyny.Text = "Typ";
+            // 
+            // dateTimePickerData_ost_przegl
+            // 
+            this.dateTimePickerData_ost_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateTimePickerData_ost_przegl.Location = new System.Drawing.Point(107, 352);
+            this.dateTimePickerData_ost_przegl.Name = "dateTimePickerData_ost_przegl";
+            this.dateTimePickerData_ost_przegl.Size = new System.Drawing.Size(128, 20);
+            this.dateTimePickerData_ost_przegl.TabIndex = 36;
             // 
             // comboBoxOsoba_zarzadzajaca
             // 
@@ -1661,6 +1704,14 @@
             this.comboBoxOsoba_zarzadzajaca.Size = new System.Drawing.Size(380, 21);
             this.comboBoxOsoba_zarzadzajaca.TabIndex = 39;
             this.comboBoxOsoba_zarzadzajaca.SelectedIndexChanged += new System.EventHandler(this.comboBox_Osoba_zarzadzajaca_SelectedIndexChanged);
+            // 
+            // dateTimePickerData_kol_przegl
+            // 
+            this.dateTimePickerData_kol_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateTimePickerData_kol_przegl.Location = new System.Drawing.Point(259, 352);
+            this.dateTimePickerData_kol_przegl.Name = "dateTimePickerData_kol_przegl";
+            this.dateTimePickerData_kol_przegl.Size = new System.Drawing.Size(136, 20);
+            this.dateTimePickerData_kol_przegl.TabIndex = 37;
             // 
             // textBoxTyp
             // 
@@ -1678,39 +1729,31 @@
             this.textBoxNr_pom.Size = new System.Drawing.Size(156, 20);
             this.textBoxNr_pom.TabIndex = 38;
             // 
-            // label4
+            // labelNrInwentarzowyMaszyny
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 228);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Nr inwentarzowy";
+            this.labelNrInwentarzowyMaszyny.AutoSize = true;
+            this.labelNrInwentarzowyMaszyny.Location = new System.Drawing.Point(16, 177);
+            this.labelNrInwentarzowyMaszyny.Name = "labelNrInwentarzowyMaszyny";
+            this.labelNrInwentarzowyMaszyny.Size = new System.Drawing.Size(85, 13);
+            this.labelNrInwentarzowyMaszyny.TabIndex = 10;
+            this.labelNrInwentarzowyMaszyny.Text = "Nr inwentarzowy";
             // 
             // textBoxNr_inwentarzowy
             // 
             this.textBoxNr_inwentarzowy.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_inwentarzowy.Location = new System.Drawing.Point(15, 244);
+            this.textBoxNr_inwentarzowy.Location = new System.Drawing.Point(16, 193);
             this.textBoxNr_inwentarzowy.Name = "textBoxNr_inwentarzowy";
             this.textBoxNr_inwentarzowy.Size = new System.Drawing.Size(380, 20);
             this.textBoxNr_inwentarzowy.TabIndex = 11;
             // 
-            // dateTimePickerData_kol_przegl
+            // labelNazwaMaszyny
             // 
-            this.dateTimePickerData_kol_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
-            this.dateTimePickerData_kol_przegl.Location = new System.Drawing.Point(259, 193);
-            this.dateTimePickerData_kol_przegl.Name = "dateTimePickerData_kol_przegl";
-            this.dateTimePickerData_kol_przegl.Size = new System.Drawing.Size(136, 20);
-            this.dateTimePickerData_kol_przegl.TabIndex = 37;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 74);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Nazwa";
+            this.labelNazwaMaszyny.AutoSize = true;
+            this.labelNazwaMaszyny.Location = new System.Drawing.Point(16, 74);
+            this.labelNazwaMaszyny.Name = "labelNazwaMaszyny";
+            this.labelNazwaMaszyny.Size = new System.Drawing.Size(40, 13);
+            this.labelNazwaMaszyny.TabIndex = 7;
+            this.labelNazwaMaszyny.Text = "Nazwa";
             // 
             // comboBoxDzial
             // 
@@ -1722,22 +1765,14 @@
             this.comboBoxDzial.TabIndex = 33;
             this.comboBoxDzial.SelectedIndexChanged += new System.EventHandler(this.comboBoxDzial_SelectedIndexChanged);
             // 
-            // label6
+            // labelNrFabrycznyMaszyny
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 281);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Nr fabryczny";
-            // 
-            // dateTimePickerData_ost_przegl
-            // 
-            this.dateTimePickerData_ost_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
-            this.dateTimePickerData_ost_przegl.Location = new System.Drawing.Point(107, 193);
-            this.dateTimePickerData_ost_przegl.Name = "dateTimePickerData_ost_przegl";
-            this.dateTimePickerData_ost_przegl.Size = new System.Drawing.Size(128, 20);
-            this.dateTimePickerData_ost_przegl.TabIndex = 36;
+            this.labelNrFabrycznyMaszyny.AutoSize = true;
+            this.labelNrFabrycznyMaszyny.Location = new System.Drawing.Point(17, 230);
+            this.labelNrFabrycznyMaszyny.Name = "labelNrFabrycznyMaszyny";
+            this.labelNrFabrycznyMaszyny.Size = new System.Drawing.Size(66, 13);
+            this.labelNrFabrycznyMaszyny.TabIndex = 13;
+            this.labelNrFabrycznyMaszyny.Text = "Nr fabryczny";
             // 
             // textBoxNazwa
             // 
@@ -1747,19 +1782,10 @@
             this.textBoxNazwa.Size = new System.Drawing.Size(380, 20);
             this.textBoxNazwa.TabIndex = 6;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(257, 177);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(138, 13);
-            this.label13.TabIndex = 27;
-            this.label13.Text = "Data nastepnego przeglądu";
-            // 
             // textBoxNr_fabryczny
             // 
             this.textBoxNr_fabryczny.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_fabryczny.Location = new System.Drawing.Point(15, 297);
+            this.textBoxNr_fabryczny.Location = new System.Drawing.Point(16, 246);
             this.textBoxNr_fabryczny.Name = "textBoxNr_fabryczny";
             this.textBoxNr_fabryczny.Size = new System.Drawing.Size(380, 20);
             this.textBoxNr_fabryczny.TabIndex = 14;
@@ -1774,14 +1800,14 @@
             this.comboBoxKategoria.TabIndex = 31;
             this.comboBoxKategoria.SelectedIndexChanged += new System.EventHandler(this.comboBoxKategoria_SelectedIndexChanged);
             // 
-            // label7
+            // labelProducentMaszyny
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 331);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Producent";
+            this.labelProducentMaszyny.AutoSize = true;
+            this.labelProducentMaszyny.Location = new System.Drawing.Point(17, 280);
+            this.labelProducentMaszyny.Name = "labelProducentMaszyny";
+            this.labelProducentMaszyny.Size = new System.Drawing.Size(56, 13);
+            this.labelProducentMaszyny.TabIndex = 15;
+            this.labelProducentMaszyny.Text = "Producent";
             // 
             // richTextBoxUwagi
             // 
@@ -1797,19 +1823,10 @@
             // textBoxProducent
             // 
             this.textBoxProducent.BackColor = System.Drawing.Color.Linen;
-            this.textBoxProducent.Location = new System.Drawing.Point(15, 347);
+            this.textBoxProducent.Location = new System.Drawing.Point(16, 296);
             this.textBoxProducent.Name = "textBoxProducent";
             this.textBoxProducent.Size = new System.Drawing.Size(380, 20);
             this.textBoxProducent.TabIndex = 16;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(104, 177);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(131, 13);
-            this.label12.TabIndex = 25;
-            this.label12.Text = "Data ostatniego przegladu";
             // 
             // label8
             // 
@@ -1846,23 +1863,6 @@
             this.label10.Size = new System.Drawing.Size(163, 13);
             this.label10.TabIndex = 21;
             this.label10.Text = "Dział do którego należy maszyna";
-            // 
-            // textBoxRok_produkcji
-            // 
-            this.textBoxRok_produkcji.BackColor = System.Drawing.Color.Linen;
-            this.textBoxRok_produkcji.Location = new System.Drawing.Point(15, 193);
-            this.textBoxRok_produkcji.Name = "textBoxRok_produkcji";
-            this.textBoxRok_produkcji.Size = new System.Drawing.Size(86, 20);
-            this.textBoxRok_produkcji.TabIndex = 15;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 177);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Rok produkcji";
             // 
             // groupBox5
             // 
@@ -1931,7 +1931,7 @@
             this.listBoxMaszyny.FormattingEnabled = true;
             this.listBoxMaszyny.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaszyny.Name = "listBoxMaszyny";
-            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 810);
+            this.listBoxMaszyny.Size = new System.Drawing.Size(309, 823);
             this.listBoxMaszyny.TabIndex = 0;
             this.listBoxMaszyny.SelectedIndexChanged += new System.EventHandler(this.listBoxMaszyny_SelectedIndexChanged);
             // 
@@ -2513,7 +2513,7 @@
             "Dział",
             "Uprawnienia",
             "Data końca uprawnień",
-            "WYSZUKAJ"});
+            " "});
             this.comboBoxOperator.Location = new System.Drawing.Point(15, 19);
             this.comboBoxOperator.Name = "comboBoxOperator";
             this.comboBoxOperator.Size = new System.Drawing.Size(299, 21);
@@ -2615,22 +2615,22 @@
         private System.Windows.Forms.TabPage Maszyny;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelTypMaszyny;
         private System.Windows.Forms.ComboBox comboBoxOsoba_zarzadzajaca;
         private System.Windows.Forms.TextBox textBoxTyp;
         private System.Windows.Forms.TextBox textBoxNr_pom;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelNrInwentarzowyMaszyny;
         private System.Windows.Forms.TextBox textBoxNr_inwentarzowy;
         private System.Windows.Forms.DateTimePicker dateTimePickerData_kol_przegl;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelNazwaMaszyny;
         private System.Windows.Forms.ComboBox comboBoxDzial;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelNrFabrycznyMaszyny;
         private System.Windows.Forms.DateTimePicker dateTimePickerData_ost_przegl;
         private System.Windows.Forms.TextBox textBoxNazwa;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBoxNr_fabryczny;
         private System.Windows.Forms.ComboBox comboBoxKategoria;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelProducentMaszyny;
         private System.Windows.Forms.RichTextBox richTextBoxUwagi;
         private System.Windows.Forms.TextBox textBoxProducent;
         private System.Windows.Forms.Label label12;
