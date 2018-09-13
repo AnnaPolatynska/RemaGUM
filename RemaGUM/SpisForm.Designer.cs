@@ -238,6 +238,9 @@
             this.groupBox26 = new System.Windows.Forms.GroupBox();
             this.comboBoxOperator = new System.Windows.Forms.ComboBox();
             this.Dysponent_maszyn = new System.Windows.Forms.TabPage();
+            this.statusStripDysponent = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelDysponenta = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox27 = new System.Windows.Forms.GroupBox();
             this.buttonNowaDysponent = new System.Windows.Forms.Button();
             this.buttonUsunDysponent = new System.Windows.Forms.Button();
@@ -259,9 +262,6 @@
             this.textBoxWyszukiwanieDysp = new System.Windows.Forms.TextBox();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.listBoxDysponent = new System.Windows.Forms.ListBox();
-            this.statusStripDysponent = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelDysponenta = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip.SuspendLayout();
             this.Normalia.SuspendLayout();
             this.statusStripNormalia.SuspendLayout();
@@ -305,11 +305,11 @@
             this.groupBox25.SuspendLayout();
             this.groupBox26.SuspendLayout();
             this.Dysponent_maszyn.SuspendLayout();
+            this.statusStripDysponent.SuspendLayout();
             this.groupBox27.SuspendLayout();
             this.groupBox28.SuspendLayout();
             this.groupBox29.SuspendLayout();
             this.groupBox30.SuspendLayout();
-            this.statusStripDysponent.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -1734,7 +1734,7 @@
             this.comboBoxDysponent.Name = "comboBoxDysponent";
             this.comboBoxDysponent.Size = new System.Drawing.Size(380, 21);
             this.comboBoxDysponent.TabIndex = 39;
-            this.comboBoxDysponent.SelectedIndexChanged += new System.EventHandler(this.comboBox_Osoba_zarzadzajaca_SelectedIndexChanged);
+            this.comboBoxDysponent.SelectedIndexChanged += new System.EventHandler(this.comboBox_Dysponent_SelectedIndexChanged);
             // 
             // dateTimePickerData_kol_przegl
             // 
@@ -2568,6 +2568,29 @@
             this.Dysponent_maszyn.TabIndex = 4;
             this.Dysponent_maszyn.Text = "Dysponent maszyn";
             // 
+            // statusStripDysponent
+            // 
+            this.statusStripDysponent.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabelDysponenta});
+            this.statusStripDysponent.Location = new System.Drawing.Point(0, 868);
+            this.statusStripDysponent.Name = "statusStripDysponent";
+            this.statusStripDysponent.Size = new System.Drawing.Size(1217, 22);
+            this.statusStripDysponent.TabIndex = 61;
+            this.statusStripDysponent.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(87, 17);
+            this.toolStripStatusLabel1.Text = "ID Dysponenta:";
+            // 
+            // toolStripStatusLabelDysponenta
+            // 
+            this.toolStripStatusLabelDysponenta.Name = "toolStripStatusLabelDysponenta";
+            this.toolStripStatusLabelDysponenta.Size = new System.Drawing.Size(44, 17);
+            this.toolStripStatusLabelDysponenta.Text = "IDDysp";
+            // 
             // groupBox27
             // 
             this.groupBox27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -2802,29 +2825,6 @@
             this.listBoxDysponent.Size = new System.Drawing.Size(299, 641);
             this.listBoxDysponent.TabIndex = 0;
             // 
-            // statusStripDysponent
-            // 
-            this.statusStripDysponent.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabelDysponenta});
-            this.statusStripDysponent.Location = new System.Drawing.Point(0, 868);
-            this.statusStripDysponent.Name = "statusStripDysponent";
-            this.statusStripDysponent.Size = new System.Drawing.Size(1217, 22);
-            this.statusStripDysponent.TabIndex = 61;
-            this.statusStripDysponent.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(87, 17);
-            this.toolStripStatusLabel1.Text = "ID Dysponenta:";
-            // 
-            // toolStripStatusLabelDysponenta
-            // 
-            this.toolStripStatusLabelDysponenta.Name = "toolStripStatusLabelDysponenta";
-            this.toolStripStatusLabelDysponenta.Size = new System.Drawing.Size(44, 17);
-            this.toolStripStatusLabelDysponenta.Text = "IDDysp";
-            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2908,14 +2908,14 @@
             this.groupBox26.ResumeLayout(false);
             this.Dysponent_maszyn.ResumeLayout(false);
             this.Dysponent_maszyn.PerformLayout();
+            this.statusStripDysponent.ResumeLayout(false);
+            this.statusStripDysponent.PerformLayout();
             this.groupBox27.ResumeLayout(false);
             this.groupBox28.ResumeLayout(false);
             this.groupBox28.PerformLayout();
             this.groupBox29.ResumeLayout(false);
             this.groupBox29.PerformLayout();
             this.groupBox30.ResumeLayout(false);
-            this.statusStripDysponent.ResumeLayout(false);
-            this.statusStripDysponent.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

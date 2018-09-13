@@ -532,8 +532,6 @@ namespace RemaGUM
         /// <summary>
         /// wypełnia listbox kategoriami maszyn
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void WypelnijKategorie()
         {
             nsAccess2DB.KategoriaBUS kategoriaBUS = new nsAccess2DB.KategoriaBUS(_connString);
@@ -556,27 +554,30 @@ namespace RemaGUM
             kategoriaBUS.idx = comboBoxKategoria.SelectedIndex;
         }//comboBoxKategoria_SelectedIndexChanged
 
+        /// <summary>
+        /// Wypełnia danymi Dysponentów w zakładce Maszyny.
+        /// </summary>
         private void WypelnijDysponent()
         {
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
-            nsAccess2DB.DysponentVO VO;
+            nsAccess2DB.DysponentVO dysponentVO;
             comboBoxDysponent.Items.Clear();
 
             dysponentBUS.select();
             dysponentBUS.top();
             while (!dysponentBUS.eof)
             {
-                VO = dysponentBUS.VO;
-                comboBoxDysponent.Items.Add(VO.Dysp_dane);
+                dysponentVO = dysponentBUS.VO;
+                comboBoxDysponent.Items.Add(dysponentVO.Dysp_nazwisko + " " + dysponentVO.Dysp_imie);
                 dysponentBUS.skip();
             }
-        }//WypełnijOsobyOdp()
+        }//WypełnijDysponent()
 
-        private void comboBox_Osoba_zarzadzajaca_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox_Dysponent_SelectedIndexChanged(object sender, EventArgs e)
         {
-            nsAccess2DB.DysponentBUS osoba_ZarzadzajacaBUS = new nsAccess2DB.DysponentBUS(_connString);
-            osoba_ZarzadzajacaBUS.idx = comboBoxDysponent.SelectedIndex;
-        }// comboBox_Osoba_zarzadzajaca_SelectedIndexChanged
+            nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
+            dysponentBUS.idx = comboBoxDysponent.SelectedIndex;
+        }//comboBox_Dysponent_SelectedIndexChanged()
 
         //////////////////////////////////////////////////////////////         Rabio buttony
         private void radioButtonNazwa_CheckedChanged(object sender, EventArgs e)
@@ -1990,6 +1991,7 @@ namespace RemaGUM
 
         }
 
+        
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM
