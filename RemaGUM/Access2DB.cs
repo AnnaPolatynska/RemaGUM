@@ -174,7 +174,7 @@ namespace nsAccess2DB
         private string _Zdjecie = string.Empty;//255
         private byte[] _Zawartosc_pliku = new byte[]{}; // obiekt OLE - zdjęcie
         private string _Rozszerz_zdj = string.Empty; // 255
-        private string _Nazwa_os_zarzadzajaca = string.Empty; // 255
+        private string _Nazwa_dysponent = string.Empty; // 255
         private string _Nr_pom = string.Empty; // 255
         private string _Dzial = string.Empty; // 255
         private string _Nr_prot_BHP = string.Empty; // 255
@@ -251,10 +251,10 @@ namespace nsAccess2DB
             get { return _Rozszerz_zdj; }
             set { _Rozszerz_zdj = value; }
         }
-        public string Nazwa_os_zarzadzajaca
+        public string Nazwa_dysponent
         {
-            get { return _Nazwa_os_zarzadzajaca; }
-            set { _Nazwa_os_zarzadzajaca = value; }
+            get { return _Nazwa_dysponent; }
+            set { _Nazwa_dysponent = value; }
         }
         public string Nr_pom {
             get { return _Nr_pom; }
@@ -413,9 +413,9 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool insert(nsAccess2DB.MaszynyVO VO)
         {
-            string query = "INSERT INTO Maszyny (Kategoria, Nazwa, Typ, Nr_inwentarzowy, Nr_fabryczny, Rok_produkcji, Producent, Zdjecie, Zawartosc_pliku, Rozszerz_zdj, Nazwa_os_zarzadzajaca, Nr_pom, Dzial, Nr_prot_BHP, Data_ost_przegl, Data_kol_przegl, " +
+            string query = "INSERT INTO Maszyny (Kategoria, Nazwa, Typ, Nr_inwentarzowy, Nr_fabryczny, Rok_produkcji, Producent, Zdjecie, Zawartosc_pliku, Rozszerz_zdj, Dysp_dane, Nr_pom, Dzial, Nr_prot_BHP, Data_ost_przegl, Data_kol_przegl, " +
                 "Uwagi, Wykorzystanie, Stan_techniczny, Propozycja, Rok_ost_przeg, Mc_ost_przeg, Dz_ost_przeg, Rok_kol_przeg, Mc_kol_przeg, Dz_kol_przeg)" +
-                " VALUES (@Kategoria, @Nazwa, @Typ, @Nr_inwentarzowy, @Nr_fabryczny, @Rok_produkcji, @Producent, @Zdjecie, @Zawartosc_pliku, @Rozszerz_zdj, @Nazwa_os_zarzadzajaca, @Nr_pom, @Dzial, @Nr_prot_BHP, @Data_ost_przegl, @Data_kol_przegl, " +
+                " VALUES (@Kategoria, @Nazwa, @Typ, @Nr_inwentarzowy, @Nr_fabryczny, @Rok_produkcji, @Producent, @Zdjecie, @Zawartosc_pliku, @Rozszerz_zdj, @Dysp_dane, @Nr_pom, @Dzial, @Nr_prot_BHP, @Data_ost_przegl, @Data_kol_przegl, " +
                 "@Uwagi, @Wykorzystanie, @Stan_techniczny, @Propozycja, @Rok_ost_przeg, @Mc_ost_przeg, @Dz_ost_przeg, @Rok_kol_przeg, @Mc_kol_przeg, @Dz_kol_przeg);";
 
             OleDbParameter[] parameters = new OleDbParameter[26];
@@ -449,8 +449,8 @@ namespace nsAccess2DB
             parameters[9] = new OleDbParameter("Rozszerz_zdj", OleDbType.VarChar, 255);
             parameters[9].Value = VO.Rozszerz_zdj;
 
-            parameters[10] = new OleDbParameter("Nazwa_os_zarzadzajaca", OleDbType.VarChar, 255);
-            parameters[10].Value = VO.Nazwa_os_zarzadzajaca;
+            parameters[10] = new OleDbParameter("Dysp_dane", OleDbType.VarChar, 255);
+            parameters[10].Value = VO.Nazwa_dysponent;
 
             parameters[11] = new OleDbParameter("Nr_pom", OleDbType.VarChar, 255);
             parameters[11].Value = VO.Nr_pom;
@@ -508,7 +508,7 @@ namespace nsAccess2DB
          /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool update(nsAccess2DB.MaszynyVO VO)
         {
-            string query = "UPDATE Maszyny SET Kategoria = @Kategoria, Nazwa = @Nazwa, Typ = @Typ, Nr_inwentarzowy = @Nr_inwentarzowy, Nr_fabryczny = @Nr_fabryczny, Rok_produkcji = @Rok_produkcji, Producent = @Producent, Zdjecie = @Zdjecie, Zawartosc_pliku = @Zawartosc_pliku, Rozszerz_zdj = @Rozszerz_zdj, Nazwa_os_zarzadzajaca = @Nazwa_os_zarzadzajaca, Nr_pom = @Nr_pom, Dzial = @Dzial, Nr_prot_BHP = @Nr_prot_BHP, Data_ost_przegl = @Data_ost_przegl, " +
+            string query = "UPDATE Maszyny SET Kategoria = @Kategoria, Nazwa = @Nazwa, Typ = @Typ, Nr_inwentarzowy = @Nr_inwentarzowy, Nr_fabryczny = @Nr_fabryczny, Rok_produkcji = @Rok_produkcji, Producent = @Producent, Zdjecie = @Zdjecie, Zawartosc_pliku = @Zawartosc_pliku, Rozszerz_zdj = @Rozszerz_zdj, Dysp_dane = @Dysp_dane, Nr_pom = @Nr_pom, Dzial = @Dzial, Nr_prot_BHP = @Nr_prot_BHP, Data_ost_przegl = @Data_ost_przegl, " +
                 "Data_kol_przegl = @Data_kol_przegl, Uwagi = @Uwagi, Wykorzystanie = @Wykorzystanie, Stan_techniczny = @Stan_techniczny, Propozycja = @Propozycja, Rok_ost_przeg = @Rok_ost_przeg," +
                 " Mc_ost_przeg = @Mc_ost_przeg, Dz_ost_przeg = @Dz_ost_przeg, Rok_kol_przeg = @Rok_kol_przeg, Mc_kol_przeg = @Mc_kol_przeg, Dz_kol_przeg = @Dz_kol_przeg WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
 
@@ -543,8 +543,8 @@ namespace nsAccess2DB
             parameters[9] = new OleDbParameter("Rozszerz_zdj", OleDbType.VarChar, 255);
             parameters[9].Value = VO.Rozszerz_zdj;
 
-            parameters[10] = new OleDbParameter("Nazwa_os_zarzadzajaca", OleDbType.VarChar, 255);
-            parameters[10].Value = VO.Nazwa_os_zarzadzajaca;
+            parameters[10] = new OleDbParameter("Dysp_dane", OleDbType.VarChar, 255);
+            parameters[10].Value = VO.Nazwa_dysponent;
 
             parameters[11] = new OleDbParameter("Nr_pom", OleDbType.VarChar, 255);
             parameters[11].Value = VO.Nr_pom;
@@ -742,7 +742,7 @@ namespace nsAccess2DB
                 }
 
                 VOi.Rozszerz_zdj = dr["Rozszerz_zdj"].ToString();
-                VOi.Nazwa_os_zarzadzajaca = dr["Nazwa_os_zarzadzajaca"].ToString();
+                VOi.Nazwa_dysponent = dr["Nazwa_dysponent"].ToString();
                 VOi.Nr_pom = dr["Nr_pom"].ToString();
                 VOi.Dzial = dr["Dzial"].ToString();
                 VOi.Nr_prot_BHP = dr["Nr_prot_BHP"].ToString();
@@ -2977,52 +2977,52 @@ namespace nsAccess2DB
 
 
 
-    /////////////////////////////////////////////////////////////////////////////////// Osoba_zarzadzajaca 
+    /////////////////////////////////////////////////////////////////////////////////// Dysponent 
     /// <summary>
-    /// Klasa wymiany danych z tabelą Osoba_zarzadzajaca.
+    /// Klasa wymiany danych z tabelą Dysponent .
     /// </summary>
-    public class Osoba_zarzadzajacaVO
+    public class DysponentVO
     {
         private int _Identyfikator = 0;
-        private string _Nazwa_os_zarzadzajaca = string.Empty; //255
+        private string _Dysp_dane = string.Empty; //255
         private string _Dzial = string.Empty; //255
-        private string _Os_zarz_nazwisko = string.Empty; //255
-        private string _Os_zarz_imie = string.Empty; //255
+        private string _Dysp_nazwisko = string.Empty; //255
+        private string _Dysp_imie = string.Empty; //255
 
         /// <summary>
-        /// Konstruktor wymiany danych z tabelą Osoba_zarzadzajaca
+        /// Konstruktor wymiany danych z tabelą Dysponent.
         /// </summary>
-        public Osoba_zarzadzajacaVO() { }
+        public DysponentVO() { }
 
         public int Identyfikator
         {
             get { return _Identyfikator; }
             set { _Identyfikator = value; }
         }
-        public string Nazwa_os_zarzadzajaca
+        public string Dysp_dane
         {
-            get { return _Nazwa_os_zarzadzajaca; }
-            set { _Nazwa_os_zarzadzajaca = value; }
+            get { return _Dysp_dane; }
+            set { _Dysp_dane = value; }
         }
         public string Dzial
         {
             get { return _Dzial; }
             set { _Dzial = value; }
         }
-        public string Os_zarz_nazwisko
+        public string Dysp_nazwisko
         {
-            get { return _Os_zarz_nazwisko; }
-            set { _Os_zarz_nazwisko = value; }
+            get { return _Dysp_nazwisko; }
+            set { _Dysp_nazwisko = value; }
         }
-        public string Os_zarz_imie
+        public string Dysp_imie
         {
-            get { return _Os_zarz_imie; }
-            set { _Os_zarz_imie = value; }
+            get { return _Dysp_imie; }
+            set { _Dysp_imie = value; }
         }
-    }//class Osoba_zarzadzajacaVO
+    }//class DysponentVO
 
-    //Klasa dostępu (Data Access Object) do tabeli Osoba_zarzadzajaca. ----------> DAO
-    public class Osoba_zarzadzajacaDAO
+    //Klasa dostępu (Data Access Object) do tabeli Dysponent . ----------> DAO
+    public class DysponentDAO
     {
         private dbConnection _conn;
         public string _error = string.Empty;
@@ -3030,11 +3030,11 @@ namespace nsAccess2DB
         /// <constructor>
         /// Konstruktor.
         /// </constructor>
-        public Osoba_zarzadzajacaDAO(string connString)
+        public DysponentDAO(string connString)
         {
             _conn = new dbConnection(connString);
             _error = _conn._error;
-        }//Osoba_zarzadzajacaDAO
+        }//DysponentDAO
 
         // ---> dowolne zapytanie z poziomu Form
 
@@ -3056,7 +3056,7 @@ namespace nsAccess2DB
         /// </summary>
         public DataTable select()
         {
-            string query = "SELECT * FROM Osoba_zarzadzajaca;";
+            string query = "SELECT * FROM Dysponent;";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
@@ -3071,7 +3071,7 @@ namespace nsAccess2DB
         /// <returns></returns>
         public DataTable select(int Identyfikator)
         {
-            string query = "SELECT * FROM Osoba_zarzadzajaca WHERE Identyfikator = " + Identyfikator.ToString() + ";";
+            string query = "SELECT * FROM Dysponent WHERE Identyfikator = " + Identyfikator.ToString() + ";";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
@@ -3084,24 +3084,24 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="VO">Obiekt wymiany danych.</param>
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
-        public bool insert(nsAccess2DB.Osoba_zarzadzajacaVO VO)
+        public bool insert(nsAccess2DB.DysponentVO VO)
         {
-            string query = "INSERT INTO Osoba_zarzadzajaca (Nazwa_os_zarzadzajaca, Dzial, Os_zarz_nazwisko, Os_zarz_imie)" +
-                " VALUES (@Nazwa_os_zarzadzajaca, @Dzial, @Os_zarz_nazwisko, @Os_zarz_imie)";
+            string query = "INSERT INTO Dysponent (Dysp_dane, Dzial, Dysp_nazwisko, Dysp_imie)" +
+                " VALUES (@Dysp_dane, @Dzial, @Dysp_nazwisko, @Dysp_imie)";
 
             OleDbParameter[] parameters = new OleDbParameter[4];
 
-            parameters[0] = new OleDbParameter("Nazwa_os_zarzadzajaca", OleDbType.VarChar, 255);
-            parameters[0].Value = VO.Nazwa_os_zarzadzajaca;
+            parameters[0] = new OleDbParameter("Dysp_dane", OleDbType.VarChar, 255);
+            parameters[0].Value = VO.Dysp_dane;
 
             parameters[1] = new OleDbParameter("Dzial", OleDbType.VarChar, 255);
             parameters[1].Value = VO.Dzial;
 
-            parameters[2] = new OleDbParameter("Os_zarz_nazwisko", OleDbType.VarChar, 255);
-            parameters[2].Value = VO.Os_zarz_nazwisko;
+            parameters[2] = new OleDbParameter("Dysp_nazwisko", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Dysp_nazwisko;
 
-            parameters[3] = new OleDbParameter("Os_zarz_imie", OleDbType.Integer);
-            parameters[3].Value = VO.Os_zarz_imie;
+            parameters[3] = new OleDbParameter("Dysp_imie", OleDbType.Integer);
+            parameters[3].Value = VO.Dysp_imie;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -3113,23 +3113,23 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="VO"></param>
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
-        public bool update(nsAccess2DB.Osoba_zarzadzajacaVO VO)
+        public bool update(nsAccess2DB.DysponentVO VO)
         {
-            string query = "UPDATE Osoba_zarzadzajaca SET Nazwa_os_zarzadzajaca = @Nazwa_os_zarzadzajaca, Dzial = @Dzial, Os_zarz_nazwisko = @Os_zarz_nazwisko, Os_zarz_imie = @Os_zarz_imie WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
+            string query = "UPDATE Dysponent SET Dysp_dane = @Dysp_dane, Dzial = @Dzial, Dysp_nazwisko = @Dysp_nazwisko, Dysp_imie = @Dysp_imie WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
          
             OleDbParameter[] parameters = new OleDbParameter[4];
 
-            parameters[0] = new OleDbParameter("Nazwa_os_zarzadzajaca", OleDbType.VarChar, 255);
-            parameters[0].Value = VO.Nazwa_os_zarzadzajaca;
+            parameters[0] = new OleDbParameter("Dysp_dane", OleDbType.VarChar, 255);
+            parameters[0].Value = VO.Dysp_dane;
 
             parameters[1] = new OleDbParameter("Dzial", OleDbType.VarChar, 255);
             parameters[1].Value = VO.Dzial;
 
-            parameters[2] = new OleDbParameter("Os_zarz_nazwisko", OleDbType.VarChar, 255);
-            parameters[2].Value = VO.Os_zarz_nazwisko;
+            parameters[2] = new OleDbParameter("Dysp_nazwisko", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Dysp_nazwisko;
 
-            parameters[3] = new OleDbParameter("Os_zarz_imie", OleDbType.Integer);
-            parameters[3].Value = VO.Os_zarz_imie;
+            parameters[3] = new OleDbParameter("Dysp_imie", OleDbType.Integer);
+            parameters[3].Value = VO.Dysp_imie;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -3143,22 +3143,22 @@ namespace nsAccess2DB
         /// <returns></returns>
         public bool delete(int Identyfikator)
         {
-            string query = "DELETE * FROM Osoba_zarzadzajaca WHERE Identyfikator = " + Identyfikator.ToString() + ";";
+            string query = "DELETE * FROM Dysponent WHERE Identyfikator = " + Identyfikator.ToString() + ";";
             OleDbParameter[] parameters = new OleDbParameter[0];
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
             return b;
         }// delete
 
-    }//class Osoba_zarzadzajacaDAO
+    }//class DysponentDAO
 
-    // Warstwa operacji biznesowaych tabeli Osoba_zarzadzajaca     --->    BUS.
-    public class Osoba_zarzadzajacaBUS
+    // Warstwa operacji biznesowaych tabeli Dysponent  --->    BUS.
+    public class DysponentBUS
     {
-        Osoba_zarzadzajacaDAO _DAO;
+        DysponentDAO _DAO;
 
-        private Osoba_zarzadzajacaVO[] _VOs = new Osoba_zarzadzajacaVO[0];    //lista danych
-        private Osoba_zarzadzajacaVO _VOi = new Osoba_zarzadzajacaVO();       //dane na pozycji _idx
+        private DysponentVO[] _VOs = new DysponentVO[0];    //lista danych
+        private DysponentVO _VOi = new DysponentVO();       //dane na pozycji _idx
         private int _idx = 0;                       //indeks pozycji
         private bool _eof = false;                  //wskaźnik końca pliku
         private int _count = 0;                     //liczba pozycji
@@ -3169,11 +3169,11 @@ namespace nsAccess2DB
         /// Konstruktor.
         /// </summary>
         /// <param name="connString">ConnectionString.</param>
-        public Osoba_zarzadzajacaBUS(string connString)
+        public DysponentBUS(string connString)
         {
-            _DAO = new Osoba_zarzadzajacaDAO(connString);
+            _DAO = new DysponentDAO(connString);
             _error = _DAO._error;
-        }//Osoba_zarzadzajacaBUS
+        }//DysponentBUS
 
         /// <summary>
         /// Wypełnia tablice danych pozycjami.
@@ -3206,7 +3206,7 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="VO">Obiekt wymiany danych.</param>
         /// <returns>Wartość logiczna powodzenia akcji.</returns>
-        private bool insert(nsAccess2DB.Osoba_zarzadzajacaVO VO)
+        private bool insert(nsAccess2DB.DysponentVO VO)
         {
             bool b = _DAO.insert(VO);
             _error = _DAO._error;
@@ -3218,7 +3218,7 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="VO">Obiekt wymiany danych.</param>
         /// <returns>Wartość logiczna powodzenia akcji.</returns>
-        private bool update(nsAccess2DB.Osoba_zarzadzajacaVO VO)
+        private bool update(nsAccess2DB.DysponentVO VO)
         {
             bool b = _DAO.update(VO);
             _error = _DAO._error;
@@ -3241,20 +3241,20 @@ namespace nsAccess2DB
         /// <param name="dt">Tabela danych.</param>
         private void fillTable(DataTable dt)
         {
-            Osoba_zarzadzajacaVO VOi;
-            _VOs = new Osoba_zarzadzajacaVO[0];
+            DysponentVO VOi;
+            _VOs = new DysponentVO[0];
 
             foreach (DataRow dr in dt.Rows)
             {
                 Array.Resize(ref _VOs, _VOs.Length + 1);
          
-                VOi = new Osoba_zarzadzajacaVO();
+                VOi = new DysponentVO();
 
                 VOi.Identyfikator = int.Parse(dr["Identyfikator"].ToString());
-                VOi.Nazwa_os_zarzadzajaca = dr["Nazwa_os_zarzadzajaca"].ToString();
+                VOi.Dysp_dane = dr["Dysp_dane"].ToString();
                 VOi.Dzial = dr["Dzial"].ToString();
-                VOi.Os_zarz_nazwisko = dr["Os_zarz_nazwisko"].ToString();
-                VOi.Os_zarz_imie = dr["Os_zarz_imie"].ToString();
+                VOi.Dysp_nazwisko = dr["Dysp_nazwisko"].ToString();
+                VOi.Dysp_imie = dr["Dysp_imie"].ToString();
                 _VOs[_VOs.Length - 1] = VOi;
             }
 
@@ -3312,7 +3312,7 @@ namespace nsAccess2DB
         /// <summary>
         /// Zwraca daną okrśloną wskaźnikiem pozycji.
         /// </summary>
-        public Osoba_zarzadzajacaVO VO
+        public DysponentVO VO
         {
             get
             {
@@ -3320,7 +3320,7 @@ namespace nsAccess2DB
                 {
                     return _VOi = _VOs[_idx];
                 }
-                return new Osoba_zarzadzajacaVO();
+                return new DysponentVO();
             }
         }//VO
 
@@ -3345,11 +3345,11 @@ namespace nsAccess2DB
         /// <summary>
         /// Sprawdza istnienie rekordu.
         /// </summary>
-        /// <param name="Identyfikator">Identyfikator Osoby zarzadzajacej.</param>
+        /// <param name="Identyfikator">Identyfikator Dysponenta.</param>
         /// <returns>Wynik logiczny sprawdzenia.</returns>
         public bool exists(int Identyfikator)
         {
-            foreach (Osoba_zarzadzajacaVO VOi in _VOs)
+            foreach (DysponentVO VOi in _VOs)
             {
                 if (VOi.Identyfikator == Identyfikator) return true;
             }
@@ -3359,12 +3359,12 @@ namespace nsAccess2DB
         /// <summary>
         /// Zwraca indeks pozycji.
         /// </summary>
-        /// <param name="Identyfikator">Identyfikator Osoba_zarzadzajaca maszyną</param>
-        /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora Osoba_zarzadzajaca.</returns>
+        /// <param name="Identyfikator">Identyfikator Dysponenta.</param>
+        /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora Dysponenta.</returns>
         public int getIdx(int Identyfikator)
         {
             int idx = -1;
-            foreach (Osoba_zarzadzajacaVO VOi in _VOs)
+            foreach (DysponentVO VOi in _VOs)
             {
                 idx++;
                 if (VOi.Identyfikator == Identyfikator) return idx;
@@ -3377,13 +3377,13 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="Identyfikator"></param>
         /// <returns>Jeżeli Identyfikator == -1 oznacza że Osoby Zarządzającej nie znaleziono.</returns>
-        public Osoba_zarzadzajacaVO GetVO(int Identyfikator)
+        public DysponentVO GetVO(int Identyfikator)
         {
-            foreach (nsAccess2DB.Osoba_zarzadzajacaVO VO in _VOs)
+            foreach (nsAccess2DB.DysponentVO VO in _VOs)
             {
                 if (VO.Identyfikator == Identyfikator) return VO;
             }
-            return new Osoba_zarzadzajacaVO();
+            return new DysponentVO();
         }//getVO
 
         /// <summary>
@@ -3391,7 +3391,7 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="VO"></param>
         /// <returns></returns>
-        public bool write(nsAccess2DB.Osoba_zarzadzajacaVO VO)
+        public bool write(nsAccess2DB.DysponentVO VO)
         {
             if (exists(VO.Identyfikator))
             {
@@ -3400,7 +3400,7 @@ namespace nsAccess2DB
             return _DAO.insert(VO);
         }//write
 
-    }//class Osoba_zarzadzajacaBUS
+    }//class DysponentBUS
 
     ///////////////////////////////////////////////////////////////// klasa wymiany danych z tabelą Materialy
 

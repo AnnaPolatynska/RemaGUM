@@ -59,7 +59,7 @@ namespace RemaGUM
             WypelnijPropozycje();
             WypelnijStan_techniczny();
             WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);// wypełniam operatorów maszyn na poczatku uruchomienia programu.
-            WypelnijOsoba_zarzadzajaca();
+            WypelnijDysponent();
 
             if (listBoxMaszyny.Items.Count > 0)
             {
@@ -77,7 +77,7 @@ namespace RemaGUM
             textBoxRok_produkcji.TabIndex = 6;
             textBoxProducent.TabIndex = 7;
             pictureBox1.TabIndex = 8;
-            comboBoxOsoba_zarzadzajaca.TabIndex = 9;
+            comboBoxDysponent.TabIndex = 9;
             checkedListBoxOperatorzy_maszyn.TabIndex = 10;
             textBoxNr_pom.TabIndex = 11;
             comboBoxDzial.TabIndex = 12;
@@ -167,7 +167,7 @@ namespace RemaGUM
             _tt.SetToolTip(textBoxRok_produkcji, "Rok wyprodukowania.");
             _tt.SetToolTip(textBoxProducent, "Producent maszyny, przyrządu lub urządzenia.");
             _tt.SetToolTip(pictureBox1, "Zdjęcie maszyny, przyrządu lub urządzenia.");
-            _tt.SetToolTip(comboBoxOsoba_zarzadzajaca, "Opiekun maszyny.");
+            _tt.SetToolTip(comboBoxDysponent, "Opiekun maszyny.");
             _tt.SetToolTip(checkedListBoxOperatorzy_maszyn, "Główna osoba użytkująca maszynę (posiadająca odpowiednie uprawnienia).");
             _tt.SetToolTip(textBoxNr_pom, "Numer pomieszczenia GUM, gdzie znajuje się maszyna, przyrząd lub urządzenie.");
             _tt.SetToolTip(comboBoxDzial, "Nazwa dział  lista maszyn, przyrządów i urządzeń itp.");
@@ -266,7 +266,7 @@ namespace RemaGUM
                 WypelnijPropozycje();
                 WypelnijStan_techniczny();
                 WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);// wypełniam operatorów maszyn na poczatku uruchomienia programu.
-                WypelnijOsoba_zarzadzajaca();
+                WypelnijDysponent();
 
                 if (listBoxMaszyny.Items.Count > 0)
                 {
@@ -338,10 +338,10 @@ namespace RemaGUM
                 pictureBox1.Image = null;
                 _zawartoscPliku = new byte[] { };
 
-                comboBoxOsoba_zarzadzajaca.SelectedIndex = -1;
-                comboBoxOsoba_zarzadzajaca.Enabled = true;
-                comboBoxOsoba_zarzadzajaca.SelectedIndex = 0;
-                comboBoxOsoba_zarzadzajaca.Refresh();
+                comboBoxDysponent.SelectedIndex = -1;
+                comboBoxDysponent.Enabled = true;
+                comboBoxDysponent.SelectedIndex = 0;
+                comboBoxDysponent.Refresh();
 
                 textBoxNr_pom.Text = string.Empty;
 
@@ -449,7 +449,7 @@ namespace RemaGUM
                 _zawartoscPliku = maszynyBUS.VO.Zawartosc_pliku; //zawartość zdjęcia
                 pokazZdjecie(linkLabelNazwaZdjecia.Text); // zmiana zdjęcia przy zmianie indeksu maszyny.
 
-                comboBoxOsoba_zarzadzajaca.Text = maszynyBUS.VO.Nazwa_os_zarzadzajaca;
+                comboBoxDysponent.Text = maszynyBUS.VO.Nazwa_dysponent;
 
                 textBoxNr_pom.Text = maszynyBUS.VO.Nr_pom;
                 comboBoxDzial.Text = maszynyBUS.VO.Dzial;
@@ -556,26 +556,26 @@ namespace RemaGUM
             kategoriaBUS.idx = comboBoxKategoria.SelectedIndex;
         }//comboBoxKategoria_SelectedIndexChanged
 
-        private void WypelnijOsoba_zarzadzajaca()
+        private void WypelnijDysponent()
         {
-            nsAccess2DB.Osoba_zarzadzajacaBUS osoba_ZarzadzajacaBUS = new nsAccess2DB.Osoba_zarzadzajacaBUS(_connString);
-            nsAccess2DB.Osoba_zarzadzajacaVO VO;
-            comboBoxOsoba_zarzadzajaca.Items.Clear();
+            nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
+            nsAccess2DB.DysponentVO VO;
+            comboBoxDysponent.Items.Clear();
 
-            osoba_ZarzadzajacaBUS.select();
-            osoba_ZarzadzajacaBUS.top();
-            while (!osoba_ZarzadzajacaBUS.eof)
+            dysponentBUS.select();
+            dysponentBUS.top();
+            while (!dysponentBUS.eof)
             {
-                VO = osoba_ZarzadzajacaBUS.VO;
-                comboBoxOsoba_zarzadzajaca.Items.Add(VO.Nazwa_os_zarzadzajaca);
-                osoba_ZarzadzajacaBUS.skip();
+                VO = dysponentBUS.VO;
+                comboBoxDysponent.Items.Add(VO.Dysp_dane);
+                dysponentBUS.skip();
             }
         }//WypełnijOsobyOdp()
 
         private void comboBox_Osoba_zarzadzajaca_SelectedIndexChanged(object sender, EventArgs e)
         {
-            nsAccess2DB.Osoba_zarzadzajacaBUS osoba_ZarzadzajacaBUS = new nsAccess2DB.Osoba_zarzadzajacaBUS(_connString);
-            osoba_ZarzadzajacaBUS.idx = comboBoxOsoba_zarzadzajaca.SelectedIndex;
+            nsAccess2DB.DysponentBUS osoba_ZarzadzajacaBUS = new nsAccess2DB.DysponentBUS(_connString);
+            osoba_ZarzadzajacaBUS.idx = comboBoxDysponent.SelectedIndex;
         }// comboBox_Osoba_zarzadzajaca_SelectedIndexChanged
 
         //////////////////////////////////////////////////////////////         Rabio buttony
@@ -956,7 +956,7 @@ namespace RemaGUM
                 pictureBox1.Text = string.Empty;
                 _zawartoscPliku = new byte[] { }; //Czyści pictureBox1
 
-                comboBoxOsoba_zarzadzajaca.Text = string.Empty;
+                comboBoxDysponent.Text = string.Empty;
                 textBoxNr_pom.Text = string.Empty;
                 comboBoxDzial.Text = string.Empty;
                 textBoxNr_prot_BHP.Text = string.Empty;
@@ -1023,7 +1023,7 @@ namespace RemaGUM
                 maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
                 maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
 
-                maszynyVO.Nazwa_os_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
+                maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
                 maszynyVO.Nr_pom = textBoxNr_pom.Text;
                 maszynyVO.Dzial = comboBoxDzial.Text;
                 maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
@@ -1082,7 +1082,7 @@ namespace RemaGUM
                     maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
                     maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
 
-                    maszynyVO.Nazwa_os_zarzadzajaca = comboBoxOsoba_zarzadzajaca.Text.Trim();
+                    maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
                     maszynyVO.Nr_pom = textBoxNr_pom.Text;
                     maszynyVO.Dzial = comboBoxDzial.Text;
                     maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
@@ -1151,13 +1151,7 @@ namespace RemaGUM
             }
         }// toolStripButtonHelp_Click
 
-        private void toolStripButtonOs_zarzadzajaca_Click(object sender, EventArgs e)
-        {
-            Os_zarzadzajacaForm frame = new Os_zarzadzajacaForm();
-            frame.Show();
-        }// toolStripButtonOs_zarzadzajaca_Click
-
-        /// <summary>
+         /// <summary>
         /// Pokazuje zdjęcie po kliknięciu na link.
         /// </summary>
         /// <param name="sender"></param>
@@ -1990,6 +1984,11 @@ namespace RemaGUM
             dzialBUS.idx = comboBoxDzialOperator.SelectedIndex;
             comboBoxDzialOperator.Tag = dzialBUS.VO.Nazwa;
         }//comboBoxDzial_SelectedIndexChanged
+
+        private void listBoxMaszynyDysponenta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
 
     }// public partial class SpisForm : Form
 
