@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace RemaGUM
 {
-     public partial class SpisForm : Form
+    public partial class SpisForm : Form
     {
         private string _connString = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Projects\\RemaGUM\\RemaGUM.mdb"; //połaczenie z bazą danych
 
@@ -688,6 +688,21 @@ namespace RemaGUM
             }
         }//radioButton_Nr_Pomieszczenia_CheckedChanged
 
+        //private void OdswiezListBoxMaszyny()
+        //{
+        //    nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
+        //    for (int i = 0; i < listBoxMaszyny.Items.Count; i++)
+        //    {
+        //        listBoxMaszyny.Items[i].ForeColor = Color.Red;
+        //        for (int j = 0; j < listBoxMaszyny.Items.Count; j++)
+        //        {
+        //            if (listBoxMaszyny.Items[i].ToString().Contains(maszynyBUS.VO.Nazwa[j]))
+        //            {
+        //                listBoxMaszyny.Items[i].ForeColor = Color.Green;
+        //            }
+        //        }
+        //    }
+        //}
         /// <summary>
         /// wyszukuje maszynę po wpisaniu dowolnego ciągu wyrazów
         /// </summary>
@@ -713,13 +728,8 @@ namespace RemaGUM
             string s1 = textBoxWyszukiwanie.Text.ToUpper();
             string s2;
 
-            //labelNazwaMaszyny.ForeColor = Color.Black;
-            //labelTypMaszyny.ForeColor = Color.Black;
-            //labelNrInwentarzowyMaszyny.ForeColor = Color.Black;
-            //labelNrFabrycznyMaszyny.ForeColor = Color.Black;
-            //labelProducentMaszyny.ForeColor = Color.Black;
-
-
+            listBoxMaszyny.ForeColor = Color.Black;
+            
             for (int i = _maszynaSzukajIdx; i < maszynyBUS.count; i++)
             {
                 maszynyBUS.idx = i;
@@ -730,14 +740,16 @@ namespace RemaGUM
                 {
                     _maszynaSzukajIdx = i;
                     listBoxMaszyny.SelectedIndex = i;
+                    listBoxMaszyny.ForeColor = Color.Red;
                 }
             }
 
             pokazKomunikat("Aby szukać od poczatku wciśnij szukaj.");
-
             _maszynaSzukajIdx = 0;
 
-           return;
+            listBoxMaszyny.ForeColor = Color.Black;
+
+            return;
 
             if (_maszynaSzukajIdx >= _maszynyBUS.count)
             {
@@ -754,24 +766,28 @@ namespace RemaGUM
 
                 //for (int j = 0; j < 2; j++)
                 //{
-                  
-                   
-                //    if (j == 1) s2 = maszynyVO.Typ.ToUpper();
-                    
-                    //if (j == 2)
-                    //{
-                    //    s2 = maszynyVO.Nr_inwentarzowy.ToUpper();
-                    //}
-                    //if (j == 3)
-                    //{
-                    //    s2 = maszynyVO.Nr_fabryczny.ToUpper();
-                    //}
-                    //if (j == 4)
-                    //{
-                    //    s2 = maszynyVO.Producent.ToUpper();
-                    //}
+                //labelNazwaMaszyny.ForeColor = Color.Black;
+                //labelTypMaszyny.ForeColor = Color.Black;
+                //labelNrInwentarzowyMaszyny.ForeColor = Color.Black;
+                //labelNrFabrycznyMaszyny.ForeColor = Color.Black;
+                //labelProducentMaszyny.ForeColor = Color.Black;
 
-                    if (s2.Contains(s1))
+                //    if (j == 1) s2 = maszynyVO.Typ.ToUpper();
+
+                //if (j == 2)
+                //{
+                //    s2 = maszynyVO.Nr_inwentarzowy.ToUpper();
+                //}
+                //if (j == 3)
+                //{
+                //    s2 = maszynyVO.Nr_fabryczny.ToUpper();
+                //}
+                //if (j == 4)
+                //{
+                //    s2 = maszynyVO.Producent.ToUpper();
+                //}
+
+                if (s2.Contains(s1))
                     {
                         listBoxMaszyny.SelectedIndex = i;
 
