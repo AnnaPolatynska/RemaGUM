@@ -2119,7 +2119,7 @@
             this.textBoxNr_prot_BHP.BackColor = System.Drawing.Color.Linen;
             this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(9, 165);
             this.textBoxNr_prot_BHP.Name = "textBoxNr_prot_BHP";
-            this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(394, 20);
+            this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(400, 20);
             this.textBoxNr_prot_BHP.TabIndex = 24;
             // 
             // groupBoxSortowanie

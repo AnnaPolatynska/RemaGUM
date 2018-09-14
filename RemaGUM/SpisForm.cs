@@ -17,20 +17,21 @@ namespace RemaGUM
     {
         private string _connString = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Projects\\RemaGUM\\RemaGUM.mdb"; //połaczenie z bazą danych
 
-        private string _helpFile = Application.StartupPath + "\\pomoc.chm"; //plik pomocy RemaGUM
+        private string _helpFile = Application.StartupPath + "\\pomoc.chm"; //plik pomocy RemaGUM.
 
-        private byte[] _zawartoscPliku; //dane odczytane z pliku zdjęcia
+        private byte[] _zawartoscPliku; //dane odczytane z pliku zdjęcia.
 
-        string _dirNazwa = "C:\\tempRemaGUM"; //nazwa katalogu tymczasowego
-        string _dirPelnaNazwa = string.Empty; // katalog tymczasowy - pelna nazwa
+        string _dirNazwa = "C:\\tempRemaGUM"; //nazwa katalogu tymczasowego.
+        string _dirPelnaNazwa = string.Empty; // katalog tymczasowy - pelna nazwa.
 
-        enum _status { edycja, nowy};  //status działania formularza
-        private byte _statusForm; // wartośc statusu formularza
+        enum _status { edycja, nowy};  //status działania formularza.
+        private byte _statusForm; // wartośc statusu formularza.
 
         private int[] _maszynaTag; // przechowuje identyfikatory maszyn.
+        int _maszynaId = -1; // identyfikator maszyny.
         int _maszynaSzukajIdx = 0; // indeks szukanej maszyny.
 
-        private ToolTip _tt; //podpowiedzi dla niektórych kontolek
+        private ToolTip _tt; //podpowiedzi dla niektórych kontolek.
 
         private int _interwalPrzegladow = 2;    //w latach
 
@@ -260,6 +261,8 @@ namespace RemaGUM
             if (v.SelectedIndex == 0)
             {
                 OdswiezListeMaszyn();
+                listBoxMaszyny.SelectedIndex = _maszynyBUS.getIdx(_maszynaId);
+
                 WypelnijCzestotliwosc();
                 WypelnijKategorie();
                 WypelnijDzial();
@@ -701,74 +704,93 @@ namespace RemaGUM
             }
             Cursor.Current = Cursors.WaitCursor;
 
+            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
+
+           // maszynyBUS.select();
+            maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nazwa ASC;");
+
             nsAccess2DB.MaszynyVO maszynyVO;
             string s1 = textBoxWyszukiwanie.Text.ToUpper();
             string s2;
 
-            labelNazwaMaszyny.ForeColor = Color.Black;
-            labelTypMaszyny.ForeColor = Color.Black;
-            labelNrInwentarzowyMaszyny.ForeColor = Color.Black;
-            labelNrFabrycznyMaszyny.ForeColor = Color.Black;
-            labelProducentMaszyny.ForeColor = Color.Black;
-            
+            //labelNazwaMaszyny.ForeColor = Color.Black;
+            //labelTypMaszyny.ForeColor = Color.Black;
+            //labelNrInwentarzowyMaszyny.ForeColor = Color.Black;
+            //labelNrFabrycznyMaszyny.ForeColor = Color.Black;
+            //labelProducentMaszyny.ForeColor = Color.Black;
+
+
+            for (int i = _maszynaSzukajIdx; i < maszynyBUS.count; i++)
+            {
+                maszynyBUS.idx = i;
+                maszynyVO = maszynyBUS.VO;
+
+                s2 = maszynyVO.Nazwa.ToUpper();
+                if (s2.Contains(s1))
+                {
+                    _maszynaSzukajIdx = i;
+                    listBoxMaszyny.SelectedIndex = i;
+                }
+            }
+
+            pokazKomunikat("Aby szukać od poczatku wciśnij szukaj.");
+
+            _maszynaSzukajIdx = 0;
+
+           return;
+
             if (_maszynaSzukajIdx >= _maszynyBUS.count)
             {
-                pokazKomunikat("Szukam od początku listy maszyn.");
+                pokazKomunikat("Nie znaleziono maszyny.");
                 _maszynaSzukajIdx = 0;
             }
+
             for (int i = _maszynaSzukajIdx; i < _maszynyBUS.count; i++)
             {
                 _maszynyBUS.idx = i;
                 maszynyVO = _maszynyBUS.VO;
-               
-                for (int j = 0; j < 5; j++)
-                {
-                    s2 = maszynyVO.Nazwa.ToUpper();
-                    if (j == 0)
-                    {
-                        s2 = maszynyVO.Nazwa.ToUpper();
-                    }
-                    if (j == 1)
-                    {
-                        s2 = maszynyVO.Typ.ToUpper();
-                    }
-                    if (j == 2)
-                    {
-                        s2 = maszynyVO.Nr_inwentarzowy.ToUpper();
-                    }
-                    if (j == 3)
-                    {
-                        s2 = maszynyVO.Nr_fabryczny.ToUpper();
-                    }
-                    if (j == 4)
-                    {
-                        s2 = maszynyVO.Producent.ToUpper();
-                    }
 
-                    if (s1.Contains(s1))
+                s2 = maszynyVO.Nazwa.ToUpper();
+
+                //for (int j = 0; j < 2; j++)
+                //{
+                  
+                   
+                //    if (j == 1) s2 = maszynyVO.Typ.ToUpper();
+                    
+                    //if (j == 2)
+                    //{
+                    //    s2 = maszynyVO.Nr_inwentarzowy.ToUpper();
+                    //}
+                    //if (j == 3)
+                    //{
+                    //    s2 = maszynyVO.Nr_fabryczny.ToUpper();
+                    //}
+                    //if (j == 4)
+                    //{
+                    //    s2 = maszynyVO.Producent.ToUpper();
+                    //}
+
+                    if (s2.Contains(s1))
                     {
                         listBoxMaszyny.SelectedIndex = i;
 
-                        if (j == 0)
-                        {
-                            labelNazwaMaszyny.ForeColor = Color.Red;
-                        }
-                        if (j == 1)
-                        {
-                            labelTypMaszyny.ForeColor = Color.Red;
-                        }
-                        if(j == 2)
-                        {
-                            labelNrInwentarzowyMaszyny.ForeColor = Color.Red;
-                        }
-                        if (j == 3)
-                        {
-                            labelNrFabrycznyMaszyny.ForeColor = Color.Red;
-                        }
-                        if (j == 4)
-                        {
-                            labelProducentMaszyny.ForeColor = Color.Red;
-                        }
+                        //if (j == 0) labelNazwaMaszyny.ForeColor = Color.Red;
+                        
+                        //if (j == 1) labelTypMaszyny.ForeColor = Color.Red;
+                        
+                        //if(j == 2)
+                        //{
+                        //    labelNrInwentarzowyMaszyny.ForeColor = Color.Red;
+                        //}
+                        //if (j == 3)
+                        //{
+                        //    labelNrFabrycznyMaszyny.ForeColor = Color.Red;
+                        //}
+                        //if (j == 4)
+                        //{
+                        //    labelProducentMaszyny.ForeColor = Color.Red;
+                        //}
                         _maszynaSzukajIdx = i + 1;
 
                         this.Cursor = Cursors.Default;
@@ -778,7 +800,7 @@ namespace RemaGUM
 
                         return;
                     }
-                }// for (int j = 0 ...
+                //}// for (int j = 0 ...
             }// for (int i = _maszynaSzukajIdx; ...
 
             _maszynaSzukajIdx = _maszynyBUS.count;
@@ -916,6 +938,7 @@ namespace RemaGUM
         //przycisk Nowa czyści formularz
         private void ButtonNowa_Click(object sender, EventArgs e)
         {
+            
             CzyscDaneMaszyny();
 
             buttonNowa.Enabled = false;
