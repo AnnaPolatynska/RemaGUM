@@ -311,6 +311,13 @@ namespace RemaGUM
 
             }// Zakładka operator
 
+            // --------------------------------Zakładka dysponent.
+            if (v.SelectedIndex == 4)
+            {
+                WypelnijDysponentowDanymi();
+                WypelnijDzialDysponenta();
+            }
+
             Cursor.Current = Cursors.Default;
         } //tabControl1_SelectedIndexChanged
 
@@ -708,8 +715,13 @@ namespace RemaGUM
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        /// 
+
+
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
+            radioButtonNazwa.Checked = true;
+
             textBoxWyszukiwanie.Text = textBoxWyszukiwanie.Text.Trim();
 
             if (textBoxWyszukiwanie.Text == string.Empty)
@@ -721,15 +733,17 @@ namespace RemaGUM
 
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
 
-           // maszynyBUS.select();
+            // maszynyBUS.select();
             maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nazwa ASC;");
 
             nsAccess2DB.MaszynyVO maszynyVO;
+            maszynyVO = maszynyBUS.VO;
+
             string s1 = textBoxWyszukiwanie.Text.ToUpper();
             string s2;
 
             listBoxMaszyny.ForeColor = Color.Black;
-            
+
             for (int i = _maszynaSzukajIdx; i < maszynyBUS.count; i++)
             {
                 maszynyBUS.idx = i;
@@ -741,87 +755,18 @@ namespace RemaGUM
                     _maszynaSzukajIdx = i;
                     listBoxMaszyny.SelectedIndex = i;
                     listBoxMaszyny.ForeColor = Color.Red;
+
                 }
-            }
 
+            }
             pokazKomunikat("Aby szukać od poczatku wciśnij szukaj.");
+
             _maszynaSzukajIdx = 0;
-
             listBoxMaszyny.ForeColor = Color.Black;
-
-            return;
-
-            if (_maszynaSzukajIdx >= _maszynyBUS.count)
-            {
-                pokazKomunikat("Nie znaleziono maszyny.");
-                _maszynaSzukajIdx = 0;
-            }
-
-            for (int i = _maszynaSzukajIdx; i < _maszynyBUS.count; i++)
-            {
-                _maszynyBUS.idx = i;
-                maszynyVO = _maszynyBUS.VO;
-
-                s2 = maszynyVO.Nazwa.ToUpper();
-
-                //for (int j = 0; j < 2; j++)
-                //{
-                //labelNazwaMaszyny.ForeColor = Color.Black;
-                //labelTypMaszyny.ForeColor = Color.Black;
-                //labelNrInwentarzowyMaszyny.ForeColor = Color.Black;
-                //labelNrFabrycznyMaszyny.ForeColor = Color.Black;
-                //labelProducentMaszyny.ForeColor = Color.Black;
-
-                //    if (j == 1) s2 = maszynyVO.Typ.ToUpper();
-
-                //if (j == 2)
-                //{
-                //    s2 = maszynyVO.Nr_inwentarzowy.ToUpper();
-                //}
-                //if (j == 3)
-                //{
-                //    s2 = maszynyVO.Nr_fabryczny.ToUpper();
-                //}
-                //if (j == 4)
-                //{
-                //    s2 = maszynyVO.Producent.ToUpper();
-                //}
-
-                if (s2.Contains(s1))
-                    {
-                        listBoxMaszyny.SelectedIndex = i;
-
-                        //if (j == 0) labelNazwaMaszyny.ForeColor = Color.Red;
-                        
-                        //if (j == 1) labelTypMaszyny.ForeColor = Color.Red;
-                        
-                        //if(j == 2)
-                        //{
-                        //    labelNrInwentarzowyMaszyny.ForeColor = Color.Red;
-                        //}
-                        //if (j == 3)
-                        //{
-                        //    labelNrFabrycznyMaszyny.ForeColor = Color.Red;
-                        //}
-                        //if (j == 4)
-                        //{
-                        //    labelProducentMaszyny.ForeColor = Color.Red;
-                        //}
-                        _maszynaSzukajIdx = i + 1;
-
-                        this.Cursor = Cursors.Default;
-                        this.Refresh();
-
-                        pokazKomunikat("tekst znaleziony");
-
-                        return;
-                    }
-                //}// for (int j = 0 ...
-            }// for (int i = _maszynaSzukajIdx; ...
 
             _maszynaSzukajIdx = _maszynyBUS.count;
 
-            pokazKomunikat("nie znaleziono tekstu - powtórz szukanie");
+            //pokazKomunikat("nie znaleziono tekstu - powtórz szukanie");
             Cursor.Current = Cursors.Default;
 
             // listBoxMaszyny.Items.Clear();
@@ -835,7 +780,6 @@ namespace RemaGUM
             //     maszynyBUS.skip();
             // }
 
-
             //if (listBoxMaszyny.Items.Count > 0)
             // {
             //     listBoxMaszyny.SelectedIndex = 0;
@@ -843,14 +787,14 @@ namespace RemaGUM
             // maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
             // toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString(); // toolStripStatusLabelID_Maszyny
             // listBoxMaszyny.Tag = maszynyBUS.VO.Identyfikator;
-        }//buttonSzukaj_Click
+            }//buttonSzukaj_Click
 
-        /// <summary>
-        /// wypełnia listbox Działami w których znajdują się maszyny
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void WypelnijDzial()
+            /// <summary>
+            /// wypełnia listbox Działami w których znajdują się maszyny
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+            private void WypelnijDzial()
         {
             nsAccess2DB.DzialBUS dzialBUS = new nsAccess2DB.DzialBUS(_connString);
             nsAccess2DB.DzialVO VO;
@@ -865,7 +809,6 @@ namespace RemaGUM
                 dzialBUS.skip();
             }
         }//WypelnijDzial
-
 
         private void comboBoxDzial_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -902,7 +845,6 @@ namespace RemaGUM
             wykorzystanieBUS.idx = comboBoxWykorzystanie.SelectedIndex;
             comboBoxWykorzystanie.Tag = wykorzystanieBUS.VO.Wykorzystanie;
         }//comboboxWykorzystanie_SelectedIndexChanged
-
 
         /// <summary>
         /// wypełnia listbox propozycjami co zrobić z maszyną (zachować/złomować itp)
@@ -1776,10 +1718,88 @@ namespace RemaGUM
         }//WypelnijOperatorowMaszynami()
 
 
+        private void comboBoxOperator_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBoxOperator.Items.Clear();
+            nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
+
+            // sortowanie po dacie końca uprawnień
+            if (comboBoxOperator.SelectedIndex == 0)
+            {
+                operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Op_nazwisko;");
+                while (!operatorBUS.eof)
+                {
+                    listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
+                    operatorBUS.skip();
+                }
+            }
+            if (comboBoxOperator.SelectedIndex == 1)
+            {
+                operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Dzial;");
+                while (!operatorBUS.eof)
+                {
+                    listBoxOperator.Items.Add(operatorBUS.VO.Dzial + " - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
+                    operatorBUS.skip();
+                }
+            }
+            if (comboBoxOperator.SelectedIndex == 2)
+            {
+                operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Uprawnienie;");
+                while (!operatorBUS.eof)
+                {
+                    listBoxOperator.Items.Add(operatorBUS.VO.Uprawnienie + " - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
+                    operatorBUS.skip();
+                }
+            }
+            if (comboBoxOperator.SelectedIndex == 3)
+            {
+                operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Data_konca_upr;");
+                while (!operatorBUS.eof)
+                {
+                    listBoxOperator.Items.Add(operatorBUS.VO.Dzien + ":" + operatorBUS.VO.Mc + ":" + operatorBUS.VO.Rok + " - (" + operatorBUS.VO.Uprawnienie + ") - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
+                    operatorBUS.skip();
+                }
+            }
+            if (comboBoxOperator.SelectedIndex == 4)
+            {
+                operatorBUS.selectQuery("SELECT * FROM Operator WHERE Op_nazwisko LIKE '" + textBoxWyszukiwanieOperator.Text + "%' OR Op_imie LIKE '" + textBoxWyszukiwanieOperator.Text + "%';");
+                operatorBUS.idx = listBoxOperator.SelectedIndex;
+                toolStripStatusLabelIDOperatora.Text = operatorBUS.VO.Identyfikator.ToString();
+            }
+
+
+            if (listBoxOperator.Items.Count > 0)
+            {
+                listBoxOperator.SelectedIndex = 0;
+            }
+        }//comboBoxOperator_SelectedIndexChanged
+
+
+        private void WypelnijDzialOperatora()
+        {
+            nsAccess2DB.DzialBUS dzialBUS = new nsAccess2DB.DzialBUS(_connString);
+            nsAccess2DB.DzialVO VO;
+            comboBoxDzialOperator.Items.Clear();
+
+            dzialBUS.select();
+            dzialBUS.top();
+            while (!dzialBUS.eof)
+            {
+                VO = dzialBUS.VO;
+                comboBoxDzialOperator.Items.Add(VO.Nazwa);
+                dzialBUS.skip();
+            }
+        }//WypelnijDzialOperatora()
+        private void comboBoxDzial_operator_maszyny_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nsAccess2DB.DzialBUS dzialBUS = new nsAccess2DB.DzialBUS(_connString);
+            dzialBUS.idx = comboBoxDzialOperator.SelectedIndex;
+            comboBoxDzialOperator.Tag = dzialBUS.VO.Nazwa;
+        }//comboBoxDzial_SelectedIndexChanged
 
 
         // -------------------  Przyciski w zakładce Operator.
-        
+
         private void buttonNowaOperator_Click(object sender, EventArgs e)
         {
             CzyscDaneOperatora();
@@ -1944,93 +1964,51 @@ namespace RemaGUM
             }
         }// buttonSzukajOperator_Click
 
+        // // // // // // // // // // // // // // // // // // // // // // // // -------------------------> Dysponent maszyny.
 
-        private void comboBoxOperator_SelectedIndexChanged(object sender, EventArgs e)
+        /// <summary>
+        /// wyświetla listę dysponentów maszyn - nazwisko i imię.
+        /// </summary>
+        private void WypelnijDysponentowDanymi()
         {
-            listBoxOperator.Items.Clear();
-            nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
+            nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
+            listBoxDysponent.Items.Clear();
+            dysponentBUS.selectQuery("SELECT * FROM Dysponent ORDER BY Dysp_nazwisko ASC;");
 
-            // sortowanie po dacie końca uprawnień
-            if (comboBoxOperator.SelectedIndex == 0)
+            while (!dysponentBUS.eof)
             {
-                operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Op_nazwisko;");
-                while (!operatorBUS.eof)
-                {
-                    listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
-                    operatorBUS.skip();
-                }
+                listBoxDysponent.Items.Add(dysponentBUS.VO.Dysp_nazwisko + " " + dysponentBUS.VO.Dysp_imie);
+                dysponentBUS.skip();
             }
-                if (comboBoxOperator.SelectedIndex == 1)
+            if (listBoxDysponent.Items.Count > 0)
             {
-                operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Dzial;");
-                while (!operatorBUS.eof)
-                {
-                    listBoxOperator.Items.Add(operatorBUS.VO.Dzial + " - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
-                    operatorBUS.skip();
-                }
+                listBoxDysponent.SelectedIndex = 0;
             }
-            if (comboBoxOperator.SelectedIndex == 2)
-            {
-                operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Uprawnienie;");
-                while (!operatorBUS.eof)
-                {
-                    listBoxOperator.Items.Add(operatorBUS.VO.Uprawnienie + " - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
-                    operatorBUS.skip();
-                }
-            }
-            if (comboBoxOperator.SelectedIndex == 3)
-            {
-                operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Data_konca_upr;");
-                while (!operatorBUS.eof)
-                {
-                    listBoxOperator.Items.Add(operatorBUS.VO.Dzien + ":" + operatorBUS.VO.Mc + ":" + operatorBUS.VO.Rok + " - (" + operatorBUS.VO.Uprawnienie + ") - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
-                    operatorBUS.skip();
-                }
-            }
-            if (comboBoxOperator.SelectedIndex == 4)
-            {
-                operatorBUS.selectQuery("SELECT * FROM Operator WHERE Op_nazwisko LIKE '" + textBoxWyszukiwanieOperator.Text + "%' OR Op_imie LIKE '" + textBoxWyszukiwanieOperator.Text + "%';");
-                operatorBUS.idx = listBoxOperator.SelectedIndex;
-                toolStripStatusLabelIDOperatora.Text = operatorBUS.VO.Identyfikator.ToString();
-            }
-            
+        }// WypelnijDysponentowDanymi()
 
-            if (listBoxOperator.Items.Count > 0)
-            {
-                listBoxOperator.SelectedIndex = 0;
-            }
-        }//comboBoxOperator_SelectedIndexChanged
-
-    
-        // ----------------------------------------Operator
-        private void WypelnijDzialOperatora()
+        private void WypelnijDzialDysponenta()
         {
             nsAccess2DB.DzialBUS dzialBUS = new nsAccess2DB.DzialBUS(_connString);
             nsAccess2DB.DzialVO VO;
-            comboBoxDzialOperator.Items.Clear();
+            comboBoxDzialDysponent.Items.Clear();
 
             dzialBUS.select();
             dzialBUS.top();
             while (!dzialBUS.eof)
             {
                 VO = dzialBUS.VO;
-                comboBoxDzialOperator.Items.Add(VO.Nazwa);
+                comboBoxDzialDysponent.Items.Add(VO.Nazwa);
                 dzialBUS.skip();
             }
-        }//WypelnijDzialOperatora()
-        private void comboBoxDzial_operator_maszyny_SelectedIndexChanged(object sender, EventArgs e)
+        }//WypelnijDzialDysponenta()
+
+        private void comboBoxDzial_dysponent_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.DzialBUS dzialBUS = new nsAccess2DB.DzialBUS(_connString);
-            dzialBUS.idx = comboBoxDzialOperator.SelectedIndex;
-            comboBoxDzialOperator.Tag = dzialBUS.VO.Nazwa;
-        }//comboBoxDzial_SelectedIndexChanged
+            dzialBUS.idx = comboBoxDysponent.SelectedIndex;
+            comboBoxDysponent.Tag = dzialBUS.VO.Nazwa;
+        }// comboBoxDzial_dysponent_SelectedIndexChanged
 
-        private void listBoxMaszynyDysponenta_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM

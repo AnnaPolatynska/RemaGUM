@@ -247,16 +247,16 @@
             this.buttonZapiszDysponent = new System.Windows.Forms.Button();
             this.buttonAnulujDysponent = new System.Windows.Forms.Button();
             this.groupBox28 = new System.Windows.Forms.GroupBox();
-            this.richTextBoxDysp_dane = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxDysponent_dane = new System.Windows.Forms.RichTextBox();
             this.listBoxMaszynyDysponenta = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBoxNazwiskoDysponent = new System.Windows.Forms.TextBox();
+            this.comboBoxDzialDysponent = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxImieDysponent = new System.Windows.Forms.TextBox();
             this.groupBox29 = new System.Windows.Forms.GroupBox();
             this.buttonSzukajDysp = new System.Windows.Forms.Button();
             this.textBoxWyszukiwanieDysp = new System.Windows.Forms.TextBox();
@@ -2653,16 +2653,16 @@
             this.groupBox28.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox28.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox28.Controls.Add(this.richTextBoxDysp_dane);
+            this.groupBox28.Controls.Add(this.richTextBoxDysponent_dane);
             this.groupBox28.Controls.Add(this.listBoxMaszynyDysponenta);
             this.groupBox28.Controls.Add(this.label2);
-            this.groupBox28.Controls.Add(this.textBox1);
-            this.groupBox28.Controls.Add(this.comboBox1);
+            this.groupBox28.Controls.Add(this.textBoxNazwiskoDysponent);
+            this.groupBox28.Controls.Add(this.comboBoxDzialDysponent);
             this.groupBox28.Controls.Add(this.label4);
             this.groupBox28.Controls.Add(this.label6);
             this.groupBox28.Controls.Add(this.label7);
             this.groupBox28.Controls.Add(this.label17);
-            this.groupBox28.Controls.Add(this.textBox3);
+            this.groupBox28.Controls.Add(this.textBoxImieDysponent);
             this.groupBox28.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox28.ForeColor = System.Drawing.Color.Black;
             this.groupBox28.Location = new System.Drawing.Point(339, 85);
@@ -2672,16 +2672,17 @@
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Dane operatora maszyny";
             // 
-            // richTextBoxDysp_dane
+            // richTextBoxDysponent_dane
             // 
-            this.richTextBoxDysp_dane.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.richTextBoxDysponent_dane.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.richTextBoxDysp_dane.BackColor = System.Drawing.Color.Linen;
-            this.richTextBoxDysp_dane.Location = new System.Drawing.Point(6, 181);
-            this.richTextBoxDysp_dane.Name = "richTextBoxDysp_dane";
-            this.richTextBoxDysp_dane.Size = new System.Drawing.Size(319, 32);
-            this.richTextBoxDysp_dane.TabIndex = 58;
-            this.richTextBoxDysp_dane.Text = "";
+            this.richTextBoxDysponent_dane.BackColor = System.Drawing.Color.Linen;
+            this.richTextBoxDysponent_dane.DetectUrls = false;
+            this.richTextBoxDysponent_dane.Location = new System.Drawing.Point(6, 181);
+            this.richTextBoxDysponent_dane.Name = "richTextBoxDysponent_dane";
+            this.richTextBoxDysponent_dane.Size = new System.Drawing.Size(319, 32);
+            this.richTextBoxDysponent_dane.TabIndex = 58;
+            this.richTextBoxDysponent_dane.Text = "";
             // 
             // listBoxMaszynyDysponenta
             // 
@@ -2691,7 +2692,6 @@
             this.listBoxMaszynyDysponenta.Name = "listBoxMaszynyDysponenta";
             this.listBoxMaszynyDysponenta.Size = new System.Drawing.Size(318, 329);
             this.listBoxMaszynyDysponenta.TabIndex = 57;
-            this.listBoxMaszynyDysponenta.SelectedIndexChanged += new System.EventHandler(this.listBoxMaszynyDysponenta_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -2703,21 +2703,22 @@
             this.label2.TabIndex = 56;
             this.label2.Text = "Nazwisko";
             // 
-            // textBox1
+            // textBoxNazwiskoDysponent
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Linen;
-            this.textBox1.Location = new System.Drawing.Point(6, 86);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(321, 20);
-            this.textBox1.TabIndex = 55;
+            this.textBoxNazwiskoDysponent.BackColor = System.Drawing.Color.Linen;
+            this.textBoxNazwiskoDysponent.Location = new System.Drawing.Point(6, 86);
+            this.textBoxNazwiskoDysponent.Name = "textBoxNazwiskoDysponent";
+            this.textBoxNazwiskoDysponent.Size = new System.Drawing.Size(321, 20);
+            this.textBoxNazwiskoDysponent.TabIndex = 55;
             // 
-            // comboBox1
+            // comboBoxDzialDysponent
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 128);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(319, 21);
-            this.comboBox1.TabIndex = 54;
+            this.comboBoxDzialDysponent.FormattingEnabled = true;
+            this.comboBoxDzialDysponent.Location = new System.Drawing.Point(6, 128);
+            this.comboBoxDzialDysponent.Name = "comboBoxDzialDysponent";
+            this.comboBoxDzialDysponent.Size = new System.Drawing.Size(319, 21);
+            this.comboBoxDzialDysponent.TabIndex = 54;
+            this.comboBoxDzialDysponent.SelectedIndexChanged += new System.EventHandler(this.comboBoxDzial_dysponent_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -2759,13 +2760,13 @@
             this.label17.TabIndex = 45;
             this.label17.Text = "Imię";
             // 
-            // textBox3
+            // textBoxImieDysponent
             // 
-            this.textBox3.BackColor = System.Drawing.Color.Linen;
-            this.textBox3.Location = new System.Drawing.Point(6, 35);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(321, 20);
-            this.textBox3.TabIndex = 44;
+            this.textBoxImieDysponent.BackColor = System.Drawing.Color.Linen;
+            this.textBoxImieDysponent.Location = new System.Drawing.Point(6, 35);
+            this.textBoxImieDysponent.Name = "textBoxImieDysponent";
+            this.textBoxImieDysponent.Size = new System.Drawing.Size(321, 20);
+            this.textBoxImieDysponent.TabIndex = 44;
             // 
             // groupBox29
             // 
@@ -3139,20 +3140,20 @@
         private System.Windows.Forms.Button buttonAnulujDysponent;
         private System.Windows.Forms.GroupBox groupBox28;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBoxNazwiskoDysponent;
+        private System.Windows.Forms.ComboBox comboBoxDzialDysponent;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxImieDysponent;
         private System.Windows.Forms.GroupBox groupBox29;
         private System.Windows.Forms.Button buttonSzukajDysp;
         private System.Windows.Forms.TextBox textBoxWyszukiwanieDysp;
         private System.Windows.Forms.GroupBox groupBox30;
         private System.Windows.Forms.ListBox listBoxDysponent;
         private System.Windows.Forms.ListBox listBoxMaszynyDysponenta;
-        private System.Windows.Forms.RichTextBox richTextBoxDysp_dane;
+        private System.Windows.Forms.RichTextBox richTextBoxDysponent_dane;
         private System.Windows.Forms.StatusStrip statusStripDysponent;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDysponenta;
