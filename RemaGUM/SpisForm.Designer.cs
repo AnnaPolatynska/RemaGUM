@@ -2825,6 +2825,7 @@
             this.listBoxDysponent.Name = "listBoxDysponent";
             this.listBoxDysponent.Size = new System.Drawing.Size(299, 641);
             this.listBoxDysponent.TabIndex = 0;
+            this.listBoxDysponent.SelectedIndexChanged += new System.EventHandler(this.listBoxDysponent_SelectedIndexChanged);
             // 
             // SpisForm
             // 

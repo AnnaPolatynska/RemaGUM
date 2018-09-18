@@ -316,6 +316,11 @@ namespace RemaGUM
             {
                 WypelnijDysponentowDanymi();
                 WypelnijDzialDysponenta();
+
+                if (listBoxDysponent.Items.Count > 0)
+                {
+                    listBoxDysponent.SelectedIndex = 0;
+                }
             }
 
             Cursor.Current = Cursors.Default;
@@ -1666,8 +1671,7 @@ namespace RemaGUM
                 comboBoxDzialOperator.Text = operatorBUS.VO.Dzial;
                 textBoxUprawnienieOperator.Text = operatorBUS.VO.Uprawnienie;
                 dateTimePickerDataKoncaUprOp.Value = new DateTime(operatorBUS.VO.Rok, operatorBUS.VO.Mc, operatorBUS.VO.Dzien);
-                toolStripStatusLabelIDOperatora.Text = operatorBUS.VO.Identyfikator.ToString(); // ID operatora maszyny
-
+                
                 //wypełnia listę maszyn obsługiwanych przez wybranego operatora - zmiana indeksu operatora ma zmieniać listę podległych mu maszyn.
                 nsAccess2DB.Maszyny_OperatorBUS maszyny_OperatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
                 nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
@@ -1974,6 +1978,7 @@ namespace RemaGUM
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
             listBoxDysponent.Items.Clear();
             dysponentBUS.selectQuery("SELECT * FROM Dysponent ORDER BY Dysp_nazwisko ASC;");
+            dysponentBUS.select();
 
             while (!dysponentBUS.eof)
             {
@@ -1986,6 +1991,30 @@ namespace RemaGUM
             }
         }// WypelnijDysponentowDanymi()
 
+        /// <summary>
+        /// Zmiana indeksu w list box dysponent.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listBoxDysponent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
+            dysponentBUS.select();
+
+            dysponentBUS.idx = listBoxDysponent.SelectedIndex;
+            toolStripStatusLabelDysponenta.Text = dysponentBUS.VO.Identyfikator.ToString();
+            listBoxDysponent.Tag = dysponentBUS.VO.Identyfikator;
+
+            textBoxImieDysponent.Text = dysponentBUS.VO.Dysp_imie;
+            textBoxNazwiskoDysponent.Text = dysponentBUS.VO.Dysp_nazwisko;
+            comboBoxDzialDysponent.Text = dysponentBUS.VO.Dzial;
+            richTextBoxDysponent_dane.Text = dysponentBUS.VO.Dysp_dane;
+         
+        }// listBoxDysponent_SelectedIndexChanged
+
+        /// <summary>
+        /// Wypełnia dział 
+        /// </summary>
         private void WypelnijDzialDysponenta()
         {
             nsAccess2DB.DzialBUS dzialBUS = new nsAccess2DB.DzialBUS(_connString);
@@ -2008,6 +2037,9 @@ namespace RemaGUM
             dzialBUS.idx = comboBoxDysponent.SelectedIndex;
             comboBoxDysponent.Tag = dzialBUS.VO.Nazwa;
         }// comboBoxDzial_dysponent_SelectedIndexChanged
+        
+      
+
 
     }// public partial class SpisForm : Form
 
