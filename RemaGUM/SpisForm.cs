@@ -2122,9 +2122,46 @@ namespace RemaGUM
                 dysponentBUS.select();
 
                 listBoxDysponent.SelectedIndex = dysponentBUS.getIdx(dysponentBUS.VO.Identyfikator); // ustawia zaznaczenie w tabeli dysponent.
+
             } // else if -> edycja
+            WypelnijDysponentowDanymi();
+
+            buttonNowaDysponent.Enabled = true;
+            buttonZapiszDysponent.Enabled = true;
+            buttonAnulujDysponent.Enabled = true;
+            buttonUsunDysponent.Enabled = true;
+
+            pokazKomunikat("Pozycja zapisana w bazie");
+            _statusForm = (int)_status.edycja;
+
         }// buttonZapiszDysponent_Click
 
+        private void buttonAnulujDysponent_Click(object sender, EventArgs e)
+        {
+            int idx = listBoxDysponent.SelectedIndex;
+
+            CzyscDaneDysponenta();
+
+            buttonNowaDysponent.Enabled = true;
+            buttonZapiszDysponent.Enabled = true;
+            buttonAnulujDysponent.Enabled = true;
+            buttonUsunDysponent.Enabled = false;
+
+            _statusForm = (int)_status.edycja;
+        }// buttonAnulujDysponent_Click
+
+        private void buttonUsunDysponent_Click(object sender, EventArgs e)
+        {
+            nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
+
+            CzyscDaneDysponenta();
+            //TODO: listBoxMaszynyDysponenta.Items.Clear();
+
+            dysponentBUS.delete((int)listBoxDysponent.Tag); // usunięcie danych dysponenta.
+
+            WypelnijDysponentowDanymi();
+
+        }// buttonUsunDysponent_Click
 
 
 

@@ -2628,6 +2628,7 @@
             this.buttonUsunDysponent.TabIndex = 4;
             this.buttonUsunDysponent.Text = "usuń";
             this.buttonUsunDysponent.UseVisualStyleBackColor = false;
+            this.buttonUsunDysponent.Click += new System.EventHandler(this.buttonUsunDysponent_Click);
             // 
             // buttonZapiszDysponent
             // 
@@ -2649,6 +2650,7 @@
             this.buttonAnulujDysponent.TabIndex = 3;
             this.buttonAnulujDysponent.Text = "anuluj";
             this.buttonAnulujDysponent.UseVisualStyleBackColor = false;
+            this.buttonAnulujDysponent.Click += new System.EventHandler(this.buttonAnulujDysponent_Click);
             // 
             // groupBox28
             // 
