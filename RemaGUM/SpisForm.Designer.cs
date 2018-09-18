@@ -258,8 +258,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.textBoxImieDysponent = new System.Windows.Forms.TextBox();
             this.groupBox29 = new System.Windows.Forms.GroupBox();
-            this.buttonSzukajDysp = new System.Windows.Forms.Button();
-            this.textBoxWyszukiwanieDysp = new System.Windows.Forms.TextBox();
+            this.buttonSzukajDysponent = new System.Windows.Forms.Button();
+            this.textBoxWyszukiwanieDysponent = new System.Windows.Forms.TextBox();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.listBoxDysponent = new System.Windows.Forms.ListBox();
             this.toolStrip.SuspendLayout();
@@ -2617,6 +2617,7 @@
             this.buttonNowaDysponent.TabIndex = 2;
             this.buttonNowaDysponent.Text = "nowa";
             this.buttonNowaDysponent.UseVisualStyleBackColor = false;
+            this.buttonNowaDysponent.Click += new System.EventHandler(this.buttonNowaDysponent_Click);
             // 
             // buttonUsunDysponent
             // 
@@ -2637,6 +2638,7 @@
             this.buttonZapiszDysponent.TabIndex = 3;
             this.buttonZapiszDysponent.Text = "zapisz";
             this.buttonZapiszDysponent.UseVisualStyleBackColor = false;
+            this.buttonZapiszDysponent.Click += new System.EventHandler(this.buttonZapiszDysponent_Click);
             // 
             // buttonAnulujDysponent
             // 
@@ -2771,8 +2773,8 @@
             // groupBox29
             // 
             this.groupBox29.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox29.Controls.Add(this.buttonSzukajDysp);
-            this.groupBox29.Controls.Add(this.textBoxWyszukiwanieDysp);
+            this.groupBox29.Controls.Add(this.buttonSzukajDysponent);
+            this.groupBox29.Controls.Add(this.textBoxWyszukiwanieDysponent);
             this.groupBox29.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox29.ForeColor = System.Drawing.Color.Red;
             this.groupBox29.Location = new System.Drawing.Point(339, 22);
@@ -2782,24 +2784,24 @@
             this.groupBox29.TabStop = false;
             this.groupBox29.Text = "wyszukaj dysponenta po imieniu lub nazwisku:";
             // 
-            // buttonSzukajDysp
+            // buttonSzukajDysponent
             // 
-            this.buttonSzukajDysp.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonSzukajDysp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukajDysp.BackgroundImage")));
-            this.buttonSzukajDysp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSzukajDysp.Location = new System.Drawing.Point(290, 17);
-            this.buttonSzukajDysp.Name = "buttonSzukajDysp";
-            this.buttonSzukajDysp.Size = new System.Drawing.Size(35, 34);
-            this.buttonSzukajDysp.TabIndex = 4;
-            this.buttonSzukajDysp.UseVisualStyleBackColor = false;
+            this.buttonSzukajDysponent.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSzukajDysponent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukajDysponent.BackgroundImage")));
+            this.buttonSzukajDysponent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSzukajDysponent.Location = new System.Drawing.Point(290, 17);
+            this.buttonSzukajDysponent.Name = "buttonSzukajDysponent";
+            this.buttonSzukajDysponent.Size = new System.Drawing.Size(35, 34);
+            this.buttonSzukajDysponent.TabIndex = 4;
+            this.buttonSzukajDysponent.UseVisualStyleBackColor = false;
             // 
-            // textBoxWyszukiwanieDysp
+            // textBoxWyszukiwanieDysponent
             // 
-            this.textBoxWyszukiwanieDysp.BackColor = System.Drawing.Color.Linen;
-            this.textBoxWyszukiwanieDysp.Location = new System.Drawing.Point(6, 23);
-            this.textBoxWyszukiwanieDysp.Name = "textBoxWyszukiwanieDysp";
-            this.textBoxWyszukiwanieDysp.Size = new System.Drawing.Size(278, 20);
-            this.textBoxWyszukiwanieDysp.TabIndex = 44;
+            this.textBoxWyszukiwanieDysponent.BackColor = System.Drawing.Color.Linen;
+            this.textBoxWyszukiwanieDysponent.Location = new System.Drawing.Point(6, 23);
+            this.textBoxWyszukiwanieDysponent.Name = "textBoxWyszukiwanieDysponent";
+            this.textBoxWyszukiwanieDysponent.Size = new System.Drawing.Size(278, 20);
+            this.textBoxWyszukiwanieDysponent.TabIndex = 44;
             // 
             // groupBox30
             // 
@@ -3149,8 +3151,8 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox textBoxImieDysponent;
         private System.Windows.Forms.GroupBox groupBox29;
-        private System.Windows.Forms.Button buttonSzukajDysp;
-        private System.Windows.Forms.TextBox textBoxWyszukiwanieDysp;
+        private System.Windows.Forms.Button buttonSzukajDysponent;
+        private System.Windows.Forms.TextBox textBoxWyszukiwanieDysponent;
         private System.Windows.Forms.GroupBox groupBox30;
         private System.Windows.Forms.ListBox listBoxDysponent;
         private System.Windows.Forms.ListBox listBoxMaszynyDysponenta;

@@ -105,6 +105,7 @@ namespace RemaGUM
             //wyszukiwanie Maszyny po wpisanej nazwie 
             textBoxWyszukiwanie.TabIndex = 31;
             buttonSzukaj.TabIndex = 32;
+            
             // --------------------------------------------- Zakładka Materiały
             //dane formularza Materiały
             listBoxMaterialy.TabIndex = 33;
@@ -157,6 +158,22 @@ namespace RemaGUM
             buttonUsunOperator.TabIndex = 13;
             //sortowanie po comboBoxOperator
             comboBoxOperator.TabIndex = 14;
+
+            // ------------------------------------------- Zakładka Dysponent.
+            listBoxDysponent.TabIndex = 1;
+            textBoxImieDysponent.TabIndex = 2;
+            textBoxNazwiskoDysponent.TabIndex = 3;
+            comboBoxDzialDysponent.TabIndex = 4;
+            richTextBoxDysponent_dane.TabIndex = 5;
+            //wyszukiwanie
+            textBoxWyszukiwanieDysponent.TabIndex = 6;
+            buttonSzukajDysponent.TabIndex = 7;
+            //przyciski zapisz/edytuj itp
+            buttonNowaDysponent.TabIndex = 8;
+            buttonZapiszDysponent.TabIndex = 9;
+            buttonAnulujDysponent.TabIndex = 10;
+            buttonUsunDysponent.TabIndex = 11;
+
 
             _tt = new ToolTip();
             _tt.SetToolTip(listBoxMaszyny, "Lista maszyn, przyrządów i urządzeń itp.");
@@ -1814,7 +1831,7 @@ namespace RemaGUM
             //buttonUsunOperator.Enabled = false;
 
             _statusForm = (int)_status.nowy;
-        }//WypelnijOperatorowDanymi();
+        }//buttonNowaOperator_Click
 
         private void buttonZapiszOperator_Click(object sender, EventArgs e)
         {
@@ -2010,6 +2027,10 @@ namespace RemaGUM
             comboBoxDzialDysponent.Text = dysponentBUS.VO.Dzial;
             richTextBoxDysponent_dane.Text = dysponentBUS.VO.Dysp_dane;
          
+            
+
+
+
         }// listBoxDysponent_SelectedIndexChanged
 
         /// <summary>
@@ -2037,8 +2058,76 @@ namespace RemaGUM
             dzialBUS.idx = comboBoxDysponent.SelectedIndex;
             comboBoxDysponent.Tag = dzialBUS.VO.Nazwa;
         }// comboBoxDzial_dysponent_SelectedIndexChanged
+
+        private void CzyscDaneDysponenta()
+        {
+            toolStripStatusLabelDysponenta.Text = "";
+
+            textBoxImieDysponent.Text = string.Empty;
+            textBoxNazwiskoDysponent.Text = string.Empty;
+
+            comboBoxDzialDysponent.SelectedIndex = -1;
+            comboBoxDzialDysponent.Enabled = true;
+            comboBoxDzialDysponent.SelectedIndex = 0;
+            comboBoxDzialDysponent.Refresh();
+
+            richTextBoxDysponent_dane.Text = string.Empty;
+        }// CzyscDaneDysponenta()
         
-      
+        // ----------------------------------------------Przyciski w zakładce Dysponent.
+        private void buttonNowaDysponent_Click(object sender, EventArgs e)
+        {
+            CzyscDaneDysponenta();
+            buttonNowaDysponent.Enabled = false;
+            buttonZapiszDysponent.Enabled = true;
+            buttonAnulujDysponent.Enabled = true;
+
+            _statusForm = (int)_status.nowy;
+        }// buttonNowaDysponent_Click
+
+        private void buttonZapiszDysponent_Click(object sender, EventArgs e)
+        {
+            nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
+
+            nsAccess2DB.DysponentVO dysponentVO = new nsAccess2DB.DysponentVO();
+
+            if (_statusForm == (int)_status.nowy)
+            {
+                dysponentBUS.select();
+                dysponentBUS.idx = dysponentBUS.count - 1;
+                dysponentVO.Identyfikator = dysponentBUS.VO.Identyfikator + 1;
+
+                dysponentVO.Dysp_imie = textBoxImieDysponent.Text.Trim();
+                dysponentVO.Dysp_nazwisko = textBoxNazwiskoDysponent.Text.Trim();
+                dysponentVO.Dzial = comboBoxDzialDysponent.Text.Trim();
+                dysponentVO.Dysp_dane = richTextBoxDysponent_dane.Text.Trim();
+
+                dysponentBUS.write(dysponentVO);
+                dysponentBUS.select();
+
+                listBoxDysponent.SelectedIndex = dysponentBUS.getIdx(dysponentBUS.VO.Identyfikator); // ustawia zaznaczenie w tabeli dysponent.
+            }// if -> nowy
+            else if (_statusForm == (int)_status.edycja)
+            {
+                dysponentBUS.select();
+                dysponentBUS.idx = dysponentBUS.count - 1;
+                dysponentVO.Identyfikator = dysponentBUS.VO.Identyfikator + 1;
+
+                dysponentVO.Dysp_imie = textBoxImieDysponent.Text.Trim();
+                dysponentVO.Dysp_nazwisko = textBoxNazwiskoDysponent.Text.Trim();
+                dysponentVO.Dzial = comboBoxDzialDysponent.Text.Trim();
+                dysponentVO.Dysp_dane = richTextBoxDysponent_dane.Text.Trim();
+
+                dysponentBUS.write(dysponentVO);
+                dysponentBUS.select();
+
+                listBoxDysponent.SelectedIndex = dysponentBUS.getIdx(dysponentBUS.VO.Identyfikator); // ustawia zaznaczenie w tabeli dysponent.
+            } // else if -> edycja
+        }// buttonZapiszDysponent_Click
+
+
+
+
 
 
     }// public partial class SpisForm : Form

@@ -3100,7 +3100,7 @@ namespace nsAccess2DB
             parameters[2] = new OleDbParameter("Dysp_nazwisko", OleDbType.VarChar, 255);
             parameters[2].Value = VO.Dysp_nazwisko;
 
-            parameters[3] = new OleDbParameter("Dysp_imie", OleDbType.Integer);
+            parameters[3] = new OleDbParameter("Dysp_imie", OleDbType.VarChar, 255);
             parameters[3].Value = VO.Dysp_imie;
 
             bool b = _conn.executeInsertQuery(query, parameters);
@@ -3128,7 +3128,7 @@ namespace nsAccess2DB
             parameters[2] = new OleDbParameter("Dysp_nazwisko", OleDbType.VarChar, 255);
             parameters[2].Value = VO.Dysp_nazwisko;
 
-            parameters[3] = new OleDbParameter("Dysp_imie", OleDbType.Integer);
+            parameters[3] = new OleDbParameter("Dysp_imie", OleDbType.VarChar, 255);
             parameters[3].Value = VO.Dysp_imie;
 
             bool b = _conn.executeInsertQuery(query, parameters);
