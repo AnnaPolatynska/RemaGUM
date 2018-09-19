@@ -767,7 +767,7 @@ namespace RemaGUM
             string s1 = textBoxWyszukiwanie.Text.ToUpper();
             string s2;
 
-            listBoxMaszyny.ForeColor = Color.Black;
+            
 
             for (int i = _maszynaSzukajIdx; i < maszynyBUS.count; i++)
             {
@@ -777,14 +777,21 @@ namespace RemaGUM
                 s2 = maszynyVO.Nazwa.ToUpper();
                 if (s2.Contains(s1))
                 {
+                   
                     _maszynaSzukajIdx = i;
                     listBoxMaszyny.SelectedIndex = i;
-                    listBoxMaszyny.ForeColor = Color.Red;
-
+                                       
+                    if (MessageBox.Show("czy szukać dalej ?", "RemaGUM", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.Cancel)
+                    {
+                        goto cancel;
+                    }
+                   
                 }
 
             }
             pokazKomunikat("Aby szukać od poczatku wciśnij szukaj.");
+
+            cancel:;
 
             _maszynaSzukajIdx = 0;
             listBoxMaszyny.ForeColor = Color.Black;
