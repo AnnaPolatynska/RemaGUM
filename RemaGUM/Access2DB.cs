@@ -3402,6 +3402,517 @@ namespace nsAccess2DB
 
     }//class DysponentBUS
 
+
+
+    //////////////////////////////////////////////////////////////////////        Maszyny_Dysponent
+    /// <summary>
+    /// Klasa wymiany danych z tabelą Maszyny_Dysponent.
+    /// </summary>
+    public class Maszyny_DysponentVO
+    {
+        private int _ID_maszyny = -1;
+        private int _ID_dysponent = -1;
+        private string _Maszyny_nazwa_Dysp = string.Empty;
+
+
+        /// <summary>
+        /// Konstruktor wymiany danych z tabelą Maszyny_Dysponent.
+        /// </summary>
+        public Maszyny_DysponentVO() { }
+
+        public int ID_dysponent
+        {
+            get { return _ID_dysponent; }
+            set { _ID_dysponent = value; }
+        }
+        public int ID_maszyny
+        {
+            get { return _ID_maszyny; }
+            set { _ID_maszyny = value; }
+        }
+        public string Maszyny_nazwa_Dysp
+        {
+            get { return _Maszyny_nazwa_Dysp; }
+            set { _Maszyny_nazwa_Dysp = value; }
+        }
+    }//class Maszyny_DysponentVO
+
+    //Klasa dostępu (Data Access Object) do tabeli Maszyny_Dysponent.
+    public class Maszyny_DysponentDAO
+    {
+        private dbConnection _conn;
+        public string _error = string.Empty;
+
+        /// <constructor>
+        /// Konstruktor.
+        /// </constructor>
+        public Maszyny_DysponentDAO(string connString)
+        {
+            _conn = new dbConnection(connString);
+            _error = _conn._error;
+        }//Maszyny_DysponentDAO
+
+        //-----> dowolne zapytanie z poziomu Form
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public DataTable selectQuery(string query)
+        {
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//selectQuery
+
+        /// <summary>
+        ///  Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <returns>Tabela Maszyny_DysponentDAO.</returns>
+        public DataTable select()
+        {
+            string query = "SELECT * FROM Maszyny_Dysponent;";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select 
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="ID_maszyny"></param>
+        /// <returns></returns>
+        public DataTable select(int ID_maszyny)
+        {
+            string query = "SELECT * FROM Maszyny_Dysponent WHERE ID_maszyny = " + ID_maszyny.ToString() + ";";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="ID_maszyny"></param>
+        /// <param name="ID_dysponent"></param>
+        /// <returns></returns>
+        public DataTable select(int ID_maszyny, int ID_dysponent)
+        {
+            string query = "SELECT * FROM Maszyny_Dysponent WHERE ID_maszyny = " + ID_maszyny.ToString() + " AND ID_dysponent = " + ID_dysponent.ToString() + ";";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select
+
+        public DataTable selectDysponent()
+        {
+            string query = "SELECT * FROM Maszyny_Dysponent;";
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        } // selectDyspoenent
+
+        /// <summary>
+        /// Zwraca tabelę spełniającą wartości parametrów.
+        /// </summary>
+        /// <param name="ID_dysponent"></param>
+        /// <returns></returns>
+        public DataTable selectDysponent(int ID_dysponent)
+        {
+            string query = "SELECT * FROM Maszyny_Dysponent WHERE ID_dysponent = " + ID_dysponent.ToString() + ";";
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        } // selectDysponent
+
+
+        /// <summary>
+        /// Wprowadza nowy rekord.
+        /// </summary>
+        /// <param name="VO">Obiekt wymiany danych (insert)</param>
+        /// <returns>Wartość logiczna powodzenia operacji</returns>
+        public bool insert(nsAccess2DB.Maszyny_DysponentVO VO)
+        {
+            string query = "INSERT INTO Maszyny_Dysponent (ID_dysponent, ID_maszyny, Maszyny_nazwa_Dysp)" +
+                    "VALUES (@ID_dysponent, @ID_maszyny, @Maszyny_nazwa_Dysp)";
+            OleDbParameter[] parameters = new OleDbParameter[3];
+            parameters[0] = new OleDbParameter("ID_dysponent", OleDbType.Integer);
+            parameters[0].Value = VO.ID_dysponent;
+
+            parameters[1] = new OleDbParameter("ID_maszyny", OleDbType.Integer);
+            parameters[1].Value = VO.ID_maszyny;
+
+            parameters[2] = new OleDbParameter("Maszyny_nazwa_Dysp", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Maszyny_nazwa_Dysp;
+
+            bool b = _conn.executeInsertQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }//insert
+
+        /// <summary>
+        ///  Aktualizuje rekord z wyjątkiem ID.
+        /// </summary>
+        /// <param name="VO"></param>
+        /// <returns>Wartość logiczna powodzenia operacji.</returns>
+        public bool update(nsAccess2DB.Maszyny_DysponentVO VO)
+        {
+            string query = "UPDATE Maszyny_Operator SET ID_dysponent = @ID_dysponent, Maszyny_nazwa_Dysp = @Maszyny_nazwa_Dysp, ID_maszyny = @ID_maszyny WHERE ID_dysponent = " + VO.ID_dysponent.ToString() + ";";
+
+            OleDbParameter[] parameters = new OleDbParameter[3];
+            parameters[0] = new OleDbParameter("ID_dysponent", OleDbType.Integer);
+            parameters[0].Value = VO.ID_dysponent;
+
+            parameters[1] = new OleDbParameter("ID_maszyny", OleDbType.Integer);
+            parameters[1].Value = VO.ID_maszyny;
+
+            parameters[2] = new OleDbParameter("Maszyny_nazwa_Dysp", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Maszyny_nazwa_Dysp;
+
+            bool b = _conn.executeInsertQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }//update
+
+        /// <summary>
+        /// Kasuje rekord po podanym Identyfikatorze.
+        /// </summary>
+        /// <param name="ID_maszyny"></param>
+        /// <returns></returns>
+        public bool delete(int ID_maszyny)
+        {
+            string query = "DELETE * FROM Maszyny_Dysponent WHERE ID_maszyny = " + ID_maszyny.ToString() + ";";
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            bool b = _conn.executeDeleteQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }//delete
+
+        /// <summary>
+        /// Kasuje rekord po podanym Identyfikatorze.
+        /// </summary>
+        /// <param name="ID_dysponent"></param>
+        /// <param name="ID_maszyny"></param>
+        /// <returns>Wartość logiczna powodzenia operacji.</returns>
+        public bool delete(int ID_dysponent, int ID_maszyny)
+        {
+            string query = "DELETE * FROM Maszyny_Dysponent WHERE ID_dysponent = " + ID_dysponent.ToString() + "AND ID_maszyny = " + ID_maszyny.ToString() + ";";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            bool b = _conn.executeDeleteQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }//delete
+
+    }//class Maszyny_DysponentDAO
+
+    //Warstwa operacji biznesowaych tabeli Maszyny_Dysponent ---> BUS.
+    public class Maszyny_DysponentBUS
+    {
+        Maszyny_DysponentDAO _DAO;
+
+        private Maszyny_DysponentVO[] _VOs = new Maszyny_DysponentVO[0];    //lista danych
+        private Maszyny_DysponentVO _VOi = new Maszyny_DysponentVO();       //dane na pozycji _idx
+        private int _idx = 0;                                             //indeks pozycji
+        private bool _eof = false;                                        //wskaźnik końca pliku
+        private int _count = 0;                                           //liczba pozycji
+
+        public string _error = string.Empty;
+
+        /// <summary>
+        /// Konstruktor.
+        /// </summary>
+        /// <param name="connString"></param>
+        public Maszyny_DysponentBUS(string connString)
+        {
+            _DAO = new Maszyny_DysponentDAO(connString);
+            _error = _DAO._error;
+        }//Maszyny_DysponentBUS
+
+        /// <summary>
+        /// Wypełnia tablice pozycjami danych.
+        /// </summary>
+        public void select()
+        {
+            fillTable(_DAO.select());
+        }//select
+
+        /// <summary>
+        /// Wypełnia tablice pozycjami danych.
+        /// </summary>
+        /// <param name="ID_maszyny"></param>
+        public void select(int ID_maszyny)
+        {
+            fillTable(_DAO.select(ID_maszyny));
+        }//select
+
+        /// <summary>
+        /// Wypełnia tablicę pozycjami danych.
+        /// </summary>
+        /// <param name="ID_maszyny"></param>
+        /// <param name="ID_dysponent"></param>
+        public void select(int ID_maszyny, int ID_dysponent)
+        {
+            fillTable(_DAO.select(ID_maszyny, ID_dysponent));
+        }//select
+
+        /// <summary>
+        /// Wypełnia tablicę pozycjami danych.
+        /// </summary>
+        /// <param name="ID_dysponent"></param>
+        public void selectDysponent(int ID_dysponent)
+        {
+            fillTable(_DAO.selectDysponent(ID_dysponent));
+        }//selectDysponent
+
+        /// <summary>
+        /// Wypełnia tablicę pozycjami danych -------------------------------------> dowolne zapytanie z poziomu Form
+        /// </summary>
+        /// <param name="query"></param>
+        public void selectQuery(string query)
+        {
+            fillTable(_DAO.selectQuery(query));
+        }// selectQuery
+
+
+        /// <summary>
+        /// Wprowadza rekord do tabeli.
+        /// </summary>
+        /// <param name="ID_dysponent"></param>
+        /// <param name="ID_maszyny"></param>
+        /// <param name="Maszyny_nazwa_Dysp"></param>
+        /// <returns>Wartość logiczna powodzenia operacji.</returns>
+        public bool insert(int ID_maszyny, int ID_dysponent, string Maszyny_nazwa_Dysp)
+        {
+            Maszyny_DysponentVO VO = new Maszyny_DysponentVO();
+            VO.ID_maszyny = ID_maszyny;
+            VO.ID_dysponent = ID_dysponent;
+            VO.Maszyny_nazwa_Dysp = Maszyny_nazwa_Dysp;
+
+            add(VO, ref _VOs);
+            return _DAO.insert(VO);
+
+        }//insert
+
+        /// <summary>
+        /// Aktualizuje rekord z wyjątkiem numeru protokołu.
+        /// </summary>
+        /// <param name="ID_maszyny"></param>
+        /// <param name="ID_dysponent"></param>
+        /// <param name="Maszyny_nazwa_Dysp"></param>
+        /// <returns>Wartość logiczna powodzenia akcji.</returns>
+        private bool update(int ID_maszyny, int ID_dysponent, string Maszyny_nazwa_Dysp)
+        {
+            bool b = _DAO.update(VO);
+            _error = _DAO._error;
+            return b;
+        }//update
+
+
+        /// <summary>
+        /// Usuwa z tabeli pozycję o wskazanych parametrach.
+        /// </summary>
+        /// <param name="ID_maszyny"></param>
+        /// <returns>Wartość logiczna powodzenia akcji.</returns>
+        public bool delete(int ID_maszyny)
+        {
+            return _DAO.delete(ID_maszyny);
+
+        }// delete
+
+        /// <summary>
+        /// Usuwa z tabeli pozycję o wskazanych parametrach.
+        /// </summary>
+        /// <param name="ID_maszyny"></param>
+        /// <param name="ID_dysponent"></param>
+        /// <returns>Wartość logiczna powodzenia akcji.</returns>
+        public bool delete(int ID_maszyny, int ID_dysponent)
+        {
+            return _DAO.delete(ID_maszyny, ID_dysponent);
+
+        }// delete
+
+        /// <summary>
+        /// Wypełnia tablicę.
+        /// </summary>
+        /// <param name="dt">Tabela danych.</param>
+        private void fillTable(DataTable dt)
+        {
+            Maszyny_DysponentVO VOi;
+            _VOs = new Maszyny_DysponentVO[0];
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Array.Resize(ref _VOs, _VOs.Length + 1);
+
+                VOi = new Maszyny_DysponentVO();
+                VOi.ID_dysponent = int.Parse(dr["ID_dysponent"].ToString());
+                VOi.ID_maszyny = int.Parse(dr["ID_maszyny"].ToString());
+                VOi.Maszyny_nazwa_Dysp = dr["Maszyny_nazwa_Dysp"].ToString();
+
+                _VOs[_VOs.Length - 1] = VOi;
+            }
+
+            _eof = _VOs.Length == 0;
+            _count = _VOs.Length;
+            if (_count > 0)
+                _idx = 0;
+            else
+            {
+                _idx = -1;
+                _eof = true;
+            }
+        }//fillTable
+
+
+        // <summary>
+        /// Przemieszcza indeks w tablicy danych o jedną pozycję.
+        /// </summary>
+        public void skip()
+        {
+            if (_count > 0)
+            {
+                _idx++;
+                _eof = _idx >= _count;
+            }
+        }//skip
+
+        /// <summary>
+        /// Przemieszcza indeks w tablicy danych na pozycję pierwszą.
+        /// </summary>
+        public void top()
+        {
+            if (_count > 0)
+            {
+                _idx = 0;
+                _eof = false;
+            }
+        }//top
+
+        /// <summary>
+        /// Zmienna logiczna osiągnięcia końca pliku.
+        /// </summary>
+        public bool eof
+        {
+            get { return _eof; }
+        }// eof
+
+        /// <summary>
+        /// Zwraca liczbę pozycji tablicy.
+        /// </summary>
+        public int count
+        {
+            get { return _count; }
+        }//count
+
+        /// <summary>
+        /// Zwraca daną okrśloną wskaźnikiem pozycji.
+        /// </summary>
+        public Maszyny_DysponentVO VO
+        {
+            get
+            {
+                if (_idx > -1 & _idx < _count)
+                {
+                    return _VOi = _VOs[_idx];
+                }
+                return new Maszyny_DysponentVO();
+            }
+        }//VO
+
+        /// <summary>
+        /// Ustawia wskaźnik pozycji.
+        /// </summary>
+        public int idx
+        {
+            set
+            {
+                if (value > -1 & value < _count)
+                {
+                    _idx = value;
+                }
+            }
+        }//idx
+
+        /// <summary>
+        /// Sprawdza istnienie pozycji w tabeli uzyskanej po ostanim poleceniu select.
+        /// </summary>
+        /// <param name="ID_maszyny"></param>
+        /// <param name="ID_dysponent"></param>
+        /// <returns>Wartość logiczna istnienia pozycji.</returns>
+        public bool exists(int ID_maszyny, int ID_dysponent)
+        {
+            foreach (Maszyny_DysponentVO VOi in _VOs)
+            {
+                if (VOi.ID_maszyny == ID_maszyny & VOi.ID_dysponent == ID_dysponent) return true;
+            }
+            return false;
+        }//exists
+
+        /// <summary>
+        /// Zwraca indeks pozycji.
+        /// </summary>
+        /// <param name="ID_maszyny">ID_maszyny z taleli Maszyny_Dysponent.</param>
+        /// <returns>Indeks pozycji. -1 oznacza brak identyfikatora.</returns>
+        public int getIdx(int ID_maszyny)
+        {
+            int idx = -1;
+            foreach (Maszyny_DysponentVO VOi in _VOs)
+            {
+                idx++;
+                if (VOi.ID_maszyny == ID_maszyny) return idx;
+            }
+            return -1;
+        }// getIdx
+
+        /// <summary>
+        /// Zwraca maszynę o podanym indeksie z tabeli Maszyny_Dysponent.
+        /// </summary>
+        /// <param name="ID_maszyny"></param>
+        /// <returns></returns>
+        public Maszyny_DysponentVO GetVO(int ID_maszyny)
+        {
+            if (VO.ID_maszyny == ID_maszyny)
+            {
+                return VO;
+            }
+            return new Maszyny_DysponentVO();
+        }// GetVO
+
+        public bool write(nsAccess2DB.Maszyny_DysponentVO VO)
+        {
+            if (exists(VO.ID_maszyny, VO.ID_dysponent))
+            {
+                return _DAO.update(VO);
+            }
+            return _DAO.insert(VO);
+        }// write
+
+        /// <summary>
+        /// Dodaje pozycję do tabeli.
+        /// </summary>
+        /// <param name="VO"></param>
+        /// <param name="VOs"></param>
+        private void add(Maszyny_DysponentVO VO, ref Maszyny_DysponentVO[] VOs)
+        {
+            Array.Resize(ref VOs, VOs.Length + 1);
+            VOs[_VOs.Length - 1] = VO;
+        }//add
+
+
+    }//class Maszyny_DysponentBUS
+
+
     ///////////////////////////////////////////////////////////////// klasa wymiany danych z tabelą Materialy
 
     // ---------------------------------------------------------- MateriałyVO
