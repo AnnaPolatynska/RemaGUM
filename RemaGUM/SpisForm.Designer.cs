@@ -2796,6 +2796,7 @@
             this.buttonSzukajDysponent.Size = new System.Drawing.Size(35, 34);
             this.buttonSzukajDysponent.TabIndex = 4;
             this.buttonSzukajDysponent.UseVisualStyleBackColor = false;
+            this.buttonSzukajDysponent.Click += new System.EventHandler(this.buttonSzukajDysponent_Click);
             // 
             // textBoxWyszukiwanieDysponent
             // 

@@ -31,6 +31,9 @@ namespace RemaGUM
         int _maszynaId = -1; // identyfikator maszyny.
         int _maszynaSzukajIdx = 0; // indeks szukanej maszyny.
 
+        int _dysponentId = -1; // identyfikator maszyny.
+        int _dysponentSzukajIdx = 0; //indeks szukanego dysponenta.
+
         private ToolTip _tt; //podpowiedzi dla niektórych kontolek.
 
         private int _interwalPrzegladow = 2;    //w latach
@@ -2163,10 +2166,50 @@ namespace RemaGUM
 
         }// buttonUsunDysponent_Click
 
+        private void buttonSzukajDysponent_Click(object sender, EventArgs e)
+        {
+           textBoxWyszukiwanieDysponent.Text = textBoxWyszukiwanieDysponent.Text.Trim();
 
+            if (textBoxWyszukiwanieDysponent.Text == string.Empty)
+            {
+                pokazKomunikat("Proszę wpisać tekst do pola wyszukiwania. Szukanie anulowane.");
+                return;
+            }
+            Cursor.Current = Cursors.WaitCursor;
 
+            nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
+            listBoxDysponent.Items.Clear();
+            dysponentBUS.selectQuery("SELECT * FROM Dysponent ORDER BY Dysp_nazwisko ASC;");
 
+            nsAccess2DB.DysponentVO dysponentVO;
+            dysponentVO = dysponentBUS.VO;
 
+            string s1 = textBoxWyszukiwanieDysponent.Text.ToUpper();
+            string s2;
+
+            listBoxDysponent.ForeColor = Color.Black;
+
+            for (int i = _dysponentSzukajIdx; i < dysponentBUS.count; i++)
+            {
+                dysponentBUS.idx = i;
+                dysponentVO = dysponentBUS.VO;
+                s2 = dysponentVO.Dysp_nazwisko.ToUpper();
+                
+                if (s2.Contains(s1))
+                {
+                    _dysponentSzukajIdx = i;
+                    listBoxDysponent.SelectedIndex = i;
+
+                    listBoxDysponent.ForeColor = Color.Red;
+                }
+            }
+            _dysponentSzukajIdx = 0;
+            listBoxDysponent.ForeColor = Color.Black;
+
+            _dysponentSzukajIdx = dysponentBUS.count;
+            
+
+        }
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM
