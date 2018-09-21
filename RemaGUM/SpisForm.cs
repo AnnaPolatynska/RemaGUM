@@ -188,7 +188,7 @@ namespace RemaGUM
             _tt.SetToolTip(textBoxRok_produkcji, "Rok wyprodukowania.");
             _tt.SetToolTip(textBoxProducent, "Producent maszyny, przyrządu lub urządzenia.");
             _tt.SetToolTip(pictureBox1, "Zdjęcie maszyny, przyrządu lub urządzenia.");
-            _tt.SetToolTip(comboBoxDysponent, "Opiekun maszyny.");
+            _tt.SetToolTip(comboBoxDysponent, "Osoba zarządzająca maszynami (dysponent maszyny).");
             _tt.SetToolTip(checkedListBoxOperatorzy_maszyn, "Główna osoba użytkująca maszynę (posiadająca odpowiednie uprawnienia).");
             _tt.SetToolTip(textBoxNr_pom, "Numer pomieszczenia GUM, gdzie znajuje się maszyna, przyrząd lub urządzenie.");
             _tt.SetToolTip(comboBoxDzial, "Nazwa dział  lista maszyn, przyrządów i urządzeń itp.");
@@ -424,7 +424,7 @@ namespace RemaGUM
         private void listBoxMaszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-            nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
+           
 
             //listBoxMaszyny.Items.Clear();
                         
@@ -487,7 +487,8 @@ namespace RemaGUM
                 _zawartoscPliku = maszynyBUS.VO.Zawartosc_pliku; //zawartość zdjęcia
                 pokazZdjecie(linkLabelNazwaZdjecia.Text); // zmiana zdjęcia przy zmianie indeksu maszyny.
 
-                comboBoxDysponent.Text = dysponentBUS.VO.Dysp_nazwisko + " " + dysponentBUS.VO.Dysp_imie;
+                // wypełnij dysponenta
+                comboBoxDysponent.Text = maszynyBUS.VO.Nazwa_dysponent; // Pole zapisu Dysp_nazwisko + Dysp_imie
 
                 textBoxNr_pom.Text = maszynyBUS.VO.Nr_pom;
                 comboBoxDzial.Text = maszynyBUS.VO.Dzial;
@@ -725,29 +726,12 @@ namespace RemaGUM
             }
         }//radioButton_Nr_Pomieszczenia_CheckedChanged
 
-        //private void OdswiezListBoxMaszyny()
-        //{
-        //    nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-        //    for (int i = 0; i < listBoxMaszyny.Items.Count; i++)
-        //    {
-        //        listBoxMaszyny.Items[i].ForeColor = Color.Red;
-        //        for (int j = 0; j < listBoxMaszyny.Items.Count; j++)
-        //        {
-        //            if (listBoxMaszyny.Items[i].ToString().Contains(maszynyBUS.VO.Nazwa[j]))
-        //            {
-        //                listBoxMaszyny.Items[i].ForeColor = Color.Green;
-        //            }
-        //        }
-        //    }
-        //}
         /// <summary>
         /// wyszukuje maszynę po wpisaniu dowolnego ciągu wyrazów
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// 
-
-
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
             radioButtonNazwa.Checked = true;
@@ -771,8 +755,6 @@ namespace RemaGUM
 
             string s1 = textBoxWyszukiwanie.Text.ToUpper();
             string s2;
-
-            
 
             for (int i = _maszynaSzukajIdx; i < maszynyBUS.count; i++)
             {
@@ -803,35 +785,16 @@ namespace RemaGUM
 
             _maszynaSzukajIdx = _maszynyBUS.count;
 
-            //pokazKomunikat("nie znaleziono tekstu - powtórz szukanie");
-            Cursor.Current = Cursors.Default;
+           Cursor.Current = Cursors.Default;
 
-            // listBoxMaszyny.Items.Clear();
-
-            // nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-            // maszynyBUS.selectQuery("SELECT * FROM Maszyny WHERE Nazwa LIKE '" + textBoxWyszukiwanie.Text + "%' OR Nazwa LIKE '%" + textBoxWyszukiwanie.Text + "%';");
-            // //Nr_inwentarzowy LIKE '" + textBoxWyszukiwanie.Text + "%' OR
-            // while (!maszynyBUS.eof)
-            // {
-            //     listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa + " -> " + maszynyBUS.VO.Nr_inwentarzowy);
-            //     maszynyBUS.skip();
-            // }
-
-            //if (listBoxMaszyny.Items.Count > 0)
-            // {
-            //     listBoxMaszyny.SelectedIndex = 0;
-            // }
-            // maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
-            // toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString(); // toolStripStatusLabelID_Maszyny
-            // listBoxMaszyny.Tag = maszynyBUS.VO.Identyfikator;
             }//buttonSzukaj_Click
 
-            /// <summary>
-            /// wypełnia listbox Działami w których znajdują się maszyny
-            /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="e"></param>
-            private void WypelnijDzial()
+        /// <summary>
+        /// wypełnia listbox Działami w których znajdują się maszyny
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WypelnijDzial()
         {
             nsAccess2DB.DzialBUS dzialBUS = new nsAccess2DB.DzialBUS(_connString);
             nsAccess2DB.DzialVO VO;
@@ -933,7 +896,6 @@ namespace RemaGUM
         //przycisk Nowa czyści formularz
         private void ButtonNowa_Click(object sender, EventArgs e)
         {
-            
             CzyscDaneMaszyny();
 
             buttonNowa.Enabled = false;
@@ -942,7 +904,6 @@ namespace RemaGUM
             buttonUsun.Enabled = false;
 
             _statusForm = (int)_status.nowy;
-           
         }//ButtonNowa_Click
 
         private void buttonAnuluj_Click(object sender, EventArgs e)
@@ -955,13 +916,13 @@ namespace RemaGUM
             buttonUsun.Enabled = false;
 
             _statusForm = (int)_status.edycja;
-
         }//buttonAnuluj_Click
 
         private void buttonUsun_Click(object sender, EventArgs e)
         {
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             nsAccess2DB.Maszyny_OperatorBUS maszyny_OperatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
+            nsAccess2DB.Maszyny_DysponentBUS maszyny_DysponentBUS = new nsAccess2DB.Maszyny_DysponentBUS(_connString);
             try
             {
                 comboBoxKategoria.Text = string.Empty;
@@ -975,7 +936,7 @@ namespace RemaGUM
                 pictureBox1.Text = string.Empty;
                 _zawartoscPliku = new byte[] { }; //Czyści pictureBox1
 
-                comboBoxDysponent.Text = string.Empty;
+                comboBoxDysponent.Text = string.Empty; // Czyści dysponent.
                 textBoxNr_pom.Text = string.Empty;
                 comboBoxDzial.Text = string.Empty;
                 textBoxNr_prot_BHP.Text = string.Empty;
@@ -986,12 +947,13 @@ namespace RemaGUM
                 comboBoxStan_techniczny.Text = string.Empty;
                 comboBoxPropozycja.Text = string.Empty;
                 linkLabelNazwaZdjecia.Text = string.Empty;
-               
             }
             catch { }
 
             maszynyBUS.delete((int)listBoxMaszyny.Tag);// usunięcie z tabeli maszyna
-            maszyny_OperatorBUS.delete((int)listBoxMaszyny.Tag); // usunięcie z tabeli relacji maszyna operator
+            maszyny_OperatorBUS.delete((int)listBoxMaszyny.Tag); // usunięcie z tabeli relacji maszyna operator.
+
+            maszyny_DysponentBUS.delete((int)listBoxMaszyny.Tag); // usunięcie z tabeli relacji maszyna dysponent.
 
             // po usunięciu maszyny odświeża danę z listy maszyn przez ponowne zaznaczenie sortowania po nazwie.
             radioButtonNr_fabryczny.Checked = true;
@@ -1008,22 +970,22 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonZapisz_Click(object sender, EventArgs e)
         {
-
             if (textBoxNazwa.Text == string.Empty)
             {
                 MessageBox.Show("Uzupełnij nazwę maszyny.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
             nsAccess2DB.Maszyny_OperatorBUS maszyny_operatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
+            nsAccess2DB.Maszyny_DysponentBUS maszyny_DysponentBUS = new nsAccess2DB.Maszyny_DysponentBUS(_connString);
 
             nsAccess2DB.MaszynyVO maszynyVO = new nsAccess2DB.MaszynyVO();
             nsAccess2DB.OperatorVO operatorVO = new nsAccess2DB.OperatorVO();
-            nsAccess2DB.Maszyny_OperatorVO operator_maszynyVO = new nsAccess2DB.Maszyny_OperatorVO();
+            nsAccess2DB.Maszyny_OperatorVO maszyny_operatorVO = new nsAccess2DB.Maszyny_OperatorVO();
             nsAccess2DB.DysponentVO dysponentVO = new nsAccess2DB.DysponentVO();
+            nsAccess2DB.Maszyny_DysponentVO maszyny_DysponentVO = new nsAccess2DB.Maszyny_DysponentVO();
 
             if (_zawartoscPliku == null) _zawartoscPliku = new byte[] { }; // zapisz nowy plik zdjęcia podczas edycji maszyny.
             if (_statusForm == (int)_status.nowy)
@@ -1040,15 +1002,23 @@ namespace RemaGUM
                 maszynyVO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
                 maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
                 maszynyVO.Producent = textBoxProducent.Text.Trim();
-
                 maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
                 maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
 
-                dysponentBUS.select();
+                // zapis dysponenta maszyny w zakładce maszyny, przy utworzeniu nowej maszyny.
+                maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim(); // zapis przy nowej maszynie do tabeli maszyna Nazwa_Dysponent.
+
                 
-                
-                maszynyVO.Nazwa_dysponent = dysponentVO.Dysp_nazwisko + dysponentVO.Dysp_imie;
-                maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
+
+                maszyny_DysponentBUS.select(maszynyVO.Identyfikator);
+                maszyny_DysponentBUS.selectDysponent(dysponentVO.Identyfikator);
+
+                maszyny_DysponentBUS.insert(maszynyVO.Identyfikator + 1, dysponentBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
+
+               
+
+                //maszyny_DysponentBUS.write(maszyny_DysponentVO);
+
 
                 maszynyVO.Nr_pom = textBoxNr_pom.Text;
                 maszynyVO.Dzial = comboBoxDzial.Text;
@@ -1069,6 +1039,7 @@ namespace RemaGUM
                 maszynyVO.Propozycja = comboBoxPropozycja.Text;
 
                 maszynyBUS.write(maszynyVO);
+
                 maszyny_operatorBUS.select(maszynyVO.Identyfikator);
 
                 // Zapis operatorów/operatora maszyny przypisanych do maszyny.
@@ -1082,7 +1053,7 @@ namespace RemaGUM
                         maszyny_operatorBUS.insert(maszynyBUS.VO.Identyfikator + 1, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
                     }
                 }
-                listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
+                listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator); // ustawienie zaznaczenia w tabeli maszyn.
             }//if - nowy
 
             else if (_statusForm == (int)_status.edycja)
@@ -1090,8 +1061,7 @@ namespace RemaGUM
                 maszynyBUS.select((int)listBoxMaszyny.Tag);
                 if (maszynyBUS.count < 1)
                 {
-                    MessageBox.Show("Maszyna o identyfikatorze " + listBoxMaszyny.Tag.ToString() + "nie istnieje w bazie maszyn", "RemaGUM",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Maszyna o identyfikatorze " + listBoxMaszyny.Tag.ToString() + "nie istnieje w bazie maszyn", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 else
@@ -1108,7 +1078,17 @@ namespace RemaGUM
                     maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
                     maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
 
-                    maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
+
+
+                    // zapis dysponenta maszyny w zakładce maszyny, przy edycji maszyny.
+                    maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim(); // zapis przy edycji maszyny do tabeli maszyna Nazwa_Dysponent.
+
+
+
+
+
+
+
                     maszynyVO.Nr_pom = textBoxNr_pom.Text;
                     maszynyVO.Dzial = comboBoxDzial.Text;
                     maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
@@ -2019,8 +1999,8 @@ namespace RemaGUM
             //nsAccess2DB.DysponentVO dysponentVO;
 
             listBoxDysponent.Items.Clear();
-            //dysponentBUS.selectQuery("SELECT * FROM Dysponent ORDER BY Dysp_nazwisko ASC;");
-            dysponentBUS.select();
+            dysponentBUS.selectQuery("SELECT * FROM Dysponent ORDER BY Dysp_nazwisko ASC;");
+            // dysponentBUS.select();
 
             while (!dysponentBUS.eof)
             {
@@ -2054,7 +2034,14 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void listBoxDysponent_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
+
+            dysponentBUS.selectQuery("SELECT * FROM Dysponent ORDER BY Dysp_nazwisko ASC;");
+            dysponentBUS.idx = listBoxDysponent.SelectedIndex;
+            toolStripStatusLabelDysponenta.Text = dysponentBUS.VO.Identyfikator.ToString();
+
+
             dysponentBUS.select();
 
             dysponentBUS.idx = listBoxDysponent.SelectedIndex;
@@ -2137,8 +2124,8 @@ namespace RemaGUM
         private void comboBoxDzial_dysponent_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.DzialBUS dzialBUS = new nsAccess2DB.DzialBUS(_connString);
-            dzialBUS.idx = comboBoxDysponent.SelectedIndex;
-            comboBoxDysponent.Tag = dzialBUS.VO.Nazwa;
+            dzialBUS.idx = comboBoxDzialDysponent.SelectedIndex;
+            comboBoxDzialDysponent.Tag = dzialBUS.VO.Nazwa;
         }// comboBoxDzial_dysponent_SelectedIndexChanged
 
         

@@ -3412,7 +3412,7 @@ namespace nsAccess2DB
     {
         private int _ID_maszyny = -1;
         private int _ID_dysponent = -1;
-        private string _Maszyny_nazwa_Dysp = string.Empty;
+        private string _Maszyny_nazwa_D = string.Empty;
 
 
         /// <summary>
@@ -3430,10 +3430,10 @@ namespace nsAccess2DB
             get { return _ID_maszyny; }
             set { _ID_maszyny = value; }
         }
-        public string Maszyny_nazwa_Dysp
+        public string Maszyny_nazwa_D
         {
-            get { return _Maszyny_nazwa_Dysp; }
-            set { _Maszyny_nazwa_Dysp = value; }
+            get { return _Maszyny_nazwa_D; }
+            set { _Maszyny_nazwa_D = value; }
         }
     }//class Maszyny_DysponentVO
 
@@ -3543,8 +3543,8 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji</returns>
         public bool insert(nsAccess2DB.Maszyny_DysponentVO VO)
         {
-            string query = "INSERT INTO Maszyny_Dysponent (ID_dysponent, ID_maszyny, Maszyny_nazwa_Dysp)" +
-                    "VALUES (@ID_dysponent, @ID_maszyny, @Maszyny_nazwa_Dysp)";
+            string query = "INSERT INTO Maszyny_Dysponent (ID_dysponent, ID_maszyny, Maszyny_nazwa_D)" +
+                    "VALUES (@ID_dysponent, @ID_maszyny, @Maszyny_nazwa_D)";
             OleDbParameter[] parameters = new OleDbParameter[3];
             parameters[0] = new OleDbParameter("ID_dysponent", OleDbType.Integer);
             parameters[0].Value = VO.ID_dysponent;
@@ -3552,8 +3552,8 @@ namespace nsAccess2DB
             parameters[1] = new OleDbParameter("ID_maszyny", OleDbType.Integer);
             parameters[1].Value = VO.ID_maszyny;
 
-            parameters[2] = new OleDbParameter("Maszyny_nazwa_Dysp", OleDbType.VarChar, 255);
-            parameters[2].Value = VO.Maszyny_nazwa_Dysp;
+            parameters[2] = new OleDbParameter("Maszyny_nazwa_D", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Maszyny_nazwa_D;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -3567,7 +3567,7 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool update(nsAccess2DB.Maszyny_DysponentVO VO)
         {
-            string query = "UPDATE Maszyny_Operator SET ID_dysponent = @ID_dysponent, Maszyny_nazwa_Dysp = @Maszyny_nazwa_Dysp, ID_maszyny = @ID_maszyny WHERE ID_dysponent = " + VO.ID_dysponent.ToString() + ";";
+            string query = "UPDATE Maszyny_Operator SET ID_dysponent = @ID_dysponent, Maszyny_nazwa_D = @Maszyny_nazwa_D, ID_maszyny = @ID_maszyny WHERE ID_dysponent = " + VO.ID_dysponent.ToString() + ";";
 
             OleDbParameter[] parameters = new OleDbParameter[3];
             parameters[0] = new OleDbParameter("ID_dysponent", OleDbType.Integer);
@@ -3576,8 +3576,8 @@ namespace nsAccess2DB
             parameters[1] = new OleDbParameter("ID_maszyny", OleDbType.Integer);
             parameters[1].Value = VO.ID_maszyny;
 
-            parameters[2] = new OleDbParameter("Maszyny_nazwa_Dysp", OleDbType.VarChar, 255);
-            parameters[2].Value = VO.Maszyny_nazwa_Dysp;
+            parameters[2] = new OleDbParameter("Maszyny_nazwa_D", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Maszyny_nazwa_D;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -3690,14 +3690,14 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="ID_dysponent"></param>
         /// <param name="ID_maszyny"></param>
-        /// <param name="Maszyny_nazwa_Dysp"></param>
+        /// <param name="Maszyny_nazwa_D"></param>
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
-        public bool insert(int ID_maszyny, int ID_dysponent, string Maszyny_nazwa_Dysp)
+        public bool insert(int ID_maszyny, int ID_dysponent, string Maszyny_nazwa_D)
         {
             Maszyny_DysponentVO VO = new Maszyny_DysponentVO();
             VO.ID_maszyny = ID_maszyny;
             VO.ID_dysponent = ID_dysponent;
-            VO.Maszyny_nazwa_Dysp = Maszyny_nazwa_Dysp;
+            VO.Maszyny_nazwa_D = Maszyny_nazwa_D;
 
             add(VO, ref _VOs);
             return _DAO.insert(VO);
@@ -3709,9 +3709,9 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="ID_maszyny"></param>
         /// <param name="ID_dysponent"></param>
-        /// <param name="Maszyny_nazwa_Dysp"></param>
+        /// <param name="Maszyny_nazwa_D"></param>
         /// <returns>Wartość logiczna powodzenia akcji.</returns>
-        private bool update(int ID_maszyny, int ID_dysponent, string Maszyny_nazwa_Dysp)
+        private bool update(int ID_maszyny, int ID_dysponent, string Maszyny_nazwa_D)
         {
             bool b = _DAO.update(VO);
             _error = _DAO._error;
@@ -3758,7 +3758,7 @@ namespace nsAccess2DB
                 VOi = new Maszyny_DysponentVO();
                 VOi.ID_dysponent = int.Parse(dr["ID_dysponent"].ToString());
                 VOi.ID_maszyny = int.Parse(dr["ID_maszyny"].ToString());
-                VOi.Maszyny_nazwa_Dysp = dr["Maszyny_nazwa_Dysp"].ToString();
+                VOi.Maszyny_nazwa_D = dr["Maszyny_nazwa_D"].ToString();
 
                 _VOs[_VOs.Length - 1] = VOi;
             }
