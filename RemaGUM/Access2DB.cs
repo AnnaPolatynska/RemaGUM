@@ -2988,7 +2988,7 @@ namespace nsAccess2DB
         private string _Dzial = string.Empty; //255
         private string _Dysp_nazwisko = string.Empty; //255
         private string _Dysp_imie = string.Empty; //255
-
+        private string _Dysp_nazwa = string.Empty;// 255
         /// <summary>
         /// Konstruktor wymiany danych z tabelą Dysponent.
         /// </summary>
@@ -3018,6 +3018,11 @@ namespace nsAccess2DB
         {
             get { return _Dysp_imie; }
             set { _Dysp_imie = value; }
+        }
+        public string Dysp_nazwa
+        {
+            get { return _Dysp_nazwa; }
+            set { _Dysp_nazwa = value; }
         }
     }//class DysponentVO
 
@@ -3086,10 +3091,10 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool insert(nsAccess2DB.DysponentVO VO)
         {
-            string query = "INSERT INTO Dysponent (Dysp_dane, Dzial, Dysp_nazwisko, Dysp_imie)" +
-                " VALUES (@Dysp_dane, @Dzial, @Dysp_nazwisko, @Dysp_imie)";
+            string query = "INSERT INTO Dysponent (Dysp_dane, Dzial, Dysp_nazwisko, Dysp_imie, Dysp_nazwa)" +
+                " VALUES (@Dysp_dane, @Dzial, @Dysp_nazwisko, @Dysp_imie, @Dysp_nazwa)";
 
-            OleDbParameter[] parameters = new OleDbParameter[4];
+            OleDbParameter[] parameters = new OleDbParameter[5];
 
             parameters[0] = new OleDbParameter("Dysp_dane", OleDbType.VarChar, 255);
             parameters[0].Value = VO.Dysp_dane;
@@ -3102,6 +3107,9 @@ namespace nsAccess2DB
 
             parameters[3] = new OleDbParameter("Dysp_imie", OleDbType.VarChar, 255);
             parameters[3].Value = VO.Dysp_imie;
+
+            parameters[4] = new OleDbParameter("Dysp_nazwa", OleDbType.VarChar, 255);
+            parameters[4].Value = VO.Dysp_nazwa;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -3115,9 +3123,9 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool update(nsAccess2DB.DysponentVO VO)
         {
-            string query = "UPDATE Dysponent SET Dysp_dane = @Dysp_dane, Dzial = @Dzial, Dysp_nazwisko = @Dysp_nazwisko, Dysp_imie = @Dysp_imie WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
+            string query = "UPDATE Dysponent SET Dysp_dane = @Dysp_dane, Dzial = @Dzial, Dysp_nazwisko = @Dysp_nazwisko, Dysp_imie = @Dysp_imie Dysp_nazwa = @Dysp_nazwa WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
          
-            OleDbParameter[] parameters = new OleDbParameter[4];
+            OleDbParameter[] parameters = new OleDbParameter[5];
 
             parameters[0] = new OleDbParameter("Dysp_dane", OleDbType.VarChar, 255);
             parameters[0].Value = VO.Dysp_dane;
@@ -3130,6 +3138,9 @@ namespace nsAccess2DB
 
             parameters[3] = new OleDbParameter("Dysp_imie", OleDbType.VarChar, 255);
             parameters[3].Value = VO.Dysp_imie;
+
+            parameters[4] = new OleDbParameter("Dysp_nazwa", OleDbType.VarChar, 255);
+            parameters[4].Value = VO.Dysp_nazwa;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -3255,6 +3266,7 @@ namespace nsAccess2DB
                 VOi.Dzial = dr["Dzial"].ToString();
                 VOi.Dysp_nazwisko = dr["Dysp_nazwisko"].ToString();
                 VOi.Dysp_imie = dr["Dysp_imie"].ToString();
+                VOi.Dysp_nazwa = dr["Dysp_nazwa"].ToString();
                 _VOs[_VOs.Length - 1] = VOi;
             }
 
@@ -3413,7 +3425,7 @@ namespace nsAccess2DB
         private int _ID_maszyny = -1;
         private int _ID_dysponent = -1;
         private string _Maszyny_nazwa_D = string.Empty;
-
+        
 
         /// <summary>
         /// Konstruktor wymiany danych z tabelą Maszyny_Dysponent.
