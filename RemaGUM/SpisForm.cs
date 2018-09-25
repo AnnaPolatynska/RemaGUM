@@ -168,14 +168,15 @@ namespace RemaGUM
             textBoxNazwiskoDysponent.TabIndex = 3;
             comboBoxDzialDysponent.TabIndex = 4;
             richTextBoxDysponent_dane.TabIndex = 5;
+            checkedListBoxMaszynyDysponenta.TabIndex = 6;
             //wyszukiwanie
-            textBoxWyszukiwanieDysponent.TabIndex = 6;
-            buttonSzukajDysponent.TabIndex = 7;
+            textBoxWyszukiwanieDysponent.TabIndex = 7;
+            buttonSzukajDysponent.TabIndex = 8;
             //przyciski zapisz/edytuj itp
-            buttonNowaDysponent.TabIndex = 8;
-            buttonZapiszDysponent.TabIndex = 9;
-            buttonAnulujDysponent.TabIndex = 10;
-            buttonUsunDysponent.TabIndex = 11;
+            buttonNowaDysponent.TabIndex = 9;
+            buttonZapiszDysponent.TabIndex = 10;
+            buttonAnulujDysponent.TabIndex = 11;
+            buttonUsunDysponent.TabIndex = 12;
 
 
             _tt = new ToolTip();
@@ -335,6 +336,7 @@ namespace RemaGUM
             if (v.SelectedIndex == 4)
             {
                 WypelnijDysponentowDanymi();
+                WypelnijDysponentowMaszynami(checkedListBoxMaszynyDysponenta);
                 WypelnijDzialDysponenta();
 
                 if (listBoxDysponent.Items.Count > 0)
@@ -1055,20 +1057,6 @@ namespace RemaGUM
                 maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
                 maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
 
-                // zapis dysponenta maszyny w zakładce maszyny, przy utworzeniu nowej maszyny.
-                dysponentBUS.write(dysponentVO);
-                maszyny_DysponentBUS.select(maszynyVO.Identyfikator);
-                dysponentBUS.select();
-
-                maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
-                maszynyVO.Nazwa_dysponent = dysponentVO.Dysp_nazwisko + dysponentVO.Dysp_imie;
-
-
-
-
-
-
-
                 maszynyVO.Nr_pom = textBoxNr_pom.Text;
                 maszynyVO.Dzial = comboBoxDzial.Text;
                 maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
@@ -1087,10 +1075,28 @@ namespace RemaGUM
                 maszynyVO.Stan_techniczny = comboBoxStan_techniczny.Text;
                 maszynyVO.Propozycja = comboBoxPropozycja.Text;
 
+                // Zapis dysponenta maszyny w zakładce maszyny, przy utworzeniu nowej maszyny.
+                
+                maszyny_DysponentBUS.select(maszynyVO.Identyfikator, dysponentVO.Identyfikator);
+                dysponentBUS.select();
+
+                dysponentBUS.idx = 0;
+                listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
+
+                maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
+                maszynyVO.Nazwa_dysponent = dysponentVO.Dysp_nazwisko + dysponentVO.Dysp_imie;
+
+                maszyny_DysponentBUS.insert(maszynyBUS.VO.Identyfikator + 1, dysponentBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
+
+                
+
+                dysponentBUS.write(dysponentVO);
                 maszynyBUS.write(maszynyVO);
-                maszyny_operatorBUS.select(maszynyVO.Identyfikator);
+
+                
 
                 // Zapis operatorów/operatora maszyny przypisanych do maszyny.
+                maszyny_operatorBUS.select(maszynyVO.Identyfikator, operatorVO.Identyfikator);
                 operatorBUS.select();
 
                 for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
@@ -2069,6 +2075,13 @@ namespace RemaGUM
             comboBoxDzialDysponent.Refresh();
 
             richTextBoxDysponent_dane.Text = string.Empty;
+
+            //czyści checked boxy maszyn dysponenta.
+            for (int i = 0; i < checkedListBoxMaszynyDysponenta.Items.Count; i++)
+            {
+                checkedListBoxMaszynyDysponenta.SetItemChecked(i, false);
+            }
+
         }// CzyscDaneDysponenta()
 
         private void OdswiezDysponentowMaszyn()
@@ -2104,50 +2117,50 @@ namespace RemaGUM
             comboBoxDzialDysponent.Text = dysponentBUS.VO.Dzial;
             richTextBoxDysponent_dane.Text = dysponentBUS.VO.Dysp_dane;
 
-
-            //wypełnia listę maszyn, którymi zarządza wybrany z listy dysponent.
+            //wypełnia checkedboxy dla maszyn, którymi zarządza wybrany z listy dysponent.
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             nsAccess2DB.Maszyny_DysponentBUS maszyny_DysponentBUS = new nsAccess2DB.Maszyny_DysponentBUS(_connString);
 
-            listBoxMaszynyDysponenta.Items.Clear();
+            dysponentBUS.select();
             maszynyBUS.select();
+            maszyny_DysponentBUS.select((int)listBoxDysponent.Tag);
 
-            maszyny_DysponentBUS.selectDysponent((int)listBoxDysponent.Tag);
-            _maszynaTag = new int[maszyny_DysponentBUS.count]; // przechowuje ID maszyny danego operatora.
-            int idx = 0;
+            for (int i = 0; i < checkedListBoxMaszynyDysponenta.Items.Count; i++)
+            {
+                checkedListBoxMaszynyDysponenta.SetItemChecked(i, false);
+            }
+            int idx = -1;
+
             while (!maszyny_DysponentBUS.eof)
             {
-                listBoxMaszynyDysponenta.Items.Add(maszyny_DysponentBUS.VO.Maszyny_nazwa_D);
-                _maszynaTag[idx] = maszyny_DysponentBUS.VO.ID_maszyny;
+                idx = maszynyBUS.getIdx(maszyny_DysponentBUS.VO.ID_maszyny);
+                if (idx > -1) checkedListBoxMaszynyDysponenta.SetItemChecked(idx, true);
                 maszyny_DysponentBUS.skip();
-                idx++;
             }
 
         }// listBoxDysponent_SelectedIndexChanged
 
 
-        private void WypelnijDysponentowMaszynami()
+        private void WypelnijDysponentowMaszynami(CheckedListBox v)
         {
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             nsAccess2DB.Maszyny_DysponentBUS maszyny_DysponentBUS = new nsAccess2DB.Maszyny_DysponentBUS(_connString);
 
-            listBoxDysponent.Items.Clear();
-
+            v.Items.Clear();
             maszynyBUS.select();
-            maszyny_DysponentBUS.selectDysponent((int)dysponentBUS.VO.Identyfikator);
-
+           
             while (!maszynyBUS.eof)
             {
-                listBoxMaszynyDysponenta.Items.Add(maszynyBUS.VO.Nazwa);
+                v.Items.Add(maszynyBUS.VO.Nazwa + " " + maszynyBUS.VO.Nr_inwentarzowy);
                 maszynyBUS.skip();
             }
 
-            if (listBoxDysponent.Items.Count > 0)
+            if (v.Items.Count > 0)
             {
                 maszynyBUS.idx = 0;
-                listBoxMaszynyDysponenta.SelectedIndex = 0;
-                listBoxMaszynyDysponenta.Tag = maszynyBUS.VO.Identyfikator;
+                v.SelectedIndex = 0;
+                v.Tag = maszynyBUS.VO.Identyfikator;
             }
         }// WypelnijDysponentowMaszynami()
 
@@ -2193,8 +2206,11 @@ namespace RemaGUM
         private void buttonZapiszDysponent_Click(object sender, EventArgs e)
         {
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
-
             nsAccess2DB.DysponentVO dysponentVO = new nsAccess2DB.DysponentVO();
+            nsAccess2DB.Maszyny_DysponentBUS maszyny_DysponentBUS = new nsAccess2DB.Maszyny_DysponentBUS(_connString);
+            nsAccess2DB.Maszyny_DysponentVO maszyny_DysponentVO = new nsAccess2DB.Maszyny_DysponentVO();
+            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
+            nsAccess2DB.MaszynyVO maszynyVO = new nsAccess2DB.MaszynyVO();
 
             if (_statusForm == (int)_status.nowy)
             {
@@ -2211,6 +2227,19 @@ namespace RemaGUM
                 dysponentBUS.select();
 
                 listBoxDysponent.SelectedIndex = dysponentBUS.getIdx(dysponentBUS.VO.Identyfikator); // ustawia zaznaczenie w tabeli dysponent.
+                // zapis maszyn przypisanych do operatora.
+                maszyny_DysponentBUS.select(maszynyVO.Identyfikator, dysponentVO.Identyfikator);
+                maszynyBUS.select();
+
+                for (int i = 0; i <checkedListBoxMaszynyDysponenta.Items.Count; i++)
+                {
+                    if (checkedListBoxMaszynyDysponenta.GetItemChecked(i))
+                    {
+                        maszynyBUS.idx = i;
+                        maszyny_DysponentBUS.insert(maszynyBUS.VO.Identyfikator + 1, dysponentBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
+                    }
+                }
+
             }// if -> nowy
             else if (_statusForm == (int)_status.edycja)
             {
@@ -2228,7 +2257,21 @@ namespace RemaGUM
 
                 listBoxDysponent.SelectedIndex = dysponentBUS.getIdx(dysponentBUS.VO.Identyfikator); // ustawia zaznaczenie w tabeli dysponent.
 
+                // edycja zapisu maszyn przypisanych do operatora.
+                maszyny_DysponentBUS.select(maszynyVO.Identyfikator, dysponentVO.Identyfikator);
+                maszynyBUS.select();
+
+                for (int i = 0; i < checkedListBoxMaszynyDysponenta.Items.Count; i++)
+                {
+                    if (checkedListBoxMaszynyDysponenta.GetItemChecked(i))
+                    {
+                        maszynyBUS.idx = i;
+                        maszyny_DysponentBUS.insert(maszynyBUS.VO.Identyfikator + 1, dysponentBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
+                    }
+                }
+                listBoxDysponent.SelectedIndex = dysponentBUS.getIdx(dysponentBUS.VO.Identyfikator); // znacznik id dysponenta.
             } // else if -> edycja
+
             WypelnijDysponentowDanymi();
 
             buttonNowaDysponent.Enabled = true;
@@ -2260,11 +2303,12 @@ namespace RemaGUM
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
 
             CzyscDaneDysponenta();
-            //TODO: listBoxMaszynyDysponenta.Items.Clear();
+            WypelnijDysponentowMaszynami(checkedListBoxMaszynyDysponenta);
 
             dysponentBUS.delete((int)listBoxDysponent.Tag); // usunięcie danych dysponenta.
 
             WypelnijDysponentowDanymi();
+            _statusForm = (int)_status.edycja;
 
         }// buttonUsunDysponent_Click
 

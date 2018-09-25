@@ -248,11 +248,9 @@
             this.buttonAnulujDysponent = new System.Windows.Forms.Button();
             this.groupBox28 = new System.Windows.Forms.GroupBox();
             this.richTextBoxDysponent_dane = new System.Windows.Forms.RichTextBox();
-            this.listBoxMaszynyDysponenta = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxNazwiskoDysponent = new System.Windows.Forms.TextBox();
             this.comboBoxDzialDysponent = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -262,6 +260,8 @@
             this.textBoxWyszukiwanieDysponent = new System.Windows.Forms.TextBox();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.listBoxDysponent = new System.Windows.Forms.ListBox();
+            this.checkedListBoxMaszynyDysponenta = new System.Windows.Forms.CheckedListBox();
+            this.groupBox31 = new System.Windows.Forms.GroupBox();
             this.toolStrip.SuspendLayout();
             this.Normalia.SuspendLayout();
             this.statusStripNormalia.SuspendLayout();
@@ -310,6 +310,7 @@
             this.groupBox28.SuspendLayout();
             this.groupBox29.SuspendLayout();
             this.groupBox30.SuspendLayout();
+            this.groupBox31.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -2557,6 +2558,7 @@
             // Dysponent_maszyn
             // 
             this.Dysponent_maszyn.BackColor = System.Drawing.Color.Bisque;
+            this.Dysponent_maszyn.Controls.Add(this.groupBox31);
             this.Dysponent_maszyn.Controls.Add(this.statusStripDysponent);
             this.Dysponent_maszyn.Controls.Add(this.groupBox27);
             this.Dysponent_maszyn.Controls.Add(this.groupBox28);
@@ -2601,9 +2603,9 @@
             this.groupBox27.Controls.Add(this.buttonAnulujDysponent);
             this.groupBox27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox27.ForeColor = System.Drawing.Color.Red;
-            this.groupBox27.Location = new System.Drawing.Point(339, 655);
+            this.groupBox27.Location = new System.Drawing.Point(679, 606);
             this.groupBox27.Name = "groupBox27";
-            this.groupBox27.Size = new System.Drawing.Size(333, 56);
+            this.groupBox27.Size = new System.Drawing.Size(352, 56);
             this.groupBox27.TabIndex = 57;
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "edytuj spis";
@@ -2611,7 +2613,7 @@
             // buttonNowaDysponent
             // 
             this.buttonNowaDysponent.BackColor = System.Drawing.Color.Linen;
-            this.buttonNowaDysponent.Location = new System.Drawing.Point(9, 19);
+            this.buttonNowaDysponent.Location = new System.Drawing.Point(15, 19);
             this.buttonNowaDysponent.Name = "buttonNowaDysponent";
             this.buttonNowaDysponent.Size = new System.Drawing.Size(75, 23);
             this.buttonNowaDysponent.TabIndex = 2;
@@ -2622,7 +2624,7 @@
             // buttonUsunDysponent
             // 
             this.buttonUsunDysponent.BackColor = System.Drawing.Color.Linen;
-            this.buttonUsunDysponent.Location = new System.Drawing.Point(252, 19);
+            this.buttonUsunDysponent.Location = new System.Drawing.Point(258, 19);
             this.buttonUsunDysponent.Name = "buttonUsunDysponent";
             this.buttonUsunDysponent.Size = new System.Drawing.Size(75, 23);
             this.buttonUsunDysponent.TabIndex = 4;
@@ -2633,7 +2635,7 @@
             // buttonZapiszDysponent
             // 
             this.buttonZapiszDysponent.BackColor = System.Drawing.Color.Linen;
-            this.buttonZapiszDysponent.Location = new System.Drawing.Point(90, 19);
+            this.buttonZapiszDysponent.Location = new System.Drawing.Point(96, 19);
             this.buttonZapiszDysponent.Name = "buttonZapiszDysponent";
             this.buttonZapiszDysponent.Size = new System.Drawing.Size(75, 23);
             this.buttonZapiszDysponent.TabIndex = 3;
@@ -2644,7 +2646,7 @@
             // buttonAnulujDysponent
             // 
             this.buttonAnulujDysponent.BackColor = System.Drawing.Color.Linen;
-            this.buttonAnulujDysponent.Location = new System.Drawing.Point(171, 19);
+            this.buttonAnulujDysponent.Location = new System.Drawing.Point(177, 19);
             this.buttonAnulujDysponent.Name = "buttonAnulujDysponent";
             this.buttonAnulujDysponent.Size = new System.Drawing.Size(75, 23);
             this.buttonAnulujDysponent.TabIndex = 3;
@@ -2658,11 +2660,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox28.BackColor = System.Drawing.Color.Bisque;
             this.groupBox28.Controls.Add(this.richTextBoxDysponent_dane);
-            this.groupBox28.Controls.Add(this.listBoxMaszynyDysponenta);
             this.groupBox28.Controls.Add(this.label2);
             this.groupBox28.Controls.Add(this.textBoxNazwiskoDysponent);
             this.groupBox28.Controls.Add(this.comboBoxDzialDysponent);
-            this.groupBox28.Controls.Add(this.label4);
             this.groupBox28.Controls.Add(this.label6);
             this.groupBox28.Controls.Add(this.label7);
             this.groupBox28.Controls.Add(this.label17);
@@ -2671,7 +2671,7 @@
             this.groupBox28.ForeColor = System.Drawing.Color.Black;
             this.groupBox28.Location = new System.Drawing.Point(339, 85);
             this.groupBox28.Name = "groupBox28";
-            this.groupBox28.Size = new System.Drawing.Size(333, 564);
+            this.groupBox28.Size = new System.Drawing.Size(333, 521);
             this.groupBox28.TabIndex = 60;
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Dane operatora maszyny";
@@ -2684,18 +2684,9 @@
             this.richTextBoxDysponent_dane.DetectUrls = false;
             this.richTextBoxDysponent_dane.Location = new System.Drawing.Point(6, 181);
             this.richTextBoxDysponent_dane.Name = "richTextBoxDysponent_dane";
-            this.richTextBoxDysponent_dane.Size = new System.Drawing.Size(319, 32);
+            this.richTextBoxDysponent_dane.Size = new System.Drawing.Size(319, 334);
             this.richTextBoxDysponent_dane.TabIndex = 58;
             this.richTextBoxDysponent_dane.Text = "";
-            // 
-            // listBoxMaszynyDysponenta
-            // 
-            this.listBoxMaszynyDysponenta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBoxMaszynyDysponenta.FormattingEnabled = true;
-            this.listBoxMaszynyDysponenta.Location = new System.Drawing.Point(7, 233);
-            this.listBoxMaszynyDysponenta.Name = "listBoxMaszynyDysponenta";
-            this.listBoxMaszynyDysponenta.Size = new System.Drawing.Size(318, 329);
-            this.listBoxMaszynyDysponenta.TabIndex = 57;
             // 
             // label2
             // 
@@ -2723,16 +2714,6 @@
             this.comboBoxDzialDysponent.Size = new System.Drawing.Size(319, 21);
             this.comboBoxDzialDysponent.TabIndex = 54;
             this.comboBoxDzialDysponent.SelectedIndexChanged += new System.EventHandler(this.comboBoxDzial_dysponent_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label4.Location = new System.Drawing.Point(3, 216);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(190, 13);
-            this.label4.TabIndex = 51;
-            this.label4.Text = "Maszyny, którymi zarządza dysponent :";
             // 
             // label6
             // 
@@ -2812,10 +2793,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox30.BackColor = System.Drawing.Color.Bisque;
             this.groupBox30.Controls.Add(this.listBoxDysponent);
-            this.groupBox30.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.groupBox30.ForeColor = System.Drawing.Color.Red;
             this.groupBox30.Location = new System.Drawing.Point(3, 22);
             this.groupBox30.Name = "groupBox30";
-            this.groupBox30.Size = new System.Drawing.Size(330, 689);
+            this.groupBox30.Size = new System.Drawing.Size(330, 584);
             this.groupBox30.TabIndex = 56;
             this.groupBox30.TabStop = false;
             this.groupBox30.Text = "Dysponenci maszyn";
@@ -2828,9 +2809,29 @@
             this.listBoxDysponent.FormattingEnabled = true;
             this.listBoxDysponent.Location = new System.Drawing.Point(15, 22);
             this.listBoxDysponent.Name = "listBoxDysponent";
-            this.listBoxDysponent.Size = new System.Drawing.Size(299, 641);
+            this.listBoxDysponent.Size = new System.Drawing.Size(299, 550);
             this.listBoxDysponent.TabIndex = 0;
             this.listBoxDysponent.SelectedIndexChanged += new System.EventHandler(this.listBoxDysponent_SelectedIndexChanged);
+            // 
+            // checkedListBoxMaszynyDysponenta
+            // 
+            this.checkedListBoxMaszynyDysponenta.FormattingEnabled = true;
+            this.checkedListBoxMaszynyDysponenta.Location = new System.Drawing.Point(15, 19);
+            this.checkedListBoxMaszynyDysponenta.Name = "checkedListBoxMaszynyDysponenta";
+            this.checkedListBoxMaszynyDysponenta.Size = new System.Drawing.Size(321, 559);
+            this.checkedListBoxMaszynyDysponenta.TabIndex = 59;
+            // 
+            // groupBox31
+            // 
+            this.groupBox31.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
+            this.groupBox31.Controls.Add(this.checkedListBoxMaszynyDysponenta);
+            this.groupBox31.ForeColor = System.Drawing.Color.Red;
+            this.groupBox31.Location = new System.Drawing.Point(676, 22);
+            this.groupBox31.Name = "groupBox31";
+            this.groupBox31.Size = new System.Drawing.Size(355, 584);
+            this.groupBox31.TabIndex = 62;
+            this.groupBox31.TabStop = false;
+            this.groupBox31.Text = "Maszyny, którymi zarządza dysponent";
             // 
             // SpisForm
             // 
@@ -2923,6 +2924,7 @@
             this.groupBox29.ResumeLayout(false);
             this.groupBox29.PerformLayout();
             this.groupBox30.ResumeLayout(false);
+            this.groupBox31.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3148,7 +3150,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxNazwiskoDysponent;
         private System.Windows.Forms.ComboBox comboBoxDzialDysponent;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label17;
@@ -3158,11 +3159,12 @@
         private System.Windows.Forms.TextBox textBoxWyszukiwanieDysponent;
         private System.Windows.Forms.GroupBox groupBox30;
         private System.Windows.Forms.ListBox listBoxDysponent;
-        private System.Windows.Forms.ListBox listBoxMaszynyDysponenta;
         private System.Windows.Forms.RichTextBox richTextBoxDysponent_dane;
         private System.Windows.Forms.StatusStrip statusStripDysponent;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDysponenta;
+        private System.Windows.Forms.CheckedListBox checkedListBoxMaszynyDysponenta;
+        private System.Windows.Forms.GroupBox groupBox31;
     }
 }
 
