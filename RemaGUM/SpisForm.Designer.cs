@@ -238,6 +238,8 @@
             this.groupBox26 = new System.Windows.Forms.GroupBox();
             this.comboBoxOperator = new System.Windows.Forms.ComboBox();
             this.Dysponent_maszyn = new System.Windows.Forms.TabPage();
+            this.groupBox31 = new System.Windows.Forms.GroupBox();
+            this.listBoxMaszynyDysponenta = new System.Windows.Forms.ListBox();
             this.statusStripDysponent = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelDysponenta = new System.Windows.Forms.ToolStripStatusLabel();
@@ -260,8 +262,6 @@
             this.textBoxWyszukiwanieDysponent = new System.Windows.Forms.TextBox();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.listBoxDysponent = new System.Windows.Forms.ListBox();
-            this.checkedListBoxMaszynyDysponenta = new System.Windows.Forms.CheckedListBox();
-            this.groupBox31 = new System.Windows.Forms.GroupBox();
             this.toolStrip.SuspendLayout();
             this.Normalia.SuspendLayout();
             this.statusStripNormalia.SuspendLayout();
@@ -305,12 +305,12 @@
             this.groupBox25.SuspendLayout();
             this.groupBox26.SuspendLayout();
             this.Dysponent_maszyn.SuspendLayout();
+            this.groupBox31.SuspendLayout();
             this.statusStripDysponent.SuspendLayout();
             this.groupBox27.SuspendLayout();
             this.groupBox28.SuspendLayout();
             this.groupBox29.SuspendLayout();
             this.groupBox30.SuspendLayout();
-            this.groupBox31.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -2570,6 +2570,26 @@
             this.Dysponent_maszyn.TabIndex = 4;
             this.Dysponent_maszyn.Text = "Dysponent maszyn";
             // 
+            // groupBox31
+            // 
+            this.groupBox31.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
+            this.groupBox31.Controls.Add(this.listBoxMaszynyDysponenta);
+            this.groupBox31.ForeColor = System.Drawing.Color.Red;
+            this.groupBox31.Location = new System.Drawing.Point(676, 22);
+            this.groupBox31.Name = "groupBox31";
+            this.groupBox31.Size = new System.Drawing.Size(355, 584);
+            this.groupBox31.TabIndex = 62;
+            this.groupBox31.TabStop = false;
+            this.groupBox31.Text = "Maszyny, którymi zarządza dysponent";
+            // 
+            // listBoxMaszynyDysponenta
+            // 
+            this.listBoxMaszynyDysponenta.FormattingEnabled = true;
+            this.listBoxMaszynyDysponenta.Location = new System.Drawing.Point(6, 17);
+            this.listBoxMaszynyDysponenta.Name = "listBoxMaszynyDysponenta";
+            this.listBoxMaszynyDysponenta.Size = new System.Drawing.Size(343, 563);
+            this.listBoxMaszynyDysponenta.TabIndex = 63;
+            // 
             // statusStripDysponent
             // 
             this.statusStripDysponent.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2813,26 +2833,6 @@
             this.listBoxDysponent.TabIndex = 0;
             this.listBoxDysponent.SelectedIndexChanged += new System.EventHandler(this.listBoxDysponent_SelectedIndexChanged);
             // 
-            // checkedListBoxMaszynyDysponenta
-            // 
-            this.checkedListBoxMaszynyDysponenta.FormattingEnabled = true;
-            this.checkedListBoxMaszynyDysponenta.Location = new System.Drawing.Point(15, 19);
-            this.checkedListBoxMaszynyDysponenta.Name = "checkedListBoxMaszynyDysponenta";
-            this.checkedListBoxMaszynyDysponenta.Size = new System.Drawing.Size(321, 559);
-            this.checkedListBoxMaszynyDysponenta.TabIndex = 59;
-            // 
-            // groupBox31
-            // 
-            this.groupBox31.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
-            this.groupBox31.Controls.Add(this.checkedListBoxMaszynyDysponenta);
-            this.groupBox31.ForeColor = System.Drawing.Color.Red;
-            this.groupBox31.Location = new System.Drawing.Point(676, 22);
-            this.groupBox31.Name = "groupBox31";
-            this.groupBox31.Size = new System.Drawing.Size(355, 584);
-            this.groupBox31.TabIndex = 62;
-            this.groupBox31.TabStop = false;
-            this.groupBox31.Text = "Maszyny, którymi zarządza dysponent";
-            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2916,6 +2916,7 @@
             this.groupBox26.ResumeLayout(false);
             this.Dysponent_maszyn.ResumeLayout(false);
             this.Dysponent_maszyn.PerformLayout();
+            this.groupBox31.ResumeLayout(false);
             this.statusStripDysponent.ResumeLayout(false);
             this.statusStripDysponent.PerformLayout();
             this.groupBox27.ResumeLayout(false);
@@ -2924,7 +2925,6 @@
             this.groupBox29.ResumeLayout(false);
             this.groupBox29.PerformLayout();
             this.groupBox30.ResumeLayout(false);
-            this.groupBox31.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3163,8 +3163,8 @@
         private System.Windows.Forms.StatusStrip statusStripDysponent;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDysponenta;
-        private System.Windows.Forms.CheckedListBox checkedListBoxMaszynyDysponenta;
         private System.Windows.Forms.GroupBox groupBox31;
+        private System.Windows.Forms.ListBox listBoxMaszynyDysponenta;
     }
 }
 
