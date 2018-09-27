@@ -2099,45 +2099,45 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void listBoxDysponent_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
 
             dysponentBUS.selectQuery("SELECT * FROM Dysponent ORDER BY Dysp_nazwisko ASC;");
             dysponentBUS.idx = listBoxDysponent.SelectedIndex;
             toolStripStatusLabelDysponenta.Text = dysponentBUS.VO.Identyfikator.ToString(); // toolStripStatusLabelIDDysponenta
 
-            listBoxDysponent.Tag = dysponentBUS.VO.Identyfikator;
-
-            textBoxImieDysponent.Text = dysponentBUS.VO.Dysp_imie;
-            textBoxNazwiskoDysponent.Text = dysponentBUS.VO.Dysp_nazwisko;
-            comboBoxDzialDysponent.Text = dysponentBUS.VO.Dzial;
-            richTextBoxDysponent_dane.Text = dysponentBUS.VO.Dysp_dane;
-
-            //wypełnia listę maszyn, którymi zarządza wybrany z listy dysponent.
-            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-            nsAccess2DB.Maszyny_DysponentBUS maszyny_DysponentBUS = new nsAccess2DB.Maszyny_DysponentBUS(_connString);
-
-            listBoxMaszynyDysponenta.Items.Clear();
-
-            dysponentBUS.select();
-            maszynyBUS.select();
-            maszyny_DysponentBUS.select();
-            maszyny_DysponentBUS.selectDysponent((int)listBoxDysponent.Tag);
-
-            _maszynaTagD = new int[maszyny_DysponentBUS.count]; // przechowuje ID maszyny Dysponenta.
-                
-            int idx = 0;
-
-            while (!maszyny_DysponentBUS.eof)
+            try
             {
-                listBoxMaszynyDysponenta.Items.Add(maszyny_DysponentBUS.VO.Maszyny_nazwa_D);
-                _maszynaTagD[idx] = maszyny_DysponentBUS.VO.ID_maszyny;
+                listBoxDysponent.Tag = dysponentBUS.VO.Identyfikator;
 
-                idx = maszynyBUS.getIdx(maszyny_DysponentBUS.VO.ID_maszyny);
+                textBoxImieDysponent.Text = dysponentBUS.VO.Dysp_imie;
+                textBoxNazwiskoDysponent.Text = dysponentBUS.VO.Dysp_nazwisko;
+                comboBoxDzialDysponent.Text = dysponentBUS.VO.Dzial;
+                richTextBoxDysponent_dane.Text = dysponentBUS.VO.Dysp_dane;
 
-                maszyny_DysponentBUS.skip();
+                //wypełnia listę maszyn, którymi zarządza wybrany z listy dysponent.
+                nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
+                nsAccess2DB.Maszyny_DysponentBUS maszyny_DysponentBUS = new nsAccess2DB.Maszyny_DysponentBUS(_connString);
+
+                listBoxMaszynyDysponenta.Items.Clear();
+
+                dysponentBUS.select();
+                maszynyBUS.select();
+                maszyny_DysponentBUS.select();
+                maszyny_DysponentBUS.selectDysponent((int)listBoxDysponent.Tag);
+
+                _maszynaTag = new int[maszyny_DysponentBUS.count]; // przechowuje ID maszyny Dysponenta.
+
+                int idx = 0;
+
+                while (!maszyny_DysponentBUS.eof)
+                {
+                    listBoxMaszynyDysponenta.Items.Add(maszyny_DysponentBUS.VO.Maszyny_nazwa_D);
+                    _maszynaTag[idx] = maszyny_DysponentBUS.VO.ID_maszyny;
+                    maszyny_DysponentBUS.skip();
+                    idx++;
+                }
             }
-
+            catch { }
         }// listBoxDysponent_SelectedIndexChanged
 
 
