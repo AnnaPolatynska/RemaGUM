@@ -494,8 +494,8 @@ namespace RemaGUM
                 // wypełnij dysponenta
                 nsAccess2DB.Maszyny_DysponentBUS maszyny_DysponentBUS = new nsAccess2DB.Maszyny_DysponentBUS(_connString);
                 maszyny_DysponentBUS.select();
-
-                comboBoxDysponent.Text = dysponentBUS.VO.Dysp_nazwisko;
+                //comboBoxDysponent.Text = dysponentBUS.VO.Dysp_nazwisko + " " + dysponentBUS.VO.Dysp_imie;
+                comboBoxDysponent.Text = dysponentBUS.VO.Dysp_nazwa;
 
                 textBoxNr_pom.Text = maszynyBUS.VO.Nr_pom;
                 comboBoxDzial.Text = maszynyBUS.VO.Dzial;
@@ -510,12 +510,22 @@ namespace RemaGUM
                 TimeSpan timeSpan = new TimeSpan(termin);
                 //timeSpan.Days - czas w dniach pomiędzy dniem obecnym a datą kolejnego przeglądu.
 
-                if (timeSpan.Days <= 7)
+                //long poTerminie = currentDate.Ticks - dateTimePickerData_kol_przegl.Value.Ticks;
+                //TimeSpan timeSpan_poTermine = new TimeSpan(poTerminie);
+
+                string komunikat = ("Uwaga w dniu " + maszynyBUS.VO.Dz_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Mc_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Rok_kol_przeg.ToString() + " mija termin przeglądu dla maszyny " + maszynyBUS.VO.Nazwa.ToString());
+
+              
+                if ((timeSpan.Days == 1) || (timeSpan.Days == 2) || (timeSpan.Days == 3) || (timeSpan.Days == 4) || (timeSpan.Days == 5) || (timeSpan.Days == 6) || (timeSpan.Days == 7))
                 {
-                    pokazKomunikat("Uwaga w dniu " + maszynyBUS.VO.Dz_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Mc_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Rok_kol_przeg.ToString() + " mija termin przeglądu dla maszyny " + maszynyBUS.VO.Nazwa.ToString());
+                    pokazKomunikat(komunikat);
                 }
-
-
+                
+                else if (timeSpan.Days < 0)
+                {
+                    pokazKomunikat("Termin przeglądu maszyny "+ maszynyBUS.VO.Nazwa.ToString() + " minął.");
+                }
+                else { }
 
                 richTextBoxUwagi.Text = maszynyBUS.VO.Uwagi;
                 comboBoxWykorzystanie.Text = maszynyBUS.VO.Wykorzystanie;
