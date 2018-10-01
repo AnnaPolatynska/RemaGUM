@@ -3123,7 +3123,7 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool update(nsAccess2DB.DysponentVO VO)
         {
-            string query = "UPDATE Dysponent SET Dysp_dane = @Dysp_dane, Dzial = @Dzial, Dysp_nazwisko = @Dysp_nazwisko, Dysp_imie = @Dysp_imie Dysp_nazwa = @Dysp_nazwa WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
+            string query = "UPDATE Dysponent SET Dysp_dane = @Dysp_dane, Dzial = @Dzial, Dysp_nazwisko = @Dysp_nazwisko, Dysp_imie = @Dysp_imie, Dysp_nazwa = @Dysp_nazwa WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
          
             OleDbParameter[] parameters = new OleDbParameter[5];
 
