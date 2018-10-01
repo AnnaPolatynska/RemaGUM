@@ -513,17 +513,15 @@ namespace RemaGUM
                 //long poTerminie = currentDate.Ticks - dateTimePickerData_kol_przegl.Value.Ticks;
                 //TimeSpan timeSpan_poTermine = new TimeSpan(poTerminie);
 
-                string komunikat = ("Uwaga w dniu " + maszynyBUS.VO.Dz_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Mc_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Rok_kol_przeg.ToString() + " mija termin przeglądu dla maszyny " + maszynyBUS.VO.Nazwa.ToString());
-
-              
-                if ((timeSpan.Days == 1) || (timeSpan.Days == 2) || (timeSpan.Days == 3) || (timeSpan.Days == 4) || (timeSpan.Days == 5) || (timeSpan.Days == 6) || (timeSpan.Days == 7))
+               
+                if ((timeSpan.Days >= 1) && (timeSpan.Days <= 7))
                 {
-                    pokazKomunikat(komunikat);
+                    MessageBox.Show(("Uwaga w dniu " + maszynyBUS.VO.Dz_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Mc_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Rok_kol_przeg.ToString() + " mija termin przeglądu dla maszyny " + maszynyBUS.VO.Nazwa.ToString()), "remagum", MessageBoxButtons.OK);
                 }
                 
                 else if (timeSpan.Days < 0)
                 {
-                    pokazKomunikat("Termin przeglądu maszyny "+ maszynyBUS.VO.Nazwa.ToString() + " minął.");
+                    MessageBox.Show(("Termin przeglądu maszyny "+ maszynyBUS.VO.Nazwa.ToString() + " minął."),"RemaGUM",MessageBoxButtons.OK);
                 }
                 else { }
 
