@@ -2040,7 +2040,7 @@ namespace RemaGUM
         private void buttonSzukajOperator_Click(object sender, EventArgs e)
         {
             listBoxOperator.Items.Clear();
-            comboBoxOperator.SelectedIndex = 4;
+            comboBoxOperator.SelectedIndex = 4; // ustawia comboboxa  na sortowanie po nazwisku operatora.
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
             operatorBUS.selectQuery("SELECT * FROM Operator WHERE Op_nazwisko LIKE '" + textBoxWyszukiwanieOperator.Text + "%' OR Op_imie LIKE '" + textBoxWyszukiwanieOperator.Text + "%';");
 
@@ -2324,10 +2324,10 @@ namespace RemaGUM
 
         }// buttonUsunDysponent_Click
 
+        //TODO gubi SelectedIndex - napraw.
+
         private void buttonSzukajDysponent_Click(object sender, EventArgs e)
         {
-           textBoxWyszukiwanieDysponent.Text = textBoxWyszukiwanieDysponent.Text.Trim();
-
             if (textBoxWyszukiwanieDysponent.Text == string.Empty)
             {
                 pokazKomunikat("Proszę wpisać tekst do pola wyszukiwania. Szukanie anulowane.");
@@ -2336,35 +2336,38 @@ namespace RemaGUM
             Cursor.Current = Cursors.WaitCursor;
 
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
-
-            listBoxDysponent.Items.Clear();
-            dysponentBUS.selectQuery("SELECT * FROM Dysponent ORDER BY Dysp_nazwisko ASC;");
-
             nsAccess2DB.DysponentVO dysponentVO;
             dysponentVO = dysponentBUS.VO;
+
+            listBoxDysponent.Items.Clear();
+
+            dysponentBUS.selectQuery("SELECT * FROM Dysponent ORDER BY Dysp_nazwisko ASC;");
+            textBoxWyszukiwanieDysponent.Text = textBoxWyszukiwanieDysponent.Text.Trim();
 
             string s1 = textBoxWyszukiwanieDysponent.Text.ToUpper();
             string s2;
 
-            listBoxDysponent.ForeColor = Color.Black;
-
-            for (int i = _dysponentSzukajIdx; i < dysponentBUS.count; i++)
+           for (int i = _dysponentSzukajIdx; i < dysponentBUS.count; i++)
             {
                 dysponentBUS.idx = i;
                 dysponentVO = dysponentBUS.VO;
+
                 s2 = dysponentVO.Dysp_nazwisko.ToUpper();
-                
                 if (s2.Contains(s1))
                 {
                     _dysponentSzukajIdx = i;
                     listBoxDysponent.SelectedIndex = i;
-
-                    listBoxDysponent.ForeColor = Color.Red;
+                    if (MessageBox.Show("czy szukać dalej ?", "RemaGUM", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.Cancel)
+                    {
+                        goto cancel;
+                    }
                 }
             }
-            _dysponentSzukajIdx = 0;
-            listBoxDysponent.ForeColor = Color.Black;
+            pokazKomunikat("Aby szukać od poczatku wciśnij szukaj.");
 
+            cancel:;
+            _dysponentSzukajIdx = 0;
+           
             _dysponentSzukajIdx = dysponentBUS.count;
             
 
