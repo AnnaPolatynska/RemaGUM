@@ -2584,6 +2584,7 @@
             // 
             // listBoxMaszynyDysponenta
             // 
+            this.listBoxMaszynyDysponenta.Enabled = false;
             this.listBoxMaszynyDysponenta.FormattingEnabled = true;
             this.listBoxMaszynyDysponenta.Location = new System.Drawing.Point(6, 17);
             this.listBoxMaszynyDysponenta.Name = "listBoxMaszynyDysponenta";

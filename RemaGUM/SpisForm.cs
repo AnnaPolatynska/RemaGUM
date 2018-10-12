@@ -772,12 +772,9 @@ namespace RemaGUM
             maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nazwa ASC;");
 
             nsAccess2DB.MaszynyVO maszynyVO;
-            maszynyVO = maszynyBUS.VO;
-
+            
             string s1 = textBoxWyszukiwanie.Text.ToUpper();
             string s2;
-
-
 
             for (int i = _maszynaSzukajIdx; i < maszynyBUS.count; i++)
             {
@@ -2278,6 +2275,8 @@ namespace RemaGUM
 
         private void buttonSzukajDysponent_Click(object sender, EventArgs e)
         {
+            textBoxWyszukiwanieDysponent.Text = textBoxWyszukiwanieDysponent.Text.Trim();
+
             if (textBoxWyszukiwanieDysponent.Text == string.Empty)
             {
                 pokazKomunikat("Proszę wpisać tekst do pola wyszukiwania. Szukanie anulowane.");
@@ -2286,14 +2285,10 @@ namespace RemaGUM
             Cursor.Current = Cursors.WaitCursor;
 
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
-            nsAccess2DB.DysponentVO dysponentVO;
-            dysponentVO = dysponentBUS.VO;
-
-            listBoxDysponent.Items.Clear();
-
+           
             dysponentBUS.selectQuery("SELECT * FROM Dysponent ORDER BY Dysp_nazwisko ASC;");
-            textBoxWyszukiwanieDysponent.Text = textBoxWyszukiwanieDysponent.Text.Trim();
-
+            nsAccess2DB.DysponentVO dysponentVO;
+           
             string s1 = textBoxWyszukiwanieDysponent.Text.ToUpper();
             string s2;
 
@@ -2302,7 +2297,7 @@ namespace RemaGUM
                 dysponentBUS.idx = i;
                 dysponentVO = dysponentBUS.VO;
 
-                s2 = dysponentVO.Dysp_nazwisko.ToUpper();
+                s2 = dysponentVO.Dysp_nazwisko.ToUpper() + " " + dysponentVO.Dysp_imie.ToUpper();
                 if (s2.Contains(s1))
                 {
                     _dysponentSzukajIdx = i;
@@ -2319,9 +2314,9 @@ namespace RemaGUM
             _dysponentSzukajIdx = 0;
            
             _dysponentSzukajIdx = dysponentBUS.count;
-            
+            Cursor.Current = Cursors.Default;
 
-        }
+        }//buttonSzukajDysponent_Click
 
     }// public partial class SpisForm : Form
 
