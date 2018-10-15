@@ -114,24 +114,24 @@ namespace RemaGUM
             // --------------------------------------------- Zakładka Materiały
             //dane formularza Materiały
             listBoxMaterialy.TabIndex = 33;
-            textBoxTyp_materialu.TabIndex = 34;
-            comboBoxRodzaj.TabIndex = 35;
-            textBoxNazwa_materialu.TabIndex = 36;
-            comboBoxJednostka_mat.TabIndex = 37;
-            textBoxMagazyn_mat.TabIndex = 38;
-            textBoxZuzycie.TabIndex = 39;
-            textBoxOdpad.TabIndex = 40;
-            textBoxMin_materialu.TabIndex = 41;
-            textBoxZapotrzebowanie.TabIndex = 42;
+            textBoxTypMat.TabIndex = 34;
+            comboBoxRodzajMat.TabIndex = 35;
+            textBoxNazwaMat.TabIndex = 36;
+            comboBoxJednostkaMat.TabIndex = 37;
+            textBoxMagazynMat.TabIndex = 38;
+            textBoxZuzycieMat.TabIndex = 39;
+            textBoxOdpadMat.TabIndex = 40;
+            textBoxMinMat.TabIndex = 41;
+            textBoxZapotrzebowanieMat.TabIndex = 42;
             //dane dostawców Materiałów
             listViewDostawcy.TabIndex = 43;
             linkLabelDostawca1.TabIndex = 44;
-            richTextBoxDostawca1.TabIndex = 45;
+            richTextBoxDostawca.TabIndex = 45;
             //przyciski zapisz/edytuj itp
-            buttonNowa_mat.TabIndex = 46;
-            buttonZapisz_mat.TabIndex = 47;
-            buttonAnuluj_mat.TabIndex = 48;
-            buttonUsun_mat.TabIndex = 49;
+            buttonNowaMat.TabIndex = 46;
+            buttonZapiszMat.TabIndex = 47;
+            buttonAnulujMat.TabIndex = 48;
+            buttonUsunMat.TabIndex = 49;
             //sortowanie Materiału po radio buttonach
             radioButtonNazwa_mat.TabIndex = 50;
             radioButtonTyp_mat.TabIndex = 51;
@@ -213,25 +213,25 @@ namespace RemaGUM
             _tt.SetToolTip(buttonSzukaj, "Szukanie w bazie maszyn.");
             // -------------------------------------- Zakładka Materiały
             _tt.SetToolTip(listBoxMaterialy, "Lista materiałów.");
-            _tt.SetToolTip(textBoxTyp_materialu, "Typ materiału.");
-            _tt.SetToolTip(comboBoxRodzaj, "Rodzaj materiału.");
-            _tt.SetToolTip(textBoxNazwa_materialu, "Nazwa materiału.");
-            _tt.SetToolTip(comboBoxJednostka_mat, "Jednostka miary.");
-            _tt.SetToolTip(textBoxMagazyn_mat, "Stan magazynowy materiału.");
-            _tt.SetToolTip(textBoxZuzycie, "Wpisz ile materiału podlega zużyciu.");
-            _tt.SetToolTip(textBoxOdpad, "Wpisz ile materiału jest odpadem.");
-            _tt.SetToolTip(textBoxMin_materialu, "Stan minimalny materiału.");
-            _tt.SetToolTip(textBoxZapotrzebowanie, "Zapotrzebowanie materiału.");
+            _tt.SetToolTip(textBoxTypMat, "Typ materiału.");
+            _tt.SetToolTip(comboBoxRodzajMat, "Rodzaj materiału.");
+            _tt.SetToolTip(textBoxNazwaMat, "Nazwa materiału.");
+            _tt.SetToolTip(comboBoxJednostkaMat, "Jednostka miary.");
+            _tt.SetToolTip(textBoxMagazynMat, "Stan magazynowy materiału.");
+            _tt.SetToolTip(textBoxZuzycieMat, "Wpisz ile materiału podlega zużyciu.");
+            _tt.SetToolTip(textBoxOdpadMat, "Wpisz ile materiału jest odpadem.");
+            _tt.SetToolTip(textBoxMinMat, "Stan minimalny materiału.");
+            _tt.SetToolTip(textBoxZapotrzebowanieMat, "Zapotrzebowanie materiału.");
             _tt.SetToolTip(linkLabelDostawca1, "link do strony dostawcy głównego.");
-            _tt.SetToolTip(richTextBoxDostawca1, "Opis dostawcy głównego, dane kontaktowe, szczegóły dotyczące składania zamówienia (np. proponowane upusty cenowe).");
+            _tt.SetToolTip(richTextBoxDostawca, "Opis dostawcy głównego, dane kontaktowe, szczegóły dotyczące składania zamówienia (np. proponowane upusty cenowe).");
             _tt.SetToolTip(radioButtonNazwa_mat, "Sortuj po nazwie materiału.");
             _tt.SetToolTip(radioButtonTyp_mat, "Sortuj po typie materiału.");
             _tt.SetToolTip(radioButtonCena_mat, "Sortuj po cenie materiału.");
             _tt.SetToolTip(radioButtonMagazyn_ilosc_mat, "Sortuj po dostępnych ilościach w magazynie.");
-            _tt.SetToolTip(buttonNowa_mat, "Nowa pozycja w bazie.");
-            _tt.SetToolTip(buttonZapisz_mat, "Zapis nowej maszyny, przyrządu lub urządzenia lub edycja wybranej pozycji.");
-            _tt.SetToolTip(buttonAnuluj_mat, "Anulowanie zmiany.");
-            _tt.SetToolTip(buttonUsun_mat, "Usuwa pozycję z bazy.");
+            _tt.SetToolTip(buttonNowaMat, "Nowa pozycja w bazie.");
+            _tt.SetToolTip(buttonZapiszMat, "Zapis nowej maszyny, przyrządu lub urządzenia lub edycja wybranej pozycji.");
+            _tt.SetToolTip(buttonAnulujMat, "Anulowanie zmiany.");
+            _tt.SetToolTip(buttonUsunMat, "Usuwa pozycję z bazy.");
             _tt.SetToolTip(textBoxWyszukaj_mat, "Wpisz jakiego materiału szukasz.");
             _tt.SetToolTip(buttonSzukaj_mat, "Szukanie w bazie materiałów.");
             //---------------------------------------Zakładka operator
@@ -1333,15 +1333,15 @@ namespace RemaGUM
 
             toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString(); //  toolStripStatusLabelID_Materialu
             listBoxMaterialy.Tag = materialyBUS.VO.Identyfikator;
-            textBoxTyp_materialu.Text = materialyBUS.VO.Typ_mat;
-            comboBoxRodzaj.Text = materialyBUS.VO.Rodzaj_mat;
-            textBoxNazwa_materialu.Text = materialyBUS.VO.Nazwa_mat;
-            comboBoxJednostka_mat.Text = materialyBUS.VO.Jednostka_miar_mat;
-            textBoxMagazyn_mat.Text = materialyBUS.VO.Stan_mat.ToString();
-            textBoxZuzycie.Text = materialyBUS.VO.Zuzycie_mat.ToString();
-            textBoxOdpad.Text = materialyBUS.VO.Odpad_mat.ToString();
-            textBoxMin_materialu.Text = materialyBUS.VO.Stan_min_mat.ToString();
-            textBoxZapotrzebowanie.Text = materialyBUS.VO.Zapotrzebowanie_mat.ToString();
+            textBoxTypMat.Text = materialyBUS.VO.Typ_mat;
+            comboBoxRodzajMat.Text = materialyBUS.VO.Rodzaj_mat;
+            textBoxNazwaMat.Text = materialyBUS.VO.Nazwa_mat;
+            comboBoxJednostkaMat.Text = materialyBUS.VO.Jednostka_miar_mat;
+            textBoxMagazynMat.Text = materialyBUS.VO.Stan_mat.ToString();
+            textBoxZuzycieMat.Text = materialyBUS.VO.Zuzycie_mat.ToString();
+            textBoxOdpadMat.Text = materialyBUS.VO.Odpad_mat.ToString();
+            textBoxMinMat.Text = materialyBUS.VO.Stan_min_mat.ToString();
+            textBoxZapotrzebowanieMat.Text = materialyBUS.VO.Zapotrzebowanie_mat.ToString();
             //dane dostawców Materiałów
           
 
@@ -1362,14 +1362,14 @@ namespace RemaGUM
         {
             nsAccess2DB.Jednostka_miarBUS jednostka_MiarBUS = new nsAccess2DB.Jednostka_miarBUS(_connString);
             nsAccess2DB.Jednostka_miarVO VO;
-            comboBoxJednostka_mat.Items.Clear();
+            comboBoxJednostkaMat.Items.Clear();
 
             jednostka_MiarBUS.select();
             jednostka_MiarBUS.top();
             while (!jednostka_MiarBUS.eof)
             {
                 VO = jednostka_MiarBUS.VO;
-                comboBoxJednostka_mat.Items.Add(VO.Nazwa_jednostka_miar);
+                comboBoxJednostkaMat.Items.Add(VO.Nazwa_jednostka_miar);
                 jednostka_MiarBUS.skip();
             }
         }// WypelnijJednostka_miar()
@@ -1377,28 +1377,28 @@ namespace RemaGUM
         private void comboBoxJednostka_mat_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.Jednostka_miarBUS jednostka_MiarBUS = new nsAccess2DB.Jednostka_miarBUS(_connString);
-            jednostka_MiarBUS.idx = comboBoxJednostka_mat.SelectedIndex;
+            jednostka_MiarBUS.idx = comboBoxJednostkaMat.SelectedIndex;
         }// comboBoxJednostka_mat_SelectedIndexChanged
 
         private void WypelnijRodzaj_mat()
         {
             nsAccess2DB.Rodzaj_matBUS rodzaj_MatBUS = new nsAccess2DB.Rodzaj_matBUS(_connString);
             nsAccess2DB.Rodzaj_matVO VO;
-            comboBoxRodzaj.Items.Clear();
+            comboBoxRodzajMat.Items.Clear();
             
             rodzaj_MatBUS.select();
             rodzaj_MatBUS.top();
             while (!rodzaj_MatBUS.eof)
             {
                 VO = rodzaj_MatBUS.VO;
-                comboBoxRodzaj.Items.Add(VO.Nazwa_rodzaj_mat);
+                comboBoxRodzajMat.Items.Add(VO.Nazwa_rodzaj_mat);
                 rodzaj_MatBUS.skip();
             }
         }
         private void comboBoxRodzaj_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.Rodzaj_matBUS rodzaj_MatBUS = new nsAccess2DB.Rodzaj_matBUS(_connString);
-            rodzaj_MatBUS.idx = comboBoxJednostka_mat.SelectedIndex;
+            rodzaj_MatBUS.idx = comboBoxJednostkaMat.SelectedIndex;
         }
 
         // --------- --------------------------------------- Formularz Materialy
@@ -1406,31 +1406,31 @@ namespace RemaGUM
         {
             //toolStripStatusLabelID_Materialu.Text = string.Empty;
 
-            textBoxTyp_materialu.Text = string.Empty;
+            textBoxTypMat.Text = string.Empty;
 
-            comboBoxRodzaj.SelectedIndex = -1;
-            comboBoxRodzaj.Enabled = true;
-            comboBoxRodzaj.SelectedIndex = 0;
-            comboBoxRodzaj.Refresh();
+            comboBoxRodzajMat.SelectedIndex = -1;
+            comboBoxRodzajMat.Enabled = true;
+            comboBoxRodzajMat.SelectedIndex = 0;
+            comboBoxRodzajMat.Refresh();
 
-            textBoxNazwa_materialu.Text = string.Empty;
+            textBoxNazwaMat.Text = string.Empty;
 
-            comboBoxJednostka_mat.SelectedIndex = -1;
-            comboBoxJednostka_mat.Enabled = true;
-            comboBoxJednostka_mat.SelectedIndex = 0;
-            comboBoxJednostka_mat.Refresh();
+            comboBoxJednostkaMat.SelectedIndex = -1;
+            comboBoxJednostkaMat.Enabled = true;
+            comboBoxJednostkaMat.SelectedIndex = 0;
+            comboBoxJednostkaMat.Refresh();
 
-            textBoxMagazyn_mat.Text = string.Empty;
-            textBoxZuzycie.Text = string.Empty;
-            textBoxOdpad.Text = string.Empty;
-            textBoxMin_materialu.Text = string.Empty;
-            textBoxZapotrzebowanie.Text = string.Empty;
+            textBoxMagazynMat.Text = string.Empty;
+            textBoxZuzycieMat.Text = string.Empty;
+            textBoxOdpadMat.Text = string.Empty;
+            textBoxMinMat.Text = string.Empty;
+            textBoxZapotrzebowanieMat.Text = string.Empty;
             //dane dostawców Materiałów
 
             //-----------------------------------------------------TO DO Zrobić dostawców 1+2
             
             linkLabelDostawca1.Text = string.Empty;
-            richTextBoxDostawca1.Text = string.Empty;
+            richTextBoxDostawca.Text = string.Empty;
             //----------------------------------------------------TO DO Zrobić dostawców 1+2
             
             buttonAnuluj.Enabled = true;
@@ -1444,20 +1444,20 @@ namespace RemaGUM
         {
             int idx = listBoxMaterialy.SelectedIndex;
 
-            textBoxTyp_materialu.Text = string.Empty;
-            comboBoxRodzaj.Text = string.Empty;
-            textBoxNazwa_materialu.Text = string.Empty;
-            comboBoxJednostka_mat.Text = string.Empty;
-            textBoxMagazyn_mat.Text = string.Empty;
-            textBoxZuzycie.Text = string.Empty;
-            textBoxOdpad.Text = string.Empty;
-            textBoxMin_materialu.Text = string.Empty;
-            textBoxZapotrzebowanie.Text = string.Empty;
+            textBoxTypMat.Text = string.Empty;
+            comboBoxRodzajMat.Text = string.Empty;
+            textBoxNazwaMat.Text = string.Empty;
+            comboBoxJednostkaMat.Text = string.Empty;
+            textBoxMagazynMat.Text = string.Empty;
+            textBoxZuzycieMat.Text = string.Empty;
+            textBoxOdpadMat.Text = string.Empty;
+            textBoxMinMat.Text = string.Empty;
+            textBoxZapotrzebowanieMat.Text = string.Empty;
             //dane dostawców Materiałów
             //-----------------------------------------------------TO DO Zrobić dostawców 1+2
             
             linkLabelDostawca1.Text = string.Empty;
-            richTextBoxDostawca1.Text = string.Empty;
+            richTextBoxDostawca.Text = string.Empty;
             //----------------------------------------------------TO DO Zrobić dostawców 1+2
             
 
@@ -1471,20 +1471,20 @@ namespace RemaGUM
             nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
             materialyBUS.delete((int)listBoxMaterialy.Tag);
 
-            textBoxTyp_materialu.Text = string.Empty;
-            comboBoxRodzaj.Text = string.Empty;
-            textBoxNazwa_materialu.Text = string.Empty;
-            comboBoxJednostka_mat.Text = string.Empty;
-            textBoxMagazyn_mat.Text = string.Empty;
-            textBoxZuzycie.Text = string.Empty;
-            textBoxOdpad.Text = string.Empty;
-            textBoxMin_materialu.Text = string.Empty;
-            textBoxZapotrzebowanie.Text = string.Empty;
+            textBoxTypMat.Text = string.Empty;
+            comboBoxRodzajMat.Text = string.Empty;
+            textBoxNazwaMat.Text = string.Empty;
+            comboBoxJednostkaMat.Text = string.Empty;
+            textBoxMagazynMat.Text = string.Empty;
+            textBoxZuzycieMat.Text = string.Empty;
+            textBoxOdpadMat.Text = string.Empty;
+            textBoxMinMat.Text = string.Empty;
+            textBoxZapotrzebowanieMat.Text = string.Empty;
             //dane dostawców Materiałów
             //-----------------------------------------------------TO DO Zrobić dostawców 1+2
            
             linkLabelDostawca1.Text = string.Empty;
-            richTextBoxDostawca1.Text = string.Empty;
+            richTextBoxDostawca.Text = string.Empty;
             //----------------------------------------------------TO DO Zrobić dostawców 1+2
             WypelnijMaterialyNazwami();
         }//buttonUsun_mat_Click
@@ -1492,7 +1492,7 @@ namespace RemaGUM
         private void buttonZapisz_mat_Click(object sender, EventArgs e)
         {
             nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
-            if (textBoxNazwa_materialu.Text == string.Empty)
+            if (textBoxNazwaMat.Text == string.Empty)
             {
                 MessageBox.Show("Uzupełnij nazwę materiału", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -1501,15 +1501,15 @@ namespace RemaGUM
 
             nsAccess2DB.MaterialyVO Mat_VO = new nsAccess2DB.MaterialyVO();
 
-            Mat_VO.Rodzaj_mat = comboBoxRodzaj.Text.Trim();
-            Mat_VO.Typ_mat = textBoxTyp_materialu.Text.Trim();
-            Mat_VO.Nazwa_mat = textBoxNazwa_materialu.Text.Trim();
-            Mat_VO.Jednostka_miar_mat = comboBoxJednostka_mat.Text.Trim();
-            Mat_VO.Stan_mat = int.Parse(textBoxMagazyn_mat.Text.Trim());
-            Mat_VO.Zuzycie_mat = int.Parse(textBoxZuzycie.Text.Trim());
-            Mat_VO.Odpad_mat = int.Parse(textBoxOdpad.Text.Trim());
-            Mat_VO.Stan_min_mat = int.Parse(textBoxMin_materialu.Text.Trim());
-            Mat_VO.Zapotrzebowanie_mat = int.Parse(textBoxZapotrzebowanie.Text.Trim());
+            Mat_VO.Rodzaj_mat = comboBoxRodzajMat.Text.Trim();
+            Mat_VO.Typ_mat = textBoxTypMat.Text.Trim();
+            Mat_VO.Nazwa_mat = textBoxNazwaMat.Text.Trim();
+            Mat_VO.Jednostka_miar_mat = comboBoxJednostkaMat.Text.Trim();
+            Mat_VO.Stan_mat = int.Parse(textBoxMagazynMat.Text.Trim());
+            Mat_VO.Zuzycie_mat = int.Parse(textBoxZuzycieMat.Text.Trim());
+            Mat_VO.Odpad_mat = int.Parse(textBoxOdpadMat.Text.Trim());
+            Mat_VO.Stan_min_mat = int.Parse(textBoxMinMat.Text.Trim());
+            Mat_VO.Zapotrzebowanie_mat = int.Parse(textBoxZapotrzebowanieMat.Text.Trim());
 
             if (toolStripStatusLabelID_Materialu.Text == string.Empty) //nowa pozycja w tabeli materialów
             {
