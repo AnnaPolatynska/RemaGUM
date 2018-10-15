@@ -93,13 +93,7 @@
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label27 = new System.Windows.Forms.Label();
             this.richTextBoxDostawca1 = new System.Windows.Forms.RichTextBox();
-            this.comboBoxDostawca1 = new System.Windows.Forms.ComboBox();
-            this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.richTextBoxDostawca2 = new System.Windows.Forms.RichTextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.linkLabelDostawca2 = new System.Windows.Forms.LinkLabel();
-            this.comboBoxDostawca2 = new System.Windows.Forms.ComboBox();
             this.linkLabelDostawca1 = new System.Windows.Forms.LinkLabel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
@@ -262,6 +256,7 @@
             this.textBoxWyszukiwanieDysponent = new System.Windows.Forms.TextBox();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.listBoxDysponent = new System.Windows.Forms.ListBox();
+            this.listViewDostawcy = new System.Windows.Forms.ListView();
             this.toolStrip.SuspendLayout();
             this.Normalia.SuspendLayout();
             this.statusStripNormalia.SuspendLayout();
@@ -962,15 +957,10 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.listViewDostawcy);
             this.groupBox10.Controls.Add(this.label27);
             this.groupBox10.Controls.Add(this.richTextBoxDostawca1);
-            this.groupBox10.Controls.Add(this.comboBoxDostawca1);
-            this.groupBox10.Controls.Add(this.label29);
             this.groupBox10.Controls.Add(this.label28);
-            this.groupBox10.Controls.Add(this.richTextBoxDostawca2);
-            this.groupBox10.Controls.Add(this.label20);
-            this.groupBox10.Controls.Add(this.linkLabelDostawca2);
-            this.groupBox10.Controls.Add(this.comboBoxDostawca2);
             this.groupBox10.Controls.Add(this.linkLabelDostawca1);
             this.groupBox10.Location = new System.Drawing.Point(761, 12);
             this.groupBox10.Name = "groupBox10";
@@ -982,98 +972,40 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(11, 101);
+            this.label27.Location = new System.Drawing.Point(14, 433);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(264, 13);
+            this.label27.Size = new System.Drawing.Size(271, 13);
             this.label27.TabIndex = 44;
-            this.label27.Text = "Dodatkowe informacje dotyczące dostawcy głównego";
+            this.label27.Text = "Dodatkowe informacje dotyczące wybranego dostawcy.";
             this.label27.UseMnemonic = false;
             // 
             // richTextBoxDostawca1
             // 
             this.richTextBoxDostawca1.BackColor = System.Drawing.Color.Linen;
-            this.richTextBoxDostawca1.Location = new System.Drawing.Point(10, 117);
+            this.richTextBoxDostawca1.Location = new System.Drawing.Point(14, 451);
             this.richTextBoxDostawca1.Name = "richTextBoxDostawca1";
-            this.richTextBoxDostawca1.Size = new System.Drawing.Size(378, 168);
+            this.richTextBoxDostawca1.Size = new System.Drawing.Size(393, 168);
             this.richTextBoxDostawca1.TabIndex = 45;
             this.richTextBoxDostawca1.Text = "";
-            // 
-            // comboBoxDostawca1
-            // 
-            this.comboBoxDostawca1.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxDostawca1.FormattingEnabled = true;
-            this.comboBoxDostawca1.Location = new System.Drawing.Point(6, 43);
-            this.comboBoxDostawca1.Name = "comboBoxDostawca1";
-            this.comboBoxDostawca1.Size = new System.Drawing.Size(380, 21);
-            this.comboBoxDostawca1.TabIndex = 39;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(10, 402);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(288, 13);
-            this.label29.TabIndex = 29;
-            this.label29.Text = "Dodatkowe informacje dotyczące dostawcy alternatywnego";
-            this.label29.UseMnemonic = false;
             // 
             // label28
             // 
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(7, 27);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(93, 13);
+            this.label28.Size = new System.Drawing.Size(57, 13);
             this.label28.TabIndex = 17;
-            this.label28.Text = "Dostawca główny";
-            // 
-            // richTextBoxDostawca2
-            // 
-            this.richTextBoxDostawca2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.richTextBoxDostawca2.BackColor = System.Drawing.Color.Linen;
-            this.richTextBoxDostawca2.Location = new System.Drawing.Point(7, 423);
-            this.richTextBoxDostawca2.Name = "richTextBoxDostawca2";
-            this.richTextBoxDostawca2.Size = new System.Drawing.Size(381, 205);
-            this.richTextBoxDostawca2.TabIndex = 30;
-            this.richTextBoxDostawca2.Text = "";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(15, 330);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(117, 13);
-            this.label20.TabIndex = 40;
-            this.label20.Text = "Dostawca alternatywny";
-            // 
-            // linkLabelDostawca2
-            // 
-            this.linkLabelDostawca2.AutoSize = true;
-            this.linkLabelDostawca2.Location = new System.Drawing.Point(14, 370);
-            this.linkLabelDostawca2.Name = "linkLabelDostawca2";
-            this.linkLabelDostawca2.Size = new System.Drawing.Size(103, 13);
-            this.linkLabelDostawca2.TabIndex = 43;
-            this.linkLabelDostawca2.TabStop = true;
-            this.linkLabelDostawca2.Text = "linkLabelDostawca2";
-            // 
-            // comboBoxDostawca2
-            // 
-            this.comboBoxDostawca2.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxDostawca2.FormattingEnabled = true;
-            this.comboBoxDostawca2.Location = new System.Drawing.Point(5, 346);
-            this.comboBoxDostawca2.Name = "comboBoxDostawca2";
-            this.comboBoxDostawca2.Size = new System.Drawing.Size(380, 21);
-            this.comboBoxDostawca2.TabIndex = 41;
+            this.label28.Text = "Dostawcy:";
             // 
             // linkLabelDostawca1
             // 
             this.linkLabelDostawca1.AutoSize = true;
-            this.linkLabelDostawca1.Location = new System.Drawing.Point(14, 78);
+            this.linkLabelDostawca1.Location = new System.Drawing.Point(14, 400);
             this.linkLabelDostawca1.Name = "linkLabelDostawca1";
-            this.linkLabelDostawca1.Size = new System.Drawing.Size(103, 13);
+            this.linkLabelDostawca1.Size = new System.Drawing.Size(97, 13);
             this.linkLabelDostawca1.TabIndex = 42;
             this.linkLabelDostawca1.TabStop = true;
-            this.linkLabelDostawca1.Text = "linkLabelDostawca1";
+            this.linkLabelDostawca1.Text = "linkLabelDostawca";
             // 
             // groupBox6
             // 
@@ -1156,7 +1088,7 @@
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(110, 13);
             this.label36.TabIndex = 59;
-            this.label36.Text = "Wartośc jednostkowa";
+            this.label36.Text = "Wartość jednostkowa";
             // 
             // textBoxMin_materialu
             // 
@@ -1269,7 +1201,7 @@
             this.labelWartosc_jednostkowa.Name = "labelWartosc_jednostkowa";
             this.labelWartosc_jednostkowa.Size = new System.Drawing.Size(110, 13);
             this.labelWartosc_jednostkowa.TabIndex = 48;
-            this.labelWartosc_jednostkowa.Text = "Wartośc jednostkowa";
+            this.labelWartosc_jednostkowa.Text = "Wartość jednostkowa";
             // 
             // label19
             // 
@@ -2834,6 +2766,14 @@
             this.listBoxDysponent.TabIndex = 0;
             this.listBoxDysponent.SelectedIndexChanged += new System.EventHandler(this.listBoxDysponent_SelectedIndexChanged);
             // 
+            // listViewDostawcy
+            // 
+            this.listViewDostawcy.Location = new System.Drawing.Point(17, 43);
+            this.listViewDostawcy.Name = "listViewDostawcy";
+            this.listViewDostawcy.Size = new System.Drawing.Size(390, 387);
+            this.listViewDostawcy.TabIndex = 46;
+            this.listViewDostawcy.UseCompatibleStateImageBehavior = false;
+            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2997,10 +2937,7 @@
         private System.Windows.Forms.Button buttonUsunZdj;
         private System.Windows.Forms.Button buttonPokazZdj;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.ComboBox comboBoxDostawca2;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.ComboBox comboBoxDostawca1;
         private System.Windows.Forms.TextBox textBoxMagazyn_mat;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox textBoxTyp_materialu;
@@ -3008,9 +2945,7 @@
         private System.Windows.Forms.TextBox textBoxNazwa_materialu;
         private System.Windows.Forms.ComboBox comboBoxRodzaj;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.RichTextBox richTextBoxDostawca2;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox textBoxZuzycie;
         private System.Windows.Forms.Label label33;
@@ -3028,7 +2963,6 @@
         private System.Windows.Forms.RadioButton radioButtonNazwa_mat;
         private System.Windows.Forms.RadioButton radioButtonCena_mat;
         private System.Windows.Forms.RadioButton radioButtonTyp_mat;
-        private System.Windows.Forms.LinkLabel linkLabelDostawca2;
         private System.Windows.Forms.LinkLabel linkLabelDostawca1;
         private System.Windows.Forms.TextBox textBoxOdpad;
         private System.Windows.Forms.Label label21;
@@ -3166,6 +3100,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDysponenta;
         private System.Windows.Forms.GroupBox groupBox31;
         private System.Windows.Forms.ListBox listBoxMaszynyDysponenta;
+        private System.Windows.Forms.ListView listViewDostawcy;
     }
 }
 

@@ -124,25 +124,22 @@ namespace RemaGUM
             textBoxMin_materialu.TabIndex = 41;
             textBoxZapotrzebowanie.TabIndex = 42;
             //dane dostawców Materiałów
-            comboBoxDostawca1.TabIndex = 43;
+            listViewDostawcy.TabIndex = 43;
             linkLabelDostawca1.TabIndex = 44;
             richTextBoxDostawca1.TabIndex = 45;
-            comboBoxDostawca2.TabIndex = 46;
-            linkLabelDostawca2.TabIndex = 47;
-            richTextBoxDostawca2.TabIndex = 48;
             //przyciski zapisz/edytuj itp
-            buttonNowa_mat.TabIndex = 49;
-            buttonZapisz_mat.TabIndex = 50;
-            buttonAnuluj_mat.TabIndex = 51;
-            buttonUsun_mat.TabIndex = 52;
+            buttonNowa_mat.TabIndex = 46;
+            buttonZapisz_mat.TabIndex = 47;
+            buttonAnuluj_mat.TabIndex = 48;
+            buttonUsun_mat.TabIndex = 49;
             //sortowanie Materiału po radio buttonach
-            radioButtonNazwa_mat.TabIndex = 53;
-            radioButtonTyp_mat.TabIndex = 54;
-            radioButtonCena_mat.TabIndex = 55;
-            radioButtonMagazyn_ilosc_mat.TabIndex = 56;
+            radioButtonNazwa_mat.TabIndex = 50;
+            radioButtonTyp_mat.TabIndex = 51;
+            radioButtonCena_mat.TabIndex = 52;
+            radioButtonMagazyn_ilosc_mat.TabIndex = 53;
             //wyszukiwanie Materiału po wpisanej nazwie
-            textBoxWyszukaj_mat.TabIndex = 57;
-            buttonSzukaj_mat.TabIndex = 58;
+            textBoxWyszukaj_mat.TabIndex = 54;
+            buttonSzukaj_mat.TabIndex = 55;
 
             //------------------------------------------------ Zakładka Operator
             //dane forlumarza
@@ -225,12 +222,8 @@ namespace RemaGUM
             _tt.SetToolTip(textBoxOdpad, "Wpisz ile materiału jest odpadem.");
             _tt.SetToolTip(textBoxMin_materialu, "Stan minimalny materiału.");
             _tt.SetToolTip(textBoxZapotrzebowanie, "Zapotrzebowanie materiału.");
-            _tt.SetToolTip(comboBoxDostawca1, "Dane dostawcy głównego.");
             _tt.SetToolTip(linkLabelDostawca1, "link do strony dostawcy głównego.");
             _tt.SetToolTip(richTextBoxDostawca1, "Opis dostawcy głównego, dane kontaktowe, szczegóły dotyczące składania zamówienia (np. proponowane upusty cenowe).");
-            _tt.SetToolTip(comboBoxDostawca2, "Dane dostawcy alternatywnego.");
-            _tt.SetToolTip(linkLabelDostawca2, "link do strony dostawcy alternatywnego.");
-            _tt.SetToolTip(richTextBoxDostawca2, "Opis dostawcy alternatywnego, dane kontaktowe, szczegóły dotyczące składania zamówienia (np. proponowane upusty cenowe).");
             _tt.SetToolTip(radioButtonNazwa_mat, "Sortuj po nazwie materiału.");
             _tt.SetToolTip(radioButtonTyp_mat, "Sortuj po typie materiału.");
             _tt.SetToolTip(radioButtonCena_mat, "Sortuj po cenie materiału.");
@@ -801,9 +794,8 @@ namespace RemaGUM
             _maszynaSzukajIdx = 0;
             listBoxMaszyny.ForeColor = Color.Black;
 
-            _maszynaSzukajIdx = _maszynyBUS.count;
+            //_maszynaSzukajIdx = _maszynyBUS.count;
 
-            //pokazKomunikat("nie znaleziono tekstu - powtórz szukanie");
             Cursor.Current = Cursors.Default;
 
         }//buttonSzukaj_Click
@@ -1351,13 +1343,13 @@ namespace RemaGUM
             textBoxMin_materialu.Text = materialyBUS.VO.Stan_min_mat.ToString();
             textBoxZapotrzebowanie.Text = materialyBUS.VO.Zapotrzebowanie_mat.ToString();
             //dane dostawców Materiałów
-            comboBoxDostawca1.Text = materialyBUS.VO.Dostawca_mat;
+          
 
             //TODO zrobić kwerendę z dostawcami i ją uruchomić
             //linkLabelDostawca1.Text = dostawca_matBUS.kategoriaVO.Link_dostawca_mat;
             //richTextBoxDostawca1.Text = dostawca_matBUS.kategoriaVO.Dod_info_dostawca_mat;
 
-            comboBoxDostawca2.Text = materialyBUS.VO.Dostawca_mat;
+           
             //TODO zrobić kwerendę z dostawcami i ją uruchomić
             //linkLabelDostawca2.Text = dostawca_matBUS.kategoriaVO.Link_dostawca_mat;
             //richTextBoxDostawca2.Text = dostawca_matBUS.kategoriaVO.Dod_info_dostawca_mat;
@@ -1436,22 +1428,11 @@ namespace RemaGUM
             //dane dostawców Materiałów
 
             //-----------------------------------------------------TO DO Zrobić dostawców 1+2
-            comboBoxDostawca1.SelectedIndex = -1;
-            comboBoxDostawca1.Enabled = true;
-            comboBoxDostawca1.SelectedIndex = 0;
-            comboBoxDostawca1.Refresh();
-
+            
             linkLabelDostawca1.Text = string.Empty;
             richTextBoxDostawca1.Text = string.Empty;
             //----------------------------------------------------TO DO Zrobić dostawców 1+2
-            comboBoxDostawca2.SelectedIndex = -1;
-            comboBoxDostawca2.Enabled = true;
-            comboBoxDostawca2.SelectedIndex = 0;
-            comboBoxDostawca2.Refresh();
-
-            linkLabelDostawca2.Text = string.Empty;
-            richTextBoxDostawca2.Text = string.Empty;
-
+            
             buttonAnuluj.Enabled = true;
 
             _statusForm = (int)_status.nowy;
@@ -1474,13 +1455,11 @@ namespace RemaGUM
             textBoxZapotrzebowanie.Text = string.Empty;
             //dane dostawców Materiałów
             //-----------------------------------------------------TO DO Zrobić dostawców 1+2
-            comboBoxDostawca1.Text = string.Empty;
+            
             linkLabelDostawca1.Text = string.Empty;
             richTextBoxDostawca1.Text = string.Empty;
             //----------------------------------------------------TO DO Zrobić dostawców 1+2
-            comboBoxDostawca2.Text = string.Empty;
-            linkLabelDostawca2.Text = string.Empty;
-            richTextBoxDostawca2.Text = string.Empty;
+            
 
             WypelnijMaterialyNazwami();
             listBoxMaterialy.SelectedIndex = idx;
@@ -1503,14 +1482,10 @@ namespace RemaGUM
             textBoxZapotrzebowanie.Text = string.Empty;
             //dane dostawców Materiałów
             //-----------------------------------------------------TO DO Zrobić dostawców 1+2
-            comboBoxDostawca1.Text = string.Empty;
+           
             linkLabelDostawca1.Text = string.Empty;
             richTextBoxDostawca1.Text = string.Empty;
             //----------------------------------------------------TO DO Zrobić dostawców 1+2
-            comboBoxDostawca2.Text = string.Empty;
-            linkLabelDostawca2.Text = string.Empty;
-            richTextBoxDostawca2.Text = string.Empty;
-
             WypelnijMaterialyNazwami();
         }//buttonUsun_mat_Click
 
@@ -2271,8 +2246,6 @@ namespace RemaGUM
 
         }// buttonUsunDysponent_Click
 
-        //TODO gubi SelectedIndex - napraw.
-
         private void buttonSzukajDysponent_Click(object sender, EventArgs e)
         {
             textBoxWyszukiwanieDysponent.Text = textBoxWyszukiwanieDysponent.Text.Trim();
@@ -2312,12 +2285,11 @@ namespace RemaGUM
 
             cancel:;
             _dysponentSzukajIdx = 0;
-           
-            _dysponentSzukajIdx = dysponentBUS.count;
+       
             Cursor.Current = Cursors.Default;
-
         }//buttonSzukajDysponent_Click
 
+       
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM
