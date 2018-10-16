@@ -132,7 +132,7 @@
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.radioButtonMagazyn_ilosc_mat = new System.Windows.Forms.RadioButton();
             this.radioButtonNazwa_mat = new System.Windows.Forms.RadioButton();
-            this.radioButtonCena_mat = new System.Windows.Forms.RadioButton();
+            this.radioButtonStan_min_mat = new System.Windows.Forms.RadioButton();
             this.radioButtonTyp_mat = new System.Windows.Forms.RadioButton();
             this.Maszyny = new System.Windows.Forms.TabPage();
             this.statusStripMaszyna = new System.Windows.Forms.StatusStrip();
@@ -1359,7 +1359,7 @@
             this.groupBox11.BackColor = System.Drawing.Color.Bisque;
             this.groupBox11.Controls.Add(this.radioButtonMagazyn_ilosc_mat);
             this.groupBox11.Controls.Add(this.radioButtonNazwa_mat);
-            this.groupBox11.Controls.Add(this.radioButtonCena_mat);
+            this.groupBox11.Controls.Add(this.radioButtonStan_min_mat);
             this.groupBox11.Controls.Add(this.radioButtonTyp_mat);
             this.groupBox11.ForeColor = System.Drawing.Color.Red;
             this.groupBox11.Location = new System.Drawing.Point(9, 8);
@@ -1373,13 +1373,14 @@
             // 
             this.radioButtonMagazyn_ilosc_mat.AutoSize = true;
             this.radioButtonMagazyn_ilosc_mat.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonMagazyn_ilosc_mat.Location = new System.Drawing.Point(175, 27);
+            this.radioButtonMagazyn_ilosc_mat.Location = new System.Drawing.Point(220, 26);
             this.radioButtonMagazyn_ilosc_mat.Name = "radioButtonMagazyn_ilosc_mat";
             this.radioButtonMagazyn_ilosc_mat.Size = new System.Drawing.Size(93, 17);
             this.radioButtonMagazyn_ilosc_mat.TabIndex = 5;
             this.radioButtonMagazyn_ilosc_mat.TabStop = true;
             this.radioButtonMagazyn_ilosc_mat.Text = "Ilość na stanie";
             this.radioButtonMagazyn_ilosc_mat.UseVisualStyleBackColor = true;
+            this.radioButtonMagazyn_ilosc_mat.CheckedChanged += new System.EventHandler(this.radioButtonMagazyn_ilosc_mat_CheckedChanged);
             // 
             // radioButtonNazwa_mat
             // 
@@ -1394,17 +1395,18 @@
             this.radioButtonNazwa_mat.UseVisualStyleBackColor = true;
             this.radioButtonNazwa_mat.CheckedChanged += new System.EventHandler(this.radioButtonNazwa_mat_CheckedChanged);
             // 
-            // radioButtonCena_mat
+            // radioButtonStan_min_mat
             // 
-            this.radioButtonCena_mat.AutoSize = true;
-            this.radioButtonCena_mat.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonCena_mat.Location = new System.Drawing.Point(119, 26);
-            this.radioButtonCena_mat.Name = "radioButtonCena_mat";
-            this.radioButtonCena_mat.Size = new System.Drawing.Size(50, 17);
-            this.radioButtonCena_mat.TabIndex = 3;
-            this.radioButtonCena_mat.TabStop = true;
-            this.radioButtonCena_mat.Text = "Cena";
-            this.radioButtonCena_mat.UseVisualStyleBackColor = true;
+            this.radioButtonStan_min_mat.AutoSize = true;
+            this.radioButtonStan_min_mat.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonStan_min_mat.Location = new System.Drawing.Point(119, 26);
+            this.radioButtonStan_min_mat.Name = "radioButtonStan_min_mat";
+            this.radioButtonStan_min_mat.Size = new System.Drawing.Size(95, 17);
+            this.radioButtonStan_min_mat.TabIndex = 3;
+            this.radioButtonStan_min_mat.TabStop = true;
+            this.radioButtonStan_min_mat.Text = "Stan minimalny";
+            this.radioButtonStan_min_mat.UseVisualStyleBackColor = true;
+            this.radioButtonStan_min_mat.CheckedChanged += new System.EventHandler(this.radioButtonStan_min_mat_CheckedChanged);
             // 
             // radioButtonTyp_mat
             // 
@@ -1417,6 +1419,7 @@
             this.radioButtonTyp_mat.TabStop = true;
             this.radioButtonTyp_mat.Text = "Typ";
             this.radioButtonTyp_mat.UseVisualStyleBackColor = true;
+            this.radioButtonTyp_mat.CheckedChanged += new System.EventHandler(this.radioButtonTyp_mat_CheckedChanged);
             // 
             // Maszyny
             // 
@@ -2904,7 +2907,7 @@
         private System.Windows.Forms.Button buttonAnulujMat;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.RadioButton radioButtonNazwa_mat;
-        private System.Windows.Forms.RadioButton radioButtonCena_mat;
+        private System.Windows.Forms.RadioButton radioButtonStan_min_mat;
         private System.Windows.Forms.RadioButton radioButtonTyp_mat;
         private System.Windows.Forms.LinkLabel linkLabelDostawcaMat;
         private System.Windows.Forms.TextBox textBoxOdpadMat;

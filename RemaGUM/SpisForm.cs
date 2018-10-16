@@ -136,7 +136,7 @@ namespace RemaGUM
             //sortowanie Materiału po radio buttonach
             radioButtonNazwa_mat.TabIndex = 50;
             radioButtonTyp_mat.TabIndex = 51;
-            radioButtonCena_mat.TabIndex = 52;
+            radioButtonStan_min_mat.TabIndex = 52;
             radioButtonMagazyn_ilosc_mat.TabIndex = 53;
             //wyszukiwanie Materiału po wpisanej nazwie
             textBoxWyszukaj_mat.TabIndex = 54;
@@ -227,7 +227,7 @@ namespace RemaGUM
             _tt.SetToolTip(richTextBoxDostawca, "Opis dostawcy głównego, dane kontaktowe, szczegóły dotyczące składania zamówienia (np. proponowane upusty cenowe).");
             _tt.SetToolTip(radioButtonNazwa_mat, "Sortuj po nazwie materiału.");
             _tt.SetToolTip(radioButtonTyp_mat, "Sortuj po typie materiału.");
-            _tt.SetToolTip(radioButtonCena_mat, "Sortuj po cenie materiału.");
+            _tt.SetToolTip(radioButtonStan_min_mat, "Sortuj po cenie materiału.");
             _tt.SetToolTip(radioButtonMagazyn_ilosc_mat, "Sortuj po dostępnych ilościach w magazynie.");
             _tt.SetToolTip(buttonNowaMat, "Nowa pozycja w bazie.");
             _tt.SetToolTip(buttonZapiszMat, "Zapis nowej maszyny, przyrządu lub urządzenia lub edycja wybranej pozycji.");
@@ -297,6 +297,7 @@ namespace RemaGUM
             // --------------------------------- Zakładka Materialy.
             if (v.SelectedIndex == 1)
             {
+                radioButtonNazwa_mat.Checked = true; // przy przejściu do zakładki materiały zaznaczone sortowanie po nazwie.
                 WypelnijMaterialyNazwami();
                 WypelnijJednostka_miar();
                 WypelnijRodzaj_mat();
@@ -1300,7 +1301,7 @@ namespace RemaGUM
 
 
 
-        //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  wyświetlanie w zakładce Materiały.
+        //  //  //  //  //  //  //  //  //  //  //  //  //  // wyświetlanie w zakładce Materiały.
         //TODO Zakładka materiały
         // --------------------------------------- wypełnianie  listBoxMaterialy.
         // wyświetla listę Materiałów po nazwie
@@ -1317,6 +1318,11 @@ namespace RemaGUM
                 listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " - " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
                 materialyBUS.skip();
             }
+            if (listBoxMaszyny.Items.Count > 0)
+            {
+                listBoxMaszyny.SelectedIndex = 0;
+            }
+           
         }// WypelnijMaterialyNazwami()
        
         /// <summary>
@@ -1332,6 +1338,23 @@ namespace RemaGUM
                 materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");
                 materialyBUS.idx = listBoxMaterialy.SelectedIndex;
                 toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString(); //  toolStripStatusLabelID_Materialu
+            }
+            else if (radioButtonStan_min_mat.Checked)
+            {
+                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Stan_min_mat ASC;");
+                materialyBUS.idx = listBoxMaterialy.SelectedIndex;
+                toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
+            }
+            else if (radioButtonTyp_mat.Checked)
+            {
+                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Typ_mat ASC;");
+                materialyBUS.idx = listBoxMaterialy.SelectedIndex;
+                toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
+            }
+            else if (radioButtonMagazyn_ilosc_mat.Checked)
+            {
+                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Stan_mat ASC;");
+                toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
             }
             //materialyBUS.select();
 
@@ -1405,18 +1428,20 @@ namespace RemaGUM
                
             textBoxTypMat.Text = string.Empty;
 
-            comboBoxRodzajMat.SelectedIndex = -1;
-            comboBoxRodzajMat.Enabled = true;
-            comboBoxRodzajMat.SelectedIndex = 0;
-            comboBoxRodzajMat.Refresh();
+            comboBoxRodzajMat.Text = string.Empty;
+            //comboBoxRodzajMat.SelectedIndex = -1;
+            //comboBoxRodzajMat.Enabled = true;
+            //comboBoxRodzajMat.SelectedIndex = 0;
+            //comboBoxRodzajMat.Refresh();
 
             textBoxNazwaMat.Text = string.Empty;
 
-            comboBoxJednostkaMat.SelectedIndex = -1;
-            comboBoxJednostkaMat.Enabled = true;
-            comboBoxJednostkaMat.SelectedIndex = 0;
-            comboBoxJednostkaMat.Refresh();
-            
+            comboBoxJednostkaMat.Text = string.Empty;
+            //comboBoxJednostkaMat.SelectedIndex = -1;
+            //comboBoxJednostkaMat.Enabled = true;
+            //comboBoxJednostkaMat.SelectedIndex = 0;
+            //comboBoxJednostkaMat.Refresh();
+
             textBoxMagazynMat.Text = string.Empty;
             textBoxZuzycieMat.Text = string.Empty;
             textBoxOdpadMat.Text = string.Empty;
@@ -1506,8 +1531,77 @@ namespace RemaGUM
                     listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat);
                     materialyBUS.skip();
                 }
+                if (listBoxMaterialy.Items.Count > 0)
+                {
+                    listBoxMaterialy.SelectedIndex = 0;
+                }
             }
-        }//  private void radioButtonNazwa_mat_CheckedChanged(object sender, EventArgs e)
+        }// radioButtonNazwa_mat_CheckedChanged(object sender, EventArgs e)
+
+        private void radioButtonTyp_mat_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonTyp_mat.Checked)
+            {
+                listBoxMaterialy.Items.Clear();
+                CzyscDaneMaterialy();
+
+                nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
+                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Typ_mat ASC;");
+                while (!materialyBUS.eof)
+                {
+                    listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " -> " + materialyBUS.VO.Typ_mat);
+                    materialyBUS.skip();
+                }
+                if (listBoxMaterialy.Items.Count > 0)
+                {
+                    listBoxMaterialy.SelectedIndex = 0;
+                }
+            }
+        }//radioButtonTyp_mat_CheckedChanged(object sender, EventArgs e)
+
+        private void radioButtonStan_min_mat_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonStan_min_mat.Checked)
+            {
+                listBoxMaterialy.Items.Clear();
+                CzyscDaneMaterialy();
+
+                nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
+                nsAccess2DB.Jednostka_miarBUS jednostka_MiarBUS = new nsAccess2DB.Jednostka_miarBUS(_connString);
+
+                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Stan_min_mat ASC;");
+                while (!materialyBUS.eof)
+                {
+                    listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " -> " + materialyBUS.VO.Stan_min_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
+                    materialyBUS.skip();
+                }
+                if (listBoxMaterialy.Items.Count > 0)
+                {
+                    listBoxMaterialy.SelectedIndex = 0;
+                }
+            }
+        }//radioButtonStan_min_mat_CheckedChanged(object sender, EventArgs e)
+
+        private void radioButtonMagazyn_ilosc_mat_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonMagazyn_ilosc_mat.Checked)
+            {
+                listBoxMaterialy.Items.Clear();
+                CzyscDaneMaterialy();
+
+                nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
+                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Stan_mat ASC;");
+                while (!materialyBUS.eof)
+                {
+                    listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " -> " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
+                    materialyBUS.skip();
+                }
+                if (listBoxMaterialy.Items.Count > 0)
+                {
+                    listBoxMaterialy.SelectedIndex = 0;
+                }
+            }
+        }// radioButtonMagazyn_ilosc_mat_CheckedChanged(object sender, EventArgs e)
 
         // --------- ---------------------------------------przyciski Formularz Materialy
         private void ButtonNowa_mat_Click(object sender, EventArgs e)
@@ -2397,6 +2491,7 @@ namespace RemaGUM
             Cursor.Current = Cursors.Default;
         }//buttonSzukajDysponent_Click
 
+        
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM
