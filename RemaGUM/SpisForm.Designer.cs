@@ -36,6 +36,7 @@
             this.toolStripStatusNormalia = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelIDNormaliow = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.listViewDostawcyNorm = new System.Windows.Forms.ListView();
             this.label32 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.richTextBoxDostawcaNorm = new System.Windows.Forms.RichTextBox();
@@ -85,10 +86,11 @@
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelID_Materialu = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.checkedListBoxDostawcyMat = new System.Windows.Forms.CheckedListBox();
             this.label27 = new System.Windows.Forms.Label();
             this.richTextBoxDostawca = new System.Windows.Forms.RichTextBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.linkLabelDostawca1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabelDostawcaMat = new System.Windows.Forms.LinkLabel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -250,8 +252,6 @@
             this.textBoxWyszukiwanieDysponent = new System.Windows.Forms.TextBox();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.listBoxDysponent = new System.Windows.Forms.ListBox();
-            this.listViewDostawcy = new System.Windows.Forms.ListView();
-            this.listViewDostawcyNorm = new System.Windows.Forms.ListView();
             this.toolStrip.SuspendLayout();
             this.Normalia.SuspendLayout();
             this.statusStripNormalia.SuspendLayout();
@@ -383,6 +383,14 @@
             this.groupBox14.TabIndex = 55;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Dostawcy normaliów";
+            // 
+            // listViewDostawcyNorm
+            // 
+            this.listViewDostawcyNorm.Location = new System.Drawing.Point(7, 44);
+            this.listViewDostawcyNorm.Name = "listViewDostawcyNorm";
+            this.listViewDostawcyNorm.Size = new System.Drawing.Size(381, 421);
+            this.listViewDostawcyNorm.TabIndex = 44;
+            this.listViewDostawcyNorm.UseCompatibleStateImageBehavior = false;
             // 
             // label32
             // 
@@ -891,17 +899,25 @@
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.listViewDostawcy);
+            this.groupBox10.Controls.Add(this.checkedListBoxDostawcyMat);
             this.groupBox10.Controls.Add(this.label27);
             this.groupBox10.Controls.Add(this.richTextBoxDostawca);
             this.groupBox10.Controls.Add(this.label28);
-            this.groupBox10.Controls.Add(this.linkLabelDostawca1);
+            this.groupBox10.Controls.Add(this.linkLabelDostawcaMat);
             this.groupBox10.Location = new System.Drawing.Point(761, 12);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(425, 637);
             this.groupBox10.TabIndex = 49;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Dostawcy materiałów";
+            // 
+            // checkedListBoxDostawcyMat
+            // 
+            this.checkedListBoxDostawcyMat.FormattingEnabled = true;
+            this.checkedListBoxDostawcyMat.Location = new System.Drawing.Point(10, 44);
+            this.checkedListBoxDostawcyMat.Name = "checkedListBoxDostawcyMat";
+            this.checkedListBoxDostawcyMat.Size = new System.Drawing.Size(397, 349);
+            this.checkedListBoxDostawcyMat.TabIndex = 46;
             // 
             // label27
             // 
@@ -931,15 +947,15 @@
             this.label28.TabIndex = 17;
             this.label28.Text = "Dostawcy:";
             // 
-            // linkLabelDostawca1
+            // linkLabelDostawcaMat
             // 
-            this.linkLabelDostawca1.AutoSize = true;
-            this.linkLabelDostawca1.Location = new System.Drawing.Point(14, 400);
-            this.linkLabelDostawca1.Name = "linkLabelDostawca1";
-            this.linkLabelDostawca1.Size = new System.Drawing.Size(97, 13);
-            this.linkLabelDostawca1.TabIndex = 42;
-            this.linkLabelDostawca1.TabStop = true;
-            this.linkLabelDostawca1.Text = "linkLabelDostawca";
+            this.linkLabelDostawcaMat.AutoSize = true;
+            this.linkLabelDostawcaMat.Location = new System.Drawing.Point(14, 400);
+            this.linkLabelDostawcaMat.Name = "linkLabelDostawcaMat";
+            this.linkLabelDostawcaMat.Size = new System.Drawing.Size(115, 13);
+            this.linkLabelDostawcaMat.TabIndex = 42;
+            this.linkLabelDostawcaMat.TabStop = true;
+            this.linkLabelDostawcaMat.Text = "linkLabelDostawcaMat";
             // 
             // groupBox6
             // 
@@ -1376,6 +1392,7 @@
             this.radioButtonNazwa_mat.TabStop = true;
             this.radioButtonNazwa_mat.Text = "Nazwa";
             this.radioButtonNazwa_mat.UseVisualStyleBackColor = true;
+            this.radioButtonNazwa_mat.CheckedChanged += new System.EventHandler(this.radioButtonNazwa_mat_CheckedChanged);
             // 
             // radioButtonCena_mat
             // 
@@ -2700,22 +2717,6 @@
             this.listBoxDysponent.TabIndex = 0;
             this.listBoxDysponent.SelectedIndexChanged += new System.EventHandler(this.listBoxDysponent_SelectedIndexChanged);
             // 
-            // listViewDostawcy
-            // 
-            this.listViewDostawcy.Location = new System.Drawing.Point(17, 43);
-            this.listViewDostawcy.Name = "listViewDostawcy";
-            this.listViewDostawcy.Size = new System.Drawing.Size(390, 349);
-            this.listViewDostawcy.TabIndex = 46;
-            this.listViewDostawcy.UseCompatibleStateImageBehavior = false;
-            // 
-            // listViewDostawcyNorm
-            // 
-            this.listViewDostawcyNorm.Location = new System.Drawing.Point(7, 44);
-            this.listViewDostawcyNorm.Name = "listViewDostawcyNorm";
-            this.listViewDostawcyNorm.Size = new System.Drawing.Size(381, 421);
-            this.listViewDostawcyNorm.TabIndex = 44;
-            this.listViewDostawcyNorm.UseCompatibleStateImageBehavior = false;
-            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2905,7 +2906,7 @@
         private System.Windows.Forms.RadioButton radioButtonNazwa_mat;
         private System.Windows.Forms.RadioButton radioButtonCena_mat;
         private System.Windows.Forms.RadioButton radioButtonTyp_mat;
-        private System.Windows.Forms.LinkLabel linkLabelDostawca1;
+        private System.Windows.Forms.LinkLabel linkLabelDostawcaMat;
         private System.Windows.Forms.TextBox textBoxOdpadMat;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label labelWartosc_jednostkowa;
@@ -3036,8 +3037,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDysponenta;
         private System.Windows.Forms.GroupBox groupBox31;
         private System.Windows.Forms.ListBox listBoxMaszynyDysponenta;
-        private System.Windows.Forms.ListView listViewDostawcy;
         private System.Windows.Forms.ListView listViewDostawcyNorm;
+        private System.Windows.Forms.CheckedListBox checkedListBoxDostawcyMat;
     }
 }
 

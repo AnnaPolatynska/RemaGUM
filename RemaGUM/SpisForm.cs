@@ -27,12 +27,13 @@ namespace RemaGUM
         enum _status { edycja, nowy };  //status działania formularza.
         private byte _statusForm; // wartośc statusu formularza.
 
-        private int[] _maszynaTag; // przechowuje identyfikatory maszyn.
-        private int[] _maszynaTagD; // przechowuje identyfikatory maszyn Dysponenta. 
-        int _maszynaId = -1; // identyfikator maszyny.
-        int _maszynaSzukajIdx = 0; // indeks szukanej maszyny.
+        private int[] _maszynaTag; // przechowuje identyfikatory maszyn dla operatora.
+       
+        private 
 
-        int _dysponentId = -1; // identyfikator dysponenta.
+        int _maszynaId = -1; // identyfikator maszyny przy starcie programu.
+
+        int _maszynaSzukajIdx = 0; // indeks szukanej maszyny.
         int _dysponentSzukajIdx = 0; //indeks szukanego dysponenta.
 
         private ToolTip _tt; //podpowiedzi dla niektórych kontolek.
@@ -124,8 +125,8 @@ namespace RemaGUM
             textBoxMinMat.TabIndex = 41;
             textBoxZapotrzebowanieMat.TabIndex = 42;
             //dane dostawców Materiałów
-            listViewDostawcy.TabIndex = 43;
-            linkLabelDostawca1.TabIndex = 44;
+            checkedListBoxDostawcyMat.TabIndex = 43;
+            linkLabelDostawcaMat.TabIndex = 44;
             richTextBoxDostawca.TabIndex = 45;
             //przyciski zapisz/edytuj itp
             buttonNowaMat.TabIndex = 46;
@@ -222,7 +223,7 @@ namespace RemaGUM
             _tt.SetToolTip(textBoxOdpadMat, "Wpisz ile materiału jest odpadem.");
             _tt.SetToolTip(textBoxMinMat, "Stan minimalny materiału.");
             _tt.SetToolTip(textBoxZapotrzebowanieMat, "Zapotrzebowanie materiału.");
-            _tt.SetToolTip(linkLabelDostawca1, "link do strony dostawcy głównego.");
+            _tt.SetToolTip(linkLabelDostawcaMat, "link do strony dostawcy głównego.");
             _tt.SetToolTip(richTextBoxDostawca, "Opis dostawcy głównego, dane kontaktowe, szczegóły dotyczące składania zamówienia (np. proponowane upusty cenowe).");
             _tt.SetToolTip(radioButtonNazwa_mat, "Sortuj po nazwie materiału.");
             _tt.SetToolTip(radioButtonTyp_mat, "Sortuj po typie materiału.");
@@ -299,6 +300,7 @@ namespace RemaGUM
                 WypelnijMaterialyNazwami();
                 WypelnijJednostka_miar();
                 WypelnijRodzaj_mat();
+                WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);// wypełnia dostawców materialów.
 
                 if (listBoxMaterialy.Items.Count > 0)
                 {
@@ -346,7 +348,7 @@ namespace RemaGUM
 
 
         //  //  //  //  //  //  //  //  //  //  //  //  //-------------------------wyświetlanie w zakładce Maszyny.
-
+        // TODO zakładka maszyny
         /// <summary>
         /// Czyści dane z formularza maszyny.
         /// </summary>
@@ -560,13 +562,11 @@ namespace RemaGUM
         //************* wypełnia CheckedListBox nazwiskami i imionami operatorów maszyn.
         private void WypelnijOperatorow_maszyn(CheckedListBox v)
         {
-            nsAccess2DB.Maszyny_OperatorBUS maszyny_OperatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
 
             v.Items.Clear();
             operatorBUS.select();
-            // maszyny_OperatorBUS.select();
-
+          
             while (!operatorBUS.eof)
             {
                 v.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
@@ -1300,21 +1300,21 @@ namespace RemaGUM
 
 
 
-        //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // //  //  //  //  //  //  //  //  wyświetlanie w zakładce Materiały.
-        
+        //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  wyświetlanie w zakładce Materiały.
+        //TODO Zakładka materiały
         // --------------------------------------- wypełnianie  listBoxMaterialy.
         // wyświetla listę Materiałów po nazwie
         private void WypelnijMaterialyNazwami()
         {
             nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
-            nsAccess2DB.MaterialyVO VO;
             listBoxMaterialy.Items.Clear();
             materialyBUS.select();
 
+            //materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");
+
             while (!materialyBUS.eof)
             {
-                VO = materialyBUS.VO;
-                listBoxMaterialy.Items.Add(VO.Nazwa_mat + " - " + VO.Stan_mat + " " + VO.Jednostka_miar_mat);
+                listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " - " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
                 materialyBUS.skip();
             }
         }// WypelnijMaterialyNazwami()
@@ -1327,37 +1327,127 @@ namespace RemaGUM
         private void listBoxMaterialy_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
-            materialyBUS.select();
+            if (radioButtonNazwa_mat.Checked)
+            {
+                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");
+                materialyBUS.idx = listBoxMaterialy.SelectedIndex;
+                toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString(); //  toolStripStatusLabelID_Materialu
+            }
+            //materialyBUS.select();
 
-            materialyBUS.idx = listBoxMaterialy.SelectedIndex;
+            try
+            {
+                materialyBUS.idx = listBoxMaterialy.SelectedIndex;
+                listBoxMaterialy.Tag = materialyBUS.VO.Identyfikator;
+                toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
 
-            toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString(); //  toolStripStatusLabelID_Materialu
-            listBoxMaterialy.Tag = materialyBUS.VO.Identyfikator;
-            textBoxTypMat.Text = materialyBUS.VO.Typ_mat;
-            comboBoxRodzajMat.Text = materialyBUS.VO.Rodzaj_mat;
-            textBoxNazwaMat.Text = materialyBUS.VO.Nazwa_mat;
-            comboBoxJednostkaMat.Text = materialyBUS.VO.Jednostka_miar_mat;
-            textBoxMagazynMat.Text = materialyBUS.VO.Stan_mat.ToString();
-            textBoxZuzycieMat.Text = materialyBUS.VO.Zuzycie_mat.ToString();
-            textBoxOdpadMat.Text = materialyBUS.VO.Odpad_mat.ToString();
-            textBoxMinMat.Text = materialyBUS.VO.Stan_min_mat.ToString();
-            textBoxZapotrzebowanieMat.Text = materialyBUS.VO.Zapotrzebowanie_mat.ToString();
-            //dane dostawców Materiałów
-          
+                textBoxTypMat.Text = materialyBUS.VO.Typ_mat;
+                comboBoxRodzajMat.Text = materialyBUS.VO.Rodzaj_mat;
+                textBoxNazwaMat.Text = materialyBUS.VO.Nazwa_mat;
+                comboBoxJednostkaMat.Text = materialyBUS.VO.Jednostka_miar_mat;
+                textBoxMagazynMat.Text = materialyBUS.VO.Stan_mat.ToString();
+                textBoxZuzycieMat.Text = materialyBUS.VO.Zuzycie_mat.ToString();
+                textBoxOdpadMat.Text = materialyBUS.VO.Odpad_mat.ToString();
+                textBoxMinMat.Text = materialyBUS.VO.Stan_min_mat.ToString();
+                textBoxZapotrzebowanieMat.Text = materialyBUS.VO.Zapotrzebowanie_mat.ToString();
 
-            //TODO zrobić kwerendę z dostawcami i ją uruchomić
-            //linkLabelDostawca1.Text = dostawca_matBUS.kategoriaVO.Link_dostawca_mat;
-            //richTextBoxDostawca1.Text = dostawca_matBUS.kategoriaVO.Dod_info_dostawca_mat;
+                nsAccess2DB.Dostawca_matBUS dostawca_matBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
+                dostawca_matBUS.select();
+                nsAccess2DB.Dostawca_MaterialBUS dostawca_materialBUS = new nsAccess2DB.Dostawca_MaterialBUS(_connString);
+                dostawca_materialBUS.select((int)listBoxMaterialy.Tag);
 
-           
-            //TODO zrobić kwerendę z dostawcami i ją uruchomić
-            //linkLabelDostawca2.Text = dostawca_matBUS.kategoriaVO.Link_dostawca_mat;
-            //richTextBoxDostawca2.Text = dostawca_matBUS.kategoriaVO.Dod_info_dostawca_mat;
+               //TODO zrób dostawców
+                //wypełnia Dostawców matreiałów w polu checkedListBoxDostawcyMat ************************
+                for (int i = 0; i < checkedListBoxDostawcyMat.Items.Count; i++)
+                {
+                    checkedListBoxDostawcyMat.SetItemChecked(i, false);
+                }
 
+                int idxD = -1;
+                while (!dostawca_materialBUS.eof)
+                {
+                    idxD = dostawca_matBUS.getIdx(dostawca_materialBUS.VO.ID_dostawca_mat);
+                    if (idxD > -1) checkedListBoxDostawcyMat.SetItemChecked(idxD, true);
+                    dostawca_materialBUS.skip();
+                }
+
+                linkLabelDostawcaMat.Text = dostawca_matBUS.VO.Link_dostawca_mat;
+                richTextBoxDostawca.Text = dostawca_matBUS.VO.Dod_info_dostawca_mat;
+
+            }
+            catch { }
         } // listBoxMaterialy_SelectedIndexChanged
 
-              
-       
+        private void WypelnijDostawcowMaterialow(CheckedListBox v)
+        {
+            nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
+            
+            v.Items.Clear();
+            dostawca_MatBUS.select();
+
+            while (!dostawca_MatBUS.eof)
+            {
+                v.Items.Add(dostawca_MatBUS.VO.Nazwa_dostawca_mat);
+                dostawca_MatBUS.skip();
+            }
+
+            if (v.Items.Count > 0)
+            {
+                dostawca_MatBUS.idx = 0;
+                v.SelectedIndex = 0;
+                v.Tag = dostawca_MatBUS.VO.Identyfikator;
+            }
+        }// WypelnijDostawcowMaterialow(CheckedListBox v)
+
+        private void CzyscDaneMaterialy()
+        {
+            toolStripStatusLabelID_Materialu.Text = string.Empty;
+               
+            textBoxTypMat.Text = string.Empty;
+
+            comboBoxRodzajMat.SelectedIndex = -1;
+            comboBoxRodzajMat.Enabled = true;
+            comboBoxRodzajMat.SelectedIndex = 0;
+            comboBoxRodzajMat.Refresh();
+
+            textBoxNazwaMat.Text = string.Empty;
+
+            comboBoxJednostkaMat.SelectedIndex = -1;
+            comboBoxJednostkaMat.Enabled = true;
+            comboBoxJednostkaMat.SelectedIndex = 0;
+            comboBoxJednostkaMat.Refresh();
+            
+            textBoxMagazynMat.Text = string.Empty;
+            textBoxZuzycieMat.Text = string.Empty;
+            textBoxOdpadMat.Text = string.Empty;
+            textBoxMinMat.Text = string.Empty;
+            textBoxZapotrzebowanieMat.Text = string.Empty;
+
+            //czyści checkboxy DostawcyMat
+            for (int i = 0; i < checkedListBoxDostawcyMat.Items.Count; i++)
+            {
+                checkedListBoxDostawcyMat.SetItemChecked(i, false);
+            }
+
+            linkLabelDostawcaMat.Text = string.Empty;
+            richTextBoxDostawca.Text = string.Empty;
+        }//CzyscDaneMaterialy()
+        
+        /// <summary>
+        /// Odswieża dane w zakładce materiały.
+        /// </summary>
+        private void OdswiezMaterialy()
+        {
+            nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
+            listBoxMaterialy.Items.Clear();
+            materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");
+
+            while (!materialyBUS.eof)
+            {
+                listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " - " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
+                materialyBUS.skip();
+            }
+        }// OdswiezMaterialy()
         private void WypelnijJednostka_miar()
         {
             nsAccess2DB.Jednostka_miarBUS jednostka_MiarBUS = new nsAccess2DB.Jednostka_miarBUS(_connString);
@@ -1394,14 +1484,32 @@ namespace RemaGUM
                 comboBoxRodzajMat.Items.Add(VO.Nazwa_rodzaj_mat);
                 rodzaj_MatBUS.skip();
             }
-        }
+        }// WypelnijRodzaj_mat()
         private void comboBoxRodzaj_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.Rodzaj_matBUS rodzaj_MatBUS = new nsAccess2DB.Rodzaj_matBUS(_connString);
             rodzaj_MatBUS.idx = comboBoxJednostkaMat.SelectedIndex;
-        }
+        }// comboBoxRodzaj_SelectedIndexChanged(object sender, EventArgs e)
 
-        // --------- --------------------------------------- Formularz Materialy
+       // //////////////////////////////////////////////////  Radio buttony
+        private void radioButtonNazwa_mat_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonNazwa_mat.Checked)
+            {
+                listBoxMaterialy.Items.Clear();
+                CzyscDaneMaterialy();
+
+                nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
+                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");
+                while (!materialyBUS.eof)
+                {
+                    listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat);
+                    materialyBUS.skip();
+                }
+            }
+        }//  private void radioButtonNazwa_mat_CheckedChanged(object sender, EventArgs e)
+
+        // --------- ---------------------------------------przyciski Formularz Materialy
         private void ButtonNowa_mat_Click(object sender, EventArgs e)
         {
             //toolStripStatusLabelID_Materialu.Text = string.Empty;
@@ -1429,7 +1537,7 @@ namespace RemaGUM
 
             //-----------------------------------------------------TO DO Zrobić dostawców 1+2
             
-            linkLabelDostawca1.Text = string.Empty;
+            linkLabelDostawcaMat.Text = string.Empty;
             richTextBoxDostawca.Text = string.Empty;
             //----------------------------------------------------TO DO Zrobić dostawców 1+2
             
@@ -1456,7 +1564,7 @@ namespace RemaGUM
             //dane dostawców Materiałów
             //-----------------------------------------------------TO DO Zrobić dostawców 1+2
             
-            linkLabelDostawca1.Text = string.Empty;
+            linkLabelDostawcaMat.Text = string.Empty;
             richTextBoxDostawca.Text = string.Empty;
             //----------------------------------------------------TO DO Zrobić dostawców 1+2
             
@@ -1483,7 +1591,7 @@ namespace RemaGUM
             //dane dostawców Materiałów
             //-----------------------------------------------------TO DO Zrobić dostawców 1+2
            
-            linkLabelDostawca1.Text = string.Empty;
+            linkLabelDostawcaMat.Text = string.Empty;
             richTextBoxDostawca.Text = string.Empty;
             //----------------------------------------------------TO DO Zrobić dostawców 1+2
             WypelnijMaterialyNazwami();
@@ -1563,8 +1671,8 @@ namespace RemaGUM
 
 
 
-        //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  ---------------------------Operatorzy maszyn.
-        
+        //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  -Operatorzy maszyn.
+        // TODO operatorzy maszyn.
        
         //wyświetla listę operatorów maszyn po imieniu i nazwisku
         private void WypelnijOperatorowDanymi()
@@ -2289,7 +2397,6 @@ namespace RemaGUM
             Cursor.Current = Cursors.Default;
         }//buttonSzukajDysponent_Click
 
-       
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM
