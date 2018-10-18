@@ -28,7 +28,7 @@ namespace RemaGUM
         private byte _statusForm; // wartośc statusu formularza.
 
         private int[] _maszynaTag; // przechowuje identyfikatory maszyn dla operatora.
-       
+        
         private 
 
         int _maszynaId = -1; // identyfikator maszyny przy starcie programu.
@@ -43,6 +43,7 @@ namespace RemaGUM
 
         private nsAccess2DB.OperatorBUS _OperatorBUS;
         private nsAccess2DB.MaszynyBUS _maszynyBUS;
+        private nsAccess2DB.MaterialyBUS _materialyBUS;
 
         /// <summary>
         /// Konstruktor formularza.
@@ -58,6 +59,7 @@ namespace RemaGUM
 
             _OperatorBUS = new nsAccess2DB.OperatorBUS(_connString);
             _maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
+            _materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
 
             radioButtonNazwa.Checked = true; // przy starcie programu zaznaczone sortowanie po nazwie.
             WypelnijCzestotliwosc();
@@ -348,8 +350,8 @@ namespace RemaGUM
         } //tabControl1_SelectedIndexChanged
 
 
-        //  //  //  //  //  //  //  //  //  //  //  //  //-------------------------wyświetlanie w zakładce Maszyny.
-        // TODO zakładka maszyny
+        // TODO //  //  //  //  //  //  //  //  //  //  //  //  //  // ZAKŁADKA MASZYNY.
+        
         /// <summary>
         /// Czyści dane z formularza maszyny.
         /// </summary>
@@ -470,8 +472,8 @@ namespace RemaGUM
             {
                 toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString(); // toolStripStatusLabelID_Maszyny
                 listBoxMaszyny.Tag = maszynyBUS.VO.Identyfikator;
-                comboBoxKategoria.Text = maszynyBUS.VO.Kategoria;
 
+                comboBoxKategoria.Text = maszynyBUS.VO.Kategoria;
                 textBoxNazwa.Text = maszynyBUS.VO.Nazwa;
                 textBoxTyp.Text = maszynyBUS.VO.Typ;
                 textBoxNr_inwentarzowy.Text = maszynyBUS.VO.Nr_inwentarzowy;
@@ -1222,7 +1224,6 @@ namespace RemaGUM
                     toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
                 }
                 
-
                 //Uaktualnia ID i dane maszyny po Sortowaniu();
                 maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
                 listBoxMaszyny.Tag = maszynyBUS.VO.Identyfikator;
@@ -1301,15 +1302,16 @@ namespace RemaGUM
 
 
 
-        //  //  //  //  //  //  //  //  //  //  //  //  //  // wyświetlanie w zakładce Materiały.
-        //TODO Zakładka materiały
+        // TODO //  //  //  //  //  //  //  //  //  //  //  //  //  //   ZAKŁADKA MATERIAŁY.
+        
         // --------------------------------------- wypełnianie  listBoxMaterialy.
         // wyświetla listę Materiałów po nazwie
         private void WypelnijMaterialyNazwami()
         {
             nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
-            listBoxMaterialy.Items.Clear();
             materialyBUS.select();
+
+            listBoxMaterialy.Items.Clear();
 
             //materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");
 
@@ -1322,7 +1324,7 @@ namespace RemaGUM
             {
                 listBoxMaszyny.SelectedIndex = 0;
             }
-           
+
         }// WypelnijMaterialyNazwami()
        
         /// <summary>
@@ -1354,13 +1356,13 @@ namespace RemaGUM
             else if (radioButtonMagazyn_ilosc_mat.Checked)
             {
                 materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Stan_mat ASC;");
+                materialyBUS.idx = listBoxMaterialy.SelectedIndex;
                 toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
             }
-            //materialyBUS.select();
-
+            // materialyBUS.select();
             try
             {
-                materialyBUS.idx = listBoxMaterialy.SelectedIndex;
+                //materialyBUS.idx = listBoxMaterialy.SelectedIndex;
                 listBoxMaterialy.Tag = materialyBUS.VO.Identyfikator;
                 toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
 
@@ -1379,7 +1381,6 @@ namespace RemaGUM
                 nsAccess2DB.Dostawca_MaterialBUS dostawca_materialBUS = new nsAccess2DB.Dostawca_MaterialBUS(_connString);
                 dostawca_materialBUS.select((int)listBoxMaterialy.Tag);
 
-               //TODO zrób dostawców
                 //wypełnia Dostawców matreiałów w polu checkedListBoxDostawcyMat ************************
                 for (int i = 0; i < checkedListBoxDostawcyMat.Items.Count; i++)
                 {
@@ -1396,7 +1397,6 @@ namespace RemaGUM
 
                 linkLabelDostawcaMat.Text = dostawca_matBUS.VO.Link_dostawca_mat;
                 richTextBoxDostawca.Text = dostawca_matBUS.VO.Dod_info_dostawca_mat;
-
             }
             catch { }
         } // listBoxMaterialy_SelectedIndexChanged
@@ -1424,8 +1424,7 @@ namespace RemaGUM
 
         private void CzyscDaneMaterialy()
         {
-            toolStripStatusLabelID_Materialu.Text = string.Empty;
-               
+            toolStripStatusLabelID_Materialu.Text = "";
             textBoxTypMat.Text = string.Empty;
 
             comboBoxRodzajMat.Text = string.Empty;
@@ -1516,7 +1515,7 @@ namespace RemaGUM
             rodzaj_MatBUS.idx = comboBoxJednostkaMat.SelectedIndex;
         }// comboBoxRodzaj_SelectedIndexChanged(object sender, EventArgs e)
 
-       // //////////////////////////////////////////////////  Radio buttony
+       // //////////////////////////////////////////////////  Radio buttony zakładki materiały.
         private void radioButtonNazwa_mat_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonNazwa_mat.Checked)
@@ -1528,7 +1527,7 @@ namespace RemaGUM
                 materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");
                 while (!materialyBUS.eof)
                 {
-                    listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat);
+                    listBoxMaterialy.Items.Add(materialyBUS.VO.Identyfikator + " " + materialyBUS.VO.Nazwa_mat);
                     materialyBUS.skip();
                 }
                 if (listBoxMaterialy.Items.Count > 0)
@@ -1738,9 +1737,15 @@ namespace RemaGUM
             WypelnijMaterialyNazwami();
         }//buttonZapisz_mat_Click
 
-
+        /// <summary>
+        /// Wyszukuje materiał po dowolnym ciągu znaków w nazwie lub rodzaju materiału.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSzukaj_mat_Click(object sender, EventArgs e)
         {
+            radioButtonNazwa_mat.Checked = true;
+
             listBoxMaterialy.Items.Clear();
 
             nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
@@ -1757,29 +1762,24 @@ namespace RemaGUM
         }// button buttonSzukaj_mat_Click
 
 
-
-
-
-
-
-
-
-
-        //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  -Operatorzy maszyn.
-        // TODO operatorzy maszyn.
+        // TODO //  //  //  //  //  //  //  //  //  //  //  //  //  //   ZAKŁADKA OPERATORZY MASZYN.
        
         //wyświetla listę operatorów maszyn po imieniu i nazwisku
         private void WypelnijOperatorowDanymi()
         {
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
-            listBoxOperator.Items.Clear();
             operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Op_nazwisko ASC;");
-           
+
+            listBoxOperator.BeginUpdate();
+            listBoxOperator.Items.Clear();
+          
             while (!operatorBUS.eof)
             {
                 listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
                 operatorBUS.skip();
             }
+
+            listBoxOperator.EndUpdate();
 
             //if (listBoxOperator.Items.Count > 0)
             //{
@@ -2172,7 +2172,7 @@ namespace RemaGUM
             }
         }// buttonSzukajOperator_Click
 
-        // // // // // // // // // // // // // // // // // // // // // // // // -------------------------> Dysponent maszyny.
+        // TODO // // // // // // // // // // // // // // // // // ZAKŁADKA DYSPONENT MASZYNY.
 
         /// <summary>
         /// wyświetla listę dysponentów maszyn - nazwisko i imię.

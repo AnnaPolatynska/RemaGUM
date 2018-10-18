@@ -4267,6 +4267,7 @@ namespace nsAccess2DB
 
                 VOi = new MaterialyVO();
 
+                VOi.Identyfikator = int.Parse(dr["Identyfikator"].ToString());
                 VOi.Nazwa_mat = dr["Nazwa_mat"].ToString();
                 VOi.Typ_mat = dr["Typ_mat"].ToString();
                 VOi.Rodzaj_mat = dr["Rodzaj_mat"].ToString();
