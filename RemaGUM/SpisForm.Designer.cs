@@ -1342,6 +1342,7 @@
             this.buttonZapiszMat.TabIndex = 3;
             this.buttonZapiszMat.Text = "zapisz";
             this.buttonZapiszMat.UseVisualStyleBackColor = false;
+            this.buttonZapiszMat.Click += new System.EventHandler(this.buttonZapiszMat_Click);
             // 
             // buttonAnulujMat
             // 
