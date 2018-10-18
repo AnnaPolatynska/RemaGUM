@@ -1725,31 +1725,110 @@ namespace RemaGUM
         private void buttonZapiszMat_Click(object sender, EventArgs e)
         {
             nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
+            nsAccess2DB.MaterialyVO materialy_VO = new nsAccess2DB.MaterialyVO();
+            buttonNowa.Enabled = true;
+
+            // komunikat przy braku nazwy materiału.
             if (textBoxNazwaMat.Text == string.Empty)
             {
                 MessageBox.Show("Uzupełnij nazwę materiału", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            buttonNowa.Enabled = true;
-
-            nsAccess2DB.MaterialyVO Mat_VO = new nsAccess2DB.MaterialyVO();
-
-            Mat_VO.Rodzaj_mat = comboBoxRodzajMat.Text.Trim();
-            Mat_VO.Typ_mat = textBoxTypMat.Text.Trim();
-            Mat_VO.Nazwa_mat = textBoxNazwaMat.Text.Trim();
-            Mat_VO.Jednostka_miar_mat = comboBoxJednostkaMat.Text.Trim();
-            Mat_VO.Stan_mat = int.Parse(textBoxMagazynMat.Text.Trim());
-            Mat_VO.Zuzycie_mat = int.Parse(textBoxZuzycieMat.Text.Trim());
-            Mat_VO.Odpad_mat = int.Parse(textBoxOdpadMat.Text.Trim());
-            Mat_VO.Stan_min_mat = int.Parse(textBoxMinMat.Text.Trim());
-            Mat_VO.Zapotrzebowanie_mat = int.Parse(textBoxZapotrzebowanieMat.Text.Trim());
-
-            if (toolStripStatusLabelID_Materialu.Text == string.Empty) //nowa pozycja w tabeli materialów
+            else
             {
-                Mat_VO.Identyfikator = -1;
+                materialy_VO.Nazwa_mat = textBoxNazwaMat.Text.Trim();
+            }
+            // komunikat przy braku wyboru rodzaju materiału.
+            if (comboBoxRodzajMat.Text == string.Empty)
+            {
+                MessageBox.Show("Proszę wybrać rodzaj materiału dla: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             else
-                Mat_VO.Identyfikator = int.Parse(toolStripStatusLabelID_Materialu.Text);
+            {
+                materialy_VO.Rodzaj_mat = comboBoxRodzajMat.Text.Trim();
+            }
+            // komunikat przy braku wyboru typu materiału.
+            if (textBoxTypMat.Text == string.Empty)
+            {
+                MessageBox.Show("Proszę wybrać typ materiału dla: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                materialy_VO.Typ_mat = textBoxTypMat.Text.Trim();
+            }
+
+            //komunikat przy braku wyboru typu materiału.
+            if (comboBoxJednostkaMat.Text == string.Empty)
+            {
+                MessageBox.Show("Proszę wybrać jednostkę dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                materialy_VO.Jednostka_miar_mat = comboBoxJednostkaMat.Text.Trim();
+            }
+
+            //komunikat błedu gdy brak stanu magazynowego materiału.
+            if (textBoxMagazynMat.Text == string.Empty)
+            {
+                MessageBox.Show("Proszę wprowadzić stan magazynowy dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+            materialy_VO.Stan_mat = int.Parse(textBoxMagazynMat.Text.Trim());
+            }
+            
+            //wstawienie 0 w przypadku braku wpisu w pole textBoxZuzycieMat.
+            if (textBoxZuzycieMat.Text == string.Empty)
+            {
+                textBoxZuzycieMat.Text = "0";
+            }
+            else
+            {
+                materialy_VO.Zuzycie_mat = int.Parse(textBoxZuzycieMat.Text.Trim());
+            }
+
+            //wstawienie 0 w przypadku braku wpisu w pole textBoxOdpadMat.
+            if (textBoxOdpadMat.Text == string.Empty)
+            {
+                textBoxOdpadMat.Text = "0";
+            }
+            else
+            {
+                materialy_VO.Odpad_mat = int.Parse(textBoxOdpadMat.Text.Trim());
+            }
+
+            // komunikat o błędzie gdy brak wprowadzonego stanu minimalnego materiału.
+            if (textBoxMinMat.Text == string.Empty)
+            {
+                MessageBox.Show("Proszę wprowadzić wymagany stan minimalny dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                materialy_VO.Stan_min_mat = int.Parse(textBoxMinMat.Text.Trim());
+            }
+
+            //wstawienie 0 w przypadku braku wpisu w pole textBoxZapotrzebowanieMat.
+            if (textBoxZapotrzebowanieMat.Text == string.Empty)
+            {
+                textBoxZapotrzebowanieMat.Text = "0";
+            }
+            else
+            {
+                materialy_VO.Zapotrzebowanie_mat = int.Parse(textBoxZapotrzebowanieMat.Text.Trim());
+            }
+
+            //nowa pozycja w tabeli materialów.
+            if (toolStripStatusLabelID_Materialu.Text == string.Empty) 
+            {
+                materialy_VO.Identyfikator = -1;
+            }
+            else
+                materialy_VO.Identyfikator = int.Parse(toolStripStatusLabelID_Materialu.Text);
 
             buttonUsun.Enabled = listBoxMaterialy.Items.Count > 0;
 
@@ -1759,14 +1838,14 @@ namespace RemaGUM
             }
             else
             {
-                listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(Mat_VO.Identyfikator);
+                listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialy_VO.Identyfikator);
             }
 
-            materialyBUS.write(Mat_VO);
+            materialyBUS.write(materialy_VO);
 
             pokazKomunikat("Pozycja zapisana w bazie");
-
-            WypelnijMaterialyNazwami();
+            OdswiezMaterialy();
+            //WypelnijMaterialyNazwami();
         }//buttonZapiszMat_Clic
 
         /// <summary>

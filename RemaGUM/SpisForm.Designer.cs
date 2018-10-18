@@ -1304,9 +1304,9 @@
             this.groupBox9.Controls.Add(this.buttonAnulujMat);
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox9.ForeColor = System.Drawing.Color.Red;
-            this.groupBox9.Location = new System.Drawing.Point(766, 655);
+            this.groupBox9.Location = new System.Drawing.Point(761, 655);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(396, 56);
+            this.groupBox9.Size = new System.Drawing.Size(425, 56);
             this.groupBox9.TabIndex = 48;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "edycja spisu";
@@ -1314,7 +1314,7 @@
             // buttonNowaMat
             // 
             this.buttonNowaMat.BackColor = System.Drawing.Color.Linen;
-            this.buttonNowaMat.Location = new System.Drawing.Point(9, 19);
+            this.buttonNowaMat.Location = new System.Drawing.Point(14, 19);
             this.buttonNowaMat.Name = "buttonNowaMat";
             this.buttonNowaMat.Size = new System.Drawing.Size(75, 23);
             this.buttonNowaMat.TabIndex = 2;
@@ -1325,7 +1325,7 @@
             // buttonUsunMat
             // 
             this.buttonUsunMat.BackColor = System.Drawing.Color.Linen;
-            this.buttonUsunMat.Location = new System.Drawing.Point(315, 19);
+            this.buttonUsunMat.Location = new System.Drawing.Point(332, 19);
             this.buttonUsunMat.Name = "buttonUsunMat";
             this.buttonUsunMat.Size = new System.Drawing.Size(75, 23);
             this.buttonUsunMat.TabIndex = 4;
@@ -1347,7 +1347,7 @@
             // buttonAnulujMat
             // 
             this.buttonAnulujMat.BackColor = System.Drawing.Color.Linen;
-            this.buttonAnulujMat.Location = new System.Drawing.Point(221, 19);
+            this.buttonAnulujMat.Location = new System.Drawing.Point(228, 19);
             this.buttonAnulujMat.Name = "buttonAnulujMat";
             this.buttonAnulujMat.Size = new System.Drawing.Size(75, 23);
             this.buttonAnulujMat.TabIndex = 3;
