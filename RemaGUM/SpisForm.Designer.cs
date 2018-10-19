@@ -1157,7 +1157,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label19.Location = new System.Drawing.Point(26, 19);
+            this.label19.Location = new System.Drawing.Point(24, 68);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(25, 13);
             this.label19.TabIndex = 34;
@@ -1174,7 +1174,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(25, 73);
+            this.label22.Location = new System.Drawing.Point(23, 117);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(40, 13);
             this.label22.TabIndex = 10;
@@ -1183,7 +1183,7 @@
             // textBoxTypMat
             // 
             this.textBoxTypMat.BackColor = System.Drawing.Color.Linen;
-            this.textBoxTypMat.Location = new System.Drawing.Point(25, 35);
+            this.textBoxTypMat.Location = new System.Drawing.Point(23, 84);
             this.textBoxTypMat.Name = "textBoxTypMat";
             this.textBoxTypMat.Size = new System.Drawing.Size(368, 20);
             this.textBoxTypMat.TabIndex = 11;
@@ -1191,7 +1191,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(27, 127);
+            this.label23.Location = new System.Drawing.Point(25, 19);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(88, 13);
             this.label23.TabIndex = 7;
@@ -1200,7 +1200,7 @@
             // textBoxNazwaMat
             // 
             this.textBoxNazwaMat.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwaMat.Location = new System.Drawing.Point(27, 143);
+            this.textBoxNazwaMat.Location = new System.Drawing.Point(25, 35);
             this.textBoxNazwaMat.Name = "textBoxNazwaMat";
             this.textBoxNazwaMat.Size = new System.Drawing.Size(366, 20);
             this.textBoxNazwaMat.TabIndex = 6;
@@ -1209,7 +1209,7 @@
             // 
             this.comboBoxRodzajMat.BackColor = System.Drawing.Color.Linen;
             this.comboBoxRodzajMat.FormattingEnabled = true;
-            this.comboBoxRodzajMat.Location = new System.Drawing.Point(27, 89);
+            this.comboBoxRodzajMat.Location = new System.Drawing.Point(25, 133);
             this.comboBoxRodzajMat.Name = "comboBoxRodzajMat";
             this.comboBoxRodzajMat.Size = new System.Drawing.Size(366, 21);
             this.comboBoxRodzajMat.TabIndex = 31;
@@ -2110,7 +2110,7 @@
             this.tabControlZakładki.Controls.Add(this.Normalia);
             this.tabControlZakładki.Controls.Add(this.Operatorzy_maszyn);
             this.tabControlZakładki.Controls.Add(this.Dysponent_maszyn);
-            this.tabControlZakładki.Location = new System.Drawing.Point(5, 51);
+            this.tabControlZakładki.Location = new System.Drawing.Point(12, 55);
             this.tabControlZakładki.Name = "tabControlZakładki";
             this.tabControlZakładki.SelectedIndex = 0;
             this.tabControlZakładki.Size = new System.Drawing.Size(1225, 916);

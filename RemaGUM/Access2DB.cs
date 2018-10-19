@@ -4844,6 +4844,7 @@ namespace nsAccess2DB
         private int _Identyfikator = -1;
         private int _ID_material = 0;
         private int _ID_dostawca_mat = 0;
+        private string _Material_nazwa = string.Empty;
         /// <summary>
         /// Konstruktor wymiany danych z tabelą Dostawca_MaterialVO
         /// </summary>
@@ -4863,6 +4864,11 @@ namespace nsAccess2DB
         {
             get { return _ID_dostawca_mat; }
             set { _ID_dostawca_mat = value; }
+        }
+        public string Material_nazwa
+        {
+            get { return _Material_nazwa; }
+            set { _Material_nazwa = value; }
         }
     }//class Dostawca_MaterialVO
     // // // // // // // // // // // // klasa dostępu (Data Access Object) do tabeli Dostawca_Material.
@@ -4938,15 +4944,18 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji</returns>
         public bool insert(nsAccess2DB.Dostawca_MaterialVO VO)
         {
-            string query = "INSERT INTO Dostawca_Material (ID_material, ID_dostawca_mat) " +
-                "VALUES (@ID_material, @ID_dostawca_mat)";
+            string query = "INSERT INTO Dostawca_Material (ID_material, ID_dostawca_mat, Material_nazwa) " +
+                "VALUES (@ID_material, @ID_dostawca_mat, @Material_nazwa)";
 
-            OleDbParameter[] parameters = new OleDbParameter[2];
+            OleDbParameter[] parameters = new OleDbParameter[3];
             parameters[0] = new OleDbParameter("ID_material", OleDbType.Integer);
             parameters[0].Value = VO.ID_material;
 
             parameters[1] = new OleDbParameter("ID_dostawca_mat", OleDbType.Integer);
             parameters[1].Value = VO.ID_dostawca_mat;
+
+            parameters[2] = new OleDbParameter("Material_nazwa", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Material_nazwa;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -4960,13 +4969,17 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool update(nsAccess2DB.Dostawca_MaterialVO VO)
         {
-            string query = "UPDATE Dostawca_Material SET ID_material = @ID_material, ID_dostawca_mat = @ID_dostawca_mat WHERE ID_material = " + VO.ID_material.ToString() + ";";
-            OleDbParameter[] parameters = new OleDbParameter[2];
+            string query = "UPDATE Dostawca_Material SET ID_material = @ID_material, ID_dostawca_mat = @ID_dostawca_mat, Material_nazwa = @Material_nazwa WHERE ID_material = " + VO.ID_material.ToString() + ";";
+
+            OleDbParameter[] parameters = new OleDbParameter[3];
             parameters[0] = new OleDbParameter("ID_material", OleDbType.Integer);
             parameters[0].Value = VO.ID_material;
 
             parameters[1] = new OleDbParameter("ID_dostawca_mat", OleDbType.Integer);
             parameters[1].Value = VO.ID_dostawca_mat;
+
+            parameters[2] = new OleDbParameter("Material_nazwa", OleDbType.VarChar, 255);
+            parameters[2].Value = VO.Material_nazwa;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -5078,6 +5091,16 @@ namespace nsAccess2DB
             return _DAO.insert(VO);
         }// insert
 
+        public bool insert(int ID_material, int ID_dostawca_mat, string Material_nazwa)
+        {
+            Dostawca_MaterialVO VO = new Dostawca_MaterialVO();
+            VO.ID_dostawca_mat = ID_dostawca_mat;
+            VO.ID_material = ID_material;
+            VO.Material_nazwa = Material_nazwa;
+
+            add(VO, ref _VOs);
+            return _DAO.insert(VO);
+        }
         /// <summary>
         /// Aktualizuje rekord z wyjatkiem numeru protokołu.
         /// </summary>
@@ -5114,8 +5137,11 @@ namespace nsAccess2DB
                 Array.Resize(ref _VOs, _VOs.Length + 1);
 
                 VOi = new Dostawca_MaterialVO();
+
+                VOi.Identyfikator = int.Parse(dr["Identyfikator"].ToString());
                 VOi.ID_dostawca_mat = int.Parse(dr["ID_dostawca_mat"].ToString());
                 VOi.ID_material = int.Parse(dr["ID_material"].ToString());
+                VOi.Material_nazwa = dr["Material_nazwa"].ToString();
                 _VOs[_VOs.Length - 1] = VOi;
             }
 
@@ -5511,6 +5537,7 @@ namespace nsAccess2DB
                 Array.Resize(ref _VOs, _VOs.Length + 1);
                 VOi = new Dostawca_matVO();
 
+                VOi.Identyfikator = int.Parse(dr["Identyfikator"].ToString());
                 VOi.Nazwa_dostawca_mat = dr["Nazwa_dostawca_mat"].ToString();
                 VOi.Link_dostawca_mat = dr["Link_dostawca_mat"].ToString();
                 VOi.Dod_info_dostawca_mat = dr["Dod_info_dostawca_mat"].ToString();
