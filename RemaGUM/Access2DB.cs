@@ -5541,6 +5541,7 @@ namespace nsAccess2DB
                 VOi.Nazwa_dostawca_mat = dr["Nazwa_dostawca_mat"].ToString();
                 VOi.Link_dostawca_mat = dr["Link_dostawca_mat"].ToString();
                 VOi.Dod_info_dostawca_mat = dr["Dod_info_dostawca_mat"].ToString();
+
                 _VOs[_VOs.Length - 1] = VOi;
             }
             _eof = _VOs.Length == 0;
