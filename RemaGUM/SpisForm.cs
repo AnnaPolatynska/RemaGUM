@@ -442,7 +442,7 @@ namespace RemaGUM
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
 
             //listBoxMaszyny.Items.Clear();
-
+            
             // uaktualnienie danych maszyny po zmianie sposobu sortowania
             if (radioButtonNazwa.Checked)
             {
@@ -566,7 +566,6 @@ namespace RemaGUM
             listBoxMaszyny.Items.Clear();
             maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nazwa ASC;");
 
-
             while (!maszynyBUS.eof)
             {
                 listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa + " -> " + maszynyBUS.VO.Nr_fabryczny);
@@ -666,6 +665,7 @@ namespace RemaGUM
 
                 nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nazwa ASC;");
+                
                 while (!maszynyBUS.eof)
                 {
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa + " -> " + maszynyBUS.VO.Nr_fabryczny);
@@ -1421,9 +1421,8 @@ namespace RemaGUM
             // materialyBUS.select();
             try
             {
-                //materialyBUS.idx = listBoxMaterialy.SelectedIndex;
-                listBoxMaterialy.Tag = materialyBUS.VO.Identyfikator;
                 toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
+                listBoxMaterialy.Tag = materialyBUS.VO.Identyfikator;
 
                 textBoxTypMat.Text = materialyBUS.VO.Typ_mat;
                 comboBoxRodzajMat.Text = materialyBUS.VO.Rodzaj_mat;
@@ -1471,8 +1470,8 @@ namespace RemaGUM
             nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
             
             v.Items.Clear();
-            dostawca_MatBUS.select();
-
+            //dostawca_MatBUS.select();
+            dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
             while (!dostawca_MatBUS.eof)
             {
                 v.Items.Add(dostawca_MatBUS.VO.Nazwa_dostawca_mat);
@@ -1492,37 +1491,40 @@ namespace RemaGUM
         /// </summary>
         private void CzyscDaneMaterialy()
         {
-            //toolStripStatusLabelID_Materialu.Text = "";
-            textBoxTypMat.Text = string.Empty;
+            try{
+                toolStripStatusLabelID_Materialu.Text = "";
+                textBoxTypMat.Text = string.Empty;
 
-            comboBoxRodzajMat.Text = string.Empty;
-            //comboBoxRodzajMat.SelectedIndex = -1;
-            //comboBoxRodzajMat.Enabled = true;
-            //comboBoxRodzajMat.SelectedIndex = 0;
-            //comboBoxRodzajMat.Refresh();
+                comboBoxRodzajMat.Text = string.Empty;
+                comboBoxRodzajMat.SelectedIndex = -1;
+                comboBoxRodzajMat.Enabled = true;
+                comboBoxRodzajMat.SelectedIndex = 0;
+                comboBoxRodzajMat.Refresh();
 
-            textBoxNazwaMat.Text = string.Empty;
+                textBoxNazwaMat.Text = string.Empty;
 
-            comboBoxJednostkaMat.Text = string.Empty;
-            //comboBoxJednostkaMat.SelectedIndex = -1;
-            //comboBoxJednostkaMat.Enabled = true;
-            //comboBoxJednostkaMat.SelectedIndex = 0;
-            //comboBoxJednostkaMat.Refresh();
+                comboBoxJednostkaMat.Text = string.Empty;
+                comboBoxJednostkaMat.SelectedIndex = -1;
+                comboBoxJednostkaMat.Enabled = true;
+                comboBoxJednostkaMat.SelectedIndex = 0;
+                comboBoxJednostkaMat.Refresh();
 
-            textBoxMagazynMat.Text = string.Empty;
-            textBoxZuzycieMat.Text = string.Empty;
-            textBoxOdpadMat.Text = string.Empty;
-            textBoxMinMat.Text = string.Empty;
-            textBoxZapotrzebowanieMat.Text = string.Empty;
+                textBoxMagazynMat.Text = string.Empty;
+                textBoxZuzycieMat.Text = string.Empty;
+                textBoxOdpadMat.Text = string.Empty;
+                textBoxMinMat.Text = string.Empty;
+                textBoxZapotrzebowanieMat.Text = string.Empty;
 
-            //czyści checkboxy DostawcyMat
-            for (int i = 0; i < checkedListBoxDostawcyMat.Items.Count; i++)
-            {
-                checkedListBoxDostawcyMat.SetItemChecked(i, false);
+                //czyści checkboxy DostawcyMat
+                for (int i = 0; i < checkedListBoxDostawcyMat.Items.Count; i++)
+                    {
+                        checkedListBoxDostawcyMat.SetItemChecked(i, false);
+                    }
+
+                linkLabelDostawcaMat.Text = string.Empty;
+                richTextBoxDostawca.Text = string.Empty;
             }
-
-            linkLabelDostawcaMat.Text = string.Empty;
-            richTextBoxDostawca.Text = string.Empty;
+            catch { }
         }//CzyscDaneMaterialy()
         
         /// <summary>
@@ -1552,8 +1554,8 @@ namespace RemaGUM
 
             linkLabelDostawcaMat.Text = string.Empty;
             richTextBoxDostawca.Text = string.Empty;
-            // dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
-            dostawca_MatBUS.select();
+            dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
+            //dostawca_MatBUS.select();
             dostawca_MatBUS.idx = checkedListBoxDostawcyMat.SelectedIndex;
             toolStripStatusLabel_ID_Dostawcy.Text = dostawca_MatBUS.VO.Identyfikator.ToString();
 
@@ -1631,10 +1633,10 @@ namespace RemaGUM
                     listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat);
                     materialyBUS.skip();
                 }
-                if (listBoxMaterialy.Items.Count > 0)
-                {
-                    listBoxMaterialy.SelectedIndex = 0;
-                }
+                //if (listBoxMaterialy.Items.Count > 0)
+                //{
+                //    listBoxMaterialy.SelectedIndex = 0;
+                //}
             }
         }// radioButtonNazwa_mat_CheckedChanged(object sender, EventArgs e)
 
@@ -1657,10 +1659,10 @@ namespace RemaGUM
                     listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " -> " + materialyBUS.VO.Typ_mat);
                     materialyBUS.skip();
                 }
-                if (listBoxMaterialy.Items.Count > 0)
-                {
-                    listBoxMaterialy.SelectedIndex = 0;
-                }
+                //if (listBoxMaterialy.Items.Count > 0)
+                //{
+                //    listBoxMaterialy.SelectedIndex = 0;
+                //}
             }
         }//radioButtonTyp_mat_CheckedChanged(object sender, EventArgs e)
 
@@ -1685,10 +1687,10 @@ namespace RemaGUM
                     listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " -> " + materialyBUS.VO.Stan_min_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
                     materialyBUS.skip();
                 }
-                if (listBoxMaterialy.Items.Count > 0)
-                {
-                    listBoxMaterialy.SelectedIndex = 0;
-                }
+                //if (listBoxMaterialy.Items.Count > 0)
+                //{
+                //    listBoxMaterialy.SelectedIndex = 0;
+                //}
             }
         }//radioButtonStan_min_mat_CheckedChanged(object sender, EventArgs e)
 
@@ -1711,10 +1713,10 @@ namespace RemaGUM
                     listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " -> " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
                     materialyBUS.skip();
                 }
-                if (listBoxMaterialy.Items.Count > 0)
-                {
-                    listBoxMaterialy.SelectedIndex = 0;
-                }
+                //if (listBoxMaterialy.Items.Count > 0)
+                //{
+                //    listBoxMaterialy.SelectedIndex = 0;
+                //}
             }
         }// radioButtonMagazyn_ilosc_mat_CheckedChanged(object sender, EventArgs e)
 
@@ -1729,9 +1731,9 @@ namespace RemaGUM
         {
             //toolStripStatusLabelID_Materialu.Text = string.Empty;
             CzyscDaneMaterialy();
-
+            radioButtonNazwa_mat.Checked = true; // wymusza sortowanie po nazwie materiału przy zapisie nowej pozycji Materiału.
             buttonAnuluj.Enabled = true;
-
+            //OdswiezMaterialy();
             _statusForm = (int)_status.nowy;
         }//ButtonNowa_Click
 
@@ -1781,13 +1783,14 @@ namespace RemaGUM
             nsAccess2DB.Dostawca_matVO dostawca_MatVO = new nsAccess2DB.Dostawca_matVO();
             nsAccess2DB.Dostawca_MaterialVO dostawca_MaterialVO = new nsAccess2DB.Dostawca_MaterialVO();
 
-                    
+            materialy_VO = materialyBUS.VO;
+
             if (_statusForm == (int)_status.nowy)
             {
                 materialyBUS.select();
                 materialyBUS.idx = materialyBUS.count - 1;
-                materialy_VO.Identyfikator = materialyBUS.VO.Identyfikator + 1;
-
+                materialyBUS.VO.Identyfikator = materialyBUS.VO.Identyfikator + 1;
+                
                 // komunikaty, które wymuszają wpisanie tekstu przed zapisem materiału.
                 // komunikat przy braku nazwy materiału.
                 //if (textBoxNazwaMat.Text == string.Empty)
@@ -1822,19 +1825,19 @@ namespace RemaGUM
                 materialy_VO.Typ_mat = textBoxTypMat.Text.Trim();
                 materialy_VO.Jednostka_miar_mat = comboBoxJednostkaMat.Text.Trim();
 
-                ////komunikat błedu gdy brak stanu magazynowego materiału.
-                //if (textBoxMagazynMat.Text == string.Empty)
-                //{
-                //    MessageBox.Show("Proszę wprowadzić stan magazynowy dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    return;
-                //}
+                //komunikat błedu gdy brak stanu magazynowego materiału.
+                if (textBoxMagazynMat.Text == string.Empty)
+                {
+                    MessageBox.Show("Proszę wprowadzić stan magazynowy dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                //// komunikat o błędzie gdy brak wprowadzonego stanu minimalnego materiału.
-                //if (textBoxMinMat.Text == string.Empty)
-                //{
-                //    MessageBox.Show("Proszę wprowadzić wymagany stan minimalny dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    return;
-                //}
+                // komunikat o błędzie gdy brak wprowadzonego stanu minimalnego materiału.
+                if (textBoxMinMat.Text == string.Empty)
+                {
+                    MessageBox.Show("Proszę wprowadzić wymagany stan minimalny dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 materialy_VO.Stan_mat = int.Parse(textBoxMagazynMat.Text.Trim());
                 materialy_VO.Stan_min_mat = int.Parse(textBoxMinMat.Text.Trim());
@@ -1873,7 +1876,7 @@ namespace RemaGUM
                 // Zapis dostawców przypisanych do danego materiału.
                
                 //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
-                dostawca_MaterialBUS.select(materialy_VO.Identyfikator);
+                dostawca_MaterialBUS.select(materialyBUS.VO.Identyfikator);
                 dostawca_MatBUS.select();
 
                 for (int i = 0; i < checkedListBoxDostawcyMat.Items.Count; i++)
@@ -1881,8 +1884,7 @@ namespace RemaGUM
                     if (checkedListBoxDostawcyMat.GetItemChecked(i))
                     {
                         dostawca_MatBUS.idx = i;
-                        //materialy_VO = materialyBUS.VO;
-                        dostawca_MaterialBUS.insert(materialy_VO.Identyfikator, dostawca_MatBUS.VO.Identyfikator, materialyBUS.VO.Nazwa_mat);
+                        dostawca_MaterialBUS.insert(materialyBUS.VO.Identyfikator, dostawca_MatBUS.VO.Identyfikator, materialyBUS.VO.Nazwa_mat);
                     }
                     //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
                    
@@ -2009,7 +2011,7 @@ namespace RemaGUM
 
                             dostawca_MatVO = dostawca_MatBUS.VO;
 
-                            dostawca_MaterialBUS.insert(materialy_VO.Identyfikator, dostawca_MatVO.Identyfikator, materialyBUS.VO.Nazwa_mat);
+                            dostawca_MaterialBUS.insert(materialy_VO.Identyfikator, dostawca_MatVO.Identyfikator, materialy_VO.Nazwa_mat);
                         }
                     }
                     //OdswiezDostawcow();
@@ -2024,6 +2026,7 @@ namespace RemaGUM
             WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);
 
             OdswiezMaterialy();
+            OdswiezDostawcow();
             pokazKomunikat("Pozycja zapisana w bazie");
             _statusForm = (int)_status.edycja;
         }//buttonZapiszMat_Clic
