@@ -518,12 +518,12 @@ namespace RemaGUM
                                
                 if ((timeSpan.Days >= 1) && (timeSpan.Days <= 7))
                 {
-                    MessageBox.Show(("Uwaga w dniu " + maszynyBUS.VO.Dz_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Mc_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Rok_kol_przeg.ToString() + " mija termin przeglądu dla maszyny " + maszynyBUS.VO.Nazwa.ToString()), "remagum", MessageBoxButtons.OK);
+                    MessageBox.Show(("Uwaga w dniu " + maszynyBUS.VO.Dz_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Mc_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Rok_kol_przeg.ToString() + " mija termin przeglądu dla maszyny " + maszynyBUS.VO.Nazwa.ToString() + " o numerze inwentarzowym: " + maszynyBUS.VO.Nr_inwentarzowy), "remagum", MessageBoxButtons.OK);
                 }
                 
                 else if (timeSpan.Days < 0)
                 {
-                    MessageBox.Show(("Termin przeglądu maszyny "+ maszynyBUS.VO.Nazwa.ToString() + " minął."),"RemaGUM",MessageBoxButtons.OK);
+                    MessageBox.Show(("Termin przeglądu maszyny "+ maszynyBUS.VO.Nazwa.ToString()+ "o numerze inwentarzowym: " + maszynyBUS.VO.Nr_inwentarzowy + " minął."),"RemaGUM",MessageBoxButtons.OK);
                 }
                 else { }
 
@@ -595,6 +595,7 @@ namespace RemaGUM
                 v.SelectedIndex = 0;
                 v.Tag = operatorBUS.VO.Identyfikator;
             }
+            
         } // WypelnijOperatorow_maszyn(CheckedListBox v)
 
         // // // // // //  // /list boxy z tabeli accessa
@@ -955,6 +956,9 @@ namespace RemaGUM
         {
             CzyscDaneMaszyny();
 
+            radioButtonNazwa.Checked = true; // przy nowej maszynie przed zapisem wymusza zaznaczenie sortowanie po nazwie maszyny.
+           
+
             buttonNowa.Enabled = false;
             buttonZapisz.Enabled = true;
             buttonAnuluj.Enabled = true;
@@ -1037,6 +1041,8 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonZapisz_Click(object sender, EventArgs e)
         {
+           
+
             if (textBoxNazwa.Text == string.Empty)
             {
                 MessageBox.Show("Uzupełnij nazwę maszyny.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1045,12 +1051,19 @@ namespace RemaGUM
 
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
-            nsAccess2DB.Maszyny_OperatorBUS maszyny_operatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
-           
+            nsAccess2DB.Maszyny_OperatorBUS maszyny_OperatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
+            nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
+
             nsAccess2DB.MaszynyVO maszynyVO = new nsAccess2DB.MaszynyVO();
             nsAccess2DB.OperatorVO operatorVO = new nsAccess2DB.OperatorVO();
             nsAccess2DB.Maszyny_OperatorVO operator_maszynyVO = new nsAccess2DB.Maszyny_OperatorVO();
-            
+            nsAccess2DB.DysponentVO dysponentVO = new nsAccess2DB.DysponentVO();
+
+            maszynyVO = maszynyBUS.VO;
+            operatorVO = operatorBUS.VO;
+            operator_maszynyVO = maszyny_OperatorBUS.VO;
+            dysponentVO = dysponentBUS.VO;
+
             if (_zawartoscPliku == null) _zawartoscPliku = new byte[] { }; // zapisz nowy plik zdjęcia podczas edycji maszyny.
             if (_statusForm == (int)_status.nowy)
             {
@@ -1070,109 +1083,117 @@ namespace RemaGUM
                 maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
                 maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
 
+                dysponentBUS.select();
+                
+                maszynyVO.Nazwa_dysponent = dysponentVO.Dysp_nazwisko + dysponentVO.Dysp_imie;
+                maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
+
                 maszynyVO.Nr_pom = textBoxNr_pom.Text;
                 maszynyVO.Dzial = comboBoxDzial.Text;
                 maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
-
-                
                 maszynyVO.Rok_ost_przeg = dateTimePickerData_ost_przegl.Value.Year;
                 maszynyVO.Mc_ost_przeg = dateTimePickerData_ost_przegl.Value.Month;
                 maszynyVO.Dz_ost_przeg = dateTimePickerData_ost_przegl.Value.Day;
                 maszynyVO.Data_ost_przegl = int.Parse(maszynyVO.Rok_ost_przeg.ToString() + maszynyVO.Mc_ost_przeg.ToString("00") + maszynyVO.Dz_ost_przeg.ToString("00"));
-
                 DateTime dt = new DateTime(dateTimePickerData_ost_przegl.Value.Ticks); // dodaje interwał przeglądów do data_ost_przegl
-                dt = dt.AddDays(_interwalPrzegladow);
-                  
+                dt = dt.AddYears(_interwalPrzegladow);
                 maszynyVO.Rok_kol_przeg = dt.Year;
                 maszynyVO.Mc_kol_przeg = dt.Month;
                 maszynyVO.Dz_kol_przeg = dt.Day;
                 maszynyVO.Data_kol_przegl = int.Parse(dt.Year.ToString() + dt.Month.ToString("00") + dt.Day.ToString("00"));
-
                 maszynyVO.Uwagi = richTextBoxUwagi.Text.Trim();
                 maszynyVO.Wykorzystanie = comboBoxWykorzystanie.Text;
                 maszynyVO.Stan_techniczny = comboBoxStan_techniczny.Text;
                 maszynyVO.Propozycja = comboBoxPropozycja.Text;
 
                 // zpis dysponenta w tabeli maszyny i w tabeli maszyny_dysponenta
+
                 maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();// Zapis dysponenta maszyny w zakładce maszyny, przy utworzeniu nowej maszyny.
-                
-                listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
-                                
-                maszynyBUS.write(maszynyVO);
-                
+                                                                          //listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
+
                 // Zapis operatorów/operatora maszyny przypisanych do maszyny.
+
+                maszyny_OperatorBUS.select(maszynyVO.Identyfikator);
                 operatorBUS.select();
+
                 for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
                 {
                     if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
                     {
                         operatorBUS.idx = i;
-                        maszyny_operatorBUS.insert(maszynyVO.Identyfikator, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
+                        maszyny_OperatorBUS.insert(maszynyBUS.VO.Identyfikator + 1, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
                     }
                 }
-            listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
+                listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
+                maszynyBUS.write(maszynyVO);
+
             }//if - nowy
 
             else if (_statusForm == (int)_status.edycja)
             {
-                maszynyBUS.select((int)listBoxMaszyny.Tag);
-                if (maszynyBUS.count < 1)
+                try
                 {
-                    MessageBox.Show("Maszyna o identyfikatorze " + listBoxMaszyny.Tag.ToString() + "nie istnieje w bazie maszyn", "RemaGUM",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                else
-                {
-                    maszynyVO.Identyfikator = (int)listBoxMaszyny.Tag;
-                    maszynyVO.Kategoria = comboBoxKategoria.Text;
-                    maszynyVO.Nazwa = textBoxNazwa.Text.Trim();
-                    maszynyVO.Typ = textBoxTyp.Text.Trim();
-                    maszynyVO.Nr_inwentarzowy = textBoxNr_inwentarzowy.Text.Trim();
-                    maszynyVO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
-                    maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
-                    maszynyVO.Producent = textBoxProducent.Text.Trim();
-
-                    maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
-                    maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
-
-                    maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
-
-                    maszynyVO.Nr_pom = textBoxNr_pom.Text;
-                    maszynyVO.Dzial = comboBoxDzial.Text;
-                    maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
-                    maszynyVO.Rok_ost_przeg = dateTimePickerData_ost_przegl.Value.Year;
-                    maszynyVO.Mc_ost_przeg = dateTimePickerData_ost_przegl.Value.Month;
-                    maszynyVO.Dz_ost_przeg = dateTimePickerData_ost_przegl.Value.Day;
-                    maszynyVO.Data_ost_przegl = int.Parse(maszynyVO.Rok_ost_przeg.ToString() + maszynyVO.Mc_ost_przeg.ToString("00") + maszynyVO.Dz_ost_przeg.ToString("00"));
-                    DateTime dt = new DateTime(dateTimePickerData_ost_przegl.Value.Ticks); // dodaje interwał przeglądów do data_ost_przegl
-                    dt = dt.AddDays(_interwalPrzegladow);
-                    maszynyVO.Rok_kol_przeg = dt.Year;
-                    maszynyVO.Mc_kol_przeg = dt.Month;
-                    maszynyVO.Dz_kol_przeg = dt.Day;
-                    maszynyVO.Data_kol_przegl = int.Parse(dt.Year.ToString() + dt.Month.ToString("00") + dt.Day.ToString("00"));
-                    maszynyVO.Uwagi = richTextBoxUwagi.Text.Trim();
-                    maszynyVO.Wykorzystanie = comboBoxWykorzystanie.Text;
-                    maszynyVO.Stan_techniczny = comboBoxStan_techniczny.Text;
-                    maszynyVO.Propozycja = comboBoxPropozycja.Text;
-
-                    maszynyBUS.write(maszynyVO);
-
-                    maszyny_operatorBUS.delete(maszynyBUS.VO.Identyfikator);
-                    maszyny_operatorBUS.select(maszynyBUS.VO.Identyfikator);
-                    
-                    // Zapis operatorów/operatora maszyny przypisanych do maszyny.
-                    operatorBUS.select();
-                    for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
+                    maszynyBUS.select((int)listBoxMaszyny.Tag);
+                    if (maszynyBUS.count < 1)
                     {
-                        if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
+                        MessageBox.Show("Maszyna o identyfikatorze " + listBoxMaszyny.Tag.ToString() + "nie istnieje w bazie maszyn", "RemaGUM",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    else
+                    {
+                        maszynyVO.Identyfikator = (int)listBoxMaszyny.Tag;
+                        maszynyVO.Kategoria = comboBoxKategoria.Text;
+                        maszynyVO.Nazwa = textBoxNazwa.Text.Trim();
+                        maszynyVO.Typ = textBoxTyp.Text.Trim();
+                        maszynyVO.Nr_inwentarzowy = textBoxNr_inwentarzowy.Text.Trim();
+                        maszynyVO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
+                        maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
+                        maszynyVO.Producent = textBoxProducent.Text.Trim();
+
+                        maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
+                        maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
+
+                        maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
+
+                        maszynyVO.Nr_pom = textBoxNr_pom.Text;
+                        maszynyVO.Dzial = comboBoxDzial.Text;
+                        maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
+                        maszynyVO.Rok_ost_przeg = dateTimePickerData_ost_przegl.Value.Year;
+                        maszynyVO.Mc_ost_przeg = dateTimePickerData_ost_przegl.Value.Month;
+                        maszynyVO.Dz_ost_przeg = dateTimePickerData_ost_przegl.Value.Day;
+                        maszynyVO.Data_ost_przegl = int.Parse(maszynyVO.Rok_ost_przeg.ToString() + maszynyVO.Mc_ost_przeg.ToString("00") + maszynyVO.Dz_ost_przeg.ToString("00"));
+                        DateTime dt = new DateTime(dateTimePickerData_ost_przegl.Value.Ticks); // dodaje interwał przeglądów do data_ost_przegl
+                        dt = dt.AddDays(_interwalPrzegladow);
+                        maszynyVO.Rok_kol_przeg = dt.Year;
+                        maszynyVO.Mc_kol_przeg = dt.Month;
+                        maszynyVO.Dz_kol_przeg = dt.Day;
+                        maszynyVO.Data_kol_przegl = int.Parse(dt.Year.ToString() + dt.Month.ToString("00") + dt.Day.ToString("00"));
+                        maszynyVO.Uwagi = richTextBoxUwagi.Text.Trim();
+                        maszynyVO.Wykorzystanie = comboBoxWykorzystanie.Text;
+                        maszynyVO.Stan_techniczny = comboBoxStan_techniczny.Text;
+                        maszynyVO.Propozycja = comboBoxPropozycja.Text;
+
+                        maszynyBUS.write(maszynyVO);
+
+                        maszyny_OperatorBUS.delete(maszynyBUS.VO.Identyfikator);
+                        maszyny_OperatorBUS.select(maszynyBUS.VO.Identyfikator);
+
+                        // Zapis operatorów/operatora maszyny przypisanych do maszyny.
+                        operatorBUS.select();
+                        for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
                         {
-                            operatorBUS.idx = i;
-                            maszyny_operatorBUS.insert(maszynyVO.Identyfikator, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
+                            if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
+                            {
+                                operatorBUS.idx = i;
+                                maszyny_OperatorBUS.insert(maszynyVO.Identyfikator, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
+                            }
                         }
                     }
+                    listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
                 }
-            listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
+                catch { };
+
             }//else if - edycja
 
             WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);
@@ -1185,6 +1206,9 @@ namespace RemaGUM
             OdswiezListeMaszyn();// po utworzeniu nowej maszyny odświeża danę z listy maszyn przez zaznaczenie sortowania po nazwie.
             pokazKomunikat("Pozycja zapisana w bazie");
             _statusForm = (int)_status.edycja;
+
+
+            // radioButtonNazwa.Checked = true; // przy zapisie wymusza zaznaczenie sortowanie po nazwie edytowanej maszyny.
         }//buttonZapisz_Click
 
         /// <summary>
@@ -1447,8 +1471,8 @@ namespace RemaGUM
             nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
             
             v.Items.Clear();
-            dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
-            
+            dostawca_MatBUS.select();
+
             while (!dostawca_MatBUS.eof)
             {
                 v.Items.Add(dostawca_MatBUS.VO.Nazwa_dostawca_mat);
@@ -1528,8 +1552,8 @@ namespace RemaGUM
 
             linkLabelDostawcaMat.Text = string.Empty;
             richTextBoxDostawca.Text = string.Empty;
-            // 
-            dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
+            // dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
+            dostawca_MatBUS.select();
             dostawca_MatBUS.idx = checkedListBoxDostawcyMat.SelectedIndex;
             toolStripStatusLabel_ID_Dostawcy.Text = dostawca_MatBUS.VO.Identyfikator.ToString();
 
@@ -1750,12 +1774,14 @@ namespace RemaGUM
         private void buttonZapiszMat_Click(object sender, EventArgs e)
         {
             nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
-            nsAccess2DB.MaterialyVO materialy_VO = new nsAccess2DB.MaterialyVO();
             nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
-            nsAccess2DB.Dostawca_matVO dostawca_MatVO = new nsAccess2DB.Dostawca_matVO();
             nsAccess2DB.Dostawca_MaterialBUS dostawca_MaterialBUS = new nsAccess2DB.Dostawca_MaterialBUS(_connString);
+
+            nsAccess2DB.MaterialyVO materialy_VO = new nsAccess2DB.MaterialyVO();
+            nsAccess2DB.Dostawca_matVO dostawca_MatVO = new nsAccess2DB.Dostawca_matVO();
             nsAccess2DB.Dostawca_MaterialVO dostawca_MaterialVO = new nsAccess2DB.Dostawca_MaterialVO();
 
+                    
             if (_statusForm == (int)_status.nowy)
             {
                 materialyBUS.select();
@@ -1764,52 +1790,51 @@ namespace RemaGUM
 
                 // komunikaty, które wymuszają wpisanie tekstu przed zapisem materiału.
                 // komunikat przy braku nazwy materiału.
-                if (textBoxNazwaMat.Text == string.Empty)
-                {
-                    MessageBox.Show("Uzupełnij nazwę materiału", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
+                //if (textBoxNazwaMat.Text == string.Empty)
+                //{
+                //    MessageBox.Show("Uzupełnij nazwę materiału", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
                 materialy_VO.Nazwa_mat = textBoxNazwaMat.Text.Trim(); // uzupełnia nazwę materiału (nazwa pojawia się w komunikatach).
                 
                 // komunikat przy braku wyboru typu materiału.
-                if (textBoxTypMat.Text == string.Empty)
-                {
-                    MessageBox.Show("Proszę wybrać typ materiału dla: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                //if (textBoxTypMat.Text == string.Empty)
+                //{
+                //    MessageBox.Show("Proszę wybrać typ materiału dla: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
 
-                // komunikat przy braku wyboru rodzaju materiału.
-                if (comboBoxRodzajMat.Text == string.Empty)
-                {
-                    MessageBox.Show("Proszę wybrać rodzaj materiału dla: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                //// komunikat przy braku wyboru rodzaju materiału.
+                //if (comboBoxRodzajMat.Text == string.Empty)
+                //{
+                //    MessageBox.Show("Proszę wybrać rodzaj materiału dla: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
 
-                //komunikat przy braku wyboru typu materiału.
-                if (comboBoxJednostkaMat.Text == string.Empty)
-                {
-                    MessageBox.Show("Proszę wybrać jednostkę dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                ////komunikat przy braku wyboru typu materiału.
+                //if (comboBoxJednostkaMat.Text == string.Empty)
+                //{
+                //    MessageBox.Show("Proszę wybrać jednostkę dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
 
                 materialy_VO.Rodzaj_mat = comboBoxRodzajMat.Text.Trim();
                 materialy_VO.Typ_mat = textBoxTypMat.Text.Trim();
                 materialy_VO.Jednostka_miar_mat = comboBoxJednostkaMat.Text.Trim();
 
-                //komunikat błedu gdy brak stanu magazynowego materiału.
-                if (textBoxMagazynMat.Text == string.Empty)
-                {
-                    MessageBox.Show("Proszę wprowadzić stan magazynowy dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                ////komunikat błedu gdy brak stanu magazynowego materiału.
+                //if (textBoxMagazynMat.Text == string.Empty)
+                //{
+                //    MessageBox.Show("Proszę wprowadzić stan magazynowy dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
 
-                // komunikat o błędzie gdy brak wprowadzonego stanu minimalnego materiału.
-                if (textBoxMinMat.Text == string.Empty)
-                {
-                    MessageBox.Show("Proszę wprowadzić wymagany stan minimalny dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                //// komunikat o błędzie gdy brak wprowadzonego stanu minimalnego materiału.
+                //if (textBoxMinMat.Text == string.Empty)
+                //{
+                //    MessageBox.Show("Proszę wprowadzić wymagany stan minimalny dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
 
                 materialy_VO.Stan_mat = int.Parse(textBoxMagazynMat.Text.Trim());
                 materialy_VO.Stan_min_mat = int.Parse(textBoxMinMat.Text.Trim());
@@ -1845,27 +1870,32 @@ namespace RemaGUM
                     materialy_VO.Zapotrzebowanie_mat = int.Parse(textBoxZapotrzebowanieMat.Text.Trim());
                 }
 
-                listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialyBUS.VO.Identyfikator); // ustawienie zaznaczenia w tabeli materiały.
-                materialyBUS.write(materialy_VO);
-                dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
-
                 // Zapis dostawców przypisanych do danego materiału.
+               
+                //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
+                dostawca_MaterialBUS.select(materialy_VO.Identyfikator);
                 dostawca_MatBUS.select();
+
                 for (int i = 0; i < checkedListBoxDostawcyMat.Items.Count; i++)
                 {
                     if (checkedListBoxDostawcyMat.GetItemChecked(i))
                     {
                         dostawca_MatBUS.idx = i;
-                        dostawca_MaterialBUS.insert(materialy_VO.Identyfikator, dostawca_MatVO.Identyfikator, materialyBUS.VO.Nazwa_mat);
+                        //materialy_VO = materialyBUS.VO;
+                        dostawca_MaterialBUS.insert(materialy_VO.Identyfikator, dostawca_MatBUS.VO.Identyfikator, materialyBUS.VO.Nazwa_mat);
                     }
-                    dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
-                    dostawca_MatBUS.idx = checkedListBoxDostawcyMat.SelectedIndex;
-                    toolStripStatusLabel_ID_Dostawcy.Text = dostawca_MatBUS.VO.Identyfikator.ToString();
+                    //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
+                   
                 }
                 listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialyBUS.VO.Identyfikator); // ustawienie zaznaczenia w tabeli materiały.
+                materialyBUS.write(materialy_VO);
+
+                //dostawca_MatBUS.idx = checkedListBoxDostawcyMat.SelectedIndex;
+                //toolStripStatusLabel_ID_Dostawcy.Text = dostawca_MatBUS.VO.Identyfikator.ToString();
+                //dostawca_MaterialBUS.select(materialy_VO.Identyfikator);
+                //dostawca_MatBUS.select();
+
             } // if nowy
-
-
 
             else if (_statusForm == (int)_status.edycja)
             {
@@ -1881,14 +1911,7 @@ namespace RemaGUM
                     materialy_VO.Identyfikator = (int)listBoxMaterialy.Tag;
 
                     // komunikaty, które wymuszają wpisanie tekstu przed zapisem materiału.
-                    // komunikat przy braku nazwy materiału.
-                    if (textBoxNazwaMat.Text == string.Empty)
-                    {
-                        MessageBox.Show("Uzupełnij nazwę materiału", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    materialy_VO.Nazwa_mat = textBoxNazwaMat.Text.Trim();
-
+                    
                     // komunikat przy braku nazwy materiału.
                     if (textBoxNazwaMat.Text == string.Empty)
                     {
@@ -1975,7 +1998,9 @@ namespace RemaGUM
                     dostawca_MaterialBUS.select(materialyBUS.VO.Identyfikator);
 
                     // Zapis dostawców przypisanych do danego materiału.
-                    dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
+                    //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
+                    dostawca_MatBUS.select();
+
                     for (int i = 0; i < checkedListBoxDostawcyMat.Items.Count; i++)
                     {
                         if (checkedListBoxDostawcyMat.GetItemChecked(i))
@@ -1988,7 +2013,8 @@ namespace RemaGUM
                         }
                     }
                     //OdswiezDostawcow();
-                    dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
+                    // dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
+                    dostawca_MatBUS.select();
                     dostawca_MatBUS.idx = checkedListBoxDostawcyMat.SelectedIndex;
                     toolStripStatusLabel_ID_Dostawcy.Text = dostawca_MatBUS.VO.Identyfikator.ToString();
                 }

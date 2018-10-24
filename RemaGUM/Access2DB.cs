@@ -2466,6 +2466,7 @@ namespace nsAccess2DB
     /// </summary>
     public class Maszyny_OperatorVO
     {
+        private int _Identyfikator = 0;
         private int _ID_maszyny = -1;
         private int _ID_op_maszyny = -1;
         private string _Maszyny_nazwa = string.Empty;
@@ -2475,7 +2476,11 @@ namespace nsAccess2DB
         /// Konstruktor wymiany danych z tabelą Operator_maszyny_Maszyny
         /// </summary>
         public Maszyny_OperatorVO() { }
-
+        public int Identyfikator
+        {
+            get { return _Identyfikator; }
+            set { _Identyfikator = value; }
+        }
         public int ID_op_maszyny
         {
             get { return _ID_op_maszyny; }
@@ -2819,6 +2824,7 @@ namespace nsAccess2DB
                 Array.Resize(ref _VOs, _VOs.Length + 1);
 
                 VOi = new Maszyny_OperatorVO();
+                VOi.Identyfikator = int.Parse(dr["Identyfikator"].ToString());
                 VOi.ID_op_maszyny = int.Parse(dr["ID_op_maszyny"].ToString());
                 VOi.ID_maszyny = int.Parse(dr["ID_maszyny"].ToString());
                 VOi.Maszyny_nazwa = dr["Maszyny_nazwa"].ToString();

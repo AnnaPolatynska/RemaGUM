@@ -35,6 +35,9 @@
             this.statusStripMaterialy = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelID_Materialu = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel_ID_dostrawcy = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel_ID_Dostawcy = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.checkedListBoxDostawcyMat = new System.Windows.Forms.CheckedListBox();
             this.label27 = new System.Windows.Forms.Label();
@@ -202,9 +205,6 @@
             this.textBoxWyszukiwanieDysponent = new System.Windows.Forms.TextBox();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.listBoxDysponent = new System.Windows.Forms.ListBox();
-            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel_ID_dostrawcy = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel_ID_Dostawcy = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip.SuspendLayout();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
@@ -313,6 +313,25 @@
             this.toolStripStatusLabelID_Materialu.Name = "toolStripStatusLabelID_Materialu";
             this.toolStripStatusLabelID_Materialu.Size = new System.Drawing.Size(43, 17);
             this.toolStripStatusLabelID_Materialu.Text = "id_mat";
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(71, 17);
+            this.toolStripStatusLabel5.Text = "ID dostawcy";
+            // 
+            // toolStripStatusLabel_ID_dostrawcy
+            // 
+            this.toolStripStatusLabel_ID_dostrawcy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
+            this.toolStripStatusLabel_ID_dostrawcy.Name = "toolStripStatusLabel_ID_dostrawcy";
+            this.toolStripStatusLabel_ID_dostrawcy.Size = new System.Drawing.Size(0, 17);
+            this.toolStripStatusLabel_ID_dostrawcy.Text = "id_dostawcy";
+            // 
+            // toolStripStatusLabel_ID_Dostawcy
+            // 
+            this.toolStripStatusLabel_ID_Dostawcy.Name = "toolStripStatusLabel_ID_Dostawcy";
+            this.toolStripStatusLabel_ID_Dostawcy.Size = new System.Drawing.Size(72, 17);
+            this.toolStripStatusLabel_ID_Dostawcy.Text = "id_dostawcy";
             // 
             // groupBox10
             // 
@@ -2136,25 +2155,6 @@
             this.listBoxDysponent.Size = new System.Drawing.Size(299, 550);
             this.listBoxDysponent.TabIndex = 0;
             this.listBoxDysponent.SelectedIndexChanged += new System.EventHandler(this.listBoxDysponent_SelectedIndexChanged);
-            // 
-            // toolStripStatusLabel5
-            // 
-            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(71, 17);
-            this.toolStripStatusLabel5.Text = "ID dostawcy";
-            // 
-            // toolStripStatusLabel_ID_dostrawcy
-            // 
-            this.toolStripStatusLabel_ID_dostrawcy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
-            this.toolStripStatusLabel_ID_dostrawcy.Name = "toolStripStatusLabel_ID_dostrawcy";
-            this.toolStripStatusLabel_ID_dostrawcy.Size = new System.Drawing.Size(0, 17);
-            this.toolStripStatusLabel_ID_dostrawcy.Text = "id_dostawcy";
-            // 
-            // toolStripStatusLabel_ID_Dostawcy
-            // 
-            this.toolStripStatusLabel_ID_Dostawcy.Name = "toolStripStatusLabel_ID_Dostawcy";
-            this.toolStripStatusLabel_ID_Dostawcy.Size = new System.Drawing.Size(72, 17);
-            this.toolStripStatusLabel_ID_Dostawcy.Text = "id_dostawcy";
             // 
             // SpisForm
             // 
