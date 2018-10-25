@@ -39,12 +39,19 @@
             this.toolStripStatusLabel_ID_dostrawcy = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_ID_Dostawcy = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.checkedListBoxDostawcyMat = new System.Windows.Forms.CheckedListBox();
             this.label27 = new System.Windows.Forms.Label();
             this.richTextBoxDostawca = new System.Windows.Forms.RichTextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.linkLabelDostawcaMat = new System.Windows.Forms.LinkLabel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBoxWyborMagazyn = new System.Windows.Forms.ComboBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label37 = new System.Windows.Forms.Label();
@@ -52,6 +59,9 @@
             this.textBoxZapotrzebowanieMat = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.textBoxMinMat = new System.Windows.Forms.TextBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.buttonSzukaj_mat = new System.Windows.Forms.Button();
+            this.textBoxWyszukaj_mat = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -61,6 +71,11 @@
             this.textBoxZuzycieMat = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.buttonNowaMat = new System.Windows.Forms.Button();
+            this.buttonUsunMat = new System.Windows.Forms.Button();
+            this.buttonZapiszMat = new System.Windows.Forms.Button();
+            this.buttonAnulujMat = new System.Windows.Forms.Button();
             this.comboBoxJednostkaMat = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.textBoxMagazynMat = new System.Windows.Forms.TextBox();
@@ -71,16 +86,8 @@
             this.comboBoxRodzajMat = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.buttonSzukaj_mat = new System.Windows.Forms.Button();
-            this.textBoxWyszukaj_mat = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.listBoxMaterialy = new System.Windows.Forms.ListBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.buttonNowaMat = new System.Windows.Forms.Button();
-            this.buttonUsunMat = new System.Windows.Forms.Button();
-            this.buttonZapiszMat = new System.Windows.Forms.Button();
-            this.buttonAnulujMat = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.radioButtonMagazyn_ilosc_mat = new System.Windows.Forms.RadioButton();
             this.radioButtonNazwa_mat = new System.Windows.Forms.RadioButton();
@@ -204,25 +211,19 @@
             this.textBoxWyszukiwanieDysponent = new System.Windows.Forms.TextBox();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.listBoxDysponent = new System.Windows.Forms.ListBox();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.comboBoxWyborMagazyn = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.toolStrip.SuspendLayout();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
+            this.groupBox14.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.Maszyny.SuspendLayout();
             this.statusStripMaszyna.SuspendLayout();
@@ -248,7 +249,6 @@
             this.groupBox28.SuspendLayout();
             this.groupBox29.SuspendLayout();
             this.groupBox30.SuspendLayout();
-            this.groupBox14.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -353,6 +353,63 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Dostawcy materiałów";
             // 
+            // groupBox14
+            // 
+            this.groupBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox14.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox14.Controls.Add(this.button1);
+            this.groupBox14.Controls.Add(this.button2);
+            this.groupBox14.Controls.Add(this.button3);
+            this.groupBox14.Controls.Add(this.button4);
+            this.groupBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox14.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox14.Location = new System.Drawing.Point(6, 641);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(413, 56);
+            this.groupBox14.TabIndex = 49;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "edycja dostawców";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Linen;
+            this.button1.Location = new System.Drawing.Point(14, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "nowy ";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Linen;
+            this.button2.Location = new System.Drawing.Point(317, 19);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "usuń";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Linen;
+            this.button3.Location = new System.Drawing.Point(119, 19);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "zapisz";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Linen;
+            this.button4.Location = new System.Drawing.Point(218, 19);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "anuluj";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
             // checkedListBoxDostawcyMat
             // 
             this.checkedListBoxDostawcyMat.FormattingEnabled = true;
@@ -433,6 +490,27 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "MATERIAŁY / NORMALIA";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(12, 92);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.TabIndex = 62;
+            this.label3.Text = "Wybór magazynu.";
+            // 
+            // comboBoxWyborMagazyn
+            // 
+            this.comboBoxWyborMagazyn.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxWyborMagazyn.ForeColor = System.Drawing.Color.Red;
+            this.comboBoxWyborMagazyn.FormattingEnabled = true;
+            this.comboBoxWyborMagazyn.Location = new System.Drawing.Point(15, 108);
+            this.comboBoxWyborMagazyn.Name = "comboBoxWyborMagazyn";
+            this.comboBoxWyborMagazyn.Size = new System.Drawing.Size(386, 21);
+            this.comboBoxWyborMagazyn.TabIndex = 61;
+            this.comboBoxWyborMagazyn.SelectedIndexChanged += new System.EventHandler(this.comboBoxWyborMagazyn_SelectedIndexChanged);
+            // 
             // groupBox13
             // 
             this.groupBox13.Controls.Add(this.panel2);
@@ -496,6 +574,40 @@
             this.textBoxMinMat.Name = "textBoxMinMat";
             this.textBoxMinMat.Size = new System.Drawing.Size(196, 20);
             this.textBoxMinMat.TabIndex = 58;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox7.Controls.Add(this.buttonSzukaj_mat);
+            this.groupBox7.Controls.Add(this.textBoxWyszukaj_mat);
+            this.groupBox7.Cursor = System.Windows.Forms.Cursors.Default;
+            this.groupBox7.ForeColor = System.Drawing.Color.Red;
+            this.groupBox7.Location = new System.Drawing.Point(9, 19);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(401, 57);
+            this.groupBox7.TabIndex = 51;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "wyszukiwanie materiałów po nazwie";
+            // 
+            // buttonSzukaj_mat
+            // 
+            this.buttonSzukaj_mat.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSzukaj_mat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj_mat.BackgroundImage")));
+            this.buttonSzukaj_mat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSzukaj_mat.Location = new System.Drawing.Point(357, 15);
+            this.buttonSzukaj_mat.Name = "buttonSzukaj_mat";
+            this.buttonSzukaj_mat.Size = new System.Drawing.Size(35, 34);
+            this.buttonSzukaj_mat.TabIndex = 4;
+            this.buttonSzukaj_mat.UseVisualStyleBackColor = false;
+            this.buttonSzukaj_mat.Click += new System.EventHandler(this.buttonSzukaj_mat_Click);
+            // 
+            // textBoxWyszukaj_mat
+            // 
+            this.textBoxWyszukaj_mat.BackColor = System.Drawing.Color.Linen;
+            this.textBoxWyszukaj_mat.Location = new System.Drawing.Point(6, 23);
+            this.textBoxWyszukaj_mat.Name = "textBoxWyszukaj_mat";
+            this.textBoxWyszukaj_mat.Size = new System.Drawing.Size(338, 20);
+            this.textBoxWyszukaj_mat.TabIndex = 44;
             // 
             // label38
             // 
@@ -582,6 +694,67 @@
             this.label21.Size = new System.Drawing.Size(39, 13);
             this.label21.TabIndex = 44;
             this.label21.Text = "Odpad";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox9.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox9.Controls.Add(this.buttonNowaMat);
+            this.groupBox9.Controls.Add(this.buttonUsunMat);
+            this.groupBox9.Controls.Add(this.buttonZapiszMat);
+            this.groupBox9.Controls.Add(this.buttonAnulujMat);
+            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox9.ForeColor = System.Drawing.Color.Red;
+            this.groupBox9.Location = new System.Drawing.Point(12, 641);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(398, 56);
+            this.groupBox9.TabIndex = 48;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "edycja materiałów / normaliów";
+            // 
+            // buttonNowaMat
+            // 
+            this.buttonNowaMat.BackColor = System.Drawing.Color.Linen;
+            this.buttonNowaMat.Location = new System.Drawing.Point(14, 19);
+            this.buttonNowaMat.Name = "buttonNowaMat";
+            this.buttonNowaMat.Size = new System.Drawing.Size(75, 23);
+            this.buttonNowaMat.TabIndex = 2;
+            this.buttonNowaMat.Text = "nowa";
+            this.buttonNowaMat.UseVisualStyleBackColor = false;
+            this.buttonNowaMat.Click += new System.EventHandler(this.ButtonNowa_mat_Click);
+            // 
+            // buttonUsunMat
+            // 
+            this.buttonUsunMat.BackColor = System.Drawing.Color.Linen;
+            this.buttonUsunMat.Location = new System.Drawing.Point(317, 19);
+            this.buttonUsunMat.Name = "buttonUsunMat";
+            this.buttonUsunMat.Size = new System.Drawing.Size(75, 23);
+            this.buttonUsunMat.TabIndex = 4;
+            this.buttonUsunMat.Text = "usuń";
+            this.buttonUsunMat.UseVisualStyleBackColor = false;
+            this.buttonUsunMat.Click += new System.EventHandler(this.buttonUsun_mat_Click);
+            // 
+            // buttonZapiszMat
+            // 
+            this.buttonZapiszMat.BackColor = System.Drawing.Color.Linen;
+            this.buttonZapiszMat.Location = new System.Drawing.Point(119, 19);
+            this.buttonZapiszMat.Name = "buttonZapiszMat";
+            this.buttonZapiszMat.Size = new System.Drawing.Size(75, 23);
+            this.buttonZapiszMat.TabIndex = 3;
+            this.buttonZapiszMat.Text = "zapisz";
+            this.buttonZapiszMat.UseVisualStyleBackColor = false;
+            this.buttonZapiszMat.Click += new System.EventHandler(this.buttonZapiszMat_Click);
+            // 
+            // buttonAnulujMat
+            // 
+            this.buttonAnulujMat.BackColor = System.Drawing.Color.Linen;
+            this.buttonAnulujMat.Location = new System.Drawing.Point(218, 19);
+            this.buttonAnulujMat.Name = "buttonAnulujMat";
+            this.buttonAnulujMat.Size = new System.Drawing.Size(75, 23);
+            this.buttonAnulujMat.TabIndex = 3;
+            this.buttonAnulujMat.Text = "anuluj";
+            this.buttonAnulujMat.UseVisualStyleBackColor = false;
+            this.buttonAnulujMat.Click += new System.EventHandler(this.buttonAnuluj_mat_Click);
             // 
             // comboBoxJednostkaMat
             // 
@@ -673,40 +846,6 @@
             this.label30.TabIndex = 19;
             this.label30.Text = "Dostępność w magazynie";
             // 
-            // groupBox7
-            // 
-            this.groupBox7.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox7.Controls.Add(this.buttonSzukaj_mat);
-            this.groupBox7.Controls.Add(this.textBoxWyszukaj_mat);
-            this.groupBox7.Cursor = System.Windows.Forms.Cursors.Default;
-            this.groupBox7.ForeColor = System.Drawing.Color.Red;
-            this.groupBox7.Location = new System.Drawing.Point(9, 19);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(401, 57);
-            this.groupBox7.TabIndex = 51;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "wyszukiwanie materiałów po nazwie";
-            // 
-            // buttonSzukaj_mat
-            // 
-            this.buttonSzukaj_mat.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonSzukaj_mat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj_mat.BackgroundImage")));
-            this.buttonSzukaj_mat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSzukaj_mat.Location = new System.Drawing.Point(357, 15);
-            this.buttonSzukaj_mat.Name = "buttonSzukaj_mat";
-            this.buttonSzukaj_mat.Size = new System.Drawing.Size(35, 34);
-            this.buttonSzukaj_mat.TabIndex = 4;
-            this.buttonSzukaj_mat.UseVisualStyleBackColor = false;
-            this.buttonSzukaj_mat.Click += new System.EventHandler(this.buttonSzukaj_mat_Click);
-            // 
-            // textBoxWyszukaj_mat
-            // 
-            this.textBoxWyszukaj_mat.BackColor = System.Drawing.Color.Linen;
-            this.textBoxWyszukaj_mat.Location = new System.Drawing.Point(6, 23);
-            this.textBoxWyszukaj_mat.Name = "textBoxWyszukaj_mat";
-            this.textBoxWyszukaj_mat.Size = new System.Drawing.Size(338, 20);
-            this.textBoxWyszukaj_mat.TabIndex = 44;
-            // 
             // groupBox8
             // 
             this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -733,67 +872,6 @@
             this.listBoxMaterialy.Size = new System.Drawing.Size(309, 589);
             this.listBoxMaterialy.TabIndex = 0;
             this.listBoxMaterialy.SelectedIndexChanged += new System.EventHandler(this.listBoxMaterialy_SelectedIndexChanged);
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox9.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox9.Controls.Add(this.buttonNowaMat);
-            this.groupBox9.Controls.Add(this.buttonUsunMat);
-            this.groupBox9.Controls.Add(this.buttonZapiszMat);
-            this.groupBox9.Controls.Add(this.buttonAnulujMat);
-            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox9.ForeColor = System.Drawing.Color.Red;
-            this.groupBox9.Location = new System.Drawing.Point(12, 641);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(398, 56);
-            this.groupBox9.TabIndex = 48;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "edycja materiałów / normaliów";
-            // 
-            // buttonNowaMat
-            // 
-            this.buttonNowaMat.BackColor = System.Drawing.Color.Linen;
-            this.buttonNowaMat.Location = new System.Drawing.Point(14, 19);
-            this.buttonNowaMat.Name = "buttonNowaMat";
-            this.buttonNowaMat.Size = new System.Drawing.Size(75, 23);
-            this.buttonNowaMat.TabIndex = 2;
-            this.buttonNowaMat.Text = "nowa";
-            this.buttonNowaMat.UseVisualStyleBackColor = false;
-            this.buttonNowaMat.Click += new System.EventHandler(this.ButtonNowa_mat_Click);
-            // 
-            // buttonUsunMat
-            // 
-            this.buttonUsunMat.BackColor = System.Drawing.Color.Linen;
-            this.buttonUsunMat.Location = new System.Drawing.Point(317, 19);
-            this.buttonUsunMat.Name = "buttonUsunMat";
-            this.buttonUsunMat.Size = new System.Drawing.Size(75, 23);
-            this.buttonUsunMat.TabIndex = 4;
-            this.buttonUsunMat.Text = "usuń";
-            this.buttonUsunMat.UseVisualStyleBackColor = false;
-            this.buttonUsunMat.Click += new System.EventHandler(this.buttonUsun_mat_Click);
-            // 
-            // buttonZapiszMat
-            // 
-            this.buttonZapiszMat.BackColor = System.Drawing.Color.Linen;
-            this.buttonZapiszMat.Location = new System.Drawing.Point(119, 19);
-            this.buttonZapiszMat.Name = "buttonZapiszMat";
-            this.buttonZapiszMat.Size = new System.Drawing.Size(75, 23);
-            this.buttonZapiszMat.TabIndex = 3;
-            this.buttonZapiszMat.Text = "zapisz";
-            this.buttonZapiszMat.UseVisualStyleBackColor = false;
-            this.buttonZapiszMat.Click += new System.EventHandler(this.buttonZapiszMat_Click);
-            // 
-            // buttonAnulujMat
-            // 
-            this.buttonAnulujMat.BackColor = System.Drawing.Color.Linen;
-            this.buttonAnulujMat.Location = new System.Drawing.Point(218, 19);
-            this.buttonAnulujMat.Name = "buttonAnulujMat";
-            this.buttonAnulujMat.Size = new System.Drawing.Size(75, 23);
-            this.buttonAnulujMat.TabIndex = 3;
-            this.buttonAnulujMat.Text = "anuluj";
-            this.buttonAnulujMat.UseVisualStyleBackColor = false;
-            this.buttonAnulujMat.Click += new System.EventHandler(this.buttonAnuluj_mat_Click);
             // 
             // groupBox11
             // 
@@ -2160,83 +2238,6 @@
             this.listBoxDysponent.TabIndex = 0;
             this.listBoxDysponent.SelectedIndexChanged += new System.EventHandler(this.listBoxDysponent_SelectedIndexChanged);
             // 
-            // groupBox14
-            // 
-            this.groupBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox14.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox14.Controls.Add(this.button1);
-            this.groupBox14.Controls.Add(this.button2);
-            this.groupBox14.Controls.Add(this.button3);
-            this.groupBox14.Controls.Add(this.button4);
-            this.groupBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox14.Location = new System.Drawing.Point(6, 641);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(413, 56);
-            this.groupBox14.TabIndex = 49;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "edycja dostawców";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Linen;
-            this.button1.Location = new System.Drawing.Point(14, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "nowy ";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Linen;
-            this.button2.Location = new System.Drawing.Point(317, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "usuń";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Linen;
-            this.button3.Location = new System.Drawing.Point(119, 19);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "zapisz";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Linen;
-            this.button4.Location = new System.Drawing.Point(218, 19);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "anuluj";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // comboBoxWyborMagazyn
-            // 
-            this.comboBoxWyborMagazyn.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxWyborMagazyn.ForeColor = System.Drawing.Color.Red;
-            this.comboBoxWyborMagazyn.FormattingEnabled = true;
-            this.comboBoxWyborMagazyn.Location = new System.Drawing.Point(15, 108);
-            this.comboBoxWyborMagazyn.Name = "comboBoxWyborMagazyn";
-            this.comboBoxWyborMagazyn.Size = new System.Drawing.Size(386, 21);
-            this.comboBoxWyborMagazyn.TabIndex = 61;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(12, 92);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
-            this.label3.TabIndex = 62;
-            this.label3.Text = "Wybór magazynu.";
-            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2257,18 +2258,19 @@
             this.statusStripMaterialy.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.Maszyny.ResumeLayout(false);
@@ -2309,7 +2311,6 @@
             this.groupBox29.ResumeLayout(false);
             this.groupBox29.PerformLayout();
             this.groupBox30.ResumeLayout(false);
-            this.groupBox14.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

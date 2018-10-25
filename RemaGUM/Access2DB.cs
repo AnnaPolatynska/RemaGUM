@@ -3951,6 +3951,7 @@ namespace nsAccess2DB
         private int _Stan_min_mat = 0;// liczba
         private int _Zapotrzebowanie_mat = 0;// liczba
         private int _Stan_mag_po_mat = 0;// liczba
+        private string _Magazyn = string.Empty; //255
 
         /// <summary>
         /// Konstruktor wymiany danych z tabelą Materialy
@@ -4018,6 +4019,12 @@ namespace nsAccess2DB
             get { return _Stan_mag_po_mat; }
             set { _Stan_mag_po_mat = value; }
         }
+        public string Magazyn
+        {
+            get { return _Magazyn; }
+            set { _Magazyn = value; }
+        }
+
     } //class MaterialyVO
 
     // --------------------------------------------klasa dostępu (Data Access Object) do tabeli Materiały DAO
@@ -4078,9 +4085,9 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool insert(nsAccess2DB.MaterialyVO VO)
         {
-            string query = "INSERT INTO Materialy (Nazwa_mat, Typ_mat, Rodzaj_mat, Jednostka_miar_mat, Dostawca_mat, Stan_mat, Zuzycie_mat, Odpad_mat, Stan_min_mat, Zapotrzebowanie_mat, Stan_mag_po_mat) VALUES (@Nazwa_mat, @Typ_mat, @Rodzaj_mat, @Jednostka_miar_mat, @Dostawca_mat, @Stan_mat, @Zuzycie_mat, @Odpad_mat, @Stan_min_mat, @Zapotrzebowanie_mat, @Stan_mag_po_mat);";
+            string query = "INSERT INTO Materialy (Nazwa_mat, Typ_mat, Rodzaj_mat, Jednostka_miar_mat, Dostawca_mat, Stan_mat, Zuzycie_mat, Odpad_mat, Stan_min_mat, Zapotrzebowanie_mat, Stan_mag_po_mat, Magazyn) VALUES (@Nazwa_mat, @Typ_mat, @Rodzaj_mat, @Jednostka_miar_mat, @Dostawca_mat, @Stan_mat, @Zuzycie_mat, @Odpad_mat, @Stan_min_mat, @Zapotrzebowanie_mat, @Stan_mag_po_mat, @Magazyn);";
 
-            OleDbParameter[] parameters = new OleDbParameter[11];
+            OleDbParameter[] parameters = new OleDbParameter[12];
             parameters[0] = new OleDbParameter("Nazwa_mat", OleDbType.VarChar, 255);
             parameters[0].Value = VO.Nazwa_mat;
 
@@ -4113,6 +4120,9 @@ namespace nsAccess2DB
 
             parameters[10] = new OleDbParameter("Stan_mag_po_mat", OleDbType.Integer);
             parameters[10].Value = VO.Stan_mag_po_mat;
+
+            parameters[11] = new OleDbParameter("Magazyn", OleDbType.VarChar, 100);
+            parameters[11].Value = VO.Magazyn;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -4126,9 +4136,9 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool update(nsAccess2DB.MaterialyVO VO)
         {
-            string query = "UPDATE Materialy SET Nazwa_mat = @Nazwa_mat, Typ_mat = @Typ_mat, Rodzaj_mat = @Rodzaj_mat, Jednostka_miar_mat = @Jednostka_miar_mat, Dostawca_mat = @Dostawca_mat, Stan_mat = @Stan_mat, Zuzycie_mat = @Zuzycie_mat, Odpad_mat = @Odpad_mat, Stan_min_mat = @Stan_min_mat, Zapotrzebowanie_mat = @Zapotrzebowanie_mat, Stan_mag_po_mat = @Stan_mag_po_mat WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
+            string query = "UPDATE Materialy SET Nazwa_mat = @Nazwa_mat, Typ_mat = @Typ_mat, Rodzaj_mat = @Rodzaj_mat, Jednostka_miar_mat = @Jednostka_miar_mat, Dostawca_mat = @Dostawca_mat, Stan_mat = @Stan_mat, Zuzycie_mat = @Zuzycie_mat, Odpad_mat = @Odpad_mat, Stan_min_mat = @Stan_min_mat, Zapotrzebowanie_mat = @Zapotrzebowanie_mat, Stan_mag_po_mat = @Stan_mag_po_mat, Magazyn = @Magazyn WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
 
-            OleDbParameter[] parameters = new OleDbParameter[11];
+            OleDbParameter[] parameters = new OleDbParameter[12];
             parameters[0] = new OleDbParameter("Nazwa_mat", OleDbType.VarChar, 255);
             parameters[0].Value = VO.Nazwa_mat;
 
@@ -4161,6 +4171,9 @@ namespace nsAccess2DB
 
             parameters[10] = new OleDbParameter("Stan_mag_po_mat", OleDbType.Integer);
             parameters[10].Value = VO.Stan_mag_po_mat;
+
+            parameters[11] = new OleDbParameter("Magazyn", OleDbType.VarChar, 100);
+            parameters[11].Value = VO.Magazyn;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -4285,6 +4298,7 @@ namespace nsAccess2DB
                 VOi.Stan_min_mat = int.Parse(dr["Stan_min_mat"].ToString());
                 VOi.Zapotrzebowanie_mat = int.Parse(dr["Zapotrzebowanie_mat"].ToString());
                 VOi.Stan_mag_po_mat = int.Parse(dr["Stan_mag_po_mat"].ToString());
+                VOi.Magazyn = dr["Magazyn"].ToString();
 
                 _VOs[_VOs.Length - 1] = VOi;
             }
@@ -4428,6 +4442,208 @@ namespace nsAccess2DB
         }//write
 
     }// clasa MaterialyBUS
+
+    ////////////////////////////////////////////////////////////////////////////////// Magazyn - dane słownikowe.
+    /// <summary>
+    /// Klasa wymiany danych z Wybor_magazynu.
+    /// </summary>
+    public class Wybor_magazynuVO
+    {
+        private string _Magazyn = string.Empty;
+        /// <summary>
+        /// Konstruktor wymiany danych z tabelą Wybor_magazynu.
+        /// </summary>
+        public Wybor_magazynuVO() { }
+        public string Magazyn
+        {
+            get { return _Magazyn; }
+            set { _Magazyn = value; }
+        }
+    }//class  Wybor_magazynuVO
+
+    public class Wybor_magazynuDAO
+    {
+        private dbConnection _conn;
+        public string _error = string.Empty;
+
+        /// <constructor>
+        /// Konstruktor.
+        /// </constructor>
+        public Wybor_magazynuDAO(string connString)
+        {
+            _conn = new dbConnection(connString);
+            _error = _conn._error;
+        }// Wybor_magazynuDAO
+        public DataTable select()
+        {
+            string query = "SELECT * FROM Wybor_magazynu;";
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }//select
+    }//class Wybor_magazynuDAO
+
+    public class Wybor_magazynuBUS
+    {
+        Wybor_magazynuDAO _DAO;
+
+        private Wybor_magazynuVO[] _VOs = new Wybor_magazynuVO[0];//lista danych
+        private Wybor_magazynuVO _VOi = new Wybor_magazynuVO();       //dane na pozycji _idx
+        private int _idx = 0;                       //indeks pozycji
+        private bool _eof = false;                  //wskaźnik końca pliku
+        private int _count = 0;                     //liczba pozycji
+
+        public string _error = string.Empty;
+
+        /// <summary>
+        /// Konstruktor.
+        /// </summary>
+        /// <param name="connString">ConnectionString.</param>
+        public Wybor_magazynuBUS(string connString)
+        {
+            _DAO = new Wybor_magazynuDAO(connString);
+            _error = _DAO._error;
+        }//Wybor_magazynuBUS
+
+        /// <summary>
+        /// Wypełnia tablice.
+        /// </summary>
+        /// <param name="dt">Tabela danych.</param>
+        private void fillTable(DataTable dt)
+        {
+            Wybor_magazynuVO VOi;
+            _VOs = new Wybor_magazynuVO[0];
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Array.Resize(ref _VOs, _VOs.Length + 1);
+
+                VOi = new Wybor_magazynuVO();
+
+                VOi.Magazyn = dr["Magazyn"].ToString();
+
+                _VOs[_VOs.Length - 1] = VOi;
+            }
+
+            _eof = _VOs.Length == 0;
+            _count = _VOs.Length;
+            if (_count > 0)
+                _idx = 0;
+            else
+            {
+                _idx = -1;
+                _eof = true;
+            }
+        }//fillTable
+        /// <summary>
+        /// Wypełnia tablice danych pozycjami.
+        /// </summary>
+        public void select()
+        {
+            fillTable(_DAO.select());
+        }//select
+
+        /// <summary>
+        /// Przemieszcza indeks w tablicy danych o jedną pozycję.
+        /// </summary>
+        public void skip()
+        {
+            if (_count > 0)
+            {
+                _idx++;
+                _eof = _idx >= _count;
+            }
+        }//skip
+
+        /// <summary>
+        /// Przemieszcza indeks w tablicy danych na pozycję pierwszą.
+        /// </summary>
+        public void top()
+        {
+            if (_count > 0)
+            {
+                _idx = 0;
+                _eof = false;
+            }
+        }//top
+
+        /// <summary>
+        /// Zmienna logiczna osiągnięcia końca pliku.
+        /// </summary>
+        public bool eof
+        {
+            get { return _eof; }
+        }
+
+        /// <summary>
+        /// Zwraca liczbę pozycji tablicy.
+        /// </summary>
+        public int count
+        {
+            get { return _count; }
+        }
+
+        /// <summary>
+        /// Zwraca daną okrśloną wskaźnikiem pozycji.
+        /// </summary>
+        public Wybor_magazynuVO VO
+        {
+            get
+            {
+                if (_idx > -1 & _idx < _count)
+                {
+                    return _VOi = _VOs[_idx];
+                }
+                return new Wybor_magazynuVO();
+            }
+        }//Wybor_magazynuVO
+
+        /// <summary>
+        /// Ustawia wskaźnik pozycji.
+        /// </summary>
+        public int idx
+        {
+            set
+            {
+                if (value > -1 & value < _count)
+                {
+                    _idx = value;
+                }
+            }
+        }//idx
+
+        /// <summary>
+        /// Sprawdza istnienie rekordu.
+        /// </summary>
+        /// <param name="Magazyn"></param>
+        /// <returns></returns>
+        public bool exists(String Magazyn)
+        {
+            foreach (Wybor_magazynuVO VOi in _VOs)
+            {
+                if (VOi.Magazyn == Magazyn) return true;
+            }
+            return false;
+        }//exists
+
+        /// <summary>
+        ///  Zwraca indeks pozycji.
+        /// </summary>
+        /// <param name="Magazyn"></param>
+        /// <returns></returns>
+        public int getIdx(string Magazyn)
+        {
+            int idx = -1;
+            foreach (Wybor_magazynuVO VOi in _VOs)
+            {
+                idx++;
+                if (VOi.Magazyn == Magazyn) return idx;
+            }
+            return -1;
+        }//getIdx
+    }//Wybor_magazynuBUS
+
 
     ////////////////////////////////////////////////////////////////////////////////// Jednostka_miar - dane słownikowe.
     /// <summary>

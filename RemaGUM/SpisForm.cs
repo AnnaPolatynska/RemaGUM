@@ -115,8 +115,8 @@ namespace RemaGUM
             textBoxWyszukiwanie.TabIndex = 31;
             buttonSzukaj.TabIndex = 32;
 
-            // --------------------------------------------- Zakładka Materiały
-            //dane formularza Materiały
+            // --------------------------------------------- Zakładka Magazyn
+            //dane formularza Magazyn
             listBoxMaterialy.TabIndex = 33;
             textBoxTypMat.TabIndex = 34;
             comboBoxRodzajMat.TabIndex = 35;
@@ -144,7 +144,7 @@ namespace RemaGUM
             //wyszukiwanie Materiału po wpisanej nazwie
             textBoxWyszukaj_mat.TabIndex = 54;
             buttonSzukaj_mat.TabIndex = 55;
-
+            comboBoxWyborMagazyn.TabIndex = 56;
             //------------------------------------------------ Zakładka Operator
             //dane forlumarza
             listBoxOperator.TabIndex = 1;
@@ -215,29 +215,6 @@ namespace RemaGUM
             _tt.SetToolTip(radioButtonData_ost_przegl, "Sortuj po dacie ostatniego przegladu.");
             _tt.SetToolTip(textBoxWyszukiwanie, "Wpisz jakiej maszyny szukasz.");
             _tt.SetToolTip(buttonSzukaj, "Szukanie w bazie maszyn.");
-            // -------------------------------------- Zakładka Materiały
-            _tt.SetToolTip(listBoxMaterialy, "Lista materiałów.");
-            _tt.SetToolTip(textBoxTypMat, "Typ materiału.");
-            _tt.SetToolTip(comboBoxRodzajMat, "Rodzaj materiału.");
-            _tt.SetToolTip(textBoxNazwaMat, "Nazwa materiału.");
-            _tt.SetToolTip(comboBoxJednostkaMat, "Jednostka miary.");
-            _tt.SetToolTip(textBoxMagazynMat, "Stan magazynowy materiału.");
-            _tt.SetToolTip(textBoxZuzycieMat, "Wpisz ile materiału podlega zużyciu.");
-            _tt.SetToolTip(textBoxOdpadMat, "Wpisz ile materiału jest odpadem.");
-            _tt.SetToolTip(textBoxMinMat, "Stan minimalny materiału.");
-            _tt.SetToolTip(textBoxZapotrzebowanieMat, "Zapotrzebowanie materiału.");
-            _tt.SetToolTip(linkLabelDostawcaMat, "link do strony dostawcy głównego.");
-            _tt.SetToolTip(richTextBoxDostawca, "Opis dostawcy głównego, dane kontaktowe, szczegóły dotyczące składania zamówienia (np. proponowane upusty cenowe).");
-            _tt.SetToolTip(radioButtonNazwa_mat, "Sortuj po nazwie materiału.");
-            _tt.SetToolTip(radioButtonTyp_mat, "Sortuj po typie materiału.");
-            _tt.SetToolTip(radioButtonStan_min_mat, "Sortuj po cenie materiału.");
-            _tt.SetToolTip(radioButtonMagazyn_ilosc_mat, "Sortuj po dostępnych ilościach w magazynie.");
-            _tt.SetToolTip(buttonNowaMat, "Nowa pozycja w bazie.");
-            _tt.SetToolTip(buttonZapiszMat, "Zapis nowej maszyny, przyrządu lub urządzenia lub edycja wybranej pozycji.");
-            _tt.SetToolTip(buttonAnulujMat, "Anulowanie zmiany.");
-            _tt.SetToolTip(buttonUsunMat, "Usuwa pozycję z bazy.");
-            _tt.SetToolTip(textBoxWyszukaj_mat, "Wpisz jakiego materiału szukasz.");
-            _tt.SetToolTip(buttonSzukaj_mat, "Szukanie w bazie materiałów.");
             //---------------------------------------Zakładka operator
             _tt.SetToolTip(listBoxOperator, "Lista wszystkich operatorów maszyn.");
             _tt.SetToolTip(textBoxImieOperator, "Imię i nazwisko operatora maszyny.");
@@ -252,6 +229,30 @@ namespace RemaGUM
             _tt.SetToolTip(textBoxWyszukiwanieOperator, "Wpisz nazwisko operatora, którego szukasz.");
             _tt.SetToolTip(buttonSzukajOperator, "Szukanie w bazie operatora.");
             _tt.SetToolTip(comboBoxOperator, "Sortowanie operatorow po dacie końca uprawnień.");
+            // -------------------------------------- Zakładka Magazyn
+            _tt.SetToolTip(listBoxMaterialy, "Lista materiałów / normaliów.");
+            _tt.SetToolTip(textBoxTypMat, "Typ materiałów / normaliów.");
+            _tt.SetToolTip(comboBoxRodzajMat, "Rodzaj materiałów / normaliów.");
+            _tt.SetToolTip(textBoxNazwaMat, "Nazwa materiałów / normaliów.");
+            _tt.SetToolTip(comboBoxJednostkaMat, "Jednostka miary materiałów / normaliów.");
+            _tt.SetToolTip(textBoxMagazynMat, "Stan magazynowy materiałów / normaliów.");
+            _tt.SetToolTip(textBoxZuzycieMat, "Wpisz ile podlega zużyciu.");
+            _tt.SetToolTip(textBoxOdpadMat, "Wpisz ile jest odpadem.");
+            _tt.SetToolTip(textBoxMinMat, "Wpisz stan minimalny.");
+            _tt.SetToolTip(textBoxZapotrzebowanieMat, "Wpisz zapotrzebowanie materiałów / normaliów.");
+            _tt.SetToolTip(linkLabelDostawcaMat, "link do strony dostawcy materiałów / normaliów.");
+            _tt.SetToolTip(richTextBoxDostawca, "Opis dostawcy, dane kontaktowe, szczegóły dotyczące składania zamówienia (np. proponowane upusty cenowe).");
+            _tt.SetToolTip(radioButtonNazwa_mat, "Sortuj po nazwie materiałów / normaliów.");
+            _tt.SetToolTip(radioButtonTyp_mat, "Sortuj po typie materiałów / normaliów.");
+            _tt.SetToolTip(radioButtonStan_min_mat, "Sortuj po cenie materiałów / normaliów.");
+            _tt.SetToolTip(radioButtonMagazyn_ilosc_mat, "Sortuj po dostępnych ilościach w magazynie.");
+            _tt.SetToolTip(buttonNowaMat, "Nowa pozycja w bazie materiałów / normaliów.");
+            _tt.SetToolTip(buttonZapiszMat, "Zapis nowej pozycji w bazie materiałów / normaliów lub edycja wybranej pozycji.");
+            _tt.SetToolTip(buttonAnulujMat, "Anulowanie zmiany.");
+            _tt.SetToolTip(buttonUsunMat, "Usuwa pozycję z bazy.");
+            _tt.SetToolTip(textBoxWyszukaj_mat, "Wpisz czego szukasz.");
+            _tt.SetToolTip(buttonSzukaj_mat, "Szukanie w bazie materiałów / normaliów.");
+            _tt.SetToolTip(comboBoxWyborMagazyn, "Wybór magazynu materiałów lub normaliów.");
 
         }//public SpisForm()
         
@@ -330,6 +331,7 @@ namespace RemaGUM
             if (v.SelectedIndex == 3)
             {
                 radioButtonNazwa_mat.Checked = true; // przy przejściu do zakładki materiały zaznaczone sortowanie po nazwie.
+                WybierzMagazyn();
                 WypelnijMaterialyNazwami();
                 WypelnijJednostka_miar();
                 WypelnijRodzaj_mat();
@@ -1414,6 +1416,7 @@ namespace RemaGUM
                 //toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
                 listBoxMaterialy.Tag = materialyBUS.VO.Identyfikator;
 
+                comboBoxWyborMagazyn.Text = materialyBUS.VO.Magazyn;
                 textBoxTypMat.Text = materialyBUS.VO.Typ_mat;
                 comboBoxRodzajMat.Text = materialyBUS.VO.Rodzaj_mat;
                 textBoxNazwaMat.Text = materialyBUS.VO.Nazwa_mat;
@@ -1489,6 +1492,12 @@ namespace RemaGUM
                 toolStripStatusLabelID_Materialu.Text = "";
                 textBoxTypMat.Text = string.Empty;
 
+                // czyści wybór przynależności do magazynu materiałów / normaliów.
+                comboBoxWyborMagazyn.SelectedIndex = -1;
+                comboBoxWyborMagazyn.Enabled = true;
+                comboBoxWyborMagazyn.SelectedIndex = 0;
+                comboBoxWyborMagazyn.Refresh();
+
                 comboBoxRodzajMat.Text = string.Empty;
                 comboBoxRodzajMat.SelectedIndex = -1;
                 comboBoxRodzajMat.Enabled = true;
@@ -1555,7 +1564,34 @@ namespace RemaGUM
 
             linkLabelDostawcaMat.Text = dostawca_MatBUS.VO.Link_dostawca_mat.ToString();
             richTextBoxDostawca.Text = dostawca_MatBUS.VO.Dod_info_dostawca_mat.ToString();
-        }
+        }// OdswiezDostawców
+
+        /// <summary>
+        /// Wybiera rodzaj magazynu (materiały lub normalia).
+        /// </summary>
+        private void WybierzMagazyn()
+        {
+            nsAccess2DB.Wybor_magazynuBUS wybor_MagazynuBUS = new nsAccess2DB.Wybor_magazynuBUS(_connString);
+            nsAccess2DB.Wybor_magazynuVO wybor_MagazynuVO = new nsAccess2DB.Wybor_magazynuVO();
+
+            comboBoxWyborMagazyn.Items.Clear();
+
+            wybor_MagazynuBUS.select();
+            wybor_MagazynuBUS.top();
+            while (!wybor_MagazynuBUS.eof)
+            {
+                wybor_MagazynuVO = wybor_MagazynuBUS.VO;
+                comboBoxWyborMagazyn.Items.Add(wybor_MagazynuVO.Magazyn);
+                wybor_MagazynuBUS.skip();
+            }
+        }// WybierzMagazyn()
+
+        private void comboBoxWyborMagazyn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nsAccess2DB.Wybor_magazynuBUS wybor_MagazynuBUS = new nsAccess2DB.Wybor_magazynuBUS(_connString);
+            wybor_MagazynuBUS.idx = comboBoxWyborMagazyn.SelectedIndex;
+        }// comboBoxWyborMagazyn_SelectedIndexChanged(object sender, EventArgs e)
+
         /// <summary>
         /// Wypełnia jednostkę miar dla Materiałów i Normaliów.
         /// </summary>
@@ -1788,6 +1824,7 @@ namespace RemaGUM
 
                 int materialId = materialyBUS.VO.Identyfikator + 1;
 
+                materialy_VO.Magazyn = comboBoxWyborMagazyn.Text.Trim();
                 // komunikaty, które wymuszają wpisanie tekstu przed zapisem materiału.
                 // komunikat przy braku nazwy materiału.
                 //if (textBoxNazwaMat.Text == string.Empty)
@@ -1915,8 +1952,9 @@ namespace RemaGUM
                 {
                     materialy_VO.Identyfikator = (int)listBoxMaterialy.Tag;
 
+                    materialy_VO.Magazyn = comboBoxWyborMagazyn.Text.Trim();
                     // komunikaty, które wymuszają wpisanie tekstu przed zapisem materiału.
-                    
+
                     // komunikat przy braku nazwy materiału.
                     if (textBoxNazwaMat.Text == string.Empty)
                     {
@@ -2035,7 +2073,7 @@ namespace RemaGUM
             _statusForm = (int)_status.edycja;
         }//buttonZapiszMat_Clic
 
-
+        //TODO wyszukiwarka materiałów.
         /// <summary>
         /// Wyszukuje materiał po dowolnym ciągu znaków w nazwie lub rodzaju materiału.
         /// </summary>
@@ -2049,31 +2087,33 @@ namespace RemaGUM
 
             nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
             nsAccess2DB.MaterialyVO materialyVO = new nsAccess2DB.MaterialyVO();
-            try
-            {
-                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa ASC;");
 
-                string s1 = textBoxWyszukaj_mat.Text.ToUpper();
-                string s2;
 
-                for (int i = _materialSzukajIdx; i < materialyBUS.count; i++)
-                {
-                    materialyBUS.idx = i;
-                    materialyVO = materialyBUS.VO;
+            //try
+            //{
+            //    materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa ASC;");
 
-                    s2 = materialyVO.Nazwa_mat.ToUpper();
+            //    string s1 = textBoxWyszukaj_mat.Text.ToUpper();
+            //    string s2;
 
-                    if (s2.Contains(s1))
-                    {
-                        _materialSzukajIdx = i;
-                        listBoxMaterialy.SelectedIndex = i;
+            //    for (int i = _materialSzukajIdx; i < materialyBUS.count; i++)
+            //    {
+            //        materialyBUS.idx = i;
+            //        materialyVO = materialyBUS.VO;
 
-                    }
-                }
-                pokazKomunikat("Aby szukać od poczatku wciśnij szukaj.");
-            }
-            catch { }
-            
+            //        s2 = materialyVO.Nazwa_mat.ToUpper();
+
+            //        if (s2.Contains(s1))
+            //        {
+            //            _materialSzukajIdx = i;
+            //            listBoxMaterialy.SelectedIndex = i;
+
+            //        }
+            //    }
+            //    pokazKomunikat("Aby szukać od poczatku wciśnij szukaj.");
+            //}
+            //catch { }
+           
 
            
         }// button buttonSzukaj_mat_Click
