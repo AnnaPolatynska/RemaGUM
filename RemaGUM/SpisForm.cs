@@ -1366,22 +1366,17 @@ namespace RemaGUM
             nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
             materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");
 
-            nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
-            dostawca_MatBUS.select();
+            //nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
+            //dostawca_MatBUS.select();
 
             listBoxMaterialy.Items.Clear();
 
-            materialyBUS.idx = listBoxMaterialy.SelectedIndex;
-            toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
+            //materialyBUS.idx = listBoxMaterialy.SelectedIndex;
             
             while (!materialyBUS.eof)
             {
                 listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " - " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
                 materialyBUS.skip();
-            }
-            if (listBoxMaterialy.Items.Count > 0)
-            {
-                listBoxMaterialy.SelectedIndex = 0;
             }
            
         }// WypelnijMaterialyNazwami()
@@ -1398,30 +1393,29 @@ namespace RemaGUM
             {
                 materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");
                 materialyBUS.idx = listBoxMaterialy.SelectedIndex;
-                toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString(); //  toolStripStatusLabelID_Materialu
+                //toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString(); //  toolStripStatusLabelID_Materialu
             }
             else if (radioButtonStan_min_mat.Checked)
             {
                 materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Stan_min_mat ASC;");
                 materialyBUS.idx = listBoxMaterialy.SelectedIndex;
-                toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
+                //toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
             }
             else if (radioButtonTyp_mat.Checked)
             {
                 materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Typ_mat ASC;");
                 materialyBUS.idx = listBoxMaterialy.SelectedIndex;
-                toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
+                //toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
             }
             else if (radioButtonMagazyn_ilosc_mat.Checked)
             {
                 materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Stan_mat ASC;");
                 materialyBUS.idx = listBoxMaterialy.SelectedIndex;
-                toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
             }
             // materialyBUS.select();
             try
             {
-                toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
+                //toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
                 listBoxMaterialy.Tag = materialyBUS.VO.Identyfikator;
 
                 textBoxTypMat.Text = materialyBUS.VO.Typ_mat;
@@ -1457,7 +1451,11 @@ namespace RemaGUM
                 richTextBoxDostawca.Text = dostawca_matBUS.VO.Dod_info_dostawca_mat;
 
                 toolStripStatusLabel_ID_Dostawcy.Text = dostawca_matBUS.VO.Identyfikator.ToString();
+
+                toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
             }
+
+
             catch { }
         } // listBoxMaterialy_SelectedIndexChanged
 
@@ -1787,10 +1785,13 @@ namespace RemaGUM
 
             if (_statusForm == (int)_status.nowy)
             {
-                materialyBUS.select();
+                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Identyfikator ASC;");
+                //materialyBUS.select();
                 materialyBUS.idx = materialyBUS.count - 1;
                 materialyBUS.VO.Identyfikator = materialyBUS.VO.Identyfikator + 1;
-                
+
+                int materialId = materialyBUS.VO.Identyfikator + 1;
+
                 // komunikaty, które wymuszają wpisanie tekstu przed zapisem materiału.
                 // komunikat przy braku nazwy materiału.
                 //if (textBoxNazwaMat.Text == string.Empty)
@@ -1889,8 +1890,14 @@ namespace RemaGUM
                     //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
                    
                 }
-                listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialyBUS.VO.Identyfikator); // ustawienie zaznaczenia w tabeli materiały.
+                //listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialyBUS.VO.Identyfikator); // ustawienie zaznaczenia w tabeli materiały.
                 materialyBUS.write(materialy_VO);
+
+
+                WypelnijMaterialyNazwami();
+
+                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");      
+                listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialId);
 
                 //dostawca_MatBUS.idx = checkedListBoxDostawcyMat.SelectedIndex;
                 //toolStripStatusLabel_ID_Dostawcy.Text = dostawca_MatBUS.VO.Identyfikator.ToString();
@@ -2020,12 +2027,13 @@ namespace RemaGUM
                     dostawca_MatBUS.idx = checkedListBoxDostawcyMat.SelectedIndex;
                     toolStripStatusLabel_ID_Dostawcy.Text = dostawca_MatBUS.VO.Identyfikator.ToString();
                 }
-            listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialyBUS.VO.Identyfikator);
+
+                listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialyBUS.VO.Identyfikator);
             }//else if edycja
 
             WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);
 
-            OdswiezMaterialy();
+            //OdswiezMaterialy();
             OdswiezDostawcow();
             pokazKomunikat("Pozycja zapisana w bazie");
             _statusForm = (int)_status.edycja;
