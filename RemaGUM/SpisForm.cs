@@ -35,6 +35,7 @@ namespace RemaGUM
 
         int _maszynaSzukajIdx = 0; // indeks szukanej maszyny.
         int _dysponentSzukajIdx = 0; //indeks szukanego dysponenta.
+        int _materialSzukajIdx = 0; // indeks szukanego materiału.
 
         private ToolTip _tt; //podpowiedzi dla niektórych kontolek.
 
@@ -448,42 +449,35 @@ namespace RemaGUM
             {
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nazwa ASC;");
                 maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
-                toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
             }
             else if (radioButtonTyp.Checked)
             {
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Typ ASC;");
                 maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
-                toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
             }
             else if (radioButtonNr_fabryczny.Checked)
             {
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nr_fabryczny ASC;");
                 maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
-                toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
             }
             else if (radioButtonNr_inwentarzowy.Checked)
             {
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nr_inwentarzowy ASC;");
                 maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
-                toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
             }
             else if (radioButtonNr_pomieszczenia.Checked)
             {
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nr_pomieszczenia ASC;");
                 maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
-                toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
             }
             else if (radioButtonData_ost_przegl.Checked)
             {
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Data_ost_przegl ASC;");
                 maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
-                toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
             }
 
             try
             {
-                toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString(); // toolStripStatusLabelID_Maszyny
                 listBoxMaszyny.Tag = maszynyBUS.VO.Identyfikator;
 
                 comboBoxKategoria.Text = maszynyBUS.VO.Kategoria;
@@ -552,7 +546,8 @@ namespace RemaGUM
                     if (idx > -1) checkedListBoxOperatorzy_maszyn.SetItemChecked(idx, true);
                     maszyny_OperatorBUS.skip();
                 }
-
+                toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
+ 
             }
             catch { }
         }//listBoxMaszyny_SelectedIndexChanged
@@ -1096,7 +1091,8 @@ namespace RemaGUM
                 maszynyVO.Dz_ost_przeg = dateTimePickerData_ost_przegl.Value.Day;
                 maszynyVO.Data_ost_przegl = int.Parse(maszynyVO.Rok_ost_przeg.ToString() + maszynyVO.Mc_ost_przeg.ToString("00") + maszynyVO.Dz_ost_przeg.ToString("00"));
                 DateTime dt = new DateTime(dateTimePickerData_ost_przegl.Value.Ticks); // dodaje interwał przeglądów do data_ost_przegl
-                dt = dt.AddYears(_interwalPrzegladow);
+               // dt = dt.AddYears(_interwalPrzegladow);
+                dt = dt.AddDays(_interwalPrzegladow); // w dniach
                 maszynyVO.Rok_kol_przeg = dt.Year;
                 maszynyVO.Mc_kol_przeg = dt.Month;
                 maszynyVO.Dz_kol_przeg = dt.Day;
@@ -2052,16 +2048,34 @@ namespace RemaGUM
             listBoxMaterialy.Items.Clear();
 
             nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
-            materialyBUS.selectQuery("SELECT * FROM Materialy WHERE Nazwa_mat LIKE'" + textBoxWyszukaj_mat + "%' OR Rodzaj_mat LIKE '%" + textBoxWyszukaj_mat + "%';");
-            while (!materialyBUS.eof)
+            nsAccess2DB.MaterialyVO materialyVO = new nsAccess2DB.MaterialyVO();
+            try
             {
-                listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " " + materialyBUS.VO.Rodzaj_mat);
-                materialyBUS.skip();
+                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa ASC;");
+
+                string s1 = textBoxWyszukaj_mat.Text.ToUpper();
+                string s2;
+
+                for (int i = _materialSzukajIdx; i < materialyBUS.count; i++)
+                {
+                    materialyBUS.idx = i;
+                    materialyVO = materialyBUS.VO;
+
+                    s2 = materialyVO.Nazwa_mat.ToUpper();
+
+                    if (s2.Contains(s1))
+                    {
+                        _materialSzukajIdx = i;
+                        listBoxMaterialy.SelectedIndex = i;
+
+                    }
+                }
+                pokazKomunikat("Aby szukać od poczatku wciśnij szukaj.");
             }
-            if (listBoxMaterialy.Items.Count > 0)
-            {
-                listBoxMaterialy.SelectedIndex = 0;
-            }
+            catch { }
+            
+
+           
         }// button buttonSzukaj_mat_Click
 
 
