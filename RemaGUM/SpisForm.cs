@@ -568,7 +568,7 @@ namespace RemaGUM
                 listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa + " -> " + maszynyBUS.VO.Nr_fabryczny);
                 maszynyBUS.skip();
             }
-
+            
         }// OdswiezListeMaszyn()
 
         //************* wypełnia CheckedListBox nazwiskami i imionami operatorów maszyn.
@@ -734,7 +734,9 @@ namespace RemaGUM
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Nr_fabryczny + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
+               
             }
+           
         }//radioButtonNr_fabrycznyCheckedChanged
 
         /// <summary>
@@ -1413,7 +1415,7 @@ namespace RemaGUM
             // materialyBUS.select();
             try
             {
-                //toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
+                //toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator;
                 listBoxMaterialy.Tag = materialyBUS.VO.Identyfikator;
 
                 comboBoxWyborMagazyn.Text = materialyBUS.VO.Magazyn;
@@ -1445,15 +1447,8 @@ namespace RemaGUM
                     if (idxD > -1) checkedListBoxDostawcyMat.SetItemChecked(idxD, true);
                     dostawca_materialBUS.skip();
                 }
-
-                linkLabelDostawcaMat.Text = dostawca_matBUS.VO.Link_dostawca_mat;
-                richTextBoxDostawca.Text = dostawca_matBUS.VO.Dod_info_dostawca_mat;
-
-                toolStripStatusLabel_ID_Dostawcy.Text = dostawca_matBUS.VO.Identyfikator.ToString();
-
                 toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
             }
-
 
             catch { }
         } // listBoxMaterialy_SelectedIndexChanged
@@ -1465,7 +1460,7 @@ namespace RemaGUM
         private void WypelnijDostawcowMaterialow(CheckedListBox v)
         {
             nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
-            
+
             v.Items.Clear();
             //dostawca_MatBUS.select();
             dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
@@ -1482,6 +1477,47 @@ namespace RemaGUM
                 v.Tag = dostawca_MatBUS.VO.Identyfikator;
             }
         }// WypelnijDostawcowMaterialow(CheckedListBox v)
+
+
+
+        /*
+          private void WypelnijMaterialyNazwami()
+        {
+            nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
+            materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");
+
+            listBoxMaterialy.Items.Clear();
+
+            while (!materialyBUS.eof)
+            {
+                listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " - " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
+                materialyBUS.skip();
+            }
+             */
+
+
+        /// <summary>
+        /// Zmiana indeksu dostawcy w checkedListBoxDostawcyMat.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void checkedListBoxDostawcyMat_SelectedIndex(object sender, EventArgs e)
+        {
+            nsAccess2DB.Dostawca_matBUS dostawca_matBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
+
+            //dostawca_matBUS.select();
+            dostawca_matBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
+
+            dostawca_matBUS.idx = checkedListBoxDostawcyMat.SelectedIndex;
+
+            richTextBoxDostawca.Text = dostawca_matBUS.VO.Dod_info_dostawca_mat.ToString();
+            linkLabelDostawcaMat.Text = dostawca_matBUS.VO.Link_dostawca_mat.ToString();
+           
+            toolStripStatusLabel_ID_Dostawcy.Text = dostawca_matBUS.VO.Identyfikator.ToString();
+
+        }// private void checkedListBoxDostawcyMat_SelectedIndex(object sender, EventArgs e)
+
+
 
         /// <summary>
         /// Czyści dane w formularzu Materiały.
@@ -2909,6 +2945,8 @@ namespace RemaGUM
        
             Cursor.Current = Cursors.Default;
         }//buttonSzukajDysponent_Click
+
+       
 
     }// public partial class SpisForm : Form
 
