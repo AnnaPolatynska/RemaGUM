@@ -1422,7 +1422,16 @@ namespace RemaGUM
                 textBoxTypMat.Text = materialyBUS.VO.Typ_mat;
                 comboBoxRodzajMat.Text = materialyBUS.VO.Rodzaj_mat;
                 textBoxNazwaMat.Text = materialyBUS.VO.Nazwa_mat;
-                comboBoxJednostkaMat.Text = materialyBUS.VO.Jednostka_miar_mat;
+                string s = materialyBUS.VO.Jednostka_miar_mat;
+                comboBoxJednostkaMat.Text = s;
+
+                // jednostki wyświetlane labelach dane z comboBoxJednostkaMat.
+                labelJednostkaDostepnosc.Text = s;
+                labelJednostkaMin.Text = s;
+                labelJednostkaZuzycie.Text = s;
+                labelJednostkaOdpad.Text = s;
+                labelJednostkaZapotrzebowanie.Text = s;
+
                 textBoxMagazynMat.Text = materialyBUS.VO.Stan_mat.ToString();
                 textBoxZuzycieMat.Text = materialyBUS.VO.Zuzycie_mat.ToString();
                 textBoxOdpadMat.Text = materialyBUS.VO.Odpad_mat.ToString();
