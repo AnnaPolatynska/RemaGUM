@@ -28,8 +28,8 @@ namespace RemaGUM
         private byte _statusForm; // wartośc statusu formularza.
 
         private int[] _maszynaTag; // przechowuje identyfikatory maszyn dla operatora.
-        
-        private 
+
+        private
 
         int _maszynaId = -1; // identyfikator maszyny przy starcie programu.
 
@@ -255,7 +255,7 @@ namespace RemaGUM
             _tt.SetToolTip(comboBoxWyborMagazyn, "Wybór magazynu materiałów lub normaliów.");
 
         }//public SpisForm()
-        
+
         // Wyświetla komunikaty chwilowe w programie.
         private void pokazKomunikat(string tresc)
         {
@@ -310,7 +310,7 @@ namespace RemaGUM
                 }
 
 
-               
+
             }// Zakładka Materiały
 
             // ----------------------------------Zakładka Dysponent.
@@ -343,7 +343,7 @@ namespace RemaGUM
                 }
             }// Zakładka operator
 
-            
+
 
             Cursor.Current = Cursors.Default;
         } //tabControl1_SelectedIndexChanged
@@ -445,7 +445,7 @@ namespace RemaGUM
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
 
             //listBoxMaszyny.Items.Clear();
-            
+
             // uaktualnienie danych maszyny po zmianie sposobu sortowania
             if (radioButtonNazwa.Checked)
             {
@@ -506,20 +506,20 @@ namespace RemaGUM
 
                 dateTimePickerData_ost_przegl.Value = new DateTime(maszynyBUS.VO.Rok_ost_przeg, maszynyBUS.VO.Mc_ost_przeg, maszynyBUS.VO.Dz_ost_przeg);
                 dateTimePickerData_kol_przegl.Value = new DateTime(maszynyBUS.VO.Rok_kol_przeg, maszynyBUS.VO.Mc_kol_przeg, maszynyBUS.VO.Dz_kol_przeg);
-                
+
                 // komunikat o zbliżającym się terminie przeglądu maszyny lub o upłynięciu terminu przeglądu.
                 DateTime currentDate = DateTime.Now;
                 long termin = dateTimePickerData_kol_przegl.Value.Ticks - currentDate.Ticks;
                 TimeSpan timeSpan = new TimeSpan(termin);
-                               
+
                 if ((timeSpan.Days >= 1) && (timeSpan.Days <= 7))
                 {
                     MessageBox.Show(("Uwaga w dniu " + maszynyBUS.VO.Dz_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Mc_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Rok_kol_przeg.ToString() + " mija termin przeglądu dla maszyny " + maszynyBUS.VO.Nazwa.ToString() + " o numerze inwentarzowym: " + maszynyBUS.VO.Nr_inwentarzowy), "remagum", MessageBoxButtons.OK);
                 }
-                
+
                 else if (timeSpan.Days < 0)
                 {
-                    MessageBox.Show(("Termin przeglądu maszyny "+ maszynyBUS.VO.Nazwa.ToString()+ "o numerze inwentarzowym: " + maszynyBUS.VO.Nr_inwentarzowy + " minął."),"RemaGUM",MessageBoxButtons.OK);
+                    MessageBox.Show(("Termin przeglądu maszyny " + maszynyBUS.VO.Nazwa.ToString() + "o numerze inwentarzowym: " + maszynyBUS.VO.Nr_inwentarzowy + " minął."), "RemaGUM", MessageBoxButtons.OK);
                 }
                 else { }
 
@@ -549,7 +549,7 @@ namespace RemaGUM
                     maszyny_OperatorBUS.skip();
                 }
                 toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
- 
+
             }
             catch { }
         }//listBoxMaszyny_SelectedIndexChanged
@@ -568,7 +568,7 @@ namespace RemaGUM
                 listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa + " -> " + maszynyBUS.VO.Nr_fabryczny);
                 maszynyBUS.skip();
             }
-            
+
         }// OdswiezListeMaszyn()
 
         //************* wypełnia CheckedListBox nazwiskami i imionami operatorów maszyn.
@@ -578,7 +578,7 @@ namespace RemaGUM
 
             v.Items.Clear();
             operatorBUS.select();
-          
+
             while (!operatorBUS.eof)
             {
                 v.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
@@ -591,7 +591,7 @@ namespace RemaGUM
                 v.SelectedIndex = 0;
                 v.Tag = operatorBUS.VO.Identyfikator;
             }
-            
+
         } // WypelnijOperatorow_maszyn(CheckedListBox v)
 
         // // // // // //  // /list boxy z tabeli accessa
@@ -647,7 +647,7 @@ namespace RemaGUM
         }//comboBox_Dysponent_SelectedIndexChanged()
 
         //////////////////////////////////////////////////////////////         Rabio buttony
-        
+
         /// <summary>
         /// Sortuje po nazwie maszyny.
         /// </summary>
@@ -662,7 +662,7 @@ namespace RemaGUM
 
                 nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nazwa ASC;");
-                
+
                 while (!maszynyBUS.eof)
                 {
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa + " -> " + maszynyBUS.VO.Nr_fabryczny);
@@ -670,7 +670,7 @@ namespace RemaGUM
                 }
             }
         }//radioButtonNazwa_CheckedChanged
-        
+
         /// <summary>
         /// Sortuje po numerze inwentarzowym maszyny.
         /// </summary>
@@ -692,7 +692,7 @@ namespace RemaGUM
                 }
             }
         }//radioButton_Nr_Inwentarzowy_CheckedChanged
-        
+
         /// <summary>
         /// Sortuje po typie maszyny.
         /// </summary>
@@ -734,9 +734,9 @@ namespace RemaGUM
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Nr_fabryczny + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
-               
+
             }
-           
+
         }//radioButtonNr_fabrycznyCheckedChanged
 
         /// <summary>
@@ -783,8 +783,8 @@ namespace RemaGUM
 
             }
         }//radioButton_Nr_Pomieszczenia_CheckedChanged
-        
-        
+
+
         /// <summary>
         /// wyszukuje maszynę po wpisaniu dowolnego ciągu wyrazów
         /// </summary>
@@ -810,7 +810,7 @@ namespace RemaGUM
             maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nazwa ASC;");
 
             nsAccess2DB.MaszynyVO maszynyVO;
-            
+
             string s1 = textBoxWyszukiwanie.Text.ToUpper();
             string s2;
 
@@ -847,7 +847,7 @@ namespace RemaGUM
         /// <summary>
         /// Wypełnia listbox Działami w których znajdują się maszyny.
         /// </summary>
-       private void WypelnijDzial()
+        private void WypelnijDzial()
         {
             nsAccess2DB.DzialBUS dzialBUS = new nsAccess2DB.DzialBUS(_connString);
             nsAccess2DB.DzialVO VO;
@@ -921,9 +921,9 @@ namespace RemaGUM
             propozycjaBUS.idx = comboBoxPropozycja.SelectedIndex;
         }// comboBoxPropozycja_SelectedIndexChanged
 
-       /// <summary>
-       /// Wypełnia stan techniczy maszyny.
-       /// </summary>
+        /// <summary>
+        /// Wypełnia stan techniczy maszyny.
+        /// </summary>
         private void WypelnijStan_techniczny()
         {
             nsAccess2DB.Stan_technicznyBUS stan_TechnicznyBUS = new nsAccess2DB.Stan_technicznyBUS(_connString);
@@ -956,7 +956,7 @@ namespace RemaGUM
             CzyscDaneMaszyny();
 
             radioButtonNazwa.Checked = true; // przy nowej maszynie przed zapisem wymusza zaznaczenie sortowanie po nazwie maszyny.
-           
+
 
             buttonNowa.Enabled = false;
             buttonZapisz.Enabled = true;
@@ -1040,7 +1040,7 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonZapisz_Click(object sender, EventArgs e)
         {
-           
+
 
             if (textBoxNazwa.Text == string.Empty)
             {
@@ -1083,7 +1083,7 @@ namespace RemaGUM
                 maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
 
                 dysponentBUS.select();
-                
+
                 maszynyVO.Nazwa_dysponent = dysponentVO.Dysp_nazwisko + dysponentVO.Dysp_imie;
                 maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
 
@@ -1095,7 +1095,7 @@ namespace RemaGUM
                 maszynyVO.Dz_ost_przeg = dateTimePickerData_ost_przegl.Value.Day;
                 maszynyVO.Data_ost_przegl = int.Parse(maszynyVO.Rok_ost_przeg.ToString() + maszynyVO.Mc_ost_przeg.ToString("00") + maszynyVO.Dz_ost_przeg.ToString("00"));
                 DateTime dt = new DateTime(dateTimePickerData_ost_przegl.Value.Ticks); // dodaje interwał przeglądów do data_ost_przegl
-               // dt = dt.AddYears(_interwalPrzegladow);
+                                                                                       // dt = dt.AddYears(_interwalPrzegladow);
                 dt = dt.AddDays(_interwalPrzegladow); // w dniach
                 maszynyVO.Rok_kol_przeg = dt.Year;
                 maszynyVO.Mc_kol_przeg = dt.Month;
@@ -1225,7 +1225,7 @@ namespace RemaGUM
         /// Pokazuje zdjęcie wybranej maszyny.
         /// </summary>
         /// <param name="Zdjecie"></param>
-        private void pokazZdjecie(string Zdjecie)   
+        private void pokazZdjecie(string Zdjecie)
         {
             try
             {
@@ -1235,7 +1235,7 @@ namespace RemaGUM
                 }
                 nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
                 //maszynyBUS.select();
-         
+
                 if (radioButtonNazwa.Checked)
                 {
                     maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nazwa ASC;");
@@ -1272,7 +1272,7 @@ namespace RemaGUM
                     maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
                     toolStripStatusLabelID_Maszyny.Text = maszynyBUS.VO.Identyfikator.ToString();
                 }
-                
+
                 //Uaktualnia ID i dane maszyny po Sortowaniu();
                 maszynyBUS.idx = listBoxMaszyny.SelectedIndex;
                 listBoxMaszyny.Tag = maszynyBUS.VO.Identyfikator;
@@ -1372,15 +1372,32 @@ namespace RemaGUM
             listBoxMaterialy.Items.Clear();
 
             //materialyBUS.idx = listBoxMaterialy.SelectedIndex;
-            
+
             while (!materialyBUS.eof)
             {
                 listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " - " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
                 materialyBUS.skip();
             }
-           
+
         }// WypelnijMaterialyNazwami()
-       
+
+
+
+
+        /// <summary>
+        /// Wylicza stan magazynowy materiałów / normaliów 
+        /// </summary>
+        private void WyliczStanMagazynowy()
+        {
+            nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
+            materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");
+
+
+        }//WyliczStanMagazynowy()
+
+
+
+
         /// <summary>
         /// Zmiana indeksu w list box Materialy.
         /// </summary>
@@ -1433,16 +1450,26 @@ namespace RemaGUM
                 labelJednostkaZapotrzebowanie.Text = s;
 
                 textBoxMagazynMat.Text = materialyBUS.VO.Stan_mat.ToString();
-                textBoxZuzycieMat.Text = materialyBUS.VO.Zuzycie_mat.ToString();
-                textBoxOdpadMat.Text = materialyBUS.VO.Odpad_mat.ToString();
-                textBoxMinMat.Text = materialyBUS.VO.Stan_min_mat.ToString();
-                textBoxZapotrzebowanieMat.Text = materialyBUS.VO.Zapotrzebowanie_mat.ToString();
+                textBoxZuzycieMat.Text = "0";
+                textBoxOdpadMat.Text = "0";
+                textBoxMinMat.Text = materialyBUS.VO.Stan_min_mat.ToString(); // wartość minimalna - zawsze widoczna, podlega edycji i zapisywana do bazy.
+                textBoxZapotrzebowanieMat.Text = "0";
+
+                // komunikat o niskim stanie magazynowym.
+                if (materialyBUS.VO.Stan_mat < materialyBUS.VO.Stan_min_mat)
+                {
+                    pokazKomunikat("Uwaga niski stan magazynowy. Zamów " + materialyBUS.VO.Nazwa_mat.ToString() + ". ");
+                }
+
+                int aktualizacjaStanuMagazyn = materialyBUS.VO.Stan_mat - materialyBUS.VO.Zuzycie_mat - materialyBUS.VO.Odpad_mat + materialyBUS.VO.Zapotrzebowanie_mat;
+
+                textBoxMagazynMat.Text = aktualizacjaStanuMagazyn.ToString();
 
                 nsAccess2DB.Dostawca_matBUS dostawca_matBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
                 dostawca_matBUS.select();
                 nsAccess2DB.Dostawca_MaterialBUS dostawca_materialBUS = new nsAccess2DB.Dostawca_MaterialBUS(_connString);
                 dostawca_materialBUS.select((int)listBoxMaterialy.Tag);
-                
+
                 //wypełnia Dostawców matreiałów w polu checkedListBoxDostawcyMat ************************
                 for (int i = 0; i < checkedListBoxDostawcyMat.Items.Count; i++)
                 {
@@ -1487,24 +1514,6 @@ namespace RemaGUM
             }
         }// WypelnijDostawcowMaterialow(CheckedListBox v)
 
-
-
-        /*
-          private void WypelnijMaterialyNazwami()
-        {
-            nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
-            materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");
-
-            listBoxMaterialy.Items.Clear();
-
-            while (!materialyBUS.eof)
-            {
-                listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " - " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
-                materialyBUS.skip();
-            }
-             */
-
-
         /// <summary>
         /// Zmiana indeksu dostawcy w checkedListBoxDostawcyMat.
         /// </summary>
@@ -1521,7 +1530,7 @@ namespace RemaGUM
 
             richTextBoxDostawca.Text = dostawca_matBUS.VO.Dod_info_dostawca_mat.ToString();
             linkLabelDostawcaMat.Text = dostawca_matBUS.VO.Link_dostawca_mat.ToString();
-           
+
             toolStripStatusLabel_ID_Dostawcy.Text = dostawca_matBUS.VO.Identyfikator.ToString();
 
         }// private void checkedListBoxDostawcyMat_SelectedIndex(object sender, EventArgs e)
@@ -1533,7 +1542,7 @@ namespace RemaGUM
         /// </summary>
         private void CzyscDaneMaterialy()
         {
-            try{
+            try {
                 toolStripStatusLabelID_Materialu.Text = "";
                 textBoxTypMat.Text = string.Empty;
 
@@ -1565,16 +1574,16 @@ namespace RemaGUM
 
                 //czyści checkboxy DostawcyMat
                 for (int i = 0; i < checkedListBoxDostawcyMat.Items.Count; i++)
-                    {
-                        checkedListBoxDostawcyMat.SetItemChecked(i, false);
-                    }
+                {
+                    checkedListBoxDostawcyMat.SetItemChecked(i, false);
+                }
 
                 linkLabelDostawcaMat.Text = string.Empty;
                 richTextBoxDostawca.Text = string.Empty;
             }
             catch { }
         }//CzyscDaneMaterialy()
-        
+
         /// <summary>
         /// Odswieża dane w zakładce materiały.
         /// </summary>
@@ -1670,7 +1679,7 @@ namespace RemaGUM
             nsAccess2DB.Rodzaj_matBUS rodzaj_MatBUS = new nsAccess2DB.Rodzaj_matBUS(_connString);
             nsAccess2DB.Rodzaj_matVO VO;
             comboBoxRodzajMat.Items.Clear();
-            
+
             rodzaj_MatBUS.select();
             rodzaj_MatBUS.top();
             while (!rodzaj_MatBUS.eof)
@@ -1805,6 +1814,10 @@ namespace RemaGUM
         private void ButtonNowa_mat_Click(object sender, EventArgs e)
         {
             //toolStripStatusLabelID_Materialu.Text = string.Empty;
+
+            textBoxMagazynMat.Enabled = true; // dla nowego materiału odblokowanie pola stanu magazynowego na start.
+            textBoxMagazynMat.BackColor = Color.White;
+
             CzyscDaneMaterialy();
             radioButtonNazwa_mat.Checked = true; // wymusza sortowanie po nazwie materiału przy zapisie nowej pozycji Materiału.
             buttonAnuluj.Enabled = true;
@@ -1870,58 +1883,72 @@ namespace RemaGUM
                 int materialId = materialyBUS.VO.Identyfikator + 1;
 
                 materialy_VO.Magazyn = comboBoxWyborMagazyn.Text.Trim();
-                // komunikaty, które wymuszają wpisanie tekstu przed zapisem materiału.
+               // komunikaty, które wymuszają wpisanie tekstu przed zapisem materiału.
                 // komunikat przy braku nazwy materiału.
-                //if (textBoxNazwaMat.Text == string.Empty)
-                //{
-                //    MessageBox.Show("Uzupełnij nazwę materiału", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    return;
-                //}
-                materialy_VO.Nazwa_mat = textBoxNazwaMat.Text.Trim(); // uzupełnia nazwę materiału (nazwa pojawia się w komunikatach).
-                
-                // komunikat przy braku wyboru typu materiału.
-                //if (textBoxTypMat.Text == string.Empty)
-                //{
-                //    MessageBox.Show("Proszę wybrać typ materiału dla: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    return;
-                //}
-
-                //// komunikat przy braku wyboru rodzaju materiału.
-                //if (comboBoxRodzajMat.Text == string.Empty)
-                //{
-                //    MessageBox.Show("Proszę wybrać rodzaj materiału dla: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    return;
-                //}
-
-                ////komunikat przy braku wyboru typu materiału.
-                //if (comboBoxJednostkaMat.Text == string.Empty)
-                //{
-                //    MessageBox.Show("Proszę wybrać jednostkę dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    return;
-                //}
-
-                materialy_VO.Rodzaj_mat = comboBoxRodzajMat.Text.Trim();
-                materialy_VO.Typ_mat = textBoxTypMat.Text.Trim();
-                materialy_VO.Jednostka_miar_mat = comboBoxJednostkaMat.Text.Trim();
-
-                //komunikat błedu gdy brak stanu magazynowego materiału.
-                if (textBoxMagazynMat.Text == string.Empty)
+                if (textBoxNazwaMat.Text == string.Empty)
                 {
-                    MessageBox.Show("Proszę wprowadzić stan magazynowy dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Uzupełnij nazwę materiału", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                materialy_VO.Nazwa_mat = textBoxNazwaMat.Text.Trim(); // uzupełnia nazwę materiału (nazwa pojawia się w komunikatach).
 
+                //komunikat przy braku wyboru typu materiału.
+                if (textBoxTypMat.Text == string.Empty)
+                {
+                    MessageBox.Show("Proszę wybrać typ materiału dla: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    materialy_VO.Typ_mat = textBoxTypMat.Text.Trim();
+                }
+
+                // komunikat przy braku wyboru rodzaju materiału.
+                if (comboBoxRodzajMat.Text == string.Empty)
+                {
+                    MessageBox.Show("Proszę wybrać rodzaj materiału dla: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    materialy_VO.Rodzaj_mat = comboBoxRodzajMat.Text.Trim();
+                }
+
+                //komunikat przy braku wyboru typu materiału.
+                if (comboBoxJednostkaMat.Text == string.Empty)
+                {
+                    MessageBox.Show("Proszę wybrać jednostkę dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    materialy_VO.Jednostka_miar_mat = comboBoxJednostkaMat.Text.Trim();
+                }
+
+                // Stan magazynowy - pole jedynie do odczytu (wyliczane automatycznie). Pole przy nowej pozycji nie może być puste. Komunikat o konieczności wprowadzenia na stan przez pole Zakup. 
+                if (textBoxMagazynMat.Text == string.Empty)
+                {
+                    MessageBox.Show("Uwaga wprowadzasz nową pozycję. Proszę wprowadzić stan magazynowy: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    materialy_VO.Stan_mat = int.Parse(textBoxMagazynMat.Text.Trim());
+                }
+                
                 // komunikat o błędzie gdy brak wprowadzonego stanu minimalnego materiału.
                 if (textBoxMinMat.Text == string.Empty)
                 {
                     MessageBox.Show("Proszę wprowadzić wymagany stan minimalny dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                materialy_VO.Stan_mat = int.Parse(textBoxMagazynMat.Text.Trim());
-                materialy_VO.Stan_min_mat = int.Parse(textBoxMinMat.Text.Trim());
-
+                else
+                {
+                    materialy_VO.Stan_min_mat = int.Parse(textBoxMinMat.Text.Trim());
+                }
+              
                 // pola uzupełniane zerami w przypadku braku wpisu użytkownika.
+               
                 //wstawienie 0 w przypadku braku wpisu w pole textBoxZuzycieMat.
                 if (textBoxZuzycieMat.Text == string.Empty)
                 {
@@ -1953,7 +1980,7 @@ namespace RemaGUM
                 }
 
                 // Zapis dostawców przypisanych do danego materiału.
-               
+
                 //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
                 dostawca_MaterialBUS.select(materialyBUS.VO.Identyfikator);
                 dostawca_MatBUS.select();
@@ -1966,15 +1993,17 @@ namespace RemaGUM
                         dostawca_MaterialBUS.insert(materialyBUS.VO.Identyfikator, dostawca_MatBUS.VO.Identyfikator, materialyBUS.VO.Nazwa_mat);
                     }
                     //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
-                   
+
                 }
                 //listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialyBUS.VO.Identyfikator); // ustawienie zaznaczenia w tabeli materiały.
                 materialyBUS.write(materialy_VO);
 
+                textBoxMagazynMat.Enabled = false; // zablokowanie pola magazynu po zapisie.
+                textBoxMagazynMat.BackColor = Color.Bisque;
 
                 WypelnijMaterialyNazwami();
 
-                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");      
+                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");
                 listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialId);
 
                 //dostawca_MatBUS.idx = checkedListBoxDostawcyMat.SelectedIndex;
@@ -1996,24 +2025,29 @@ namespace RemaGUM
                 else
                 {
                     materialy_VO.Identyfikator = (int)listBoxMaterialy.Tag;
-
                     materialy_VO.Magazyn = comboBoxWyborMagazyn.Text.Trim();
-                    // komunikaty, które wymuszają wpisanie tekstu przed zapisem materiału.
 
-                    // komunikat przy braku nazwy materiału.
+                    // komunikaty, które wymuszają wpisanie tekstu przed zapisem materiału.
+                    //komunikat przy braku nazwy materiału.
                     if (textBoxNazwaMat.Text == string.Empty)
                     {
                         MessageBox.Show("Uzupełnij nazwę materiału", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
-                    materialy_VO.Nazwa_mat = textBoxNazwaMat.Text.Trim(); // uzupełnia nazwę materiału (nazwa pojawia się w komunikatach).
+                    else
+                    {
+                        materialy_VO.Nazwa_mat = textBoxNazwaMat.Text.Trim(); // uzupełnia nazwę materiału (nazwa pojawia się w komunikatach).
+                    }
 
                     // komunikat przy braku wyboru rodzaju materiału.
                     if (comboBoxRodzajMat.Text == string.Empty)
                     {
                         MessageBox.Show("Proszę wybrać rodzaj materiału dla: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
+                    }
+                    else
+                    {
+                        materialy_VO.Rodzaj_mat = comboBoxRodzajMat.Text.Trim();
                     }
 
                     // komunikat przy braku wyboru typu materiału.
@@ -2022,6 +2056,10 @@ namespace RemaGUM
                         MessageBox.Show("Proszę wybrać typ materiału dla: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                    else
+                    {
+                        materialy_VO.Typ_mat = textBoxTypMat.Text.Trim();
+                    }
 
                     //komunikat przy braku wyboru typu materiału.
                     if (comboBoxJednostkaMat.Text == string.Empty)
@@ -2029,17 +2067,13 @@ namespace RemaGUM
                         MessageBox.Show("Proszę wybrać jednostkę dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
-                    materialy_VO.Rodzaj_mat = comboBoxRodzajMat.Text.Trim();
-                    materialy_VO.Typ_mat = textBoxTypMat.Text.Trim();
-                    materialy_VO.Jednostka_miar_mat = comboBoxJednostkaMat.Text.Trim();
-
-                    //komunikat błedu gdy brak stanu magazynowego materiału.
-                    if (textBoxMagazynMat.Text == string.Empty)
+                    else
                     {
-                        MessageBox.Show("Proszę wprowadzić stan magazynowy dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        materialy_VO.Jednostka_miar_mat = comboBoxJednostkaMat.Text.Trim();
                     }
+                    
+                    //************************** pola wartości **********
+                    materialy_VO.Stan_mat = int.Parse(textBoxMagazynMat.Text.Trim()); // pole zablokowane do edycji - jedynie wartość wyliczana automatycznie.
 
                     // komunikat o błędzie gdy brak wprowadzonego stanu minimalnego materiału.
                     if (textBoxMinMat.Text == string.Empty)
@@ -2047,13 +2081,12 @@ namespace RemaGUM
                         MessageBox.Show("Proszę wprowadzić wymagany stan minimalny dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
-                    materialy_VO.Stan_mat = int.Parse(textBoxMagazynMat.Text.Trim());
-                    materialy_VO.Stan_min_mat = int.Parse(textBoxMinMat.Text.Trim());
-
-                    // pola uzupełniane zerami w przypadku braku wpisu użytkownika.
-                    //wstawienie 0 w przypadku braku wpisu w pole textBoxZuzycieMat.
-                    if (textBoxZuzycieMat.Text == string.Empty)
+                    else
+                    {
+                        materialy_VO.Stan_min_mat = int.Parse(textBoxMinMat.Text.Trim());
+                    }
+                                        
+                    if (textBoxZuzycieMat.Text == string.Empty) //wstawienie 0 w przypadku braku wpisu w pole textBoxZuzycieMat.
                     {
                         textBoxZuzycieMat.Text = "0";
                     }
@@ -2067,7 +2100,7 @@ namespace RemaGUM
                     {
                         textBoxOdpadMat.Text = "0";
                     }
-                    else
+                    else 
                     {
                         materialy_VO.Odpad_mat = int.Parse(textBoxOdpadMat.Text.Trim());
                     }
@@ -2082,7 +2115,15 @@ namespace RemaGUM
                         materialy_VO.Zapotrzebowanie_mat = int.Parse(textBoxZapotrzebowanieMat.Text.Trim());
                     }
 
-                    materialyBUS.write(materialy_VO);
+                    // komunikat o niskim stanie magazynowym.
+                    if (materialyBUS.VO.Stan_mat < materialyBUS.VO.Stan_min_mat)
+                    {
+                        MessageBox.Show("Uwaga niski stan magazynowy. Zamów " + materialyBUS.VO.Nazwa_mat.ToString() + ". ", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                            
+                    materialyBUS.write(materialy_VO); // ZAPIS
+
                     dostawca_MaterialBUS.select(materialyBUS.VO.Identyfikator);
 
                     // Zapis dostawców przypisanych do danego materiału.
@@ -2110,13 +2151,13 @@ namespace RemaGUM
                 listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialyBUS.VO.Identyfikator);
             }//else if edycja
 
-            WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);
-
             //OdswiezMaterialy();
+            WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);
             OdswiezDostawcow();
             pokazKomunikat("Pozycja zapisana w bazie");
             _statusForm = (int)_status.edycja;
         }//buttonZapiszMat_Clic
+
 
         //TODO wyszukiwarka materiałów.
         /// <summary>
@@ -2386,10 +2427,10 @@ namespace RemaGUM
                 operatorBUS.idx = listBoxOperator.SelectedIndex;
                 toolStripStatusLabelIDOperatora.Text = operatorBUS.VO.Identyfikator.ToString();
             }
-            if (listBoxOperator.Items.Count > 0)
-            {
-                listBoxOperator.SelectedIndex = 0;
-            }
+            //if (listBoxOperator.Items.Count > 0)
+            //{
+            //    listBoxOperator.SelectedIndex = 0;
+            //}
         }//comboBoxOperator_SelectedIndexChanged
 
         /// <summary>
