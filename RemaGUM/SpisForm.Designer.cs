@@ -214,6 +214,8 @@
             this.textBoxWyszukiwanieDysponent = new System.Windows.Forms.TextBox();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.listBoxDysponent = new System.Windows.Forms.ListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.toolStrip.SuspendLayout();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
@@ -266,7 +268,7 @@
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip.Size = new System.Drawing.Size(1212, 37);
+            this.toolStrip.Size = new System.Drawing.Size(1207, 37);
             this.toolStrip.TabIndex = 41;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -289,12 +291,13 @@
             this.Materiały.Controls.Add(this.statusStripMaterialy);
             this.Materiały.Controls.Add(this.groupBox10);
             this.Materiały.Controls.Add(this.groupBox6);
+            this.Materiały.Controls.Add(this.groupBox7);
             this.Materiały.Controls.Add(this.groupBox8);
             this.Materiały.Controls.Add(this.groupBox11);
             this.Materiały.Location = new System.Drawing.Point(4, 22);
             this.Materiały.Name = "Materiały";
             this.Materiały.Padding = new System.Windows.Forms.Padding(3);
-            this.Materiały.Size = new System.Drawing.Size(1217, 890);
+            this.Materiały.Size = new System.Drawing.Size(1212, 890);
             this.Materiały.TabIndex = 1;
             this.Materiały.Text = "Materiały";
             // 
@@ -308,7 +311,7 @@
             this.toolStripStatusLabel_ID_Dostawcy});
             this.statusStripMaterialy.Location = new System.Drawing.Point(3, 865);
             this.statusStripMaterialy.Name = "statusStripMaterialy";
-            this.statusStripMaterialy.Size = new System.Drawing.Size(1211, 22);
+            this.statusStripMaterialy.Size = new System.Drawing.Size(1206, 22);
             this.statusStripMaterialy.TabIndex = 53;
             this.statusStripMaterialy.Text = "statusStrip4";
             // 
@@ -348,9 +351,10 @@
             this.groupBox10.Controls.Add(this.panel3);
             this.groupBox10.Controls.Add(this.label28);
             this.groupBox10.Controls.Add(this.checkedListBoxDostawcyMat);
-            this.groupBox10.Location = new System.Drawing.Point(776, 8);
+            this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox10.Location = new System.Drawing.Point(764, 8);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(408, 854);
+            this.groupBox10.Size = new System.Drawing.Size(415, 854);
             this.groupBox10.TabIndex = 49;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Dostawcy materiałów";
@@ -358,13 +362,15 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.panel3.Controls.Add(this.label20);
+            this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.groupBox14);
             this.panel3.Controls.Add(this.label27);
             this.panel3.Controls.Add(this.richTextBoxDostawca);
             this.panel3.Controls.Add(this.linkLabelDostawcaMat);
-            this.panel3.Location = new System.Drawing.Point(6, 488);
+            this.panel3.Location = new System.Drawing.Point(13, 488);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(396, 360);
+            this.panel3.Size = new System.Drawing.Size(389, 360);
             this.panel3.TabIndex = 50;
             // 
             // groupBox14
@@ -375,14 +381,14 @@
             this.groupBox14.Controls.Add(this.button2);
             this.groupBox14.Controls.Add(this.button3);
             this.groupBox14.Controls.Add(this.button4);
-            this.groupBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox14.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox14.Location = new System.Drawing.Point(7, 295);
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.Size = new System.Drawing.Size(370, 56);
             this.groupBox14.TabIndex = 49;
             this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "edycja dostawców";
+            this.groupBox14.Text = "Edycja spisu dostawców";
             // 
             // button1
             // 
@@ -391,7 +397,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
-            this.button1.Text = "nowy ";
+            this.button1.Text = "Nowy ";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // button2
@@ -401,7 +407,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
-            this.button2.Text = "usuń";
+            this.button2.Text = "Usuń";
             this.button2.UseVisualStyleBackColor = false;
             // 
             // button3
@@ -411,7 +417,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 3;
-            this.button3.Text = "zapisz";
+            this.button3.Text = "Zapisz";
             this.button3.UseVisualStyleBackColor = false;
             // 
             // button4
@@ -421,31 +427,34 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 3;
-            this.button4.Text = "anuluj";
+            this.button4.Text = "Anuluj";
             this.button4.UseVisualStyleBackColor = false;
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(4, 15);
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label27.Location = new System.Drawing.Point(10, 61);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(271, 13);
+            this.label27.Size = new System.Drawing.Size(268, 13);
             this.label27.TabIndex = 44;
-            this.label27.Text = "Dodatkowe informacje dotyczące wybranego dostawcy.";
+            this.label27.Text = "Dodatkowe informacje dotyczące wybranego dostawcy";
             this.label27.UseMnemonic = false;
             // 
             // richTextBoxDostawca
             // 
             this.richTextBoxDostawca.BackColor = System.Drawing.Color.Linen;
-            this.richTextBoxDostawca.Location = new System.Drawing.Point(13, 31);
+            this.richTextBoxDostawca.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.richTextBoxDostawca.Location = new System.Drawing.Point(13, 84);
             this.richTextBoxDostawca.Name = "richTextBoxDostawca";
-            this.richTextBoxDostawca.Size = new System.Drawing.Size(364, 198);
+            this.richTextBoxDostawca.Size = new System.Drawing.Size(364, 145);
             this.richTextBoxDostawca.TabIndex = 45;
             this.richTextBoxDostawca.Text = "";
             // 
             // linkLabelDostawcaMat
             // 
             this.linkLabelDostawcaMat.AutoSize = true;
+            this.linkLabelDostawcaMat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.linkLabelDostawcaMat.Location = new System.Drawing.Point(10, 251);
             this.linkLabelDostawcaMat.Name = "linkLabelDostawcaMat";
             this.linkLabelDostawcaMat.Size = new System.Drawing.Size(115, 13);
@@ -456,18 +465,20 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(14, 30);
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label28.Location = new System.Drawing.Point(12, 18);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(57, 13);
+            this.label28.Size = new System.Drawing.Size(89, 13);
             this.label28.TabIndex = 17;
-            this.label28.Text = "Dostawcy:";
+            this.label28.Text = "Lista dostawców:";
             // 
             // checkedListBoxDostawcyMat
             // 
+            this.checkedListBoxDostawcyMat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.checkedListBoxDostawcyMat.FormattingEnabled = true;
-            this.checkedListBoxDostawcyMat.Location = new System.Drawing.Point(6, 49);
+            this.checkedListBoxDostawcyMat.Location = new System.Drawing.Point(13, 34);
             this.checkedListBoxDostawcyMat.Name = "checkedListBoxDostawcyMat";
-            this.checkedListBoxDostawcyMat.Size = new System.Drawing.Size(396, 424);
+            this.checkedListBoxDostawcyMat.Size = new System.Drawing.Size(389, 439);
             this.checkedListBoxDostawcyMat.TabIndex = 46;
             this.checkedListBoxDostawcyMat.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxDostawcyMat_SelectedIndex);
             // 
@@ -480,7 +491,6 @@
             this.groupBox6.Controls.Add(this.groupBox15);
             this.groupBox6.Controls.Add(this.label3);
             this.groupBox6.Controls.Add(this.comboBoxWyborMagazyn);
-            this.groupBox6.Controls.Add(this.groupBox7);
             this.groupBox6.Controls.Add(this.groupBox9);
             this.groupBox6.Controls.Add(this.comboBoxJednostkaMat);
             this.groupBox6.Controls.Add(this.label19);
@@ -491,10 +501,11 @@
             this.groupBox6.Controls.Add(this.comboBoxRodzajMat);
             this.groupBox6.Controls.Add(this.label4);
             this.groupBox6.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox6.Location = new System.Drawing.Point(336, 8);
+            this.groupBox6.Location = new System.Drawing.Point(336, 71);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(419, 854);
+            this.groupBox6.Size = new System.Drawing.Size(419, 791);
             this.groupBox6.TabIndex = 52;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "MATERIAŁY / NORMALIA";
@@ -509,7 +520,8 @@
             this.groupBox15.Controls.Add(this.label30);
             this.groupBox15.Controls.Add(this.textBoxMagazynMat);
             this.groupBox15.Controls.Add(this.labelJednostkaDostepnosc);
-            this.groupBox15.Location = new System.Drawing.Point(12, 371);
+            this.groupBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox15.Location = new System.Drawing.Point(12, 306);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Size = new System.Drawing.Size(398, 393);
             this.groupBox15.TabIndex = 63;
@@ -519,9 +531,9 @@
             // groupBox13
             // 
             this.groupBox13.Controls.Add(this.panel2);
-            this.groupBox13.Location = new System.Drawing.Point(9, 310);
+            this.groupBox13.Location = new System.Drawing.Point(11, 302);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(380, 77);
+            this.groupBox13.Size = new System.Drawing.Size(380, 81);
             this.groupBox13.TabIndex = 60;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Przychód";
@@ -532,15 +544,16 @@
             this.panel2.Controls.Add(this.labelJednostkaZapotrzebowanie);
             this.panel2.Controls.Add(this.label35);
             this.panel2.Controls.Add(this.textBoxZapotrzebowanieMat);
-            this.panel2.Location = new System.Drawing.Point(45, 19);
+            this.panel2.Location = new System.Drawing.Point(43, 19);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(286, 52);
+            this.panel2.Size = new System.Drawing.Size(255, 52);
             this.panel2.TabIndex = 55;
             // 
             // labelJednostkaZapotrzebowanie
             // 
             this.labelJednostkaZapotrzebowanie.AutoSize = true;
-            this.labelJednostkaZapotrzebowanie.Location = new System.Drawing.Point(222, 23);
+            this.labelJednostkaZapotrzebowanie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelJednostkaZapotrzebowanie.Location = new System.Drawing.Point(177, 23);
             this.labelJednostkaZapotrzebowanie.Name = "labelJednostkaZapotrzebowanie";
             this.labelJednostkaZapotrzebowanie.Size = new System.Drawing.Size(56, 13);
             this.labelJednostkaZapotrzebowanie.TabIndex = 50;
@@ -549,6 +562,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label35.Location = new System.Drawing.Point(15, 4);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(38, 13);
@@ -558,23 +572,24 @@
             // textBoxZapotrzebowanieMat
             // 
             this.textBoxZapotrzebowanieMat.BackColor = System.Drawing.Color.Linen;
+            this.textBoxZapotrzebowanieMat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxZapotrzebowanieMat.Location = new System.Drawing.Point(16, 20);
             this.textBoxZapotrzebowanieMat.Name = "textBoxZapotrzebowanieMat";
-            this.textBoxZapotrzebowanieMat.Size = new System.Drawing.Size(200, 20);
+            this.textBoxZapotrzebowanieMat.Size = new System.Drawing.Size(155, 20);
             this.textBoxZapotrzebowanieMat.TabIndex = 55;
             // 
             // textBoxMinMat
             // 
             this.textBoxMinMat.BackColor = System.Drawing.Color.Linen;
-            this.textBoxMinMat.Location = new System.Drawing.Point(6, 95);
+            this.textBoxMinMat.Location = new System.Drawing.Point(76, 104);
             this.textBoxMinMat.Name = "textBoxMinMat";
-            this.textBoxMinMat.Size = new System.Drawing.Size(192, 20);
+            this.textBoxMinMat.Size = new System.Drawing.Size(149, 20);
             this.textBoxMinMat.TabIndex = 58;
             // 
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(5, 76);
+            this.label38.Location = new System.Drawing.Point(75, 85);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(77, 13);
             this.label38.TabIndex = 57;
@@ -583,7 +598,7 @@
             // labelJednostkaMin
             // 
             this.labelJednostkaMin.AutoSize = true;
-            this.labelJednostkaMin.Location = new System.Drawing.Point(200, 98);
+            this.labelJednostkaMin.Location = new System.Drawing.Point(231, 107);
             this.labelJednostkaMin.Name = "labelJednostkaMin";
             this.labelJednostkaMin.Size = new System.Drawing.Size(56, 13);
             this.labelJednostkaMin.TabIndex = 59;
@@ -595,7 +610,7 @@
             this.groupBox12.Controls.Add(this.panel1);
             this.groupBox12.Location = new System.Drawing.Point(8, 161);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(383, 122);
+            this.groupBox12.Size = new System.Drawing.Size(383, 130);
             this.groupBox12.TabIndex = 53;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Rozchód";
@@ -611,13 +626,14 @@
             this.panel1.Controls.Add(this.label21);
             this.panel1.Location = new System.Drawing.Point(46, 19);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(287, 97);
+            this.panel1.Size = new System.Drawing.Size(255, 97);
             this.panel1.TabIndex = 54;
             // 
             // labelJednostkaZuzycie
             // 
             this.labelJednostkaZuzycie.AutoSize = true;
-            this.labelJednostkaZuzycie.Location = new System.Drawing.Point(222, 26);
+            this.labelJednostkaZuzycie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelJednostkaZuzycie.Location = new System.Drawing.Point(177, 26);
             this.labelJednostkaZuzycie.Name = "labelJednostkaZuzycie";
             this.labelJednostkaZuzycie.Size = new System.Drawing.Size(56, 13);
             this.labelJednostkaZuzycie.TabIndex = 50;
@@ -626,15 +642,17 @@
             // textBoxOdpadMat
             // 
             this.textBoxOdpadMat.BackColor = System.Drawing.Color.Linen;
-            this.textBoxOdpadMat.Location = new System.Drawing.Point(16, 67);
+            this.textBoxOdpadMat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxOdpadMat.Location = new System.Drawing.Point(22, 63);
             this.textBoxOdpadMat.Name = "textBoxOdpadMat";
-            this.textBoxOdpadMat.Size = new System.Drawing.Size(200, 20);
+            this.textBoxOdpadMat.Size = new System.Drawing.Size(149, 20);
             this.textBoxOdpadMat.TabIndex = 45;
             // 
             // labelJednostkaOdpad
             // 
             this.labelJednostkaOdpad.AutoSize = true;
-            this.labelJednostkaOdpad.Location = new System.Drawing.Point(222, 70);
+            this.labelJednostkaOdpad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelJednostkaOdpad.Location = new System.Drawing.Point(177, 70);
             this.labelJednostkaOdpad.Name = "labelJednostkaOdpad";
             this.labelJednostkaOdpad.Size = new System.Drawing.Size(56, 13);
             this.labelJednostkaOdpad.TabIndex = 51;
@@ -643,14 +661,16 @@
             // textBoxZuzycieMat
             // 
             this.textBoxZuzycieMat.BackColor = System.Drawing.Color.Linen;
-            this.textBoxZuzycieMat.Location = new System.Drawing.Point(17, 23);
+            this.textBoxZuzycieMat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxZuzycieMat.Location = new System.Drawing.Point(22, 23);
             this.textBoxZuzycieMat.Name = "textBoxZuzycieMat";
-            this.textBoxZuzycieMat.Size = new System.Drawing.Size(199, 20);
+            this.textBoxZuzycieMat.Size = new System.Drawing.Size(149, 20);
             this.textBoxZuzycieMat.TabIndex = 24;
             // 
             // label33
             // 
             this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label33.Location = new System.Drawing.Point(15, 7);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(83, 13);
@@ -660,6 +680,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label21.Location = new System.Drawing.Point(17, 51);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(39, 13);
@@ -669,7 +690,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(5, 26);
+            this.label30.Location = new System.Drawing.Point(75, 35);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(128, 13);
             this.label30.TabIndex = 19;
@@ -678,15 +699,15 @@
             // textBoxMagazynMat
             // 
             this.textBoxMagazynMat.BackColor = System.Drawing.Color.Bisque;
-            this.textBoxMagazynMat.Location = new System.Drawing.Point(6, 42);
+            this.textBoxMagazynMat.Location = new System.Drawing.Point(76, 54);
             this.textBoxMagazynMat.Name = "textBoxMagazynMat";
-            this.textBoxMagazynMat.Size = new System.Drawing.Size(192, 20);
+            this.textBoxMagazynMat.Size = new System.Drawing.Size(149, 20);
             this.textBoxMagazynMat.TabIndex = 38;
             // 
             // labelJednostkaDostepnosc
             // 
             this.labelJednostkaDostepnosc.AutoSize = true;
-            this.labelJednostkaDostepnosc.Location = new System.Drawing.Point(200, 45);
+            this.labelJednostkaDostepnosc.Location = new System.Drawing.Point(231, 54);
             this.labelJednostkaDostepnosc.Name = "labelJednostkaDostepnosc";
             this.labelJednostkaDostepnosc.Size = new System.Drawing.Size(56, 13);
             this.labelJednostkaDostepnosc.TabIndex = 15;
@@ -696,9 +717,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(12, 92);
+            this.label3.Location = new System.Drawing.Point(9, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.Size = new System.Drawing.Size(107, 13);
             this.label3.TabIndex = 62;
             this.label3.Text = "Wybór magazynu.";
             // 
@@ -707,7 +728,7 @@
             this.comboBoxWyborMagazyn.BackColor = System.Drawing.Color.Linen;
             this.comboBoxWyborMagazyn.ForeColor = System.Drawing.Color.Red;
             this.comboBoxWyborMagazyn.FormattingEnabled = true;
-            this.comboBoxWyborMagazyn.Location = new System.Drawing.Point(15, 108);
+            this.comboBoxWyborMagazyn.Location = new System.Drawing.Point(12, 44);
             this.comboBoxWyborMagazyn.Name = "comboBoxWyborMagazyn";
             this.comboBoxWyborMagazyn.Size = new System.Drawing.Size(170, 21);
             this.comboBoxWyborMagazyn.TabIndex = 61;
@@ -719,20 +740,21 @@
             this.groupBox7.Controls.Add(this.buttonSzukaj_mat);
             this.groupBox7.Controls.Add(this.textBoxWyszukaj_mat);
             this.groupBox7.Cursor = System.Windows.Forms.Cursors.Default;
-            this.groupBox7.ForeColor = System.Drawing.Color.Red;
-            this.groupBox7.Location = new System.Drawing.Point(9, 19);
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox7.ForeColor = System.Drawing.Color.Black;
+            this.groupBox7.Location = new System.Drawing.Point(338, 8);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(401, 57);
+            this.groupBox7.Size = new System.Drawing.Size(417, 57);
             this.groupBox7.TabIndex = 51;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "wyszukiwanie materiałów / normaliów po nazwie";
+            this.groupBox7.Text = "Wyszukiwanie materiałów / normaliów po nazwie";
             // 
             // buttonSzukaj_mat
             // 
             this.buttonSzukaj_mat.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonSzukaj_mat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj_mat.BackgroundImage")));
             this.buttonSzukaj_mat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSzukaj_mat.Location = new System.Drawing.Point(357, 15);
+            this.buttonSzukaj_mat.Location = new System.Drawing.Point(373, 15);
             this.buttonSzukaj_mat.Name = "buttonSzukaj_mat";
             this.buttonSzukaj_mat.Size = new System.Drawing.Size(35, 34);
             this.buttonSzukaj_mat.TabIndex = 4;
@@ -742,9 +764,10 @@
             // textBoxWyszukaj_mat
             // 
             this.textBoxWyszukaj_mat.BackColor = System.Drawing.Color.Linen;
-            this.textBoxWyszukaj_mat.Location = new System.Drawing.Point(6, 23);
+            this.textBoxWyszukaj_mat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxWyszukaj_mat.Location = new System.Drawing.Point(10, 23);
             this.textBoxWyszukaj_mat.Name = "textBoxWyszukaj_mat";
-            this.textBoxWyszukaj_mat.Size = new System.Drawing.Size(338, 20);
+            this.textBoxWyszukaj_mat.Size = new System.Drawing.Size(357, 20);
             this.textBoxWyszukaj_mat.TabIndex = 44;
             // 
             // groupBox9
@@ -755,14 +778,14 @@
             this.groupBox9.Controls.Add(this.buttonUsunMat);
             this.groupBox9.Controls.Add(this.buttonZapiszMat);
             this.groupBox9.Controls.Add(this.buttonAnulujMat);
-            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox9.ForeColor = System.Drawing.Color.Red;
-            this.groupBox9.Location = new System.Drawing.Point(15, 784);
+            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox9.ForeColor = System.Drawing.Color.Black;
+            this.groupBox9.Location = new System.Drawing.Point(15, 721);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(398, 56);
             this.groupBox9.TabIndex = 48;
             this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "edycja materiałów / normaliów";
+            this.groupBox9.Text = "Edycja spisu materiałów / normaliów";
             // 
             // buttonNowaMat
             // 
@@ -771,7 +794,7 @@
             this.buttonNowaMat.Name = "buttonNowaMat";
             this.buttonNowaMat.Size = new System.Drawing.Size(75, 23);
             this.buttonNowaMat.TabIndex = 2;
-            this.buttonNowaMat.Text = "nowa";
+            this.buttonNowaMat.Text = "Nowy";
             this.buttonNowaMat.UseVisualStyleBackColor = false;
             this.buttonNowaMat.Click += new System.EventHandler(this.ButtonNowa_mat_Click);
             // 
@@ -782,7 +805,7 @@
             this.buttonUsunMat.Name = "buttonUsunMat";
             this.buttonUsunMat.Size = new System.Drawing.Size(75, 23);
             this.buttonUsunMat.TabIndex = 4;
-            this.buttonUsunMat.Text = "usuń";
+            this.buttonUsunMat.Text = "Usuń";
             this.buttonUsunMat.UseVisualStyleBackColor = false;
             this.buttonUsunMat.Click += new System.EventHandler(this.buttonUsun_mat_Click);
             // 
@@ -793,7 +816,7 @@
             this.buttonZapiszMat.Name = "buttonZapiszMat";
             this.buttonZapiszMat.Size = new System.Drawing.Size(75, 23);
             this.buttonZapiszMat.TabIndex = 3;
-            this.buttonZapiszMat.Text = "zapisz";
+            this.buttonZapiszMat.Text = "Zapisz";
             this.buttonZapiszMat.UseVisualStyleBackColor = false;
             this.buttonZapiszMat.Click += new System.EventHandler(this.buttonZapiszMat_Click);
             // 
@@ -804,15 +827,16 @@
             this.buttonAnulujMat.Name = "buttonAnulujMat";
             this.buttonAnulujMat.Size = new System.Drawing.Size(75, 23);
             this.buttonAnulujMat.TabIndex = 3;
-            this.buttonAnulujMat.Text = "anuluj";
+            this.buttonAnulujMat.Text = "Anuluj";
             this.buttonAnulujMat.UseVisualStyleBackColor = false;
             this.buttonAnulujMat.Click += new System.EventHandler(this.buttonAnuluj_mat_Click);
             // 
             // comboBoxJednostkaMat
             // 
             this.comboBoxJednostkaMat.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxJednostkaMat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxJednostkaMat.FormattingEnabled = true;
-            this.comboBoxJednostkaMat.Location = new System.Drawing.Point(18, 307);
+            this.comboBoxJednostkaMat.Location = new System.Drawing.Point(15, 267);
             this.comboBoxJednostkaMat.Name = "comboBoxJednostkaMat";
             this.comboBoxJednostkaMat.Size = new System.Drawing.Size(162, 21);
             this.comboBoxJednostkaMat.TabIndex = 49;
@@ -821,8 +845,9 @@
             // label19
             // 
             this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label19.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label19.Location = new System.Drawing.Point(15, 190);
+            this.label19.Location = new System.Drawing.Point(12, 150);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(25, 13);
             this.label19.TabIndex = 34;
@@ -831,7 +856,8 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(15, 239);
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label22.Location = new System.Drawing.Point(12, 199);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(40, 13);
             this.label22.TabIndex = 10;
@@ -840,7 +866,8 @@
             // textBoxTypMat
             // 
             this.textBoxTypMat.BackColor = System.Drawing.Color.Linen;
-            this.textBoxTypMat.Location = new System.Drawing.Point(18, 206);
+            this.textBoxTypMat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxTypMat.Location = new System.Drawing.Point(15, 166);
             this.textBoxTypMat.Name = "textBoxTypMat";
             this.textBoxTypMat.Size = new System.Drawing.Size(380, 20);
             this.textBoxTypMat.TabIndex = 11;
@@ -848,7 +875,8 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(15, 141);
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label23.Location = new System.Drawing.Point(12, 101);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(40, 13);
             this.label23.TabIndex = 7;
@@ -857,7 +885,8 @@
             // textBoxNazwaMat
             // 
             this.textBoxNazwaMat.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwaMat.Location = new System.Drawing.Point(15, 157);
+            this.textBoxNazwaMat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxNazwaMat.Location = new System.Drawing.Point(12, 117);
             this.textBoxNazwaMat.Name = "textBoxNazwaMat";
             this.textBoxNazwaMat.Size = new System.Drawing.Size(383, 20);
             this.textBoxNazwaMat.TabIndex = 6;
@@ -865,8 +894,9 @@
             // comboBoxRodzajMat
             // 
             this.comboBoxRodzajMat.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxRodzajMat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxRodzajMat.FormattingEnabled = true;
-            this.comboBoxRodzajMat.Location = new System.Drawing.Point(18, 255);
+            this.comboBoxRodzajMat.Location = new System.Drawing.Point(15, 215);
             this.comboBoxRodzajMat.Name = "comboBoxRodzajMat";
             this.comboBoxRodzajMat.Size = new System.Drawing.Size(380, 21);
             this.comboBoxRodzajMat.TabIndex = 31;
@@ -875,7 +905,8 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 291);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(12, 251);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 13);
             this.label4.TabIndex = 15;
@@ -888,6 +919,7 @@
             this.groupBox8.BackColor = System.Drawing.Color.Bisque;
             this.groupBox8.Controls.Add(this.listBoxMaterialy);
             this.groupBox8.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox8.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox8.Location = new System.Drawing.Point(9, 71);
             this.groupBox8.Name = "groupBox8";
@@ -901,6 +933,7 @@
             this.listBoxMaterialy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxMaterialy.BackColor = System.Drawing.Color.Linen;
+            this.listBoxMaterialy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listBoxMaterialy.FormattingEnabled = true;
             this.listBoxMaterialy.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaterialy.Name = "listBoxMaterialy";
@@ -915,17 +948,19 @@
             this.groupBox11.Controls.Add(this.radioButtonNazwa_mat);
             this.groupBox11.Controls.Add(this.radioButtonStan_min_mat);
             this.groupBox11.Controls.Add(this.radioButtonTyp_mat);
-            this.groupBox11.ForeColor = System.Drawing.Color.Red;
+            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox11.ForeColor = System.Drawing.Color.Black;
             this.groupBox11.Location = new System.Drawing.Point(9, 8);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(321, 57);
             this.groupBox11.TabIndex = 50;
             this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "sortowanie";
+            this.groupBox11.Text = "Sortowanie materiałów";
             // 
             // radioButtonMagazyn_ilosc_mat
             // 
             this.radioButtonMagazyn_ilosc_mat.AutoSize = true;
+            this.radioButtonMagazyn_ilosc_mat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.radioButtonMagazyn_ilosc_mat.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonMagazyn_ilosc_mat.Location = new System.Drawing.Point(220, 26);
             this.radioButtonMagazyn_ilosc_mat.Name = "radioButtonMagazyn_ilosc_mat";
@@ -939,6 +974,7 @@
             // radioButtonNazwa_mat
             // 
             this.radioButtonNazwa_mat.AutoSize = true;
+            this.radioButtonNazwa_mat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.radioButtonNazwa_mat.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonNazwa_mat.Location = new System.Drawing.Point(6, 24);
             this.radioButtonNazwa_mat.Name = "radioButtonNazwa_mat";
@@ -952,6 +988,7 @@
             // radioButtonStan_min_mat
             // 
             this.radioButtonStan_min_mat.AutoSize = true;
+            this.radioButtonStan_min_mat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.radioButtonStan_min_mat.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonStan_min_mat.Location = new System.Drawing.Point(119, 26);
             this.radioButtonStan_min_mat.Name = "radioButtonStan_min_mat";
@@ -965,6 +1002,7 @@
             // radioButtonTyp_mat
             // 
             this.radioButtonTyp_mat.AutoSize = true;
+            this.radioButtonTyp_mat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.radioButtonTyp_mat.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonTyp_mat.Location = new System.Drawing.Point(70, 25);
             this.radioButtonTyp_mat.Name = "radioButtonTyp_mat";
@@ -992,7 +1030,7 @@
             this.Maszyny.Location = new System.Drawing.Point(4, 22);
             this.Maszyny.Name = "Maszyny";
             this.Maszyny.Padding = new System.Windows.Forms.Padding(3);
-            this.Maszyny.Size = new System.Drawing.Size(1217, 890);
+            this.Maszyny.Size = new System.Drawing.Size(1212, 890);
             this.Maszyny.TabIndex = 0;
             this.Maszyny.Text = "Maszyny";
             // 
@@ -1003,7 +1041,7 @@
             this.toolStripStatusLabelID_Maszyny});
             this.statusStripMaszyna.Location = new System.Drawing.Point(3, 865);
             this.statusStripMaszyna.Name = "statusStripMaszyna";
-            this.statusStripMaszyna.Size = new System.Drawing.Size(1211, 22);
+            this.statusStripMaszyna.Size = new System.Drawing.Size(1206, 22);
             this.statusStripMaszyna.TabIndex = 58;
             this.statusStripMaszyna.Text = "ID operatora";
             // 
@@ -1020,6 +1058,7 @@
             // 
             // buttonPokazZdj
             // 
+            this.buttonPokazZdj.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonPokazZdj.Location = new System.Drawing.Point(977, 566);
             this.buttonPokazZdj.Name = "buttonPokazZdj";
             this.buttonPokazZdj.Size = new System.Drawing.Size(97, 23);
@@ -1041,6 +1080,7 @@
             // 
             // buttonUsunZdj
             // 
+            this.buttonUsunZdj.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonUsunZdj.Location = new System.Drawing.Point(1080, 566);
             this.buttonUsunZdj.Name = "buttonUsunZdj";
             this.buttonUsunZdj.Size = new System.Drawing.Size(97, 23);
@@ -1081,6 +1121,7 @@
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox4.Location = new System.Drawing.Point(333, 80);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(419, 775);
@@ -1090,6 +1131,7 @@
             // 
             // checkedListBoxOperatorzy_maszyn
             // 
+            this.checkedListBoxOperatorzy_maszyn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.checkedListBoxOperatorzy_maszyn.FormattingEnabled = true;
             this.checkedListBoxOperatorzy_maszyn.Location = new System.Drawing.Point(15, 458);
             this.checkedListBoxOperatorzy_maszyn.Name = "checkedListBoxOperatorzy_maszyn";
@@ -1099,6 +1141,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.Location = new System.Drawing.Point(15, 336);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 13);
@@ -1108,6 +1151,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label1.Location = new System.Drawing.Point(16, 25);
             this.label1.Name = "label1";
@@ -1118,6 +1162,7 @@
             // textBoxRok_produkcji
             // 
             this.textBoxRok_produkcji.BackColor = System.Drawing.Color.Linen;
+            this.textBoxRok_produkcji.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxRok_produkcji.Location = new System.Drawing.Point(15, 352);
             this.textBoxRok_produkcji.Name = "textBoxRok_produkcji";
             this.textBoxRok_produkcji.Size = new System.Drawing.Size(86, 20);
@@ -1126,6 +1171,7 @@
             // label58
             // 
             this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label58.Location = new System.Drawing.Point(13, 435);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(91, 13);
@@ -1135,6 +1181,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label12.Location = new System.Drawing.Point(104, 336);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(131, 13);
@@ -1144,6 +1191,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label13.Location = new System.Drawing.Point(257, 336);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(138, 13);
@@ -1153,6 +1201,7 @@
             // labelTypMaszyny
             // 
             this.labelTypMaszyny.AutoSize = true;
+            this.labelTypMaszyny.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelTypMaszyny.Location = new System.Drawing.Point(15, 123);
             this.labelTypMaszyny.Name = "labelTypMaszyny";
             this.labelTypMaszyny.Size = new System.Drawing.Size(25, 13);
@@ -1162,6 +1211,7 @@
             // dateTimePickerData_ost_przegl
             // 
             this.dateTimePickerData_ost_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateTimePickerData_ost_przegl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.dateTimePickerData_ost_przegl.Location = new System.Drawing.Point(107, 352);
             this.dateTimePickerData_ost_przegl.Name = "dateTimePickerData_ost_przegl";
             this.dateTimePickerData_ost_przegl.Size = new System.Drawing.Size(128, 20);
@@ -1170,6 +1220,7 @@
             // comboBoxDysponent
             // 
             this.comboBoxDysponent.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxDysponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxDysponent.FormattingEnabled = true;
             this.comboBoxDysponent.Location = new System.Drawing.Point(15, 400);
             this.comboBoxDysponent.Name = "comboBoxDysponent";
@@ -1180,6 +1231,7 @@
             // dateTimePickerData_kol_przegl
             // 
             this.dateTimePickerData_kol_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateTimePickerData_kol_przegl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.dateTimePickerData_kol_przegl.Location = new System.Drawing.Point(259, 352);
             this.dateTimePickerData_kol_przegl.Name = "dateTimePickerData_kol_przegl";
             this.dateTimePickerData_kol_przegl.Size = new System.Drawing.Size(136, 20);
@@ -1188,6 +1240,7 @@
             // textBoxTyp
             // 
             this.textBoxTyp.BackColor = System.Drawing.Color.Linen;
+            this.textBoxTyp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxTyp.Location = new System.Drawing.Point(15, 139);
             this.textBoxTyp.Name = "textBoxTyp";
             this.textBoxTyp.Size = new System.Drawing.Size(380, 20);
@@ -1196,6 +1249,7 @@
             // textBoxNr_pom
             // 
             this.textBoxNr_pom.BackColor = System.Drawing.Color.Linen;
+            this.textBoxNr_pom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxNr_pom.Location = new System.Drawing.Point(15, 685);
             this.textBoxNr_pom.Name = "textBoxNr_pom";
             this.textBoxNr_pom.Size = new System.Drawing.Size(156, 20);
@@ -1204,6 +1258,7 @@
             // labelNrInwentarzowyMaszyny
             // 
             this.labelNrInwentarzowyMaszyny.AutoSize = true;
+            this.labelNrInwentarzowyMaszyny.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelNrInwentarzowyMaszyny.Location = new System.Drawing.Point(16, 177);
             this.labelNrInwentarzowyMaszyny.Name = "labelNrInwentarzowyMaszyny";
             this.labelNrInwentarzowyMaszyny.Size = new System.Drawing.Size(85, 13);
@@ -1213,6 +1268,7 @@
             // textBoxNr_inwentarzowy
             // 
             this.textBoxNr_inwentarzowy.BackColor = System.Drawing.Color.Linen;
+            this.textBoxNr_inwentarzowy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxNr_inwentarzowy.Location = new System.Drawing.Point(16, 193);
             this.textBoxNr_inwentarzowy.Name = "textBoxNr_inwentarzowy";
             this.textBoxNr_inwentarzowy.Size = new System.Drawing.Size(380, 20);
@@ -1221,6 +1277,7 @@
             // labelNazwaMaszyny
             // 
             this.labelNazwaMaszyny.AutoSize = true;
+            this.labelNazwaMaszyny.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelNazwaMaszyny.Location = new System.Drawing.Point(16, 74);
             this.labelNazwaMaszyny.Name = "labelNazwaMaszyny";
             this.labelNazwaMaszyny.Size = new System.Drawing.Size(40, 13);
@@ -1230,6 +1287,7 @@
             // comboBoxDzial
             // 
             this.comboBoxDzial.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxDzial.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxDzial.FormattingEnabled = true;
             this.comboBoxDzial.Location = new System.Drawing.Point(210, 685);
             this.comboBoxDzial.Name = "comboBoxDzial";
@@ -1240,6 +1298,7 @@
             // labelNrFabrycznyMaszyny
             // 
             this.labelNrFabrycznyMaszyny.AutoSize = true;
+            this.labelNrFabrycznyMaszyny.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelNrFabrycznyMaszyny.Location = new System.Drawing.Point(17, 230);
             this.labelNrFabrycznyMaszyny.Name = "labelNrFabrycznyMaszyny";
             this.labelNrFabrycznyMaszyny.Size = new System.Drawing.Size(66, 13);
@@ -1249,6 +1308,7 @@
             // textBoxNazwa
             // 
             this.textBoxNazwa.BackColor = System.Drawing.Color.Linen;
+            this.textBoxNazwa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxNazwa.Location = new System.Drawing.Point(15, 90);
             this.textBoxNazwa.Name = "textBoxNazwa";
             this.textBoxNazwa.Size = new System.Drawing.Size(380, 20);
@@ -1257,6 +1317,7 @@
             // textBoxNr_fabryczny
             // 
             this.textBoxNr_fabryczny.BackColor = System.Drawing.Color.Linen;
+            this.textBoxNr_fabryczny.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxNr_fabryczny.Location = new System.Drawing.Point(16, 246);
             this.textBoxNr_fabryczny.Name = "textBoxNr_fabryczny";
             this.textBoxNr_fabryczny.Size = new System.Drawing.Size(380, 20);
@@ -1265,6 +1326,7 @@
             // comboBoxKategoria
             // 
             this.comboBoxKategoria.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxKategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxKategoria.FormattingEnabled = true;
             this.comboBoxKategoria.Location = new System.Drawing.Point(15, 39);
             this.comboBoxKategoria.Name = "comboBoxKategoria";
@@ -1275,6 +1337,7 @@
             // labelProducentMaszyny
             // 
             this.labelProducentMaszyny.AutoSize = true;
+            this.labelProducentMaszyny.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelProducentMaszyny.Location = new System.Drawing.Point(17, 280);
             this.labelProducentMaszyny.Name = "labelProducentMaszyny";
             this.labelProducentMaszyny.Size = new System.Drawing.Size(56, 13);
@@ -1286,6 +1349,7 @@
             this.richTextBoxUwagi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxUwagi.BackColor = System.Drawing.Color.Linen;
+            this.richTextBoxUwagi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.richTextBoxUwagi.Location = new System.Drawing.Point(16, 730);
             this.richTextBoxUwagi.Name = "richTextBoxUwagi";
             this.richTextBoxUwagi.Size = new System.Drawing.Size(380, 32);
@@ -1295,6 +1359,7 @@
             // textBoxProducent
             // 
             this.textBoxProducent.BackColor = System.Drawing.Color.Linen;
+            this.textBoxProducent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxProducent.Location = new System.Drawing.Point(16, 296);
             this.textBoxProducent.Name = "textBoxProducent";
             this.textBoxProducent.Size = new System.Drawing.Size(380, 20);
@@ -1303,6 +1368,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label8.Location = new System.Drawing.Point(16, 384);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 13);
@@ -1312,6 +1378,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label14.Location = new System.Drawing.Point(15, 714);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(37, 13);
@@ -1321,6 +1388,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label9.Location = new System.Drawing.Point(16, 669);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 13);
@@ -1330,6 +1398,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label10.Location = new System.Drawing.Point(207, 669);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(163, 13);
@@ -1344,13 +1413,14 @@
             this.groupBox5.Controls.Add(this.buttonSzukaj);
             this.groupBox5.Controls.Add(this.textBoxWyszukiwanie);
             this.groupBox5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.groupBox5.ForeColor = System.Drawing.Color.Red;
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox5.ForeColor = System.Drawing.Color.Black;
             this.groupBox5.Location = new System.Drawing.Point(758, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(424, 57);
+            this.groupBox5.Size = new System.Drawing.Size(419, 57);
             this.groupBox5.TabIndex = 45;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "wyszukiwanie po nazwie";
+            this.groupBox5.Text = "Wyszukiwanie maszyn po nazwie";
             // 
             // buttonSzukaj
             // 
@@ -1367,6 +1437,7 @@
             // textBoxWyszukiwanie
             // 
             this.textBoxWyszukiwanie.BackColor = System.Drawing.Color.Linen;
+            this.textBoxWyszukiwanie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxWyszukiwanie.Location = new System.Drawing.Point(9, 23);
             this.textBoxWyszukiwanie.Name = "textBoxWyszukiwanie";
             this.textBoxWyszukiwanie.Size = new System.Drawing.Size(359, 20);
@@ -1387,19 +1458,21 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.BackColor = System.Drawing.Color.Bisque;
             this.groupBox1.Controls.Add(this.listBoxMaszyny);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(321, 849);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Lista";
+            this.groupBox1.Text = "Lista maszyn";
             // 
             // listBoxMaszyny
             // 
             this.listBoxMaszyny.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxMaszyny.BackColor = System.Drawing.Color.Linen;
+            this.listBoxMaszyny.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listBoxMaszyny.FormattingEnabled = true;
             this.listBoxMaszyny.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaszyny.Name = "listBoxMaszyny";
@@ -1415,56 +1488,60 @@
             this.groupBox2.Controls.Add(this.buttonUsun);
             this.groupBox2.Controls.Add(this.buttonZapisz);
             this.groupBox2.Controls.Add(this.buttonAnuluj);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox2.ForeColor = System.Drawing.Color.Red;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox2.ForeColor = System.Drawing.Color.Black;
             this.groupBox2.Location = new System.Drawing.Point(758, 799);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(419, 56);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "edycja spisu";
+            this.groupBox2.Text = "Edycja spisu maszyn";
             // 
             // buttonNowa
             // 
             this.buttonNowa.BackColor = System.Drawing.Color.Linen;
+            this.buttonNowa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonNowa.Location = new System.Drawing.Point(9, 19);
             this.buttonNowa.Name = "buttonNowa";
             this.buttonNowa.Size = new System.Drawing.Size(75, 23);
             this.buttonNowa.TabIndex = 2;
-            this.buttonNowa.Text = "nowa";
+            this.buttonNowa.Text = "Nowa";
             this.buttonNowa.UseVisualStyleBackColor = false;
             this.buttonNowa.Click += new System.EventHandler(this.ButtonNowa_Click);
             // 
             // buttonUsun
             // 
             this.buttonUsun.BackColor = System.Drawing.Color.Linen;
+            this.buttonUsun.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonUsun.Location = new System.Drawing.Point(333, 19);
             this.buttonUsun.Name = "buttonUsun";
             this.buttonUsun.Size = new System.Drawing.Size(75, 23);
             this.buttonUsun.TabIndex = 4;
-            this.buttonUsun.Text = "usuń";
+            this.buttonUsun.Text = "Usuń";
             this.buttonUsun.UseVisualStyleBackColor = false;
             this.buttonUsun.Click += new System.EventHandler(this.buttonUsun_Click);
             // 
             // buttonZapisz
             // 
             this.buttonZapisz.BackColor = System.Drawing.Color.Linen;
+            this.buttonZapisz.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonZapisz.Location = new System.Drawing.Point(119, 19);
             this.buttonZapisz.Name = "buttonZapisz";
             this.buttonZapisz.Size = new System.Drawing.Size(75, 23);
             this.buttonZapisz.TabIndex = 3;
-            this.buttonZapisz.Text = "zapisz";
+            this.buttonZapisz.Text = "Zapisz";
             this.buttonZapisz.UseVisualStyleBackColor = false;
             this.buttonZapisz.Click += new System.EventHandler(this.buttonZapisz_Click);
             // 
             // buttonAnuluj
             // 
             this.buttonAnuluj.BackColor = System.Drawing.Color.Linen;
+            this.buttonAnuluj.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonAnuluj.Location = new System.Drawing.Point(221, 19);
             this.buttonAnuluj.Name = "buttonAnuluj";
             this.buttonAnuluj.Size = new System.Drawing.Size(75, 23);
             this.buttonAnuluj.TabIndex = 3;
-            this.buttonAnuluj.Text = "anuluj";
+            this.buttonAnuluj.Text = "Anuluj";
             this.buttonAnuluj.UseVisualStyleBackColor = false;
             this.buttonAnuluj.Click += new System.EventHandler(this.buttonAnuluj_Click);
             // 
@@ -1482,9 +1559,10 @@
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.textBoxNr_prot_BHP);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox3.Location = new System.Drawing.Point(758, 595);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(424, 198);
+            this.groupBox3.Size = new System.Drawing.Size(419, 198);
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Stan techniczny i częstotliwość wykorzystania";
@@ -1492,6 +1570,7 @@
             // comboBoxPropozycja
             // 
             this.comboBoxPropozycja.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxPropozycja.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxPropozycja.FormattingEnabled = true;
             this.comboBoxPropozycja.Location = new System.Drawing.Point(9, 121);
             this.comboBoxPropozycja.Name = "comboBoxPropozycja";
@@ -1502,6 +1581,7 @@
             // comboBoxWykorzystanie
             // 
             this.comboBoxWykorzystanie.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxWykorzystanie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxWykorzystanie.FormattingEnabled = true;
             this.comboBoxWykorzystanie.Location = new System.Drawing.Point(9, 81);
             this.comboBoxWykorzystanie.Name = "comboBoxWykorzystanie";
@@ -1512,6 +1592,7 @@
             // comboBoxStan_techniczny
             // 
             this.comboBoxStan_techniczny.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxStan_techniczny.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxStan_techniczny.FormattingEnabled = true;
             this.comboBoxStan_techniczny.Location = new System.Drawing.Point(9, 41);
             this.comboBoxStan_techniczny.Name = "comboBoxStan_techniczny";
@@ -1522,6 +1603,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label15.Location = new System.Drawing.Point(6, 65);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(140, 13);
@@ -1531,6 +1613,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label16.Location = new System.Drawing.Point(6, 25);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(135, 13);
@@ -1540,6 +1623,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label18.Location = new System.Drawing.Point(6, 105);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(59, 13);
@@ -1549,6 +1633,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label11.Location = new System.Drawing.Point(9, 149);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(109, 13);
@@ -1558,6 +1643,7 @@
             // textBoxNr_prot_BHP
             // 
             this.textBoxNr_prot_BHP.BackColor = System.Drawing.Color.Linen;
+            this.textBoxNr_prot_BHP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(9, 165);
             this.textBoxNr_prot_BHP.Name = "textBoxNr_prot_BHP";
             this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(400, 20);
@@ -1572,17 +1658,19 @@
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_fabryczny);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_inwentarzowy);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonTyp);
-            this.groupBoxSortowanie.ForeColor = System.Drawing.Color.Red;
+            this.groupBoxSortowanie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBoxSortowanie.ForeColor = System.Drawing.Color.Black;
             this.groupBoxSortowanie.Location = new System.Drawing.Point(333, 6);
             this.groupBoxSortowanie.Name = "groupBoxSortowanie";
             this.groupBoxSortowanie.Size = new System.Drawing.Size(419, 68);
             this.groupBoxSortowanie.TabIndex = 43;
             this.groupBoxSortowanie.TabStop = false;
-            this.groupBoxSortowanie.Text = "sortowanie";
+            this.groupBoxSortowanie.Text = "Sortowanie maszyn";
             // 
             // radioButtonData_ost_przegl
             // 
             this.radioButtonData_ost_przegl.AutoSize = true;
+            this.radioButtonData_ost_przegl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.radioButtonData_ost_przegl.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonData_ost_przegl.Location = new System.Drawing.Point(259, 42);
             this.radioButtonData_ost_przegl.Name = "radioButtonData_ost_przegl";
@@ -1595,6 +1683,7 @@
             // radioButtonNazwa
             // 
             this.radioButtonNazwa.AutoSize = true;
+            this.radioButtonNazwa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.radioButtonNazwa.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonNazwa.Location = new System.Drawing.Point(6, 15);
             this.radioButtonNazwa.Name = "radioButtonNazwa";
@@ -1607,6 +1696,7 @@
             // radioButtonNr_pomieszczenia
             // 
             this.radioButtonNr_pomieszczenia.AutoSize = true;
+            this.radioButtonNr_pomieszczenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.radioButtonNr_pomieszczenia.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonNr_pomieszczenia.Location = new System.Drawing.Point(259, 19);
             this.radioButtonNr_pomieszczenia.Name = "radioButtonNr_pomieszczenia";
@@ -1619,6 +1709,7 @@
             // radioButtonNr_fabryczny
             // 
             this.radioButtonNr_fabryczny.AutoSize = true;
+            this.radioButtonNr_fabryczny.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.radioButtonNr_fabryczny.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonNr_fabryczny.Location = new System.Drawing.Point(132, 16);
             this.radioButtonNr_fabryczny.Name = "radioButtonNr_fabryczny";
@@ -1631,6 +1722,7 @@
             // radioButtonNr_inwentarzowy
             // 
             this.radioButtonNr_inwentarzowy.AutoSize = true;
+            this.radioButtonNr_inwentarzowy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.radioButtonNr_inwentarzowy.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonNr_inwentarzowy.Location = new System.Drawing.Point(132, 40);
             this.radioButtonNr_inwentarzowy.Name = "radioButtonNr_inwentarzowy";
@@ -1643,6 +1735,7 @@
             // radioButtonTyp
             // 
             this.radioButtonTyp.AutoSize = true;
+            this.radioButtonTyp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.radioButtonTyp.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonTyp.Location = new System.Drawing.Point(6, 40);
             this.radioButtonTyp.Name = "radioButtonTyp";
@@ -1665,7 +1758,7 @@
             this.tabControlZakładki.Location = new System.Drawing.Point(12, 55);
             this.tabControlZakładki.Name = "tabControlZakładki";
             this.tabControlZakładki.SelectedIndex = 0;
-            this.tabControlZakładki.Size = new System.Drawing.Size(1225, 916);
+            this.tabControlZakładki.Size = new System.Drawing.Size(1220, 916);
             this.tabControlZakładki.TabIndex = 47;
             this.tabControlZakładki.SelectedIndexChanged += new System.EventHandler(this.tabControlZakladki_SelectedIndexChanged);
             // 
@@ -1680,7 +1773,7 @@
             this.Operatorzy_maszyn.Controls.Add(this.groupBox26);
             this.Operatorzy_maszyn.Location = new System.Drawing.Point(4, 22);
             this.Operatorzy_maszyn.Name = "Operatorzy_maszyn";
-            this.Operatorzy_maszyn.Size = new System.Drawing.Size(1217, 890);
+            this.Operatorzy_maszyn.Size = new System.Drawing.Size(1212, 890);
             this.Operatorzy_maszyn.TabIndex = 3;
             this.Operatorzy_maszyn.Text = "Operatorzy maszyn";
             // 
@@ -1691,7 +1784,7 @@
             this.toolStripStatusLabelIDOperatora});
             this.statusStripOperator.Location = new System.Drawing.Point(0, 868);
             this.statusStripOperator.Name = "statusStripOperator";
-            this.statusStripOperator.Size = new System.Drawing.Size(1217, 22);
+            this.statusStripOperator.Size = new System.Drawing.Size(1212, 22);
             this.statusStripOperator.TabIndex = 57;
             this.statusStripOperator.Text = "ID operatora";
             // 
@@ -1715,14 +1808,14 @@
             this.groupBox22.Controls.Add(this.buttonUsunOperator);
             this.groupBox22.Controls.Add(this.buttonZapiszOperator);
             this.groupBox22.Controls.Add(this.buttonAnulujOperator);
-            this.groupBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox22.ForeColor = System.Drawing.Color.Red;
+            this.groupBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox22.ForeColor = System.Drawing.Color.Black;
             this.groupBox22.Location = new System.Drawing.Point(348, 665);
             this.groupBox22.Name = "groupBox22";
             this.groupBox22.Size = new System.Drawing.Size(333, 56);
             this.groupBox22.TabIndex = 52;
             this.groupBox22.TabStop = false;
-            this.groupBox22.Text = "edytuj spis";
+            this.groupBox22.Text = "Edycja spisu operatorów maszyn";
             // 
             // buttonNowaOperator
             // 
@@ -1731,7 +1824,7 @@
             this.buttonNowaOperator.Name = "buttonNowaOperator";
             this.buttonNowaOperator.Size = new System.Drawing.Size(75, 23);
             this.buttonNowaOperator.TabIndex = 2;
-            this.buttonNowaOperator.Text = "nowa";
+            this.buttonNowaOperator.Text = "Nowy";
             this.buttonNowaOperator.UseVisualStyleBackColor = false;
             this.buttonNowaOperator.Click += new System.EventHandler(this.buttonNowaOperator_Click);
             // 
@@ -1742,7 +1835,7 @@
             this.buttonUsunOperator.Name = "buttonUsunOperator";
             this.buttonUsunOperator.Size = new System.Drawing.Size(75, 23);
             this.buttonUsunOperator.TabIndex = 4;
-            this.buttonUsunOperator.Text = "usuń";
+            this.buttonUsunOperator.Text = "Usuń";
             this.buttonUsunOperator.UseVisualStyleBackColor = false;
             this.buttonUsunOperator.Click += new System.EventHandler(this.buttonUsunOperator_Click);
             // 
@@ -1753,7 +1846,7 @@
             this.buttonZapiszOperator.Name = "buttonZapiszOperator";
             this.buttonZapiszOperator.Size = new System.Drawing.Size(75, 23);
             this.buttonZapiszOperator.TabIndex = 3;
-            this.buttonZapiszOperator.Text = "zapisz";
+            this.buttonZapiszOperator.Text = "Zapisz";
             this.buttonZapiszOperator.UseVisualStyleBackColor = false;
             this.buttonZapiszOperator.Click += new System.EventHandler(this.buttonZapiszOperator_Click);
             // 
@@ -1764,7 +1857,7 @@
             this.buttonAnulujOperator.Name = "buttonAnulujOperator";
             this.buttonAnulujOperator.Size = new System.Drawing.Size(75, 23);
             this.buttonAnulujOperator.TabIndex = 3;
-            this.buttonAnulujOperator.Text = "anuluj";
+            this.buttonAnulujOperator.Text = "Anuluj";
             this.buttonAnulujOperator.UseVisualStyleBackColor = false;
             this.buttonAnulujOperator.Click += new System.EventHandler(this.buttonAnulujOperator_Click);
             // 
@@ -1774,19 +1867,21 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox23.BackColor = System.Drawing.Color.Bisque;
             this.groupBox23.Controls.Add(this.listBoxOperator);
+            this.groupBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox23.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox23.Location = new System.Drawing.Point(12, 76);
             this.groupBox23.Name = "groupBox23";
             this.groupBox23.Size = new System.Drawing.Size(330, 645);
             this.groupBox23.TabIndex = 51;
             this.groupBox23.TabStop = false;
-            this.groupBox23.Text = "Operatorzy maszyn";
+            this.groupBox23.Text = "Lista operatorów maszyn";
             // 
             // listBoxOperator
             // 
             this.listBoxOperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxOperator.BackColor = System.Drawing.Color.Linen;
+            this.listBoxOperator.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listBoxOperator.FormattingEnabled = true;
             this.listBoxOperator.Location = new System.Drawing.Point(15, 22);
             this.listBoxOperator.Name = "listBoxOperator";
@@ -1800,13 +1895,14 @@
             this.groupBox24.Controls.Add(this.buttonSzukajOperator);
             this.groupBox24.Controls.Add(this.textBoxWyszukiwanieOperator);
             this.groupBox24.Cursor = System.Windows.Forms.Cursors.Default;
-            this.groupBox24.ForeColor = System.Drawing.Color.Red;
+            this.groupBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox24.ForeColor = System.Drawing.Color.Black;
             this.groupBox24.Location = new System.Drawing.Point(348, 15);
             this.groupBox24.Name = "groupBox24";
             this.groupBox24.Size = new System.Drawing.Size(333, 57);
             this.groupBox24.TabIndex = 53;
             this.groupBox24.TabStop = false;
-            this.groupBox24.Text = "wyszukaj operatora po imieniu lub nazwisku:";
+            this.groupBox24.Text = "Wyszukiwanie operatora po imieniu lub nazwisku";
             // 
             // buttonSzukajOperator
             // 
@@ -1823,6 +1919,7 @@
             // textBoxWyszukiwanieOperator
             // 
             this.textBoxWyszukiwanieOperator.BackColor = System.Drawing.Color.Linen;
+            this.textBoxWyszukiwanieOperator.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxWyszukiwanieOperator.Location = new System.Drawing.Point(6, 23);
             this.textBoxWyszukiwanieOperator.Name = "textBoxWyszukiwanieOperator";
             this.textBoxWyszukiwanieOperator.Size = new System.Drawing.Size(278, 20);
@@ -1846,10 +1943,11 @@
             this.groupBox25.Controls.Add(this.label57);
             this.groupBox25.Controls.Add(this.textBoxImieOperator);
             this.groupBox25.Cursor = System.Windows.Forms.Cursors.Default;
+            this.groupBox25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox25.ForeColor = System.Drawing.Color.Black;
             this.groupBox25.Location = new System.Drawing.Point(348, 78);
             this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(333, 583);
+            this.groupBox25.Size = new System.Drawing.Size(333, 581);
             this.groupBox25.TabIndex = 55;
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "Dane operatora maszyny";
@@ -1857,6 +1955,7 @@
             // label45
             // 
             this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label45.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label45.Location = new System.Drawing.Point(6, 70);
             this.label45.Name = "label45";
@@ -1867,6 +1966,7 @@
             // textBoxNazwiskoOperator
             // 
             this.textBoxNazwiskoOperator.BackColor = System.Drawing.Color.Linen;
+            this.textBoxNazwiskoOperator.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxNazwiskoOperator.Location = new System.Drawing.Point(6, 86);
             this.textBoxNazwiskoOperator.Name = "textBoxNazwiskoOperator";
             this.textBoxNazwiskoOperator.Size = new System.Drawing.Size(321, 20);
@@ -1874,6 +1974,7 @@
             // 
             // comboBoxDzialOperator
             // 
+            this.comboBoxDzialOperator.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxDzialOperator.FormattingEnabled = true;
             this.comboBoxDzialOperator.Location = new System.Drawing.Point(6, 128);
             this.comboBoxDzialOperator.Name = "comboBoxDzialOperator";
@@ -1884,6 +1985,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label47.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label47.Location = new System.Drawing.Point(6, 209);
             this.label47.Name = "label47";
@@ -1894,6 +1996,7 @@
             // dateTimePickerDataKoncaUprOp
             // 
             this.dateTimePickerDataKoncaUprOp.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateTimePickerDataKoncaUprOp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.dateTimePickerDataKoncaUprOp.Location = new System.Drawing.Point(6, 225);
             this.dateTimePickerDataKoncaUprOp.Name = "dateTimePickerDataKoncaUprOp";
             this.dateTimePickerDataKoncaUprOp.Size = new System.Drawing.Size(128, 20);
@@ -1902,12 +2005,13 @@
             // label54
             // 
             this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label54.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label54.Location = new System.Drawing.Point(6, 254);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(216, 13);
+            this.label54.Size = new System.Drawing.Size(289, 13);
             this.label54.TabIndex = 51;
-            this.label54.Text = "Obsługiwane przez tego operatora maszyny:";
+            this.label54.Text = "Obsługiwane przez wybranego operatora maszyny";
             // 
             // listBoxMaszynyOperatora
             // 
@@ -1915,15 +2019,17 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxMaszynyOperatora.BackColor = System.Drawing.Color.Linen;
             this.listBoxMaszynyOperatora.Enabled = false;
+            this.listBoxMaszynyOperatora.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listBoxMaszynyOperatora.FormattingEnabled = true;
             this.listBoxMaszynyOperatora.Location = new System.Drawing.Point(6, 270);
             this.listBoxMaszynyOperatora.Name = "listBoxMaszynyOperatora";
-            this.listBoxMaszynyOperatora.Size = new System.Drawing.Size(321, 303);
+            this.listBoxMaszynyOperatora.Size = new System.Drawing.Size(321, 290);
             this.listBoxMaszynyOperatora.TabIndex = 50;
             // 
             // label55
             // 
             this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label55.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label55.Location = new System.Drawing.Point(6, 161);
             this.label55.Name = "label55";
@@ -1934,6 +2040,7 @@
             // textBoxUprawnienieOperator
             // 
             this.textBoxUprawnienieOperator.BackColor = System.Drawing.Color.Linen;
+            this.textBoxUprawnienieOperator.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxUprawnienieOperator.Location = new System.Drawing.Point(6, 177);
             this.textBoxUprawnienieOperator.Name = "textBoxUprawnienieOperator";
             this.textBoxUprawnienieOperator.Size = new System.Drawing.Size(321, 20);
@@ -1942,6 +2049,7 @@
             // label56
             // 
             this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label56.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label56.Location = new System.Drawing.Point(6, 111);
             this.label56.Name = "label56";
@@ -1952,6 +2060,7 @@
             // label57
             // 
             this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label57.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label57.Location = new System.Drawing.Point(6, 19);
             this.label57.Name = "label57";
@@ -1962,6 +2071,7 @@
             // textBoxImieOperator
             // 
             this.textBoxImieOperator.BackColor = System.Drawing.Color.Linen;
+            this.textBoxImieOperator.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxImieOperator.Location = new System.Drawing.Point(6, 35);
             this.textBoxImieOperator.Name = "textBoxImieOperator";
             this.textBoxImieOperator.Size = new System.Drawing.Size(321, 20);
@@ -1971,16 +2081,18 @@
             // 
             this.groupBox26.BackColor = System.Drawing.Color.Bisque;
             this.groupBox26.Controls.Add(this.comboBoxOperator);
-            this.groupBox26.ForeColor = System.Drawing.Color.Red;
+            this.groupBox26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox26.ForeColor = System.Drawing.Color.Black;
             this.groupBox26.Location = new System.Drawing.Point(12, 13);
             this.groupBox26.Name = "groupBox26";
             this.groupBox26.Size = new System.Drawing.Size(330, 57);
             this.groupBox26.TabIndex = 54;
             this.groupBox26.TabStop = false;
-            this.groupBox26.Text = "sortowanie:";
+            this.groupBox26.Text = "Sortowanie operatorów";
             // 
             // comboBoxOperator
             // 
+            this.comboBoxOperator.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxOperator.FormattingEnabled = true;
             this.comboBoxOperator.Items.AddRange(new object[] {
             "Nazwisko",
@@ -2005,7 +2117,7 @@
             this.Dysponent_maszyn.Controls.Add(this.groupBox30);
             this.Dysponent_maszyn.Location = new System.Drawing.Point(4, 22);
             this.Dysponent_maszyn.Name = "Dysponent_maszyn";
-            this.Dysponent_maszyn.Size = new System.Drawing.Size(1217, 890);
+            this.Dysponent_maszyn.Size = new System.Drawing.Size(1212, 890);
             this.Dysponent_maszyn.TabIndex = 4;
             this.Dysponent_maszyn.Text = "Dysponenci maszyn";
             // 
@@ -2013,18 +2125,19 @@
             // 
             this.groupBox31.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
             this.groupBox31.Controls.Add(this.listBoxMaszynyDysponenta);
-            this.groupBox31.ForeColor = System.Drawing.Color.Red;
-            this.groupBox31.Location = new System.Drawing.Point(676, 22);
+            this.groupBox31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox31.ForeColor = System.Drawing.Color.Black;
+            this.groupBox31.Location = new System.Drawing.Point(679, 22);
             this.groupBox31.Name = "groupBox31";
-            this.groupBox31.Size = new System.Drawing.Size(355, 584);
+            this.groupBox31.Size = new System.Drawing.Size(352, 587);
             this.groupBox31.TabIndex = 62;
             this.groupBox31.TabStop = false;
-            this.groupBox31.Text = "Maszyny, którymi zarządza dysponent";
+            this.groupBox31.Text = "Maszyny którymi zarządza wybrany dysponent";
             // 
             // listBoxMaszynyDysponenta
             // 
             this.listBoxMaszynyDysponenta.Enabled = false;
-            this.listBoxMaszynyDysponenta.FormattingEnabled = true;
+            this.listBoxMaszynyDysponenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listBoxMaszynyDysponenta.Location = new System.Drawing.Point(6, 17);
             this.listBoxMaszynyDysponenta.Name = "listBoxMaszynyDysponenta";
             this.listBoxMaszynyDysponenta.Size = new System.Drawing.Size(343, 563);
@@ -2037,7 +2150,7 @@
             this.toolStripStatusLabelDysponenta});
             this.statusStripDysponent.Location = new System.Drawing.Point(0, 868);
             this.statusStripDysponent.Name = "statusStripDysponent";
-            this.statusStripDysponent.Size = new System.Drawing.Size(1217, 22);
+            this.statusStripDysponent.Size = new System.Drawing.Size(1212, 22);
             this.statusStripDysponent.TabIndex = 61;
             this.statusStripDysponent.Text = "statusStrip1";
             // 
@@ -2061,56 +2174,60 @@
             this.groupBox27.Controls.Add(this.buttonUsunDysponent);
             this.groupBox27.Controls.Add(this.buttonZapiszDysponent);
             this.groupBox27.Controls.Add(this.buttonAnulujDysponent);
-            this.groupBox27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox27.ForeColor = System.Drawing.Color.Red;
-            this.groupBox27.Location = new System.Drawing.Point(679, 606);
+            this.groupBox27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox27.ForeColor = System.Drawing.Color.Black;
+            this.groupBox27.Location = new System.Drawing.Point(679, 615);
             this.groupBox27.Name = "groupBox27";
             this.groupBox27.Size = new System.Drawing.Size(352, 56);
             this.groupBox27.TabIndex = 57;
             this.groupBox27.TabStop = false;
-            this.groupBox27.Text = "edytuj spis";
+            this.groupBox27.Text = "Edycja spisu dysponentów maszyn";
             // 
             // buttonNowaDysponent
             // 
             this.buttonNowaDysponent.BackColor = System.Drawing.Color.Linen;
-            this.buttonNowaDysponent.Location = new System.Drawing.Point(15, 19);
+            this.buttonNowaDysponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonNowaDysponent.Location = new System.Drawing.Point(6, 19);
             this.buttonNowaDysponent.Name = "buttonNowaDysponent";
             this.buttonNowaDysponent.Size = new System.Drawing.Size(75, 23);
             this.buttonNowaDysponent.TabIndex = 2;
-            this.buttonNowaDysponent.Text = "nowa";
+            this.buttonNowaDysponent.Text = "Nowy";
             this.buttonNowaDysponent.UseVisualStyleBackColor = false;
             this.buttonNowaDysponent.Click += new System.EventHandler(this.buttonNowaDysponent_Click);
             // 
             // buttonUsunDysponent
             // 
             this.buttonUsunDysponent.BackColor = System.Drawing.Color.Linen;
-            this.buttonUsunDysponent.Location = new System.Drawing.Point(258, 19);
+            this.buttonUsunDysponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonUsunDysponent.Location = new System.Drawing.Point(271, 19);
             this.buttonUsunDysponent.Name = "buttonUsunDysponent";
             this.buttonUsunDysponent.Size = new System.Drawing.Size(75, 23);
             this.buttonUsunDysponent.TabIndex = 4;
-            this.buttonUsunDysponent.Text = "usuń";
+            this.buttonUsunDysponent.Text = "Usuń";
             this.buttonUsunDysponent.UseVisualStyleBackColor = false;
             this.buttonUsunDysponent.Click += new System.EventHandler(this.buttonUsunDysponent_Click);
             // 
             // buttonZapiszDysponent
             // 
             this.buttonZapiszDysponent.BackColor = System.Drawing.Color.Linen;
-            this.buttonZapiszDysponent.Location = new System.Drawing.Point(96, 19);
+            this.buttonZapiszDysponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonZapiszDysponent.Location = new System.Drawing.Point(97, 19);
             this.buttonZapiszDysponent.Name = "buttonZapiszDysponent";
             this.buttonZapiszDysponent.Size = new System.Drawing.Size(75, 23);
             this.buttonZapiszDysponent.TabIndex = 3;
-            this.buttonZapiszDysponent.Text = "zapisz";
+            this.buttonZapiszDysponent.Text = "Zapisz";
             this.buttonZapiszDysponent.UseVisualStyleBackColor = false;
             this.buttonZapiszDysponent.Click += new System.EventHandler(this.buttonZapiszDysponent_Click);
             // 
             // buttonAnulujDysponent
             // 
             this.buttonAnulujDysponent.BackColor = System.Drawing.Color.Linen;
-            this.buttonAnulujDysponent.Location = new System.Drawing.Point(177, 19);
+            this.buttonAnulujDysponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonAnulujDysponent.Location = new System.Drawing.Point(190, 19);
             this.buttonAnulujDysponent.Name = "buttonAnulujDysponent";
             this.buttonAnulujDysponent.Size = new System.Drawing.Size(75, 23);
             this.buttonAnulujDysponent.TabIndex = 3;
-            this.buttonAnulujDysponent.Text = "anuluj";
+            this.buttonAnulujDysponent.Text = "Anuluj";
             this.buttonAnulujDysponent.UseVisualStyleBackColor = false;
             this.buttonAnulujDysponent.Click += new System.EventHandler(this.buttonAnulujDysponent_Click);
             // 
@@ -2128,10 +2245,11 @@
             this.groupBox28.Controls.Add(this.label17);
             this.groupBox28.Controls.Add(this.textBoxImieDysponent);
             this.groupBox28.Cursor = System.Windows.Forms.Cursors.Default;
+            this.groupBox28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox28.ForeColor = System.Drawing.Color.Black;
             this.groupBox28.Location = new System.Drawing.Point(339, 85);
             this.groupBox28.Name = "groupBox28";
-            this.groupBox28.Size = new System.Drawing.Size(333, 521);
+            this.groupBox28.Size = new System.Drawing.Size(333, 586);
             this.groupBox28.TabIndex = 60;
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Dane operatora maszyny";
@@ -2142,17 +2260,19 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxDysponent_dane.BackColor = System.Drawing.Color.Linen;
             this.richTextBoxDysponent_dane.DetectUrls = false;
-            this.richTextBoxDysponent_dane.Location = new System.Drawing.Point(6, 181);
+            this.richTextBoxDysponent_dane.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.richTextBoxDysponent_dane.Location = new System.Drawing.Point(12, 187);
             this.richTextBoxDysponent_dane.Name = "richTextBoxDysponent_dane";
-            this.richTextBoxDysponent_dane.Size = new System.Drawing.Size(319, 334);
+            this.richTextBoxDysponent_dane.Size = new System.Drawing.Size(313, 385);
             this.richTextBoxDysponent_dane.TabIndex = 58;
             this.richTextBoxDysponent_dane.Text = "";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label2.Location = new System.Drawing.Point(6, 70);
+            this.label2.Location = new System.Drawing.Point(12, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 56;
@@ -2161,25 +2281,28 @@
             // textBoxNazwiskoDysponent
             // 
             this.textBoxNazwiskoDysponent.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwiskoDysponent.Location = new System.Drawing.Point(6, 86);
+            this.textBoxNazwiskoDysponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxNazwiskoDysponent.Location = new System.Drawing.Point(12, 86);
             this.textBoxNazwiskoDysponent.Name = "textBoxNazwiskoDysponent";
-            this.textBoxNazwiskoDysponent.Size = new System.Drawing.Size(321, 20);
+            this.textBoxNazwiskoDysponent.Size = new System.Drawing.Size(315, 20);
             this.textBoxNazwiskoDysponent.TabIndex = 55;
             // 
             // comboBoxDzialDysponent
             // 
+            this.comboBoxDzialDysponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxDzialDysponent.FormattingEnabled = true;
-            this.comboBoxDzialDysponent.Location = new System.Drawing.Point(6, 128);
+            this.comboBoxDzialDysponent.Location = new System.Drawing.Point(12, 128);
             this.comboBoxDzialDysponent.Name = "comboBoxDzialDysponent";
-            this.comboBoxDzialDysponent.Size = new System.Drawing.Size(319, 21);
+            this.comboBoxDzialDysponent.Size = new System.Drawing.Size(313, 21);
             this.comboBoxDzialDysponent.TabIndex = 54;
             this.comboBoxDzialDysponent.SelectedIndexChanged += new System.EventHandler(this.comboBoxDzial_dysponent_SelectedIndexChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label6.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label6.Location = new System.Drawing.Point(6, 161);
+            this.label6.Location = new System.Drawing.Point(12, 171);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(93, 13);
             this.label6.TabIndex = 49;
@@ -2188,8 +2311,9 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label7.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label7.Location = new System.Drawing.Point(6, 111);
+            this.label7.Location = new System.Drawing.Point(12, 112);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(32, 13);
             this.label7.TabIndex = 47;
@@ -2198,8 +2322,9 @@
             // label17
             // 
             this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label17.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label17.Location = new System.Drawing.Point(6, 19);
+            this.label17.Location = new System.Drawing.Point(12, 19);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(26, 13);
             this.label17.TabIndex = 45;
@@ -2208,9 +2333,10 @@
             // textBoxImieDysponent
             // 
             this.textBoxImieDysponent.BackColor = System.Drawing.Color.Linen;
-            this.textBoxImieDysponent.Location = new System.Drawing.Point(6, 35);
+            this.textBoxImieDysponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxImieDysponent.Location = new System.Drawing.Point(12, 35);
             this.textBoxImieDysponent.Name = "textBoxImieDysponent";
-            this.textBoxImieDysponent.Size = new System.Drawing.Size(321, 20);
+            this.textBoxImieDysponent.Size = new System.Drawing.Size(315, 20);
             this.textBoxImieDysponent.TabIndex = 44;
             // 
             // groupBox29
@@ -2219,13 +2345,14 @@
             this.groupBox29.Controls.Add(this.buttonSzukajDysponent);
             this.groupBox29.Controls.Add(this.textBoxWyszukiwanieDysponent);
             this.groupBox29.Cursor = System.Windows.Forms.Cursors.Default;
-            this.groupBox29.ForeColor = System.Drawing.Color.Red;
+            this.groupBox29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox29.ForeColor = System.Drawing.Color.Black;
             this.groupBox29.Location = new System.Drawing.Point(339, 22);
             this.groupBox29.Name = "groupBox29";
             this.groupBox29.Size = new System.Drawing.Size(333, 57);
             this.groupBox29.TabIndex = 58;
             this.groupBox29.TabStop = false;
-            this.groupBox29.Text = "wyszukaj dysponenta po imieniu lub nazwisku:";
+            this.groupBox29.Text = "Wyszukiwanie dysponenta po imieniu lub nazwisku";
             // 
             // buttonSzukajDysponent
             // 
@@ -2242,6 +2369,7 @@
             // textBoxWyszukiwanieDysponent
             // 
             this.textBoxWyszukiwanieDysponent.BackColor = System.Drawing.Color.Linen;
+            this.textBoxWyszukiwanieDysponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxWyszukiwanieDysponent.Location = new System.Drawing.Point(6, 23);
             this.textBoxWyszukiwanieDysponent.Name = "textBoxWyszukiwanieDysponent";
             this.textBoxWyszukiwanieDysponent.Size = new System.Drawing.Size(278, 20);
@@ -2253,25 +2381,46 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox30.BackColor = System.Drawing.Color.Bisque;
             this.groupBox30.Controls.Add(this.listBoxDysponent);
-            this.groupBox30.ForeColor = System.Drawing.Color.Red;
+            this.groupBox30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox30.ForeColor = System.Drawing.Color.Black;
             this.groupBox30.Location = new System.Drawing.Point(3, 22);
             this.groupBox30.Name = "groupBox30";
-            this.groupBox30.Size = new System.Drawing.Size(330, 584);
+            this.groupBox30.Size = new System.Drawing.Size(330, 649);
             this.groupBox30.TabIndex = 56;
             this.groupBox30.TabStop = false;
-            this.groupBox30.Text = "Dysponenci maszyn";
+            this.groupBox30.Text = "Lista dysponentów maszyn";
             // 
             // listBoxDysponent
             // 
             this.listBoxDysponent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxDysponent.BackColor = System.Drawing.Color.Linen;
+            this.listBoxDysponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listBoxDysponent.FormattingEnabled = true;
             this.listBoxDysponent.Location = new System.Drawing.Point(15, 22);
             this.listBoxDysponent.Name = "listBoxDysponent";
-            this.listBoxDysponent.Size = new System.Drawing.Size(299, 550);
+            this.listBoxDysponent.Size = new System.Drawing.Size(299, 602);
             this.listBoxDysponent.TabIndex = 0;
             this.listBoxDysponent.SelectedIndexChanged += new System.EventHandler(this.listBoxDysponent_SelectedIndexChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.Linen;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox1.Location = new System.Drawing.Point(13, 28);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(364, 20);
+            this.textBox1.TabIndex = 50;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label20.Location = new System.Drawing.Point(10, 12);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(88, 13);
+            this.label20.TabIndex = 51;
+            this.label20.Text = "Nazwa dostawcy";
             // 
             // SpisForm
             // 
@@ -2279,7 +2428,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Bisque;
-            this.ClientSize = new System.Drawing.Size(1212, 969);
+            this.ClientSize = new System.Drawing.Size(1207, 969);
             this.Controls.Add(this.tabControlZakładki);
             this.Controls.Add(this.toolStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2542,6 +2691,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

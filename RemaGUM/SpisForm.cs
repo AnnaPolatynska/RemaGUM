@@ -275,7 +275,7 @@ namespace RemaGUM
         private void tabControlZakladki_SelectedIndexChanged(object sender, EventArgs e)
         {
             TabControl v = (TabControl)sender;
-            //Cursor.Current = Cursors.WaitCursor;
+            Cursor.Current = Cursors.WaitCursor;
 
             // ----------------------------------Zakładka Maszyny.
             if (v.SelectedIndex == 0)
