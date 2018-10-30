@@ -1465,6 +1465,8 @@ namespace RemaGUM
 
                 textBoxMagazynMat.Text = aktualizacjaStanuMagazyn.ToString();
 
+                //OdswiezMaterialy();
+
                 nsAccess2DB.Dostawca_matBUS dostawca_matBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
                 dostawca_matBUS.select();
                 nsAccess2DB.Dostawca_MaterialBUS dostawca_materialBUS = new nsAccess2DB.Dostawca_MaterialBUS(_connString);
@@ -1483,6 +1485,7 @@ namespace RemaGUM
                     if (idxD > -1) checkedListBoxDostawcyMat.SetItemChecked(idxD, true);
                     dostawca_materialBUS.skip();
                 }
+              
                 toolStripStatusLabelID_Materialu.Text = materialyBUS.VO.Identyfikator.ToString();
             }
 
@@ -1669,6 +1672,14 @@ namespace RemaGUM
         {
             nsAccess2DB.Jednostka_miarBUS jednostka_MiarBUS = new nsAccess2DB.Jednostka_miarBUS(_connString);
             jednostka_MiarBUS.idx = comboBoxJednostkaMat.SelectedIndex;
+            // jednostki wyświetlane labelach dane z comboBoxJednostkaMat.
+            string s = comboBoxJednostkaMat.Text;
+
+            labelJednostkaDostepnosc.Text = s;
+            labelJednostkaMin.Text = s;
+            labelJednostkaZuzycie.Text = s;
+            labelJednostkaOdpad.Text = s;
+            labelJednostkaZapotrzebowanie.Text = s;
         }// comboBoxJednostka_mat_SelectedIndexChanged
 
         /// <summary>
@@ -1815,8 +1826,16 @@ namespace RemaGUM
         {
             //toolStripStatusLabelID_Materialu.Text = string.Empty;
 
-            textBoxMagazynMat.Enabled = true; // dla nowego materiału odblokowanie pola stanu magazynowego na start.
+            textBoxMagazynMat.Enabled = true; // dla nowego materiału odblokowanie pola stanu magazynowego by wpisać pierwszą wartość na start.
             textBoxMagazynMat.BackColor = Color.White;
+
+            textBoxZuzycieMat.Enabled = false; // zablokowanie pola rozchód - Bieżące zużycie i Odpad.
+            textBoxZuzycieMat.BackColor = Color.LightSalmon;
+            textBoxOdpadMat.Enabled = false;
+            textBoxOdpadMat.BackColor = Color.LightSalmon;
+
+            textBoxZapotrzebowanieMat.Enabled = false; // zablokowanie pola przychód - Zakup.
+            textBoxZapotrzebowanieMat.BackColor = Color.DarkKhaki;
 
             CzyscDaneMaterialy();
             radioButtonNazwa_mat.Checked = true; // wymusza sortowanie po nazwie materiału przy zapisie nowej pozycji Materiału.
@@ -1835,8 +1854,16 @@ namespace RemaGUM
             int idx = listBoxMaterialy.SelectedIndex;
 
             CzyscDaneMaterialy();
-
             WypelnijMaterialyNazwami();
+
+            textBoxZuzycieMat.Enabled = true; // odblokowanie pola rozchód - Bieżące zużycie i Odpad.
+            textBoxZuzycieMat.BackColor = Color.White;
+            textBoxOdpadMat.Enabled = true;
+            textBoxOdpadMat.BackColor = Color.White;
+
+            textBoxZapotrzebowanieMat.Enabled = true; // odblokowanie pola przychód - Zakup.
+            textBoxZapotrzebowanieMat.BackColor = Color.White;
+
             listBoxMaterialy.SelectedIndex = idx;
         }//buttonAnuluj_mat_Click
 
@@ -1853,6 +1880,15 @@ namespace RemaGUM
             CzyscDaneMaterialy();
             WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);
             WypelnijMaterialyNazwami();
+
+            textBoxZuzycieMat.Enabled = true; // odblokowanie pola rozchód - Bieżące zużycie i Odpad.
+            textBoxZuzycieMat.BackColor = Color.White;
+            textBoxOdpadMat.Enabled = true;
+            textBoxOdpadMat.BackColor = Color.White;
+
+            textBoxZapotrzebowanieMat.Enabled = true; // odblokowanie pola przychód - Zakup.
+            textBoxZapotrzebowanieMat.BackColor = Color.White;
+
             _statusForm = (int)_status.edycja;
         }//buttonUsun_mat_Click
 
@@ -1924,6 +1960,8 @@ namespace RemaGUM
                 {
                     materialy_VO.Jednostka_miar_mat = comboBoxJednostkaMat.Text.Trim();
                 }
+                
+
 
                 // Stan magazynowy - pole jedynie do odczytu (wyliczane automatycznie). Pole przy nowej pozycji nie może być puste. Komunikat o konieczności wprowadzenia na stan przez pole Zakup. 
                 if (textBoxMagazynMat.Text == string.Empty)
@@ -1979,6 +2017,8 @@ namespace RemaGUM
                     materialy_VO.Zapotrzebowanie_mat = int.Parse(textBoxZapotrzebowanieMat.Text.Trim());
                 }
 
+                
+
                 // Zapis dostawców przypisanych do danego materiału.
 
                 //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
@@ -2000,6 +2040,14 @@ namespace RemaGUM
 
                 textBoxMagazynMat.Enabled = false; // zablokowanie pola magazynu po zapisie.
                 textBoxMagazynMat.BackColor = Color.Bisque;
+
+                textBoxZuzycieMat.Enabled = true; // odblokowanie pola rozchód - Bieżące zużycie i Odpad.
+                textBoxZuzycieMat.BackColor = Color.White;
+                textBoxOdpadMat.Enabled = true;
+                textBoxOdpadMat.BackColor = Color.White;
+
+                textBoxZapotrzebowanieMat.Enabled = true; // odblokowanie pola przychód - Zakup.
+                textBoxZapotrzebowanieMat.BackColor = Color.White;
 
                 WypelnijMaterialyNazwami();
 
@@ -2125,6 +2173,11 @@ namespace RemaGUM
                     materialyBUS.write(materialy_VO); // ZAPIS
 
                     dostawca_MaterialBUS.select(materialyBUS.VO.Identyfikator);
+
+
+                    int aktualizacjaStanuMagazyn = materialyBUS.VO.Stan_mat - materialyBUS.VO.Zuzycie_mat - materialyBUS.VO.Odpad_mat + materialyBUS.VO.Zapotrzebowanie_mat;
+
+                    textBoxMagazynMat.Text = aktualizacjaStanuMagazyn.ToString();
 
                     // Zapis dostawców przypisanych do danego materiału.
                     //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
