@@ -103,6 +103,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="LogoGUM2018.jpg" />
     <Content Include="micrometer.ico" />
     <None Include="Resources\ikona2.bmp" />
   </ItemGroup>

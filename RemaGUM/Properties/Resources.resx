@@ -121,4 +121,7 @@
   <data name="ikona2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ikona2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LogoGUM2018" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\LogoGUM2018.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

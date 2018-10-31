@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpisForm));
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.Materiały = new System.Windows.Forms.TabPage();
             this.statusStripMaterialy = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -40,6 +38,8 @@
             this.toolStripStatusLabel_ID_Dostawcy = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -73,9 +73,6 @@
             this.labelJednostkaDostepnosc = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxWyborMagazyn = new System.Windows.Forms.ComboBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.buttonSzukaj_mat = new System.Windows.Forms.Button();
-            this.textBoxWyszukaj_mat = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.buttonNowaMat = new System.Windows.Forms.Button();
             this.buttonUsunMat = new System.Windows.Forms.Button();
@@ -89,6 +86,9 @@
             this.textBoxNazwaMat = new System.Windows.Forms.TextBox();
             this.comboBoxRodzajMat = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.buttonSzukaj_mat = new System.Windows.Forms.Button();
+            this.textBoxWyszukaj_mat = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.listBoxMaterialy = new System.Windows.Forms.ListBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
@@ -214,9 +214,9 @@
             this.textBoxWyszukiwanieDysponent = new System.Windows.Forms.TextBox();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.listBoxDysponent = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.toolStrip.SuspendLayout();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -228,8 +228,8 @@
             this.panel2.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.Maszyny.SuspendLayout();
@@ -256,34 +256,8 @@
             this.groupBox28.SuspendLayout();
             this.groupBox29.SuspendLayout();
             this.groupBox30.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStrip
-            // 
-            this.toolStrip.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.toolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonHelp});
-            this.toolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip.Size = new System.Drawing.Size(1207, 37);
-            this.toolStrip.TabIndex = 41;
-            this.toolStrip.Text = "toolStrip1";
-            // 
-            // toolStripButtonHelp
-            // 
-            this.toolStripButtonHelp.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonHelp.Image")));
-            this.toolStripButtonHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolStripButtonHelp.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonHelp.Name = "toolStripButtonHelp";
-            this.toolStripButtonHelp.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripButtonHelp.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonHelp.Size = new System.Drawing.Size(38, 34);
-            this.toolStripButtonHelp.ToolTipText = "Pomoc programu.";
-            this.toolStripButtonHelp.Click += new System.EventHandler(this.toolStripButtonHelp_Click);
             // 
             // Materiały
             // 
@@ -372,6 +346,25 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(389, 360);
             this.panel3.TabIndex = 50;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label20.Location = new System.Drawing.Point(10, 12);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(88, 13);
+            this.label20.TabIndex = 51;
+            this.label20.Text = "Nazwa dostawcy";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.Linen;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox1.Location = new System.Drawing.Point(13, 28);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(364, 20);
+            this.textBox1.TabIndex = 50;
             // 
             // groupBox14
             // 
@@ -734,42 +727,6 @@
             this.comboBoxWyborMagazyn.TabIndex = 61;
             this.comboBoxWyborMagazyn.SelectedIndexChanged += new System.EventHandler(this.comboBoxWyborMagazyn_SelectedIndexChanged);
             // 
-            // groupBox7
-            // 
-            this.groupBox7.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox7.Controls.Add(this.buttonSzukaj_mat);
-            this.groupBox7.Controls.Add(this.textBoxWyszukaj_mat);
-            this.groupBox7.Cursor = System.Windows.Forms.Cursors.Default;
-            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox7.ForeColor = System.Drawing.Color.Black;
-            this.groupBox7.Location = new System.Drawing.Point(338, 8);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(417, 57);
-            this.groupBox7.TabIndex = 51;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Wyszukiwanie materiałów / normaliów po nazwie";
-            // 
-            // buttonSzukaj_mat
-            // 
-            this.buttonSzukaj_mat.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonSzukaj_mat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj_mat.BackgroundImage")));
-            this.buttonSzukaj_mat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSzukaj_mat.Location = new System.Drawing.Point(373, 15);
-            this.buttonSzukaj_mat.Name = "buttonSzukaj_mat";
-            this.buttonSzukaj_mat.Size = new System.Drawing.Size(35, 34);
-            this.buttonSzukaj_mat.TabIndex = 4;
-            this.buttonSzukaj_mat.UseVisualStyleBackColor = false;
-            this.buttonSzukaj_mat.Click += new System.EventHandler(this.buttonSzukaj_mat_Click);
-            // 
-            // textBoxWyszukaj_mat
-            // 
-            this.textBoxWyszukaj_mat.BackColor = System.Drawing.Color.Linen;
-            this.textBoxWyszukaj_mat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxWyszukaj_mat.Location = new System.Drawing.Point(10, 23);
-            this.textBoxWyszukaj_mat.Name = "textBoxWyszukaj_mat";
-            this.textBoxWyszukaj_mat.Size = new System.Drawing.Size(357, 20);
-            this.textBoxWyszukaj_mat.TabIndex = 44;
-            // 
             // groupBox9
             // 
             this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -912,6 +869,42 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Wartość jednostkowa";
             // 
+            // groupBox7
+            // 
+            this.groupBox7.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox7.Controls.Add(this.buttonSzukaj_mat);
+            this.groupBox7.Controls.Add(this.textBoxWyszukaj_mat);
+            this.groupBox7.Cursor = System.Windows.Forms.Cursors.Default;
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox7.ForeColor = System.Drawing.Color.Black;
+            this.groupBox7.Location = new System.Drawing.Point(338, 8);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(417, 57);
+            this.groupBox7.TabIndex = 51;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Wyszukiwanie materiałów / normaliów po nazwie";
+            // 
+            // buttonSzukaj_mat
+            // 
+            this.buttonSzukaj_mat.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSzukaj_mat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj_mat.BackgroundImage")));
+            this.buttonSzukaj_mat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSzukaj_mat.Location = new System.Drawing.Point(373, 15);
+            this.buttonSzukaj_mat.Name = "buttonSzukaj_mat";
+            this.buttonSzukaj_mat.Size = new System.Drawing.Size(35, 34);
+            this.buttonSzukaj_mat.TabIndex = 4;
+            this.buttonSzukaj_mat.UseVisualStyleBackColor = false;
+            this.buttonSzukaj_mat.Click += new System.EventHandler(this.buttonSzukaj_mat_Click);
+            // 
+            // textBoxWyszukaj_mat
+            // 
+            this.textBoxWyszukaj_mat.BackColor = System.Drawing.Color.Linen;
+            this.textBoxWyszukaj_mat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxWyszukaj_mat.Location = new System.Drawing.Point(10, 23);
+            this.textBoxWyszukaj_mat.Name = "textBoxWyszukaj_mat";
+            this.textBoxWyszukaj_mat.Size = new System.Drawing.Size(357, 20);
+            this.textBoxWyszukaj_mat.TabIndex = 44;
+            // 
             // groupBox8
             // 
             this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1030,7 +1023,7 @@
             this.Maszyny.Location = new System.Drawing.Point(4, 22);
             this.Maszyny.Name = "Maszyny";
             this.Maszyny.Padding = new System.Windows.Forms.Padding(3);
-            this.Maszyny.Size = new System.Drawing.Size(1212, 890);
+            this.Maszyny.Size = new System.Drawing.Size(1205, 890);
             this.Maszyny.TabIndex = 0;
             this.Maszyny.Text = "Maszyny";
             // 
@@ -1041,7 +1034,7 @@
             this.toolStripStatusLabelID_Maszyny});
             this.statusStripMaszyna.Location = new System.Drawing.Point(3, 865);
             this.statusStripMaszyna.Name = "statusStripMaszyna";
-            this.statusStripMaszyna.Size = new System.Drawing.Size(1206, 22);
+            this.statusStripMaszyna.Size = new System.Drawing.Size(1199, 22);
             this.statusStripMaszyna.TabIndex = 58;
             this.statusStripMaszyna.Text = "ID operatora";
             // 
@@ -1417,7 +1410,7 @@
             this.groupBox5.ForeColor = System.Drawing.Color.Black;
             this.groupBox5.Location = new System.Drawing.Point(758, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(419, 57);
+            this.groupBox5.Size = new System.Drawing.Size(412, 57);
             this.groupBox5.TabIndex = 45;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Wyszukiwanie maszyn po nazwie";
@@ -1562,7 +1555,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox3.Location = new System.Drawing.Point(758, 595);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(419, 198);
+            this.groupBox3.Size = new System.Drawing.Size(412, 198);
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Stan techniczny i częstotliwość wykorzystania";
@@ -1758,7 +1751,7 @@
             this.tabControlZakładki.Location = new System.Drawing.Point(12, 55);
             this.tabControlZakładki.Name = "tabControlZakładki";
             this.tabControlZakładki.SelectedIndex = 0;
-            this.tabControlZakładki.Size = new System.Drawing.Size(1220, 916);
+            this.tabControlZakładki.Size = new System.Drawing.Size(1213, 916);
             this.tabControlZakładki.TabIndex = 47;
             this.tabControlZakładki.SelectedIndexChanged += new System.EventHandler(this.tabControlZakladki_SelectedIndexChanged);
             // 
@@ -2403,24 +2396,49 @@
             this.listBoxDysponent.TabIndex = 0;
             this.listBoxDysponent.SelectedIndexChanged += new System.EventHandler(this.listBoxDysponent_SelectedIndexChanged);
             // 
-            // textBox1
+            // toolStrip
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Linen;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(13, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(364, 20);
-            this.textBox1.TabIndex = 50;
+            this.toolStrip.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.toolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.toolStrip.CanOverflow = false;
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButtonHelp});
+            this.toolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip.Size = new System.Drawing.Size(1225, 45);
+            this.toolStrip.TabIndex = 41;
+            this.toolStrip.Text = "toolStrip1";
             // 
-            // label20
+            // toolStripButtonHelp
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label20.Location = new System.Drawing.Point(10, 12);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(88, 13);
-            this.label20.TabIndex = 51;
-            this.label20.Text = "Nazwa dostawcy";
+            this.toolStripButtonHelp.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonHelp.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonHelp.Image")));
+            this.toolStripButtonHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripButtonHelp.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonHelp.Name = "toolStripButtonHelp";
+            this.toolStripButtonHelp.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripButtonHelp.RightToLeftAutoMirrorImage = true;
+            this.toolStripButtonHelp.Size = new System.Drawing.Size(38, 34);
+            this.toolStripButtonHelp.ToolTipText = "Pomoc programu.";
+            this.toolStripButtonHelp.Click += new System.EventHandler(this.toolStripButtonHelp_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = global::RemaGUM.Properties.Resources.LogoGUM2018;
+            this.toolStripButton1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(1, 1, 0, 2);
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripButton1.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton1.Size = new System.Drawing.Size(78, 42);
+            this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripButton1.ToolTipText = "Logo";
             // 
             // SpisForm
             // 
@@ -2428,14 +2446,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Bisque;
-            this.ClientSize = new System.Drawing.Size(1207, 969);
-            this.Controls.Add(this.tabControlZakładki);
+            this.ClientSize = new System.Drawing.Size(1225, 969);
             this.Controls.Add(this.toolStrip);
+            this.Controls.Add(this.tabControlZakładki);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SpisForm";
             this.Text = "RemaGUM - spis maszyn";
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
             this.Materiały.ResumeLayout(false);
             this.Materiały.PerformLayout();
             this.statusStripMaterialy.ResumeLayout(false);
@@ -2455,9 +2471,9 @@
             this.groupBox12.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
@@ -2499,6 +2515,8 @@
             this.groupBox29.ResumeLayout(false);
             this.groupBox29.PerformLayout();
             this.groupBox30.ResumeLayout(false);
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2693,6 +2711,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 
