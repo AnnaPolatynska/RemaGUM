@@ -39,12 +39,11 @@
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonNowyDostawca = new System.Windows.Forms.Button();
+            this.buttonUsunDostawca = new System.Windows.Forms.Button();
+            this.buttonZapiszDostawca = new System.Windows.Forms.Button();
+            this.buttonAnulujDostawca = new System.Windows.Forms.Button();
             this.label27 = new System.Windows.Forms.Label();
             this.richTextBoxDostawca = new System.Windows.Forms.RichTextBox();
             this.linkLabelDostawcaMat = new System.Windows.Forms.LinkLabel();
@@ -215,8 +214,11 @@
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.listBoxDysponent = new System.Windows.Forms.ListBox();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
+            this.textBoxLinkDostawcy = new System.Windows.Forms.TextBox();
+            this.labelLinkDostawcy = new System.Windows.Forms.Label();
+            this.comboBoxNazwaDostawcy = new System.Windows.Forms.ComboBox();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -271,7 +273,7 @@
             this.Materiały.Location = new System.Drawing.Point(4, 22);
             this.Materiały.Name = "Materiały";
             this.Materiały.Padding = new System.Windows.Forms.Padding(3);
-            this.Materiały.Size = new System.Drawing.Size(1212, 890);
+            this.Materiały.Size = new System.Drawing.Size(1205, 890);
             this.Materiały.TabIndex = 1;
             this.Materiały.Text = "Materiały";
             // 
@@ -285,7 +287,7 @@
             this.toolStripStatusLabel_ID_Dostawcy});
             this.statusStripMaterialy.Location = new System.Drawing.Point(3, 865);
             this.statusStripMaterialy.Name = "statusStripMaterialy";
-            this.statusStripMaterialy.Size = new System.Drawing.Size(1206, 22);
+            this.statusStripMaterialy.Size = new System.Drawing.Size(1199, 22);
             this.statusStripMaterialy.TabIndex = 53;
             this.statusStripMaterialy.Text = "statusStrip4";
             // 
@@ -336,8 +338,10 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.panel3.Controls.Add(this.comboBoxNazwaDostawcy);
+            this.panel3.Controls.Add(this.labelLinkDostawcy);
+            this.panel3.Controls.Add(this.textBoxLinkDostawcy);
             this.panel3.Controls.Add(this.label20);
-            this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.groupBox14);
             this.panel3.Controls.Add(this.label27);
             this.panel3.Controls.Add(this.richTextBoxDostawca);
@@ -357,23 +361,14 @@
             this.label20.TabIndex = 51;
             this.label20.Text = "Nazwa dostawcy";
             // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.Linen;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(13, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(364, 20);
-            this.textBox1.TabIndex = 50;
-            // 
             // groupBox14
             // 
             this.groupBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.groupBox14.Controls.Add(this.button1);
-            this.groupBox14.Controls.Add(this.button2);
-            this.groupBox14.Controls.Add(this.button3);
-            this.groupBox14.Controls.Add(this.button4);
+            this.groupBox14.Controls.Add(this.buttonNowyDostawca);
+            this.groupBox14.Controls.Add(this.buttonUsunDostawca);
+            this.groupBox14.Controls.Add(this.buttonZapiszDostawca);
+            this.groupBox14.Controls.Add(this.buttonAnulujDostawca);
             this.groupBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox14.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox14.Location = new System.Drawing.Point(7, 295);
@@ -383,45 +378,49 @@
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Edycja spisu dostawców";
             // 
-            // button1
+            // buttonNowyDostawca
             // 
-            this.button1.BackColor = System.Drawing.Color.Linen;
-            this.button1.Location = new System.Drawing.Point(6, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Nowy ";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonNowyDostawca.BackColor = System.Drawing.Color.Linen;
+            this.buttonNowyDostawca.Location = new System.Drawing.Point(6, 19);
+            this.buttonNowyDostawca.Name = "buttonNowyDostawca";
+            this.buttonNowyDostawca.Size = new System.Drawing.Size(75, 23);
+            this.buttonNowyDostawca.TabIndex = 2;
+            this.buttonNowyDostawca.Text = "Nowy ";
+            this.buttonNowyDostawca.UseVisualStyleBackColor = false;
+            this.buttonNowyDostawca.Click += new System.EventHandler(this.buttonNowyDostawca_Click);
             // 
-            // button2
+            // buttonUsunDostawca
             // 
-            this.button2.BackColor = System.Drawing.Color.Linen;
-            this.button2.Location = new System.Drawing.Point(289, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Usuń";
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonUsunDostawca.BackColor = System.Drawing.Color.Linen;
+            this.buttonUsunDostawca.Location = new System.Drawing.Point(289, 19);
+            this.buttonUsunDostawca.Name = "buttonUsunDostawca";
+            this.buttonUsunDostawca.Size = new System.Drawing.Size(75, 23);
+            this.buttonUsunDostawca.TabIndex = 4;
+            this.buttonUsunDostawca.Text = "Usuń";
+            this.buttonUsunDostawca.UseVisualStyleBackColor = false;
+            this.buttonUsunDostawca.Click += new System.EventHandler(this.buttonUsunDostawca_Click);
             // 
-            // button3
+            // buttonZapiszDostawca
             // 
-            this.button3.BackColor = System.Drawing.Color.Linen;
-            this.button3.Location = new System.Drawing.Point(99, 19);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Zapisz";
-            this.button3.UseVisualStyleBackColor = false;
+            this.buttonZapiszDostawca.BackColor = System.Drawing.Color.Linen;
+            this.buttonZapiszDostawca.Location = new System.Drawing.Point(99, 19);
+            this.buttonZapiszDostawca.Name = "buttonZapiszDostawca";
+            this.buttonZapiszDostawca.Size = new System.Drawing.Size(75, 23);
+            this.buttonZapiszDostawca.TabIndex = 3;
+            this.buttonZapiszDostawca.Text = "Zapisz";
+            this.buttonZapiszDostawca.UseVisualStyleBackColor = false;
+            this.buttonZapiszDostawca.Click += new System.EventHandler(this.buttonZapiszDostawca_Click);
             // 
-            // button4
+            // buttonAnulujDostawca
             // 
-            this.button4.BackColor = System.Drawing.Color.Linen;
-            this.button4.Location = new System.Drawing.Point(193, 19);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Anuluj";
-            this.button4.UseVisualStyleBackColor = false;
+            this.buttonAnulujDostawca.BackColor = System.Drawing.Color.Linen;
+            this.buttonAnulujDostawca.Location = new System.Drawing.Point(193, 19);
+            this.buttonAnulujDostawca.Name = "buttonAnulujDostawca";
+            this.buttonAnulujDostawca.Size = new System.Drawing.Size(75, 23);
+            this.buttonAnulujDostawca.TabIndex = 3;
+            this.buttonAnulujDostawca.Text = "Anuluj";
+            this.buttonAnulujDostawca.UseVisualStyleBackColor = false;
+            this.buttonAnulujDostawca.Click += new System.EventHandler(this.buttonAnulujDostawca_Click);
             // 
             // label27
             // 
@@ -1766,7 +1765,7 @@
             this.Operatorzy_maszyn.Controls.Add(this.groupBox26);
             this.Operatorzy_maszyn.Location = new System.Drawing.Point(4, 22);
             this.Operatorzy_maszyn.Name = "Operatorzy_maszyn";
-            this.Operatorzy_maszyn.Size = new System.Drawing.Size(1212, 890);
+            this.Operatorzy_maszyn.Size = new System.Drawing.Size(1205, 890);
             this.Operatorzy_maszyn.TabIndex = 3;
             this.Operatorzy_maszyn.Text = "Operatorzy maszyn";
             // 
@@ -1777,7 +1776,7 @@
             this.toolStripStatusLabelIDOperatora});
             this.statusStripOperator.Location = new System.Drawing.Point(0, 868);
             this.statusStripOperator.Name = "statusStripOperator";
-            this.statusStripOperator.Size = new System.Drawing.Size(1212, 22);
+            this.statusStripOperator.Size = new System.Drawing.Size(1205, 22);
             this.statusStripOperator.TabIndex = 57;
             this.statusStripOperator.Text = "ID operatora";
             // 
@@ -2110,7 +2109,7 @@
             this.Dysponent_maszyn.Controls.Add(this.groupBox30);
             this.Dysponent_maszyn.Location = new System.Drawing.Point(4, 22);
             this.Dysponent_maszyn.Name = "Dysponent_maszyn";
-            this.Dysponent_maszyn.Size = new System.Drawing.Size(1212, 890);
+            this.Dysponent_maszyn.Size = new System.Drawing.Size(1205, 890);
             this.Dysponent_maszyn.TabIndex = 4;
             this.Dysponent_maszyn.Text = "Dysponenci maszyn";
             // 
@@ -2143,7 +2142,7 @@
             this.toolStripStatusLabelDysponenta});
             this.statusStripDysponent.Location = new System.Drawing.Point(0, 868);
             this.statusStripDysponent.Name = "statusStripDysponent";
-            this.statusStripDysponent.Size = new System.Drawing.Size(1212, 22);
+            this.statusStripDysponent.Size = new System.Drawing.Size(1205, 22);
             this.statusStripDysponent.TabIndex = 61;
             this.statusStripDysponent.Text = "statusStrip1";
             // 
@@ -2412,6 +2411,20 @@
             this.toolStrip.TabIndex = 41;
             this.toolStrip.Text = "toolStrip1";
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = global::RemaGUM.Properties.Resources.LogoGUM2018;
+            this.toolStripButton1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(1, 1, 0, 2);
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripButton1.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton1.Size = new System.Drawing.Size(78, 42);
+            this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripButton1.ToolTipText = "Logo";
+            // 
             // toolStripButtonHelp
             // 
             this.toolStripButtonHelp.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -2426,19 +2439,35 @@
             this.toolStripButtonHelp.ToolTipText = "Pomoc programu.";
             this.toolStripButtonHelp.Click += new System.EventHandler(this.toolStripButtonHelp_Click);
             // 
-            // toolStripButton1
+            // textBoxLinkDostawcy
             // 
-            this.toolStripButton1.Image = global::RemaGUM.Properties.Resources.LogoGUM2018;
-            this.toolStripButton1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(1, 1, 0, 2);
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripButton1.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton1.Size = new System.Drawing.Size(78, 42);
-            this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolStripButton1.ToolTipText = "Logo";
+            this.textBoxLinkDostawcy.BackColor = System.Drawing.Color.Linen;
+            this.textBoxLinkDostawcy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxLinkDostawcy.Location = new System.Drawing.Point(176, 254);
+            this.textBoxLinkDostawcy.Name = "textBoxLinkDostawcy";
+            this.textBoxLinkDostawcy.Size = new System.Drawing.Size(201, 20);
+            this.textBoxLinkDostawcy.TabIndex = 52;
+            // 
+            // labelLinkDostawcy
+            // 
+            this.labelLinkDostawcy.AutoSize = true;
+            this.labelLinkDostawcy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelLinkDostawcy.Location = new System.Drawing.Point(173, 238);
+            this.labelLinkDostawcy.Name = "labelLinkDostawcy";
+            this.labelLinkDostawcy.Size = new System.Drawing.Size(75, 13);
+            this.labelLinkDostawcy.TabIndex = 53;
+            this.labelLinkDostawcy.Text = "Link dostawcy";
+            // 
+            // comboBoxNazwaDostawcy
+            // 
+            this.comboBoxNazwaDostawcy.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxNazwaDostawcy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBoxNazwaDostawcy.FormattingEnabled = true;
+            this.comboBoxNazwaDostawcy.Location = new System.Drawing.Point(13, 28);
+            this.comboBoxNazwaDostawcy.Name = "comboBoxNazwaDostawcy";
+            this.comboBoxNazwaDostawcy.Size = new System.Drawing.Size(358, 21);
+            this.comboBoxNazwaDostawcy.TabIndex = 54;
+            this.comboBoxNazwaDostawcy.SelectedIndexChanged += new System.EventHandler(this.comboBoxNazwaDostawcy_SelectedIndexChanged);
             // 
             // SpisForm
             // 
@@ -2700,18 +2729,20 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_ID_dostrawcy;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_ID_Dostawcy;
         private System.Windows.Forms.GroupBox groupBox14;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonNowyDostawca;
+        private System.Windows.Forms.Button buttonUsunDostawca;
+        private System.Windows.Forms.Button buttonZapiszDostawca;
+        private System.Windows.Forms.Button buttonAnulujDostawca;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBoxWyborMagazyn;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.Label labelLinkDostawcy;
+        private System.Windows.Forms.TextBox textBoxLinkDostawcy;
+        private System.Windows.Forms.ComboBox comboBoxNazwaDostawcy;
     }
 }
 

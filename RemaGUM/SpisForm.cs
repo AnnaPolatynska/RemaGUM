@@ -336,6 +336,7 @@ namespace RemaGUM
                 WypelnijJednostka_miar();
                 WypelnijRodzaj_mat();
                 WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);// wypełnia dostawców materialów.
+                WypelnijNazwyDostawcow(); // wypełnia pole nazw dostawców.
 
                 if (listBoxMaterialy.Items.Count > 0)
                 {
@@ -1707,6 +1708,80 @@ namespace RemaGUM
             rodzaj_MatBUS.idx = comboBoxJednostkaMat.SelectedIndex;
         }// comboBoxRodzaj_SelectedIndexChanged(object sender, EventArgs e)
 
+        /// <summary>
+        /// Wypełnia nazwami dostawców comboBoxNazwaDostawcy.
+        /// </summary>
+        private void WypelnijNazwyDostawcow()
+        {
+            nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
+            nsAccess2DB.Dostawca_matVO dostawca_MatVO;
+            comboBoxNazwaDostawcy.Items.Clear();
+
+            dostawca_MatBUS.select();
+            dostawca_MatBUS.top();
+            while (!dostawca_MatBUS.eof)
+            {
+                dostawca_MatVO = dostawca_MatBUS.VO;
+                comboBoxNazwaDostawcy.Items.Add(dostawca_MatVO.Nazwa_dostawca_mat);
+                dostawca_MatBUS.skip();
+            }
+        }// WypelnijNazwyDostawcow()
+
+        private void comboBoxNazwaDostawcy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
+            dostawca_MatBUS.idx = comboBoxNazwaDostawcy.SelectedIndex;
+        }
+
+        private void buttonNowyDostawca_Click(object sender, EventArgs e)
+        {
+            comboBoxNazwaDostawcy.Text = string.Empty;
+            richTextBoxDostawca.Text = string.Empty;
+            linkLabelDostawcaMat.Text = string.Empty;
+
+
+            textBoxLinkDostawcy.Enabled = true; // aktywacja pola na wpisanie linku nowego dostawcy.
+            checkedListBoxDostawcyMat.Enabled = false; // zablokowanie listy dostawców.
+
+            //TODO podczas dodawania / edycji dostawcy dezaktywuj pola materiału
+        }// buttonNowyDostawca_Click
+
+       
+
+        private void buttonZapiszDostawca_Click(object sender, EventArgs e)
+        {
+            nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
+            dostawca_MatBUS.VO.Nazwa_dostawca_mat = comboBoxNazwaDostawcy.Text;
+            dostawca_MatBUS.VO.Dod_info_dostawca_mat = richTextBoxDostawca.Text;
+            dostawca_MatBUS.VO.Link_dostawca_mat = textBoxLinkDostawcy.Text;
+
+            checkedListBoxDostawcyMat.Enabled = true;  // zapis aktywuje całośc formularza
+
+            textBoxLinkDostawcy.Text = string.Empty; // po zapisie linku pole puste
+            textBoxLinkDostawcy.Enabled = false; //dezaktywacja pola linku dostawcy
+        }// private void buttonZapiszDostawca_Click
+
+        private void buttonAnulujDostawca_Click(object sender, EventArgs e)
+        {
+            comboBoxNazwaDostawcy.Text = string.Empty;
+            richTextBoxDostawca.Text = string.Empty;
+            linkLabelDostawcaMat.Text = string.Empty;
+
+            checkedListBoxDostawcyMat.Enabled = true;  // anulowanie zapisu aktywuje całośc formularza
+
+            textBoxLinkDostawcy.Text = string.Empty; // po zapisie linku pole puste
+            textBoxLinkDostawcy.Enabled = false; //dezaktywacja pola linku dostawcy
+        }// private void buttonAnulujDostawca_Click
+
+        private void buttonUsunDostawca_Click(object sender, EventArgs e)
+        {
+            nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
+            dostawca_MatBUS.delete((int)comboBoxNazwaDostawcy.Tag);
+            comboBoxNazwaDostawcy.Text = string.Empty;
+            richTextBoxDostawca.Text = string.Empty;
+            textBoxLinkDostawcy.Text = string.Empty;
+        }//  private void buttonUsunDostawca_Click
+
         // //////////////////////////////////////////////////  Radio buttony zakładki materiały.
 
         /// <summary>
@@ -3049,6 +3124,12 @@ namespace RemaGUM
             Cursor.Current = Cursors.Default;
         }//buttonSzukajDysponent_Click
 
+            
+
+            
+        
+
+               
        
 
     }// public partial class SpisForm : Form
