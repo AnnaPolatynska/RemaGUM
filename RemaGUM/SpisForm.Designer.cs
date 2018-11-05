@@ -38,6 +38,8 @@
             this.toolStripStatusLabel_ID_Dostawcy = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.labelLinkDostawcy = new System.Windows.Forms.Label();
+            this.textBoxLinkDostawcy = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.buttonNowyDostawca = new System.Windows.Forms.Button();
@@ -216,9 +218,7 @@
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
-            this.textBoxLinkDostawcy = new System.Windows.Forms.TextBox();
-            this.labelLinkDostawcy = new System.Windows.Forms.Label();
-            this.comboBoxNazwaDostawcy = new System.Windows.Forms.ComboBox();
+            this.textBoxNazwaDostawcy = new System.Windows.Forms.TextBox();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -338,7 +338,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.panel3.Controls.Add(this.comboBoxNazwaDostawcy);
+            this.panel3.Controls.Add(this.textBoxNazwaDostawcy);
             this.panel3.Controls.Add(this.labelLinkDostawcy);
             this.panel3.Controls.Add(this.textBoxLinkDostawcy);
             this.panel3.Controls.Add(this.label20);
@@ -346,10 +346,29 @@
             this.panel3.Controls.Add(this.label27);
             this.panel3.Controls.Add(this.richTextBoxDostawca);
             this.panel3.Controls.Add(this.linkLabelDostawcaMat);
-            this.panel3.Location = new System.Drawing.Point(13, 488);
+            this.panel3.Location = new System.Drawing.Point(13, 479);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(389, 360);
+            this.panel3.Size = new System.Drawing.Size(389, 369);
             this.panel3.TabIndex = 50;
+            // 
+            // labelLinkDostawcy
+            // 
+            this.labelLinkDostawcy.AutoSize = true;
+            this.labelLinkDostawcy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelLinkDostawcy.Location = new System.Drawing.Point(10, 261);
+            this.labelLinkDostawcy.Name = "labelLinkDostawcy";
+            this.labelLinkDostawcy.Size = new System.Drawing.Size(75, 13);
+            this.labelLinkDostawcy.TabIndex = 53;
+            this.labelLinkDostawcy.Text = "Link dostawcy";
+            // 
+            // textBoxLinkDostawcy
+            // 
+            this.textBoxLinkDostawcy.BackColor = System.Drawing.Color.Linen;
+            this.textBoxLinkDostawcy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxLinkDostawcy.Location = new System.Drawing.Point(13, 277);
+            this.textBoxLinkDostawcy.Name = "textBoxLinkDostawcy";
+            this.textBoxLinkDostawcy.Size = new System.Drawing.Size(364, 20);
+            this.textBoxLinkDostawcy.TabIndex = 52;
             // 
             // label20
             // 
@@ -371,7 +390,7 @@
             this.groupBox14.Controls.Add(this.buttonAnulujDostawca);
             this.groupBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox14.Location = new System.Drawing.Point(7, 295);
+            this.groupBox14.Location = new System.Drawing.Point(7, 304);
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.Size = new System.Drawing.Size(370, 56);
             this.groupBox14.TabIndex = 49;
@@ -447,7 +466,7 @@
             // 
             this.linkLabelDostawcaMat.AutoSize = true;
             this.linkLabelDostawcaMat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.linkLabelDostawcaMat.Location = new System.Drawing.Point(10, 251);
+            this.linkLabelDostawcaMat.Location = new System.Drawing.Point(10, 241);
             this.linkLabelDostawcaMat.Name = "linkLabelDostawcaMat";
             this.linkLabelDostawcaMat.Size = new System.Drawing.Size(115, 13);
             this.linkLabelDostawcaMat.TabIndex = 42;
@@ -2439,35 +2458,14 @@
             this.toolStripButtonHelp.ToolTipText = "Pomoc programu.";
             this.toolStripButtonHelp.Click += new System.EventHandler(this.toolStripButtonHelp_Click);
             // 
-            // textBoxLinkDostawcy
+            // textBoxNazwaDostawcy
             // 
-            this.textBoxLinkDostawcy.BackColor = System.Drawing.Color.Linen;
-            this.textBoxLinkDostawcy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxLinkDostawcy.Location = new System.Drawing.Point(176, 254);
-            this.textBoxLinkDostawcy.Name = "textBoxLinkDostawcy";
-            this.textBoxLinkDostawcy.Size = new System.Drawing.Size(201, 20);
-            this.textBoxLinkDostawcy.TabIndex = 52;
-            // 
-            // labelLinkDostawcy
-            // 
-            this.labelLinkDostawcy.AutoSize = true;
-            this.labelLinkDostawcy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelLinkDostawcy.Location = new System.Drawing.Point(173, 238);
-            this.labelLinkDostawcy.Name = "labelLinkDostawcy";
-            this.labelLinkDostawcy.Size = new System.Drawing.Size(75, 13);
-            this.labelLinkDostawcy.TabIndex = 53;
-            this.labelLinkDostawcy.Text = "Link dostawcy";
-            // 
-            // comboBoxNazwaDostawcy
-            // 
-            this.comboBoxNazwaDostawcy.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxNazwaDostawcy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBoxNazwaDostawcy.FormattingEnabled = true;
-            this.comboBoxNazwaDostawcy.Location = new System.Drawing.Point(13, 28);
-            this.comboBoxNazwaDostawcy.Name = "comboBoxNazwaDostawcy";
-            this.comboBoxNazwaDostawcy.Size = new System.Drawing.Size(358, 21);
-            this.comboBoxNazwaDostawcy.TabIndex = 54;
-            this.comboBoxNazwaDostawcy.SelectedIndexChanged += new System.EventHandler(this.comboBoxNazwaDostawcy_SelectedIndexChanged);
+            this.textBoxNazwaDostawcy.BackColor = System.Drawing.Color.Linen;
+            this.textBoxNazwaDostawcy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxNazwaDostawcy.Location = new System.Drawing.Point(13, 28);
+            this.textBoxNazwaDostawcy.Name = "textBoxNazwaDostawcy";
+            this.textBoxNazwaDostawcy.Size = new System.Drawing.Size(364, 20);
+            this.textBoxNazwaDostawcy.TabIndex = 54;
             // 
             // SpisForm
             // 
@@ -2742,7 +2740,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.Label labelLinkDostawcy;
         private System.Windows.Forms.TextBox textBoxLinkDostawcy;
-        private System.Windows.Forms.ComboBox comboBoxNazwaDostawcy;
+        private System.Windows.Forms.TextBox textBoxNazwaDostawcy;
     }
 }
 
