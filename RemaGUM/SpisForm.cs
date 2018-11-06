@@ -957,8 +957,18 @@ namespace RemaGUM
             CzyscDaneMaszyny();
 
             radioButtonNazwa.Checked = true; // przy nowej maszynie przed zapisem wymusza zaznaczenie sortowanie po nazwie maszyny.
+ 
+            // dezaktywacja list boxa
+            listBoxMaszyny.Enabled = false; 
+            listBoxMaszyny.BackColor = Color.Bisque;
 
-            listBoxMaszyny.Enabled = false; // dezaktywacja list boxa
+            //dezaktywacja pola wyszukiwania i przycisku wyszukaj
+            textBoxWyszukiwanie.Enabled = false;
+            textBoxWyszukiwanie.BackColor = Color.Bisque;
+            buttonSzukaj.Enabled = false;
+
+            // dezaktywacja sortowania
+            groupBoxSortowanie.Enabled = false;
 
             buttonNowa.Enabled = false;
             buttonZapisz.Enabled = true;
@@ -977,7 +987,17 @@ namespace RemaGUM
         {
             CzyscDaneMaszyny();
 
-            listBoxMaszyny.Enabled = true; // aktywacja list boxa
+            // aktywacja list boxa
+            listBoxMaszyny.Enabled = true;
+            listBoxMaszyny.BackColor = Color.White;
+            
+            // aktywacja pola wyszukiwania i przycisku szukaj
+            textBoxWyszukiwanie.Enabled = true;
+            textBoxWyszukiwanie.BackColor = Color.White;
+            buttonSzukaj.Enabled = true;
+
+            // aktywacja sortowania
+            groupBoxSortowanie.Enabled = true;
 
             buttonNowa.Enabled = true;
             buttonZapisz.Enabled = true;
@@ -1203,7 +1223,22 @@ namespace RemaGUM
 
             WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);
 
-            listBoxMaszyny.Enabled = true; // aktywacja list boxa
+            buttonNowa.Enabled = true;
+            buttonZapisz.Enabled = true;
+            buttonAnuluj.Enabled = true;
+            buttonUsun.Enabled = true;
+
+            /// aktywacja list boxa
+            listBoxMaszyny.Enabled = true;
+            listBoxMaszyny.BackColor = Color.White;
+
+            // aktywacja pola wyszukiwania i przycisku szukaj
+            textBoxWyszukiwanie.Enabled = true;
+            textBoxWyszukiwanie.BackColor = Color.White;
+            buttonSzukaj.Enabled = true;
+
+            // aktywacja sortowania
+            groupBoxSortowanie.Enabled = true;
 
             buttonNowa.Enabled = true;
             buttonZapisz.Enabled = true;
@@ -1213,7 +1248,6 @@ namespace RemaGUM
             OdswiezListeMaszyn();// po utworzeniu nowej maszyny odświeża danę z listy maszyn przez zaznaczenie sortowania po nazwie.
             pokazKomunikat("Pozycja zapisana w bazie");
             _statusForm = (int)_status.edycja;
-
 
             // radioButtonNazwa.Checked = true; // przy zapisie wymusza zaznaczenie sortowanie po nazwie edytowanej maszyny.
         }//buttonZapisz_Click
@@ -2700,11 +2734,22 @@ namespace RemaGUM
         private void buttonNowaOperator_Click(object sender, EventArgs e)
         {
             CzyscDaneOperatora();
+
+            listBoxOperator.Enabled = false; //dezaktywacja listBoxOperator
+            listBoxOperator.BackColor = Color.Bisque;
+
+            //dezaktywacja pola sortowania
+            comboBoxOperator.Enabled = false;
             
+            //dezaktywacja pola wyszukiwania i przycisku szukania operatora
+            textBoxWyszukiwanieOperator.Enabled = false;
+            textBoxWyszukiwanieOperator.BackColor = Color.Bisque;
+            buttonSzukajOperator.Enabled = false;
+
             buttonNowaOperator.Enabled = false;
             buttonZapiszOperator.Enabled = true;
             buttonAnulujOperator.Enabled = true;
-            //buttonUsunOperator.Enabled = false;
+            buttonUsunOperator.Enabled = false;
 
             _statusForm = (int)_status.nowy;
         }//buttonNowaOperator_Click
@@ -2793,17 +2838,27 @@ namespace RemaGUM
             }// else if - edycja
 
             WypelnijOperatorowDanymi();
-
+            WypelnijOperatorowMaszynami();
+           //OdswiezOperatorowMaszyn();
             comboBoxOperator.SelectedIndex = 0;
+
+            //aktywacja listBoxOperator
+            listBoxOperator.BackColor = Color.White;
+            listBoxOperator.Enabled = true; 
+
+            //aktywacja pola sortowania
+            comboBoxOperator.Enabled = true;
+            
+            //aktywacja pola wyszukiwania i przycisku szukania operatora
+            textBoxWyszukiwanieOperator.Enabled = true;
+            textBoxWyszukiwanieOperator.BackColor = Color.White;
+            buttonSzukajOperator.Enabled = true;
 
             buttonNowaOperator.Enabled = true;
             buttonZapiszOperator.Enabled = true;
             buttonAnulujOperator.Enabled = true;
             buttonUsunOperator.Enabled = true;
             
-            WypelnijOperatorowMaszynami();
-            OdswiezOperatorowMaszyn();
-
             pokazKomunikat("Pozycja zapisana w bazie");
             _statusForm = (int)_status.edycja;
         }// buttonZapiszOperator_Click
@@ -2818,6 +2873,18 @@ namespace RemaGUM
             int idx = listBoxOperator.SelectedIndex;
 
             CzyscDaneOperatora();
+
+            //aktywacja listBoxOperator
+            listBoxOperator.BackColor = Color.White;
+            listBoxOperator.Enabled = true;
+
+            //aktywacja pola sortowania
+            comboBoxOperator.Enabled = true;
+            
+            //aktywacja pola wyszukiwania i przycisku szukania operatora
+            textBoxWyszukiwanieOperator.Enabled = true;
+            textBoxWyszukiwanieOperator.BackColor = Color.White;
+            buttonSzukajOperator.Enabled = true;
 
             buttonNowaOperator.Enabled = true;
             buttonZapiszOperator.Enabled = true;
