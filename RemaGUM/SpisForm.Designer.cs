@@ -37,7 +37,8 @@
             this.toolStripStatusLabel_ID_dostrawcy = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_ID_Dostawcy = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panelDostawcy = new System.Windows.Forms.Panel();
+            this.textBoxNazwaDostawcy = new System.Windows.Forms.TextBox();
             this.labelLinkDostawcy = new System.Windows.Forms.Label();
             this.textBoxLinkDostawcy = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -92,7 +93,7 @@
             this.textBoxWyszukaj_mat = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.listBoxMaterialy = new System.Windows.Forms.ListBox();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.groupBoxSorowanieMaterialow = new System.Windows.Forms.GroupBox();
             this.radioButtonMagazyn_ilosc_mat = new System.Windows.Forms.RadioButton();
             this.radioButtonNazwa_mat = new System.Windows.Forms.RadioButton();
             this.radioButtonStan_min_mat = new System.Windows.Forms.RadioButton();
@@ -218,11 +219,10 @@
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
-            this.textBoxNazwaDostawcy = new System.Windows.Forms.TextBox();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.panelDostawcy.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox15.SuspendLayout();
@@ -233,7 +233,7 @@
             this.groupBox9.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.groupBox11.SuspendLayout();
+            this.groupBoxSorowanieMaterialow.SuspendLayout();
             this.Maszyny.SuspendLayout();
             this.statusStripMaszyna.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -269,7 +269,7 @@
             this.Materiały.Controls.Add(this.groupBox6);
             this.Materiały.Controls.Add(this.groupBox7);
             this.Materiały.Controls.Add(this.groupBox8);
-            this.Materiały.Controls.Add(this.groupBox11);
+            this.Materiały.Controls.Add(this.groupBoxSorowanieMaterialow);
             this.Materiały.Location = new System.Drawing.Point(4, 22);
             this.Materiały.Name = "Materiały";
             this.Materiały.Padding = new System.Windows.Forms.Padding(3);
@@ -324,7 +324,7 @@
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.panel3);
+            this.groupBox10.Controls.Add(this.panelDostawcy);
             this.groupBox10.Controls.Add(this.label28);
             this.groupBox10.Controls.Add(this.checkedListBoxDostawcyMat);
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -335,21 +335,30 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Dostawcy materiałów";
             // 
-            // panel3
+            // panelDostawcy
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.panel3.Controls.Add(this.textBoxNazwaDostawcy);
-            this.panel3.Controls.Add(this.labelLinkDostawcy);
-            this.panel3.Controls.Add(this.textBoxLinkDostawcy);
-            this.panel3.Controls.Add(this.label20);
-            this.panel3.Controls.Add(this.groupBox14);
-            this.panel3.Controls.Add(this.label27);
-            this.panel3.Controls.Add(this.richTextBoxDostawca);
-            this.panel3.Controls.Add(this.linkLabelDostawcaMat);
-            this.panel3.Location = new System.Drawing.Point(13, 479);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(389, 369);
-            this.panel3.TabIndex = 50;
+            this.panelDostawcy.BackColor = System.Drawing.Color.SandyBrown;
+            this.panelDostawcy.Controls.Add(this.textBoxNazwaDostawcy);
+            this.panelDostawcy.Controls.Add(this.labelLinkDostawcy);
+            this.panelDostawcy.Controls.Add(this.textBoxLinkDostawcy);
+            this.panelDostawcy.Controls.Add(this.label20);
+            this.panelDostawcy.Controls.Add(this.groupBox14);
+            this.panelDostawcy.Controls.Add(this.label27);
+            this.panelDostawcy.Controls.Add(this.richTextBoxDostawca);
+            this.panelDostawcy.Controls.Add(this.linkLabelDostawcaMat);
+            this.panelDostawcy.Location = new System.Drawing.Point(13, 479);
+            this.panelDostawcy.Name = "panelDostawcy";
+            this.panelDostawcy.Size = new System.Drawing.Size(389, 369);
+            this.panelDostawcy.TabIndex = 50;
+            // 
+            // textBoxNazwaDostawcy
+            // 
+            this.textBoxNazwaDostawcy.BackColor = System.Drawing.Color.Linen;
+            this.textBoxNazwaDostawcy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxNazwaDostawcy.Location = new System.Drawing.Point(13, 28);
+            this.textBoxNazwaDostawcy.Name = "textBoxNazwaDostawcy";
+            this.textBoxNazwaDostawcy.Size = new System.Drawing.Size(364, 20);
+            this.textBoxNazwaDostawcy.TabIndex = 54;
             // 
             // labelLinkDostawcy
             // 
@@ -383,7 +392,7 @@
             // groupBox14
             // 
             this.groupBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.groupBox14.BackColor = System.Drawing.Color.SandyBrown;
             this.groupBox14.Controls.Add(this.buttonNowyDostawca);
             this.groupBox14.Controls.Add(this.buttonUsunDostawca);
             this.groupBox14.Controls.Add(this.buttonZapiszDostawca);
@@ -952,21 +961,21 @@
             this.listBoxMaterialy.TabIndex = 0;
             this.listBoxMaterialy.SelectedIndexChanged += new System.EventHandler(this.listBoxMaterialy_SelectedIndexChanged);
             // 
-            // groupBox11
+            // groupBoxSorowanieMaterialow
             // 
-            this.groupBox11.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox11.Controls.Add(this.radioButtonMagazyn_ilosc_mat);
-            this.groupBox11.Controls.Add(this.radioButtonNazwa_mat);
-            this.groupBox11.Controls.Add(this.radioButtonStan_min_mat);
-            this.groupBox11.Controls.Add(this.radioButtonTyp_mat);
-            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox11.ForeColor = System.Drawing.Color.Black;
-            this.groupBox11.Location = new System.Drawing.Point(9, 8);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(321, 57);
-            this.groupBox11.TabIndex = 50;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Sortowanie materiałów";
+            this.groupBoxSorowanieMaterialow.BackColor = System.Drawing.Color.Bisque;
+            this.groupBoxSorowanieMaterialow.Controls.Add(this.radioButtonMagazyn_ilosc_mat);
+            this.groupBoxSorowanieMaterialow.Controls.Add(this.radioButtonNazwa_mat);
+            this.groupBoxSorowanieMaterialow.Controls.Add(this.radioButtonStan_min_mat);
+            this.groupBoxSorowanieMaterialow.Controls.Add(this.radioButtonTyp_mat);
+            this.groupBoxSorowanieMaterialow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBoxSorowanieMaterialow.ForeColor = System.Drawing.Color.Black;
+            this.groupBoxSorowanieMaterialow.Location = new System.Drawing.Point(9, 8);
+            this.groupBoxSorowanieMaterialow.Name = "groupBoxSorowanieMaterialow";
+            this.groupBoxSorowanieMaterialow.Size = new System.Drawing.Size(321, 57);
+            this.groupBoxSorowanieMaterialow.TabIndex = 50;
+            this.groupBoxSorowanieMaterialow.TabStop = false;
+            this.groupBoxSorowanieMaterialow.Text = "Sortowanie materiałów";
             // 
             // radioButtonMagazyn_ilosc_mat
             // 
@@ -2458,15 +2467,6 @@
             this.toolStripButtonHelp.ToolTipText = "Pomoc programu.";
             this.toolStripButtonHelp.Click += new System.EventHandler(this.toolStripButtonHelp_Click);
             // 
-            // textBoxNazwaDostawcy
-            // 
-            this.textBoxNazwaDostawcy.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwaDostawcy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxNazwaDostawcy.Location = new System.Drawing.Point(13, 28);
-            this.textBoxNazwaDostawcy.Name = "textBoxNazwaDostawcy";
-            this.textBoxNazwaDostawcy.Size = new System.Drawing.Size(364, 20);
-            this.textBoxNazwaDostawcy.TabIndex = 54;
-            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2485,8 +2485,8 @@
             this.statusStripMaterialy.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.panelDostawcy.ResumeLayout(false);
+            this.panelDostawcy.PerformLayout();
             this.groupBox14.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
@@ -2502,8 +2502,8 @@
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
+            this.groupBoxSorowanieMaterialow.ResumeLayout(false);
+            this.groupBoxSorowanieMaterialow.PerformLayout();
             this.Maszyny.ResumeLayout(false);
             this.Maszyny.PerformLayout();
             this.statusStripMaszyna.ResumeLayout(false);
@@ -2636,7 +2636,7 @@
         private System.Windows.Forms.Button buttonUsunMat;
         private System.Windows.Forms.Button buttonZapiszMat;
         private System.Windows.Forms.Button buttonAnulujMat;
-        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.GroupBox groupBoxSorowanieMaterialow;
         private System.Windows.Forms.RadioButton radioButtonNazwa_mat;
         private System.Windows.Forms.RadioButton radioButtonStan_min_mat;
         private System.Windows.Forms.RadioButton radioButtonTyp_mat;
@@ -2735,7 +2735,7 @@
         private System.Windows.Forms.ComboBox comboBoxWyborMagazyn;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox15;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panelDostawcy;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.Label labelLinkDostawcy;
