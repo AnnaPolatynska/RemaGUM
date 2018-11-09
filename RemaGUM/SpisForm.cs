@@ -1567,8 +1567,6 @@ namespace RemaGUM
 
         }// private void checkedListBoxDostawcyMat_SelectedIndex(object sender, EventArgs e)
 
-
-
         /// <summary>
         /// Czyści dane w formularzu Materiały.
         /// </summary>
@@ -1741,26 +1739,127 @@ namespace RemaGUM
             rodzaj_MatBUS.idx = comboBoxJednostkaMat.SelectedIndex;
         }// comboBoxRodzaj_SelectedIndexChanged(object sender, EventArgs e)
 
-        
+        private void OdblokujPanelMaterial()
+        {
+            //odblokowanie pól panelu materiał poza polem textBoxMagazynMat (stan początkowy w magazynie)
+            comboBoxWyborMagazyn.Enabled = true;
+            comboBoxWyborMagazyn.BackColor = Color.White;
+
+            textBoxNazwaMat.Enabled = true;
+            textBoxNazwaMat.BackColor = Color.White;
+
+            textBoxTypMat.Enabled = true;
+            textBoxTypMat.BackColor = Color.White;
+
+            comboBoxRodzajMat.Enabled = true;
+            comboBoxRodzajMat.BackColor = Color.White;
+
+            comboBoxJednostkaMat.Enabled = true;
+            comboBoxJednostkaMat.BackColor = Color.White;
+
+            textBoxMinMat.Enabled = true;
+            textBoxMinMat.BackColor = Color.White;
+
+            //odblokowanie pola rozchód - Bieżące zużycie i Odpad.
+            textBoxZuzycieMat.Enabled = true; 
+            textBoxZuzycieMat.BackColor = Color.White;
+            textBoxOdpadMat.Enabled = true;
+            textBoxOdpadMat.BackColor = Color.White;
+
+            // odblokowanie pola przychód - Zakup.
+            textBoxZapotrzebowanieMat.Enabled = true; 
+            textBoxZapotrzebowanieMat.BackColor = Color.White;
+
+            // odblokowanie listy materiałów
+            listBoxMaterialy.Enabled = true;
+            listBoxMaterialy.BackColor = Color.White;
+            
+            // odblokowanie sortowania materiałów
+            groupBoxSorowanieMaterialow.Enabled = true;
+
+            // odblokowanie wyszukiwania
+            textBoxWyszukaj_mat.Enabled = true;
+            textBoxWyszukaj_mat.BackColor = Color.White;
+            buttonSzukaj_mat.Enabled = true;
+
+            // aktywacja listBoxMaterialy
+            listBoxMaterialy.Enabled = true; 
+
+            //odblokowanie przycisków panelu materiał
+            buttonAnulujMat.Enabled = true;
+            buttonNowaMat.Enabled = true;
+            buttonUsunMat.Enabled = true;
+            buttonZapiszMat.Enabled = true;
+        }// OdblokujPanelMaterial()
+
         private void buttonNowyDostawca_Click(object sender, EventArgs e)
         {
-            buttonZapiszDostawca.Enabled = true;
-            buttonAnulujDostawca.Enabled = true;
-            buttonUsunDostawca.Enabled = false;
-
             textBoxNazwaDostawcy.Text = string.Empty;
             richTextBoxDostawca.Text = string.Empty;
             linkLabelDostawcaMat.Text = string.Empty;
             toolStripStatusLabel_ID_Dostawcy.Text = string.Empty;
 
+            //zablokowanie panelu materiał  
+            comboBoxWyborMagazyn.Enabled = false;
+            comboBoxWyborMagazyn.BackColor = Color.Bisque;
+
+            textBoxNazwaMat.Enabled = false;
+            textBoxNazwaMat.BackColor = Color.Bisque;
+
+            textBoxTypMat.Enabled = false;
+            textBoxTypMat.BackColor = Color.Bisque;
+
+            comboBoxRodzajMat.Enabled = false;
+            comboBoxRodzajMat.BackColor = Color.Bisque;
+
+            comboBoxJednostkaMat.Enabled = false;
+            comboBoxJednostkaMat.BackColor = Color.Bisque;
+
+            textBoxMagazynMat.Enabled = false;
+            textBoxMagazynMat.BackColor = Color.Bisque;
+
+            textBoxMinMat.Enabled = false;
+            textBoxMinMat.BackColor = Color.Bisque;
+
+            textBoxZuzycieMat.Enabled = false; // zablokowanie pola rozchód - Bieżące zużycie i Odpad.
+            textBoxZuzycieMat.BackColor = Color.LightSalmon;
+            textBoxOdpadMat.Enabled = false;
+            textBoxOdpadMat.BackColor = Color.LightSalmon;
+
+            textBoxZapotrzebowanieMat.Enabled = false; // zablokowanie pola przychód - Zakup.
+            textBoxZapotrzebowanieMat.BackColor = Color.DarkKhaki;
+
+            // zablokowanie listy materiałów
+            listBoxMaterialy.Enabled = false;
+            listBoxMaterialy.BackColor = Color.Bisque;
+
+            // zablokowanie sortowania materiałów
+            groupBoxSorowanieMaterialow.Enabled = false; 
+
+            // zablokowanie wyszukiwania
+            textBoxWyszukaj_mat.Enabled = false;
+            textBoxWyszukaj_mat.BackColor = Color.Bisque;
+            buttonSzukaj_mat.Enabled = false;
+
             listBoxMaterialy.Enabled = false; // dezaktywacja listBoxMaterialy przy nowym materiale
             
-            textBoxLinkDostawcy.Enabled = true; // aktywacja pola na wpisanie linku nowego dostawcy.
+            //zablokowanie przycisków panelu materiał
+            buttonAnulujMat.Enabled = false;
+            buttonNowaMat.Enabled = false;
+            buttonUsunMat.Enabled = false;
+            buttonZapiszMat.Enabled = false;
+            
+            // aktywacja pola na wpisanie linku nowego dostawcy.
+            textBoxLinkDostawcy.Enabled = true; 
+            textBoxLinkDostawcy.BackColor = Color.White;
+            
             checkedListBoxDostawcyMat.Enabled = false; // zablokowanie listy dostawców.
 
-            //TODO podczas dodawania / edycji dostawcy dezaktywuj pola materiału
+            // przyciski panelu dostawcy
+            buttonZapiszDostawca.Enabled = true;
+            buttonAnulujDostawca.Enabled = true;
+            buttonUsunDostawca.Enabled = false;
         }// buttonNowyDostawca_Click
-
 
 
         private void buttonZapiszDostawca_Click(object sender, EventArgs e)
@@ -1768,66 +1867,6 @@ namespace RemaGUM
             nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
             nsAccess2DB.Dostawca_matVO dostawca_MatVO = new nsAccess2DB.Dostawca_matVO();
             dostawca_MatVO = dostawca_MatBUS.VO;
-
-            //if (_statusForm == (int)_status.nowy)
-            //{
-            //    dostawca_MatBUS.select();
-            //    //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Identyfikator ASC;");
-            //    dostawca_MatBUS.idx = dostawca_MatBUS.count - 1;
-            //    dostawca_MatBUS.VO.Identyfikator = dostawca_MatBUS.VO.Identyfikator + 1;
-
-            //    int dostawcaId = dostawca_MatBUS.VO.Identyfikator + 1;
-
-            //    if (textBoxNazwaDostawcy.Text == string.Empty)
-            //    {
-            //        MessageBox.Show("Uzupełnij nazwę dostawcy", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        dostawca_MatVO.Nazwa_dostawca_mat = textBoxNazwaDostawcy.Text;
-            //    }
-
-            //    dostawca_MatVO.Dod_info_dostawca_mat = richTextBoxDostawca.Text;
-            //    dostawca_MatVO.Link_dostawca_mat = textBoxLinkDostawcy.Text;
-
-            //    dostawca_MatBUS.write(dostawca_MatBUS.VO);
-            //    dostawca_MatBUS.select();
-            //    //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
-            //    checkedListBoxDostawcyMat.SelectedIndex = dostawca_MatBUS.getIdx(dostawcaId);
-            //}// if nowy dostawca
-            //else if (_statusForm == (int)_status.edycja)
-            //{
-            //    dostawca_MatBUS.select((int)checkedListBoxDostawcyMat.SelectedIndex);
-            //    if (dostawca_MatBUS.count < 1)
-            //    {
-            //        MessageBox.Show("Dostawca o identyfikatorze " + checkedListBoxDostawcyMat.Tag.ToString() + "Nie istnieje w bazie materiałów", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        if (textBoxNazwaDostawcy.Text == string.Empty)
-            //        {
-            //            MessageBox.Show("Uzupełnij nazwę dostawcy", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //            return;
-            //        }
-            //        else
-            //        {
-            //            dostawca_MatVO.Nazwa_dostawca_mat = textBoxNazwaDostawcy.Text;
-            //        }
-
-            //        dostawca_MatVO.Dod_info_dostawca_mat = richTextBoxDostawca.Text;
-            //        dostawca_MatVO.Link_dostawca_mat = textBoxLinkDostawcy.Text;
-
-            //        dostawca_MatBUS.write(dostawca_MatVO); // ZAPIS
-
-            //    }//else (istnienie identyfikatora)
-            //    checkedListBoxDostawcyMat.SelectedIndex = dostawca_MatBUS.getIdx(dostawca_MatBUS.VO.Identyfikator);
-
-            //} // else if edycja dostawcy mat
-
-
-
 
             try
             {
@@ -1876,12 +1915,17 @@ namespace RemaGUM
 
             dostawca_MatBUS.select(); // odświeża dane dostawcy.
 
-            checkedListBoxDostawcyMat.Enabled = true;  // zapis aktywuje całośc formularza
-
-            listBoxMaterialy.Enabled = true; // zapis aktywuje listBoxMaterialy
-
             textBoxLinkDostawcy.Text = string.Empty; // po zapisie linku pole puste
-            textBoxLinkDostawcy.Enabled = false; //dezaktywacja pola linku dostawcy
+            textBoxLinkDostawcy.Enabled = true; //aktywacja pola linku dostawcy do edycji
+            textBoxLinkDostawcy.BackColor = Color.White;
+
+            AktywujPanelDostawcow();
+            checkedListBoxDostawcyMat.Enabled = true;  // zapis aktywuje całośc formularza
+            OdswiezDostawcow();
+            OdblokujPanelMaterial();
+
+            
+
         }// private void buttonZapiszDostawca_Click
 
         private void buttonAnulujDostawca_Click(object sender, EventArgs e)
@@ -1890,12 +1934,15 @@ namespace RemaGUM
             richTextBoxDostawca.Text = string.Empty;
             linkLabelDostawcaMat.Text = string.Empty;
 
-            checkedListBoxDostawcyMat.Enabled = true;  // anulowanie zapisu aktywuje całośc formularza
-
-            listBoxMaterialy.Enabled = true; // zapis aktywuje listBoxMaterialy
-
             textBoxLinkDostawcy.Text = string.Empty; // po zapisie linku pole puste
-            textBoxLinkDostawcy.Enabled = false; //dezaktywacja pola linku dostawcy
+            textBoxLinkDostawcy.Enabled = true; //aktywacja pola linku dostawcy
+            textBoxLinkDostawcy.BackColor = Color.White;
+
+            AktywujPanelDostawcow();
+            checkedListBoxDostawcyMat.Enabled = true;  // anulowanie zapisu aktywuje całośc formularza
+            OdswiezDostawcow();
+            OdblokujPanelMaterial();
+
         }// private void buttonAnulujDostawca_Click
 
         private void buttonUsunDostawca_Click(object sender, EventArgs e)
@@ -1914,9 +1961,9 @@ namespace RemaGUM
             dostawca_MatBUS.delete((int)checkedListBoxDostawcyMat.Tag);
             dostawca_MaterialBUS.delete((int)checkedListBoxDostawcyMat.Tag);
 
-           // WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);
-            dostawca_MatBUS.select();
             
+            dostawca_MatBUS.select();
+            WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);
         }//  private void buttonUsunDostawca_Click
 
         // //////////////////////////////////////////////////  Radio buttony zakładki materiały.
@@ -2027,6 +2074,9 @@ namespace RemaGUM
             }
         }// radioButtonMagazyn_ilosc_mat_CheckedChanged(object sender, EventArgs e)
 
+       
+
+
         // --------- ---------------------------------------przyciski Formularz Materialy
 
         /// <summary>
@@ -2052,8 +2102,9 @@ namespace RemaGUM
             // zablokowanie listy materiałów
             listBoxMaterialy.Enabled = false;
             listBoxMaterialy.BackColor = Color.Bisque;
-
-            groupBoxSorowanieMaterialow.Enabled = true; // zablokowanie sortowania materiałów
+            
+            // zablokowanie sortowania materiałów
+            groupBoxSorowanieMaterialow.Enabled = false; 
 
             // zablokowanie wyszukiwania
             textBoxWyszukaj_mat.Enabled = false;
@@ -2075,7 +2126,6 @@ namespace RemaGUM
             buttonUsunDostawca.Enabled = false;
             buttonZapiszDostawca.Enabled = false;
 
-
             radioButtonNazwa_mat.Checked = false; // wymusza sortowanie po nazwie materiału przy zapisie nowej pozycji Materiału.
 
             buttonAnulujMat.Enabled = true;
@@ -2087,6 +2137,61 @@ namespace RemaGUM
             _statusForm = (int)_status.nowy;
         }//ButtonNowa_Click
 
+
+        /// <summary>
+        /// Aktywuje pola panelu dostawców bez pola do wpisania linku
+        /// </summary>
+        private void AktywujPanelDostawcow()
+        {
+            // odblokowanie panelu dostawcy
+            textBoxNazwaDostawcy.Enabled = true;
+            textBoxNazwaDostawcy.BackColor = Color.White;
+            richTextBoxDostawca.Enabled = true;
+            richTextBoxDostawca.BackColor = Color.White;
+
+            linkLabelDostawcaMat.Enabled = true;
+            linkLabelDostawcaMat.ForeColor = Color.White;
+            
+            buttonNowyDostawca.Enabled = true;
+            buttonAnulujDostawca.Enabled = true;
+            buttonUsunDostawca.Enabled = true;
+            buttonZapiszDostawca.Enabled = true;
+        }//AktywujPanelDostawcow()
+
+        /// <summary>
+        /// Aktywuje pola panelu materiałów bez pola stan magazynowy
+        /// </summary>
+        private void AktywujPanelMaterial()
+        {
+            // odblokowanie pola rozchód - Bieżące zużycie i Odpad.
+            textBoxZuzycieMat.Enabled = true; 
+            textBoxZuzycieMat.BackColor = Color.White;
+            textBoxOdpadMat.Enabled = true;
+            textBoxOdpadMat.BackColor = Color.White;
+
+            // odblokowanie pola przychód - Zakup.
+            textBoxZapotrzebowanieMat.Enabled = true; 
+            textBoxZapotrzebowanieMat.BackColor = Color.White;
+
+            // odblokowanie listy materiałów
+            listBoxMaterialy.Enabled = true;
+            listBoxMaterialy.BackColor = Color.White;
+
+            // odblokowanie sortowania materiałów
+            groupBoxSorowanieMaterialow.Enabled = true; 
+
+            // odblokowanie wyszukiwania
+            textBoxWyszukaj_mat.Enabled = true;
+            textBoxWyszukaj_mat.BackColor = Color.White;
+            buttonSzukaj_mat.Enabled = true;
+
+            //odblokowanie przycisków
+            buttonAnulujMat.Enabled = true;
+            buttonZapiszMat.Enabled = true;
+            buttonUsunMat.Enabled = true;
+            buttonNowaMat.Enabled = true;
+        }// AktywujPanelMaterial()
+
         /// <summary>
         /// Działania po wciśnięciu klawisza Anuluj (materiały).
         /// </summary>
@@ -2097,27 +2202,8 @@ namespace RemaGUM
             int idx = listBoxMaterialy.SelectedIndex;
 
             CzyscDaneMaterialy();
-          
-            textBoxZuzycieMat.Enabled = true; // odblokowanie pola rozchód - Bieżące zużycie i Odpad.
-            textBoxZuzycieMat.BackColor = Color.White;
-            textBoxOdpadMat.Enabled = true;
-            textBoxOdpadMat.BackColor = Color.White;
 
-            textBoxZapotrzebowanieMat.Enabled = true; // odblokowanie pola przychód - Zakup.
-            textBoxZapotrzebowanieMat.BackColor = Color.White;
-
-            // odblokowanie listy materiałów
-            listBoxMaterialy.Enabled = true;
-            listBoxMaterialy.BackColor = Color.White;
-
-            groupBoxSorowanieMaterialow.Enabled = true; // odblokowanie sortowania materiałów
-
-            // odblokowanie wyszukiwania
-            textBoxWyszukaj_mat.Enabled = true;
-            textBoxWyszukaj_mat.BackColor = Color.White;
-            buttonSzukaj_mat.Enabled = true;
-
-            AktywujPanelDostawcow();
+            AktywujPanelMaterial();
 
             radioButtonNazwa_mat.Checked = true; // przy przejściu do zakładki materiały zaznaczone sortowanie po nazwie.
             WybierzMagazyn();
@@ -2131,30 +2217,10 @@ namespace RemaGUM
                 listBoxMaterialy.SelectedIndex = 0;
             }
             //listBoxMaterialy.SelectedIndex = idx;
+            AktywujPanelDostawcow();
 
-            buttonAnulujMat.Enabled = true;
-            buttonZapiszMat.Enabled = true;
-            buttonUsunMat.Enabled = true;
-            buttonNowaMat.Enabled = true;
         }//buttonAnuluj_mat_Click
 
-        private void AktywujPanelDostawcow()
-        {
-            // odblokowanie panelu dostawcy
-            textBoxNazwaDostawcy.Enabled = true;
-            textBoxNazwaDostawcy.BackColor = Color.White;
-            richTextBoxDostawca.Enabled = true;
-            richTextBoxDostawca.BackColor = Color.White;
-
-            linkLabelDostawcaMat.Enabled = true;
-            linkLabelDostawcaMat.ForeColor = Color.White;
-            textBoxLinkDostawcy.Enabled = true;
-            textBoxLinkDostawcy.BackColor = Color.White;
-            buttonNowyDostawca.Enabled = true;
-            buttonAnulujDostawca.Enabled = true;
-            buttonUsunDostawca.Enabled = true;
-            buttonZapiszDostawca.Enabled = true;
-        }
 
         /// <summary>
         /// Działania po wciśnięciu klawisza Usuń (materiały).
@@ -2170,20 +2236,8 @@ namespace RemaGUM
             WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);
             WypelnijMaterialyNazwami();
 
-            textBoxZuzycieMat.Enabled = true; // odblokowanie pola rozchód - Bieżące zużycie i Odpad.
-            textBoxZuzycieMat.BackColor = Color.White;
-            textBoxOdpadMat.Enabled = true;
-            textBoxOdpadMat.BackColor = Color.White;
-
-            textBoxZapotrzebowanieMat.Enabled = true; // odblokowanie pola przychód - Zakup.
-            textBoxZapotrzebowanieMat.BackColor = Color.White;
-
+            AktywujPanelMaterial();
             AktywujPanelDostawcow();
-
-            buttonAnulujMat.Enabled = true;
-            buttonZapiszMat.Enabled = true;
-            buttonUsunMat.Enabled = true;
-            buttonNowaMat.Enabled = true;
 
             _statusForm = (int)_status.edycja;
         }//buttonUsun_mat_Click
@@ -2313,8 +2367,6 @@ namespace RemaGUM
                     materialy_VO.Zapotrzebowanie_mat = int.Parse(textBoxZapotrzebowanieMat.Text.Trim());
                 }
 
-                
-
                 // Zapis dostawców przypisanych do danego materiału.
 
                 //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
@@ -2344,8 +2396,6 @@ namespace RemaGUM
 
                 textBoxZapotrzebowanieMat.Enabled = true; // odblokowanie pola przychód - Zakup.
                 textBoxZapotrzebowanieMat.BackColor = Color.White;
-
-                AktywujPanelDostawcow();
 
                 WypelnijMaterialyNazwami();
 
@@ -2507,11 +2557,9 @@ namespace RemaGUM
             OdswiezDostawcow();
             pokazKomunikat("Pozycja zapisana w bazie");
 
-            buttonAnulujMat.Enabled = true;
-            buttonZapiszMat.Enabled = true;
-            buttonUsunMat.Enabled = true;
-            buttonNowaMat.Enabled = true;
-
+            AktywujPanelDostawcow();
+            AktywujPanelMaterial();
+        
             _statusForm = (int)_status.edycja;
         }//buttonZapiszMat_Clic
 
@@ -3327,7 +3375,6 @@ namespace RemaGUM
             //odblokowanie listy maszyn Dysponenta (pole jest z założenia nieaktywne ma jedynie zmienić kolor)
             listBoxMaszynyDysponenta.BackColor = Color.White;
 
-
             buttonNowaDysponent.Enabled = true;
             buttonZapiszDysponent.Enabled = true;
             buttonAnulujDysponent.Enabled = true;
@@ -3363,7 +3410,7 @@ namespace RemaGUM
             buttonNowaDysponent.Enabled = true;
             buttonZapiszDysponent.Enabled = true;
             buttonAnulujDysponent.Enabled = true;
-            buttonUsunDysponent.Enabled = false;
+            buttonUsunDysponent.Enabled = true;
 
             _statusForm = (int)_status.edycja;
         }// buttonAnulujDysponent_Click
