@@ -11,6 +11,7 @@ using System.Xml;
 using System.Diagnostics;
 using System.Threading;
 
+
 namespace RemaGUM
 {
     public partial class SpisForm : Form
@@ -1634,25 +1635,38 @@ namespace RemaGUM
         {
             nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
             //czyści checkboxy DostawcyMat
-            for (int i = 0; i < checkedListBoxDostawcyMat.Items.Count; i++)
+            //for (int i = 0; i < checkedListBoxDostawcyMat.Items.Count; i++)
+            //{
+            //    checkedListBoxDostawcyMat.SetItemChecked(i, false);
+            //}
+
+            //textBoxNazwaDostawcy.Text = string.Empty;
+            //linkLabelDostawcaMat.Text = string.Empty;
+            //richTextBoxDostawca.Text = string.Empty;
+
+            //dostawca_MatBUS.select(); //odświeża wybrane checkboxy dostawcy.
+           
+            //dostawca_MatBUS.idx = checkedListBoxDostawcyMat.SelectedIndex;
+            //toolStripStatusLabel_ID_Dostawcy.Text = dostawca_MatBUS.VO.Identyfikator.ToString();
+
+            //textBoxNazwaDostawcy.Text = dostawca_MatBUS.VO.Nazwa_dostawca_mat.ToString();
+            //linkLabelDostawcaMat.Text = dostawca_MatBUS.VO.Link_dostawca_mat.ToString();
+            //richTextBoxDostawca.Text = dostawca_MatBUS.VO.Dod_info_dostawca_mat.ToString();
+
+            dostawca_MatBUS.select(); //odświeża wybrane checkboxy dostawcy.
+
+            radioButtonNazwa_mat.Checked = true; // przy przejściu do zakładki materiały zaznaczone sortowanie po nazwie.
+            WybierzMagazyn();
+            WypelnijMaterialyNazwami();
+            WypelnijJednostka_miar();
+            WypelnijRodzaj_mat();
+            WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);// wypełnia dostawców materialów.
+
+            if (listBoxMaterialy.Items.Count > 0)
             {
-                checkedListBoxDostawcyMat.SetItemChecked(i, false);
+                listBoxMaterialy.SelectedIndex = 0;
             }
 
-            textBoxNazwaDostawcy.Text = string.Empty;
-            linkLabelDostawcaMat.Text = string.Empty;
-            richTextBoxDostawca.Text = string.Empty;
-
-            dostawca_MatBUS.select(); //odświeża wybrane checkboxy dostawcy.
-           
-            dostawca_MatBUS.idx = checkedListBoxDostawcyMat.SelectedIndex;
-            toolStripStatusLabel_ID_Dostawcy.Text = dostawca_MatBUS.VO.Identyfikator.ToString();
-
-            textBoxNazwaDostawcy.Text = dostawca_MatBUS.VO.Nazwa_dostawca_mat.ToString();
-            linkLabelDostawcaMat.Text = dostawca_MatBUS.VO.Link_dostawca_mat.ToString();
-            richTextBoxDostawca.Text = dostawca_MatBUS.VO.Dod_info_dostawca_mat.ToString();
-
-            dostawca_MatBUS.select(); //odświeża wybrane checkboxy dostawcy.
         }// OdswiezDostawców
 
         /// <summary>
@@ -1860,6 +1874,27 @@ namespace RemaGUM
             buttonAnulujDostawca.Enabled = true;
             buttonUsunDostawca.Enabled = false;
         }// buttonNowyDostawca_Click
+
+        /// <summary>
+        /// Usuwa link z obiektu (wymaga uzycia klawisza zapisz).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonUsunLink_Click(object sender, EventArgs e)
+        {
+            linkLabelDostawcaMat.Text = string.Empty;
+
+            pokazKomunikat("Usunięcie linku wymaga zatwierdzenia przyciskiem Zapisz.");
+
+            OdswiezDostawcow();
+        }//buttonUsunLink_Click
+
+        // TODO jak starczy czasu otwarcie linku w przegladarce
+        private void linkLabelDostawcaMat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }// linkLabelDostawcaMat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+
 
 
         private void buttonZapiszDostawca_Click(object sender, EventArgs e)
@@ -3481,14 +3516,6 @@ namespace RemaGUM
        
             Cursor.Current = Cursors.Default;
         }//buttonSzukajDysponent_Click
-
-            
-
-            
-        
-
-               
-       
 
     }// public partial class SpisForm : Form
 

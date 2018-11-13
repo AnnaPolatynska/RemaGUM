@@ -5595,7 +5595,7 @@ namespace nsAccess2DB
 
         public DataTable select(int Identyfikator)
         {
-            string query = "SELECT * FROM Dostawca_mat WHERE Identyfikator = "+ Identyfikator.ToString() + ";";
+            string query = "SELECT * FROM Dostawca_mat WHERE Identyfikator = " + Identyfikator.ToString() + ";";
 
             OleDbParameter[] parameters = new OleDbParameter[0];
             DataTable dt = _conn.executeSelectQuery(query, parameters);
@@ -5653,9 +5653,10 @@ namespace nsAccess2DB
             return b;
         }//update
 
+
         public bool delete(int Identyfikator)
         {
-            string query = "DELETE FROM Dostawca_mat WHERE Identyfikator = " + Identyfikator.ToString() + ";";
+            string query = "DELETE * FROM Dostawca_mat WHERE Identyfikator = " + Identyfikator.ToString() + ";";
             OleDbParameter[] parameters = new OleDbParameter[0];
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
