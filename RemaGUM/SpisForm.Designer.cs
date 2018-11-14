@@ -34,7 +34,6 @@
             this.labelLinkDostawcy = new System.Windows.Forms.Label();
             this.textBoxLinkDostawcy2 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
             this.linkLabelDostawcaMat2 = new System.Windows.Forms.LinkLabel();
             this.statusStripMaterialy = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -234,7 +233,7 @@
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
             this.labelDostawca = new System.Windows.Forms.Label();
-            this.labelDaneDostawcy = new System.Windows.Forms.Label();
+            this.richTextBoxDaneDodatkoweDostawca = new System.Windows.Forms.RichTextBox();
             this.Materiały.SuspendLayout();
             this.panelDostawcy.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
@@ -300,13 +299,14 @@
             // 
             // panelDostawcy
             // 
+            this.panelDostawcy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panelDostawcy.BackColor = System.Drawing.Color.SandyBrown;
-            this.panelDostawcy.Controls.Add(this.labelDaneDostawcy);
+            this.panelDostawcy.Controls.Add(this.richTextBoxDaneDodatkoweDostawca);
             this.panelDostawcy.Controls.Add(this.labelDostawca);
             this.panelDostawcy.Controls.Add(this.labelLinkDostawcy);
             this.panelDostawcy.Controls.Add(this.textBoxLinkDostawcy2);
             this.panelDostawcy.Controls.Add(this.label20);
-            this.panelDostawcy.Controls.Add(this.label27);
             this.panelDostawcy.Controls.Add(this.linkLabelDostawcaMat2);
             this.panelDostawcy.Location = new System.Drawing.Point(6, 25);
             this.panelDostawcy.Name = "panelDostawcy";
@@ -315,9 +315,10 @@
             // 
             // labelLinkDostawcy
             // 
+            this.labelLinkDostawcy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelLinkDostawcy.AutoSize = true;
             this.labelLinkDostawcy.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.labelLinkDostawcy.Location = new System.Drawing.Point(10, 176);
+            this.labelLinkDostawcy.Location = new System.Drawing.Point(10, 199);
             this.labelLinkDostawcy.Name = "labelLinkDostawcy";
             this.labelLinkDostawcy.Size = new System.Drawing.Size(86, 20);
             this.labelLinkDostawcy.TabIndex = 53;
@@ -325,6 +326,7 @@
             // 
             // textBoxLinkDostawcy2
             // 
+            this.textBoxLinkDostawcy2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxLinkDostawcy2.BackColor = System.Drawing.Color.SandyBrown;
             this.textBoxLinkDostawcy2.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.textBoxLinkDostawcy2.Location = new System.Drawing.Point(14, 240);
@@ -343,22 +345,12 @@
             this.label20.TabIndex = 51;
             this.label20.Text = "Nazwa dostawcy: ";
             // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label27.Location = new System.Drawing.Point(3, 74);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(311, 20);
-            this.label27.TabIndex = 44;
-            this.label27.Text = "Dodatkowe informacje dotyczące wybranego dostawcy:";
-            this.label27.UseMnemonic = false;
-            // 
             // linkLabelDostawcaMat2
             // 
+            this.linkLabelDostawcaMat2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linkLabelDostawcaMat2.AutoSize = true;
             this.linkLabelDostawcaMat2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.linkLabelDostawcaMat2.Location = new System.Drawing.Point(11, 210);
+            this.linkLabelDostawcaMat2.Location = new System.Drawing.Point(11, 224);
             this.linkLabelDostawcaMat2.Name = "linkLabelDostawcaMat2";
             this.linkLabelDostawcaMat2.Size = new System.Drawing.Size(115, 13);
             this.linkLabelDostawcaMat2.TabIndex = 42;
@@ -413,6 +405,8 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox10.Controls.Add(this.groupBoxDostawca);
             this.groupBox10.Controls.Add(this.label28);
             this.groupBox10.Controls.Add(this.checkedListBoxDostawcyMat);
@@ -426,6 +420,8 @@
             // 
             // groupBoxDostawca
             // 
+            this.groupBoxDostawca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBoxDostawca.Controls.Add(this.panelDostawcy);
             this.groupBoxDostawca.Location = new System.Drawing.Point(6, 463);
             this.groupBoxDostawca.Name = "groupBoxDostawca";
@@ -484,6 +480,8 @@
             // 
             // groupBox15
             // 
+            this.groupBox15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox15.Controls.Add(this.groupBox13);
             this.groupBox15.Controls.Add(this.textBoxMinMat);
             this.groupBox15.Controls.Add(this.label38);
@@ -2669,22 +2667,24 @@
             // labelDostawca
             // 
             this.labelDostawca.AutoSize = true;
-            this.labelDostawca.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelDostawca.Font = new System.Drawing.Font("Arial Narrow", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelDostawca.Location = new System.Drawing.Point(10, 37);
             this.labelDostawca.Name = "labelDostawca";
-            this.labelDostawca.Size = new System.Drawing.Size(64, 20);
+            this.labelDostawca.Size = new System.Drawing.Size(68, 20);
             this.labelDostawca.TabIndex = 55;
             this.labelDostawca.Text = "Dostawca";
             // 
-            // labelDaneDostawcy
+            // richTextBoxDaneDodatkoweDostawca
             // 
-            this.labelDaneDostawcy.AutoSize = true;
-            this.labelDaneDostawcy.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.labelDaneDostawcy.Location = new System.Drawing.Point(10, 108);
-            this.labelDaneDostawcy.Name = "labelDaneDostawcy";
-            this.labelDaneDostawcy.Size = new System.Drawing.Size(64, 20);
-            this.labelDaneDostawcy.TabIndex = 56;
-            this.labelDaneDostawcy.Text = "Dostawca";
+            this.richTextBoxDaneDodatkoweDostawca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.richTextBoxDaneDodatkoweDostawca.BackColor = System.Drawing.Color.SandyBrown;
+            this.richTextBoxDaneDodatkoweDostawca.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.richTextBoxDaneDodatkoweDostawca.Location = new System.Drawing.Point(7, 60);
+            this.richTextBoxDaneDodatkoweDostawca.Name = "richTextBoxDaneDodatkoweDostawca";
+            this.richTextBoxDaneDodatkoweDostawca.Size = new System.Drawing.Size(369, 136);
+            this.richTextBoxDaneDodatkoweDostawca.TabIndex = 57;
+            this.richTextBoxDaneDodatkoweDostawca.Text = "";
             // 
             // SpisForm
             // 
@@ -2872,7 +2872,6 @@
         private System.Windows.Forms.TextBox textBoxOdpadMat;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.Label label27;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelJednostkaZuzycie;
@@ -2984,7 +2983,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
         private System.Windows.Forms.GroupBox groupBoxDostawca;
         private System.Windows.Forms.Label labelDostawca;
-        private System.Windows.Forms.Label labelDaneDostawcy;
+        private System.Windows.Forms.RichTextBox richTextBoxDaneDodatkoweDostawca;
     }
 }
 

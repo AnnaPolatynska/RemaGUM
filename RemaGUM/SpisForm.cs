@@ -1560,8 +1560,8 @@ namespace RemaGUM
             checkedListBoxDostawcyMat.Tag = dostawca_matBUS.VO.Identyfikator;
 
             labelDostawca.Text = dostawca_matBUS.VO.Nazwa_dostawca_mat.ToString();
-            labelDaneDostawcy.Text = dostawca_matBUS.VO.Dod_info_dostawca_mat.ToString();
 
+            richTextBoxDaneDodatkoweDostawca.Text = dostawca_matBUS.VO.Dod_info_dostawca_mat.ToString();
             linkLabelDostawcaMat2.Text = dostawca_matBUS.VO.Link_dostawca_mat.ToString();
             textBoxLinkDostawcy2.Text = dostawca_matBUS.VO.Link_dostawca_mat.ToString();
 
