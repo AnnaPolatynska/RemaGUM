@@ -31,12 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpisForm));
             this.Materiały = new System.Windows.Forms.TabPage();
             this.panelDostawcy = new System.Windows.Forms.Panel();
-            this.textBoxNazwaDostawcy2 = new System.Windows.Forms.TextBox();
             this.labelLinkDostawcy = new System.Windows.Forms.Label();
             this.textBoxLinkDostawcy2 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.richTextBoxDostawca2 = new System.Windows.Forms.RichTextBox();
             this.linkLabelDostawcaMat2 = new System.Windows.Forms.LinkLabel();
             this.statusStripMaterialy = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -235,6 +233,8 @@
             this.statusStripDostawca = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.labelDostawca = new System.Windows.Forms.Label();
+            this.labelDaneDostawcy = new System.Windows.Forms.Label();
             this.Materiały.SuspendLayout();
             this.panelDostawcy.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
@@ -301,32 +301,23 @@
             // panelDostawcy
             // 
             this.panelDostawcy.BackColor = System.Drawing.Color.SandyBrown;
-            this.panelDostawcy.Controls.Add(this.textBoxNazwaDostawcy2);
+            this.panelDostawcy.Controls.Add(this.labelDaneDostawcy);
+            this.panelDostawcy.Controls.Add(this.labelDostawca);
             this.panelDostawcy.Controls.Add(this.labelLinkDostawcy);
             this.panelDostawcy.Controls.Add(this.textBoxLinkDostawcy2);
             this.panelDostawcy.Controls.Add(this.label20);
             this.panelDostawcy.Controls.Add(this.label27);
-            this.panelDostawcy.Controls.Add(this.richTextBoxDostawca2);
             this.panelDostawcy.Controls.Add(this.linkLabelDostawcaMat2);
             this.panelDostawcy.Location = new System.Drawing.Point(6, 25);
             this.panelDostawcy.Name = "panelDostawcy";
             this.panelDostawcy.Size = new System.Drawing.Size(390, 277);
             this.panelDostawcy.TabIndex = 50;
             // 
-            // textBoxNazwaDostawcy2
-            // 
-            this.textBoxNazwaDostawcy2.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwaDostawcy2.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxNazwaDostawcy2.Location = new System.Drawing.Point(13, 28);
-            this.textBoxNazwaDostawcy2.Name = "textBoxNazwaDostawcy2";
-            this.textBoxNazwaDostawcy2.Size = new System.Drawing.Size(362, 24);
-            this.textBoxNazwaDostawcy2.TabIndex = 54;
-            // 
             // labelLinkDostawcy
             // 
             this.labelLinkDostawcy.AutoSize = true;
             this.labelLinkDostawcy.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.labelLinkDostawcy.Location = new System.Drawing.Point(10, 217);
+            this.labelLinkDostawcy.Location = new System.Drawing.Point(10, 176);
             this.labelLinkDostawcy.Name = "labelLinkDostawcy";
             this.labelLinkDostawcy.Size = new System.Drawing.Size(86, 20);
             this.labelLinkDostawcy.TabIndex = 53;
@@ -334,10 +325,11 @@
             // 
             // textBoxLinkDostawcy2
             // 
-            this.textBoxLinkDostawcy2.BackColor = System.Drawing.Color.Linen;
+            this.textBoxLinkDostawcy2.BackColor = System.Drawing.Color.SandyBrown;
             this.textBoxLinkDostawcy2.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.textBoxLinkDostawcy2.Location = new System.Drawing.Point(14, 240);
             this.textBoxLinkDostawcy2.Name = "textBoxLinkDostawcy2";
+            this.textBoxLinkDostawcy2.ReadOnly = true;
             this.textBoxLinkDostawcy2.Size = new System.Drawing.Size(362, 24);
             this.textBoxLinkDostawcy2.TabIndex = 52;
             // 
@@ -347,36 +339,26 @@
             this.label20.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.label20.Location = new System.Drawing.Point(3, 5);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(100, 20);
+            this.label20.Size = new System.Drawing.Size(106, 20);
             this.label20.TabIndex = 51;
-            this.label20.Text = "Nazwa dostawcy";
+            this.label20.Text = "Nazwa dostawcy: ";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label27.Location = new System.Drawing.Point(10, 61);
+            this.label27.Location = new System.Drawing.Point(3, 74);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(308, 20);
+            this.label27.Size = new System.Drawing.Size(311, 20);
             this.label27.TabIndex = 44;
-            this.label27.Text = "Dodatkowe informacje dotyczące wybranego dostawcy";
+            this.label27.Text = "Dodatkowe informacje dotyczące wybranego dostawcy:";
             this.label27.UseMnemonic = false;
-            // 
-            // richTextBoxDostawca2
-            // 
-            this.richTextBoxDostawca2.BackColor = System.Drawing.Color.Linen;
-            this.richTextBoxDostawca2.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.richTextBoxDostawca2.Location = new System.Drawing.Point(14, 84);
-            this.richTextBoxDostawca2.Name = "richTextBoxDostawca2";
-            this.richTextBoxDostawca2.Size = new System.Drawing.Size(361, 111);
-            this.richTextBoxDostawca2.TabIndex = 45;
-            this.richTextBoxDostawca2.Text = "";
             // 
             // linkLabelDostawcaMat2
             // 
             this.linkLabelDostawcaMat2.AutoSize = true;
             this.linkLabelDostawcaMat2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.linkLabelDostawcaMat2.Location = new System.Drawing.Point(10, 198);
+            this.linkLabelDostawcaMat2.Location = new System.Drawing.Point(11, 210);
             this.linkLabelDostawcaMat2.Name = "linkLabelDostawcaMat2";
             this.linkLabelDostawcaMat2.Size = new System.Drawing.Size(115, 13);
             this.linkLabelDostawcaMat2.TabIndex = 42;
@@ -435,7 +417,7 @@
             this.groupBox10.Controls.Add(this.label28);
             this.groupBox10.Controls.Add(this.checkedListBoxDostawcyMat);
             this.groupBox10.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.groupBox10.Location = new System.Drawing.Point(764, 8);
+            this.groupBox10.Location = new System.Drawing.Point(816, 8);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(415, 781);
             this.groupBox10.TabIndex = 49;
@@ -493,7 +475,7 @@
             this.groupBox6.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox6.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox6.Location = new System.Drawing.Point(336, 71);
+            this.groupBox6.Location = new System.Drawing.Point(388, 71);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(419, 718);
             this.groupBox6.TabIndex = 52;
@@ -513,7 +495,7 @@
             this.groupBox15.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.groupBox15.Location = new System.Drawing.Point(12, 256);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(398, 345);
+            this.groupBox15.Size = new System.Drawing.Size(398, 392);
             this.groupBox15.TabIndex = 63;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Gospodarka magazynowa";
@@ -521,7 +503,7 @@
             // groupBox13
             // 
             this.groupBox13.Controls.Add(this.panel2);
-            this.groupBox13.Location = new System.Drawing.Point(11, 244);
+            this.groupBox13.Location = new System.Drawing.Point(9, 294);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(380, 86);
             this.groupBox13.TabIndex = 60;
@@ -572,7 +554,7 @@
             // 
             this.textBoxMinMat.BackColor = System.Drawing.Color.Linen;
             this.textBoxMinMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxMinMat.Location = new System.Drawing.Point(144, 77);
+            this.textBoxMinMat.Location = new System.Drawing.Point(145, 89);
             this.textBoxMinMat.Name = "textBoxMinMat";
             this.textBoxMinMat.Size = new System.Drawing.Size(149, 24);
             this.textBoxMinMat.TabIndex = 58;
@@ -581,7 +563,7 @@
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label38.Location = new System.Drawing.Point(31, 80);
+            this.label38.Location = new System.Drawing.Point(32, 92);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(94, 20);
             this.label38.TabIndex = 57;
@@ -591,7 +573,7 @@
             // 
             this.labelJednostkaMin.AutoSize = true;
             this.labelJednostkaMin.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.labelJednostkaMin.Location = new System.Drawing.Point(299, 80);
+            this.labelJednostkaMin.Location = new System.Drawing.Point(300, 92);
             this.labelJednostkaMin.Name = "labelJednostkaMin";
             this.labelJednostkaMin.Size = new System.Drawing.Size(65, 20);
             this.labelJednostkaMin.TabIndex = 59;
@@ -602,7 +584,7 @@
             this.groupBox12.BackColor = System.Drawing.Color.Bisque;
             this.groupBox12.Controls.Add(this.panel1);
             this.groupBox12.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.groupBox12.Location = new System.Drawing.Point(8, 107);
+            this.groupBox12.Location = new System.Drawing.Point(9, 144);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(383, 123);
             this.groupBox12.TabIndex = 53;
@@ -685,7 +667,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label30.Location = new System.Drawing.Point(31, 31);
+            this.label30.Location = new System.Drawing.Point(32, 43);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(107, 20);
             this.label30.TabIndex = 19;
@@ -695,7 +677,7 @@
             // 
             this.textBoxMagazynMat.BackColor = System.Drawing.Color.Bisque;
             this.textBoxMagazynMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxMagazynMat.Location = new System.Drawing.Point(144, 28);
+            this.textBoxMagazynMat.Location = new System.Drawing.Point(145, 40);
             this.textBoxMagazynMat.Name = "textBoxMagazynMat";
             this.textBoxMagazynMat.Size = new System.Drawing.Size(149, 24);
             this.textBoxMagazynMat.TabIndex = 38;
@@ -704,7 +686,7 @@
             // 
             this.labelJednostkaDostepnosc.AutoSize = true;
             this.labelJednostkaDostepnosc.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.labelJednostkaDostepnosc.Location = new System.Drawing.Point(299, 31);
+            this.labelJednostkaDostepnosc.Location = new System.Drawing.Point(300, 43);
             this.labelJednostkaDostepnosc.Name = "labelJednostkaDostepnosc";
             this.labelJednostkaDostepnosc.Size = new System.Drawing.Size(65, 20);
             this.labelJednostkaDostepnosc.TabIndex = 15;
@@ -887,7 +869,7 @@
             this.groupBox7.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox7.ForeColor = System.Drawing.Color.Black;
-            this.groupBox7.Location = new System.Drawing.Point(338, 8);
+            this.groupBox7.Location = new System.Drawing.Point(390, 8);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(417, 57);
             this.groupBox7.TabIndex = 51;
@@ -926,7 +908,7 @@
             this.groupBox8.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox8.Location = new System.Drawing.Point(9, 71);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(321, 718);
+            this.groupBox8.Size = new System.Drawing.Size(373, 718);
             this.groupBox8.TabIndex = 47;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Lista Materiałów";
@@ -941,7 +923,7 @@
             this.listBoxMaterialy.ItemHeight = 20;
             this.listBoxMaterialy.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaterialy.Name = "listBoxMaterialy";
-            this.listBoxMaterialy.Size = new System.Drawing.Size(309, 684);
+            this.listBoxMaterialy.Size = new System.Drawing.Size(361, 684);
             this.listBoxMaterialy.TabIndex = 0;
             this.listBoxMaterialy.SelectedIndexChanged += new System.EventHandler(this.listBoxMaterialy_SelectedIndexChanged);
             // 
@@ -956,7 +938,7 @@
             this.groupBoxSorowanieMaterialow.ForeColor = System.Drawing.Color.Black;
             this.groupBoxSorowanieMaterialow.Location = new System.Drawing.Point(9, 8);
             this.groupBoxSorowanieMaterialow.Name = "groupBoxSorowanieMaterialow";
-            this.groupBoxSorowanieMaterialow.Size = new System.Drawing.Size(321, 57);
+            this.groupBoxSorowanieMaterialow.Size = new System.Drawing.Size(375, 57);
             this.groupBoxSorowanieMaterialow.TabIndex = 50;
             this.groupBoxSorowanieMaterialow.TabStop = false;
             this.groupBoxSorowanieMaterialow.Text = "Sortowanie materiałów";
@@ -966,7 +948,7 @@
             this.radioButtonMagazyn_ilosc_mat.AutoSize = true;
             this.radioButtonMagazyn_ilosc_mat.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.radioButtonMagazyn_ilosc_mat.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonMagazyn_ilosc_mat.Location = new System.Drawing.Point(220, 26);
+            this.radioButtonMagazyn_ilosc_mat.Location = new System.Drawing.Point(263, 23);
             this.radioButtonMagazyn_ilosc_mat.Name = "radioButtonMagazyn_ilosc_mat";
             this.radioButtonMagazyn_ilosc_mat.Size = new System.Drawing.Size(106, 24);
             this.radioButtonMagazyn_ilosc_mat.TabIndex = 5;
@@ -980,7 +962,7 @@
             this.radioButtonNazwa_mat.AutoSize = true;
             this.radioButtonNazwa_mat.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.radioButtonNazwa_mat.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNazwa_mat.Location = new System.Drawing.Point(6, 24);
+            this.radioButtonNazwa_mat.Location = new System.Drawing.Point(6, 23);
             this.radioButtonNazwa_mat.Name = "radioButtonNazwa_mat";
             this.radioButtonNazwa_mat.Size = new System.Drawing.Size(64, 24);
             this.radioButtonNazwa_mat.TabIndex = 4;
@@ -994,7 +976,7 @@
             this.radioButtonStan_min_mat.AutoSize = true;
             this.radioButtonStan_min_mat.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.radioButtonStan_min_mat.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonStan_min_mat.Location = new System.Drawing.Point(119, 26);
+            this.radioButtonStan_min_mat.Location = new System.Drawing.Point(136, 24);
             this.radioButtonStan_min_mat.Name = "radioButtonStan_min_mat";
             this.radioButtonStan_min_mat.Size = new System.Drawing.Size(112, 24);
             this.radioButtonStan_min_mat.TabIndex = 3;
@@ -1008,7 +990,7 @@
             this.radioButtonTyp_mat.AutoSize = true;
             this.radioButtonTyp_mat.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.radioButtonTyp_mat.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonTyp_mat.Location = new System.Drawing.Point(70, 25);
+            this.radioButtonTyp_mat.Location = new System.Drawing.Point(76, 23);
             this.radioButtonTyp_mat.Name = "radioButtonTyp_mat";
             this.radioButtonTyp_mat.Size = new System.Drawing.Size(48, 24);
             this.radioButtonTyp_mat.TabIndex = 0;
@@ -1140,7 +1122,7 @@
             this.checkedListBoxOperatorzy_maszyn.FormattingEnabled = true;
             this.checkedListBoxOperatorzy_maszyn.Location = new System.Drawing.Point(6, 515);
             this.checkedListBoxOperatorzy_maszyn.Name = "checkedListBoxOperatorzy_maszyn";
-            this.checkedListBoxOperatorzy_maszyn.Size = new System.Drawing.Size(502, 194);
+            this.checkedListBoxOperatorzy_maszyn.Size = new System.Drawing.Size(502, 175);
             this.checkedListBoxOperatorzy_maszyn.TabIndex = 41;
             // 
             // label5
@@ -1355,9 +1337,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxUwagi.BackColor = System.Drawing.Color.Linen;
             this.richTextBoxUwagi.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.richTextBoxUwagi.Location = new System.Drawing.Point(61, 715);
+            this.richTextBoxUwagi.Location = new System.Drawing.Point(6, 715);
             this.richTextBoxUwagi.Name = "richTextBoxUwagi";
-            this.richTextBoxUwagi.Size = new System.Drawing.Size(447, 40);
+            this.richTextBoxUwagi.Size = new System.Drawing.Size(502, 40);
             this.richTextBoxUwagi.TabIndex = 30;
             this.richTextBoxUwagi.Text = "";
             // 
@@ -1384,7 +1366,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label14.Location = new System.Drawing.Point(11, 718);
+            this.label14.Location = new System.Drawing.Point(11, 695);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(44, 20);
             this.label14.TabIndex = 29;
@@ -1675,7 +1657,7 @@
             this.radioButtonData_ost_przegl.AutoSize = true;
             this.radioButtonData_ost_przegl.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.radioButtonData_ost_przegl.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonData_ost_przegl.Location = new System.Drawing.Point(243, 46);
+            this.radioButtonData_ost_przegl.Location = new System.Drawing.Point(317, 44);
             this.radioButtonData_ost_przegl.Name = "radioButtonData_ost_przegl";
             this.radioButtonData_ost_przegl.Size = new System.Drawing.Size(170, 24);
             this.radioButtonData_ost_przegl.TabIndex = 6;
@@ -1701,7 +1683,7 @@
             this.radioButtonNr_pomieszczenia.AutoSize = true;
             this.radioButtonNr_pomieszczenia.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.radioButtonNr_pomieszczenia.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNr_pomieszczenia.Location = new System.Drawing.Point(243, 23);
+            this.radioButtonNr_pomieszczenia.Location = new System.Drawing.Point(317, 21);
             this.radioButtonNr_pomieszczenia.Name = "radioButtonNr_pomieszczenia";
             this.radioButtonNr_pomieszczenia.Size = new System.Drawing.Size(125, 24);
             this.radioButtonNr_pomieszczenia.TabIndex = 3;
@@ -1714,7 +1696,7 @@
             this.radioButtonNr_fabryczny.AutoSize = true;
             this.radioButtonNr_fabryczny.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.radioButtonNr_fabryczny.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNr_fabryczny.Location = new System.Drawing.Point(116, 20);
+            this.radioButtonNr_fabryczny.Location = new System.Drawing.Point(143, 20);
             this.radioButtonNr_fabryczny.Name = "radioButtonNr_fabryczny";
             this.radioButtonNr_fabryczny.Size = new System.Drawing.Size(93, 24);
             this.radioButtonNr_fabryczny.TabIndex = 2;
@@ -1727,7 +1709,7 @@
             this.radioButtonNr_inwentarzowy.AutoSize = true;
             this.radioButtonNr_inwentarzowy.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.radioButtonNr_inwentarzowy.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNr_inwentarzowy.Location = new System.Drawing.Point(116, 44);
+            this.radioButtonNr_inwentarzowy.Location = new System.Drawing.Point(143, 44);
             this.radioButtonNr_inwentarzowy.Name = "radioButtonNr_inwentarzowy";
             this.radioButtonNr_inwentarzowy.Size = new System.Drawing.Size(116, 24);
             this.radioButtonNr_inwentarzowy.TabIndex = 1;
@@ -2135,24 +2117,28 @@
             // groupBox31
             // 
             this.groupBox31.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
+            this.groupBox31.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox31.Controls.Add(this.listBoxMaszynyDysponenta);
             this.groupBox31.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox31.ForeColor = System.Drawing.Color.Black;
             this.groupBox31.Location = new System.Drawing.Point(801, 22);
             this.groupBox31.Name = "groupBox31";
-            this.groupBox31.Size = new System.Drawing.Size(352, 598);
+            this.groupBox31.Size = new System.Drawing.Size(352, 660);
             this.groupBox31.TabIndex = 62;
             this.groupBox31.TabStop = false;
             this.groupBox31.Text = "Maszyny którymi zarządza dysponent";
             // 
             // listBoxMaszynyDysponenta
             // 
+            this.listBoxMaszynyDysponenta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxMaszynyDysponenta.Enabled = false;
             this.listBoxMaszynyDysponenta.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.listBoxMaszynyDysponenta.ItemHeight = 20;
             this.listBoxMaszynyDysponenta.Location = new System.Drawing.Point(6, 37);
             this.listBoxMaszynyDysponenta.Name = "listBoxMaszynyDysponenta";
-            this.listBoxMaszynyDysponenta.Size = new System.Drawing.Size(338, 544);
+            this.listBoxMaszynyDysponenta.Size = new System.Drawing.Size(338, 604);
             this.listBoxMaszynyDysponenta.TabIndex = 63;
             // 
             // statusStripDysponent
@@ -2188,9 +2174,9 @@
             this.groupBox27.Controls.Add(this.buttonAnulujDysponent);
             this.groupBox27.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox27.ForeColor = System.Drawing.Color.Black;
-            this.groupBox27.Location = new System.Drawing.Point(801, 626);
+            this.groupBox27.Location = new System.Drawing.Point(339, 626);
             this.groupBox27.Name = "groupBox27";
-            this.groupBox27.Size = new System.Drawing.Size(352, 56);
+            this.groupBox27.Size = new System.Drawing.Size(456, 56);
             this.groupBox27.TabIndex = 57;
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "Edycja spisu dysponentów maszyn";
@@ -2199,7 +2185,7 @@
             // 
             this.buttonNowaDysponent.BackColor = System.Drawing.Color.Linen;
             this.buttonNowaDysponent.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonNowaDysponent.Location = new System.Drawing.Point(6, 19);
+            this.buttonNowaDysponent.Location = new System.Drawing.Point(16, 20);
             this.buttonNowaDysponent.Name = "buttonNowaDysponent";
             this.buttonNowaDysponent.Size = new System.Drawing.Size(80, 30);
             this.buttonNowaDysponent.TabIndex = 2;
@@ -2211,7 +2197,7 @@
             // 
             this.buttonUsunDysponent.BackColor = System.Drawing.Color.Linen;
             this.buttonUsunDysponent.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonUsunDysponent.Location = new System.Drawing.Point(264, 19);
+            this.buttonUsunDysponent.Location = new System.Drawing.Point(368, 20);
             this.buttonUsunDysponent.Name = "buttonUsunDysponent";
             this.buttonUsunDysponent.Size = new System.Drawing.Size(80, 30);
             this.buttonUsunDysponent.TabIndex = 4;
@@ -2223,7 +2209,7 @@
             // 
             this.buttonZapiszDysponent.BackColor = System.Drawing.Color.Linen;
             this.buttonZapiszDysponent.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonZapiszDysponent.Location = new System.Drawing.Point(92, 19);
+            this.buttonZapiszDysponent.Location = new System.Drawing.Point(134, 20);
             this.buttonZapiszDysponent.Name = "buttonZapiszDysponent";
             this.buttonZapiszDysponent.Size = new System.Drawing.Size(80, 30);
             this.buttonZapiszDysponent.TabIndex = 3;
@@ -2235,7 +2221,7 @@
             // 
             this.buttonAnulujDysponent.BackColor = System.Drawing.Color.Linen;
             this.buttonAnulujDysponent.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonAnulujDysponent.Location = new System.Drawing.Point(178, 19);
+            this.buttonAnulujDysponent.Location = new System.Drawing.Point(253, 20);
             this.buttonAnulujDysponent.Name = "buttonAnulujDysponent";
             this.buttonAnulujDysponent.Size = new System.Drawing.Size(80, 30);
             this.buttonAnulujDysponent.TabIndex = 3;
@@ -2261,7 +2247,7 @@
             this.groupBox28.ForeColor = System.Drawing.Color.Black;
             this.groupBox28.Location = new System.Drawing.Point(339, 85);
             this.groupBox28.Name = "groupBox28";
-            this.groupBox28.Size = new System.Drawing.Size(456, 597);
+            this.groupBox28.Size = new System.Drawing.Size(456, 535);
             this.groupBox28.TabIndex = 60;
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Dane dysponenta";
@@ -2275,7 +2261,7 @@
             this.richTextBoxDysponent_dane.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.richTextBoxDysponent_dane.Location = new System.Drawing.Point(16, 194);
             this.richTextBoxDysponent_dane.Name = "richTextBoxDysponent_dane";
-            this.richTextBoxDysponent_dane.Size = new System.Drawing.Size(432, 389);
+            this.richTextBoxDysponent_dane.Size = new System.Drawing.Size(432, 322);
             this.richTextBoxDysponent_dane.TabIndex = 58;
             this.richTextBoxDysponent_dane.Text = "";
             // 
@@ -2680,6 +2666,26 @@
             this.toolStripStatusLabel7.Size = new System.Drawing.Size(163, 17);
             this.toolStripStatusLabel7.Text = "toolStripStatusLabelDostawca";
             // 
+            // labelDostawca
+            // 
+            this.labelDostawca.AutoSize = true;
+            this.labelDostawca.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelDostawca.Location = new System.Drawing.Point(10, 37);
+            this.labelDostawca.Name = "labelDostawca";
+            this.labelDostawca.Size = new System.Drawing.Size(64, 20);
+            this.labelDostawca.TabIndex = 55;
+            this.labelDostawca.Text = "Dostawca";
+            // 
+            // labelDaneDostawcy
+            // 
+            this.labelDaneDostawcy.AutoSize = true;
+            this.labelDaneDostawcy.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelDaneDostawcy.Location = new System.Drawing.Point(10, 108);
+            this.labelDaneDostawcy.Name = "labelDaneDostawcy";
+            this.labelDaneDostawcy.Size = new System.Drawing.Size(64, 20);
+            this.labelDaneDostawcy.TabIndex = 56;
+            this.labelDaneDostawcy.Text = "Dostawca";
+            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2867,7 +2873,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.RichTextBox richTextBoxDostawca2;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelJednostkaZuzycie;
@@ -2957,7 +2962,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.Label labelLinkDostawcy;
         private System.Windows.Forms.TextBox textBoxLinkDostawcy2;
-        private System.Windows.Forms.TextBox textBoxNazwaDostawcy2;
         private System.Windows.Forms.TabPage Dostawcy;
         private System.Windows.Forms.GroupBox groupBox16;
         private System.Windows.Forms.ListBox listBoxDostawcy;
@@ -2979,6 +2983,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
         private System.Windows.Forms.GroupBox groupBoxDostawca;
+        private System.Windows.Forms.Label labelDostawca;
+        private System.Windows.Forms.Label labelDaneDostawcy;
     }
 }
 
