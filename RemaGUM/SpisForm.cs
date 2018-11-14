@@ -131,8 +131,8 @@ namespace RemaGUM
             textBoxZapotrzebowanieMat.TabIndex = 42;
             //dane dostawców Materiałów
             checkedListBoxDostawcyMat.TabIndex = 43;
-            linkLabelDostawcaMat.TabIndex = 44;
-            richTextBoxDostawca.TabIndex = 45;
+            linkLabelDostawcaMat2.TabIndex = 44;
+            richTextBoxDostawca2.TabIndex = 45;
             //przyciski zapisz/edytuj itp
             buttonNowaMat.TabIndex = 46;
             buttonZapiszMat.TabIndex = 47;
@@ -242,8 +242,8 @@ namespace RemaGUM
             _tt.SetToolTip(textBoxOdpadMat, "Wpisz ile jest odpadem.");
             _tt.SetToolTip(textBoxMinMat, "Wpisz stan minimalny.");
             _tt.SetToolTip(textBoxZapotrzebowanieMat, "Wpisz zapotrzebowanie materiałów / normaliów.");
-            _tt.SetToolTip(linkLabelDostawcaMat, "link do strony dostawcy materiałów / normaliów.");
-            _tt.SetToolTip(richTextBoxDostawca, "Opis dostawcy, dane kontaktowe, szczegóły dotyczące składania zamówienia (np. proponowane upusty cenowe).");
+            _tt.SetToolTip(linkLabelDostawcaMat2, "link do strony dostawcy materiałów / normaliów.");
+            _tt.SetToolTip(richTextBoxDostawca2, "Opis dostawcy, dane kontaktowe, szczegóły dotyczące składania zamówienia (np. proponowane upusty cenowe).");
             _tt.SetToolTip(radioButtonNazwa_mat, "Sortuj po nazwie materiałów / normaliów.");
             _tt.SetToolTip(radioButtonTyp_mat, "Sortuj po typie materiałów / normaliów.");
             _tt.SetToolTip(radioButtonStan_min_mat, "Sortuj po cenie materiałów / normaliów.");
@@ -1542,7 +1542,7 @@ namespace RemaGUM
                 v.SelectedIndex = 0;
                 v.Tag = dostawca_MatBUS.VO.Identyfikator;
             }
-            buttonZapiszDostawca.Enabled = checkedListBoxDostawcyMat.SelectedIndex > -1;
+            buttonZapiszDostawca2.Enabled = checkedListBoxDostawcyMat.SelectedIndex > -1;
         }// WypelnijDostawcowMaterialow(CheckedListBox v)
 
         /// <summary>
@@ -1560,9 +1560,9 @@ namespace RemaGUM
             dostawca_matBUS.idx = checkedListBoxDostawcyMat.SelectedIndex;
             checkedListBoxDostawcyMat.Tag = dostawca_matBUS.VO.Identyfikator;
 
-            textBoxNazwaDostawcy.Text = dostawca_matBUS.VO.Nazwa_dostawca_mat.ToString();
-            richTextBoxDostawca.Text = dostawca_matBUS.VO.Dod_info_dostawca_mat.ToString();
-            linkLabelDostawcaMat.Text = dostawca_matBUS.VO.Link_dostawca_mat.ToString();
+            textBoxNazwaDostawcy2.Text = dostawca_matBUS.VO.Nazwa_dostawca_mat.ToString();
+            richTextBoxDostawca2.Text = dostawca_matBUS.VO.Dod_info_dostawca_mat.ToString();
+            linkLabelDostawcaMat2.Text = dostawca_matBUS.VO.Link_dostawca_mat.ToString();
 
             toolStripStatusLabel_ID_Dostawcy.Text = dostawca_matBUS.VO.Identyfikator.ToString();
 
@@ -1609,8 +1609,8 @@ namespace RemaGUM
                     checkedListBoxDostawcyMat.SetItemChecked(i, false);
                 }
 
-                linkLabelDostawcaMat.Text = string.Empty;
-                richTextBoxDostawca.Text = string.Empty;
+                linkLabelDostawcaMat2.Text = string.Empty;
+                richTextBoxDostawca2.Text = string.Empty;
             }
             catch { }
         }//CzyscDaneMaterialy()
@@ -1864,15 +1864,15 @@ namespace RemaGUM
             buttonZapiszMat.Enabled = false;
             
             // aktywacja pola na wpisanie linku nowego dostawcy.
-            textBoxLinkDostawcy.Enabled = true; 
-            textBoxLinkDostawcy.BackColor = Color.White;
+            textBoxLinkDostawcy2.Enabled = true; 
+            textBoxLinkDostawcy2.BackColor = Color.White;
             
             checkedListBoxDostawcyMat.Enabled = false; // zablokowanie listy dostawców.
 
             // przyciski panelu dostawcy
-            buttonZapiszDostawca.Enabled = true;
-            buttonAnulujDostawca.Enabled = true;
-            buttonUsunDostawca.Enabled = false;
+            buttonZapiszDostawca2.Enabled = true;
+            buttonAnulujDostawca2.Enabled = true;
+            buttonUsunDostawca2.Enabled = false;
         }// buttonNowyDostawca_Click
 
         /// <summary>
@@ -1882,7 +1882,7 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonUsunLink_Click(object sender, EventArgs e)
         {
-            linkLabelDostawcaMat.Text = string.Empty;
+            linkLabelDostawcaMat2.Text = string.Empty;
 
             pokazKomunikat("Usunięcie linku wymaga zatwierdzenia przyciskiem Zapisz.");
 
@@ -1899,79 +1899,18 @@ namespace RemaGUM
 
         private void buttonZapiszDostawca_Click(object sender, EventArgs e)
         {
-            nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
-            nsAccess2DB.Dostawca_matVO dostawca_MatVO = new nsAccess2DB.Dostawca_matVO();
-            dostawca_MatVO = dostawca_MatBUS.VO;
-
-            try
-            {
-                if (textBoxNazwaDostawcy.Text == string.Empty)
-                {
-                    MessageBox.Show("Uzupełnij nazwę dostawcy", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                else
-                {
-                    dostawca_MatVO.Nazwa_dostawca_mat = textBoxNazwaDostawcy.Text;
-                }
-
-                dostawca_MatVO.Dod_info_dostawca_mat = richTextBoxDostawca.Text;
-                dostawca_MatVO.Link_dostawca_mat = textBoxLinkDostawcy.Text;
-
-
-
-                if (toolStripStatusLabel_ID_Dostawcy.Text == string.Empty)
-                {
-                    dostawca_MatBUS.VO.Identyfikator = -1; // nowa pozycja
-
-                } // nowy
-                else
-                {
-                    dostawca_MatBUS.VO.Identyfikator = int.Parse(toolStripStatusLabel_ID_Dostawcy.Text);
-                }//edycja
-
-                dostawca_MatBUS.write(dostawca_MatVO);
-                WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);
-
-               
-
-                if (toolStripStatusLabel_ID_Dostawcy.Text == string.Empty)
-                {
-                    checkedListBoxDostawcyMat.SelectedIndex = checkedListBoxDostawcyMat.Items.Count - 1;
-                }
-                else
-                {
-                    checkedListBoxDostawcyMat.SelectedIndex = dostawca_MatBUS.getIdx(dostawca_MatVO.Identyfikator);
-                }
-                pokazKomunikat("Dostawca zapisany w bazie");
-                //_statusForm = (int)_status.edycja;
-            }
-            catch { }
-
-            dostawca_MatBUS.select(); // odświeża dane dostawcy.
-
-            textBoxLinkDostawcy.Text = string.Empty; // po zapisie linku pole puste
-            textBoxLinkDostawcy.Enabled = true; //aktywacja pola linku dostawcy do edycji
-            textBoxLinkDostawcy.BackColor = Color.White;
-
-            AktywujPanelDostawcow();
-            checkedListBoxDostawcyMat.Enabled = true;  // zapis aktywuje całośc formularza
-            OdswiezDostawcow();
-            OdblokujPanelMaterial();
-
-            
 
         }// private void buttonZapiszDostawca_Click
 
         private void buttonAnulujDostawca_Click(object sender, EventArgs e)
         {
-            textBoxNazwaDostawcy.Text = string.Empty;
-            richTextBoxDostawca.Text = string.Empty;
-            linkLabelDostawcaMat.Text = string.Empty;
+            textBoxNazwaDostawcy2.Text = string.Empty;
+            richTextBoxDostawca2.Text = string.Empty;
+            linkLabelDostawcaMat2.Text = string.Empty;
 
-            textBoxLinkDostawcy.Text = string.Empty; // po zapisie linku pole puste
-            textBoxLinkDostawcy.Enabled = true; //aktywacja pola linku dostawcy
-            textBoxLinkDostawcy.BackColor = Color.White;
+            textBoxLinkDostawcy2.Text = string.Empty; // po zapisie linku pole puste
+            textBoxLinkDostawcy2.Enabled = true; //aktywacja pola linku dostawcy
+            textBoxLinkDostawcy2.BackColor = Color.White;
 
             AktywujPanelDostawcow();
             checkedListBoxDostawcyMat.Enabled = true;  // anulowanie zapisu aktywuje całośc formularza
@@ -1987,9 +1926,9 @@ namespace RemaGUM
             
             try
             {
-                textBoxNazwaDostawcy.Text = string.Empty;
-                richTextBoxDostawca.Text = string.Empty;
-                textBoxLinkDostawcy.Text = string.Empty;
+                textBoxNazwaDostawcy2.Text = string.Empty;
+                richTextBoxDostawca2.Text = string.Empty;
+                textBoxLinkDostawcy2.Text = string.Empty;
                 checkedListBoxDostawcyMat.Items.Clear();
             }
             catch { }
@@ -2147,19 +2086,19 @@ namespace RemaGUM
             buttonSzukaj_mat.Enabled = false;
 
             // zablokowanie panelu dostawcy
-            textBoxNazwaDostawcy.Enabled = false;
-            textBoxNazwaDostawcy.BackColor = Color.SandyBrown;
-            richTextBoxDostawca.Enabled = false;
-            richTextBoxDostawca.BackColor = Color.SandyBrown;
+            textBoxNazwaDostawcy2.Enabled = false;
+            textBoxNazwaDostawcy2.BackColor = Color.SandyBrown;
+            richTextBoxDostawca2.Enabled = false;
+            richTextBoxDostawca2.BackColor = Color.SandyBrown;
 
-            linkLabelDostawcaMat.Enabled = false;
-            linkLabelDostawcaMat.ForeColor = Color.Transparent;
-            textBoxLinkDostawcy.Enabled = false;
-            textBoxLinkDostawcy.BackColor = Color.SandyBrown;
-            buttonNowyDostawca.Enabled = false;
-            buttonAnulujDostawca.Enabled = false;
-            buttonUsunDostawca.Enabled = false;
-            buttonZapiszDostawca.Enabled = false;
+            linkLabelDostawcaMat2.Enabled = false;
+            linkLabelDostawcaMat2.ForeColor = Color.Transparent;
+            textBoxLinkDostawcy2.Enabled = false;
+            textBoxLinkDostawcy2.BackColor = Color.SandyBrown;
+            buttonNowyDostawca2.Enabled = false;
+            buttonAnulujDostawca2.Enabled = false;
+            buttonUsunDostawca2.Enabled = false;
+            buttonZapiszDostawca2.Enabled = false;
 
             radioButtonNazwa_mat.Checked = false; // wymusza sortowanie po nazwie materiału przy zapisie nowej pozycji Materiału.
 
@@ -2179,18 +2118,18 @@ namespace RemaGUM
         private void AktywujPanelDostawcow()
         {
             // odblokowanie panelu dostawcy
-            textBoxNazwaDostawcy.Enabled = true;
-            textBoxNazwaDostawcy.BackColor = Color.White;
-            richTextBoxDostawca.Enabled = true;
-            richTextBoxDostawca.BackColor = Color.White;
+            textBoxNazwaDostawcy2.Enabled = true;
+            textBoxNazwaDostawcy2.BackColor = Color.White;
+            richTextBoxDostawca2.Enabled = true;
+            richTextBoxDostawca2.BackColor = Color.White;
 
-            linkLabelDostawcaMat.Enabled = true;
-            linkLabelDostawcaMat.ForeColor = Color.White;
+            linkLabelDostawcaMat2.Enabled = true;
+            linkLabelDostawcaMat2.ForeColor = Color.White;
             
-            buttonNowyDostawca.Enabled = true;
-            buttonAnulujDostawca.Enabled = true;
-            buttonUsunDostawca.Enabled = true;
-            buttonZapiszDostawca.Enabled = true;
+            buttonNowyDostawca2.Enabled = true;
+            buttonAnulujDostawca2.Enabled = true;
+            buttonUsunDostawca2.Enabled = true;
+            buttonZapiszDostawca2.Enabled = true;
         }//AktywujPanelDostawcow()
 
         /// <summary>
