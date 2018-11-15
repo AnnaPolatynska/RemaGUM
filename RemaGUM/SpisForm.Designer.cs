@@ -30,11 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpisForm));
             this.Materiały = new System.Windows.Forms.TabPage();
-            this.panelDostawcy = new System.Windows.Forms.Panel();
-            this.labelLinkDostawcy = new System.Windows.Forms.Label();
-            this.textBoxLinkDostawcy2 = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.linkLabelDostawcaMat2 = new System.Windows.Forms.LinkLabel();
             this.statusStripMaterialy = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelID_Materialu = new System.Windows.Forms.ToolStripStatusLabel();
@@ -43,6 +38,13 @@
             this.toolStripStatusLabel_ID_Dostawcy = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.groupBoxDostawca = new System.Windows.Forms.GroupBox();
+            this.panelDostawcy = new System.Windows.Forms.Panel();
+            this.richTextBoxDaneDodatkoweDostawca = new System.Windows.Forms.RichTextBox();
+            this.labelDostawca = new System.Windows.Forms.Label();
+            this.labelLinkDostawcy = new System.Windows.Forms.Label();
+            this.textBoxLinkDostawcy2 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.linkLabelDostawcaMat2 = new System.Windows.Forms.LinkLabel();
             this.label28 = new System.Windows.Forms.Label();
             this.checkedListBoxDostawcyMat = new System.Windows.Forms.CheckedListBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -210,6 +212,9 @@
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.listBoxDysponent = new System.Windows.Forms.ListBox();
             this.Dostawcy = new System.Windows.Forms.TabPage();
+            this.statusStripDostawca = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelDostawcy = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.buttonUsunLink = new System.Windows.Forms.Button();
             this.textBoxNazwaDostawcy = new System.Windows.Forms.TextBox();
@@ -229,16 +234,11 @@
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.statusStripDostawca = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.labelDostawca = new System.Windows.Forms.Label();
-            this.richTextBoxDaneDodatkoweDostawca = new System.Windows.Forms.RichTextBox();
             this.Materiały.SuspendLayout();
-            this.panelDostawcy.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBoxDostawca.SuspendLayout();
+            this.panelDostawcy.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox13.SuspendLayout();
@@ -274,11 +274,11 @@
             this.groupBox29.SuspendLayout();
             this.groupBox30.SuspendLayout();
             this.Dostawcy.SuspendLayout();
+            this.statusStripDostawca.SuspendLayout();
             this.groupBox17.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.toolStrip.SuspendLayout();
-            this.statusStripDostawca.SuspendLayout();
             this.SuspendLayout();
             // 
             // Materiały
@@ -293,70 +293,9 @@
             this.Materiały.Location = new System.Drawing.Point(4, 29);
             this.Materiały.Name = "Materiały";
             this.Materiały.Padding = new System.Windows.Forms.Padding(3);
-            this.Materiały.Size = new System.Drawing.Size(1618, 883);
+            this.Materiały.Size = new System.Drawing.Size(1618, 869);
             this.Materiały.TabIndex = 1;
             this.Materiały.Text = "Materiały";
-            // 
-            // panelDostawcy
-            // 
-            this.panelDostawcy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panelDostawcy.BackColor = System.Drawing.Color.SandyBrown;
-            this.panelDostawcy.Controls.Add(this.richTextBoxDaneDodatkoweDostawca);
-            this.panelDostawcy.Controls.Add(this.labelDostawca);
-            this.panelDostawcy.Controls.Add(this.labelLinkDostawcy);
-            this.panelDostawcy.Controls.Add(this.textBoxLinkDostawcy2);
-            this.panelDostawcy.Controls.Add(this.label20);
-            this.panelDostawcy.Controls.Add(this.linkLabelDostawcaMat2);
-            this.panelDostawcy.Location = new System.Drawing.Point(6, 25);
-            this.panelDostawcy.Name = "panelDostawcy";
-            this.panelDostawcy.Size = new System.Drawing.Size(390, 277);
-            this.panelDostawcy.TabIndex = 50;
-            // 
-            // labelLinkDostawcy
-            // 
-            this.labelLinkDostawcy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelLinkDostawcy.AutoSize = true;
-            this.labelLinkDostawcy.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.labelLinkDostawcy.Location = new System.Drawing.Point(10, 199);
-            this.labelLinkDostawcy.Name = "labelLinkDostawcy";
-            this.labelLinkDostawcy.Size = new System.Drawing.Size(86, 20);
-            this.labelLinkDostawcy.TabIndex = 53;
-            this.labelLinkDostawcy.Text = "Link dostawcy";
-            // 
-            // textBoxLinkDostawcy2
-            // 
-            this.textBoxLinkDostawcy2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxLinkDostawcy2.BackColor = System.Drawing.Color.SandyBrown;
-            this.textBoxLinkDostawcy2.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxLinkDostawcy2.Location = new System.Drawing.Point(14, 240);
-            this.textBoxLinkDostawcy2.Name = "textBoxLinkDostawcy2";
-            this.textBoxLinkDostawcy2.ReadOnly = true;
-            this.textBoxLinkDostawcy2.Size = new System.Drawing.Size(362, 24);
-            this.textBoxLinkDostawcy2.TabIndex = 52;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label20.Location = new System.Drawing.Point(3, 5);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(106, 20);
-            this.label20.TabIndex = 51;
-            this.label20.Text = "Nazwa dostawcy: ";
-            // 
-            // linkLabelDostawcaMat2
-            // 
-            this.linkLabelDostawcaMat2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.linkLabelDostawcaMat2.AutoSize = true;
-            this.linkLabelDostawcaMat2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.linkLabelDostawcaMat2.Location = new System.Drawing.Point(11, 224);
-            this.linkLabelDostawcaMat2.Name = "linkLabelDostawcaMat2";
-            this.linkLabelDostawcaMat2.Size = new System.Drawing.Size(115, 13);
-            this.linkLabelDostawcaMat2.TabIndex = 42;
-            this.linkLabelDostawcaMat2.TabStop = true;
-            this.linkLabelDostawcaMat2.Text = "linkLabelDostawcaMat";
-            this.linkLabelDostawcaMat2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDostawcaMat_LinkClicked);
             // 
             // statusStripMaterialy
             // 
@@ -366,7 +305,7 @@
             this.toolStripStatusLabel5,
             this.toolStripStatusLabel_ID_dostrawcy,
             this.toolStripStatusLabel_ID_Dostawcy});
-            this.statusStripMaterialy.Location = new System.Drawing.Point(3, 858);
+            this.statusStripMaterialy.Location = new System.Drawing.Point(3, 844);
             this.statusStripMaterialy.Name = "statusStripMaterialy";
             this.statusStripMaterialy.Size = new System.Drawing.Size(1612, 22);
             this.statusStripMaterialy.TabIndex = 53;
@@ -413,7 +352,7 @@
             this.groupBox10.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox10.Location = new System.Drawing.Point(816, 8);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(415, 781);
+            this.groupBox10.Size = new System.Drawing.Size(415, 767);
             this.groupBox10.TabIndex = 49;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Dostawcy materiałów";
@@ -425,10 +364,92 @@
             this.groupBoxDostawca.Controls.Add(this.panelDostawcy);
             this.groupBoxDostawca.Location = new System.Drawing.Point(6, 463);
             this.groupBoxDostawca.Name = "groupBoxDostawca";
-            this.groupBoxDostawca.Size = new System.Drawing.Size(403, 312);
+            this.groupBoxDostawca.Size = new System.Drawing.Size(403, 298);
             this.groupBoxDostawca.TabIndex = 47;
             this.groupBoxDostawca.TabStop = false;
             this.groupBoxDostawca.Text = "Dane wybranego dostawcy";
+            // 
+            // panelDostawcy
+            // 
+            this.panelDostawcy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelDostawcy.BackColor = System.Drawing.Color.SandyBrown;
+            this.panelDostawcy.Controls.Add(this.richTextBoxDaneDodatkoweDostawca);
+            this.panelDostawcy.Controls.Add(this.labelDostawca);
+            this.panelDostawcy.Controls.Add(this.labelLinkDostawcy);
+            this.panelDostawcy.Controls.Add(this.textBoxLinkDostawcy2);
+            this.panelDostawcy.Controls.Add(this.label20);
+            this.panelDostawcy.Controls.Add(this.linkLabelDostawcaMat2);
+            this.panelDostawcy.Location = new System.Drawing.Point(6, 25);
+            this.panelDostawcy.Name = "panelDostawcy";
+            this.panelDostawcy.Size = new System.Drawing.Size(390, 263);
+            this.panelDostawcy.TabIndex = 50;
+            // 
+            // richTextBoxDaneDodatkoweDostawca
+            // 
+            this.richTextBoxDaneDodatkoweDostawca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.richTextBoxDaneDodatkoweDostawca.BackColor = System.Drawing.Color.SandyBrown;
+            this.richTextBoxDaneDodatkoweDostawca.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.richTextBoxDaneDodatkoweDostawca.Location = new System.Drawing.Point(7, 60);
+            this.richTextBoxDaneDodatkoweDostawca.Name = "richTextBoxDaneDodatkoweDostawca";
+            this.richTextBoxDaneDodatkoweDostawca.Size = new System.Drawing.Size(369, 122);
+            this.richTextBoxDaneDodatkoweDostawca.TabIndex = 57;
+            this.richTextBoxDaneDodatkoweDostawca.Text = "";
+            // 
+            // labelDostawca
+            // 
+            this.labelDostawca.AutoSize = true;
+            this.labelDostawca.Font = new System.Drawing.Font("Arial Narrow", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelDostawca.Location = new System.Drawing.Point(10, 37);
+            this.labelDostawca.Name = "labelDostawca";
+            this.labelDostawca.Size = new System.Drawing.Size(68, 20);
+            this.labelDostawca.TabIndex = 55;
+            this.labelDostawca.Text = "Dostawca";
+            // 
+            // labelLinkDostawcy
+            // 
+            this.labelLinkDostawcy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelLinkDostawcy.AutoSize = true;
+            this.labelLinkDostawcy.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelLinkDostawcy.Location = new System.Drawing.Point(10, 185);
+            this.labelLinkDostawcy.Name = "labelLinkDostawcy";
+            this.labelLinkDostawcy.Size = new System.Drawing.Size(86, 20);
+            this.labelLinkDostawcy.TabIndex = 53;
+            this.labelLinkDostawcy.Text = "Link dostawcy";
+            // 
+            // textBoxLinkDostawcy2
+            // 
+            this.textBoxLinkDostawcy2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxLinkDostawcy2.BackColor = System.Drawing.Color.SandyBrown;
+            this.textBoxLinkDostawcy2.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxLinkDostawcy2.Location = new System.Drawing.Point(14, 226);
+            this.textBoxLinkDostawcy2.Name = "textBoxLinkDostawcy2";
+            this.textBoxLinkDostawcy2.ReadOnly = true;
+            this.textBoxLinkDostawcy2.Size = new System.Drawing.Size(362, 24);
+            this.textBoxLinkDostawcy2.TabIndex = 52;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label20.Location = new System.Drawing.Point(3, 5);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(106, 20);
+            this.label20.TabIndex = 51;
+            this.label20.Text = "Nazwa dostawcy: ";
+            // 
+            // linkLabelDostawcaMat2
+            // 
+            this.linkLabelDostawcaMat2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.linkLabelDostawcaMat2.AutoSize = true;
+            this.linkLabelDostawcaMat2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.linkLabelDostawcaMat2.Location = new System.Drawing.Point(11, 210);
+            this.linkLabelDostawcaMat2.Name = "linkLabelDostawcaMat2";
+            this.linkLabelDostawcaMat2.Size = new System.Drawing.Size(115, 13);
+            this.linkLabelDostawcaMat2.TabIndex = 42;
+            this.linkLabelDostawcaMat2.TabStop = true;
+            this.linkLabelDostawcaMat2.Text = "linkLabelDostawcaMat";
             // 
             // label28
             // 
@@ -444,9 +465,9 @@
             // 
             this.checkedListBoxDostawcyMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.checkedListBoxDostawcyMat.FormattingEnabled = true;
-            this.checkedListBoxDostawcyMat.Location = new System.Drawing.Point(13, 34);
+            this.checkedListBoxDostawcyMat.Location = new System.Drawing.Point(13, 53);
             this.checkedListBoxDostawcyMat.Name = "checkedListBoxDostawcyMat";
-            this.checkedListBoxDostawcyMat.Size = new System.Drawing.Size(389, 422);
+            this.checkedListBoxDostawcyMat.Size = new System.Drawing.Size(389, 403);
             this.checkedListBoxDostawcyMat.TabIndex = 46;
             this.checkedListBoxDostawcyMat.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxDostawcyMat_SelectedIndex);
             // 
@@ -473,7 +494,7 @@
             this.groupBox6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox6.Location = new System.Drawing.Point(388, 71);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(419, 718);
+            this.groupBox6.Size = new System.Drawing.Size(419, 704);
             this.groupBox6.TabIndex = 52;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "MATERIAŁY / NORMALIA";
@@ -493,7 +514,7 @@
             this.groupBox15.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.groupBox15.Location = new System.Drawing.Point(12, 256);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(398, 392);
+            this.groupBox15.Size = new System.Drawing.Size(398, 378);
             this.groupBox15.TabIndex = 63;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Gospodarka magazynowa";
@@ -723,7 +744,7 @@
             this.groupBox9.Controls.Add(this.buttonAnulujMat);
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox9.ForeColor = System.Drawing.Color.Black;
-            this.groupBox9.Location = new System.Drawing.Point(9, 654);
+            this.groupBox9.Location = new System.Drawing.Point(9, 640);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(398, 56);
             this.groupBox9.TabIndex = 48;
@@ -906,7 +927,7 @@
             this.groupBox8.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox8.Location = new System.Drawing.Point(9, 71);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(373, 718);
+            this.groupBox8.Size = new System.Drawing.Size(373, 704);
             this.groupBox8.TabIndex = 47;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Lista Materiałów";
@@ -921,7 +942,7 @@
             this.listBoxMaterialy.ItemHeight = 20;
             this.listBoxMaterialy.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaterialy.Name = "listBoxMaterialy";
-            this.listBoxMaterialy.Size = new System.Drawing.Size(361, 684);
+            this.listBoxMaterialy.Size = new System.Drawing.Size(361, 664);
             this.listBoxMaterialy.TabIndex = 0;
             this.listBoxMaterialy.SelectedIndexChanged += new System.EventHandler(this.listBoxMaterialy_SelectedIndexChanged);
             // 
@@ -1014,7 +1035,7 @@
             this.Maszyny.Location = new System.Drawing.Point(4, 29);
             this.Maszyny.Name = "Maszyny";
             this.Maszyny.Padding = new System.Windows.Forms.Padding(3);
-            this.Maszyny.Size = new System.Drawing.Size(1618, 883);
+            this.Maszyny.Size = new System.Drawing.Size(1618, 869);
             this.Maszyny.TabIndex = 0;
             this.Maszyny.Text = "Maszyny";
             // 
@@ -1023,7 +1044,7 @@
             this.statusStripMaszyna.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel4,
             this.toolStripStatusLabelID_Maszyny});
-            this.statusStripMaszyna.Location = new System.Drawing.Point(3, 858);
+            this.statusStripMaszyna.Location = new System.Drawing.Point(3, 844);
             this.statusStripMaszyna.Name = "statusStripMaszyna";
             this.statusStripMaszyna.Size = new System.Drawing.Size(1612, 22);
             this.statusStripMaszyna.TabIndex = 58;
@@ -1743,7 +1764,7 @@
             this.tabControlZakładki.Location = new System.Drawing.Point(12, 55);
             this.tabControlZakładki.Name = "tabControlZakładki";
             this.tabControlZakładki.SelectedIndex = 0;
-            this.tabControlZakładki.Size = new System.Drawing.Size(1626, 916);
+            this.tabControlZakładki.Size = new System.Drawing.Size(1626, 902);
             this.tabControlZakładki.TabIndex = 47;
             this.tabControlZakładki.SelectedIndexChanged += new System.EventHandler(this.tabControlZakladki_SelectedIndexChanged);
             // 
@@ -1758,7 +1779,7 @@
             this.Operatorzy_maszyn.Controls.Add(this.groupBox26);
             this.Operatorzy_maszyn.Location = new System.Drawing.Point(4, 29);
             this.Operatorzy_maszyn.Name = "Operatorzy_maszyn";
-            this.Operatorzy_maszyn.Size = new System.Drawing.Size(1618, 883);
+            this.Operatorzy_maszyn.Size = new System.Drawing.Size(1618, 869);
             this.Operatorzy_maszyn.TabIndex = 3;
             this.Operatorzy_maszyn.Text = "Operatorzy maszyn";
             // 
@@ -1767,7 +1788,7 @@
             this.statusStripOperator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel2,
             this.toolStripStatusLabelIDOperatora});
-            this.statusStripOperator.Location = new System.Drawing.Point(0, 861);
+            this.statusStripOperator.Location = new System.Drawing.Point(0, 847);
             this.statusStripOperator.Name = "statusStripOperator";
             this.statusStripOperator.Size = new System.Drawing.Size(1618, 22);
             this.statusStripOperator.TabIndex = 57;
@@ -1795,7 +1816,7 @@
             this.groupBox22.Controls.Add(this.buttonAnulujOperator);
             this.groupBox22.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox22.ForeColor = System.Drawing.Color.Black;
-            this.groupBox22.Location = new System.Drawing.Point(348, 658);
+            this.groupBox22.Location = new System.Drawing.Point(348, 644);
             this.groupBox22.Name = "groupBox22";
             this.groupBox22.Size = new System.Drawing.Size(493, 63);
             this.groupBox22.TabIndex = 52;
@@ -1860,7 +1881,7 @@
             this.groupBox23.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox23.Location = new System.Drawing.Point(12, 76);
             this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(330, 645);
+            this.groupBox23.Size = new System.Drawing.Size(330, 631);
             this.groupBox23.TabIndex = 51;
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "Lista operatorów";
@@ -1875,7 +1896,7 @@
             this.listBoxOperator.ItemHeight = 20;
             this.listBoxOperator.Location = new System.Drawing.Point(15, 22);
             this.listBoxOperator.Name = "listBoxOperator";
-            this.listBoxOperator.Size = new System.Drawing.Size(299, 604);
+            this.listBoxOperator.Size = new System.Drawing.Size(299, 584);
             this.listBoxOperator.TabIndex = 0;
             this.listBoxOperator.SelectedIndexChanged += new System.EventHandler(this.listBoxOperator_maszyny_SelectedIndexChanged);
             // 
@@ -1937,7 +1958,7 @@
             this.groupBox25.ForeColor = System.Drawing.Color.Black;
             this.groupBox25.Location = new System.Drawing.Point(348, 78);
             this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(493, 574);
+            this.groupBox25.Size = new System.Drawing.Size(493, 560);
             this.groupBox25.TabIndex = 55;
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "Dane operatora maszyny";
@@ -2014,7 +2035,7 @@
             this.listBoxMaszynyOperatora.ItemHeight = 20;
             this.listBoxMaszynyOperatora.Location = new System.Drawing.Point(6, 296);
             this.listBoxMaszynyOperatora.Name = "listBoxMaszynyOperatora";
-            this.listBoxMaszynyOperatora.Size = new System.Drawing.Size(472, 264);
+            this.listBoxMaszynyOperatora.Size = new System.Drawing.Size(472, 244);
             this.listBoxMaszynyOperatora.TabIndex = 50;
             // 
             // label55
@@ -2108,7 +2129,7 @@
             this.Dysponent_maszyn.Controls.Add(this.groupBox30);
             this.Dysponent_maszyn.Location = new System.Drawing.Point(4, 29);
             this.Dysponent_maszyn.Name = "Dysponent_maszyn";
-            this.Dysponent_maszyn.Size = new System.Drawing.Size(1618, 883);
+            this.Dysponent_maszyn.Size = new System.Drawing.Size(1618, 869);
             this.Dysponent_maszyn.TabIndex = 4;
             this.Dysponent_maszyn.Text = "Dysponenci maszyn";
             // 
@@ -2122,7 +2143,7 @@
             this.groupBox31.ForeColor = System.Drawing.Color.Black;
             this.groupBox31.Location = new System.Drawing.Point(801, 22);
             this.groupBox31.Name = "groupBox31";
-            this.groupBox31.Size = new System.Drawing.Size(352, 660);
+            this.groupBox31.Size = new System.Drawing.Size(352, 646);
             this.groupBox31.TabIndex = 62;
             this.groupBox31.TabStop = false;
             this.groupBox31.Text = "Maszyny którymi zarządza dysponent";
@@ -2136,7 +2157,7 @@
             this.listBoxMaszynyDysponenta.ItemHeight = 20;
             this.listBoxMaszynyDysponenta.Location = new System.Drawing.Point(6, 37);
             this.listBoxMaszynyDysponenta.Name = "listBoxMaszynyDysponenta";
-            this.listBoxMaszynyDysponenta.Size = new System.Drawing.Size(338, 604);
+            this.listBoxMaszynyDysponenta.Size = new System.Drawing.Size(338, 584);
             this.listBoxMaszynyDysponenta.TabIndex = 63;
             // 
             // statusStripDysponent
@@ -2144,7 +2165,7 @@
             this.statusStripDysponent.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabelDysponenta});
-            this.statusStripDysponent.Location = new System.Drawing.Point(0, 861);
+            this.statusStripDysponent.Location = new System.Drawing.Point(0, 847);
             this.statusStripDysponent.Name = "statusStripDysponent";
             this.statusStripDysponent.Size = new System.Drawing.Size(1618, 22);
             this.statusStripDysponent.TabIndex = 61;
@@ -2172,7 +2193,7 @@
             this.groupBox27.Controls.Add(this.buttonAnulujDysponent);
             this.groupBox27.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox27.ForeColor = System.Drawing.Color.Black;
-            this.groupBox27.Location = new System.Drawing.Point(339, 626);
+            this.groupBox27.Location = new System.Drawing.Point(339, 612);
             this.groupBox27.Name = "groupBox27";
             this.groupBox27.Size = new System.Drawing.Size(456, 56);
             this.groupBox27.TabIndex = 57;
@@ -2245,7 +2266,7 @@
             this.groupBox28.ForeColor = System.Drawing.Color.Black;
             this.groupBox28.Location = new System.Drawing.Point(339, 85);
             this.groupBox28.Name = "groupBox28";
-            this.groupBox28.Size = new System.Drawing.Size(456, 535);
+            this.groupBox28.Size = new System.Drawing.Size(456, 521);
             this.groupBox28.TabIndex = 60;
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Dane dysponenta";
@@ -2259,7 +2280,7 @@
             this.richTextBoxDysponent_dane.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.richTextBoxDysponent_dane.Location = new System.Drawing.Point(16, 194);
             this.richTextBoxDysponent_dane.Name = "richTextBoxDysponent_dane";
-            this.richTextBoxDysponent_dane.Size = new System.Drawing.Size(432, 322);
+            this.richTextBoxDysponent_dane.Size = new System.Drawing.Size(432, 308);
             this.richTextBoxDysponent_dane.TabIndex = 58;
             this.richTextBoxDysponent_dane.Text = "";
             // 
@@ -2381,7 +2402,7 @@
             this.groupBox30.ForeColor = System.Drawing.Color.Black;
             this.groupBox30.Location = new System.Drawing.Point(3, 22);
             this.groupBox30.Name = "groupBox30";
-            this.groupBox30.Size = new System.Drawing.Size(330, 660);
+            this.groupBox30.Size = new System.Drawing.Size(330, 646);
             this.groupBox30.TabIndex = 56;
             this.groupBox30.TabStop = false;
             this.groupBox30.Text = "Lista dysponentów";
@@ -2396,21 +2417,45 @@
             this.listBoxDysponent.ItemHeight = 20;
             this.listBoxDysponent.Location = new System.Drawing.Point(15, 22);
             this.listBoxDysponent.Name = "listBoxDysponent";
-            this.listBoxDysponent.Size = new System.Drawing.Size(299, 624);
+            this.listBoxDysponent.Size = new System.Drawing.Size(299, 604);
             this.listBoxDysponent.TabIndex = 0;
             this.listBoxDysponent.SelectedIndexChanged += new System.EventHandler(this.listBoxDysponent_SelectedIndexChanged);
             // 
             // Dostawcy
             // 
             this.Dostawcy.BackColor = System.Drawing.Color.Bisque;
+            this.Dostawcy.Controls.Add(this.statusStripDostawca);
             this.Dostawcy.Controls.Add(this.groupBox17);
             this.Dostawcy.Controls.Add(this.groupBox16);
             this.Dostawcy.Controls.Add(this.groupBox11);
             this.Dostawcy.Location = new System.Drawing.Point(4, 29);
             this.Dostawcy.Name = "Dostawcy";
-            this.Dostawcy.Size = new System.Drawing.Size(1618, 883);
+            this.Dostawcy.Size = new System.Drawing.Size(1618, 869);
             this.Dostawcy.TabIndex = 5;
             this.Dostawcy.Text = "Dostawcy";
+            // 
+            // statusStripDostawca
+            // 
+            this.statusStripDostawca.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel6,
+            this.toolStripStatusLabelDostawcy});
+            this.statusStripDostawca.Location = new System.Drawing.Point(0, 847);
+            this.statusStripDostawca.Name = "statusStripDostawca";
+            this.statusStripDostawca.Size = new System.Drawing.Size(1618, 22);
+            this.statusStripDostawca.TabIndex = 55;
+            this.statusStripDostawca.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel6
+            // 
+            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
+            this.toolStripStatusLabel6.Size = new System.Drawing.Size(78, 17);
+            this.toolStripStatusLabel6.Text = "ID Dostawcy: ";
+            // 
+            // toolStripStatusLabelDostawcy
+            // 
+            this.toolStripStatusLabelDostawcy.Name = "toolStripStatusLabelDostawcy";
+            this.toolStripStatusLabelDostawcy.Size = new System.Drawing.Size(69, 17);
+            this.toolStripStatusLabelDostawcy.Text = "IDDostawcy";
             // 
             // groupBox17
             // 
@@ -2495,10 +2540,10 @@
             this.linkLabelDostawcaMat.AutoSize = true;
             this.linkLabelDostawcaMat.Location = new System.Drawing.Point(9, 374);
             this.linkLabelDostawcaMat.Name = "linkLabelDostawcaMat";
-            this.linkLabelDostawcaMat.Size = new System.Drawing.Size(73, 20);
+            this.linkLabelDostawcaMat.Size = new System.Drawing.Size(124, 20);
             this.linkLabelDostawcaMat.TabIndex = 42;
             this.linkLabelDostawcaMat.TabStop = true;
-            this.linkLabelDostawcaMat.Text = "linkLabel1";
+            this.linkLabelDostawcaMat.Text = "linkLabelDostawca";
             // 
             // label26
             // 
@@ -2532,6 +2577,7 @@
             this.listBoxDostawcy.Name = "listBoxDostawcy";
             this.listBoxDostawcy.Size = new System.Drawing.Size(355, 584);
             this.listBoxDostawcy.TabIndex = 52;
+            this.listBoxDostawcy.SelectedIndexChanged += new System.EventHandler(this.listBoxDostawcy_SelectedIndexChanged);
             // 
             // groupBox11
             // 
@@ -2543,7 +2589,7 @@
             this.groupBox11.Controls.Add(this.buttonAnulujDostawca);
             this.groupBox11.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox11.Location = new System.Drawing.Point(401, 583);
+            this.groupBox11.Location = new System.Drawing.Point(401, 569);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(382, 64);
             this.groupBox11.TabIndex = 49;
@@ -2641,51 +2687,6 @@
             this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolStripButton1.ToolTipText = "Logo";
             // 
-            // statusStripDostawca
-            // 
-            this.statusStripDostawca.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel6,
-            this.toolStripStatusLabel7});
-            this.statusStripDostawca.Location = new System.Drawing.Point(0, 947);
-            this.statusStripDostawca.Name = "statusStripDostawca";
-            this.statusStripDostawca.Size = new System.Drawing.Size(1638, 22);
-            this.statusStripDostawca.TabIndex = 48;
-            this.statusStripDostawca.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel6
-            // 
-            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
-            this.toolStripStatusLabel6.Size = new System.Drawing.Size(78, 17);
-            this.toolStripStatusLabel6.Text = "ID Dostawca: ";
-            // 
-            // toolStripStatusLabel7
-            // 
-            this.toolStripStatusLabel7.Name = "toolStripStatusLabel7";
-            this.toolStripStatusLabel7.Size = new System.Drawing.Size(163, 17);
-            this.toolStripStatusLabel7.Text = "toolStripStatusLabelDostawca";
-            // 
-            // labelDostawca
-            // 
-            this.labelDostawca.AutoSize = true;
-            this.labelDostawca.Font = new System.Drawing.Font("Arial Narrow", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelDostawca.Location = new System.Drawing.Point(10, 37);
-            this.labelDostawca.Name = "labelDostawca";
-            this.labelDostawca.Size = new System.Drawing.Size(68, 20);
-            this.labelDostawca.TabIndex = 55;
-            this.labelDostawca.Text = "Dostawca";
-            // 
-            // richTextBoxDaneDodatkoweDostawca
-            // 
-            this.richTextBoxDaneDodatkoweDostawca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.richTextBoxDaneDodatkoweDostawca.BackColor = System.Drawing.Color.SandyBrown;
-            this.richTextBoxDaneDodatkoweDostawca.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.richTextBoxDaneDodatkoweDostawca.Location = new System.Drawing.Point(7, 60);
-            this.richTextBoxDaneDodatkoweDostawca.Name = "richTextBoxDaneDodatkoweDostawca";
-            this.richTextBoxDaneDodatkoweDostawca.Size = new System.Drawing.Size(369, 136);
-            this.richTextBoxDaneDodatkoweDostawca.TabIndex = 57;
-            this.richTextBoxDaneDodatkoweDostawca.Text = "";
-            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2693,7 +2694,6 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(1638, 969);
-            this.Controls.Add(this.statusStripDostawca);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.tabControlZakładki);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2702,13 +2702,13 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Materiały.ResumeLayout(false);
             this.Materiały.PerformLayout();
-            this.panelDostawcy.ResumeLayout(false);
-            this.panelDostawcy.PerformLayout();
             this.statusStripMaterialy.ResumeLayout(false);
             this.statusStripMaterialy.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.groupBoxDostawca.ResumeLayout(false);
+            this.panelDostawcy.ResumeLayout(false);
+            this.panelDostawcy.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox15.ResumeLayout(false);
@@ -2764,14 +2764,15 @@
             this.groupBox29.PerformLayout();
             this.groupBox30.ResumeLayout(false);
             this.Dostawcy.ResumeLayout(false);
+            this.Dostawcy.PerformLayout();
+            this.statusStripDostawca.ResumeLayout(false);
+            this.statusStripDostawca.PerformLayout();
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
             this.groupBox16.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            this.statusStripDostawca.ResumeLayout(false);
-            this.statusStripDostawca.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2978,12 +2979,12 @@
         private System.Windows.Forms.RichTextBox richTextBoxDostawca;
         private System.Windows.Forms.LinkLabel linkLabelDostawcaMat;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.StatusStrip statusStripDostawca;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
         private System.Windows.Forms.GroupBox groupBoxDostawca;
         private System.Windows.Forms.Label labelDostawca;
         private System.Windows.Forms.RichTextBox richTextBoxDaneDodatkoweDostawca;
+        private System.Windows.Forms.StatusStrip statusStripDostawca;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDostawcy;
     }
 }
 

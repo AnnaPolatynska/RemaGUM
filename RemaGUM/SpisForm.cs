@@ -312,7 +312,7 @@ namespace RemaGUM
 
 
 
-            }// Zakładka Materiały
+            }// Zakładka Operator
 
             // ----------------------------------Zakładka Dysponent.
             if (v.SelectedIndex == 2)
@@ -326,7 +326,7 @@ namespace RemaGUM
                 {
                     listBoxDysponent.SelectedIndex = 0;
                 }
-            }// Zakładka Normalia
+            }// Zakładka Dysponent
 
             // --------------------------------- Zakładka Materiały.
             if (v.SelectedIndex == 3)
@@ -342,7 +342,18 @@ namespace RemaGUM
                 {
                     listBoxMaterialy.SelectedIndex = 0;
                 }
-            }// Zakładka operator
+            }// Zakładka Materiały
+
+            // --------------------------------Zakładka Dostawcy.
+            if (v.SelectedIndex == 4)
+            {
+                WypelnijDostawcowDanymi();
+
+                if (listBoxDostawcy.Items.Count > 0)
+                {
+                    listBoxDostawcy.SelectedIndex = 0;
+                }
+            } // Zakładka Dostawcy
 
 
 
@@ -1494,7 +1505,8 @@ namespace RemaGUM
                 //OdswiezMaterialy();
 
                 nsAccess2DB.Dostawca_matBUS dostawca_matBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
-                dostawca_matBUS.select();
+                //dostawca_matBUS.select();
+                dostawca_matBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
                 nsAccess2DB.Dostawca_MaterialBUS dostawca_materialBUS = new nsAccess2DB.Dostawca_MaterialBUS(_connString);
                 dostawca_materialBUS.select((int)listBoxMaterialy.Tag);
 
@@ -1527,8 +1539,8 @@ namespace RemaGUM
             nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
 
             v.Items.Clear();
-            dostawca_MatBUS.select();
-            //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
+            //dostawca_MatBUS.select();
+            dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
             while (!dostawca_MatBUS.eof)
             {
                 v.Items.Add(dostawca_MatBUS.VO.Nazwa_dostawca_mat);
@@ -1541,7 +1553,6 @@ namespace RemaGUM
                 v.SelectedIndex = 0;
                 v.Tag = dostawca_MatBUS.VO.Identyfikator;
             }
-            buttonZapiszDostawca.Enabled = checkedListBoxDostawcyMat.SelectedIndex > -1;
         }// WypelnijDostawcowMaterialow(CheckedListBox v)
 
         /// <summary>
@@ -1553,12 +1564,11 @@ namespace RemaGUM
         {
             nsAccess2DB.Dostawca_matBUS dostawca_matBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
 
-            dostawca_matBUS.select();
-            //dostawca_matBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
+            //dostawca_matBUS.select();
+            dostawca_matBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
 
             dostawca_matBUS.idx = checkedListBoxDostawcyMat.SelectedIndex;
             checkedListBoxDostawcyMat.Tag = dostawca_matBUS.VO.Identyfikator;
-
             labelDostawca.Text = dostawca_matBUS.VO.Nazwa_dostawca_mat.ToString();
 
             richTextBoxDaneDodatkoweDostawca.Text = dostawca_matBUS.VO.Dod_info_dostawca_mat.ToString();
@@ -1655,7 +1665,8 @@ namespace RemaGUM
             //linkLabelDostawcaMat.Text = dostawca_MatBUS.VO.Link_dostawca_mat.ToString();
             //richTextBoxDostawca.Text = dostawca_MatBUS.VO.Dod_info_dostawca_mat.ToString();
 
-            dostawca_MatBUS.select(); //odświeża wybrane checkboxy dostawcy.
+            //dostawca_MatBUS.select(); //odświeża wybrane checkboxy dostawcy.
+            dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
 
             radioButtonNazwa_mat.Checked = true; // przy przejściu do zakładki materiały zaznaczone sortowanie po nazwie.
             WybierzMagazyn();
@@ -1755,191 +1766,6 @@ namespace RemaGUM
             rodzaj_MatBUS.idx = comboBoxJednostkaMat.SelectedIndex;
         }// comboBoxRodzaj_SelectedIndexChanged(object sender, EventArgs e)
 
-        private void OdblokujPanelMaterial()
-        {
-            //odblokowanie pól panelu materiał poza polem textBoxMagazynMat (stan początkowy w magazynie)
-            comboBoxWyborMagazyn.Enabled = true;
-            comboBoxWyborMagazyn.BackColor = Color.White;
-
-            textBoxNazwaMat.Enabled = true;
-            textBoxNazwaMat.BackColor = Color.White;
-
-            textBoxTypMat.Enabled = true;
-            textBoxTypMat.BackColor = Color.White;
-
-            comboBoxRodzajMat.Enabled = true;
-            comboBoxRodzajMat.BackColor = Color.White;
-
-            comboBoxJednostkaMat.Enabled = true;
-            comboBoxJednostkaMat.BackColor = Color.White;
-
-            textBoxMinMat.Enabled = true;
-            textBoxMinMat.BackColor = Color.White;
-
-            //odblokowanie pola rozchód - Bieżące zużycie i Odpad.
-            textBoxZuzycieMat.Enabled = true; 
-            textBoxZuzycieMat.BackColor = Color.White;
-            textBoxOdpadMat.Enabled = true;
-            textBoxOdpadMat.BackColor = Color.White;
-
-            // odblokowanie pola przychód - Zakup.
-            textBoxZapotrzebowanieMat.Enabled = true; 
-            textBoxZapotrzebowanieMat.BackColor = Color.White;
-
-            // odblokowanie listy materiałów
-            listBoxMaterialy.Enabled = true;
-            listBoxMaterialy.BackColor = Color.White;
-            
-            // odblokowanie sortowania materiałów
-            groupBoxSorowanieMaterialow.Enabled = true;
-
-            // odblokowanie wyszukiwania
-            textBoxWyszukaj_mat.Enabled = true;
-            textBoxWyszukaj_mat.BackColor = Color.White;
-            buttonSzukaj_mat.Enabled = true;
-
-            // aktywacja listBoxMaterialy
-            listBoxMaterialy.Enabled = true; 
-
-            //odblokowanie przycisków panelu materiał
-            buttonAnulujMat.Enabled = true;
-            buttonNowaMat.Enabled = true;
-            buttonUsunMat.Enabled = true;
-            buttonZapiszMat.Enabled = true;
-        }// OdblokujPanelMaterial()
-
-        private void buttonNowyDostawca_Click(object sender, EventArgs e)
-        {
-            textBoxNazwaDostawcy.Text = string.Empty;
-            richTextBoxDostawca.Text = string.Empty;
-            linkLabelDostawcaMat.Text = string.Empty;
-            toolStripStatusLabel_ID_Dostawcy.Text = string.Empty;
-
-            //zablokowanie panelu materiał  
-            comboBoxWyborMagazyn.Enabled = false;
-            comboBoxWyborMagazyn.BackColor = Color.Bisque;
-
-            textBoxNazwaMat.Enabled = false;
-            textBoxNazwaMat.BackColor = Color.Bisque;
-
-            textBoxTypMat.Enabled = false;
-            textBoxTypMat.BackColor = Color.Bisque;
-
-            comboBoxRodzajMat.Enabled = false;
-            comboBoxRodzajMat.BackColor = Color.Bisque;
-
-            comboBoxJednostkaMat.Enabled = false;
-            comboBoxJednostkaMat.BackColor = Color.Bisque;
-
-            textBoxMagazynMat.Enabled = false;
-            textBoxMagazynMat.BackColor = Color.Bisque;
-
-            textBoxMinMat.Enabled = false;
-            textBoxMinMat.BackColor = Color.Bisque;
-
-            textBoxZuzycieMat.Enabled = false; // zablokowanie pola rozchód - Bieżące zużycie i Odpad.
-            textBoxZuzycieMat.BackColor = Color.LightSalmon;
-            textBoxOdpadMat.Enabled = false;
-            textBoxOdpadMat.BackColor = Color.LightSalmon;
-
-            textBoxZapotrzebowanieMat.Enabled = false; // zablokowanie pola przychód - Zakup.
-            textBoxZapotrzebowanieMat.BackColor = Color.DarkKhaki;
-
-            // zablokowanie listy materiałów
-            listBoxMaterialy.Enabled = false;
-            listBoxMaterialy.BackColor = Color.Bisque;
-
-            // zablokowanie sortowania materiałów
-            groupBoxSorowanieMaterialow.Enabled = false; 
-
-            // zablokowanie wyszukiwania
-            textBoxWyszukaj_mat.Enabled = false;
-            textBoxWyszukaj_mat.BackColor = Color.Bisque;
-            buttonSzukaj_mat.Enabled = false;
-
-            listBoxMaterialy.Enabled = false; // dezaktywacja listBoxMaterialy przy nowym materiale
-            
-            //zablokowanie przycisków panelu materiał
-            buttonAnulujMat.Enabled = false;
-            buttonNowaMat.Enabled = false;
-            buttonUsunMat.Enabled = false;
-            buttonZapiszMat.Enabled = false;
-            
-            // aktywacja pola na wpisanie linku nowego dostawcy.
-            textBoxLinkDostawcy.Enabled = true; 
-            textBoxLinkDostawcy.BackColor = Color.White;
-            
-            checkedListBoxDostawcyMat.Enabled = false; // zablokowanie listy dostawców.
-
-            // przyciski panelu dostawcy
-            buttonZapiszDostawca.Enabled = true;
-            buttonAnulujDostawca.Enabled = true;
-            buttonUsunDostawca.Enabled = false;
-        }// buttonNowyDostawca_Click
-
-        /// <summary>
-        /// Usuwa link z obiektu (wymaga uzycia klawisza zapisz).
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonUsunLink_Click(object sender, EventArgs e)
-        {
-            linkLabelDostawcaMat2.Text = string.Empty;
-
-            pokazKomunikat("Usunięcie linku wymaga zatwierdzenia przyciskiem Zapisz.");
-
-            OdswiezDostawcow();
-        }//buttonUsunLink_Click
-
-        // TODO jak starczy czasu otwarcie linku w przegladarce
-        private void linkLabelDostawcaMat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }// linkLabelDostawcaMat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-
-
-
-        private void buttonZapiszDostawca_Click(object sender, EventArgs e)
-        {
-
-        }// private void buttonZapiszDostawca_Click
-
-        private void buttonAnulujDostawca_Click(object sender, EventArgs e)
-        {
-            textBoxNazwaDostawcy.Text = string.Empty;
-            richTextBoxDostawca.Text = string.Empty;
-            linkLabelDostawcaMat.Text = string.Empty;
-
-            textBoxLinkDostawcy.Text = string.Empty; // po zapisie linku pole puste
-            textBoxLinkDostawcy.Enabled = true; //aktywacja pola linku dostawcy
-            textBoxLinkDostawcy.BackColor = Color.White;
-
-            checkedListBoxDostawcyMat.Enabled = true;  // anulowanie zapisu aktywuje całośc formularza
-            OdswiezDostawcow();
-            OdblokujPanelMaterial();
-
-        }// private void buttonAnulujDostawca_Click
-
-        private void buttonUsunDostawca_Click(object sender, EventArgs e)
-        {
-            nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
-            nsAccess2DB.Dostawca_MaterialBUS dostawca_MaterialBUS = new nsAccess2DB.Dostawca_MaterialBUS(_connString);
-            
-            try
-            {
-                textBoxNazwaDostawcy.Text = string.Empty;
-                richTextBoxDostawca.Text = string.Empty;
-                textBoxLinkDostawcy.Text = string.Empty;
-                checkedListBoxDostawcyMat.Items.Clear();
-            }
-            catch { }
-            dostawca_MatBUS.delete((int)checkedListBoxDostawcyMat.Tag);
-            dostawca_MaterialBUS.delete((int)checkedListBoxDostawcyMat.Tag);
-
-            
-            dostawca_MatBUS.select();
-            WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);
-        }//  private void buttonUsunDostawca_Click
 
         // //////////////////////////////////////////////////  Radio buttony zakładki materiały.
 
@@ -1962,10 +1788,6 @@ namespace RemaGUM
                     listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat);
                     materialyBUS.skip();
                 }
-                //if (listBoxMaterialy.Items.Count > 0)
-                //{
-                //    listBoxMaterialy.SelectedIndex = 0;
-                //}
             }
         }// radioButtonNazwa_mat_CheckedChanged(object sender, EventArgs e)
 
@@ -1988,10 +1810,6 @@ namespace RemaGUM
                     listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " -> " + materialyBUS.VO.Typ_mat);
                     materialyBUS.skip();
                 }
-                //if (listBoxMaterialy.Items.Count > 0)
-                //{
-                //    listBoxMaterialy.SelectedIndex = 0;
-                //}
             }
         }//radioButtonTyp_mat_CheckedChanged(object sender, EventArgs e)
 
@@ -2016,10 +1834,7 @@ namespace RemaGUM
                     listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " -> " + materialyBUS.VO.Stan_min_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
                     materialyBUS.skip();
                 }
-                //if (listBoxMaterialy.Items.Count > 0)
-                //{
-                //    listBoxMaterialy.SelectedIndex = 0;
-                //}
+                
             }
         }//radioButtonStan_min_mat_CheckedChanged(object sender, EventArgs e)
 
@@ -2042,14 +1857,9 @@ namespace RemaGUM
                     listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " -> " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
                     materialyBUS.skip();
                 }
-                //if (listBoxMaterialy.Items.Count > 0)
-                //{
-                //    listBoxMaterialy.SelectedIndex = 0;
-                //}
+                
             }
         }// radioButtonMagazyn_ilosc_mat_CheckedChanged(object sender, EventArgs e)
-
-       
 
 
         // --------- ---------------------------------------przyciski Formularz Materialy
@@ -2086,21 +1896,6 @@ namespace RemaGUM
             textBoxWyszukaj_mat.BackColor = Color.Bisque;
             buttonSzukaj_mat.Enabled = false;
 
-            // zablokowanie panelu dostawcy
-            textBoxNazwaDostawcy.Enabled = false;
-            textBoxNazwaDostawcy.BackColor = Color.SandyBrown;
-            richTextBoxDostawca.Enabled = false;
-            richTextBoxDostawca.BackColor = Color.SandyBrown;
-
-            linkLabelDostawcaMat.Enabled = false;
-            linkLabelDostawcaMat.ForeColor = Color.Transparent;
-            textBoxLinkDostawcy.Enabled = false;
-            textBoxLinkDostawcy.BackColor = Color.SandyBrown;
-            buttonNowyDostawca.Enabled = false;
-            buttonAnulujDostawca.Enabled = false;
-            buttonUsunDostawca.Enabled = false;
-            buttonZapiszDostawca.Enabled = false;
-
             radioButtonNazwa_mat.Checked = false; // wymusza sortowanie po nazwie materiału przy zapisie nowej pozycji Materiału.
 
             buttonAnulujMat.Enabled = true;
@@ -2111,20 +1906,20 @@ namespace RemaGUM
             //OdswiezMaterialy();
             _statusForm = (int)_status.nowy;
         }//ButtonNowa_Click
-                
+
         /// <summary>
         /// Aktywuje pola panelu materiałów bez pola stan magazynowy
         /// </summary>
         private void AktywujPanelMaterial()
         {
             // odblokowanie pola rozchód - Bieżące zużycie i Odpad.
-            textBoxZuzycieMat.Enabled = true; 
+            textBoxZuzycieMat.Enabled = true;
             textBoxZuzycieMat.BackColor = Color.White;
             textBoxOdpadMat.Enabled = true;
             textBoxOdpadMat.BackColor = Color.White;
 
             // odblokowanie pola przychód - Zakup.
-            textBoxZapotrzebowanieMat.Enabled = true; 
+            textBoxZapotrzebowanieMat.Enabled = true;
             textBoxZapotrzebowanieMat.BackColor = Color.White;
 
             // odblokowanie listy materiałów
@@ -2132,7 +1927,7 @@ namespace RemaGUM
             listBoxMaterialy.BackColor = Color.White;
 
             // odblokowanie sortowania materiałów
-            groupBoxSorowanieMaterialow.Enabled = true; 
+            groupBoxSorowanieMaterialow.Enabled = true;
 
             // odblokowanie wyszukiwania
             textBoxWyszukaj_mat.Enabled = true;
@@ -2156,7 +1951,6 @@ namespace RemaGUM
             int idx = listBoxMaterialy.SelectedIndex;
 
             CzyscDaneMaterialy();
-
             AktywujPanelMaterial();
 
             radioButtonNazwa_mat.Checked = true; // przy przejściu do zakładki materiały zaznaczone sortowanie po nazwie.
@@ -2263,8 +2057,6 @@ namespace RemaGUM
                     materialy_VO.Jednostka_miar_mat = comboBoxJednostkaMat.Text.Trim();
                 }
                 
-
-
                 // Stan magazynowy - pole jedynie do odczytu (wyliczane automatycznie). Pole przy nowej pozycji nie może być puste. Komunikat o konieczności wprowadzenia na stan przez pole Zakup. 
                 if (textBoxMagazynMat.Text == string.Empty)
                 {
@@ -2321,9 +2113,8 @@ namespace RemaGUM
 
                 // Zapis dostawców przypisanych do danego materiału.
 
-                //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
-                dostawca_MaterialBUS.select(materialyBUS.VO.Identyfikator);
-                dostawca_MatBUS.select();
+                dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
+                //dostawca_MaterialBUS.select(materialyBUS.VO.Identyfikator);
 
                 for (int i = 0; i < checkedListBoxDostawcyMat.Items.Count; i++)
                 {
@@ -2332,7 +2123,7 @@ namespace RemaGUM
                         dostawca_MatBUS.idx = i;
                         dostawca_MaterialBUS.insert(materialyBUS.VO.Identyfikator, dostawca_MatBUS.VO.Identyfikator, materialyBUS.VO.Nazwa_mat);
                     }
-                    //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
+                    dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
                     
                 }
                 //listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialyBUS.VO.Identyfikator); // ustawienie zaznaczenia w tabeli materiały.
@@ -2480,8 +2271,8 @@ namespace RemaGUM
                     textBoxMagazynMat.Text = aktualizacjaStanuMagazyn.ToString();
 
                     // Zapis dostawców przypisanych do danego materiału.
-                    //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
-                    dostawca_MatBUS.select();
+                    dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
+                    //dostawca_MatBUS.select();
 
                     for (int i = 0; i < checkedListBoxDostawcyMat.Items.Count; i++)
                     {
@@ -2495,8 +2286,8 @@ namespace RemaGUM
                         }
                     }
                     //OdswiezDostawcow();
-                    // dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
-                    dostawca_MatBUS.select();
+                    dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
+                    //dostawca_MatBUS.select();
                     dostawca_MatBUS.idx = checkedListBoxDostawcyMat.SelectedIndex;
                     toolStripStatusLabel_ID_Dostawcy.Text = dostawca_MatBUS.VO.Identyfikator.ToString();
                 }
@@ -2507,10 +2298,10 @@ namespace RemaGUM
             //OdswiezMaterialy();
             WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);
             OdswiezDostawcow();
+            listBoxMaterialy.Enabled = true;
+
             pokazKomunikat("Pozycja zapisana w bazie");
 
-            AktywujPanelMaterial();
-        
             _statusForm = (int)_status.edycja;
         }//buttonZapiszMat_Clic
 
@@ -2530,36 +2321,150 @@ namespace RemaGUM
             nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
             nsAccess2DB.MaterialyVO materialyVO = new nsAccess2DB.MaterialyVO();
 
+            try
+            {
+                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa ASC;");
 
-            //try
-            //{
-            //    materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa ASC;");
+                string s1 = textBoxWyszukaj_mat.Text.ToUpper();
+                string s2;
 
-            //    string s1 = textBoxWyszukaj_mat.Text.ToUpper();
-            //    string s2;
+                for (int i = _materialSzukajIdx; i < materialyBUS.count; i++)
+                {
+                    materialyBUS.idx = i;
+                    materialyVO = materialyBUS.VO;
 
-            //    for (int i = _materialSzukajIdx; i < materialyBUS.count; i++)
-            //    {
-            //        materialyBUS.idx = i;
-            //        materialyVO = materialyBUS.VO;
+                    s2 = materialyVO.Nazwa_mat.ToUpper();
 
-            //        s2 = materialyVO.Nazwa_mat.ToUpper();
+                    if (s2.Contains(s1))
+                    {
+                        _materialSzukajIdx = i;
+                        listBoxMaterialy.SelectedIndex = i;
 
-            //        if (s2.Contains(s1))
-            //        {
-            //            _materialSzukajIdx = i;
-            //            listBoxMaterialy.SelectedIndex = i;
+                    }
+                }
+                pokazKomunikat("Aby szukać od poczatku wciśnij szukaj.");
+            }
+            catch { }
 
-            //        }
-            //    }
-            //    pokazKomunikat("Aby szukać od poczatku wciśnij szukaj.");
-            //}
-            //catch { }
-           
-
-           
         }// button buttonSzukaj_mat_Click
 
+        // TODO ////////////////////////////// Zakładka Dostawcy (Edycja)
+
+        /// <summary>
+        /// Wypełnia listę dostawców wg nazwy.
+        /// </summary>
+        private void WypelnijDostawcowDanymi()
+        {
+            nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
+
+            listBoxDostawcy.Items.Clear();
+            dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC");
+           
+            while (!dostawca_MatBUS.eof)
+            {
+                listBoxDostawcy.Items.Add(dostawca_MatBUS.VO.Nazwa_dostawca_mat);
+                dostawca_MatBUS.skip();
+            }
+        }// WypelnijDostawcowDanymi()
+
+        /// <summary>
+        /// Zmiana indeksu 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listBoxDostawcy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
+            dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC");
+
+            dostawca_MatBUS.idx = listBoxDostawcy.SelectedIndex;
+            toolStripStatusLabelDostawcy.Text = dostawca_MatBUS.VO.Identyfikator.ToString();
+
+            textBoxNazwaDostawcy.Text = dostawca_MatBUS.VO.Nazwa_dostawca_mat;
+            richTextBoxDostawca.Text = dostawca_MatBUS.VO.Dod_info_dostawca_mat;
+            linkLabelDostawcaMat.Text = dostawca_MatBUS.VO.Link_dostawca_mat;
+            textBoxLinkDostawcy.Text = dostawca_MatBUS.VO.Link_dostawca_mat;
+        } // private void listBoxDostawcy_SelectedIndexChanged
+
+        /// <summary>
+        /// Tworzy nowego dostawcę (wymaga przycisku zapisz).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonNowyDostawca_Click(object sender, EventArgs e)
+        {
+            textBoxNazwaDostawcy.Text = string.Empty;
+            richTextBoxDostawca.Text = string.Empty;
+            linkLabelDostawcaMat.Text = string.Empty;
+            toolStripStatusLabel_ID_Dostawcy.Text = string.Empty;
+
+            // aktywacja pola na wpisanie linku nowego dostawcy.
+            textBoxLinkDostawcy.Text = string.Empty;
+            textBoxLinkDostawcy.Enabled = true;
+            textBoxLinkDostawcy.BackColor = Color.White;
+
+            checkedListBoxDostawcyMat.Enabled = false; // zablokowanie listy dostawców.
+
+            // przyciski panelu dostawcy
+            buttonZapiszDostawca.Enabled = true;
+            buttonAnulujDostawca.Enabled = true;
+            buttonUsunDostawca.Enabled = false;
+        }// buttonNowyDostawca_Click
+
+        /// <summary>
+        /// Usuwa link z obiektu (wymaga uzycia klawisza zapisz).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonUsunLink_Click(object sender, EventArgs e)
+        {
+            linkLabelDostawcaMat2.Text = string.Empty;
+
+            pokazKomunikat("Usunięcie linku wymaga zatwierdzenia przyciskiem Zapisz.");
+
+            OdswiezDostawcow();
+        }//buttonUsunLink_Click
+
+        private void buttonZapiszDostawca_Click(object sender, EventArgs e)
+        {
+
+        }// private void buttonZapiszDostawca_Click
+
+        private void buttonAnulujDostawca_Click(object sender, EventArgs e)
+        {
+            textBoxNazwaDostawcy.Text = string.Empty;
+            richTextBoxDostawca.Text = string.Empty;
+            linkLabelDostawcaMat.Text = string.Empty;
+
+            textBoxLinkDostawcy.Text = string.Empty; // po zapisie linku pole puste
+            textBoxLinkDostawcy.Enabled = true; //aktywacja pola linku dostawcy
+            textBoxLinkDostawcy.BackColor = Color.White;
+
+            checkedListBoxDostawcyMat.Enabled = true;  // anulowanie zapisu aktywuje całośc formularza
+            OdswiezDostawcow();
+           
+        }// private void buttonAnulujDostawca_Click
+
+        private void buttonUsunDostawca_Click(object sender, EventArgs e)
+        {
+            nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
+            nsAccess2DB.Dostawca_MaterialBUS dostawca_MaterialBUS = new nsAccess2DB.Dostawca_MaterialBUS(_connString);
+
+            try
+            {
+                textBoxNazwaDostawcy.Text = string.Empty;
+                richTextBoxDostawca.Text = string.Empty;
+                textBoxLinkDostawcy.Text = string.Empty;
+                checkedListBoxDostawcyMat.Items.Clear();
+            }
+            catch { }
+            dostawca_MatBUS.delete((int)checkedListBoxDostawcyMat.Tag);
+            dostawca_MaterialBUS.delete((int)checkedListBoxDostawcyMat.Tag);
+
+            //dostawca_MatBUS.select();
+            dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża dostawców.
+            WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);
+        }//  private void buttonUsunDostawca_Click
 
         // TODO //  //  //  //  //  //  //  //  //  //  //  //  //  //   ZAKŁADKA OPERATORZY MASZYN.
 
