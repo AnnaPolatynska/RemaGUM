@@ -2403,12 +2403,15 @@ namespace RemaGUM
             textBoxLinkDostawcy.Enabled = true;
             textBoxLinkDostawcy.BackColor = Color.White;
 
-            checkedListBoxDostawcyMat.Enabled = false; // zablokowanie listy dostawców.
+            listBoxDostawcy.Enabled = false; // zablokowanie listy dostawców.
 
             // przyciski panelu dostawcy
             buttonZapiszDostawca.Enabled = true;
             buttonAnulujDostawca.Enabled = true;
             buttonUsunDostawca.Enabled = false;
+            buttonNowyDostawca.Enabled = false;
+
+            _statusForm = (int)_status.nowy;
         }// buttonNowyDostawca_Click
 
         /// <summary>
@@ -2427,7 +2430,65 @@ namespace RemaGUM
 
         private void buttonZapiszDostawca_Click(object sender, EventArgs e)
         {
+            nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
+            nsAccess2DB.Dostawca_matVO dostawca_MatVO = new nsAccess2DB.Dostawca_matVO();
 
+            if (textBoxNazwaDostawcy.Text == string.Empty)
+            {
+                MessageBox.Show("Uzupełnij nazwę dostawcy", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
+            if (_statusForm == (int)_status.nowy)
+            {
+                dostawca_MatBUS.select();
+                dostawca_MatBUS.idx = dostawca_MatBUS.count - 1;
+                dostawca_MatVO.Identyfikator = dostawca_MatBUS.VO.Identyfikator + 1;
+
+                dostawca_MatVO.Nazwa_dostawca_mat = textBoxNazwaDostawcy.Text.Trim();
+                dostawca_MatVO.Dod_info_dostawca_mat = richTextBoxDostawca.Text.Trim();
+                dostawca_MatVO.Link_dostawca_mat = textBoxLinkDostawcy.Text.Trim();
+
+                dostawca_MatBUS.write(dostawca_MatVO);
+                dostawca_MatBUS.select();
+
+                listBoxDostawcy.SelectedIndex = dostawca_MatBUS.getIdx(dostawca_MatBUS.VO.Identyfikator); // ustawienie znacznika w liście dostawcy
+            }// if nowy
+            else if (_statusForm == (int)_status.edycja)
+            {
+                dostawca_MatBUS.select((int)listBoxDostawcy.Tag);
+                if (dostawca_MatBUS.count < 1)
+                {
+                    MessageBox.Show("Dostawca o identyfikatorze " + listBoxDostawcy.Tag.ToString() + "nie istnieje w bazie dostawców", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    dostawca_MatVO.Identyfikator = (int)listBoxDostawcy.Tag;
+
+                    dostawca_MatVO.Nazwa_dostawca_mat = textBoxNazwaDostawcy.Text.Trim();
+                    dostawca_MatVO.Dod_info_dostawca_mat = richTextBoxDostawca.Text.Trim();
+                    dostawca_MatVO.Link_dostawca_mat = textBoxLinkDostawcy.Text.Trim();
+
+                    dostawca_MatBUS.write(dostawca_MatVO);
+                    dostawca_MatBUS.select(dostawca_MatVO.Identyfikator);
+
+
+                }
+            }// else if -> edycja
+            WypelnijDostawcowDanymi();
+           
+            //aktywacja przycisków Dostawcy
+            buttonNowyDostawca.Enabled = true;
+            buttonAnulujDostawca.Enabled = true;
+            buttonUsunDostawca.Enabled = true;
+            buttonZapiszDostawca.Enabled = true;
+            buttonUsunLink.Enabled = true;
+
+            listBoxDostawcy.Enabled = true; // aktywacja listy dostawców
+
+            pokazKomunikat("Dostawca zapisany w bazie");
+            _statusForm = (int)_status.edycja;
         }// private void buttonZapiszDostawca_Click
 
         private void buttonAnulujDostawca_Click(object sender, EventArgs e)
@@ -2437,14 +2498,25 @@ namespace RemaGUM
             linkLabelDostawcaMat.Text = string.Empty;
 
             textBoxLinkDostawcy.Text = string.Empty; // po zapisie linku pole puste
-            textBoxLinkDostawcy.Enabled = true; //aktywacja pola linku dostawcy
+            textBoxLinkDostawcy.Enabled = true; // aktywacja pola linku dostawcy
             textBoxLinkDostawcy.BackColor = Color.White;
 
-            checkedListBoxDostawcyMat.Enabled = true;  // anulowanie zapisu aktywuje całośc formularza
-            OdswiezDostawcow();
-           
+            checkedListBoxDostawcyMat.Enabled = true; // anulowanie zapisu aktywuje całośc formularza
+
+            //aktywacja przycisków Dostawcy
+            buttonNowyDostawca.Enabled = true;
+            buttonAnulujDostawca.Enabled = true;
+            buttonUsunDostawca.Enabled = true;
+            buttonZapiszDostawca.Enabled = true;
+            buttonUsunLink.Enabled = true;
+
+            listBoxDostawcy.Enabled = true; // aktywacja listy dostawców
+            //OdswiezDostawcow();
+            _statusForm = (int)_status.edycja;
         }// private void buttonAnulujDostawca_Click
 
+
+        //TODO popraw usunięcie dostawcy
         private void buttonUsunDostawca_Click(object sender, EventArgs e)
         {
             nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
@@ -2464,6 +2536,7 @@ namespace RemaGUM
             //dostawca_MatBUS.select();
             dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża dostawców.
             WypelnijDostawcowMaterialow(checkedListBoxDostawcyMat);
+            _statusForm = (int)_status.edycja;
         }//  private void buttonUsunDostawca_Click
 
         // TODO //  //  //  //  //  //  //  //  //  //  //  //  //  //   ZAKŁADKA OPERATORZY MASZYN.
@@ -2872,9 +2945,9 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonAnulujOperator_Click(object sender, EventArgs e)
         {
-            int idx = listBoxOperator.SelectedIndex;
-
             CzyscDaneOperatora();
+
+            int idx = listBoxOperator.SelectedIndex;
 
             //aktywacja listBoxOperator
             listBoxOperator.BackColor = Color.White;
@@ -2894,7 +2967,7 @@ namespace RemaGUM
             buttonNowaOperator.Enabled = true;
             buttonZapiszOperator.Enabled = true;
             buttonAnulujOperator.Enabled = true;
-            buttonUsunOperator.Enabled = false;
+            buttonUsunOperator.Enabled = true;
 
             _statusForm = (int)_status.edycja;
 
@@ -3163,7 +3236,7 @@ namespace RemaGUM
             }
             if (textBoxNazwiskoDysponent.Text == string.Empty)
             {
-                MessageBox.Show("Proszę uzupełnij nazwisko dysponenta maszyny", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Uzupełnij nazwisko dysponenta maszyny", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

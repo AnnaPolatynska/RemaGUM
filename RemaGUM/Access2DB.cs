@@ -5159,6 +5159,15 @@ namespace nsAccess2DB
             return dt;
         }//select
 
+        public DataTable selectDostawca(int ID_dostawca)
+        {
+            string query = "SELECT * FROM Dostawca_Material WHERE ID_dostawca = " + ID_dostawca.ToString() + ";";
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            DataTable dt = _conn.executeSelectQuery(query, parameters);
+            _error = _conn._error;
+            return dt;
+        }// selectDostawca
+
         /// <summary>
         /// Wprowadza nowy rekord
         /// </summary>
@@ -5287,6 +5296,11 @@ namespace nsAccess2DB
         {
             fillTable(_DAO.select(ID_material, ID_dostawca_mat));
         }// select
+
+        public void selectDostawca(int ID_dostawca)
+        {
+            fillTable(_DAO.selectDostawca(ID_dostawca));
+        }// selectDostawca
 
         /// <summary>
         /// Wypełnia tablicę pozycjami danych ---> dowolne zapytanie z poziomu Form
@@ -5511,10 +5525,6 @@ namespace nsAccess2DB
             Array.Resize(ref _VOs, _VOs.Length + 1);
             _VOs[_VOs.Length - 1] = VO;
         }// add
-
-
-
-
 
     }// class Dostawca_MaterialBUS
 
