@@ -1431,6 +1431,12 @@ namespace RemaGUM
                 materialyBUS.skip();
             }
 
+            if (listBoxMaterialy.Items.Count > 0)
+            {
+                materialyBUS.idx = 0;
+                listBoxMaterialy.SelectedIndex = 0;
+                listBoxMaterialy.Tag = materialyBUS.VO.Identyfikator;
+            }
         }// WypelnijMaterialyNazwami()
 
 
@@ -2321,34 +2327,45 @@ namespace RemaGUM
 
             listBoxMaterialy.Items.Clear();
 
+            
+            textBoxWyszukaj_mat.Text = textBoxWyszukaj_mat.Text.Trim();
+
+            if (textBoxWyszukaj_mat.Text == string.Empty)
+            {
+            pokazKomunikat("Proszę wpisać tekst do pola wyszukiwania. Szukanie anulowane.");
+            return;
+            }
+            Cursor.Current = Cursors.WaitCursor;
+           
             nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
             nsAccess2DB.MaterialyVO materialyVO = new nsAccess2DB.MaterialyVO();
 
-            try
+            materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");
+
+            string s1 = textBoxWyszukaj_mat.Text.ToUpper();
+            string s2;
+
+            for (int i = _materialSzukajIdx; i < materialyBUS.count; i++)
             {
-                materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa ASC;");
+                materialyBUS.idx = i;
+                materialyVO = materialyBUS.VO;
 
-                string s1 = textBoxWyszukaj_mat.Text.ToUpper();
-                string s2;
+                s2 = materialyVO.Nazwa_mat.ToUpper();
 
-                for (int i = _materialSzukajIdx; i < materialyBUS.count; i++)
+                if (s2.Contains(s1))
                 {
-                    materialyBUS.idx = i;
-                    materialyVO = materialyBUS.VO;
-
-                    s2 = materialyVO.Nazwa_mat.ToUpper();
-
-                    if (s2.Contains(s1))
+                    _materialSzukajIdx = i;
+                    listBoxMaterialy.SelectedIndex = i;
+                    if (MessageBox.Show("czy szukać dalej ?", "RemaGUM", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.Cancel)
                     {
-                        _materialSzukajIdx = i;
-                        listBoxMaterialy.SelectedIndex = i;
-
+                        goto cancel;
                     }
                 }
-                pokazKomunikat("Aby szukać od poczatku wciśnij szukaj.");
             }
-            catch { }
-
+            pokazKomunikat("Aby szukać od poczatku wciśnij szukaj.");
+            cancel:;
+            _materialSzukajIdx = 0;
+            Cursor.Current = Cursors.Default;
         }// button buttonSzukaj_mat_Click
 
         // TODO ////////////////////////////// Zakładka Dostawcy (Edycja)
