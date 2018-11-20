@@ -2325,9 +2325,6 @@ namespace RemaGUM
         {
             radioButtonNazwa_mat.Checked = true;
 
-            listBoxMaterialy.Items.Clear();
-
-            
             textBoxWyszukaj_mat.Text = textBoxWyszukaj_mat.Text.Trim();
 
             if (textBoxWyszukaj_mat.Text == string.Empty)
