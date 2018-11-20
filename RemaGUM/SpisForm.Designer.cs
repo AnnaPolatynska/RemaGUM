@@ -98,9 +98,17 @@
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelID_Maszyny = new System.Windows.Forms.ToolStripStatusLabel();
             this.buttonPokazZdj = new System.Windows.Forms.Button();
+            this.groupBoxSortowanie = new System.Windows.Forms.GroupBox();
+            this.radioButtonData_ost_przegl = new System.Windows.Forms.RadioButton();
+            this.radioButtonNazwa = new System.Windows.Forms.RadioButton();
+            this.radioButtonNr_pomieszczenia = new System.Windows.Forms.RadioButton();
+            this.radioButtonNr_fabryczny = new System.Windows.Forms.RadioButton();
+            this.radioButtonNr_inwentarzowy = new System.Windows.Forms.RadioButton();
+            this.radioButtonTyp = new System.Windows.Forms.RadioButton();
             this.linkLabelNazwaZdjecia = new System.Windows.Forms.LinkLabel();
             this.buttonUsunZdj = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.richTextBoxProducent = new System.Windows.Forms.RichTextBox();
             this.checkedListBoxOperatorzy_maszyn = new System.Windows.Forms.CheckedListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -124,7 +132,6 @@
             this.comboBoxKategoria = new System.Windows.Forms.ComboBox();
             this.labelProducentMaszyny = new System.Windows.Forms.Label();
             this.richTextBoxUwagi = new System.Windows.Forms.RichTextBox();
-            this.textBoxProducent = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -149,13 +156,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxNr_prot_BHP = new System.Windows.Forms.TextBox();
-            this.groupBoxSortowanie = new System.Windows.Forms.GroupBox();
-            this.radioButtonData_ost_przegl = new System.Windows.Forms.RadioButton();
-            this.radioButtonNazwa = new System.Windows.Forms.RadioButton();
-            this.radioButtonNr_pomieszczenia = new System.Windows.Forms.RadioButton();
-            this.radioButtonNr_fabryczny = new System.Windows.Forms.RadioButton();
-            this.radioButtonNr_inwentarzowy = new System.Windows.Forms.RadioButton();
-            this.radioButtonTyp = new System.Windows.Forms.RadioButton();
             this.tabControlZakładki = new System.Windows.Forms.TabControl();
             this.Operatorzy_maszyn = new System.Windows.Forms.TabPage();
             this.statusStripOperator = new System.Windows.Forms.StatusStrip();
@@ -251,13 +251,13 @@
             this.groupBoxSorowanieMaterialow.SuspendLayout();
             this.Maszyny.SuspendLayout();
             this.statusStripMaszyna.SuspendLayout();
+            this.groupBoxSortowanie.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBoxSortowanie.SuspendLayout();
             this.tabControlZakładki.SuspendLayout();
             this.Operatorzy_maszyn.SuspendLayout();
             this.statusStripOperator.SuspendLayout();
@@ -1023,6 +1023,7 @@
             this.Maszyny.BackColor = System.Drawing.Color.Bisque;
             this.Maszyny.Controls.Add(this.statusStripMaszyna);
             this.Maszyny.Controls.Add(this.buttonPokazZdj);
+            this.Maszyny.Controls.Add(this.groupBoxSortowanie);
             this.Maszyny.Controls.Add(this.linkLabelNazwaZdjecia);
             this.Maszyny.Controls.Add(this.buttonUsunZdj);
             this.Maszyny.Controls.Add(this.groupBox4);
@@ -1031,7 +1032,6 @@
             this.Maszyny.Controls.Add(this.groupBox1);
             this.Maszyny.Controls.Add(this.groupBox2);
             this.Maszyny.Controls.Add(this.groupBox3);
-            this.Maszyny.Controls.Add(this.groupBoxSortowanie);
             this.Maszyny.Location = new System.Drawing.Point(4, 29);
             this.Maszyny.Name = "Maszyny";
             this.Maszyny.Padding = new System.Windows.Forms.Padding(3);
@@ -1072,6 +1072,102 @@
             this.buttonPokazZdj.UseVisualStyleBackColor = true;
             this.buttonPokazZdj.Click += new System.EventHandler(this.buttonPokazZdj_Click);
             // 
+            // groupBoxSortowanie
+            // 
+            this.groupBoxSortowanie.BackColor = System.Drawing.Color.Bisque;
+            this.groupBoxSortowanie.Controls.Add(this.radioButtonData_ost_przegl);
+            this.groupBoxSortowanie.Controls.Add(this.radioButtonNazwa);
+            this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_pomieszczenia);
+            this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_fabryczny);
+            this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_inwentarzowy);
+            this.groupBoxSortowanie.Controls.Add(this.radioButtonTyp);
+            this.groupBoxSortowanie.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBoxSortowanie.ForeColor = System.Drawing.Color.Black;
+            this.groupBoxSortowanie.Location = new System.Drawing.Point(1416, 22);
+            this.groupBoxSortowanie.Name = "groupBoxSortowanie";
+            this.groupBoxSortowanie.Size = new System.Drawing.Size(185, 198);
+            this.groupBoxSortowanie.TabIndex = 43;
+            this.groupBoxSortowanie.TabStop = false;
+            this.groupBoxSortowanie.Text = "Sortowanie maszyn";
+            // 
+            // radioButtonData_ost_przegl
+            // 
+            this.radioButtonData_ost_przegl.AutoSize = true;
+            this.radioButtonData_ost_przegl.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonData_ost_przegl.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonData_ost_przegl.Location = new System.Drawing.Point(15, 166);
+            this.radioButtonData_ost_przegl.Name = "radioButtonData_ost_przegl";
+            this.radioButtonData_ost_przegl.Size = new System.Drawing.Size(116, 24);
+            this.radioButtonData_ost_przegl.TabIndex = 6;
+            this.radioButtonData_ost_przegl.Text = "Ostatni przegląd";
+            this.radioButtonData_ost_przegl.UseVisualStyleBackColor = true;
+            this.radioButtonData_ost_przegl.CheckedChanged += new System.EventHandler(this.radioButtonData_ost_przegladu_CheckedChanged);
+            // 
+            // radioButtonNazwa
+            // 
+            this.radioButtonNazwa.AutoSize = true;
+            this.radioButtonNazwa.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonNazwa.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonNazwa.Location = new System.Drawing.Point(15, 21);
+            this.radioButtonNazwa.Name = "radioButtonNazwa";
+            this.radioButtonNazwa.Size = new System.Drawing.Size(64, 24);
+            this.radioButtonNazwa.TabIndex = 4;
+            this.radioButtonNazwa.Text = "Nazwa";
+            this.radioButtonNazwa.UseVisualStyleBackColor = true;
+            this.radioButtonNazwa.CheckedChanged += new System.EventHandler(this.radioButtonNazwa_CheckedChanged);
+            // 
+            // radioButtonNr_pomieszczenia
+            // 
+            this.radioButtonNr_pomieszczenia.AutoSize = true;
+            this.radioButtonNr_pomieszczenia.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonNr_pomieszczenia.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonNr_pomieszczenia.Location = new System.Drawing.Point(15, 136);
+            this.radioButtonNr_pomieszczenia.Name = "radioButtonNr_pomieszczenia";
+            this.radioButtonNr_pomieszczenia.Size = new System.Drawing.Size(125, 24);
+            this.radioButtonNr_pomieszczenia.TabIndex = 3;
+            this.radioButtonNr_pomieszczenia.Text = "Nr pomieszczenia";
+            this.radioButtonNr_pomieszczenia.UseVisualStyleBackColor = true;
+            this.radioButtonNr_pomieszczenia.CheckedChanged += new System.EventHandler(this.radioButton_Nr_Pomieszczenia_CheckedChanged);
+            // 
+            // radioButtonNr_fabryczny
+            // 
+            this.radioButtonNr_fabryczny.AutoSize = true;
+            this.radioButtonNr_fabryczny.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonNr_fabryczny.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonNr_fabryczny.Location = new System.Drawing.Point(15, 76);
+            this.radioButtonNr_fabryczny.Name = "radioButtonNr_fabryczny";
+            this.radioButtonNr_fabryczny.Size = new System.Drawing.Size(93, 24);
+            this.radioButtonNr_fabryczny.TabIndex = 2;
+            this.radioButtonNr_fabryczny.Text = "Nr fabryczny";
+            this.radioButtonNr_fabryczny.UseVisualStyleBackColor = true;
+            this.radioButtonNr_fabryczny.CheckedChanged += new System.EventHandler(this.radioButtonNr_fabrycznyCheckedChanged);
+            // 
+            // radioButtonNr_inwentarzowy
+            // 
+            this.radioButtonNr_inwentarzowy.AutoSize = true;
+            this.radioButtonNr_inwentarzowy.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonNr_inwentarzowy.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonNr_inwentarzowy.Location = new System.Drawing.Point(15, 106);
+            this.radioButtonNr_inwentarzowy.Name = "radioButtonNr_inwentarzowy";
+            this.radioButtonNr_inwentarzowy.Size = new System.Drawing.Size(116, 24);
+            this.radioButtonNr_inwentarzowy.TabIndex = 1;
+            this.radioButtonNr_inwentarzowy.Text = "Nr inwentarzowy";
+            this.radioButtonNr_inwentarzowy.UseVisualStyleBackColor = true;
+            this.radioButtonNr_inwentarzowy.CheckedChanged += new System.EventHandler(this.radioButton_Nr_Inwentarzowy_CheckedChanged);
+            // 
+            // radioButtonTyp
+            // 
+            this.radioButtonTyp.AutoSize = true;
+            this.radioButtonTyp.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonTyp.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonTyp.Location = new System.Drawing.Point(15, 46);
+            this.radioButtonTyp.Name = "radioButtonTyp";
+            this.radioButtonTyp.Size = new System.Drawing.Size(48, 24);
+            this.radioButtonTyp.TabIndex = 0;
+            this.radioButtonTyp.Text = "Typ";
+            this.radioButtonTyp.UseVisualStyleBackColor = true;
+            this.radioButtonTyp.CheckedChanged += new System.EventHandler(this.radioButton_Typ_CheckedChanged);
+            // 
             // linkLabelNazwaZdjecia
             // 
             this.linkLabelNazwaZdjecia.AutoSize = true;
@@ -1099,6 +1195,7 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox4.Controls.Add(this.richTextBoxProducent);
             this.groupBox4.Controls.Add(this.checkedListBoxOperatorzy_maszyn);
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.label1);
@@ -1122,24 +1219,31 @@
             this.groupBox4.Controls.Add(this.comboBoxKategoria);
             this.groupBox4.Controls.Add(this.labelProducentMaszyny);
             this.groupBox4.Controls.Add(this.richTextBoxUwagi);
-            this.groupBox4.Controls.Add(this.textBoxProducent);
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.groupBox4.Location = new System.Drawing.Point(333, 80);
+            this.groupBox4.Location = new System.Drawing.Point(333, 22);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(514, 768);
+            this.groupBox4.Size = new System.Drawing.Size(514, 826);
             this.groupBox4.TabIndex = 46;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dane maszyny";
+            // 
+            // richTextBoxProducent
+            // 
+            this.richTextBoxProducent.Location = new System.Drawing.Point(116, 247);
+            this.richTextBoxProducent.Name = "richTextBoxProducent";
+            this.richTextBoxProducent.Size = new System.Drawing.Size(380, 61);
+            this.richTextBoxProducent.TabIndex = 42;
+            this.richTextBoxProducent.Text = "";
             // 
             // checkedListBoxOperatorzy_maszyn
             // 
             this.checkedListBoxOperatorzy_maszyn.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.checkedListBoxOperatorzy_maszyn.FormattingEnabled = true;
-            this.checkedListBoxOperatorzy_maszyn.Location = new System.Drawing.Point(6, 515);
+            this.checkedListBoxOperatorzy_maszyn.Location = new System.Drawing.Point(6, 565);
             this.checkedListBoxOperatorzy_maszyn.Name = "checkedListBoxOperatorzy_maszyn";
             this.checkedListBoxOperatorzy_maszyn.Size = new System.Drawing.Size(502, 175);
             this.checkedListBoxOperatorzy_maszyn.TabIndex = 41;
@@ -1148,7 +1252,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label5.Location = new System.Drawing.Point(11, 286);
+            this.label5.Location = new System.Drawing.Point(11, 323);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 20);
             this.label5.TabIndex = 12;
@@ -1169,7 +1273,7 @@
             // 
             this.textBoxRok_produkcji.BackColor = System.Drawing.Color.Linen;
             this.textBoxRok_produkcji.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxRok_produkcji.Location = new System.Drawing.Point(116, 286);
+            this.textBoxRok_produkcji.Location = new System.Drawing.Point(116, 323);
             this.textBoxRok_produkcji.Name = "textBoxRok_produkcji";
             this.textBoxRok_produkcji.Size = new System.Drawing.Size(86, 24);
             this.textBoxRok_produkcji.TabIndex = 15;
@@ -1178,7 +1282,7 @@
             // 
             this.label58.AutoSize = true;
             this.label58.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label58.Location = new System.Drawing.Point(11, 492);
+            this.label58.Location = new System.Drawing.Point(11, 536);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(107, 20);
             this.label58.TabIndex = 40;
@@ -1188,7 +1292,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label12.Location = new System.Drawing.Point(11, 331);
+            this.label12.Location = new System.Drawing.Point(11, 368);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(152, 20);
             this.label12.TabIndex = 25;
@@ -1198,7 +1302,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label13.Location = new System.Drawing.Point(11, 370);
+            this.label13.Location = new System.Drawing.Point(11, 407);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(160, 20);
             this.label13.TabIndex = 27;
@@ -1218,7 +1322,7 @@
             // 
             this.dateTimePickerData_ost_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
             this.dateTimePickerData_ost_przegl.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.dateTimePickerData_ost_przegl.Location = new System.Drawing.Point(207, 331);
+            this.dateTimePickerData_ost_przegl.Location = new System.Drawing.Point(207, 368);
             this.dateTimePickerData_ost_przegl.Name = "dateTimePickerData_ost_przegl";
             this.dateTimePickerData_ost_przegl.Size = new System.Drawing.Size(289, 24);
             this.dateTimePickerData_ost_przegl.TabIndex = 36;
@@ -1228,7 +1332,7 @@
             this.comboBoxDysponent.BackColor = System.Drawing.Color.Linen;
             this.comboBoxDysponent.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.comboBoxDysponent.FormattingEnabled = true;
-            this.comboBoxDysponent.Location = new System.Drawing.Point(116, 456);
+            this.comboBoxDysponent.Location = new System.Drawing.Point(116, 493);
             this.comboBoxDysponent.Name = "comboBoxDysponent";
             this.comboBoxDysponent.Size = new System.Drawing.Size(380, 28);
             this.comboBoxDysponent.TabIndex = 39;
@@ -1238,7 +1342,7 @@
             // 
             this.dateTimePickerData_kol_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
             this.dateTimePickerData_kol_przegl.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.dateTimePickerData_kol_przegl.Location = new System.Drawing.Point(207, 370);
+            this.dateTimePickerData_kol_przegl.Location = new System.Drawing.Point(207, 407);
             this.dateTimePickerData_kol_przegl.Name = "dateTimePickerData_kol_przegl";
             this.dateTimePickerData_kol_przegl.Size = new System.Drawing.Size(289, 24);
             this.dateTimePickerData_kol_przegl.TabIndex = 37;
@@ -1256,7 +1360,7 @@
             // 
             this.textBoxNr_pom.BackColor = System.Drawing.Color.Linen;
             this.textBoxNr_pom.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxNr_pom.Location = new System.Drawing.Point(354, 286);
+            this.textBoxNr_pom.Location = new System.Drawing.Point(354, 323);
             this.textBoxNr_pom.Name = "textBoxNr_pom";
             this.textBoxNr_pom.Size = new System.Drawing.Size(142, 24);
             this.textBoxNr_pom.TabIndex = 38;
@@ -1295,7 +1399,7 @@
             this.comboBoxDzial.BackColor = System.Drawing.Color.Linen;
             this.comboBoxDzial.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.comboBoxDzial.FormattingEnabled = true;
-            this.comboBoxDzial.Location = new System.Drawing.Point(207, 412);
+            this.comboBoxDzial.Location = new System.Drawing.Point(207, 449);
             this.comboBoxDzial.Name = "comboBoxDzial";
             this.comboBoxDzial.Size = new System.Drawing.Size(289, 28);
             this.comboBoxDzial.TabIndex = 33;
@@ -1324,7 +1428,7 @@
             // 
             this.textBoxNr_fabryczny.BackColor = System.Drawing.Color.Linen;
             this.textBoxNr_fabryczny.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxNr_fabryczny.Location = new System.Drawing.Point(116, 201);
+            this.textBoxNr_fabryczny.Location = new System.Drawing.Point(116, 204);
             this.textBoxNr_fabryczny.Name = "textBoxNr_fabryczny";
             this.textBoxNr_fabryczny.Size = new System.Drawing.Size(380, 24);
             this.textBoxNr_fabryczny.TabIndex = 14;
@@ -1346,9 +1450,9 @@
             this.labelProducentMaszyny.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.labelProducentMaszyny.Location = new System.Drawing.Point(11, 247);
             this.labelProducentMaszyny.Name = "labelProducentMaszyny";
-            this.labelProducentMaszyny.Size = new System.Drawing.Size(66, 20);
+            this.labelProducentMaszyny.Size = new System.Drawing.Size(105, 20);
             this.labelProducentMaszyny.TabIndex = 15;
-            this.labelProducentMaszyny.Text = "Producent";
+            this.labelProducentMaszyny.Text = "Dane producenta";
             // 
             // richTextBoxUwagi
             // 
@@ -1356,26 +1460,17 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxUwagi.BackColor = System.Drawing.Color.Linen;
             this.richTextBoxUwagi.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.richTextBoxUwagi.Location = new System.Drawing.Point(6, 715);
+            this.richTextBoxUwagi.Location = new System.Drawing.Point(6, 775);
             this.richTextBoxUwagi.Name = "richTextBoxUwagi";
-            this.richTextBoxUwagi.Size = new System.Drawing.Size(502, 40);
+            this.richTextBoxUwagi.Size = new System.Drawing.Size(502, 32);
             this.richTextBoxUwagi.TabIndex = 30;
             this.richTextBoxUwagi.Text = "";
-            // 
-            // textBoxProducent
-            // 
-            this.textBoxProducent.BackColor = System.Drawing.Color.Linen;
-            this.textBoxProducent.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxProducent.Location = new System.Drawing.Point(116, 244);
-            this.textBoxProducent.Name = "textBoxProducent";
-            this.textBoxProducent.Size = new System.Drawing.Size(380, 24);
-            this.textBoxProducent.TabIndex = 16;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label8.Location = new System.Drawing.Point(11, 459);
+            this.label8.Location = new System.Drawing.Point(11, 496);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 20);
             this.label8.TabIndex = 17;
@@ -1385,7 +1480,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label14.Location = new System.Drawing.Point(11, 695);
+            this.label14.Location = new System.Drawing.Point(11, 752);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(44, 20);
             this.label14.TabIndex = 29;
@@ -1395,7 +1490,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label9.Location = new System.Drawing.Point(239, 289);
+            this.label9.Location = new System.Drawing.Point(239, 326);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 20);
             this.label9.TabIndex = 19;
@@ -1405,7 +1500,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label10.Location = new System.Drawing.Point(11, 415);
+            this.label10.Location = new System.Drawing.Point(11, 452);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(185, 20);
             this.label10.TabIndex = 21;
@@ -1652,102 +1747,6 @@
             this.textBoxNr_prot_BHP.Name = "textBoxNr_prot_BHP";
             this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(369, 24);
             this.textBoxNr_prot_BHP.TabIndex = 24;
-            // 
-            // groupBoxSortowanie
-            // 
-            this.groupBoxSortowanie.BackColor = System.Drawing.Color.Bisque;
-            this.groupBoxSortowanie.Controls.Add(this.radioButtonData_ost_przegl);
-            this.groupBoxSortowanie.Controls.Add(this.radioButtonNazwa);
-            this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_pomieszczenia);
-            this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_fabryczny);
-            this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_inwentarzowy);
-            this.groupBoxSortowanie.Controls.Add(this.radioButtonTyp);
-            this.groupBoxSortowanie.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.groupBoxSortowanie.ForeColor = System.Drawing.Color.Black;
-            this.groupBoxSortowanie.Location = new System.Drawing.Point(333, 6);
-            this.groupBoxSortowanie.Name = "groupBoxSortowanie";
-            this.groupBoxSortowanie.Size = new System.Drawing.Size(514, 76);
-            this.groupBoxSortowanie.TabIndex = 43;
-            this.groupBoxSortowanie.TabStop = false;
-            this.groupBoxSortowanie.Text = "Sortowanie maszyn";
-            // 
-            // radioButtonData_ost_przegl
-            // 
-            this.radioButtonData_ost_przegl.AutoSize = true;
-            this.radioButtonData_ost_przegl.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.radioButtonData_ost_przegl.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonData_ost_przegl.Location = new System.Drawing.Point(317, 44);
-            this.radioButtonData_ost_przegl.Name = "radioButtonData_ost_przegl";
-            this.radioButtonData_ost_przegl.Size = new System.Drawing.Size(170, 24);
-            this.radioButtonData_ost_przegl.TabIndex = 6;
-            this.radioButtonData_ost_przegl.Text = "Data ostatniego przeglądu";
-            this.radioButtonData_ost_przegl.UseVisualStyleBackColor = true;
-            this.radioButtonData_ost_przegl.CheckedChanged += new System.EventHandler(this.radioButtonData_ost_przegladu_CheckedChanged);
-            // 
-            // radioButtonNazwa
-            // 
-            this.radioButtonNazwa.AutoSize = true;
-            this.radioButtonNazwa.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.radioButtonNazwa.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNazwa.Location = new System.Drawing.Point(15, 21);
-            this.radioButtonNazwa.Name = "radioButtonNazwa";
-            this.radioButtonNazwa.Size = new System.Drawing.Size(64, 24);
-            this.radioButtonNazwa.TabIndex = 4;
-            this.radioButtonNazwa.Text = "Nazwa";
-            this.radioButtonNazwa.UseVisualStyleBackColor = true;
-            this.radioButtonNazwa.CheckedChanged += new System.EventHandler(this.radioButtonNazwa_CheckedChanged);
-            // 
-            // radioButtonNr_pomieszczenia
-            // 
-            this.radioButtonNr_pomieszczenia.AutoSize = true;
-            this.radioButtonNr_pomieszczenia.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.radioButtonNr_pomieszczenia.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNr_pomieszczenia.Location = new System.Drawing.Point(317, 21);
-            this.radioButtonNr_pomieszczenia.Name = "radioButtonNr_pomieszczenia";
-            this.radioButtonNr_pomieszczenia.Size = new System.Drawing.Size(125, 24);
-            this.radioButtonNr_pomieszczenia.TabIndex = 3;
-            this.radioButtonNr_pomieszczenia.Text = "Nr pomieszczenia";
-            this.radioButtonNr_pomieszczenia.UseVisualStyleBackColor = true;
-            this.radioButtonNr_pomieszczenia.CheckedChanged += new System.EventHandler(this.radioButton_Nr_Pomieszczenia_CheckedChanged);
-            // 
-            // radioButtonNr_fabryczny
-            // 
-            this.radioButtonNr_fabryczny.AutoSize = true;
-            this.radioButtonNr_fabryczny.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.radioButtonNr_fabryczny.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNr_fabryczny.Location = new System.Drawing.Point(143, 20);
-            this.radioButtonNr_fabryczny.Name = "radioButtonNr_fabryczny";
-            this.radioButtonNr_fabryczny.Size = new System.Drawing.Size(93, 24);
-            this.radioButtonNr_fabryczny.TabIndex = 2;
-            this.radioButtonNr_fabryczny.Text = "Nr fabryczny";
-            this.radioButtonNr_fabryczny.UseVisualStyleBackColor = true;
-            this.radioButtonNr_fabryczny.CheckedChanged += new System.EventHandler(this.radioButtonNr_fabrycznyCheckedChanged);
-            // 
-            // radioButtonNr_inwentarzowy
-            // 
-            this.radioButtonNr_inwentarzowy.AutoSize = true;
-            this.radioButtonNr_inwentarzowy.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.radioButtonNr_inwentarzowy.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonNr_inwentarzowy.Location = new System.Drawing.Point(143, 44);
-            this.radioButtonNr_inwentarzowy.Name = "radioButtonNr_inwentarzowy";
-            this.radioButtonNr_inwentarzowy.Size = new System.Drawing.Size(116, 24);
-            this.radioButtonNr_inwentarzowy.TabIndex = 1;
-            this.radioButtonNr_inwentarzowy.Text = "Nr inwentarzowy";
-            this.radioButtonNr_inwentarzowy.UseVisualStyleBackColor = true;
-            this.radioButtonNr_inwentarzowy.CheckedChanged += new System.EventHandler(this.radioButton_Nr_Inwentarzowy_CheckedChanged);
-            // 
-            // radioButtonTyp
-            // 
-            this.radioButtonTyp.AutoSize = true;
-            this.radioButtonTyp.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.radioButtonTyp.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonTyp.Location = new System.Drawing.Point(15, 46);
-            this.radioButtonTyp.Name = "radioButtonTyp";
-            this.radioButtonTyp.Size = new System.Drawing.Size(48, 24);
-            this.radioButtonTyp.TabIndex = 0;
-            this.radioButtonTyp.Text = "Typ";
-            this.radioButtonTyp.UseVisualStyleBackColor = true;
-            this.radioButtonTyp.CheckedChanged += new System.EventHandler(this.radioButton_Typ_CheckedChanged);
             // 
             // tabControlZakładki
             // 
@@ -2729,6 +2728,8 @@
             this.Maszyny.PerformLayout();
             this.statusStripMaszyna.ResumeLayout(false);
             this.statusStripMaszyna.PerformLayout();
+            this.groupBoxSortowanie.ResumeLayout(false);
+            this.groupBoxSortowanie.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -2738,8 +2739,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBoxSortowanie.ResumeLayout(false);
-            this.groupBoxSortowanie.PerformLayout();
             this.tabControlZakładki.ResumeLayout(false);
             this.Operatorzy_maszyn.ResumeLayout(false);
             this.Operatorzy_maszyn.PerformLayout();
@@ -2985,6 +2984,7 @@
         private System.Windows.Forms.StatusStrip statusStripDostawca;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDostawcy;
+        private System.Windows.Forms.RichTextBox richTextBoxProducent;
     }
 }
 

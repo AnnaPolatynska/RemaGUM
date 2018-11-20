@@ -87,7 +87,7 @@ namespace RemaGUM
             textBoxNr_inwentarzowy.TabIndex = 4;
             textBoxNr_fabryczny.TabIndex = 5;
             textBoxRok_produkcji.TabIndex = 6;
-            textBoxProducent.TabIndex = 7;
+            richTextBoxProducent.TabIndex = 7;
             pictureBox1.TabIndex = 8;
             comboBoxDysponent.TabIndex = 9;
             checkedListBoxOperatorzy_maszyn.TabIndex = 10;
@@ -192,7 +192,7 @@ namespace RemaGUM
             _tt.SetToolTip(textBoxNr_inwentarzowy, "Numer naklejki GUM (inwentarzowy) maszyny, przyrządu lub urządzenia.");
             _tt.SetToolTip(textBoxNr_fabryczny, "Numer fabryczny maszyny, przyrządu lub urządzenia.");
             _tt.SetToolTip(textBoxRok_produkcji, "Rok wyprodukowania.");
-            _tt.SetToolTip(textBoxProducent, "Producent maszyny, przyrządu lub urządzenia.");
+            _tt.SetToolTip(richTextBoxProducent, "Producent maszyny, przyrządu lub urządzenia, dane adresowe, adres strony www i inne dodatkowe dane.");
             _tt.SetToolTip(pictureBox1, "Zdjęcie maszyny, przyrządu lub urządzenia.");
             _tt.SetToolTip(comboBoxDysponent, "Osoba zarządzająca maszynami (dysponent maszyny).");
             _tt.SetToolTip(checkedListBoxOperatorzy_maszyn, "Główna osoba użytkująca maszynę (posiadająca odpowiednie uprawnienia).");
@@ -284,6 +284,8 @@ namespace RemaGUM
                 OdswiezListeMaszyn();
                 listBoxMaszyny.SelectedIndex = _maszynyBUS.getIdx(_maszynaId);
 
+                radioButtonNazwa.Checked = true;
+
                 WypelnijCzestotliwosc();
                 WypelnijKategorie();
                 WypelnijDzial();
@@ -309,8 +311,6 @@ namespace RemaGUM
                 {
                     listBoxOperator.SelectedIndex = 0;
                 }
-
-
 
             }// Zakładka Operator
 
@@ -398,7 +398,7 @@ namespace RemaGUM
                 textBoxNr_inwentarzowy.Text = string.Empty;
                 textBoxNr_fabryczny.Text = string.Empty;
                 textBoxRok_produkcji.Text = string.Empty;
-                textBoxProducent.Text = string.Empty;
+                richTextBoxProducent.Text = string.Empty;
 
                 linkLabelNazwaZdjecia.Text = string.Empty;
                 pictureBox1.Image = null;
@@ -500,9 +500,9 @@ namespace RemaGUM
                 textBoxNr_inwentarzowy.Text = maszynyBUS.VO.Nr_inwentarzowy;
                 textBoxNr_fabryczny.Text = maszynyBUS.VO.Nr_fabryczny;
                 textBoxRok_produkcji.Text = maszynyBUS.VO.Rok_produkcji;
-                textBoxProducent.Text = maszynyBUS.VO.Producent;
+                richTextBoxProducent.Text = maszynyBUS.VO.Producent;
 
-                linkLabelNazwaZdjecia.Text = maszynyBUS.VO.Zdjecie;// zdjęcie nazwa
+               // linkLabelNazwaZdjecia.Text = maszynyBUS.VO.Zdjecie;// zdjęcie nazwa w linku
                 if (File.Exists(maszynyBUS.VO.Zdjecie))
                 {
                     File.Delete(maszynyBUS.VO.Zdjecie);
@@ -513,6 +513,7 @@ namespace RemaGUM
                 comboBoxDysponent.Text = maszynyBUS.VO.Nazwa_dysponent;  // wypełnia dysponenta
 
                 textBoxNr_pom.Text = maszynyBUS.VO.Nr_pom;
+
                 comboBoxDzial.Text = maszynyBUS.VO.Dzial;
                 textBoxNr_prot_BHP.Text = maszynyBUS.VO.Nr_prot_BHP;
 
@@ -680,6 +681,10 @@ namespace RemaGUM
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa + " -> " + maszynyBUS.VO.Nr_fabryczny);
                     maszynyBUS.skip();
                 }
+                if (listBoxMaszyny.Items.Count > 0)
+                {
+                    listBoxMaszyny.SelectedIndex = 0;
+                }
             }
         }//radioButtonNazwa_CheckedChanged
 
@@ -701,6 +706,10 @@ namespace RemaGUM
                 {
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Nr_inwentarzowy + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
+                }
+                if (listBoxMaszyny.Items.Count > 0)
+                {
+                    listBoxMaszyny.SelectedIndex = 0;
                 }
             }
         }//radioButton_Nr_Inwentarzowy_CheckedChanged
@@ -724,6 +733,10 @@ namespace RemaGUM
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Typ + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
+                if (listBoxMaszyny.Items.Count > 0)
+                {
+                    listBoxMaszyny.SelectedIndex = 0;
+                }
             }
         }//radioButton_Typ_CheckedChanged
 
@@ -746,7 +759,10 @@ namespace RemaGUM
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Nr_fabryczny + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
-
+                if (listBoxMaszyny.Items.Count > 0)
+                {
+                    listBoxMaszyny.SelectedIndex = 0;
+                }
             }
 
         }//radioButtonNr_fabrycznyCheckedChanged
@@ -770,6 +786,10 @@ namespace RemaGUM
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Nr_pom + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
+                //if (listBoxMaszyny.Items.Count > 0)
+                //{
+                //    listBoxMaszyny.SelectedIndex = 0;
+                //}
             }
         }//radioButton_Nr_Pomieszczenia_CheckedChanged
 
@@ -792,7 +812,10 @@ namespace RemaGUM
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Dz_ost_przeg + "-" + maszynyBUS.VO.Mc_ost_przeg + "-" + maszynyBUS.VO.Rok_ost_przeg + " r. -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
-
+                if (listBoxMaszyny.Items.Count > 0)
+                {
+                    listBoxMaszyny.SelectedIndex = 0;
+                }
             }
         }//radioButton_Nr_Pomieszczenia_CheckedChanged
 
@@ -1038,7 +1061,7 @@ namespace RemaGUM
                 textBoxNr_inwentarzowy.Text = string.Empty;
                 textBoxNr_fabryczny.Text = string.Empty;
                 textBoxRok_produkcji.Text = string.Empty;
-                textBoxProducent.Text = string.Empty;
+                richTextBoxProducent.Text = string.Empty;
 
                 pictureBox1.Text = string.Empty;
                 _zawartoscPliku = new byte[] { }; //Czyści pictureBox1
@@ -1113,7 +1136,7 @@ namespace RemaGUM
                 maszynyVO.Nr_inwentarzowy = textBoxNr_inwentarzowy.Text.Trim();
                 maszynyVO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
                 maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
-                maszynyVO.Producent = textBoxProducent.Text.Trim();
+                maszynyVO.Producent = richTextBoxProducent.Text.Trim();
 
                 maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
                 maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
@@ -1123,7 +1146,12 @@ namespace RemaGUM
                 maszynyVO.Nazwa_dysponent = dysponentVO.Dysp_nazwisko + dysponentVO.Dysp_imie;
                 maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
 
+                if (textBoxNr_pom.Text == string.Empty)
+                {
+                    pokazKomunikat("Uzupełnij numer pomieszczenia.");
+                }
                 maszynyVO.Nr_pom = textBoxNr_pom.Text;
+
                 maszynyVO.Dzial = comboBoxDzial.Text;
                 maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
                 maszynyVO.Rok_ost_przeg = dateTimePickerData_ost_przegl.Value.Year;
@@ -1185,7 +1213,7 @@ namespace RemaGUM
                         maszynyVO.Nr_inwentarzowy = textBoxNr_inwentarzowy.Text.Trim();
                         maszynyVO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
                         maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
-                        maszynyVO.Producent = textBoxProducent.Text.Trim();
+                        maszynyVO.Producent = richTextBoxProducent.Text.Trim();
 
                         maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
                         maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
@@ -1383,6 +1411,10 @@ namespace RemaGUM
                     linkLabelNazwaZdjecia.Text = fi.Name;
                     maszynyBUS.VO.Zawartosc_pliku = _zawartoscPliku; //zawartosc zdjęcia
                     maszynyBUS.VO.Zdjecie = fi.Name;// nazwa zdjęcia
+
+                    pokazZdjecie(linkLabelNazwaZdjecia.Text); // pokazuje zdjęcie.
+
+                    pokazKomunikat("Wgranie zdjęcia nastąpi po wciśnięciu przycisku Zapisz.");
                 }
                 catch (Exception ex)
                 {
@@ -1402,6 +1434,8 @@ namespace RemaGUM
             maszynyBUS.VO.Zdjecie = string.Empty; // nazwa zdjęcia.
             maszynyBUS.VO.Zawartosc_pliku = new byte[0] { }; // zawartość pliku zdjęcia.
             linkLabelNazwaZdjecia.Text = string.Empty;
+
+            pokazKomunikat("Usunięcie zdjęcia nastąpi po wciśnięciu przycisku Zapisz.");
         }//buttonUsunZdj_Click
 
 
@@ -1797,6 +1831,11 @@ namespace RemaGUM
                     listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat);
                     materialyBUS.skip();
                 }
+
+                if (listBoxMaterialy.Items.Count > 0)
+                {
+                    listBoxMaterialy.SelectedIndex = 0;
+                }
             }
         }// radioButtonNazwa_mat_CheckedChanged(object sender, EventArgs e)
 
@@ -1818,6 +1857,10 @@ namespace RemaGUM
                 {
                     listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " -> " + materialyBUS.VO.Typ_mat);
                     materialyBUS.skip();
+                }
+                if (listBoxMaterialy.Items.Count > 0)
+                {
+                    listBoxMaterialy.SelectedIndex = 0;
                 }
             }
         }//radioButtonTyp_mat_CheckedChanged(object sender, EventArgs e)
@@ -1843,7 +1886,11 @@ namespace RemaGUM
                     listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " -> " + materialyBUS.VO.Stan_min_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
                     materialyBUS.skip();
                 }
-                
+                if (listBoxMaterialy.Items.Count > 0)
+                {
+                    listBoxMaterialy.SelectedIndex = 0;
+                }
+
             }
         }//radioButtonStan_min_mat_CheckedChanged(object sender, EventArgs e)
 
@@ -1866,7 +1913,10 @@ namespace RemaGUM
                     listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " -> " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
                     materialyBUS.skip();
                 }
-                
+                if (listBoxMaterialy.Items.Count > 0)
+                {
+                    listBoxMaterialy.SelectedIndex = 0;
+                }
             }
         }// radioButtonMagazyn_ilosc_mat_CheckedChanged(object sender, EventArgs e)
 
@@ -2545,7 +2595,7 @@ namespace RemaGUM
                 textBoxNazwaDostawcy.Text = string.Empty;
                 richTextBoxDostawca.Text = string.Empty;
                 textBoxLinkDostawcy.Text = string.Empty;
-                listBoxDostawcy.Items.Clear();
+                linkLabelDostawcaMat.Text = string.Empty;
             }
             catch { }
         }// CzyscDaneDostawcy()
@@ -2781,7 +2831,7 @@ namespace RemaGUM
                 operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Data_konca_upr;");
                 while (!operatorBUS.eof)
                 {
-                    listBoxOperator.Items.Add(operatorBUS.VO.Dzien + ":" + operatorBUS.VO.Mc + ":" + operatorBUS.VO.Rok + " - (" + operatorBUS.VO.Uprawnienie + ") - " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
+                    listBoxOperator.Items.Add(operatorBUS.VO.Dzien + "-" + operatorBUS.VO.Mc + "-" + operatorBUS.VO.Rok + " (" + operatorBUS.VO.Uprawnienie + ") " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
                     operatorBUS.skip();
                 }
             }
@@ -3048,11 +3098,14 @@ namespace RemaGUM
                 listBoxOperator.Items.Add(operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie);
                 operatorBUS.skip();
             }
-
+          
             if (listBoxOperator.Items.Count > 0)
             {
                 listBoxOperator.SelectedIndex = 0;
             }
+
+            if (listBoxOperator.Text == string.Empty)
+            { pokazKomunikat("Nie znaleziono szukanego tekstu. Wyszukaj ponownie."); }
         }// buttonSzukajOperator_Click
 
         // TODO // // // // // // // // // // // // // // // // // ZAKŁADKA DYSPONENT MASZYNY.
@@ -3130,8 +3183,6 @@ namespace RemaGUM
                 comboBoxDzialDysponent.Text = dysponentBUS.VO.Dzial;
                 richTextBoxDysponent_dane.Text = dysponentBUS.VO.Dysp_dane;
 
-
-
                 //wypełnia listę maszyn, którymi zarządza wybrany z listy dysponent.
                 nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
                 //nsAccess2DB.Maszyny_DysponentBUS maszyny_DysponentBUS = new nsAccess2DB.Maszyny_DysponentBUS(_connString);
@@ -3177,13 +3228,6 @@ namespace RemaGUM
             {
                 listBoxMaszynyDysponenta.Items.Add(maszynyBUS.VO.Nazwa + " " + maszynyBUS.VO.Nr_fabryczny);
                 maszynyBUS.skip();
-            }
-
-            if (listBoxMaszynyDysponenta.Items.Count > 0)
-            {
-                maszynyBUS.idx = 0;
-                listBoxMaszynyDysponenta.SelectedIndex = 0;
-                listBoxMaszynyDysponenta.Tag = maszynyBUS.VO.Identyfikator;
             }
         }// WypelnijDysponentowMaszynami()
 
