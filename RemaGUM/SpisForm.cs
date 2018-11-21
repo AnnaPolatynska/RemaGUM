@@ -361,6 +361,18 @@ namespace RemaGUM
         } //tabControl1_SelectedIndexChanged
 
         /// <summary>
+        /// Przycisk uruchamiający okienko o programie.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButtonOProgramie_Click(object sender, EventArgs e)
+        {
+            Form formORemaGUM = new FormORemaGUM();
+            formORemaGUM.ShowDialog();
+            formORemaGUM.Dispose();
+        }// toolStripButtonOProgramie_Click
+
+        /// <summary>
         /// Przycisk uruchomiający pomoc programu RemaGUM.
         /// </summary>
         /// <param name="sender"></param>
@@ -3484,6 +3496,7 @@ namespace RemaGUM
        
             Cursor.Current = Cursors.Default;
         }//buttonSzukajDysponent_Click
+
 
     }// public partial class SpisForm : Form
 

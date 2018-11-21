@@ -120,9 +120,6 @@
   <metadata name="statusStripMaterialy.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>430, 17</value>
   </metadata>
-  <metadata name="statusStripMaterialy.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>430, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonSzukaj_mat.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -185,15 +182,6 @@
         AAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="statusStripOperator.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>590, 17</value>
-  </metadata>
-  <metadata name="statusStripDysponent.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>748, 17</value>
-  </metadata>
-  <metadata name="statusStripDostawca.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>916, 17</value>
-  </metadata>
   <metadata name="statusStripOperator.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>590, 17</value>
   </metadata>
@@ -272,6 +260,18 @@
         BClzoMisbDwPCCxEQ8oYFOnXlzYR8OijQVhvKYjRry89nKCFuBQEVDva5KADTIdoNOH7q9rRBoflEAV9
         h6h2tcFhOURB3yHqXW0y2CZIGES9ywzApS/SMNQnzARsEyQEQ+cJM0biyJ/+UG8Q1CZBcv4AKdPSyDie
         mhcAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="toolStripButtonOProgramie.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACMAAAAkCAYAAAAD3IPhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFqSURBVFhHzZMJjsMgEAT36X6af+ZlWJo0A8ONNyWhBOYq
+        UPLzfBGvyFzX5Sa5UWHJ/r7vEP1wVEZL6OXjhDs9A4voV/D7QuyITPIiBiwElmWSph2LXwLSOHMZ84yK
+        YGE46vHbcdE5WATNBX1bRg/fImOJCJCRTwwBlgx6DMvURDjGK8lze8hAfEqmJuIJMcQ5P8J7FaOsOi2R
+        ZDAWnccalcO9/ip6KBQzPJSfH+fx9xP6JGeBPplQbIkIeihycR5rK73aMpXiDJULEb+A3hPlUxAK9XNa
+        JMNpJRfBeYHyqRCKekUYXxNqsxcdllkQaTIk84KI1TuVeUHEL4MY8QL/KCJ8oh3JM+CSPb0zmZ0vMyIi
+        pFmhMPs7TjAqIuSZG4RmRIRy9oLQrIhgV0wIrYgIZpWXGBBaFRGqlb1CnLdCs7o1aJeI0NXBGrhTROju
+        ogfz3n/fwNCVEqHNIsKQjHDiRcCwzEm+SOZ5fgFVGLbYyNqg4AAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
