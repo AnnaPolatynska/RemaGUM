@@ -84,6 +84,7 @@
             this.comboBoxRodzajMat = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.buttonSzukaj_mat = new System.Windows.Forms.Button();
             this.textBoxWyszukaj_mat = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.listBoxMaterialy = new System.Windows.Forms.ListBox();
@@ -136,7 +137,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.buttonSzukaj = new System.Windows.Forms.Button();
             this.textBoxWyszukiwanie = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listBoxMaszyny = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -166,6 +169,7 @@
             this.groupBox23 = new System.Windows.Forms.GroupBox();
             this.listBoxOperator = new System.Windows.Forms.ListBox();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.buttonSzukajOperator = new System.Windows.Forms.Button();
             this.textBoxWyszukiwanieOperator = new System.Windows.Forms.TextBox();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
             this.label45 = new System.Windows.Forms.Label();
@@ -203,6 +207,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.textBoxImieDysponent = new System.Windows.Forms.TextBox();
             this.groupBox29 = new System.Windows.Forms.GroupBox();
+            this.buttonSzukajDysponent = new System.Windows.Forms.Button();
             this.textBoxWyszukiwanieDysponent = new System.Windows.Forms.TextBox();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.listBoxDysponent = new System.Windows.Forms.ListBox();
@@ -230,11 +235,6 @@
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOProgramie = new System.Windows.Forms.ToolStripButton();
-            this.buttonSzukaj = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.buttonSzukajOperator = new System.Windows.Forms.Button();
-            this.buttonSzukajDysponent = new System.Windows.Forms.Button();
-            this.buttonSzukaj_mat = new System.Windows.Forms.Button();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -255,6 +255,7 @@
             this.groupBoxSortowanie.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -279,7 +280,6 @@
             this.groupBox16.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.toolStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Materiały
@@ -896,6 +896,18 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Wyszukiwanie materiałów / normaliów po nazwie";
             // 
+            // buttonSzukaj_mat
+            // 
+            this.buttonSzukaj_mat.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSzukaj_mat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj_mat.BackgroundImage")));
+            this.buttonSzukaj_mat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSzukaj_mat.Location = new System.Drawing.Point(373, 15);
+            this.buttonSzukaj_mat.Name = "buttonSzukaj_mat";
+            this.buttonSzukaj_mat.Size = new System.Drawing.Size(35, 34);
+            this.buttonSzukaj_mat.TabIndex = 4;
+            this.buttonSzukaj_mat.UseVisualStyleBackColor = false;
+            this.buttonSzukaj_mat.Click += new System.EventHandler(this.buttonSzukaj_mat_Click);
+            // 
             // textBoxWyszukaj_mat
             // 
             this.textBoxWyszukaj_mat.BackColor = System.Drawing.Color.Linen;
@@ -1161,7 +1173,7 @@
             // 
             this.linkLabelNazwaZdjecia.AutoSize = true;
             this.linkLabelNazwaZdjecia.LinkColor = System.Drawing.Color.Bisque;
-            this.linkLabelNazwaZdjecia.Location = new System.Drawing.Point(859, 572);
+            this.linkLabelNazwaZdjecia.Location = new System.Drawing.Point(1412, 230);
             this.linkLabelNazwaZdjecia.Name = "linkLabelNazwaZdjecia";
             this.linkLabelNazwaZdjecia.Size = new System.Drawing.Size(88, 20);
             this.linkLabelNazwaZdjecia.TabIndex = 48;
@@ -1510,6 +1522,18 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Wyszukiwanie po nazwie";
             // 
+            // buttonSzukaj
+            // 
+            this.buttonSzukaj.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSzukaj.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj.BackgroundImage")));
+            this.buttonSzukaj.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSzukaj.Location = new System.Drawing.Point(497, 16);
+            this.buttonSzukaj.Name = "buttonSzukaj";
+            this.buttonSzukaj.Size = new System.Drawing.Size(35, 34);
+            this.buttonSzukaj.TabIndex = 4;
+            this.buttonSzukaj.UseVisualStyleBackColor = false;
+            this.buttonSzukaj.Click += new System.EventHandler(this.buttonSzukaj_Click);
+            // 
             // textBoxWyszukiwanie
             // 
             this.textBoxWyszukiwanie.BackColor = System.Drawing.Color.Linen;
@@ -1518,6 +1542,15 @@
             this.textBoxWyszukiwanie.Name = "textBoxWyszukiwanie";
             this.textBoxWyszukiwanie.Size = new System.Drawing.Size(482, 24);
             this.textBoxWyszukiwanie.TabIndex = 44;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(862, 68);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(462, 537);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
             // 
             // groupBox1
             // 
@@ -1881,6 +1914,18 @@
             this.groupBox24.TabIndex = 53;
             this.groupBox24.TabStop = false;
             this.groupBox24.Text = "Wyszukiwanie po imieniu lub nazwisku";
+            // 
+            // buttonSzukajOperator
+            // 
+            this.buttonSzukajOperator.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSzukajOperator.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukajOperator.BackgroundImage")));
+            this.buttonSzukajOperator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSzukajOperator.Location = new System.Drawing.Point(452, 17);
+            this.buttonSzukajOperator.Name = "buttonSzukajOperator";
+            this.buttonSzukajOperator.Size = new System.Drawing.Size(35, 34);
+            this.buttonSzukajOperator.TabIndex = 4;
+            this.buttonSzukajOperator.UseVisualStyleBackColor = false;
+            this.buttonSzukajOperator.Click += new System.EventHandler(this.buttonSzukajOperator_Click);
             // 
             // textBoxWyszukiwanieOperator
             // 
@@ -2326,6 +2371,18 @@
             this.groupBox29.TabStop = false;
             this.groupBox29.Text = "Wyszukiwanie po imieniu lub nazwisku";
             // 
+            // buttonSzukajDysponent
+            // 
+            this.buttonSzukajDysponent.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSzukajDysponent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukajDysponent.BackgroundImage")));
+            this.buttonSzukajDysponent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSzukajDysponent.Location = new System.Drawing.Point(415, 19);
+            this.buttonSzukajDysponent.Name = "buttonSzukajDysponent";
+            this.buttonSzukajDysponent.Size = new System.Drawing.Size(35, 34);
+            this.buttonSzukajDysponent.TabIndex = 4;
+            this.buttonSzukajDysponent.UseVisualStyleBackColor = false;
+            this.buttonSzukajDysponent.Click += new System.EventHandler(this.buttonSzukajDysponent_Click);
+            // 
             // textBoxWyszukiwanieDysponent
             // 
             this.textBoxWyszukiwanieDysponent.BackColor = System.Drawing.Color.Linen;
@@ -2642,63 +2699,6 @@
             this.toolStripButtonOProgramie.Text = "o programie";
             this.toolStripButtonOProgramie.Click += new System.EventHandler(this.toolStripButtonOProgramie_Click);
             // 
-            // buttonSzukaj
-            // 
-            this.buttonSzukaj.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonSzukaj.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj.BackgroundImage")));
-            this.buttonSzukaj.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSzukaj.Location = new System.Drawing.Point(497, 16);
-            this.buttonSzukaj.Name = "buttonSzukaj";
-            this.buttonSzukaj.Size = new System.Drawing.Size(35, 34);
-            this.buttonSzukaj.TabIndex = 4;
-            this.buttonSzukaj.UseVisualStyleBackColor = false;
-            this.buttonSzukaj.Click += new System.EventHandler(this.buttonSzukaj_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(862, 68);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(462, 537);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
-            // 
-            // buttonSzukajOperator
-            // 
-            this.buttonSzukajOperator.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonSzukajOperator.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukajOperator.BackgroundImage")));
-            this.buttonSzukajOperator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSzukajOperator.Location = new System.Drawing.Point(452, 17);
-            this.buttonSzukajOperator.Name = "buttonSzukajOperator";
-            this.buttonSzukajOperator.Size = new System.Drawing.Size(35, 34);
-            this.buttonSzukajOperator.TabIndex = 4;
-            this.buttonSzukajOperator.UseVisualStyleBackColor = false;
-            this.buttonSzukajOperator.Click += new System.EventHandler(this.buttonSzukajOperator_Click);
-            // 
-            // buttonSzukajDysponent
-            // 
-            this.buttonSzukajDysponent.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonSzukajDysponent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukajDysponent.BackgroundImage")));
-            this.buttonSzukajDysponent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSzukajDysponent.Location = new System.Drawing.Point(415, 19);
-            this.buttonSzukajDysponent.Name = "buttonSzukajDysponent";
-            this.buttonSzukajDysponent.Size = new System.Drawing.Size(35, 34);
-            this.buttonSzukajDysponent.TabIndex = 4;
-            this.buttonSzukajDysponent.UseVisualStyleBackColor = false;
-            this.buttonSzukajDysponent.Click += new System.EventHandler(this.buttonSzukajDysponent_Click);
-            // 
-            // buttonSzukaj_mat
-            // 
-            this.buttonSzukaj_mat.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonSzukaj_mat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukaj_mat.BackgroundImage")));
-            this.buttonSzukaj_mat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSzukaj_mat.Location = new System.Drawing.Point(373, 15);
-            this.buttonSzukaj_mat.Name = "buttonSzukaj_mat";
-            this.buttonSzukaj_mat.Size = new System.Drawing.Size(35, 34);
-            this.buttonSzukaj_mat.TabIndex = 4;
-            this.buttonSzukaj_mat.UseVisualStyleBackColor = false;
-            this.buttonSzukaj_mat.Click += new System.EventHandler(this.buttonSzukaj_mat_Click);
-            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2747,6 +2747,7 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -2784,7 +2785,6 @@
             this.groupBox11.ResumeLayout(false);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
