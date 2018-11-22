@@ -469,6 +469,7 @@ namespace RemaGUM
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
 
             //listBoxMaszyny.Items.Clear();
+            richTextBoxUwaga.Text = string.Empty;
 
             // uaktualnienie danych maszyny po zmianie sposobu sortowania
             if (radioButtonNazwa.Checked)
@@ -539,14 +540,13 @@ namespace RemaGUM
 
                 if ((timeSpan.Days >= 1) && (timeSpan.Days <= 7))
                 {
-                    MessageBox.Show(("Uwaga w dniu " + maszynyBUS.VO.Dz_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Mc_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Rok_kol_przeg.ToString() + " mija termin przeglądu dla maszyny " + maszynyBUS.VO.Nazwa.ToString() + " o numerze inwentarzowym: " + maszynyBUS.VO.Nr_inwentarzowy), "remagum", MessageBoxButtons.OK);
+                    richTextBoxUwaga.Text = ("Uwaga w dniu: " + maszynyBUS.VO.Dz_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Mc_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Rok_kol_przeg.ToString() + " mija termin przeglądu dla maszyny " + maszynyBUS.VO.Nazwa.ToString() + " o numerze inwentarzowym: " + maszynyBUS.VO.Nr_inwentarzowy);
                 }
-
                 else if (timeSpan.Days < 0)
                 {
-                    MessageBox.Show(("Termin przeglądu maszyny " + maszynyBUS.VO.Nazwa.ToString() + "o numerze inwentarzowym: " + maszynyBUS.VO.Nr_inwentarzowy + " minął."), "RemaGUM", MessageBoxButtons.OK);
+                    richTextBoxUwaga.Text = ("Termin przeglądu maszyny " + maszynyBUS.VO.Nazwa.ToString() + " o nr: " + maszynyBUS.VO.Nr_inwentarzowy + " minął.");
                 }
-                else { }
+                else { richTextBoxUwaga.Text = string.Empty; }
 
                 richTextBoxUwagi.Text = maszynyBUS.VO.Uwagi;
                 comboBoxWykorzystanie.Text = maszynyBUS.VO.Wykorzystanie;

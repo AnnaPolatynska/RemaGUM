@@ -235,6 +235,7 @@
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOProgramie = new System.Windows.Forms.ToolStripButton();
+            this.richTextBoxUwaga = new System.Windows.Forms.RichTextBox();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -1196,6 +1197,7 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox4.Controls.Add(this.richTextBoxUwaga);
             this.groupBox4.Controls.Add(this.richTextBoxProducent);
             this.groupBox4.Controls.Add(this.checkedListBoxOperatorzy_maszyn);
             this.groupBox4.Controls.Add(this.label5);
@@ -1236,7 +1238,7 @@
             // 
             this.richTextBoxProducent.Location = new System.Drawing.Point(116, 247);
             this.richTextBoxProducent.Name = "richTextBoxProducent";
-            this.richTextBoxProducent.Size = new System.Drawing.Size(380, 61);
+            this.richTextBoxProducent.Size = new System.Drawing.Size(380, 46);
             this.richTextBoxProducent.TabIndex = 42;
             this.richTextBoxProducent.Text = "";
             // 
@@ -1244,16 +1246,16 @@
             // 
             this.checkedListBoxOperatorzy_maszyn.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.checkedListBoxOperatorzy_maszyn.FormattingEnabled = true;
-            this.checkedListBoxOperatorzy_maszyn.Location = new System.Drawing.Point(6, 565);
+            this.checkedListBoxOperatorzy_maszyn.Location = new System.Drawing.Point(6, 622);
             this.checkedListBoxOperatorzy_maszyn.Name = "checkedListBoxOperatorzy_maszyn";
-            this.checkedListBoxOperatorzy_maszyn.Size = new System.Drawing.Size(502, 175);
+            this.checkedListBoxOperatorzy_maszyn.Size = new System.Drawing.Size(502, 137);
             this.checkedListBoxOperatorzy_maszyn.TabIndex = 41;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label5.Location = new System.Drawing.Point(11, 323);
+            this.label5.Location = new System.Drawing.Point(11, 308);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 20);
             this.label5.TabIndex = 12;
@@ -1274,7 +1276,7 @@
             // 
             this.textBoxRok_produkcji.BackColor = System.Drawing.Color.Linen;
             this.textBoxRok_produkcji.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxRok_produkcji.Location = new System.Drawing.Point(116, 323);
+            this.textBoxRok_produkcji.Location = new System.Drawing.Point(116, 308);
             this.textBoxRok_produkcji.Name = "textBoxRok_produkcji";
             this.textBoxRok_produkcji.Size = new System.Drawing.Size(86, 24);
             this.textBoxRok_produkcji.TabIndex = 15;
@@ -1283,7 +1285,7 @@
             // 
             this.label58.AutoSize = true;
             this.label58.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label58.Location = new System.Drawing.Point(11, 536);
+            this.label58.Location = new System.Drawing.Point(6, 579);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(107, 20);
             this.label58.TabIndex = 40;
@@ -1293,7 +1295,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label12.Location = new System.Drawing.Point(11, 368);
+            this.label12.Location = new System.Drawing.Point(11, 353);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(152, 20);
             this.label12.TabIndex = 25;
@@ -1303,7 +1305,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label13.Location = new System.Drawing.Point(11, 407);
+            this.label13.Location = new System.Drawing.Point(11, 392);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(160, 20);
             this.label13.TabIndex = 27;
@@ -1323,7 +1325,7 @@
             // 
             this.dateTimePickerData_ost_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
             this.dateTimePickerData_ost_przegl.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.dateTimePickerData_ost_przegl.Location = new System.Drawing.Point(207, 368);
+            this.dateTimePickerData_ost_przegl.Location = new System.Drawing.Point(207, 353);
             this.dateTimePickerData_ost_przegl.Name = "dateTimePickerData_ost_przegl";
             this.dateTimePickerData_ost_przegl.Size = new System.Drawing.Size(289, 24);
             this.dateTimePickerData_ost_przegl.TabIndex = 36;
@@ -1333,7 +1335,7 @@
             this.comboBoxDysponent.BackColor = System.Drawing.Color.Linen;
             this.comboBoxDysponent.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.comboBoxDysponent.FormattingEnabled = true;
-            this.comboBoxDysponent.Location = new System.Drawing.Point(116, 493);
+            this.comboBoxDysponent.Location = new System.Drawing.Point(116, 548);
             this.comboBoxDysponent.Name = "comboBoxDysponent";
             this.comboBoxDysponent.Size = new System.Drawing.Size(380, 28);
             this.comboBoxDysponent.TabIndex = 39;
@@ -1343,7 +1345,7 @@
             // 
             this.dateTimePickerData_kol_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
             this.dateTimePickerData_kol_przegl.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.dateTimePickerData_kol_przegl.Location = new System.Drawing.Point(207, 407);
+            this.dateTimePickerData_kol_przegl.Location = new System.Drawing.Point(207, 392);
             this.dateTimePickerData_kol_przegl.Name = "dateTimePickerData_kol_przegl";
             this.dateTimePickerData_kol_przegl.Size = new System.Drawing.Size(289, 24);
             this.dateTimePickerData_kol_przegl.TabIndex = 37;
@@ -1361,7 +1363,7 @@
             // 
             this.textBoxNr_pom.BackColor = System.Drawing.Color.Linen;
             this.textBoxNr_pom.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxNr_pom.Location = new System.Drawing.Point(354, 323);
+            this.textBoxNr_pom.Location = new System.Drawing.Point(354, 308);
             this.textBoxNr_pom.Name = "textBoxNr_pom";
             this.textBoxNr_pom.Size = new System.Drawing.Size(142, 24);
             this.textBoxNr_pom.TabIndex = 38;
@@ -1400,7 +1402,7 @@
             this.comboBoxDzial.BackColor = System.Drawing.Color.Linen;
             this.comboBoxDzial.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.comboBoxDzial.FormattingEnabled = true;
-            this.comboBoxDzial.Location = new System.Drawing.Point(207, 449);
+            this.comboBoxDzial.Location = new System.Drawing.Point(207, 434);
             this.comboBoxDzial.Name = "comboBoxDzial";
             this.comboBoxDzial.Size = new System.Drawing.Size(289, 28);
             this.comboBoxDzial.TabIndex = 33;
@@ -1461,9 +1463,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxUwagi.BackColor = System.Drawing.Color.Linen;
             this.richTextBoxUwagi.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.richTextBoxUwagi.Location = new System.Drawing.Point(6, 775);
+            this.richTextBoxUwagi.Location = new System.Drawing.Point(6, 779);
             this.richTextBoxUwagi.Name = "richTextBoxUwagi";
-            this.richTextBoxUwagi.Size = new System.Drawing.Size(502, 41);
+            this.richTextBoxUwagi.Size = new System.Drawing.Size(502, 37);
             this.richTextBoxUwagi.TabIndex = 30;
             this.richTextBoxUwagi.Text = "";
             // 
@@ -1471,7 +1473,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label8.Location = new System.Drawing.Point(11, 496);
+            this.label8.Location = new System.Drawing.Point(6, 551);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 20);
             this.label8.TabIndex = 17;
@@ -1481,7 +1483,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label14.Location = new System.Drawing.Point(11, 752);
+            this.label14.Location = new System.Drawing.Point(6, 762);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(44, 20);
             this.label14.TabIndex = 29;
@@ -1491,7 +1493,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label9.Location = new System.Drawing.Point(239, 326);
+            this.label9.Location = new System.Drawing.Point(239, 311);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 20);
             this.label9.TabIndex = 19;
@@ -1501,7 +1503,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label10.Location = new System.Drawing.Point(11, 452);
+            this.label10.Location = new System.Drawing.Point(11, 437);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(185, 20);
             this.label10.TabIndex = 21;
@@ -2699,6 +2701,17 @@
             this.toolStripButtonOProgramie.Text = "o programie";
             this.toolStripButtonOProgramie.Click += new System.EventHandler(this.toolStripButtonOProgramie_Click);
             // 
+            // richTextBoxUwaga
+            // 
+            this.richTextBoxUwaga.BackColor = System.Drawing.Color.Bisque;
+            this.richTextBoxUwaga.Enabled = false;
+            this.richTextBoxUwaga.ForeColor = System.Drawing.Color.Red;
+            this.richTextBoxUwaga.Location = new System.Drawing.Point(15, 483);
+            this.richTextBoxUwaga.Name = "richTextBoxUwaga";
+            this.richTextBoxUwaga.Size = new System.Drawing.Size(481, 50);
+            this.richTextBoxUwaga.TabIndex = 43;
+            this.richTextBoxUwaga.Text = "";
+            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2999,6 +3012,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDostawcy;
         private System.Windows.Forms.RichTextBox richTextBoxProducent;
         private System.Windows.Forms.ToolStripButton toolStripButtonOProgramie;
+        private System.Windows.Forms.RichTextBox richTextBoxUwaga;
     }
 }
 
