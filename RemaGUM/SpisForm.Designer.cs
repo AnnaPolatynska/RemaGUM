@@ -108,6 +108,7 @@
             this.linkLabelNazwaZdjecia = new System.Windows.Forms.LinkLabel();
             this.buttonUsunZdj = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.richTextBoxUwaga = new System.Windows.Forms.RichTextBox();
             this.richTextBoxProducent = new System.Windows.Forms.RichTextBox();
             this.checkedListBoxOperatorzy_maszyn = new System.Windows.Forms.CheckedListBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -235,7 +236,7 @@
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOProgramie = new System.Windows.Forms.ToolStripButton();
-            this.richTextBoxUwaga = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxUprawnieniaOperatora = new System.Windows.Forms.RichTextBox();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -1234,6 +1235,17 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dane maszyny";
             // 
+            // richTextBoxUwaga
+            // 
+            this.richTextBoxUwaga.BackColor = System.Drawing.Color.Bisque;
+            this.richTextBoxUwaga.Enabled = false;
+            this.richTextBoxUwaga.ForeColor = System.Drawing.Color.Red;
+            this.richTextBoxUwaga.Location = new System.Drawing.Point(15, 483);
+            this.richTextBoxUwaga.Name = "richTextBoxUwaga";
+            this.richTextBoxUwaga.Size = new System.Drawing.Size(481, 50);
+            this.richTextBoxUwaga.TabIndex = 43;
+            this.richTextBoxUwaga.Text = "";
+            // 
             // richTextBoxProducent
             // 
             this.richTextBoxProducent.Location = new System.Drawing.Point(116, 247);
@@ -1818,7 +1830,7 @@
             this.groupBox22.Controls.Add(this.buttonAnulujOperator);
             this.groupBox22.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox22.ForeColor = System.Drawing.Color.Black;
-            this.groupBox22.Location = new System.Drawing.Point(348, 644);
+            this.groupBox22.Location = new System.Drawing.Point(348, 719);
             this.groupBox22.Name = "groupBox22";
             this.groupBox22.Size = new System.Drawing.Size(493, 63);
             this.groupBox22.TabIndex = 52;
@@ -1883,7 +1895,7 @@
             this.groupBox23.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox23.Location = new System.Drawing.Point(12, 76);
             this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(330, 631);
+            this.groupBox23.Size = new System.Drawing.Size(330, 706);
             this.groupBox23.TabIndex = 51;
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "Lista operatorów";
@@ -1898,7 +1910,7 @@
             this.listBoxOperator.ItemHeight = 20;
             this.listBoxOperator.Location = new System.Drawing.Point(15, 22);
             this.listBoxOperator.Name = "listBoxOperator";
-            this.listBoxOperator.Size = new System.Drawing.Size(299, 584);
+            this.listBoxOperator.Size = new System.Drawing.Size(299, 664);
             this.listBoxOperator.TabIndex = 0;
             this.listBoxOperator.SelectedIndexChanged += new System.EventHandler(this.listBoxOperator_maszyny_SelectedIndexChanged);
             // 
@@ -1943,6 +1955,7 @@
             this.groupBox25.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox25.BackColor = System.Drawing.Color.Bisque;
+            this.groupBox25.Controls.Add(this.richTextBoxUprawnieniaOperatora);
             this.groupBox25.Controls.Add(this.label45);
             this.groupBox25.Controls.Add(this.textBoxNazwiskoOperator);
             this.groupBox25.Controls.Add(this.comboBoxDzialOperator);
@@ -1960,7 +1973,7 @@
             this.groupBox25.ForeColor = System.Drawing.Color.Black;
             this.groupBox25.Location = new System.Drawing.Point(348, 78);
             this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(493, 560);
+            this.groupBox25.Size = new System.Drawing.Size(493, 635);
             this.groupBox25.TabIndex = 55;
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "Dane operatora maszyny";
@@ -1980,7 +1993,7 @@
             // 
             this.textBoxNazwiskoOperator.BackColor = System.Drawing.Color.Linen;
             this.textBoxNazwiskoOperator.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxNazwiskoOperator.Location = new System.Drawing.Point(90, 80);
+            this.textBoxNazwiskoOperator.Location = new System.Drawing.Point(90, 79);
             this.textBoxNazwiskoOperator.Name = "textBoxNazwiskoOperator";
             this.textBoxNazwiskoOperator.Size = new System.Drawing.Size(388, 24);
             this.textBoxNazwiskoOperator.TabIndex = 55;
@@ -2020,7 +2033,7 @@
             this.label54.AutoSize = true;
             this.label54.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.label54.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label54.Location = new System.Drawing.Point(5, 273);
+            this.label54.Location = new System.Drawing.Point(6, 333);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(147, 20);
             this.label54.TabIndex = 51;
@@ -2035,9 +2048,9 @@
             this.listBoxMaszynyOperatora.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.listBoxMaszynyOperatora.FormattingEnabled = true;
             this.listBoxMaszynyOperatora.ItemHeight = 20;
-            this.listBoxMaszynyOperatora.Location = new System.Drawing.Point(6, 296);
+            this.listBoxMaszynyOperatora.Location = new System.Drawing.Point(10, 356);
             this.listBoxMaszynyOperatora.Name = "listBoxMaszynyOperatora";
-            this.listBoxMaszynyOperatora.Size = new System.Drawing.Size(472, 244);
+            this.listBoxMaszynyOperatora.Size = new System.Drawing.Size(468, 264);
             this.listBoxMaszynyOperatora.TabIndex = 50;
             // 
             // label55
@@ -2701,16 +2714,15 @@
             this.toolStripButtonOProgramie.Text = "o programie";
             this.toolStripButtonOProgramie.Click += new System.EventHandler(this.toolStripButtonOProgramie_Click);
             // 
-            // richTextBoxUwaga
+            // richTextBoxUprawnieniaOperatora
             // 
-            this.richTextBoxUwaga.BackColor = System.Drawing.Color.Bisque;
-            this.richTextBoxUwaga.Enabled = false;
-            this.richTextBoxUwaga.ForeColor = System.Drawing.Color.Red;
-            this.richTextBoxUwaga.Location = new System.Drawing.Point(15, 483);
-            this.richTextBoxUwaga.Name = "richTextBoxUwaga";
-            this.richTextBoxUwaga.Size = new System.Drawing.Size(481, 50);
-            this.richTextBoxUwaga.TabIndex = 43;
-            this.richTextBoxUwaga.Text = "";
+            this.richTextBoxUprawnieniaOperatora.Enabled = false;
+            this.richTextBoxUprawnieniaOperatora.ForeColor = System.Drawing.Color.Red;
+            this.richTextBoxUprawnieniaOperatora.Location = new System.Drawing.Point(10, 272);
+            this.richTextBoxUprawnieniaOperatora.Name = "richTextBoxUprawnieniaOperatora";
+            this.richTextBoxUprawnieniaOperatora.Size = new System.Drawing.Size(468, 58);
+            this.richTextBoxUprawnieniaOperatora.TabIndex = 57;
+            this.richTextBoxUprawnieniaOperatora.Text = "";
             // 
             // SpisForm
             // 
@@ -3013,6 +3025,7 @@
         private System.Windows.Forms.RichTextBox richTextBoxProducent;
         private System.Windows.Forms.ToolStripButton toolStripButtonOProgramie;
         private System.Windows.Forms.RichTextBox richTextBoxUwaga;
+        private System.Windows.Forms.RichTextBox richTextBoxUprawnieniaOperatora;
     }
 }
 

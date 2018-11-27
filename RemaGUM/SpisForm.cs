@@ -2702,6 +2702,10 @@ namespace RemaGUM
         private void listBoxOperator_maszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
+
+            //czyści pole Uprawnienia Operatora przy zmianie indeksu.
+            richTextBoxUprawnieniaOperatora.Text = string.Empty;
+
             // uaktualnia dane operatorów maszyn po zmianie ich sortowania.
             if (comboBoxOperator.SelectedIndex == 0)
             {
@@ -2748,7 +2752,19 @@ namespace RemaGUM
                 comboBoxDzialOperator.Text = operatorBUS.VO.Dzial;
                 textBoxUprawnienieOperator.Text = operatorBUS.VO.Uprawnienie;
                 dateTimePickerDataKoncaUprOp.Value = new DateTime(operatorBUS.VO.Rok, operatorBUS.VO.Mc, operatorBUS.VO.Dzien);
-                
+
+                // komunikat o zbliżającym się terminie końca uprawnień operatora (wybraną ilośc dni (od 1 do 14) przed końcem).
+                DateTime currentDate = DateTime.Now;
+                long terminUpr = dateTimePickerDataKoncaUprOp.Value.Ticks - currentDate.Ticks;
+                TimeSpan timeSpan = new TimeSpan(terminUpr);
+
+                if ((timeSpan.Days >= 1) && (timeSpan.Days <=14))
+                {
+                    richTextBoxUprawnieniaOperatora.Text = ("Uwaga uprawnienia pracownika: " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie + " kończą się w dniu: " + operatorBUS.VO.Rok + "-" + operatorBUS.VO.Mc + "-" + operatorBUS.VO.Dzien +"." );
+                }
+
+
+
                 //wypełnia listę maszyn obsługiwanych przez wybranego operatora - zmiana indeksu operatora ma zmieniać listę podległych mu maszyn.
                 nsAccess2DB.Maszyny_OperatorBUS maszyny_OperatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
                 nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
