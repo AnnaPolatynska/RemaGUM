@@ -16,7 +16,13 @@ namespace RemaGUM
 {
     public partial class SpisForm : Form
     {
-        private string _connString = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Projects\\RemaGUM\\RemaGUM.mdb"; //połaczenie z bazą danych
+        // łączenie z bazą danych na sztywno
+        //private string _connString = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Projects\\RemaGUM\\RemaGUM.mdb"; //połaczenie z bazą danych
+
+        // połączenie z bazą poprzez xml.
+        private settings _settings;     //ustawienia
+        private string _connString;
+        private Rest _rest = new Rest();
 
         private string _helpFile = Application.StartupPath + "\\pomoc.chm"; //plik pomocy RemaGUM.
 
@@ -30,7 +36,7 @@ namespace RemaGUM
 
         private int[] _maszynaTag; // przechowuje identyfikatory maszyn dla operatora.
 
-        private
+
 
         int _maszynaId = -1; // identyfikator maszyny przy starcie programu.
 
@@ -48,14 +54,170 @@ namespace RemaGUM
         private nsAccess2DB.MaterialyBUS _materialyBUS;
 
         /// <summary>
+        /// Klasa umożliwiająca połączenie bazy danych za pomocą connectionStringa zapisanego w pliku xml 
+        /// </summary>
+        public class settings
+        {
+            private string _XMLfile;
+            private string _connectionString;   //connectionString
+            private string _dBcopyFile;         //pełna ścieżka kopii bazy danych
+            private int _copyInterval;          //interwał sporzadzania kopii bazy
+            private string _dBhistoryDir;       //pełna nazwa katalogu historii bazy
+            private int _historyInterval;       //interwał sprzadzania kopii w katalogu hsitorii bazy
+
+            /// <summary>
+            /// Konstruktor wymiany danych ustawień programu w XML.
+            /// </summary>
+            public settings()
+            { }//settings
+
+            /// <summary>
+            /// Czyta plik.
+            /// </summary>
+            public void read()
+            {
+                read(_XMLfile);
+            }//read
+
+            /// <summary>
+            /// Czyta plik.
+            /// </summary>
+            /// <param name="XMLfile">Nazwa pliku xml</param>
+            public void read(string XMLfile)
+            {
+                _XMLfile = XMLfile;
+
+                XmlDocument doc = new System.Xml.XmlDocument();
+                doc.Load(XMLfile);
+                XmlNode node = doc.FirstChild;
+
+                while (node != null)
+                {
+                    node = node.NextSibling;
+                    if (node.Name.ToUpper() == "settings".ToUpper())
+                    {
+                        node = node.FirstChild;
+                        goto childNodes;
+                    }
+                }
+
+                childNodes:;
+
+                while (node != null)
+                {
+                    if (node.Name.ToUpper() == "ConnectionString".ToUpper()) _connectionString = node.InnerText;
+                    if (node.Name.ToUpper() == "dBcopyFile".ToUpper()) _dBcopyFile = node.InnerText;
+                    if (node.Name.ToUpper() == "copyInterval".ToUpper()) _copyInterval = int.Parse(node.InnerText);
+                    if (node.Name.ToUpper() == "dBhistoryDir".ToUpper()) _dBhistoryDir = node.InnerText;
+                    if (node.Name.ToUpper() == "historyInterval".ToUpper()) _historyInterval = int.Parse(node.InnerText);
+                    node = node.NextSibling;
+                }
+
+            }//read
+
+            /// <summary>
+            /// Zapisuje do pliku.
+            /// </summary>
+            public void write()
+            {
+                try
+                {
+                    XmlTextWriter writer = new XmlTextWriter(_XMLfile, System.Text.Encoding.UTF8);
+                    writer.Formatting = Formatting.Indented;
+                    writer.WriteStartDocument();
+
+                    writer.WriteStartElement("settings");
+
+                    writer.WriteElementString("ConnectionString", _connectionString);
+
+                    writer.WriteEndDocument();
+                    writer.Flush();
+                    writer.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("Error writing file", "ECP",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }//write
+
+            /// <summary>
+            /// Connection string.
+            /// </summary>
+            public string connectionString
+            {
+                get { return _connectionString; }
+                set { _connectionString = value; }
+            }
+
+            /// <summary>
+            /// Connection string.
+            /// </summary>
+            public string XMLfile
+            {
+                get { return _XMLfile; }
+                set { _XMLfile = value; }
+            }
+
+            /// <summary>
+            /// Pełna ścieżka kopii bazy danych.
+            /// </summary>
+            public string dBcopyFile
+            {
+                get { return _dBcopyFile; }
+                set { _dBcopyFile = value; }
+            }
+
+            /// <summary>
+            /// Interwał w minutach sporzadzania kopii bazy danych.
+            /// </summary>
+            public int copyInterval
+            {
+                get { return _copyInterval; }
+                set { _copyInterval = value; }
+            }
+
+            /// <summary>
+            /// Pełna nazwa katalogu historii bazy.
+            /// </summary>
+            public string dBhistoryDir
+            {
+                get { return _dBhistoryDir; }
+                set { _dBhistoryDir = value; }
+            }
+
+            /// <summary>
+            /// Interwał w dniach sporządzania kopii bazy w katalogu historii.
+            /// </summary>
+            public int historyInterval
+            {
+                get { return _historyInterval; }
+                set { _historyInterval = value; }
+            }
+
+        }//class settings
+
+
+        /// <summary>
         /// Konstruktor formularza.
         /// </summary>
         /// <param name="connStr">Połaczenie z bazą.</param>
         public SpisForm()
         {
             InitializeComponent();
-            nsRest.Rest rest = new nsRest.Rest();
-            _connString += rest.dbConnection(_connString);
+
+            //połączenie z bazą danych na sztywno
+            //nsRest.Rest rest = new nsRest.Rest();
+            //_connString += rest.dbConnection(_connString);
+
+            //połączenie z bazą danych przez connection string z xml.
+            _settings = new settings();
+            _settings.XMLfile = Application.StartupPath + "\\settings.xml";
+            _settings.read();
+
+            _connString = _rest.dbConnection(_settings.connectionString);
+
+
 
             _statusForm = (int)_status.edycja;
             
@@ -2762,8 +2924,6 @@ namespace RemaGUM
                 {
                     richTextBoxUprawnieniaOperatora.Text = ("Uwaga uprawnienia pracownika: " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie + " kończą się w dniu: " + operatorBUS.VO.Rok + "-" + operatorBUS.VO.Mc + "-" + operatorBUS.VO.Dzien +"." );
                 }
-
-
 
                 //wypełnia listę maszyn obsługiwanych przez wybranego operatora - zmiana indeksu operatora ma zmieniać listę podległych mu maszyn.
                 nsAccess2DB.Maszyny_OperatorBUS maszyny_OperatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
