@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpisForm));
             this.Materiały = new System.Windows.Forms.TabPage();
             this.statusStripMaterialy = new System.Windows.Forms.StatusStrip();
@@ -239,6 +240,8 @@
             this.toolStripButtonOProgramie = new System.Windows.Forms.ToolStripButton();
             this.labelData = new System.Windows.Forms.Label();
             this.labelDayOfWeek = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.labelZegar = new System.Windows.Forms.Label();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -2746,6 +2749,20 @@
             this.labelDayOfWeek.TabIndex = 49;
             this.labelDayOfWeek.Text = "labelDayOfWeek";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // labelZegar
+            // 
+            this.labelZegar.AutoSize = true;
+            this.labelZegar.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.labelZegar.Location = new System.Drawing.Point(292, 7);
+            this.labelZegar.Name = "labelZegar";
+            this.labelZegar.Size = new System.Drawing.Size(105, 23);
+            this.labelZegar.TabIndex = 50;
+            this.labelZegar.Text = "labelZegar";
+            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2753,6 +2770,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(1646, 978);
+            this.Controls.Add(this.labelZegar);
             this.Controls.Add(this.labelDayOfWeek);
             this.Controls.Add(this.labelData);
             this.Controls.Add(this.toolStrip);
@@ -3052,6 +3070,8 @@
         private System.Windows.Forms.RichTextBox richTextBoxUprawnieniaOperatora;
         private System.Windows.Forms.Label labelData;
         private System.Windows.Forms.Label labelDayOfWeek;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label labelZegar;
     }
 }
 
