@@ -173,6 +173,7 @@
             this.buttonSzukajOperator = new System.Windows.Forms.Button();
             this.textBoxWyszukiwanieOperator = new System.Windows.Forms.TextBox();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.richTextBoxUprawnieniaOperatora = new System.Windows.Forms.RichTextBox();
             this.label45 = new System.Windows.Forms.Label();
             this.textBoxNazwiskoOperator = new System.Windows.Forms.TextBox();
             this.comboBoxDzialOperator = new System.Windows.Forms.ComboBox();
@@ -236,7 +237,8 @@
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOProgramie = new System.Windows.Forms.ToolStripButton();
-            this.richTextBoxUprawnieniaOperatora = new System.Windows.Forms.RichTextBox();
+            this.labelData = new System.Windows.Forms.Label();
+            this.labelDayOfWeek = new System.Windows.Forms.Label();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -1978,6 +1980,16 @@
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "Dane operatora maszyny";
             // 
+            // richTextBoxUprawnieniaOperatora
+            // 
+            this.richTextBoxUprawnieniaOperatora.Enabled = false;
+            this.richTextBoxUprawnieniaOperatora.ForeColor = System.Drawing.Color.Red;
+            this.richTextBoxUprawnieniaOperatora.Location = new System.Drawing.Point(10, 272);
+            this.richTextBoxUprawnieniaOperatora.Name = "richTextBoxUprawnieniaOperatora";
+            this.richTextBoxUprawnieniaOperatora.Size = new System.Drawing.Size(468, 58);
+            this.richTextBoxUprawnieniaOperatora.TabIndex = 57;
+            this.richTextBoxUprawnieniaOperatora.Text = "";
+            // 
             // label45
             // 
             this.label45.AutoSize = true;
@@ -2714,15 +2726,25 @@
             this.toolStripButtonOProgramie.Text = "o programie";
             this.toolStripButtonOProgramie.Click += new System.EventHandler(this.toolStripButtonOProgramie_Click);
             // 
-            // richTextBoxUprawnieniaOperatora
+            // labelData
             // 
-            this.richTextBoxUprawnieniaOperatora.Enabled = false;
-            this.richTextBoxUprawnieniaOperatora.ForeColor = System.Drawing.Color.Red;
-            this.richTextBoxUprawnieniaOperatora.Location = new System.Drawing.Point(10, 272);
-            this.richTextBoxUprawnieniaOperatora.Name = "richTextBoxUprawnieniaOperatora";
-            this.richTextBoxUprawnieniaOperatora.Size = new System.Drawing.Size(468, 58);
-            this.richTextBoxUprawnieniaOperatora.TabIndex = 57;
-            this.richTextBoxUprawnieniaOperatora.Text = "";
+            this.labelData.AutoSize = true;
+            this.labelData.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.labelData.Location = new System.Drawing.Point(96, 7);
+            this.labelData.Name = "labelData";
+            this.labelData.Size = new System.Drawing.Size(94, 23);
+            this.labelData.TabIndex = 48;
+            this.labelData.Text = "labelData";
+            this.labelData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelDayOfWeek
+            // 
+            this.labelDayOfWeek.AutoSize = true;
+            this.labelDayOfWeek.Location = new System.Drawing.Point(197, 7);
+            this.labelDayOfWeek.Name = "labelDayOfWeek";
+            this.labelDayOfWeek.Size = new System.Drawing.Size(88, 13);
+            this.labelDayOfWeek.TabIndex = 49;
+            this.labelDayOfWeek.Text = "labelDayOfWeek";
             // 
             // SpisForm
             // 
@@ -2731,6 +2753,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(1646, 978);
+            this.Controls.Add(this.labelDayOfWeek);
+            this.Controls.Add(this.labelData);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.tabControlZakładki);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -3026,6 +3050,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonOProgramie;
         private System.Windows.Forms.RichTextBox richTextBoxUwaga;
         private System.Windows.Forms.RichTextBox richTextBoxUprawnieniaOperatora;
+        private System.Windows.Forms.Label labelData;
+        private System.Windows.Forms.Label labelDayOfWeek;
     }
 }
 

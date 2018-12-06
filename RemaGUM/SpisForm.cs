@@ -234,6 +234,7 @@ namespace RemaGUM
             WypelnijStan_techniczny();
             WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);// wypełniam operatorów maszyn na poczatku uruchomienia programu.
             WypelnijDysponent();
+            SetData();
 
             if (listBoxMaszyny.Items.Count > 0)
             {
@@ -429,6 +430,17 @@ namespace RemaGUM
             frame.Close();
             frame.Dispose();
         }// pokazKomunikat
+
+
+        //2018-02-14 11:06:21 format dat godzina indeks spacji dzieli ciąg na 2 podciagi data + godzina
+        private void SetData()
+        {
+            string str = DateTime.Now.ToString();
+            int indeks = str.IndexOf(" ");
+            labelData.Text = str.Substring(0, indeks);//data
+            labelDayOfWeek.Text = DayOfWeek.Thursday.ToString();
+        }// SetData
+        
 
         /// <summary>
         /// Wyświetla komponenty w zależności od indeksu zakładki.
@@ -3673,7 +3685,7 @@ namespace RemaGUM
             Cursor.Current = Cursors.Default;
         }//buttonSzukajDysponent_Click
 
-
+       
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM
