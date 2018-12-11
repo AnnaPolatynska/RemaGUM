@@ -242,6 +242,8 @@
             this.labelDayOfWeek = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.labelZegar = new System.Windows.Forms.Label();
+            this.richTextBoxKomunikatMaterialy = new System.Windows.Forms.RichTextBox();
+            this.labelDostepnosc = new System.Windows.Forms.Label();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -485,6 +487,8 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox6.BackColor = System.Drawing.Color.Bisque;
             this.groupBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox6.Controls.Add(this.labelDostepnosc);
+            this.groupBox6.Controls.Add(this.richTextBoxKomunikatMaterialy);
             this.groupBox6.Controls.Add(this.groupBox15);
             this.groupBox6.Controls.Add(this.label3);
             this.groupBox6.Controls.Add(this.comboBoxWyborMagazyn);
@@ -520,9 +524,9 @@
             this.groupBox15.Controls.Add(this.textBoxMagazynMat);
             this.groupBox15.Controls.Add(this.labelJednostkaDostepnosc);
             this.groupBox15.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.groupBox15.Location = new System.Drawing.Point(12, 256);
+            this.groupBox15.Location = new System.Drawing.Point(12, 317);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(398, 378);
+            this.groupBox15.Size = new System.Drawing.Size(398, 317);
             this.groupBox15.TabIndex = 63;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Gospodarka magazynowa";
@@ -530,7 +534,7 @@
             // groupBox13
             // 
             this.groupBox13.Controls.Add(this.panel2);
-            this.groupBox13.Location = new System.Drawing.Point(9, 294);
+            this.groupBox13.Location = new System.Drawing.Point(9, 222);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(380, 86);
             this.groupBox13.TabIndex = 60;
@@ -572,16 +576,16 @@
             // 
             this.textBoxZapotrzebowanieMat.BackColor = System.Drawing.Color.Linen;
             this.textBoxZapotrzebowanieMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxZapotrzebowanieMat.Location = new System.Drawing.Point(121, 17);
+            this.textBoxZapotrzebowanieMat.Location = new System.Drawing.Point(130, 16);
             this.textBoxZapotrzebowanieMat.Name = "textBoxZapotrzebowanieMat";
-            this.textBoxZapotrzebowanieMat.Size = new System.Drawing.Size(155, 24);
+            this.textBoxZapotrzebowanieMat.Size = new System.Drawing.Size(149, 24);
             this.textBoxZapotrzebowanieMat.TabIndex = 55;
             // 
             // textBoxMinMat
             // 
             this.textBoxMinMat.BackColor = System.Drawing.Color.Linen;
             this.textBoxMinMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxMinMat.Location = new System.Drawing.Point(145, 89);
+            this.textBoxMinMat.Location = new System.Drawing.Point(145, 63);
             this.textBoxMinMat.Name = "textBoxMinMat";
             this.textBoxMinMat.Size = new System.Drawing.Size(149, 24);
             this.textBoxMinMat.TabIndex = 58;
@@ -590,7 +594,7 @@
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label38.Location = new System.Drawing.Point(32, 92);
+            this.label38.Location = new System.Drawing.Point(32, 66);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(94, 20);
             this.label38.TabIndex = 57;
@@ -600,7 +604,7 @@
             // 
             this.labelJednostkaMin.AutoSize = true;
             this.labelJednostkaMin.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.labelJednostkaMin.Location = new System.Drawing.Point(300, 92);
+            this.labelJednostkaMin.Location = new System.Drawing.Point(300, 66);
             this.labelJednostkaMin.Name = "labelJednostkaMin";
             this.labelJednostkaMin.Size = new System.Drawing.Size(65, 20);
             this.labelJednostkaMin.TabIndex = 59;
@@ -611,7 +615,7 @@
             this.groupBox12.BackColor = System.Drawing.Color.Bisque;
             this.groupBox12.Controls.Add(this.panel1);
             this.groupBox12.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.groupBox12.Location = new System.Drawing.Point(9, 144);
+            this.groupBox12.Location = new System.Drawing.Point(9, 93);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(383, 123);
             this.groupBox12.TabIndex = 53;
@@ -694,7 +698,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label30.Location = new System.Drawing.Point(32, 43);
+            this.label30.Location = new System.Drawing.Point(32, 26);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(107, 20);
             this.label30.TabIndex = 19;
@@ -704,7 +708,7 @@
             // 
             this.textBoxMagazynMat.BackColor = System.Drawing.Color.Bisque;
             this.textBoxMagazynMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxMagazynMat.Location = new System.Drawing.Point(145, 40);
+            this.textBoxMagazynMat.Location = new System.Drawing.Point(145, 23);
             this.textBoxMagazynMat.Name = "textBoxMagazynMat";
             this.textBoxMagazynMat.Size = new System.Drawing.Size(149, 24);
             this.textBoxMagazynMat.TabIndex = 38;
@@ -713,7 +717,7 @@
             // 
             this.labelJednostkaDostepnosc.AutoSize = true;
             this.labelJednostkaDostepnosc.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.labelJednostkaDostepnosc.Location = new System.Drawing.Point(300, 43);
+            this.labelJednostkaDostepnosc.Location = new System.Drawing.Point(300, 26);
             this.labelJednostkaDostepnosc.Name = "labelJednostkaDostepnosc";
             this.labelJednostkaDostepnosc.Size = new System.Drawing.Size(65, 20);
             this.labelJednostkaDostepnosc.TabIndex = 15;
@@ -812,7 +816,7 @@
             this.comboBoxJednostkaMat.BackColor = System.Drawing.Color.Linen;
             this.comboBoxJednostkaMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.comboBoxJednostkaMat.FormattingEnabled = true;
-            this.comboBoxJednostkaMat.Location = new System.Drawing.Point(141, 207);
+            this.comboBoxJednostkaMat.Location = new System.Drawing.Point(139, 202);
             this.comboBoxJednostkaMat.Name = "comboBoxJednostkaMat";
             this.comboBoxJednostkaMat.Size = new System.Drawing.Size(268, 28);
             this.comboBoxJednostkaMat.TabIndex = 49;
@@ -833,7 +837,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label22.Location = new System.Drawing.Point(9, 164);
+            this.label22.Location = new System.Drawing.Point(9, 161);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(47, 20);
             this.label22.TabIndex = 10;
@@ -872,7 +876,7 @@
             this.comboBoxRodzajMat.BackColor = System.Drawing.Color.Linen;
             this.comboBoxRodzajMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.comboBoxRodzajMat.FormattingEnabled = true;
-            this.comboBoxRodzajMat.Location = new System.Drawing.Point(78, 161);
+            this.comboBoxRodzajMat.Location = new System.Drawing.Point(78, 158);
             this.comboBoxRodzajMat.Name = "comboBoxRodzajMat";
             this.comboBoxRodzajMat.Size = new System.Drawing.Size(332, 28);
             this.comboBoxRodzajMat.TabIndex = 31;
@@ -882,7 +886,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label4.Location = new System.Drawing.Point(9, 210);
+            this.label4.Location = new System.Drawing.Point(7, 205);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(126, 20);
             this.label4.TabIndex = 15;
@@ -2763,6 +2767,27 @@
             this.labelZegar.TabIndex = 50;
             this.labelZegar.Text = "labelZegar";
             // 
+            // richTextBoxKomunikatMaterialy
+            // 
+            this.richTextBoxKomunikatMaterialy.BackColor = System.Drawing.Color.Bisque;
+            this.richTextBoxKomunikatMaterialy.Enabled = false;
+            this.richTextBoxKomunikatMaterialy.ForeColor = System.Drawing.Color.Red;
+            this.richTextBoxKomunikatMaterialy.Location = new System.Drawing.Point(12, 253);
+            this.richTextBoxKomunikatMaterialy.Name = "richTextBoxKomunikatMaterialy";
+            this.richTextBoxKomunikatMaterialy.Size = new System.Drawing.Size(398, 58);
+            this.richTextBoxKomunikatMaterialy.TabIndex = 64;
+            this.richTextBoxKomunikatMaterialy.Text = "";
+            // 
+            // labelDostepnosc
+            // 
+            this.labelDostepnosc.AutoSize = true;
+            this.labelDostepnosc.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelDostepnosc.Location = new System.Drawing.Point(10, 230);
+            this.labelDostepnosc.Name = "labelDostepnosc";
+            this.labelDostepnosc.Size = new System.Drawing.Size(75, 20);
+            this.labelDostepnosc.TabIndex = 65;
+            this.labelDostepnosc.Text = "Dostępność";
+            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3072,6 +3097,8 @@
         private System.Windows.Forms.Label labelDayOfWeek;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label labelZegar;
+        private System.Windows.Forms.Label labelDostepnosc;
+        private System.Windows.Forms.RichTextBox richTextBoxKomunikatMaterialy;
     }
 }
 

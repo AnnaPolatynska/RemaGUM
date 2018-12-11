@@ -1729,8 +1729,12 @@ namespace RemaGUM
                 // komunikat o niskim stanie magazynowym.
                 if (materialyBUS.VO.Stan_mat < materialyBUS.VO.Stan_min_mat)
                 {
-                    MessageBox.Show("Uwaga niski stan magazynowy. Zamów " + materialyBUS.VO.Nazwa_mat.ToString() + ". ", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    richTextBoxKomunikatMaterialy.Text = ("Uwaga niski stan magazynowy ( " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat +" ) produktu: " + materialyBUS.VO.Nazwa_mat.ToString() + " typ - " + materialyBUS.VO.Typ_mat.ToString() + ". ");
+
+                }
+                else
+                {
+                    richTextBoxKomunikatMaterialy.Text = string.Empty;
                 }
 
                 int aktualizacjaStanuMagazyn = materialyBUS.VO.Stan_mat - materialyBUS.VO.Zuzycie_mat - materialyBUS.VO.Odpad_mat + materialyBUS.VO.Zapotrzebowanie_mat;
