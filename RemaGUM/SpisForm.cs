@@ -726,7 +726,7 @@ namespace RemaGUM
                 }
                 else if (timeSpan.Days < 0)
                 {
-                    richTextBoxUwaga.Text = ("Termin przeglądu maszyny " + maszynyBUS.VO.Nazwa.ToString() + " o nr: " + maszynyBUS.VO.Nr_inwentarzowy + " minął.");
+                    richTextBoxUwaga.Text = ("Termin przeglądu maszyny " + maszynyBUS.VO.Nazwa.ToString() + " o nr: " + maszynyBUS.VO.Nr_inwentarzowy + " minął w dniu: " + maszynyBUS.VO.Dz_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Mc_kol_przeg.ToString("00") + "." + maszynyBUS.VO.Rok_kol_przeg.ToString() + "r.");
                 }
                 else { richTextBoxUwaga.Text = string.Empty; }
 
@@ -2336,7 +2336,6 @@ namespace RemaGUM
                 {
                     materialy_VO.Stan_min_mat = int.Parse(textBoxMinMat.Text.Trim());
                 }
-              
                 // pola uzupełniane zerami w przypadku braku wpisu użytkownika.
                
                 //wstawienie 0 w przypadku braku wpisu w pole textBoxZuzycieMat.

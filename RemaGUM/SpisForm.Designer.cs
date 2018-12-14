@@ -49,6 +49,8 @@
             this.label28 = new System.Windows.Forms.Label();
             this.checkedListBoxDostawcyMat = new System.Windows.Forms.CheckedListBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.labelDostepnosc = new System.Windows.Forms.Label();
+            this.richTextBoxKomunikatMaterialy = new System.Windows.Forms.RichTextBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -242,8 +244,6 @@
             this.labelDayOfWeek = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.labelZegar = new System.Windows.Forms.Label();
-            this.richTextBoxKomunikatMaterialy = new System.Windows.Forms.RichTextBox();
-            this.labelDostepnosc = new System.Windows.Forms.Label();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -510,6 +510,27 @@
             this.groupBox6.TabIndex = 52;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "MATERIAŁY / NORMALIA";
+            // 
+            // labelDostepnosc
+            // 
+            this.labelDostepnosc.AutoSize = true;
+            this.labelDostepnosc.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelDostepnosc.Location = new System.Drawing.Point(10, 230);
+            this.labelDostepnosc.Name = "labelDostepnosc";
+            this.labelDostepnosc.Size = new System.Drawing.Size(75, 20);
+            this.labelDostepnosc.TabIndex = 65;
+            this.labelDostepnosc.Text = "Dostępność";
+            // 
+            // richTextBoxKomunikatMaterialy
+            // 
+            this.richTextBoxKomunikatMaterialy.BackColor = System.Drawing.Color.Bisque;
+            this.richTextBoxKomunikatMaterialy.Enabled = false;
+            this.richTextBoxKomunikatMaterialy.ForeColor = System.Drawing.Color.Red;
+            this.richTextBoxKomunikatMaterialy.Location = new System.Drawing.Point(12, 253);
+            this.richTextBoxKomunikatMaterialy.Name = "richTextBoxKomunikatMaterialy";
+            this.richTextBoxKomunikatMaterialy.Size = new System.Drawing.Size(398, 58);
+            this.richTextBoxKomunikatMaterialy.TabIndex = 64;
+            this.richTextBoxKomunikatMaterialy.Text = "";
             // 
             // groupBox15
             // 
@@ -1246,10 +1267,12 @@
             // 
             // richTextBoxUwaga
             // 
+            this.richTextBoxUwaga.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxUwaga.BackColor = System.Drawing.Color.Bisque;
             this.richTextBoxUwaga.Enabled = false;
             this.richTextBoxUwaga.ForeColor = System.Drawing.Color.Red;
-            this.richTextBoxUwaga.Location = new System.Drawing.Point(15, 483);
+            this.richTextBoxUwaga.Location = new System.Drawing.Point(10, 442);
             this.richTextBoxUwaga.Name = "richTextBoxUwaga";
             this.richTextBoxUwaga.Size = new System.Drawing.Size(481, 50);
             this.richTextBoxUwaga.TabIndex = 43;
@@ -1326,11 +1349,12 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label13.Location = new System.Drawing.Point(11, 392);
+            this.label13.Location = new System.Drawing.Point(11, 508);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(160, 20);
             this.label13.TabIndex = 27;
             this.label13.Text = "Data nastepnego przeglądu";
+            this.label13.Visible = false;
             // 
             // labelTypMaszyny
             // 
@@ -1365,11 +1389,13 @@
             // dateTimePickerData_kol_przegl
             // 
             this.dateTimePickerData_kol_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateTimePickerData_kol_przegl.Enabled = false;
             this.dateTimePickerData_kol_przegl.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.dateTimePickerData_kol_przegl.Location = new System.Drawing.Point(207, 392);
+            this.dateTimePickerData_kol_przegl.Location = new System.Drawing.Point(207, 508);
             this.dateTimePickerData_kol_przegl.Name = "dateTimePickerData_kol_przegl";
             this.dateTimePickerData_kol_przegl.Size = new System.Drawing.Size(289, 24);
             this.dateTimePickerData_kol_przegl.TabIndex = 37;
+            this.dateTimePickerData_kol_przegl.Visible = false;
             // 
             // textBoxTyp
             // 
@@ -1423,7 +1449,7 @@
             this.comboBoxDzial.BackColor = System.Drawing.Color.Linen;
             this.comboBoxDzial.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.comboBoxDzial.FormattingEnabled = true;
-            this.comboBoxDzial.Location = new System.Drawing.Point(207, 434);
+            this.comboBoxDzial.Location = new System.Drawing.Point(207, 394);
             this.comboBoxDzial.Name = "comboBoxDzial";
             this.comboBoxDzial.Size = new System.Drawing.Size(289, 28);
             this.comboBoxDzial.TabIndex = 33;
@@ -1524,7 +1550,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label10.Location = new System.Drawing.Point(11, 437);
+            this.label10.Location = new System.Drawing.Point(11, 397);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(185, 20);
             this.label10.TabIndex = 21;
@@ -2747,7 +2773,7 @@
             // labelDayOfWeek
             // 
             this.labelDayOfWeek.AutoSize = true;
-            this.labelDayOfWeek.Location = new System.Drawing.Point(197, 7);
+            this.labelDayOfWeek.Location = new System.Drawing.Point(198, 9);
             this.labelDayOfWeek.Name = "labelDayOfWeek";
             this.labelDayOfWeek.Size = new System.Drawing.Size(88, 13);
             this.labelDayOfWeek.TabIndex = 49;
@@ -2766,27 +2792,6 @@
             this.labelZegar.Size = new System.Drawing.Size(105, 23);
             this.labelZegar.TabIndex = 50;
             this.labelZegar.Text = "labelZegar";
-            // 
-            // richTextBoxKomunikatMaterialy
-            // 
-            this.richTextBoxKomunikatMaterialy.BackColor = System.Drawing.Color.Bisque;
-            this.richTextBoxKomunikatMaterialy.Enabled = false;
-            this.richTextBoxKomunikatMaterialy.ForeColor = System.Drawing.Color.Red;
-            this.richTextBoxKomunikatMaterialy.Location = new System.Drawing.Point(12, 253);
-            this.richTextBoxKomunikatMaterialy.Name = "richTextBoxKomunikatMaterialy";
-            this.richTextBoxKomunikatMaterialy.Size = new System.Drawing.Size(398, 58);
-            this.richTextBoxKomunikatMaterialy.TabIndex = 64;
-            this.richTextBoxKomunikatMaterialy.Text = "";
-            // 
-            // labelDostepnosc
-            // 
-            this.labelDostepnosc.AutoSize = true;
-            this.labelDostepnosc.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.labelDostepnosc.Location = new System.Drawing.Point(10, 230);
-            this.labelDostepnosc.Name = "labelDostepnosc";
-            this.labelDostepnosc.Size = new System.Drawing.Size(75, 20);
-            this.labelDostepnosc.TabIndex = 65;
-            this.labelDostepnosc.Text = "Dostępność";
             // 
             // SpisForm
             // 
