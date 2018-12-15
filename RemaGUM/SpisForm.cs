@@ -2957,7 +2957,7 @@ namespace RemaGUM
                 int idx = 0;
                 while (!maszyny_OperatorBUS.eof)
                 {
-                    listBoxMaszynyOperatora.Items.Add(maszyny_OperatorBUS.VO.Maszyny_nazwa);
+                    listBoxMaszynyOperatora.Items.Add(maszyny_OperatorBUS.VO.Maszyny_nazwa + " " + maszynyBUS.VO.Nr_inwentarzowy);
                     _maszynaTag[idx] = maszyny_OperatorBUS.VO.ID_maszyny;
                     maszyny_OperatorBUS.skip();
                     idx++;
