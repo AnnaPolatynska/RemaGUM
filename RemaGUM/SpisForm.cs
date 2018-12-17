@@ -772,7 +772,7 @@ namespace RemaGUM
 
             while (!maszynyBUS.eof)
             {
-                listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa + " -> " + maszynyBUS.VO.Nr_fabryczny);
+                listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa);
                 maszynyBUS.skip();
             }
 
@@ -872,7 +872,7 @@ namespace RemaGUM
 
                 while (!maszynyBUS.eof)
                 {
-                    listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa + " -> " + maszynyBUS.VO.Nr_fabryczny);
+                    listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
                 if (listBoxMaszyny.Items.Count > 0)
