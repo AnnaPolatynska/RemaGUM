@@ -244,6 +244,8 @@
             this.labelDayOfWeek = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.labelZegar = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -2519,8 +2521,12 @@
             // 
             // groupBox17
             // 
+            this.groupBox17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox17.Controls.Add(this.button1);
             this.groupBox17.Controls.Add(this.buttonUsunLink);
             this.groupBox17.Controls.Add(this.textBoxNazwaDostawcy);
+            this.groupBox17.Controls.Add(this.textBox1);
             this.groupBox17.Controls.Add(this.textBoxLinkDostawcy);
             this.groupBox17.Controls.Add(this.label24);
             this.groupBox17.Controls.Add(this.label25);
@@ -2530,7 +2536,7 @@
             this.groupBox17.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox17.Location = new System.Drawing.Point(401, 21);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(382, 541);
+            this.groupBox17.Size = new System.Drawing.Size(382, 749);
             this.groupBox17.TabIndex = 54;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Dane dostawcy";
@@ -2539,7 +2545,7 @@
             // 
             this.buttonUsunLink.BackColor = System.Drawing.Color.Linen;
             this.buttonUsunLink.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonUsunLink.Location = new System.Drawing.Point(269, 481);
+            this.buttonUsunLink.Location = new System.Drawing.Point(267, 677);
             this.buttonUsunLink.Name = "buttonUsunLink";
             this.buttonUsunLink.Size = new System.Drawing.Size(97, 30);
             this.buttonUsunLink.TabIndex = 55;
@@ -2560,7 +2566,7 @@
             // 
             this.textBoxLinkDostawcy.BackColor = System.Drawing.Color.Linen;
             this.textBoxLinkDostawcy.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxLinkDostawcy.Location = new System.Drawing.Point(12, 435);
+            this.textBoxLinkDostawcy.Location = new System.Drawing.Point(10, 647);
             this.textBoxLinkDostawcy.Name = "textBoxLinkDostawcy";
             this.textBoxLinkDostawcy.Size = new System.Drawing.Size(354, 24);
             this.textBoxLinkDostawcy.TabIndex = 52;
@@ -2569,7 +2575,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label24.Location = new System.Drawing.Point(8, 412);
+            this.label24.Location = new System.Drawing.Point(6, 624);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(86, 20);
             this.label24.TabIndex = 53;
@@ -2587,18 +2593,20 @@
             // 
             // richTextBoxDostawca
             // 
+            this.richTextBoxDostawca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxDostawca.BackColor = System.Drawing.Color.Linen;
             this.richTextBoxDostawca.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.richTextBoxDostawca.Location = new System.Drawing.Point(12, 146);
             this.richTextBoxDostawca.Name = "richTextBoxDostawca";
-            this.richTextBoxDostawca.Size = new System.Drawing.Size(354, 212);
+            this.richTextBoxDostawca.Size = new System.Drawing.Size(354, 440);
             this.richTextBoxDostawca.TabIndex = 45;
             this.richTextBoxDostawca.Text = "";
             // 
             // linkLabelDostawcaMat
             // 
             this.linkLabelDostawcaMat.AutoSize = true;
-            this.linkLabelDostawcaMat.Location = new System.Drawing.Point(9, 374);
+            this.linkLabelDostawcaMat.Location = new System.Drawing.Point(8, 717);
             this.linkLabelDostawcaMat.Name = "linkLabelDostawcaMat";
             this.linkLabelDostawcaMat.Size = new System.Drawing.Size(124, 20);
             this.linkLabelDostawcaMat.TabIndex = 42;
@@ -2618,24 +2626,28 @@
             // 
             // groupBox16
             // 
+            this.groupBox16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox16.BackColor = System.Drawing.Color.Bisque;
             this.groupBox16.Controls.Add(this.listBoxDostawcy);
             this.groupBox16.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox16.Location = new System.Drawing.Point(16, 21);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(367, 626);
+            this.groupBox16.Size = new System.Drawing.Size(367, 819);
             this.groupBox16.TabIndex = 53;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Lista dostawców";
             // 
             // listBoxDostawcy
             // 
+            this.listBoxDostawcy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxDostawcy.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.listBoxDostawcy.FormattingEnabled = true;
             this.listBoxDostawcy.ItemHeight = 20;
             this.listBoxDostawcy.Location = new System.Drawing.Point(6, 23);
             this.listBoxDostawcy.Name = "listBoxDostawcy";
-            this.listBoxDostawcy.Size = new System.Drawing.Size(355, 584);
+            this.listBoxDostawcy.Size = new System.Drawing.Size(355, 784);
             this.listBoxDostawcy.TabIndex = 52;
             this.listBoxDostawcy.SelectedIndexChanged += new System.EventHandler(this.listBoxDostawcy_SelectedIndexChanged);
             // 
@@ -2649,7 +2661,7 @@
             this.groupBox11.Controls.Add(this.buttonAnulujDostawca);
             this.groupBox11.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox11.Location = new System.Drawing.Point(401, 569);
+            this.groupBox11.Location = new System.Drawing.Point(401, 776);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(382, 64);
             this.groupBox11.TabIndex = 49;
@@ -2762,6 +2774,7 @@
             // labelData
             // 
             this.labelData.AutoSize = true;
+            this.labelData.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.labelData.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
             this.labelData.Location = new System.Drawing.Point(96, 7);
             this.labelData.Name = "labelData";
@@ -2773,6 +2786,7 @@
             // labelDayOfWeek
             // 
             this.labelDayOfWeek.AutoSize = true;
+            this.labelDayOfWeek.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.labelDayOfWeek.Location = new System.Drawing.Point(198, 9);
             this.labelDayOfWeek.Name = "labelDayOfWeek";
             this.labelDayOfWeek.Size = new System.Drawing.Size(88, 13);
@@ -2786,12 +2800,34 @@
             // labelZegar
             // 
             this.labelZegar.AutoSize = true;
+            this.labelZegar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.labelZegar.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
             this.labelZegar.Location = new System.Drawing.Point(292, 7);
             this.labelZegar.Name = "labelZegar";
             this.labelZegar.Size = new System.Drawing.Size(105, 23);
             this.labelZegar.TabIndex = 50;
             this.labelZegar.Text = "labelZegar";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.Linen;
+            this.textBox1.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBox1.Location = new System.Drawing.Point(12, 647);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(354, 24);
+            this.textBox1.TabIndex = 52;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Linen;
+            this.button1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.button1.Location = new System.Drawing.Point(269, 677);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 30);
+            this.button1.TabIndex = 55;
+            this.button1.Text = "Usuń Link";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.buttonUsunLink_Click);
             // 
             // SpisForm
             // 
@@ -3104,6 +3140,8 @@
         private System.Windows.Forms.Label labelZegar;
         private System.Windows.Forms.Label labelDostepnosc;
         private System.Windows.Forms.RichTextBox richTextBoxKomunikatMaterialy;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
