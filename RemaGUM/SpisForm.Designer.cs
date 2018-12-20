@@ -221,8 +221,10 @@
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelDostawcy = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.buttonUsunLink = new System.Windows.Forms.Button();
             this.textBoxNazwaDostawcy = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBoxLinkDostawcy = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -244,8 +246,6 @@
             this.labelDayOfWeek = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.labelZegar = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -367,7 +367,7 @@
             this.groupBox10.Size = new System.Drawing.Size(415, 767);
             this.groupBox10.TabIndex = 49;
             this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Dostawcy materiałów";
+            this.groupBox10.Text = "Dostawcy materiałów/normaliów";
             // 
             // groupBoxDostawca
             // 
@@ -965,7 +965,7 @@
             this.groupBox8.Size = new System.Drawing.Size(373, 704);
             this.groupBox8.TabIndex = 47;
             this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Lista Materiałów";
+            this.groupBox8.Text = "Lista materiałów/normaliów";
             // 
             // listBoxMaterialy
             // 
@@ -995,7 +995,7 @@
             this.groupBoxSorowanieMaterialow.Size = new System.Drawing.Size(375, 57);
             this.groupBoxSorowanieMaterialow.TabIndex = 50;
             this.groupBoxSorowanieMaterialow.TabStop = false;
-            this.groupBoxSorowanieMaterialow.Text = "Sortowanie materiałów";
+            this.groupBoxSorowanieMaterialow.Text = "Sortowanie materiałów/normaliów";
             // 
             // radioButtonMagazyn_ilosc_mat
             // 
@@ -2541,6 +2541,18 @@
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Dane dostawcy";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Linen;
+            this.button1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.button1.Location = new System.Drawing.Point(269, 677);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 30);
+            this.button1.TabIndex = 55;
+            this.button1.Text = "Usuń Link";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.buttonUsunLink_Click);
+            // 
             // buttonUsunLink
             // 
             this.buttonUsunLink.BackColor = System.Drawing.Color.Linen;
@@ -2561,6 +2573,15 @@
             this.textBoxNazwaDostawcy.Name = "textBoxNazwaDostawcy";
             this.textBoxNazwaDostawcy.Size = new System.Drawing.Size(356, 24);
             this.textBoxNazwaDostawcy.TabIndex = 54;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.Linen;
+            this.textBox1.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBox1.Location = new System.Drawing.Point(12, 647);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(354, 24);
+            this.textBox1.TabIndex = 52;
             // 
             // textBoxLinkDostawcy
             // 
@@ -2807,27 +2828,6 @@
             this.labelZegar.Size = new System.Drawing.Size(105, 23);
             this.labelZegar.TabIndex = 50;
             this.labelZegar.Text = "labelZegar";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.Linen;
-            this.textBox1.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBox1.Location = new System.Drawing.Point(12, 647);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(354, 24);
-            this.textBox1.TabIndex = 52;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Linen;
-            this.button1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(269, 677);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 30);
-            this.button1.TabIndex = 55;
-            this.button1.Text = "Usuń Link";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.buttonUsunLink_Click);
             // 
             // SpisForm
             // 

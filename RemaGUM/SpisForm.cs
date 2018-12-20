@@ -1727,7 +1727,7 @@ namespace RemaGUM
                 textBoxZapotrzebowanieMat.Text = "0";
 
                 // komunikat o niskim stanie magazynowym.
-                if (materialyBUS.VO.Stan_mat < materialyBUS.VO.Stan_min_mat)
+                if (materialyBUS.VO.Stan_mat <= materialyBUS.VO.Stan_min_mat)
                 {
                     richTextBoxKomunikatMaterialy.Text = ("Uwaga niski stan magazynowy ( " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat +" ) produktu: " + materialyBUS.VO.Nazwa_mat.ToString() + " typ - " + materialyBUS.VO.Typ_mat.ToString() + ". ");
 
