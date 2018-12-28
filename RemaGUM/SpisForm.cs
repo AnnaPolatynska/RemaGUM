@@ -24,7 +24,7 @@ namespace RemaGUM
         private string _connString;
         private Rest _rest = new Rest();
 
-        private string _helpFile = Application.StartupPath + "\\pomoc.chm"; //plik pomocy RemaGUM.
+        private string _helpFile = Application.StartupPath + "\\help.chm"; //plik pomocy RemaGUM.
 
         private byte[] _zawartoscPliku; //dane odczytane z pliku zdjęcia.
 
