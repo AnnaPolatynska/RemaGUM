@@ -217,11 +217,8 @@ namespace RemaGUM
 
             _connString = _rest.dbConnection(_settings.connectionString);
 
-
-
             _statusForm = (int)_status.edycja;
             
-
             _OperatorBUS = new nsAccess2DB.OperatorBUS(_connString);
             _maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             _materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
@@ -239,12 +236,12 @@ namespace RemaGUM
             timer1.Start();
             SetDataAndTime();
         
-
                 if (listBoxMaszyny.Items.Count > 0)
             {
                 listBoxMaszyny.SelectedIndex = 0;
             }
-
+            
+             // Indeksowanie w zakładkach
             //------------------------------------ Zakładka Maszyny
             //dane formularza Maszyny
             listBoxMaszyny.TabIndex = 0;
@@ -253,104 +250,132 @@ namespace RemaGUM
             textBoxTyp.TabIndex = 3;
             textBoxNr_inwentarzowy.TabIndex = 4;
             textBoxNr_fabryczny.TabIndex = 5;
-            textBoxRok_produkcji.TabIndex = 6;
-            richTextBoxProducent.TabIndex = 7;
-            pictureBox1.TabIndex = 8;
-            comboBoxDysponent.TabIndex = 9;
-            checkedListBoxOperatorzy_maszyn.TabIndex = 10;
-            textBoxNr_pom.TabIndex = 11;
-            comboBoxDzial.TabIndex = 12;
-            textBoxNr_prot_BHP.TabIndex = 13;
-            dateTimePickerData_ost_przegl.TabIndex = 14;
-            dateTimePickerData_kol_przegl.TabIndex = 15;
-            richTextBoxUwagi.TabIndex = 16;
-            //ankietka dot. Maszyn
-            comboBoxWykorzystanie.TabIndex = 17;
-            comboBoxStan_techniczny.TabIndex = 18;
-            comboBoxPropozycja.TabIndex = 19;
-            //przyciski zapisz/edytuj itp
-            buttonNowa.TabIndex = 20;
-            buttonZapisz.TabIndex = 21;
-            buttonAnuluj.TabIndex = 22;
-            buttonUsun.TabIndex = 23;
-            //sortowanie Maszyn po radio buttonach
-            radioButtonTyp.TabIndex = 24;
-            radioButtonNr_inwentarzowy.TabIndex = 25;
-            radioButtonNr_fabryczny.TabIndex = 26;
-            radioButtonNr_pomieszczenia.TabIndex = 27;
-            radioButtonNazwa.TabIndex = 28;
-            radioButtonData_ost_przegl.TabIndex = 29;
+            richTextBoxProducent.TabIndex = 6;
+            textBoxRok_produkcji.TabIndex = 7;
+            textBoxNr_pom.TabIndex = 8;
+            dateTimePickerData_ost_przegl.TabIndex = 9;
+            comboBoxDzial.TabIndex = 10;
+            richTextBoxUwaga.TabIndex = 11; //pole nieaktywne na komunikaty systemu
+            dateTimePickerData_kol_przegl.TabIndex = 12;
+            comboBoxDysponent.TabIndex = 13;
+            checkedListBoxOperatorzy_maszyn.TabIndex = 14;
+            richTextBoxUwagi.TabIndex = 15;
             //wyszukiwanie Maszyny po wpisanej nazwie 
-            textBoxWyszukiwanie.TabIndex = 31;
-            buttonSzukaj.TabIndex = 32;
+            textBoxWyszukiwanie.TabIndex = 16;
+            buttonSzukaj.TabIndex = 17;
+            //zdjęcie i przyciski dot obsł zdjęcia
+            pictureBox1.TabIndex = 18;
+            buttonPokazZdj.TabIndex = 19;
+            buttonUsunZdj.TabIndex = 20;
+            //ankietka dot. Maszyn
+            comboBoxStan_techniczny.TabIndex = 21;
+            comboBoxWykorzystanie.TabIndex = 22;
+            comboBoxPropozycja.TabIndex = 23;
+            textBoxNr_prot_BHP.TabIndex = 24;
+            //przyciski zapisz/edytuj itp
+            buttonNowa.TabIndex = 25;
+            buttonZapisz.TabIndex = 26;
+            buttonAnuluj.TabIndex = 27;
+            buttonUsun.TabIndex = 28;
+            //sortowanie Maszyn po radio buttonach
+            radioButtonNazwa.TabIndex = 29;
+            radioButtonTyp.TabIndex = 30;
+            radioButtonNr_fabryczny.TabIndex = 31;
+            radioButtonNr_inwentarzowy.TabIndex = 32;
+            radioButtonNr_pomieszczenia.TabIndex = 33;
+            radioButtonData_ost_przegl.TabIndex = 34;
 
-            // --------------------------------------------- Zakładka Magazyn
-            //dane formularza Magazyn
-            listBoxMaterialy.TabIndex = 33;
-            textBoxTypMat.TabIndex = 34;
-            comboBoxRodzajMat.TabIndex = 35;
-            textBoxNazwaMat.TabIndex = 36;
-            comboBoxJednostkaMat.TabIndex = 37;
-            textBoxMagazynMat.TabIndex = 38;
-            textBoxZuzycieMat.TabIndex = 39;
-            textBoxOdpadMat.TabIndex = 40;
-            textBoxMinMat.TabIndex = 41;
-            textBoxZapotrzebowanieMat.TabIndex = 42;
-            //dane dostawców Materiałów
-            checkedListBoxDostawcyMat.TabIndex = 43;
-            linkLabelDostawcaMat2.TabIndex = 44;
-          
-            //przyciski zapisz/edytuj itp
-            buttonNowaMat.TabIndex = 46;
-            buttonZapiszMat.TabIndex = 47;
-            buttonAnulujMat.TabIndex = 48;
-            buttonUsunMat.TabIndex = 49;
-            //sortowanie Materiału po radio buttonach
-            radioButtonNazwa_mat.TabIndex = 50;
-            radioButtonTyp_mat.TabIndex = 51;
-            radioButtonStan_min_mat.TabIndex = 52;
-            radioButtonMagazyn_ilosc_mat.TabIndex = 53;
-            //wyszukiwanie Materiału po wpisanej nazwie
-            textBoxWyszukaj_mat.TabIndex = 54;
-            buttonSzukaj_mat.TabIndex = 55;
-            comboBoxWyborMagazyn.TabIndex = 56;
-            //------------------------------------------------ Zakładka Operator
-            //dane forlumarza
-            listBoxOperator.TabIndex = 1;
-            textBoxImieOperator.TabIndex = 2;
-            textBoxNazwiskoOperator.TabIndex = 3;
-            comboBoxDzialOperator.TabIndex = 4;
-            textBoxUprawnienieOperator.TabIndex = 5;
-            dateTimePickerDataKoncaUprOp.TabIndex = 6;
-            listBoxMaszynyOperatora.TabIndex = 7;
-            //wyszukiwanie
-            textBoxWyszukiwanieOperator.TabIndex = 8;
-            buttonSzukajOperator.TabIndex = 9;
-            //przyciski zapisz/edytuj itp
-            buttonNowaOperator.TabIndex = 10;
-            buttonZapiszOperator.TabIndex = 11;
-            buttonAnulujOperator.TabIndex = 12;
-            buttonUsunOperator.TabIndex = 13;
+            //------------------------------------------------ Zakładka Operatorzy maszyn
             //sortowanie po comboBoxOperator
-            comboBoxOperator.TabIndex = 14;
-
-            // ------------------------------------------- Zakładka Dysponent.
-            listBoxDysponent.TabIndex = 1;
-            textBoxImieDysponent.TabIndex = 2;
-            textBoxNazwiskoDysponent.TabIndex = 3;
-            comboBoxDzialDysponent.TabIndex = 4;
-            richTextBoxDysponent_dane.TabIndex = 5;
-            listBoxMaszynyDysponenta.TabIndex = 6;
+            comboBoxOperator.TabIndex = 1;
+            // lista operatorów
+            listBoxOperator.TabIndex = 2;
             //wyszukiwanie
-            textBoxWyszukiwanieDysponent.TabIndex = 7;
-            buttonSzukajDysponent.TabIndex = 8;
+            textBoxWyszukiwanieOperator.TabIndex = 3;
+            buttonSzukajOperator.TabIndex = 4;
+            //dane forlumarza
+            textBoxImieOperator.TabIndex = 5;
+            textBoxNazwiskoOperator.TabIndex = 6;
+            comboBoxDzialOperator.TabIndex = 7;
+            textBoxUprawnienieOperator.TabIndex = 8;
+            dateTimePickerDataKoncaUprOp.TabIndex = 9;
+            richTextBoxUprawnieniaOperatora.TabIndex = 10;
+            listBoxMaszynyOperatora.TabIndex = 11;
             //przyciski zapisz/edytuj itp
-            buttonNowaDysponent.TabIndex = 9;
-            buttonZapiszDysponent.TabIndex = 10;
-            buttonAnulujDysponent.TabIndex = 11;
-            buttonUsunDysponent.TabIndex = 12;
+            buttonNowaOperator.TabIndex = 12;
+            buttonZapiszOperator.TabIndex = 13;
+            buttonAnulujOperator.TabIndex = 14;
+            buttonUsunOperator.TabIndex = 15;
 
+            // ------------------------------------------- Zakładka Dysponenci maszyn.
+            //lista dysponentów maszyn
+            listBoxDysponent.TabIndex = 1;
+            //wyszukiwanie
+            textBoxWyszukiwanieDysponent.TabIndex = 2;
+            buttonSzukajDysponent.TabIndex = 3;
+            //dane dysponenta
+            textBoxImieDysponent.TabIndex = 4;
+            textBoxNazwiskoDysponent.TabIndex = 5;
+            comboBoxDzialDysponent.TabIndex = 6;
+            richTextBoxDysponent_dane.TabIndex = 7;
+            //przyciski zapisz/edytuj itp
+            buttonNowaDysponent.TabIndex = 8;
+            buttonZapiszDysponent.TabIndex = 9;
+            buttonAnulujDysponent.TabIndex = 10;
+            buttonUsunDysponent.TabIndex = 11;
+            //lista maszyn, którymi zarządza dysponent
+            listBoxMaszynyDysponenta.TabIndex = 12;
+           
+            // --------------------------------------------- Zakładka Materiały
+            //sortowanie Materiału po radio buttonach
+            radioButtonNazwa_mat.TabIndex = 1;
+            radioButtonTyp_mat.TabIndex = 2;
+            radioButtonStan_min_mat.TabIndex = 3;
+            radioButtonMagazyn_ilosc_mat.TabIndex = 4;
+            //lista materiałów/ normaliów
+            listBoxMaterialy.TabIndex = 5;
+            //wyszukiwanie Materiału po wpisanej nazwie
+            textBoxWyszukaj_mat.TabIndex = 6;
+            buttonSzukaj_mat.TabIndex = 7;
+            //dane formularza Magazyn
+            comboBoxWyborMagazyn.TabIndex = 8;
+            textBoxNazwaMat.TabIndex = 9;
+            textBoxTypMat.TabIndex = 10;
+            comboBoxRodzajMat.TabIndex = 11;
+            comboBoxJednostkaMat.TabIndex = 12;
+            richTextBoxKomunikatMaterialy.TabIndex = 13;// komunikaty dotyczące dostępności materiału.
+            //Gospodarka magazynowa
+            textBoxMagazynMat.TabIndex = 14;
+            textBoxZuzycieMat.TabIndex = 15;
+            textBoxOdpadMat.TabIndex = 16;
+            textBoxMinMat.TabIndex = 17;
+            textBoxZapotrzebowanieMat.TabIndex = 18;
+            //przyciski zapisz/edytuj itp
+            buttonNowaMat.TabIndex = 19;
+            buttonZapiszMat.TabIndex = 20;
+            buttonAnulujMat.TabIndex = 21;
+            buttonUsunMat.TabIndex = 22;
+            //dane dostawców Materiałów
+            checkedListBoxDostawcyMat.TabIndex = 23;
+            richTextBoxDaneDodatkoweDostawca.TabIndex = 24;
+            linkLabelDostawcaMat2.TabIndex = 25;
+            textBoxLinkDostawcy2.TabIndex = 26;
 
+            // -----------------------------------------------Zakładka Dostawcy
+            //lista dostawców
+            listBoxDostawcy.TabIndex = 1;
+            // dane dostawców
+            textBoxNazwaDostawcy.TabIndex = 2;
+            richTextBoxDostawca.TabIndex = 3;
+            textBoxLink.TabIndex = 4;
+            linkLabelDostawcaMat.TabIndex = 5;
+            //przyciski zapisz/edytuj itp
+            buttonNowyDostawca.TabIndex = 6;
+            buttonZapiszDostawca.TabIndex = 7;
+            buttonAnulujDostawca.TabIndex = 8;
+            buttonUsunDostawca.TabIndex = 9;
+            
+            // tool tipy
             _tt = new ToolTip();
             _tt.SetToolTip(listBoxMaszyny, "Lista maszyn, przyrządów i urządzeń itp.");
             _tt.SetToolTip(comboBoxKategoria, "Kategoria maszyn, przyrządów, urządzeń np. maszyny warsztatowe, lub przyrządy pomiarowe.");
@@ -358,16 +383,18 @@ namespace RemaGUM
             _tt.SetToolTip(textBoxTyp, "Typ maszyny, przyrządu lub urządzenia.");
             _tt.SetToolTip(textBoxNr_inwentarzowy, "Numer naklejki GUM (inwentarzowy) maszyny, przyrządu lub urządzenia.");
             _tt.SetToolTip(textBoxNr_fabryczny, "Numer fabryczny maszyny, przyrządu lub urządzenia.");
+            _tt.SetToolTip(richTextBoxProducent, "Dane producenta maszyny.");
             _tt.SetToolTip(textBoxRok_produkcji, "Rok wyprodukowania.");
+            _tt.SetToolTip(textBoxNr_pom, "Numer pomieszczenia GUM, gdzie znajuje się maszyna, przyrząd lub urządzenie.");
             _tt.SetToolTip(richTextBoxProducent, "Producent maszyny, przyrządu lub urządzenia, dane adresowe, adres strony www i inne dodatkowe dane.");
             _tt.SetToolTip(pictureBox1, "Zdjęcie maszyny, przyrządu lub urządzenia.");
             _tt.SetToolTip(comboBoxDysponent, "Osoba zarządzająca maszynami (dysponent maszyny).");
             _tt.SetToolTip(checkedListBoxOperatorzy_maszyn, "Główna osoba użytkująca maszynę (posiadająca odpowiednie uprawnienia).");
-            _tt.SetToolTip(textBoxNr_pom, "Numer pomieszczenia GUM, gdzie znajuje się maszyna, przyrząd lub urządzenie.");
+          
             _tt.SetToolTip(comboBoxDzial, "Nazwa dział  lista maszyn, przyrządów i urządzeń itp.");
             _tt.SetToolTip(textBoxNr_prot_BHP, "Numer nadany w protokole kontroli dostosowania maszyny do minimalnych wymagań w zakresie BHP z dnia 12.06.2006 r.");
             _tt.SetToolTip(dateTimePickerData_ost_przegl, "Data ostatniej kontroli dostosowania do minimalnych wymagań w zakresie BHP, lub innego dokumentu.");
-            _tt.SetToolTip(dateTimePickerData_kol_przegl, "Spodziewana data kolejnej kontroli dostosowania do minimalnych wymagań w zakresie BHP, lub innej dotyczacej okresowych przeglądów.");
+            //_tt.SetToolTip(dateTimePickerData_kol_przegl, "Spodziewana data kolejnej kontroli dostosowania do minimalnych wymagań w zakresie BHP, lub innej dotyczacej okresowych przeglądów.");
             _tt.SetToolTip(richTextBoxUwagi, "Opis wszelkich innych zdarzeń/statusów mających istotny wpływ na maszynę, przyrząd lub urządzenie.");
             _tt.SetToolTip(comboBoxWykorzystanie, "Częstotliwość wykorzystania: nieuzywana, rzadziej niż kilka razy w roku, kilka razy w roku, kilka razy w okresie pół roku, kilka razy w kwartale, kilka razy w miesiącu.");
             _tt.SetToolTip(comboBoxStan_techniczny, "Stan techniczy: złom, do naprawy, dobry.");
@@ -3691,7 +3718,6 @@ namespace RemaGUM
             Cursor.Current = Cursors.Default;
         }//buttonSzukajDysponent_Click
 
-        
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM

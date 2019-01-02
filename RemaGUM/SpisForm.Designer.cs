@@ -224,7 +224,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.buttonUsunLink = new System.Windows.Forms.Button();
             this.textBoxNazwaDostawcy = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxLink = new System.Windows.Forms.TextBox();
             this.textBoxLinkDostawcy = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -2526,7 +2526,7 @@
             this.groupBox17.Controls.Add(this.button1);
             this.groupBox17.Controls.Add(this.buttonUsunLink);
             this.groupBox17.Controls.Add(this.textBoxNazwaDostawcy);
-            this.groupBox17.Controls.Add(this.textBox1);
+            this.groupBox17.Controls.Add(this.textBoxLink);
             this.groupBox17.Controls.Add(this.textBoxLinkDostawcy);
             this.groupBox17.Controls.Add(this.label24);
             this.groupBox17.Controls.Add(this.label25);
@@ -2574,14 +2574,14 @@
             this.textBoxNazwaDostawcy.Size = new System.Drawing.Size(356, 24);
             this.textBoxNazwaDostawcy.TabIndex = 54;
             // 
-            // textBox1
+            // textBoxLink
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Linen;
-            this.textBox1.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBox1.Location = new System.Drawing.Point(12, 647);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(354, 24);
-            this.textBox1.TabIndex = 52;
+            this.textBoxLink.BackColor = System.Drawing.Color.Linen;
+            this.textBoxLink.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxLink.Location = new System.Drawing.Point(12, 647);
+            this.textBoxLink.Name = "textBoxLink";
+            this.textBoxLink.Size = new System.Drawing.Size(354, 24);
+            this.textBoxLink.TabIndex = 52;
             // 
             // textBoxLinkDostawcy
             // 
@@ -3141,7 +3141,7 @@
         private System.Windows.Forms.Label labelDostepnosc;
         private System.Windows.Forms.RichTextBox richTextBoxKomunikatMaterialy;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxLink;
     }
 }
 
