@@ -383,71 +383,131 @@ namespace RemaGUM
             _tt.SetToolTip(textBoxTyp, "Typ maszyny, przyrządu lub urządzenia.");
             _tt.SetToolTip(textBoxNr_inwentarzowy, "Numer naklejki GUM (inwentarzowy) maszyny, przyrządu lub urządzenia.");
             _tt.SetToolTip(textBoxNr_fabryczny, "Numer fabryczny maszyny, przyrządu lub urządzenia.");
-            _tt.SetToolTip(richTextBoxProducent, "Dane producenta maszyny.");
+            _tt.SetToolTip(richTextBoxProducent, "Producent maszyny, przyrządu lub urządzenia, dane adresowe, adres strony www i inne dodatkowe dane.");
             _tt.SetToolTip(textBoxRok_produkcji, "Rok wyprodukowania.");
             _tt.SetToolTip(textBoxNr_pom, "Numer pomieszczenia GUM, gdzie znajuje się maszyna, przyrząd lub urządzenie.");
-            _tt.SetToolTip(richTextBoxProducent, "Producent maszyny, przyrządu lub urządzenia, dane adresowe, adres strony www i inne dodatkowe dane.");
-            _tt.SetToolTip(pictureBox1, "Zdjęcie maszyny, przyrządu lub urządzenia.");
+            _tt.SetToolTip(dateTimePickerData_ost_przegl, "Data ostatniej kontroli dostosowania do minimalnych wymagań w zakresie BHP, lub innego dokumentu.");
+            _tt.SetToolTip(comboBoxDzial, "Nazwa dział  lista maszyn, przyrządów i urządzeń itp.");
+            _tt.SetToolTip(richTextBoxUwaga, "Komunikaty programu dotyczące terminu przeglądu wybranej maszyny. Pole nieaktywne."); //pole nieaktywne na komunikaty systemu
+            //_tt.SetToolTip(dateTimePickerData_kol_przegl, "Data kolejnej kontroli dostosowania do minimalnych wymagań w zakresie BHP, lub innego dokumentu.");
             _tt.SetToolTip(comboBoxDysponent, "Osoba zarządzająca maszynami (dysponent maszyny).");
             _tt.SetToolTip(checkedListBoxOperatorzy_maszyn, "Główna osoba użytkująca maszynę (posiadająca odpowiednie uprawnienia).");
-          
-            _tt.SetToolTip(comboBoxDzial, "Nazwa dział  lista maszyn, przyrządów i urządzeń itp.");
-            _tt.SetToolTip(textBoxNr_prot_BHP, "Numer nadany w protokole kontroli dostosowania maszyny do minimalnych wymagań w zakresie BHP z dnia 12.06.2006 r.");
-            _tt.SetToolTip(dateTimePickerData_ost_przegl, "Data ostatniej kontroli dostosowania do minimalnych wymagań w zakresie BHP, lub innego dokumentu.");
-            //_tt.SetToolTip(dateTimePickerData_kol_przegl, "Spodziewana data kolejnej kontroli dostosowania do minimalnych wymagań w zakresie BHP, lub innej dotyczacej okresowych przeglądów.");
             _tt.SetToolTip(richTextBoxUwagi, "Opis wszelkich innych zdarzeń/statusów mających istotny wpływ na maszynę, przyrząd lub urządzenie.");
-            _tt.SetToolTip(comboBoxWykorzystanie, "Częstotliwość wykorzystania: nieuzywana, rzadziej niż kilka razy w roku, kilka razy w roku, kilka razy w okresie pół roku, kilka razy w kwartale, kilka razy w miesiącu.");
+            //wyszukiwanie Maszyny po wpisanej nazwie 
+            _tt.SetToolTip(textBoxWyszukiwanie, "Wpisz jakiej maszyny szukasz.");
+            _tt.SetToolTip(buttonSzukaj, "Szukanie w bazie maszyn.");
+            //zdjęcie i przyciski dot obsł zdjęcia
+            _tt.SetToolTip(pictureBox1, "Zdjęcie maszyny, przyrządu lub urządzenia.");
+            _tt.SetToolTip(buttonPokazZdj, "Przycisk dodania zdjęcia z wybranego katalogu do bazy danych MS ACCESS.");
+            _tt.SetToolTip(buttonUsunZdj, "Przycisk usunięcia zdjęcia z bazy danych.");
+            //ankietka dot. Maszyn
             _tt.SetToolTip(comboBoxStan_techniczny, "Stan techniczy: złom, do naprawy, dobry.");
+            _tt.SetToolTip(comboBoxWykorzystanie, "Częstotliwość wykorzystania: nieuzywana, rzadziej niż kilka razy w roku, kilka razy w roku, kilka razy w okresie pół roku, kilka razy w kwartale, kilka razy w miesiącu.");
             _tt.SetToolTip(comboBoxPropozycja, "Propozycja: do likwidacji, do remontu, zachować.");
+            _tt.SetToolTip(textBoxNr_prot_BHP, "Numer nadany w protokole kontroli dostosowania maszyny do minimalnych wymagań w zakresie BHP z dnia 12.06.2006 r.");
+            //przyciski zapisz/edytuj itp
             _tt.SetToolTip(buttonNowa, "Nowa pozycja w bazie.");
             _tt.SetToolTip(buttonZapisz, "Zapis nowej maszyny, przyrządu lub urządzenia lub edycja wybranej pozycji.");
             _tt.SetToolTip(buttonAnuluj, "Anulowanie zmiany.");
             _tt.SetToolTip(buttonUsun, "Usuwa pozycję z bazy.");
-            _tt.SetToolTip(radioButtonTyp, "Sortuj po typie.");
-            _tt.SetToolTip(radioButtonNr_inwentarzowy, "Sortuj po numerze inwentarzowym.");
-            _tt.SetToolTip(radioButtonNr_fabryczny, "Sortuj po numerze fabrycznym.");
-            _tt.SetToolTip(radioButtonNr_pomieszczenia, "Sortuj po numerze pomieszczenia.");
+            //sortowanie Maszyn po radio buttonach
             _tt.SetToolTip(radioButtonNazwa, "Sortuj po nazwie maszyny, przyrządu lub urządzenia.");
+            _tt.SetToolTip(radioButtonTyp, "Sortuj po typie.");
+            _tt.SetToolTip(radioButtonNr_fabryczny, "Sortuj po numerze fabrycznym.");
+            _tt.SetToolTip(radioButtonNr_inwentarzowy, "Sortuj po numerze inwentarzowym.");
+            _tt.SetToolTip(radioButtonNr_pomieszczenia, "Sortuj po numerze pomieszczenia.");
             _tt.SetToolTip(radioButtonData_ost_przegl, "Sortuj po dacie ostatniego przegladu.");
-            _tt.SetToolTip(textBoxWyszukiwanie, "Wpisz jakiej maszyny szukasz.");
-            _tt.SetToolTip(buttonSzukaj, "Szukanie w bazie maszyn.");
-            //---------------------------------------Zakładka operator
+            
+            //------------------------------------------------ Zakładka Operatorzy maszyn
+            //sortowanie po comboBoxOperator
+            _tt.SetToolTip(comboBoxOperator, "Sortowanie operatorow po dacie końca uprawnień.");
+            // lista operatorów
             _tt.SetToolTip(listBoxOperator, "Lista wszystkich operatorów maszyn.");
-            _tt.SetToolTip(textBoxImieOperator, "Imię i nazwisko operatora maszyny.");
+            //wyszukiwanie
+            _tt.SetToolTip(textBoxWyszukiwanieOperator, "Wpisz nazwisko operatora, którego szukasz.");
+            _tt.SetToolTip(buttonSzukajOperator, "Szukanie w bazie operatora.");
+            //dane forlumarza
+            _tt.SetToolTip(textBoxImieOperator, "Imię operatora maszyny.");
+            _tt.SetToolTip(textBoxNazwiskoOperator, "Nazwisko operatora maszyny.");
             _tt.SetToolTip(comboBoxDzialOperator, "Nazwa działu, do którego należy operator maszyny.");
             _tt.SetToolTip(textBoxUprawnienieOperator, "Rodzaj uprawnienia, jakie posiada operator.");
             _tt.SetToolTip(dateTimePickerDataKoncaUprOp, "Data końca uprawnień operatora maszyny.");
+            _tt.SetToolTip(richTextBoxUprawnieniaOperatora, "Uprawnienia jaki posiada wybrany operator.");
             _tt.SetToolTip(listBoxMaszynyOperatora, "Lista obsługiwanych przez operatora maszyn.");
+            //przyciski zapisz/edytuj itp
             _tt.SetToolTip(buttonNowaOperator, "Nowa pozycja w bazie.");
-            _tt.SetToolTip(buttonZapiszOperator, "Zapis nowego operatora lub edycja wybranych pozycji.");
+            _tt.SetToolTip(buttonZapiszOperator, "Zapis nowego operatora lub edycja wybranej pozycji.");
             _tt.SetToolTip(buttonAnulujOperator, "Anulowanie zmiany.");
             _tt.SetToolTip(buttonUsunOperator, "Usuwa pozycję z bazy.");
-            _tt.SetToolTip(textBoxWyszukiwanieOperator, "Wpisz nazwisko operatora, którego szukasz.");
-            _tt.SetToolTip(buttonSzukajOperator, "Szukanie w bazie operatora.");
-            _tt.SetToolTip(comboBoxOperator, "Sortowanie operatorow po dacie końca uprawnień.");
-            // -------------------------------------- Zakładka Magazyn
+            
+
+            // ------------------------------------------- Zakładka Dysponenci maszyn.
+            //lista dysponentów maszyn
+            _tt.SetToolTip(listBoxDysponent, "Lista dysponentów maszyn.");
+            //wyszukiwanie
+            _tt.SetToolTip(textBoxWyszukiwanieDysponent, "Wpisz nazwisko dysponenta, którego szukasz.");
+            _tt.SetToolTip(buttonSzukajDysponent, "Szukanie w bazie dysponenta.");
+            //dane dysponenta
+            _tt.SetToolTip(textBoxImieDysponent, "Imię dysponenta maszyny.");
+            _tt.SetToolTip(textBoxNazwiskoDysponent, "Nazwisko dysponenta maszyny.");
+            _tt.SetToolTip(comboBoxDzialDysponent, "Nazwa działu, do którego należy dysponent maszyny.");
+            _tt.SetToolTip(richTextBoxDysponent_dane, "Dodatkowe dane dysponenta maszyny.");
+            //przyciski zapisz/edytuj itp
+            _tt.SetToolTip(buttonNowaDysponent, "Nowa pozycja w bazie.");
+            _tt.SetToolTip(buttonZapiszDysponent, "Zapis nowego dysponenta lub edycja wybranej pozycji.");
+            _tt.SetToolTip(buttonAnulujDysponent, "Anulowanie zmiany.");
+            _tt.SetToolTip(buttonUsunDysponent, "Usuwa pozycję z bazy.");
+            //lista maszyn, którymi zarządza dysponent
+            _tt.SetToolTip(listBoxMaszynyDysponenta, "Maszyny, którymi dysponuje dysponent.");
+
+            // --------------------------------------------- Zakładka Materiały
+            //sortowanie Materiału po radio buttonach
+            _tt.SetToolTip(radioButtonNazwa_mat, "Sortuj po nazwie materiałów / normaliów.");
+            _tt.SetToolTip(radioButtonTyp_mat, "Sortuj po typie materiałów / normaliów.");
+            _tt.SetToolTip(radioButtonStan_min_mat, "Sortuj po cenie materiałów / normaliów.");
+            _tt.SetToolTip(radioButtonMagazyn_ilosc_mat, "Sortuj po dostępnych ilościach w magazynie.");
+            //lista materiałów/ normaliów
             _tt.SetToolTip(listBoxMaterialy, "Lista materiałów / normaliów.");
+            //wyszukiwanie Materiału po wpisanej nazwie
+            _tt.SetToolTip(textBoxWyszukaj_mat, "Wpisz czego szukasz.");
+            _tt.SetToolTip(buttonSzukaj_mat, "Szukanie w bazie materiałów / normaliów.");
+            //dane formularza Magazyn
+            _tt.SetToolTip(comboBoxWyborMagazyn, "Wybór magazynu materiałów lub normaliów.");
+            _tt.SetToolTip(textBoxNazwaMat, "Nazwa materiałów / normaliów.");
             _tt.SetToolTip(textBoxTypMat, "Typ materiałów / normaliów.");
             _tt.SetToolTip(comboBoxRodzajMat, "Rodzaj materiałów / normaliów.");
-            _tt.SetToolTip(textBoxNazwaMat, "Nazwa materiałów / normaliów.");
             _tt.SetToolTip(comboBoxJednostkaMat, "Jednostka miary materiałów / normaliów.");
+            _tt.SetToolTip(richTextBoxKomunikatMaterialy,"Komunikaty systemowe, dotyczące dostępności materiału.");// komunikaty dotyczące dostępności materiału.
+            //Gospodarka magazynowa
             _tt.SetToolTip(textBoxMagazynMat, "Stan magazynowy materiałów / normaliów.");
             _tt.SetToolTip(textBoxZuzycieMat, "Wpisz ile podlega zużyciu.");
             _tt.SetToolTip(textBoxOdpadMat, "Wpisz ile jest odpadem.");
             _tt.SetToolTip(textBoxMinMat, "Wpisz stan minimalny.");
             _tt.SetToolTip(textBoxZapotrzebowanieMat, "Wpisz zapotrzebowanie materiałów / normaliów.");
-            _tt.SetToolTip(linkLabelDostawcaMat2, "link do strony dostawcy materiałów / normaliów.");
-            _tt.SetToolTip(radioButtonNazwa_mat, "Sortuj po nazwie materiałów / normaliów.");
-            _tt.SetToolTip(radioButtonTyp_mat, "Sortuj po typie materiałów / normaliów.");
-            _tt.SetToolTip(radioButtonStan_min_mat, "Sortuj po cenie materiałów / normaliów.");
-            _tt.SetToolTip(radioButtonMagazyn_ilosc_mat, "Sortuj po dostępnych ilościach w magazynie.");
+            //przyciski zapisz/edytuj itp
             _tt.SetToolTip(buttonNowaMat, "Nowa pozycja w bazie materiałów / normaliów.");
             _tt.SetToolTip(buttonZapiszMat, "Zapis nowej pozycji w bazie materiałów / normaliów lub edycja wybranej pozycji.");
             _tt.SetToolTip(buttonAnulujMat, "Anulowanie zmiany.");
             _tt.SetToolTip(buttonUsunMat, "Usuwa pozycję z bazy.");
-            _tt.SetToolTip(textBoxWyszukaj_mat, "Wpisz czego szukasz.");
-            _tt.SetToolTip(buttonSzukaj_mat, "Szukanie w bazie materiałów / normaliów.");
-            _tt.SetToolTip(comboBoxWyborMagazyn, "Wybór magazynu materiałów lub normaliów.");
+            //dane dostawców Materiałów
+            _tt.SetToolTip(checkedListBoxDostawcyMat, "Dostawcy wybranego materiału.");
+            _tt.SetToolTip(richTextBoxDaneDodatkoweDostawca, "Wszelkie dodatkowe informacje dotyczące dostawcy np. dane adresowe, telefony, informacje dotyczące otrzymanych upustów.");
+            _tt.SetToolTip(linkLabelDostawcaMat2, "link do strony dostawcy materiałów / normaliów.");
+            _tt.SetToolTip(textBoxLinkDostawcy2, "pole do przekopiowania do przeglądarki www. linku dostawcy podczas dodania/edycji danych.");
+                       
+            // -----------------------------------------------Zakładka Dostawcy
+            //lista dostawców
+            _tt.SetToolTip(listBoxDostawcy, "Lista dostawców.");
+            // dane dostawców
+            _tt.SetToolTip(textBoxNazwaDostawcy, "Nazwa wybranego dostawcy.");
+            _tt.SetToolTip(richTextBoxDostawca, "Wszelkie dodatkowe informacje dotyczące dostawcy np.dane adresowe, telefony, informacje dotyczące otrzymanych upustów.");
+            _tt.SetToolTip(textBoxLink, "Wpisanie linku wybranego dostawcy.");
+            _tt.SetToolTip(linkLabelDostawcaMat, "Wyświetlenie linku wybranego dostawcy.");
+            //przyciski zapisz/edytuj itp
+            _tt.SetToolTip(buttonNowyDostawca, "Nowa pozycja w bazie dostawców materiałów / normaliów.");
+            _tt.SetToolTip(buttonZapiszDostawca, "Zapis nowej pozycji w bazie dostawców lub edycja wybranej pozycji.");
+            _tt.SetToolTip(buttonAnulujDostawca, "Anulowanie zmiany.");
+            _tt.SetToolTip(buttonUsunDostawca, "Usuwa pozycję z bazy.");
 
         }//public SpisForm()
 
