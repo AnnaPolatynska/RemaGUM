@@ -244,7 +244,7 @@ namespace RemaGUM
              // Indeksowanie w zakładkach
             //------------------------------------ Zakładka Maszyny
             //dane formularza Maszyny
-            listBoxMaszyny.TabIndex = 0;
+            //listBoxMaszyny.TabIndex = 0;
             comboBoxKategoria.TabIndex = 1;
             textBoxNazwa.TabIndex = 2;
             textBoxTyp.TabIndex = 3;
@@ -255,8 +255,8 @@ namespace RemaGUM
             textBoxNr_pom.TabIndex = 8;
             dateTimePickerData_ost_przegl.TabIndex = 9;
             comboBoxDzial.TabIndex = 10;
-            richTextBoxUwaga.TabIndex = 11; //pole nieaktywne na komunikaty systemu
-            dateTimePickerData_kol_przegl.TabIndex = 12;
+            //richTextBoxUwaga.TabIndex = 11; //pole nieaktywne na komunikaty systemu
+            //dateTimePickerData_kol_przegl.TabIndex = 12;
             comboBoxDysponent.TabIndex = 13;
             checkedListBoxOperatorzy_maszyn.TabIndex = 14;
             richTextBoxUwagi.TabIndex = 15;
@@ -264,7 +264,7 @@ namespace RemaGUM
             textBoxWyszukiwanie.TabIndex = 16;
             buttonSzukaj.TabIndex = 17;
             //zdjęcie i przyciski dot obsł zdjęcia
-            pictureBox1.TabIndex = 18;
+            //pictureBox1.TabIndex = 18;
             buttonPokazZdj.TabIndex = 19;
             buttonUsunZdj.TabIndex = 20;
             //ankietka dot. Maszyn
@@ -289,7 +289,7 @@ namespace RemaGUM
             //sortowanie po comboBoxOperator
             comboBoxOperator.TabIndex = 1;
             // lista operatorów
-            listBoxOperator.TabIndex = 2;
+            //listBoxOperator.TabIndex = 2;
             //wyszukiwanie
             textBoxWyszukiwanieOperator.TabIndex = 3;
             buttonSzukajOperator.TabIndex = 4;
@@ -300,7 +300,7 @@ namespace RemaGUM
             textBoxUprawnienieOperator.TabIndex = 8;
             dateTimePickerDataKoncaUprOp.TabIndex = 9;
             richTextBoxUprawnieniaOperatora.TabIndex = 10;
-            listBoxMaszynyOperatora.TabIndex = 11;
+            //listBoxMaszynyOperatora.TabIndex = 11;
             //przyciski zapisz/edytuj itp
             buttonNowaOperator.TabIndex = 12;
             buttonZapiszOperator.TabIndex = 13;
@@ -309,7 +309,7 @@ namespace RemaGUM
 
             // ------------------------------------------- Zakładka Dysponenci maszyn.
             //lista dysponentów maszyn
-            listBoxDysponent.TabIndex = 1;
+            //listBoxDysponent.TabIndex = 1;
             //wyszukiwanie
             textBoxWyszukiwanieDysponent.TabIndex = 2;
             buttonSzukajDysponent.TabIndex = 3;
@@ -324,7 +324,7 @@ namespace RemaGUM
             buttonAnulujDysponent.TabIndex = 10;
             buttonUsunDysponent.TabIndex = 11;
             //lista maszyn, którymi zarządza dysponent
-            listBoxMaszynyDysponenta.TabIndex = 12;
+            //listBoxMaszynyDysponenta.TabIndex = 12;
            
             // --------------------------------------------- Zakładka Materiały
             //sortowanie Materiału po radio buttonach
@@ -333,7 +333,7 @@ namespace RemaGUM
             radioButtonStan_min_mat.TabIndex = 3;
             radioButtonMagazyn_ilosc_mat.TabIndex = 4;
             //lista materiałów/ normaliów
-            listBoxMaterialy.TabIndex = 5;
+            //listBoxMaterialy.TabIndex = 5;
             //wyszukiwanie Materiału po wpisanej nazwie
             textBoxWyszukaj_mat.TabIndex = 6;
             buttonSzukaj_mat.TabIndex = 7;
@@ -343,7 +343,7 @@ namespace RemaGUM
             textBoxTypMat.TabIndex = 10;
             comboBoxRodzajMat.TabIndex = 11;
             comboBoxJednostkaMat.TabIndex = 12;
-            richTextBoxKomunikatMaterialy.TabIndex = 13;// komunikaty dotyczące dostępności materiału.
+            //richTextBoxKomunikatMaterialy.TabIndex = 13;// komunikaty dotyczące dostępności materiału.
             //Gospodarka magazynowa
             textBoxMagazynMat.TabIndex = 14;
             textBoxZuzycieMat.TabIndex = 15;
@@ -359,11 +359,10 @@ namespace RemaGUM
             checkedListBoxDostawcyMat.TabIndex = 23;
             richTextBoxDaneDodatkoweDostawca.TabIndex = 24;
             linkLabelDostawcaMat2.TabIndex = 25;
-            textBoxLinkDostawcy2.TabIndex = 26;
-
+           
             // -----------------------------------------------Zakładka Dostawcy
             //lista dostawców
-            listBoxDostawcy.TabIndex = 1;
+            //listBoxDostawcy.TabIndex = 1;
             // dane dostawców
             textBoxNazwaDostawcy.TabIndex = 2;
             richTextBoxDostawca.TabIndex = 3;
@@ -440,7 +439,6 @@ namespace RemaGUM
             _tt.SetToolTip(buttonAnulujOperator, "Anulowanie zmiany.");
             _tt.SetToolTip(buttonUsunOperator, "Usuwa pozycję z bazy.");
             
-
             // ------------------------------------------- Zakładka Dysponenci maszyn.
             //lista dysponentów maszyn
             _tt.SetToolTip(listBoxDysponent, "Lista dysponentów maszyn.");
@@ -493,8 +491,7 @@ namespace RemaGUM
             _tt.SetToolTip(checkedListBoxDostawcyMat, "Dostawcy wybranego materiału.");
             _tt.SetToolTip(richTextBoxDaneDodatkoweDostawca, "Wszelkie dodatkowe informacje dotyczące dostawcy np. dane adresowe, telefony, informacje dotyczące otrzymanych upustów.");
             _tt.SetToolTip(linkLabelDostawcaMat2, "link do strony dostawcy materiałów / normaliów.");
-            _tt.SetToolTip(textBoxLinkDostawcy2, "pole do przekopiowania do przeglądarki www. linku dostawcy podczas dodania/edycji danych.");
-                       
+                                   
             // -----------------------------------------------Zakładka Dostawcy
             //lista dostawców
             _tt.SetToolTip(listBoxDostawcy, "Lista dostawców.");
@@ -853,6 +850,7 @@ namespace RemaGUM
         /// </summary>
         private void OdswiezListeMaszyn()
         {
+            listBoxMaszyny.BeginUpdate();
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             listBoxMaszyny.Items.Clear();
             maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nazwa ASC;");
@@ -862,7 +860,7 @@ namespace RemaGUM
                 listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa);
                 maszynyBUS.skip();
             }
-
+            listBoxMaszyny.EndUpdate();
         }// OdswiezListeMaszyn()
 
         //************* wypełnia CheckedListBox nazwiskami i imionami operatorów maszyn.
@@ -1899,8 +1897,7 @@ namespace RemaGUM
 
             richTextBoxDaneDodatkoweDostawca.Text = dostawca_matBUS.VO.Dod_info_dostawca_mat.ToString();
             linkLabelDostawcaMat2.Text = dostawca_matBUS.VO.Link_dostawca_mat.ToString();
-            textBoxLinkDostawcy2.Text = dostawca_matBUS.VO.Link_dostawca_mat.ToString();
-
+           
             toolStripStatusLabel_ID_Dostawcy.Text = dostawca_matBUS.VO.Identyfikator.ToString();
           
         }// private void checkedListBoxDostawcyMat_SelectedIndex(object sender, EventArgs e)
@@ -2095,6 +2092,18 @@ namespace RemaGUM
             rodzaj_MatBUS.idx = comboBoxJednostkaMat.SelectedIndex;
         }// comboBoxRodzaj_SelectedIndexChanged(object sender, EventArgs e)
 
+        /// <summary>
+        /// Klinknięcie w link otwiera stronę z linka.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void linkLabelDostawcaMat2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.linkLabelDostawcaMat2.LinkVisited = true; //zmiana koloru przy odwiedzeniu linka.
+
+            string link = linkLabelDostawcaMat2.Text;
+            System.Diagnostics.Process.Start(link); //nawigacja do strony.
+        }//linkLabelDostawcaMat2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 
         // //////////////////////////////////////////////////  Radio buttony zakładki materiały.
 
@@ -2694,7 +2703,7 @@ namespace RemaGUM
             Cursor.Current = Cursors.Default;
         }// button buttonSzukaj_mat_Click
 
-        // TODO ////////////////////////////// Zakładka Dostawcy (Edycja)
+        // TODO //  //  //  //  //  //  //  //  //  //  //  //  //  //  // ZAKŁADKA DOSTAWCY MATERIAŁóW
 
         /// <summary>
         /// Wypełnia listę dostawców wg nazwy.
@@ -2730,7 +2739,7 @@ namespace RemaGUM
             textBoxNazwaDostawcy.Text = dostawca_MatBUS.VO.Nazwa_dostawca_mat;
             richTextBoxDostawca.Text = dostawca_MatBUS.VO.Dod_info_dostawca_mat;
             linkLabelDostawcaMat.Text = dostawca_MatBUS.VO.Link_dostawca_mat;
-            textBoxLinkDostawcy.Text = dostawca_MatBUS.VO.Link_dostawca_mat;
+            textBoxLink.Text = dostawca_MatBUS.VO.Link_dostawca_mat;
         } // private void listBoxDostawcy_SelectedIndexChanged
 
         /// <summary>
@@ -2743,9 +2752,9 @@ namespace RemaGUM
             CzyscDaneDostawcy();
            
             // aktywacja pola na wpisanie linku nowego dostawcy.
-            textBoxLinkDostawcy.Text = string.Empty;
-            textBoxLinkDostawcy.Enabled = true;
-            textBoxLinkDostawcy.BackColor = Color.White;
+            textBoxLink.Text = string.Empty;
+            textBoxLink.Enabled = true;
+            textBoxLink.BackColor = Color.White;
 
             listBoxDostawcy.Enabled = false; // zablokowanie listy dostawców.
 
@@ -2757,6 +2766,20 @@ namespace RemaGUM
 
             _statusForm = (int)_status.nowy;
         }// buttonNowyDostawca_Click
+
+        /// <summary>
+        /// otwiera link przy kliknięciu.
+        /// </summary>
+        /// <param name = "sender" ></ param >
+        /// < param name= "e" ></ param >
+        private void linkLabelDostawcaMat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.linkLabelDostawcaMat.LinkVisited = true; //zmiana koloru przy odwiedzeniu linka.
+
+            string link = linkLabelDostawcaMat.Text;
+            System.Diagnostics.Process.Start(link); //nawigacja do strony.
+        }// linkLabelDostawcaMat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+
 
         /// <summary>
         /// Usuwa link z obiektu (wymaga uzycia klawisza zapisz).
@@ -2795,7 +2818,7 @@ namespace RemaGUM
 
                 dostawca_MatVO.Nazwa_dostawca_mat = textBoxNazwaDostawcy.Text.Trim();
                 dostawca_MatVO.Dod_info_dostawca_mat = richTextBoxDostawca.Text.Trim();
-                dostawca_MatVO.Link_dostawca_mat = textBoxLinkDostawcy.Text.Trim();
+                dostawca_MatVO.Link_dostawca_mat = textBoxLink.Text.Trim();
 
                 dostawca_MatBUS.write(dostawca_MatVO);
                 dostawca_MatBUS.select();
@@ -2815,7 +2838,7 @@ namespace RemaGUM
                     dostawca_MatVO.Identyfikator = (int)listBoxDostawcy.Tag;
                     dostawca_MatVO.Nazwa_dostawca_mat = textBoxNazwaDostawcy.Text.Trim();
                     dostawca_MatVO.Dod_info_dostawca_mat = richTextBoxDostawca.Text.Trim();
-                    dostawca_MatVO.Link_dostawca_mat = textBoxLinkDostawcy.Text.Trim();
+                    dostawca_MatVO.Link_dostawca_mat = textBoxLink.Text.Trim();
 
                     dostawca_MatBUS.write(dostawca_MatVO);
                     dostawca_MatBUS.select(dostawca_MatVO.Identyfikator);
@@ -2846,8 +2869,8 @@ namespace RemaGUM
         {
             CzyscDaneDostawcy(); // po zapisie linku pole puste
 
-            textBoxLinkDostawcy.Enabled = true; // aktywacja pola linku dostawcy
-            textBoxLinkDostawcy.BackColor = Color.White;
+            textBoxLink.Enabled = true; // aktywacja pola linku dostawcy
+            textBoxLink.BackColor = Color.White;
 
             checkedListBoxDostawcyMat.Enabled = true; // anulowanie zapisu aktywuje całośc formularza
 
@@ -2873,7 +2896,7 @@ namespace RemaGUM
             {
                 textBoxNazwaDostawcy.Text = string.Empty;
                 richTextBoxDostawca.Text = string.Empty;
-                textBoxLinkDostawcy.Text = string.Empty;
+                textBoxLink.Text = string.Empty;
                 linkLabelDostawcaMat.Text = string.Empty;
             }
             catch { }
@@ -2905,6 +2928,7 @@ namespace RemaGUM
         /// </summary>
         private void WypelnijOperatorowDanymi()
         {
+
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
             operatorBUS.selectQuery("SELECT * FROM Operator ORDER BY Op_nazwisko ASC;");
 
@@ -3411,13 +3435,15 @@ namespace RemaGUM
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
             listBoxDysponent.Items.Clear();
             dysponentBUS.selectQuery("SELECT * FROM Dysponent ORDER BY Dysp_nazwisko ASC;");
-          
+
+            listBoxDysponent.BeginUpdate();
             while (!dysponentBUS.eof)
             {
                 //dysponentVO = dysponentBUS.VO;
                 listBoxDysponent.Items.Add(dysponentBUS.VO.Dysp_nazwisko + " " + dysponentBUS.VO.Dysp_imie);
                 dysponentBUS.skip();
             }
+
         }// WypelnijDysponentowDanymi()
 
         /// <summary>

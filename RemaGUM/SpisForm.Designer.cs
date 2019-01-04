@@ -43,7 +43,6 @@
             this.richTextBoxDaneDodatkoweDostawca = new System.Windows.Forms.RichTextBox();
             this.labelDostawca = new System.Windows.Forms.Label();
             this.labelLinkDostawcy = new System.Windows.Forms.Label();
-            this.textBoxLinkDostawcy2 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.linkLabelDostawcaMat2 = new System.Windows.Forms.LinkLabel();
             this.label28 = new System.Windows.Forms.Label();
@@ -221,11 +220,9 @@
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelDostawcy = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.buttonUsunLink = new System.Windows.Forms.Button();
             this.textBoxNazwaDostawcy = new System.Windows.Forms.TextBox();
             this.textBoxLink = new System.Windows.Forms.TextBox();
-            this.textBoxLinkDostawcy = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.richTextBoxDostawca = new System.Windows.Forms.RichTextBox();
@@ -364,7 +361,7 @@
             this.groupBox10.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox10.Location = new System.Drawing.Point(816, 8);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(415, 767);
+            this.groupBox10.Size = new System.Drawing.Size(537, 767);
             this.groupBox10.TabIndex = 49;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Dostawcy materiałów/normaliów";
@@ -376,7 +373,7 @@
             this.groupBoxDostawca.Controls.Add(this.panelDostawcy);
             this.groupBoxDostawca.Location = new System.Drawing.Point(6, 463);
             this.groupBoxDostawca.Name = "groupBoxDostawca";
-            this.groupBoxDostawca.Size = new System.Drawing.Size(403, 298);
+            this.groupBoxDostawca.Size = new System.Drawing.Size(525, 298);
             this.groupBoxDostawca.TabIndex = 47;
             this.groupBoxDostawca.TabStop = false;
             this.groupBoxDostawca.Text = "Dane wybranego dostawcy";
@@ -389,12 +386,11 @@
             this.panelDostawcy.Controls.Add(this.richTextBoxDaneDodatkoweDostawca);
             this.panelDostawcy.Controls.Add(this.labelDostawca);
             this.panelDostawcy.Controls.Add(this.labelLinkDostawcy);
-            this.panelDostawcy.Controls.Add(this.textBoxLinkDostawcy2);
             this.panelDostawcy.Controls.Add(this.label20);
             this.panelDostawcy.Controls.Add(this.linkLabelDostawcaMat2);
             this.panelDostawcy.Location = new System.Drawing.Point(6, 25);
             this.panelDostawcy.Name = "panelDostawcy";
-            this.panelDostawcy.Size = new System.Drawing.Size(390, 263);
+            this.panelDostawcy.Size = new System.Drawing.Size(513, 263);
             this.panelDostawcy.TabIndex = 50;
             // 
             // richTextBoxDaneDodatkoweDostawca
@@ -405,7 +401,7 @@
             this.richTextBoxDaneDodatkoweDostawca.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.richTextBoxDaneDodatkoweDostawca.Location = new System.Drawing.Point(7, 60);
             this.richTextBoxDaneDodatkoweDostawca.Name = "richTextBoxDaneDodatkoweDostawca";
-            this.richTextBoxDaneDodatkoweDostawca.Size = new System.Drawing.Size(369, 122);
+            this.richTextBoxDaneDodatkoweDostawca.Size = new System.Drawing.Size(489, 140);
             this.richTextBoxDaneDodatkoweDostawca.TabIndex = 57;
             this.richTextBoxDaneDodatkoweDostawca.Text = "";
             // 
@@ -424,22 +420,11 @@
             this.labelLinkDostawcy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelLinkDostawcy.AutoSize = true;
             this.labelLinkDostawcy.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.labelLinkDostawcy.Location = new System.Drawing.Point(10, 185);
+            this.labelLinkDostawcy.Location = new System.Drawing.Point(10, 203);
             this.labelLinkDostawcy.Name = "labelLinkDostawcy";
             this.labelLinkDostawcy.Size = new System.Drawing.Size(86, 20);
             this.labelLinkDostawcy.TabIndex = 53;
             this.labelLinkDostawcy.Text = "Link dostawcy";
-            // 
-            // textBoxLinkDostawcy2
-            // 
-            this.textBoxLinkDostawcy2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxLinkDostawcy2.BackColor = System.Drawing.Color.SandyBrown;
-            this.textBoxLinkDostawcy2.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxLinkDostawcy2.Location = new System.Drawing.Point(14, 226);
-            this.textBoxLinkDostawcy2.Name = "textBoxLinkDostawcy2";
-            this.textBoxLinkDostawcy2.ReadOnly = true;
-            this.textBoxLinkDostawcy2.Size = new System.Drawing.Size(362, 24);
-            this.textBoxLinkDostawcy2.TabIndex = 52;
             // 
             // label20
             // 
@@ -456,12 +441,13 @@
             this.linkLabelDostawcaMat2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linkLabelDostawcaMat2.AutoSize = true;
             this.linkLabelDostawcaMat2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.linkLabelDostawcaMat2.Location = new System.Drawing.Point(11, 210);
+            this.linkLabelDostawcaMat2.Location = new System.Drawing.Point(11, 234);
             this.linkLabelDostawcaMat2.Name = "linkLabelDostawcaMat2";
             this.linkLabelDostawcaMat2.Size = new System.Drawing.Size(115, 13);
             this.linkLabelDostawcaMat2.TabIndex = 42;
             this.linkLabelDostawcaMat2.TabStop = true;
             this.linkLabelDostawcaMat2.Text = "linkLabelDostawcaMat";
+            this.linkLabelDostawcaMat2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDostawcaMat2_LinkClicked);
             // 
             // label28
             // 
@@ -479,7 +465,7 @@
             this.checkedListBoxDostawcyMat.FormattingEnabled = true;
             this.checkedListBoxDostawcyMat.Location = new System.Drawing.Point(13, 53);
             this.checkedListBoxDostawcyMat.Name = "checkedListBoxDostawcyMat";
-            this.checkedListBoxDostawcyMat.Size = new System.Drawing.Size(389, 403);
+            this.checkedListBoxDostawcyMat.Size = new System.Drawing.Size(518, 403);
             this.checkedListBoxDostawcyMat.TabIndex = 46;
             this.checkedListBoxDostawcyMat.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxDostawcyMat_SelectedIndex);
             // 
@@ -2490,6 +2476,7 @@
             this.Dostawcy.Controls.Add(this.groupBox17);
             this.Dostawcy.Controls.Add(this.groupBox16);
             this.Dostawcy.Controls.Add(this.groupBox11);
+            this.Dostawcy.Controls.Add(this.linkLabelDostawcaMat);
             this.Dostawcy.Location = new System.Drawing.Point(4, 29);
             this.Dostawcy.Name = "Dostawcy";
             this.Dostawcy.Size = new System.Drawing.Size(1626, 878);
@@ -2521,43 +2508,26 @@
             // 
             // groupBox17
             // 
-            this.groupBox17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox17.Controls.Add(this.button1);
             this.groupBox17.Controls.Add(this.buttonUsunLink);
             this.groupBox17.Controls.Add(this.textBoxNazwaDostawcy);
             this.groupBox17.Controls.Add(this.textBoxLink);
-            this.groupBox17.Controls.Add(this.textBoxLinkDostawcy);
             this.groupBox17.Controls.Add(this.label24);
             this.groupBox17.Controls.Add(this.label25);
             this.groupBox17.Controls.Add(this.richTextBoxDostawca);
-            this.groupBox17.Controls.Add(this.linkLabelDostawcaMat);
             this.groupBox17.Controls.Add(this.label26);
             this.groupBox17.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox17.Location = new System.Drawing.Point(401, 21);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(382, 749);
+            this.groupBox17.Size = new System.Drawing.Size(504, 715);
             this.groupBox17.TabIndex = 54;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Dane dostawcy";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Linen;
-            this.button1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(269, 677);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 30);
-            this.button1.TabIndex = 55;
-            this.button1.Text = "Usuń Link";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.buttonUsunLink_Click);
             // 
             // buttonUsunLink
             // 
             this.buttonUsunLink.BackColor = System.Drawing.Color.Linen;
             this.buttonUsunLink.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonUsunLink.Location = new System.Drawing.Point(267, 677);
+            this.buttonUsunLink.Location = new System.Drawing.Point(393, 679);
             this.buttonUsunLink.Name = "buttonUsunLink";
             this.buttonUsunLink.Size = new System.Drawing.Size(97, 30);
             this.buttonUsunLink.TabIndex = 55;
@@ -2571,7 +2541,7 @@
             this.textBoxNazwaDostawcy.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.textBoxNazwaDostawcy.Location = new System.Drawing.Point(10, 62);
             this.textBoxNazwaDostawcy.Name = "textBoxNazwaDostawcy";
-            this.textBoxNazwaDostawcy.Size = new System.Drawing.Size(356, 24);
+            this.textBoxNazwaDostawcy.Size = new System.Drawing.Size(480, 24);
             this.textBoxNazwaDostawcy.TabIndex = 54;
             // 
             // textBoxLink
@@ -2580,17 +2550,8 @@
             this.textBoxLink.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.textBoxLink.Location = new System.Drawing.Point(12, 647);
             this.textBoxLink.Name = "textBoxLink";
-            this.textBoxLink.Size = new System.Drawing.Size(354, 24);
+            this.textBoxLink.Size = new System.Drawing.Size(478, 24);
             this.textBoxLink.TabIndex = 52;
-            // 
-            // textBoxLinkDostawcy
-            // 
-            this.textBoxLinkDostawcy.BackColor = System.Drawing.Color.Linen;
-            this.textBoxLinkDostawcy.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxLinkDostawcy.Location = new System.Drawing.Point(10, 647);
-            this.textBoxLinkDostawcy.Name = "textBoxLinkDostawcy";
-            this.textBoxLinkDostawcy.Size = new System.Drawing.Size(354, 24);
-            this.textBoxLinkDostawcy.TabIndex = 52;
             // 
             // label24
             // 
@@ -2620,19 +2581,20 @@
             this.richTextBoxDostawca.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.richTextBoxDostawca.Location = new System.Drawing.Point(12, 146);
             this.richTextBoxDostawca.Name = "richTextBoxDostawca";
-            this.richTextBoxDostawca.Size = new System.Drawing.Size(354, 440);
+            this.richTextBoxDostawca.Size = new System.Drawing.Size(478, 406);
             this.richTextBoxDostawca.TabIndex = 45;
             this.richTextBoxDostawca.Text = "";
             // 
             // linkLabelDostawcaMat
             // 
             this.linkLabelDostawcaMat.AutoSize = true;
-            this.linkLabelDostawcaMat.Location = new System.Drawing.Point(8, 717);
+            this.linkLabelDostawcaMat.Location = new System.Drawing.Point(397, 739);
             this.linkLabelDostawcaMat.Name = "linkLabelDostawcaMat";
-            this.linkLabelDostawcaMat.Size = new System.Drawing.Size(124, 20);
+            this.linkLabelDostawcaMat.Size = new System.Drawing.Size(114, 20);
             this.linkLabelDostawcaMat.TabIndex = 42;
             this.linkLabelDostawcaMat.TabStop = true;
             this.linkLabelDostawcaMat.Text = "linkLabelDostawca";
+            this.linkLabelDostawcaMat.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDostawcaMat_LinkClicked);
             // 
             // label26
             // 
@@ -2684,7 +2646,7 @@
             this.groupBox11.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox11.Location = new System.Drawing.Point(401, 776);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(382, 64);
+            this.groupBox11.Size = new System.Drawing.Size(504, 64);
             this.groupBox11.TabIndex = 49;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Edycja spisu dostawców";
@@ -2705,7 +2667,7 @@
             // 
             this.buttonUsunDostawca.BackColor = System.Drawing.Color.Linen;
             this.buttonUsunDostawca.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonUsunDostawca.Location = new System.Drawing.Point(286, 25);
+            this.buttonUsunDostawca.Location = new System.Drawing.Point(405, 25);
             this.buttonUsunDostawca.Name = "buttonUsunDostawca";
             this.buttonUsunDostawca.Size = new System.Drawing.Size(85, 30);
             this.buttonUsunDostawca.TabIndex = 4;
@@ -2717,7 +2679,7 @@
             // 
             this.buttonZapiszDostawca.BackColor = System.Drawing.Color.Linen;
             this.buttonZapiszDostawca.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonZapiszDostawca.Location = new System.Drawing.Point(105, 25);
+            this.buttonZapiszDostawca.Location = new System.Drawing.Point(144, 25);
             this.buttonZapiszDostawca.Name = "buttonZapiszDostawca";
             this.buttonZapiszDostawca.Size = new System.Drawing.Size(85, 30);
             this.buttonZapiszDostawca.TabIndex = 3;
@@ -2729,7 +2691,7 @@
             // 
             this.buttonAnulujDostawca.BackColor = System.Drawing.Color.Linen;
             this.buttonAnulujDostawca.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonAnulujDostawca.Location = new System.Drawing.Point(195, 25);
+            this.buttonAnulujDostawca.Location = new System.Drawing.Point(279, 25);
             this.buttonAnulujDostawca.Name = "buttonAnulujDostawca";
             this.buttonAnulujDostawca.Size = new System.Drawing.Size(85, 30);
             this.buttonAnulujDostawca.TabIndex = 3;
@@ -3106,7 +3068,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.Label labelLinkDostawcy;
-        private System.Windows.Forms.TextBox textBoxLinkDostawcy2;
         private System.Windows.Forms.TabPage Dostawcy;
         private System.Windows.Forms.GroupBox groupBox16;
         private System.Windows.Forms.ListBox listBoxDostawcy;
@@ -3118,7 +3079,6 @@
         private System.Windows.Forms.GroupBox groupBox17;
         private System.Windows.Forms.Button buttonUsunLink;
         private System.Windows.Forms.TextBox textBoxNazwaDostawcy;
-        private System.Windows.Forms.TextBox textBoxLinkDostawcy;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.RichTextBox richTextBoxDostawca;
@@ -3140,7 +3100,6 @@
         private System.Windows.Forms.Label labelZegar;
         private System.Windows.Forms.Label labelDostepnosc;
         private System.Windows.Forms.RichTextBox richTextBoxKomunikatMaterialy;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBoxLink;
     }
 }
