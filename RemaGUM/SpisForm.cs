@@ -529,7 +529,9 @@ namespace RemaGUM
             string str = DateTime.Now.ToString();
             int indeks = str.IndexOf(" ");
             labelData.Text = str.Substring(0, indeks);//data
+
             labelDayOfWeek.Text = DayOfWeek.Thursday.ToString();
+
             labelZegar.Text = str.Substring(indeks + 1); // godzina
         }// SetData
 
@@ -786,8 +788,13 @@ namespace RemaGUM
                 {
                     File.Delete(maszynyBUS.VO.Zdjecie);
                 }
-                _zawartoscPliku = maszynyBUS.VO.Zawartosc_pliku; //zawartość zdjęcia
+
+               
+                _zawartoscPliku = maszynyBUS.VO.Zawartosc_pliku; // zawartość zdjęcia.
                 pokazZdjecie(linkLabelNazwaZdjecia.Text); // zmiana zdjęcia przy zmianie indeksu maszyny.
+                
+
+
 
                 comboBoxDysponent.Text = maszynyBUS.VO.Nazwa_dysponent;  // wypełnia dysponenta
 
@@ -1648,19 +1655,11 @@ namespace RemaGUM
                     pictureBox1.Image = Bitmap.FromFile(zdjecie);
                     return;
                 }
-
-                //Czyszczenie pictureBox1 przy zmianie indeksu wraz z komunikatem o braku zdjęcia.
-                if (maszynyBUS.VO.Zdjecie == string.Empty)
-                {
-                    pictureBox1.Image = null;
-                    // MessageBox.Show("Maszyna nie posiada zdjęcia w bazie danych.", "komunikat", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //pokazKomunikat("Wybrana maszyna nie posiada zdjęcia w bazie danych."); // wyskakujący komunikat.
-                }
             }
             catch (Exception ex)
             {
                 Cursor = Cursors.Default;
-                MessageBox.Show("Problem z prezentacją zdjęcia. Błąd: " + ex.Message, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Brak wgranego zdjęcia lub problem z prezentacją zdjęcia. Błąd: " + ex.Message, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             Cursor = Cursors.Default;
         }//pokazZdjecie
@@ -3443,6 +3442,7 @@ namespace RemaGUM
                 listBoxDysponent.Items.Add(dysponentBUS.VO.Dysp_nazwisko + " " + dysponentBUS.VO.Dysp_imie);
                 dysponentBUS.skip();
             }
+            listBoxDysponent.EndUpdate();
 
         }// WypelnijDysponentowDanymi()
 
