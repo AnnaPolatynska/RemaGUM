@@ -14,38 +14,91 @@ using System.Threading;
 
 namespace RemaGUM
 {
+    /// <summary>
+    /// Class SpisForm.
+    /// Implements the <see cref="System.Windows.Forms.Form" />
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class SpisForm : Form
     {
         // łączenie z bazą danych na sztywno
         //private string _connString = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Projects\\RemaGUM\\RemaGUM.mdb"; //połaczenie z bazą danych
 
-        // połączenie z bazą poprzez xml.
-        private settings _settings;     //ustawienia
+        //ustawienia połączenie z bazą poprzez xml.
+        /// <summary>
+        /// The settings
+        /// </summary>
+        private settings _settings;     
+        
+        /// <summary>
+        /// The connection string
+        /// </summary>
         private string _connString;
+        
+        /// <summary>
+        /// The rest
+        /// </summary>
         private Rest _rest = new Rest();
 
-        private string _helpFile = Application.StartupPath + "\\help.chm"; //plik pomocy RemaGUM.
+        /// <summary>
+        /// The help file- plik pomocy RemaGUM.
+        /// </summary>
+        private string _helpFile = Application.StartupPath + "\\help.chm";
 
-        private byte[] _zawartoscPliku; //dane odczytane z pliku zdjęcia.
+        /// <summary>
+        /// zawartosc pliku-dane odczytane z pliku zdjęcia.
+        /// </summary>
+        private byte[] _zawartoscPliku; 
 
-        string _dirNazwa = "C:\\tempRemaGUM"; //nazwa katalogu tymczasowego.
-        string _dirPelnaNazwa = string.Empty; // katalog tymczasowy - pelna nazwa.
+        /// <summary>
+        /// dir nazwa -nazwa katalogu tymczasowego.
+        /// </summary>
+        string _dirNazwa = "C:\\tempRemaGUM";
+        
+        /// <summary>
+        /// dir pelna nazwa katalogu tymczasowego - pelna nazwa.
+        /// </summary>
+        string _dirPelnaNazwa = string.Empty;
 
-        enum _status { edycja, nowy };  //status działania formularza.
-        private byte _statusForm; // wartośc statusu formularza.
+        /// <summary>
+        /// Enum _status- status działania formularza.
+        /// </summary>
+        enum _status { edycja, nowy };
 
-        private int[] _maszynaTag; // przechowuje identyfikatory maszyn dla operatora.
+        /// <summary>
+        /// status form - wartośc statusu formularza.
+        /// </summary>
+        private byte _statusForm;
 
+        /// <summary>
+        /// The maszyna tag przechowuje identyfikatory maszyn dla operatora.
+        /// </summary>
+        private int[] _maszynaTag;
 
-
+        /// <summary>
+        /// The maszyna identifier
+        /// </summary>
         int _maszynaId = -1; // identyfikator maszyny przy starcie programu.
 
-        int _maszynaSzukajIdx = 0; // indeks szukanej maszyny.
-        int _dysponentSzukajIdx = 0; //indeks szukanego dysponenta.
-        int _materialSzukajIdx = 0; // indeks szukanego materiału.
+        /// <summary>
+        /// indeks szukanej maszyny.
+        /// </summary>
+        int _maszynaSzukajIdx = 0;
+        /// <summary>
+        /// indeks szukanego dysponenta.
+        /// </summary>
+        int _dysponentSzukajIdx = 0;
+        /// <summary>
+        /// indeks szukanego materiału.
+        /// </summary>
+        int _materialSzukajIdx = 0;
+        /// <summary>
+        /// </summary>
+        private ToolTip _tt;
 
-        private ToolTip _tt; //podpowiedzi dla niektórych kontolek.
-
+        /// <summary>
+        /// The interwal przegladow
+        /// </summary>
         private int _interwalPrzegladow = 365;    //w dniach = 1 rok
 
 
@@ -61,6 +114,7 @@ namespace RemaGUM
             private string _XMLfile;
             private string _connectionString;   //connectionString
             private string _dBcopyFile;         //pełna ścieżka kopii bazy danych
+
             private int _copyInterval;          //interwał sporzadzania kopii bazy
             private string _dBhistoryDir;       //pełna nazwa katalogu historii bazy
             private int _historyInterval;       //interwał sprzadzania kopii w katalogu hsitorii bazy
@@ -86,7 +140,6 @@ namespace RemaGUM
             public void read(string XMLfile)
             {
                 _XMLfile = XMLfile;
-
                 XmlDocument doc = new System.Xml.XmlDocument();
                 doc.Load(XMLfile);
                 XmlNode node = doc.FirstChild;
@@ -100,9 +153,7 @@ namespace RemaGUM
                         goto childNodes;
                     }
                 }
-
                 childNodes:;
-
                 while (node != null)
                 {
                     if (node.Name.ToUpper() == "ConnectionString".ToUpper()) _connectionString = node.InnerText;
@@ -112,7 +163,6 @@ namespace RemaGUM
                     if (node.Name.ToUpper() == "historyInterval".ToUpper()) _historyInterval = int.Parse(node.InnerText);
                     node = node.NextSibling;
                 }
-
             }//read
 
             /// <summary>
@@ -194,7 +244,6 @@ namespace RemaGUM
                 get { return _historyInterval; }
                 set { _historyInterval = value; }
             }
-
         }//class settings
 
 
@@ -519,18 +568,26 @@ namespace RemaGUM
             frame.Dispose();
         }// pokazKomunikat
 
+        /// <summary>
+        ///Obsługuje tiki timera.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void timer1_Tick(object sender, EventArgs e)
         {
             SetDataAndTime();
-        }
-        //2018-02-14 11:06:21 format dat godzina indeks spacji dzieli ciąg na 2 podciagi data + godzina
+        }//timer1_Tick
+
+        /// <summary>
+        /// Ustawia datę i czas. 2018-02-14 11:06:21 format dat godzina indeks spacji dzieli ciąg na 2 podciagi data + godzina
+        /// </summary>
         private void SetDataAndTime()
         {
             string str = DateTime.Now.ToString();
             int indeks = str.IndexOf(" ");
             labelData.Text = str.Substring(0, indeks);//data
 
-            labelDayOfWeek.Text = DayOfWeek.Thursday.ToString();
+            labelDayOfWeek.Text = DayOfWeek.Friday.ToString();
 
             labelZegar.Text = str.Substring(indeks + 1); // godzina
         }// SetData
@@ -871,6 +928,10 @@ namespace RemaGUM
         }// OdswiezListeMaszyn()
 
         //************* wypełnia CheckedListBox nazwiskami i imionami operatorów maszyn.
+        /// <summary>
+        /// Wypelnij operatorow maszyn - checked -boxy.
+        /// </summary>
+        /// <param name="v">The v.</param>
         private void WypelnijOperatorow_maszyn(CheckedListBox v)
         {
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
@@ -914,6 +975,11 @@ namespace RemaGUM
             }
         }//WypelnijKategorie
 
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the comboBoxKategoria control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void comboBoxKategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.KategoriaBUS kategoriaBUS = new nsAccess2DB.KategoriaBUS(_connString);
@@ -939,6 +1005,11 @@ namespace RemaGUM
             }
         }//WypełnijDysponent()
 
+        /// <summary>
+        /// Obsługa comboBox_Dysponent control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void comboBox_Dysponent_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
@@ -1184,6 +1255,11 @@ namespace RemaGUM
             }
         }//WypelnijDzial
 
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the comboBoxDzial control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void comboBoxDzial_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.DzialBUS dzialBUS = new nsAccess2DB.DzialBUS(_connString);
@@ -1211,6 +1287,11 @@ namespace RemaGUM
         }// wypelnijCzestotliwosc
 
         // przypisuje w combo identyfikator = nazwę częstotliwości wykorzystania
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the ComboBoxWykorzystanie control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ComboBoxWykorzystanie_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.WykorzystanieBUS wykorzystanieBUS = new nsAccess2DB.WykorzystanieBUS(_connString);
@@ -1236,6 +1317,11 @@ namespace RemaGUM
                 propozycjaBUS.skip();
             }
         }// WypelnijPropozycje()
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the comboBoxPropozycja control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void comboBoxPropozycja_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.PropozycjaBUS propozycjaBUS = new nsAccess2DB.PropozycjaBUS(_connString);
@@ -1261,6 +1347,11 @@ namespace RemaGUM
             }
         }// WypelnijStan_techniczny()
 
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the comboBoxStan_techniczny control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void comboBoxStan_techniczny_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.Stan_technicznyBUS stan_TechnicznyBUS = new nsAccess2DB.Stan_technicznyBUS(_connString);
@@ -2027,6 +2118,11 @@ namespace RemaGUM
             }
         }// WybierzMagazyn()
 
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the comboBoxWyborMagazyn control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void comboBoxWyborMagazyn_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.Wybor_magazynuBUS wybor_MagazynuBUS = new nsAccess2DB.Wybor_magazynuBUS(_connString);
@@ -2052,6 +2148,11 @@ namespace RemaGUM
             }
         }// WypelnijJednostka_miar()
 
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the comboBoxJednostka_mat control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void comboBoxJednostka_mat_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.Jednostka_miarBUS jednostka_MiarBUS = new nsAccess2DB.Jednostka_miarBUS(_connString);
@@ -2085,6 +2186,11 @@ namespace RemaGUM
             }
         }// WypelnijRodzaj_mat()
 
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the comboBoxRodzaj control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void comboBoxRodzaj_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.Rodzaj_matBUS rodzaj_MatBUS = new nsAccess2DB.Rodzaj_matBUS(_connString);
@@ -3182,6 +3288,11 @@ namespace RemaGUM
             }
         }//WypelnijDzialOperatora()
 
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the comboBoxDzial_operator_maszyny control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void comboBoxDzial_operator_maszyny_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.DzialBUS dzialBUS = new nsAccess2DB.DzialBUS(_connString);
@@ -3569,6 +3680,11 @@ namespace RemaGUM
             }
         }//WypelnijDzialDysponenta()
 
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the comboBoxDzial_dysponent control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void comboBoxDzial_dysponent_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.DzialBUS dzialBUS = new nsAccess2DB.DzialBUS(_connString);

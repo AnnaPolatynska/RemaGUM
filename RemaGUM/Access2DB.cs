@@ -9,6 +9,9 @@ using System.Data.OleDb;
 
 namespace nsAccess2DB
 {
+    /// <summary>
+    /// Class dbConnection.
+    /// </summary>
     class dbConnection
     {
         private OleDbDataAdapter _adapter;
