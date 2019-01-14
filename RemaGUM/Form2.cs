@@ -12,9 +12,12 @@ namespace RemaGUM
 {
     public partial class FormORemaGUM : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FormORemaGUM" /> class.
+        /// </summary>
         public FormORemaGUM()
         {
             InitializeComponent();
-        }
-    }
-}
+        }//FormORemaGUM()
+    }//FormORemaGUM : Form
+}//FormORemaGUM : Form

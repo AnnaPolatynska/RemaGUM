@@ -1,4 +1,17 @@
-﻿using System.Reflection;
+﻿// ***********************************************************************
+// Assembly         : RemaGUM
+// Author           : anna.polatynska
+// Created          : 05-15-2018
+//
+// Last Modified By : anna.polatynska
+// Last Modified On : 05-10-2018
+// ***********************************************************************
+// <copyright file="AssemblyInfo.cs" company="Hewlett-Packard Company">
+//     Copyright © Hewlett-Packard Company 2018
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 

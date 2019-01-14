@@ -1,9 +1,30 @@
-﻿namespace RemaGUM
+﻿// ***********************************************************************
+// Assembly         : RemaGUM
+// Author           : anna.polatynska
+// Created          : 11-21-2018
+//
+// Last Modified By : anna.polatynska
+// Last Modified On : 11-21-2018
+// ***********************************************************************
+// <copyright file="Form2.Designer.cs" company="Hewlett-Packard Company">
+//     Copyright © Hewlett-Packard Company 2018
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace RemaGUM
 {
+    /// <summary>
+    /// Class FormORemaGUM.
+    /// Implements the <see cref="System.Windows.Forms.Form" />
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     partial class FormORemaGUM
     {
         /// <summary>
         /// Required designer variable.
+        /// </summary>
+        /// <summary>
+        /// The components
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
@@ -11,6 +32,10 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <summary>
+        /// Disposes of the resources (other than memory) used by the <see cref="T:System.Windows.Forms.Form" />.
+        /// </summary>
+        /// <param name="disposing"><see langword="true" /> to release both managed and unmanaged resources; <see langword="false" /> to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -25,6 +50,9 @@
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
+        /// </summary>
+        /// <summary>
+        /// Initializes the component.
         /// </summary>
         private void InitializeComponent()
         {
@@ -141,12 +169,33 @@
 
         #endregion
 
+        /// <summary>
+        /// The label2
+        /// </summary>
         private System.Windows.Forms.Label label2;
+        /// <summary>
+        /// The picture box1
+        /// </summary>
         private System.Windows.Forms.PictureBox pictureBox1;
+        /// <summary>
+        /// The label3
+        /// </summary>
         private System.Windows.Forms.Label label3;
+        /// <summary>
+        /// The panel1
+        /// </summary>
         private System.Windows.Forms.Panel panel1;
+        /// <summary>
+        /// The label6
+        /// </summary>
         private System.Windows.Forms.Label label6;
+        /// <summary>
+        /// The label5
+        /// </summary>
         private System.Windows.Forms.Label label5;
+        /// <summary>
+        /// The label4
+        /// </summary>
         private System.Windows.Forms.Label label4;
     }
 }

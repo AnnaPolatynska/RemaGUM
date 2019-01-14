@@ -63,5 +63,5 @@
         #endregion
 
         private System.Windows.Forms.Label labelTekst;
-    }
-}
+    }//Frame
+}//RemaGUM

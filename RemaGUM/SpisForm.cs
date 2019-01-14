@@ -25,10 +25,7 @@ namespace RemaGUM
         //private string _connString = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Projects\\RemaGUM\\RemaGUM.mdb"; //połaczenie z bazą danych
 
         //ustawienia połączenie z bazą poprzez xml.
-        /// <summary>
-        /// The settings
-        /// </summary>
-        private settings _settings;     
+       private settings _settings;     
         
         /// <summary>
         /// The connection string
@@ -100,8 +97,7 @@ namespace RemaGUM
         /// The interwal przegladow
         /// </summary>
         private int _interwalPrzegladow = 365;    //w dniach = 1 rok
-
-
+        
         private nsAccess2DB.OperatorBUS _OperatorBUS;
         private nsAccess2DB.MaszynyBUS _maszynyBUS;
         private nsAccess2DB.MaterialyBUS _materialyBUS;
