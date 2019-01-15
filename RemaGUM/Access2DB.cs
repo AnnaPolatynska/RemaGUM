@@ -1,17 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : RemaGUM
-// Author           : anna.polatynska
-// Created          : 05-15-2018
-//
-// Last Modified By : anna.polatynska
-// Last Modified On : 01-11-2019
-// ***********************************************************************
-// <copyright file="Access2DB.cs" company="Hewlett-Packard Company">
-//     Copyright © Hewlett-Packard Company 2018
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
@@ -27,18 +14,11 @@ namespace nsAccess2DB
     /// </summary>
     class dbConnection
     {
-        /// <summary>
-        /// The adapter
-        /// </summary>
+        /// <exclude />
         private OleDbDataAdapter _adapter;
-        /// <summary>
-        /// The connection
-        /// </summary>
+        /// <exclude />
         private OleDbConnection _conn;
-
-        /// <summary>
-        /// The error
-        /// </summary>
+        /// <exclude />
         public string _error = string.Empty; //komunikat błedu
         /// <summary>
         /// Initializes a new instance of the <see cref="dbConnection"/> class.
@@ -220,33 +200,20 @@ namespace nsAccess2DB
     /// </summary>
     public class MaszynyVO
     {
-        /// <summary>
-        /// The identyfikator
-        /// </summary>
+        /// <exclude />
         private int _Identyfikator = -1;
-        /// <summary>
-        /// The kategoria
-        /// </summary>
+
+        /// <exclude />
         private string _Kategoria = string.Empty; // 100
-        /// <summary>
-        /// The nazwa
-        /// </summary>
+        
         private string _Nazwa = string.Empty; // 255
-        /// <summary>
-        /// The typ
-        /// </summary>
+       
         private string _Typ = string.Empty; // 255
-        /// <summary>
-        /// The nr inwentarzowy
-        /// </summary>
+        
         private string _Nr_inwentarzowy = string.Empty; // 255
-        /// <summary>
-        /// The nr fabryczny
-        /// </summary>
+        
         private string _Nr_fabryczny = string.Empty; // 255
-        /// <summary>
-        /// The rok produkcji
-        /// </summary>
+        
         private string _Rok_produkcji = string.Empty; // 50
         /// <summary>
         /// The producent
