@@ -581,13 +581,26 @@ namespace RemaGUM
         {
             string str = DateTime.Now.ToString();
             int indeks = str.IndexOf(" ");
-            labelData.Text = str.Substring(0, indeks);//data
 
-            labelDayOfWeek.Text = DayOfWeek.Friday.ToString();
+             //str.Substring(0, indeks);//data
+            string data = str.Substring(0, indeks);
+            labelData.Text = data;
+           
+            string irok = str.Substring(0, 4);
+            string imies = str.Substring(5, 2);
+            string idzien = str.Substring(8, 2);
+
+            int rok = (Int16.Parse(irok));
+            int mies = (Int16.Parse(imies));
+            int dzien = (Int16.Parse(idzien));
+
+            DateTime dataValue = new DateTime(rok, mies, dzien); // wyciągnięcie roku, miesiąca i dnia z ciągu daty
+                 
+            labelDayOfWeek.Text = dataValue.ToString("dddd");
 
             labelZegar.Text = str.Substring(indeks + 1); // godzina
         }// SetData
-
+      
 
         /// <summary>
         /// Wyświetla komponenty w zależności od indeksu zakładki.

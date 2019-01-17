@@ -226,7 +226,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.richTextBoxDostawca = new System.Windows.Forms.RichTextBox();
-            this.linkLabelDostawcaMat = new System.Windows.Forms.LinkLabel();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.listBoxDostawcy = new System.Windows.Forms.ListBox();
@@ -235,6 +234,7 @@
             this.buttonUsunDostawca = new System.Windows.Forms.Button();
             this.buttonZapiszDostawca = new System.Windows.Forms.Button();
             this.buttonAnulujDostawca = new System.Windows.Forms.Button();
+            this.linkLabelDostawcaMat = new System.Windows.Forms.LinkLabel();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -2585,17 +2585,6 @@
             this.richTextBoxDostawca.TabIndex = 45;
             this.richTextBoxDostawca.Text = "";
             // 
-            // linkLabelDostawcaMat
-            // 
-            this.linkLabelDostawcaMat.AutoSize = true;
-            this.linkLabelDostawcaMat.Location = new System.Drawing.Point(397, 739);
-            this.linkLabelDostawcaMat.Name = "linkLabelDostawcaMat";
-            this.linkLabelDostawcaMat.Size = new System.Drawing.Size(114, 20);
-            this.linkLabelDostawcaMat.TabIndex = 42;
-            this.linkLabelDostawcaMat.TabStop = true;
-            this.linkLabelDostawcaMat.Text = "linkLabelDostawca";
-            this.linkLabelDostawcaMat.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDostawcaMat_LinkClicked);
-            // 
             // label26
             // 
             this.label26.AutoSize = true;
@@ -2699,6 +2688,17 @@
             this.buttonAnulujDostawca.UseVisualStyleBackColor = false;
             this.buttonAnulujDostawca.Click += new System.EventHandler(this.buttonAnulujDostawca_Click);
             // 
+            // linkLabelDostawcaMat
+            // 
+            this.linkLabelDostawcaMat.AutoSize = true;
+            this.linkLabelDostawcaMat.Location = new System.Drawing.Point(397, 739);
+            this.linkLabelDostawcaMat.Name = "linkLabelDostawcaMat";
+            this.linkLabelDostawcaMat.Size = new System.Drawing.Size(114, 20);
+            this.linkLabelDostawcaMat.TabIndex = 42;
+            this.linkLabelDostawcaMat.TabStop = true;
+            this.linkLabelDostawcaMat.Text = "linkLabelDostawca";
+            this.linkLabelDostawcaMat.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDostawcaMat_LinkClicked);
+            // 
             // toolStrip
             // 
             this.toolStrip.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -2770,9 +2770,10 @@
             // 
             this.labelDayOfWeek.AutoSize = true;
             this.labelDayOfWeek.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelDayOfWeek.Location = new System.Drawing.Point(198, 9);
+            this.labelDayOfWeek.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.labelDayOfWeek.Location = new System.Drawing.Point(196, 7);
             this.labelDayOfWeek.Name = "labelDayOfWeek";
-            this.labelDayOfWeek.Size = new System.Drawing.Size(88, 13);
+            this.labelDayOfWeek.Size = new System.Drawing.Size(154, 23);
             this.labelDayOfWeek.TabIndex = 49;
             this.labelDayOfWeek.Text = "labelDayOfWeek";
             // 
@@ -2785,7 +2786,7 @@
             this.labelZegar.AutoSize = true;
             this.labelZegar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.labelZegar.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.labelZegar.Location = new System.Drawing.Point(292, 7);
+            this.labelZegar.Location = new System.Drawing.Point(394, 7);
             this.labelZegar.Name = "labelZegar";
             this.labelZegar.Size = new System.Drawing.Size(105, 23);
             this.labelZegar.TabIndex = 50;
