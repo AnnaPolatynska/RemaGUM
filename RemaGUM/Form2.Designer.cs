@@ -135,7 +135,7 @@ namespace RemaGUM
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 17);
             this.label4.TabIndex = 1;
-            this.label4.Text = "2018 v. 0.0";
+            this.label4.Text = "2018 v. 0.1";
             // 
             // pictureBox1
             // 

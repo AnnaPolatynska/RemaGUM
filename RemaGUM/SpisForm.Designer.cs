@@ -2771,7 +2771,7 @@
             this.labelDayOfWeek.AutoSize = true;
             this.labelDayOfWeek.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.labelDayOfWeek.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.labelDayOfWeek.Location = new System.Drawing.Point(196, 7);
+            this.labelDayOfWeek.Location = new System.Drawing.Point(213, 7);
             this.labelDayOfWeek.Name = "labelDayOfWeek";
             this.labelDayOfWeek.Size = new System.Drawing.Size(154, 23);
             this.labelDayOfWeek.TabIndex = 49;

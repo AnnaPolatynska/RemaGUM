@@ -590,9 +590,9 @@ namespace RemaGUM
             string imies = str.Substring(5, 2);
             string idzien = str.Substring(8, 2);
 
-            int rok = (Int16.Parse(irok));
-            int mies = (Int16.Parse(imies));
-            int dzien = (Int16.Parse(idzien));
+            int rok = (Int32 .Parse(irok));
+            int mies = (Int32.Parse(imies));
+            int dzien = (Int32.Parse(idzien));
 
             DateTime dataValue = new DateTime(rok, mies, dzien); // wyciągnięcie roku, miesiąca i dnia z ciągu daty
                  
