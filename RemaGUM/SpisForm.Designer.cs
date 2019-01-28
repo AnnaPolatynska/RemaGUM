@@ -292,6 +292,7 @@
             // 
             // Materiały
             // 
+            this.Materiały.AutoScroll = true;
             this.Materiały.BackColor = System.Drawing.Color.Bisque;
             this.Materiały.Controls.Add(this.statusStripMaterialy);
             this.Materiały.Controls.Add(this.groupBox10);
@@ -1041,7 +1042,9 @@
             // 
             // Maszyny
             // 
+            this.Maszyny.AutoScroll = true;
             this.Maszyny.BackColor = System.Drawing.Color.Bisque;
+            this.Maszyny.Controls.Add(this.richTextBoxUwaga);
             this.Maszyny.Controls.Add(this.statusStripMaszyna);
             this.Maszyny.Controls.Add(this.buttonPokazZdj);
             this.Maszyny.Controls.Add(this.groupBoxSortowanie);
@@ -1216,7 +1219,6 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox4.Controls.Add(this.richTextBoxUwaga);
             this.groupBox4.Controls.Add(this.richTextBoxProducent);
             this.groupBox4.Controls.Add(this.checkedListBoxOperatorzy_maszyn);
             this.groupBox4.Controls.Add(this.label5);
@@ -1246,21 +1248,19 @@
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.groupBox4.Location = new System.Drawing.Point(333, 22);
+            this.groupBox4.Location = new System.Drawing.Point(333, 63);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(514, 835);
+            this.groupBox4.Size = new System.Drawing.Size(514, 766);
             this.groupBox4.TabIndex = 46;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dane maszyny";
             // 
             // richTextBoxUwaga
             // 
-            this.richTextBoxUwaga.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxUwaga.BackColor = System.Drawing.Color.Bisque;
             this.richTextBoxUwaga.Enabled = false;
             this.richTextBoxUwaga.ForeColor = System.Drawing.Color.Red;
-            this.richTextBoxUwaga.Location = new System.Drawing.Point(10, 442);
+            this.richTextBoxUwaga.Location = new System.Drawing.Point(873, 97);
             this.richTextBoxUwaga.Name = "richTextBoxUwaga";
             this.richTextBoxUwaga.Size = new System.Drawing.Size(481, 50);
             this.richTextBoxUwaga.TabIndex = 43;
@@ -1278,7 +1278,7 @@
             // 
             this.checkedListBoxOperatorzy_maszyn.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.checkedListBoxOperatorzy_maszyn.FormattingEnabled = true;
-            this.checkedListBoxOperatorzy_maszyn.Location = new System.Drawing.Point(6, 622);
+            this.checkedListBoxOperatorzy_maszyn.Location = new System.Drawing.Point(6, 513);
             this.checkedListBoxOperatorzy_maszyn.Name = "checkedListBoxOperatorzy_maszyn";
             this.checkedListBoxOperatorzy_maszyn.Size = new System.Drawing.Size(502, 137);
             this.checkedListBoxOperatorzy_maszyn.TabIndex = 41;
@@ -1317,7 +1317,7 @@
             // 
             this.label58.AutoSize = true;
             this.label58.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label58.Location = new System.Drawing.Point(6, 579);
+            this.label58.Location = new System.Drawing.Point(6, 486);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(107, 20);
             this.label58.TabIndex = 40;
@@ -1337,7 +1337,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label13.Location = new System.Drawing.Point(11, 508);
+            this.label13.Location = new System.Drawing.Point(11, 574);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(160, 20);
             this.label13.TabIndex = 27;
@@ -1368,7 +1368,7 @@
             this.comboBoxDysponent.BackColor = System.Drawing.Color.Linen;
             this.comboBoxDysponent.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.comboBoxDysponent.FormattingEnabled = true;
-            this.comboBoxDysponent.Location = new System.Drawing.Point(116, 548);
+            this.comboBoxDysponent.Location = new System.Drawing.Point(116, 439);
             this.comboBoxDysponent.Name = "comboBoxDysponent";
             this.comboBoxDysponent.Size = new System.Drawing.Size(380, 28);
             this.comboBoxDysponent.TabIndex = 39;
@@ -1379,7 +1379,7 @@
             this.dateTimePickerData_kol_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
             this.dateTimePickerData_kol_przegl.Enabled = false;
             this.dateTimePickerData_kol_przegl.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.dateTimePickerData_kol_przegl.Location = new System.Drawing.Point(207, 508);
+            this.dateTimePickerData_kol_przegl.Location = new System.Drawing.Point(207, 574);
             this.dateTimePickerData_kol_przegl.Name = "dateTimePickerData_kol_przegl";
             this.dateTimePickerData_kol_przegl.Size = new System.Drawing.Size(289, 24);
             this.dateTimePickerData_kol_przegl.TabIndex = 37;
@@ -1498,9 +1498,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxUwagi.BackColor = System.Drawing.Color.Linen;
             this.richTextBoxUwagi.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.richTextBoxUwagi.Location = new System.Drawing.Point(6, 779);
+            this.richTextBoxUwagi.Location = new System.Drawing.Point(6, 676);
             this.richTextBoxUwagi.Name = "richTextBoxUwagi";
-            this.richTextBoxUwagi.Size = new System.Drawing.Size(502, 37);
+            this.richTextBoxUwagi.Size = new System.Drawing.Size(502, 81);
             this.richTextBoxUwagi.TabIndex = 30;
             this.richTextBoxUwagi.Text = "";
             // 
@@ -1508,7 +1508,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label8.Location = new System.Drawing.Point(6, 551);
+            this.label8.Location = new System.Drawing.Point(6, 442);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 20);
             this.label8.TabIndex = 17;
@@ -1518,7 +1518,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label14.Location = new System.Drawing.Point(6, 762);
+            this.label14.Location = new System.Drawing.Point(6, 653);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(44, 20);
             this.label14.TabIndex = 29;
@@ -1582,9 +1582,9 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(862, 68);
+            this.pictureBox1.Location = new System.Drawing.Point(862, 183);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(462, 537);
+            this.pictureBox1.Size = new System.Drawing.Size(372, 422);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
@@ -1599,7 +1599,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(321, 851);
+            this.groupBox1.Size = new System.Drawing.Size(321, 832);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lista maszyn";
@@ -1807,6 +1807,7 @@
             // 
             // Operatorzy_maszyn
             // 
+            this.Operatorzy_maszyn.AutoScroll = true;
             this.Operatorzy_maszyn.BackColor = System.Drawing.Color.Bisque;
             this.Operatorzy_maszyn.Controls.Add(this.statusStripOperator);
             this.Operatorzy_maszyn.Controls.Add(this.groupBox22);
@@ -2168,6 +2169,7 @@
             // 
             // Dysponent_maszyn
             // 
+            this.Dysponent_maszyn.AutoScroll = true;
             this.Dysponent_maszyn.BackColor = System.Drawing.Color.Bisque;
             this.Dysponent_maszyn.Controls.Add(this.groupBox31);
             this.Dysponent_maszyn.Controls.Add(this.statusStripDysponent);
@@ -2471,6 +2473,7 @@
             // 
             // Dostawcy
             // 
+            this.Dostawcy.AutoScroll = true;
             this.Dostawcy.BackColor = System.Drawing.Color.Bisque;
             this.Dostawcy.Controls.Add(this.statusStripDostawca);
             this.Dostawcy.Controls.Add(this.groupBox17);
