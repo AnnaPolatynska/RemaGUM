@@ -62,7 +62,7 @@ namespace RemaGUM
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelWersjaProgramu = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -96,7 +96,7 @@ namespace RemaGUM
             this.panel1.BackColor = System.Drawing.Color.Peru;
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.labelWersjaProgramu);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(15, 127);
             this.panel1.Margin = new System.Windows.Forms.Padding(6);
@@ -126,16 +126,17 @@ namespace RemaGUM
             this.label5.TabIndex = 2;
             this.label5.Text = "Autorzy:";
             // 
-            // label4
+            // labelWersjaProgramu
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(6, 64);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 17);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "2018 v. 0.1";
+            this.labelWersjaProgramu.AutoSize = true;
+            this.labelWersjaProgramu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelWersjaProgramu.Location = new System.Drawing.Point(6, 64);
+            this.labelWersjaProgramu.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.labelWersjaProgramu.Name = "labelWersjaProgramu";
+            this.labelWersjaProgramu.Size = new System.Drawing.Size(79, 17);
+            this.labelWersjaProgramu.TabIndex = 1;
+            this.labelWersjaProgramu.Text = "2018 v. 0.3";
+            this.labelWersjaProgramu.Click += new System.EventHandler(this.label4_Click);
             // 
             // pictureBox1
             // 
@@ -196,6 +197,6 @@ namespace RemaGUM
         /// <summary>
         /// The label4
         /// </summary>
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelWersjaProgramu;
     }
 }

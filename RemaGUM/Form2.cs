@@ -19,5 +19,10 @@ namespace RemaGUM
         {
             InitializeComponent();
         }//FormORemaGUM()
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }//FormORemaGUM : Form
 }//FormORemaGUM : Form
