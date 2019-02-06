@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Wprowadzenie">
+		<param name="Local" value="Desktop\HelpFile\Program REMAGUM wprowadzenie.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Wykorzystanie programu">
+		<param name="Local" value="Desktop\HelpFile\Wykorzystanie programu.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Cel powstania RemaGUM">
+		<param name="Local" value="Desktop\HelpFile\Cel powstania.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Maszyny">
+		<param name="Local" value="Desktop\HelpFile\Modu³ maszyny.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Operatorzy maszyn">
+		<param name="Local" value="Desktop\HelpFile\Modu³ operatorzy maszyn.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Dysponenci maszyn">
+		<param name="Local" value="Desktop\HelpFile\Modu³ dysponenci maszyn.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Materia&sup3;y">
+		<param name="Local" value="Desktop\HelpFile\Modu³ materia³y.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Dostawcy materia&sup3;&oacute;w">
+		<param name="Local" value="Desktop\HelpFile\Modu³ dostawcy.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Adaptacja ReamGUM do innych potrzeb">
+		<param name="Local" value="Desktop\HelpFile\Program REMAGUM adaptacja.htm">
+		</OBJECT>
+</UL>
+</BODY></HTML>

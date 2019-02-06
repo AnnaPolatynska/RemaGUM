@@ -243,6 +243,48 @@
             this.labelDayOfWeek = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.labelZegar = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBoxPicture = new System.Windows.Forms.GroupBox();
+            this.buttonWgrajZdjeciePrzyrzad = new System.Windows.Forms.Button();
+            this.pictureBoxStandPicture = new System.Windows.Forms.PictureBox();
+            this.buttonUsunZdjeciePrzyrzad = new System.Windows.Forms.Button();
+            this.groupBoxEdit = new System.Windows.Forms.GroupBox();
+            this.buttonNowyPrzyrzad = new System.Windows.Forms.Button();
+            this.buttonUsunPrzyrzad = new System.Windows.Forms.Button();
+            this.buttonZapiszPrzyrzad = new System.Windows.Forms.Button();
+            this.buttonAnulujPrzyrzad = new System.Windows.Forms.Button();
+            this.groupBoxFind = new System.Windows.Forms.GroupBox();
+            this.buttonSzukajPrzyrzad = new System.Windows.Forms.Button();
+            this.textBoxZnajdzPrzyrzad = new System.Windows.Forms.TextBox();
+            this.groupBoxSort = new System.Windows.Forms.GroupBox();
+            this.radioButtonOstatniPrzegladPrzyrzadu = new System.Windows.Forms.RadioButton();
+            this.radioButtonNazwaPrzyrzadu = new System.Windows.Forms.RadioButton();
+            this.radioButtonNrPrzyrzadu = new System.Windows.Forms.RadioButton();
+            this.radioButtonTypPrzyrzadu = new System.Windows.Forms.RadioButton();
+            this.groupBoxStandData = new System.Windows.Forms.GroupBox();
+            this.labelSystemNumber = new System.Windows.Forms.Label();
+            this.textBoxNrSystemowyPrzyrzadu = new System.Windows.Forms.TextBox();
+            this.richTextBoxDaneProducentaPrzyrzadu = new System.Windows.Forms.RichTextBox();
+            this.labelDate = new System.Windows.Forms.Label();
+            this.labelStandType = new System.Windows.Forms.Label();
+            this.dateTimePickerDataOstPrzegladuPrzyrzadu = new System.Windows.Forms.DateTimePicker();
+            this.textBoxTypPrzyrzadu = new System.Windows.Forms.TextBox();
+            this.labelStandKind = new System.Windows.Forms.Label();
+            this.textBoxRodzajPrzyrzadu = new System.Windows.Forms.TextBox();
+            this.labelStandName = new System.Windows.Forms.Label();
+            this.comboBoxOpiekunPrzyrzadu = new System.Windows.Forms.ComboBox();
+            this.labelStandFactoryNumber = new System.Windows.Forms.Label();
+            this.textBoxNazwaPrzyrzadu = new System.Windows.Forms.TextBox();
+            this.textBoxNrfabrycznyPrzyrzadu = new System.Windows.Forms.TextBox();
+            this.labelMaker = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.labelStandKeeper = new System.Windows.Forms.Label();
+            this.groupBoxPrzyrzady = new System.Windows.Forms.GroupBox();
+            this.listBoxPrzyrzady = new System.Windows.Forms.ListBox();
+            this.statusStripPrzyrzad = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelPrzyrzadu = new System.Windows.Forms.ToolStripStatusLabel();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -288,6 +330,15 @@
             this.groupBox16.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.toolStrip.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.groupBoxPicture.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStandPicture)).BeginInit();
+            this.groupBoxEdit.SuspendLayout();
+            this.groupBoxFind.SuspendLayout();
+            this.groupBoxSort.SuspendLayout();
+            this.groupBoxStandData.SuspendLayout();
+            this.groupBoxPrzyrzady.SuspendLayout();
+            this.statusStripPrzyrzad.SuspendLayout();
             this.SuspendLayout();
             // 
             // Materiały
@@ -1082,13 +1133,14 @@
             // 
             // buttonPokazZdj
             // 
+            this.buttonPokazZdj.BackColor = System.Drawing.Color.Linen;
             this.buttonPokazZdj.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.buttonPokazZdj.Location = new System.Drawing.Point(881, 497);
             this.buttonPokazZdj.Name = "buttonPokazZdj";
             this.buttonPokazZdj.Size = new System.Drawing.Size(130, 28);
             this.buttonPokazZdj.TabIndex = 49;
             this.buttonPokazZdj.Text = "Wgraj zdjęcie";
-            this.buttonPokazZdj.UseVisualStyleBackColor = true;
+            this.buttonPokazZdj.UseVisualStyleBackColor = false;
             this.buttonPokazZdj.Click += new System.EventHandler(this.buttonPokazZdj_Click);
             // 
             // linkLabelNazwaZdjecia
@@ -1105,13 +1157,14 @@
             // 
             // buttonUsunZdj
             // 
+            this.buttonUsunZdj.BackColor = System.Drawing.Color.Linen;
             this.buttonUsunZdj.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.buttonUsunZdj.Location = new System.Drawing.Point(1081, 497);
             this.buttonUsunZdj.Name = "buttonUsunZdj";
             this.buttonUsunZdj.Size = new System.Drawing.Size(130, 28);
             this.buttonUsunZdj.TabIndex = 47;
             this.buttonUsunZdj.Text = "Usuń zdjęcie";
-            this.buttonUsunZdj.UseVisualStyleBackColor = true;
+            this.buttonUsunZdj.UseVisualStyleBackColor = false;
             this.buttonUsunZdj.Click += new System.EventHandler(this.buttonUsunZdj_Click);
             // 
             // groupBox4
@@ -1771,6 +1824,7 @@
             this.tabControlZakładki.Controls.Add(this.Dysponent_maszyn);
             this.tabControlZakładki.Controls.Add(this.Materiały);
             this.tabControlZakładki.Controls.Add(this.Dostawcy);
+            this.tabControlZakładki.Controls.Add(this.tabPage1);
             this.tabControlZakładki.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.tabControlZakładki.Location = new System.Drawing.Point(12, 55);
             this.tabControlZakładki.Name = "tabControlZakładki";
@@ -2767,6 +2821,492 @@
             this.labelZegar.TabIndex = 50;
             this.labelZegar.Text = "labelZegar";
             // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.Bisque;
+            this.tabPage1.Controls.Add(this.statusStripPrzyrzad);
+            this.tabPage1.Controls.Add(this.groupBoxPicture);
+            this.tabPage1.Controls.Add(this.groupBoxEdit);
+            this.tabPage1.Controls.Add(this.groupBoxFind);
+            this.tabPage1.Controls.Add(this.groupBoxSort);
+            this.tabPage1.Controls.Add(this.groupBoxStandData);
+            this.tabPage1.Controls.Add(this.groupBoxPrzyrzady);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1247, 802);
+            this.tabPage1.TabIndex = 6;
+            this.tabPage1.Text = "Wzorcowania Chem";
+            // 
+            // groupBoxPicture
+            // 
+            this.groupBoxPicture.Controls.Add(this.buttonWgrajZdjeciePrzyrzad);
+            this.groupBoxPicture.Controls.Add(this.pictureBoxStandPicture);
+            this.groupBoxPicture.Controls.Add(this.buttonUsunZdjeciePrzyrzad);
+            this.groupBoxPicture.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBoxPicture.ForeColor = System.Drawing.Color.Black;
+            this.groupBoxPicture.Location = new System.Drawing.Point(857, 80);
+            this.groupBoxPicture.Name = "groupBoxPicture";
+            this.groupBoxPicture.Size = new System.Drawing.Size(384, 500);
+            this.groupBoxPicture.TabIndex = 60;
+            this.groupBoxPicture.TabStop = false;
+            this.groupBoxPicture.Text = "Zdjęcie";
+            // 
+            // buttonWgrajZdjeciePrzyrzad
+            // 
+            this.buttonWgrajZdjeciePrzyrzad.BackColor = System.Drawing.Color.Linen;
+            this.buttonWgrajZdjeciePrzyrzad.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonWgrajZdjeciePrzyrzad.ForeColor = System.Drawing.Color.Black;
+            this.buttonWgrajZdjeciePrzyrzad.Location = new System.Drawing.Point(6, 463);
+            this.buttonWgrajZdjeciePrzyrzad.Name = "buttonWgrajZdjeciePrzyrzad";
+            this.buttonWgrajZdjeciePrzyrzad.Size = new System.Drawing.Size(170, 27);
+            this.buttonWgrajZdjeciePrzyrzad.TabIndex = 53;
+            this.buttonWgrajZdjeciePrzyrzad.Text = "Wgraj zdjęcie";
+            this.buttonWgrajZdjeciePrzyrzad.UseVisualStyleBackColor = false;
+            // 
+            // pictureBoxStandPicture
+            // 
+            this.pictureBoxStandPicture.Location = new System.Drawing.Point(6, 21);
+            this.pictureBoxStandPicture.Name = "pictureBoxStandPicture";
+            this.pictureBoxStandPicture.Size = new System.Drawing.Size(372, 433);
+            this.pictureBoxStandPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxStandPicture.TabIndex = 51;
+            this.pictureBoxStandPicture.TabStop = false;
+            // 
+            // buttonUsunZdjeciePrzyrzad
+            // 
+            this.buttonUsunZdjeciePrzyrzad.BackColor = System.Drawing.Color.Linen;
+            this.buttonUsunZdjeciePrzyrzad.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonUsunZdjeciePrzyrzad.ForeColor = System.Drawing.Color.Black;
+            this.buttonUsunZdjeciePrzyrzad.Location = new System.Drawing.Point(212, 463);
+            this.buttonUsunZdjeciePrzyrzad.Name = "buttonUsunZdjeciePrzyrzad";
+            this.buttonUsunZdjeciePrzyrzad.Size = new System.Drawing.Size(170, 27);
+            this.buttonUsunZdjeciePrzyrzad.TabIndex = 52;
+            this.buttonUsunZdjeciePrzyrzad.Text = "Usuń zdjęcie";
+            this.buttonUsunZdjeciePrzyrzad.UseVisualStyleBackColor = false;
+            // 
+            // groupBoxEdit
+            // 
+            this.groupBoxEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBoxEdit.BackColor = System.Drawing.Color.Bisque;
+            this.groupBoxEdit.Controls.Add(this.buttonNowyPrzyrzad);
+            this.groupBoxEdit.Controls.Add(this.buttonUsunPrzyrzad);
+            this.groupBoxEdit.Controls.Add(this.buttonZapiszPrzyrzad);
+            this.groupBoxEdit.Controls.Add(this.buttonAnulujPrzyrzad);
+            this.groupBoxEdit.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBoxEdit.ForeColor = System.Drawing.Color.Black;
+            this.groupBoxEdit.Location = new System.Drawing.Point(326, 520);
+            this.groupBoxEdit.Name = "groupBoxEdit";
+            this.groupBoxEdit.Size = new System.Drawing.Size(525, 60);
+            this.groupBoxEdit.TabIndex = 59;
+            this.groupBoxEdit.TabStop = false;
+            this.groupBoxEdit.Text = "Edycja";
+            // 
+            // buttonNowyPrzyrzad
+            // 
+            this.buttonNowyPrzyrzad.BackColor = System.Drawing.Color.Linen;
+            this.buttonNowyPrzyrzad.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonNowyPrzyrzad.Location = new System.Drawing.Point(16, 20);
+            this.buttonNowyPrzyrzad.Name = "buttonNowyPrzyrzad";
+            this.buttonNowyPrzyrzad.Size = new System.Drawing.Size(100, 30);
+            this.buttonNowyPrzyrzad.TabIndex = 2;
+            this.buttonNowyPrzyrzad.Text = "Nowy";
+            this.buttonNowyPrzyrzad.UseVisualStyleBackColor = false;
+            // 
+            // buttonUsunPrzyrzad
+            // 
+            this.buttonUsunPrzyrzad.BackColor = System.Drawing.Color.Linen;
+            this.buttonUsunPrzyrzad.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonUsunPrzyrzad.Location = new System.Drawing.Point(396, 20);
+            this.buttonUsunPrzyrzad.Name = "buttonUsunPrzyrzad";
+            this.buttonUsunPrzyrzad.Size = new System.Drawing.Size(100, 30);
+            this.buttonUsunPrzyrzad.TabIndex = 4;
+            this.buttonUsunPrzyrzad.Text = "Usuń";
+            this.buttonUsunPrzyrzad.UseVisualStyleBackColor = false;
+            // 
+            // buttonZapiszPrzyrzad
+            // 
+            this.buttonZapiszPrzyrzad.BackColor = System.Drawing.Color.Linen;
+            this.buttonZapiszPrzyrzad.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonZapiszPrzyrzad.Location = new System.Drawing.Point(145, 20);
+            this.buttonZapiszPrzyrzad.Name = "buttonZapiszPrzyrzad";
+            this.buttonZapiszPrzyrzad.Size = new System.Drawing.Size(100, 30);
+            this.buttonZapiszPrzyrzad.TabIndex = 3;
+            this.buttonZapiszPrzyrzad.Text = "Zapisz";
+            this.buttonZapiszPrzyrzad.UseVisualStyleBackColor = false;
+            // 
+            // buttonAnulujPrzyrzad
+            // 
+            this.buttonAnulujPrzyrzad.BackColor = System.Drawing.Color.Linen;
+            this.buttonAnulujPrzyrzad.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonAnulujPrzyrzad.Location = new System.Drawing.Point(265, 20);
+            this.buttonAnulujPrzyrzad.Name = "buttonAnulujPrzyrzad";
+            this.buttonAnulujPrzyrzad.Size = new System.Drawing.Size(100, 30);
+            this.buttonAnulujPrzyrzad.TabIndex = 3;
+            this.buttonAnulujPrzyrzad.Text = "Anuluj";
+            this.buttonAnulujPrzyrzad.UseVisualStyleBackColor = false;
+            // 
+            // groupBoxFind
+            // 
+            this.groupBoxFind.BackColor = System.Drawing.Color.Bisque;
+            this.groupBoxFind.Controls.Add(this.buttonSzukajPrzyrzad);
+            this.groupBoxFind.Controls.Add(this.textBoxZnajdzPrzyrzad);
+            this.groupBoxFind.Cursor = System.Windows.Forms.Cursors.Default;
+            this.groupBoxFind.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBoxFind.ForeColor = System.Drawing.Color.Black;
+            this.groupBoxFind.Location = new System.Drawing.Point(857, 6);
+            this.groupBoxFind.Name = "groupBoxFind";
+            this.groupBoxFind.Size = new System.Drawing.Size(384, 70);
+            this.groupBoxFind.TabIndex = 58;
+            this.groupBoxFind.TabStop = false;
+            this.groupBoxFind.Text = "Wyszukiwanie po nazwie";
+            // 
+            // buttonSzukajPrzyrzad
+            // 
+            this.buttonSzukajPrzyrzad.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSzukajPrzyrzad.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSzukajPrzyrzad.BackgroundImage")));
+            this.buttonSzukajPrzyrzad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSzukajPrzyrzad.Location = new System.Drawing.Point(343, 24);
+            this.buttonSzukajPrzyrzad.Name = "buttonSzukajPrzyrzad";
+            this.buttonSzukajPrzyrzad.Size = new System.Drawing.Size(35, 34);
+            this.buttonSzukajPrzyrzad.TabIndex = 4;
+            this.buttonSzukajPrzyrzad.UseVisualStyleBackColor = false;
+            // 
+            // textBoxZnajdzPrzyrzad
+            // 
+            this.textBoxZnajdzPrzyrzad.BackColor = System.Drawing.Color.Linen;
+            this.textBoxZnajdzPrzyrzad.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxZnajdzPrzyrzad.Location = new System.Drawing.Point(6, 28);
+            this.textBoxZnajdzPrzyrzad.Name = "textBoxZnajdzPrzyrzad";
+            this.textBoxZnajdzPrzyrzad.Size = new System.Drawing.Size(321, 24);
+            this.textBoxZnajdzPrzyrzad.TabIndex = 44;
+            // 
+            // groupBoxSort
+            // 
+            this.groupBoxSort.BackColor = System.Drawing.Color.Bisque;
+            this.groupBoxSort.Controls.Add(this.radioButtonOstatniPrzegladPrzyrzadu);
+            this.groupBoxSort.Controls.Add(this.radioButtonNazwaPrzyrzadu);
+            this.groupBoxSort.Controls.Add(this.radioButtonNrPrzyrzadu);
+            this.groupBoxSort.Controls.Add(this.radioButtonTypPrzyrzadu);
+            this.groupBoxSort.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBoxSort.ForeColor = System.Drawing.Color.Black;
+            this.groupBoxSort.Location = new System.Drawing.Point(5, 6);
+            this.groupBoxSort.Name = "groupBoxSort";
+            this.groupBoxSort.Size = new System.Drawing.Size(315, 76);
+            this.groupBoxSort.TabIndex = 57;
+            this.groupBoxSort.TabStop = false;
+            this.groupBoxSort.Text = "Sortowanie";
+            // 
+            // radioButtonOstatniPrzegladPrzyrzadu
+            // 
+            this.radioButtonOstatniPrzegladPrzyrzadu.AutoSize = true;
+            this.radioButtonOstatniPrzegladPrzyrzadu.BackColor = System.Drawing.Color.Bisque;
+            this.radioButtonOstatniPrzegladPrzyrzadu.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonOstatniPrzegladPrzyrzadu.ForeColor = System.Drawing.Color.Black;
+            this.radioButtonOstatniPrzegladPrzyrzadu.Location = new System.Drawing.Point(161, 46);
+            this.radioButtonOstatniPrzegladPrzyrzadu.Name = "radioButtonOstatniPrzegladPrzyrzadu";
+            this.radioButtonOstatniPrzegladPrzyrzadu.Size = new System.Drawing.Size(116, 24);
+            this.radioButtonOstatniPrzegladPrzyrzadu.TabIndex = 6;
+            this.radioButtonOstatniPrzegladPrzyrzadu.Text = "Ostatni przegląd";
+            this.radioButtonOstatniPrzegladPrzyrzadu.UseVisualStyleBackColor = false;
+            // 
+            // radioButtonNazwaPrzyrzadu
+            // 
+            this.radioButtonNazwaPrzyrzadu.AutoSize = true;
+            this.radioButtonNazwaPrzyrzadu.BackColor = System.Drawing.Color.Bisque;
+            this.radioButtonNazwaPrzyrzadu.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonNazwaPrzyrzadu.ForeColor = System.Drawing.Color.Black;
+            this.radioButtonNazwaPrzyrzadu.Location = new System.Drawing.Point(15, 21);
+            this.radioButtonNazwaPrzyrzadu.Name = "radioButtonNazwaPrzyrzadu";
+            this.radioButtonNazwaPrzyrzadu.Size = new System.Drawing.Size(64, 24);
+            this.radioButtonNazwaPrzyrzadu.TabIndex = 4;
+            this.radioButtonNazwaPrzyrzadu.Text = "Nazwa";
+            this.radioButtonNazwaPrzyrzadu.UseVisualStyleBackColor = false;
+            // 
+            // radioButtonNrPrzyrzadu
+            // 
+            this.radioButtonNrPrzyrzadu.AutoSize = true;
+            this.radioButtonNrPrzyrzadu.BackColor = System.Drawing.Color.Bisque;
+            this.radioButtonNrPrzyrzadu.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonNrPrzyrzadu.ForeColor = System.Drawing.Color.Black;
+            this.radioButtonNrPrzyrzadu.Location = new System.Drawing.Point(161, 21);
+            this.radioButtonNrPrzyrzadu.Name = "radioButtonNrPrzyrzadu";
+            this.radioButtonNrPrzyrzadu.Size = new System.Drawing.Size(93, 24);
+            this.radioButtonNrPrzyrzadu.TabIndex = 2;
+            this.radioButtonNrPrzyrzadu.Text = "Nr fabryczny";
+            this.radioButtonNrPrzyrzadu.UseVisualStyleBackColor = false;
+            // 
+            // radioButtonTypPrzyrzadu
+            // 
+            this.radioButtonTypPrzyrzadu.AutoSize = true;
+            this.radioButtonTypPrzyrzadu.BackColor = System.Drawing.Color.Bisque;
+            this.radioButtonTypPrzyrzadu.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonTypPrzyrzadu.ForeColor = System.Drawing.Color.Black;
+            this.radioButtonTypPrzyrzadu.Location = new System.Drawing.Point(15, 46);
+            this.radioButtonTypPrzyrzadu.Name = "radioButtonTypPrzyrzadu";
+            this.radioButtonTypPrzyrzadu.Size = new System.Drawing.Size(48, 24);
+            this.radioButtonTypPrzyrzadu.TabIndex = 0;
+            this.radioButtonTypPrzyrzadu.Text = "Typ";
+            this.radioButtonTypPrzyrzadu.UseVisualStyleBackColor = false;
+            // 
+            // groupBoxStandData
+            // 
+            this.groupBoxStandData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBoxStandData.BackColor = System.Drawing.Color.Bisque;
+            this.groupBoxStandData.Controls.Add(this.labelSystemNumber);
+            this.groupBoxStandData.Controls.Add(this.textBoxNrSystemowyPrzyrzadu);
+            this.groupBoxStandData.Controls.Add(this.richTextBoxDaneProducentaPrzyrzadu);
+            this.groupBoxStandData.Controls.Add(this.labelDate);
+            this.groupBoxStandData.Controls.Add(this.labelStandType);
+            this.groupBoxStandData.Controls.Add(this.dateTimePickerDataOstPrzegladuPrzyrzadu);
+            this.groupBoxStandData.Controls.Add(this.textBoxTypPrzyrzadu);
+            this.groupBoxStandData.Controls.Add(this.labelStandKind);
+            this.groupBoxStandData.Controls.Add(this.textBoxRodzajPrzyrzadu);
+            this.groupBoxStandData.Controls.Add(this.labelStandName);
+            this.groupBoxStandData.Controls.Add(this.comboBoxOpiekunPrzyrzadu);
+            this.groupBoxStandData.Controls.Add(this.labelStandFactoryNumber);
+            this.groupBoxStandData.Controls.Add(this.textBoxNazwaPrzyrzadu);
+            this.groupBoxStandData.Controls.Add(this.textBoxNrfabrycznyPrzyrzadu);
+            this.groupBoxStandData.Controls.Add(this.labelMaker);
+            this.groupBoxStandData.Controls.Add(this.richTextBox1);
+            this.groupBoxStandData.Controls.Add(this.label27);
+            this.groupBoxStandData.Controls.Add(this.labelStandKeeper);
+            this.groupBoxStandData.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBoxStandData.ForeColor = System.Drawing.Color.Black;
+            this.groupBoxStandData.Location = new System.Drawing.Point(326, 6);
+            this.groupBoxStandData.Name = "groupBoxStandData";
+            this.groupBoxStandData.Size = new System.Drawing.Size(525, 512);
+            this.groupBoxStandData.TabIndex = 56;
+            this.groupBoxStandData.TabStop = false;
+            this.groupBoxStandData.Text = "Dane przyrządu pomiarowego";
+            // 
+            // labelSystemNumber
+            // 
+            this.labelSystemNumber.AutoSize = true;
+            this.labelSystemNumber.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelSystemNumber.Location = new System.Drawing.Point(11, 225);
+            this.labelSystemNumber.Name = "labelSystemNumber";
+            this.labelSystemNumber.Size = new System.Drawing.Size(84, 20);
+            this.labelSystemNumber.TabIndex = 43;
+            this.labelSystemNumber.Text = "Nr systemowy";
+            // 
+            // textBoxNrSystemowyPrzyrzadu
+            // 
+            this.textBoxNrSystemowyPrzyrzadu.BackColor = System.Drawing.Color.Azure;
+            this.textBoxNrSystemowyPrzyrzadu.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxNrSystemowyPrzyrzadu.Location = new System.Drawing.Point(116, 225);
+            this.textBoxNrSystemowyPrzyrzadu.Name = "textBoxNrSystemowyPrzyrzadu";
+            this.textBoxNrSystemowyPrzyrzadu.Size = new System.Drawing.Size(380, 24);
+            this.textBoxNrSystemowyPrzyrzadu.TabIndex = 44;
+            // 
+            // richTextBoxDaneProducentaPrzyrzadu
+            // 
+            this.richTextBoxDaneProducentaPrzyrzadu.BackColor = System.Drawing.Color.Azure;
+            this.richTextBoxDaneProducentaPrzyrzadu.Location = new System.Drawing.Point(16, 299);
+            this.richTextBoxDaneProducentaPrzyrzadu.Name = "richTextBoxDaneProducentaPrzyrzadu";
+            this.richTextBoxDaneProducentaPrzyrzadu.Size = new System.Drawing.Size(480, 89);
+            this.richTextBoxDaneProducentaPrzyrzadu.TabIndex = 42;
+            this.richTextBoxDaneProducentaPrzyrzadu.Text = "";
+            // 
+            // labelDate
+            // 
+            this.labelDate.AutoSize = true;
+            this.labelDate.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelDate.Location = new System.Drawing.Point(11, 418);
+            this.labelDate.Name = "labelDate";
+            this.labelDate.Size = new System.Drawing.Size(152, 20);
+            this.labelDate.TabIndex = 25;
+            this.labelDate.Text = "Data ostatniego przegladu";
+            // 
+            // labelStandType
+            // 
+            this.labelStandType.AutoSize = true;
+            this.labelStandType.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelStandType.Location = new System.Drawing.Point(11, 74);
+            this.labelStandType.Name = "labelStandType";
+            this.labelStandType.Size = new System.Drawing.Size(30, 20);
+            this.labelStandType.TabIndex = 9;
+            this.labelStandType.Text = "Typ";
+            // 
+            // dateTimePickerDataOstPrzegladuPrzyrzadu
+            // 
+            this.dateTimePickerDataOstPrzegladuPrzyrzadu.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateTimePickerDataOstPrzegladuPrzyrzadu.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.dateTimePickerDataOstPrzegladuPrzyrzadu.Location = new System.Drawing.Point(207, 418);
+            this.dateTimePickerDataOstPrzegladuPrzyrzadu.Name = "dateTimePickerDataOstPrzegladuPrzyrzadu";
+            this.dateTimePickerDataOstPrzegladuPrzyrzadu.Size = new System.Drawing.Size(289, 24);
+            this.dateTimePickerDataOstPrzegladuPrzyrzadu.TabIndex = 36;
+            // 
+            // textBoxTypPrzyrzadu
+            // 
+            this.textBoxTypPrzyrzadu.BackColor = System.Drawing.Color.Azure;
+            this.textBoxTypPrzyrzadu.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxTypPrzyrzadu.Location = new System.Drawing.Point(116, 70);
+            this.textBoxTypPrzyrzadu.Name = "textBoxTypPrzyrzadu";
+            this.textBoxTypPrzyrzadu.Size = new System.Drawing.Size(380, 24);
+            this.textBoxTypPrzyrzadu.TabIndex = 8;
+            // 
+            // labelStandKind
+            // 
+            this.labelStandKind.AutoSize = true;
+            this.labelStandKind.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelStandKind.Location = new System.Drawing.Point(11, 121);
+            this.labelStandKind.Name = "labelStandKind";
+            this.labelStandKind.Size = new System.Drawing.Size(47, 20);
+            this.labelStandKind.TabIndex = 10;
+            this.labelStandKind.Text = "Rodzaj";
+            // 
+            // textBoxRodzajPrzyrzadu
+            // 
+            this.textBoxRodzajPrzyrzadu.BackColor = System.Drawing.Color.Azure;
+            this.textBoxRodzajPrzyrzadu.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxRodzajPrzyrzadu.Location = new System.Drawing.Point(116, 121);
+            this.textBoxRodzajPrzyrzadu.Name = "textBoxRodzajPrzyrzadu";
+            this.textBoxRodzajPrzyrzadu.Size = new System.Drawing.Size(380, 24);
+            this.textBoxRodzajPrzyrzadu.TabIndex = 11;
+            // 
+            // labelStandName
+            // 
+            this.labelStandName.AutoSize = true;
+            this.labelStandName.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelStandName.Location = new System.Drawing.Point(11, 25);
+            this.labelStandName.Name = "labelStandName";
+            this.labelStandName.Size = new System.Drawing.Size(46, 20);
+            this.labelStandName.TabIndex = 7;
+            this.labelStandName.Text = "Nazwa";
+            // 
+            // comboBoxOpiekunPrzyrzadu
+            // 
+            this.comboBoxOpiekunPrzyrzadu.BackColor = System.Drawing.Color.Azure;
+            this.comboBoxOpiekunPrzyrzadu.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.comboBoxOpiekunPrzyrzadu.FormattingEnabled = true;
+            this.comboBoxOpiekunPrzyrzadu.Location = new System.Drawing.Point(207, 459);
+            this.comboBoxOpiekunPrzyrzadu.Name = "comboBoxOpiekunPrzyrzadu";
+            this.comboBoxOpiekunPrzyrzadu.Size = new System.Drawing.Size(289, 28);
+            this.comboBoxOpiekunPrzyrzadu.TabIndex = 33;
+            // 
+            // labelStandFactoryNumber
+            // 
+            this.labelStandFactoryNumber.AutoSize = true;
+            this.labelStandFactoryNumber.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelStandFactoryNumber.Location = new System.Drawing.Point(11, 179);
+            this.labelStandFactoryNumber.Name = "labelStandFactoryNumber";
+            this.labelStandFactoryNumber.Size = new System.Drawing.Size(75, 20);
+            this.labelStandFactoryNumber.TabIndex = 13;
+            this.labelStandFactoryNumber.Text = "Nr fabryczny";
+            // 
+            // textBoxNazwaPrzyrzadu
+            // 
+            this.textBoxNazwaPrzyrzadu.BackColor = System.Drawing.Color.Azure;
+            this.textBoxNazwaPrzyrzadu.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxNazwaPrzyrzadu.Location = new System.Drawing.Point(116, 25);
+            this.textBoxNazwaPrzyrzadu.Name = "textBoxNazwaPrzyrzadu";
+            this.textBoxNazwaPrzyrzadu.Size = new System.Drawing.Size(380, 24);
+            this.textBoxNazwaPrzyrzadu.TabIndex = 6;
+            // 
+            // textBoxNrfabrycznyPrzyrzadu
+            // 
+            this.textBoxNrfabrycznyPrzyrzadu.BackColor = System.Drawing.Color.Azure;
+            this.textBoxNrfabrycznyPrzyrzadu.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxNrfabrycznyPrzyrzadu.Location = new System.Drawing.Point(116, 179);
+            this.textBoxNrfabrycznyPrzyrzadu.Name = "textBoxNrfabrycznyPrzyrzadu";
+            this.textBoxNrfabrycznyPrzyrzadu.Size = new System.Drawing.Size(380, 24);
+            this.textBoxNrfabrycznyPrzyrzadu.TabIndex = 14;
+            // 
+            // labelMaker
+            // 
+            this.labelMaker.AutoSize = true;
+            this.labelMaker.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelMaker.Location = new System.Drawing.Point(11, 276);
+            this.labelMaker.Name = "labelMaker";
+            this.labelMaker.Size = new System.Drawing.Size(105, 20);
+            this.labelMaker.TabIndex = 15;
+            this.labelMaker.Text = "Dane producenta";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.richTextBox1.BackColor = System.Drawing.Color.Linen;
+            this.richTextBox1.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.richTextBox1.Location = new System.Drawing.Point(6, 779);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(502, 0);
+            this.richTextBox1.TabIndex = 30;
+            this.richTextBox1.Text = "";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label27.Location = new System.Drawing.Point(6, 762);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(44, 20);
+            this.label27.TabIndex = 29;
+            this.label27.Text = "Uwagi";
+            // 
+            // labelStandKeeper
+            // 
+            this.labelStandKeeper.AutoSize = true;
+            this.labelStandKeeper.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelStandKeeper.Location = new System.Drawing.Point(11, 462);
+            this.labelStandKeeper.Name = "labelStandKeeper";
+            this.labelStandKeeper.Size = new System.Drawing.Size(189, 20);
+            this.labelStandKeeper.TabIndex = 21;
+            this.labelStandKeeper.Text = "Opiekun przyrządu pomiarowego";
+            // 
+            // groupBoxPrzyrzady
+            // 
+            this.groupBoxPrzyrzady.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBoxPrzyrzady.BackColor = System.Drawing.Color.Bisque;
+            this.groupBoxPrzyrzady.Controls.Add(this.listBoxPrzyrzady);
+            this.groupBoxPrzyrzady.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBoxPrzyrzady.ForeColor = System.Drawing.Color.Black;
+            this.groupBoxPrzyrzady.Location = new System.Drawing.Point(6, 88);
+            this.groupBoxPrzyrzady.Name = "groupBoxPrzyrzady";
+            this.groupBoxPrzyrzady.Size = new System.Drawing.Size(315, 492);
+            this.groupBoxPrzyrzady.TabIndex = 55;
+            this.groupBoxPrzyrzady.TabStop = false;
+            this.groupBoxPrzyrzady.Text = "Lista przyrządów pomiarowych";
+            // 
+            // listBoxPrzyrzady
+            // 
+            this.listBoxPrzyrzady.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBoxPrzyrzady.BackColor = System.Drawing.Color.Azure;
+            this.listBoxPrzyrzady.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.listBoxPrzyrzady.FormattingEnabled = true;
+            this.listBoxPrzyrzady.ItemHeight = 20;
+            this.listBoxPrzyrzady.Location = new System.Drawing.Point(15, 25);
+            this.listBoxPrzyrzady.Name = "listBoxPrzyrzady";
+            this.listBoxPrzyrzady.Size = new System.Drawing.Size(283, 444);
+            this.listBoxPrzyrzady.TabIndex = 0;
+            // 
+            // statusStripPrzyrzad
+            // 
+            this.statusStripPrzyrzad.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel7,
+            this.toolStripStatusLabelPrzyrzadu});
+            this.statusStripPrzyrzad.Location = new System.Drawing.Point(3, 777);
+            this.statusStripPrzyrzad.Name = "statusStripPrzyrzad";
+            this.statusStripPrzyrzad.Size = new System.Drawing.Size(1241, 22);
+            this.statusStripPrzyrzad.TabIndex = 61;
+            this.statusStripPrzyrzad.Text = "statusStripPrzyrzad";
+            // 
+            // toolStripStatusLabel7
+            // 
+            this.toolStripStatusLabel7.Name = "toolStripStatusLabel7";
+            this.toolStripStatusLabel7.Size = new System.Drawing.Size(78, 17);
+            this.toolStripStatusLabel7.Text = "ID Przyrządu: ";
+            // 
+            // toolStripStatusLabelPrzyrzadu
+            // 
+            this.toolStripStatusLabelPrzyrzadu.Name = "toolStripStatusLabelPrzyrzadu";
+            this.toolStripStatusLabelPrzyrzadu.Size = new System.Drawing.Size(69, 17);
+            this.toolStripStatusLabelPrzyrzadu.Text = "IDPrzyrzadu";
+            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2856,6 +3396,20 @@
             this.groupBox11.ResumeLayout(false);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.groupBoxPicture.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStandPicture)).EndInit();
+            this.groupBoxEdit.ResumeLayout(false);
+            this.groupBoxFind.ResumeLayout(false);
+            this.groupBoxFind.PerformLayout();
+            this.groupBoxSort.ResumeLayout(false);
+            this.groupBoxSort.PerformLayout();
+            this.groupBoxStandData.ResumeLayout(false);
+            this.groupBoxStandData.PerformLayout();
+            this.groupBoxPrzyrzady.ResumeLayout(false);
+            this.statusStripPrzyrzad.ResumeLayout(false);
+            this.statusStripPrzyrzad.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3077,6 +3631,48 @@
         private System.Windows.Forms.Label labelDostepnosc;
         private System.Windows.Forms.RichTextBox richTextBoxKomunikatMaterialy;
         private System.Windows.Forms.TextBox textBoxLink;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.StatusStrip statusStripPrzyrzad;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelPrzyrzadu;
+        private System.Windows.Forms.GroupBox groupBoxPicture;
+        private System.Windows.Forms.Button buttonWgrajZdjeciePrzyrzad;
+        private System.Windows.Forms.PictureBox pictureBoxStandPicture;
+        private System.Windows.Forms.Button buttonUsunZdjeciePrzyrzad;
+        private System.Windows.Forms.GroupBox groupBoxEdit;
+        private System.Windows.Forms.Button buttonNowyPrzyrzad;
+        private System.Windows.Forms.Button buttonUsunPrzyrzad;
+        private System.Windows.Forms.Button buttonZapiszPrzyrzad;
+        private System.Windows.Forms.Button buttonAnulujPrzyrzad;
+        private System.Windows.Forms.GroupBox groupBoxFind;
+        private System.Windows.Forms.Button buttonSzukajPrzyrzad;
+        private System.Windows.Forms.TextBox textBoxZnajdzPrzyrzad;
+        private System.Windows.Forms.GroupBox groupBoxSort;
+        private System.Windows.Forms.RadioButton radioButtonOstatniPrzegladPrzyrzadu;
+        private System.Windows.Forms.RadioButton radioButtonNazwaPrzyrzadu;
+        private System.Windows.Forms.RadioButton radioButtonNrPrzyrzadu;
+        private System.Windows.Forms.RadioButton radioButtonTypPrzyrzadu;
+        private System.Windows.Forms.GroupBox groupBoxStandData;
+        private System.Windows.Forms.Label labelSystemNumber;
+        private System.Windows.Forms.TextBox textBoxNrSystemowyPrzyrzadu;
+        private System.Windows.Forms.RichTextBox richTextBoxDaneProducentaPrzyrzadu;
+        private System.Windows.Forms.Label labelDate;
+        private System.Windows.Forms.Label labelStandType;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDataOstPrzegladuPrzyrzadu;
+        private System.Windows.Forms.TextBox textBoxTypPrzyrzadu;
+        private System.Windows.Forms.Label labelStandKind;
+        private System.Windows.Forms.TextBox textBoxRodzajPrzyrzadu;
+        private System.Windows.Forms.Label labelStandName;
+        private System.Windows.Forms.ComboBox comboBoxOpiekunPrzyrzadu;
+        private System.Windows.Forms.Label labelStandFactoryNumber;
+        private System.Windows.Forms.TextBox textBoxNazwaPrzyrzadu;
+        private System.Windows.Forms.TextBox textBoxNrfabrycznyPrzyrzadu;
+        private System.Windows.Forms.Label labelMaker;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label labelStandKeeper;
+        private System.Windows.Forms.GroupBox groupBoxPrzyrzady;
+        private System.Windows.Forms.ListBox listBoxPrzyrzady;
     }
 }
 

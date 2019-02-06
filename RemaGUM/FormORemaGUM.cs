@@ -10,16 +10,15 @@ using System.Windows.Forms;
 
 namespace RemaGUM
 {
-    public partial class Frame : Form
+    public partial class FormORemaGUM : Form
     {
-        public Frame(string s)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FormORemaGUM" /> class.
+        /// </summary>
+        public FormORemaGUM()
         {
             InitializeComponent();
-            labelTekst.Text = s;
+        }//FormORemaGUM()
 
-            labelTekst.Left = (this.Width - labelTekst.Width) / 2;
-            labelTekst.Top = (this.Height - labelTekst.Height) / 2;
-        }// Frame(string s)
-
-    }// class Frame : Form
-}// namespace RemaGUM
+    }//FormORemaGUM : Form
+}//FormORemaGUM : Form
