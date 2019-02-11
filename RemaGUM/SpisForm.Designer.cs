@@ -235,18 +235,13 @@
             this.buttonUsunDostawca = new System.Windows.Forms.Button();
             this.buttonZapiszDostawca = new System.Windows.Forms.Button();
             this.buttonAnulujDostawca = new System.Windows.Forms.Button();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonOProgramie = new System.Windows.Forms.ToolStripButton();
-            this.labelData = new System.Windows.Forms.Label();
-            this.labelDayOfWeek = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.labelZegar = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.statusStripPrzyrzad = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelPrzyrzadu = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBoxPicture = new System.Windows.Forms.GroupBox();
             this.buttonWgrajZdjeciePrzyrzad = new System.Windows.Forms.Button();
-            this.pictureBoxStandPicture = new System.Windows.Forms.PictureBox();
+            this.pictureBoxZdjeciePrzyrzadu = new System.Windows.Forms.PictureBox();
             this.buttonUsunZdjeciePrzyrzad = new System.Windows.Forms.Button();
             this.groupBoxEdit = new System.Windows.Forms.GroupBox();
             this.buttonNowyPrzyrzad = new System.Windows.Forms.Button();
@@ -282,9 +277,14 @@
             this.labelStandKeeper = new System.Windows.Forms.Label();
             this.groupBoxPrzyrzady = new System.Windows.Forms.GroupBox();
             this.listBoxPrzyrzady = new System.Windows.Forms.ListBox();
-            this.statusStripPrzyrzad = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelPrzyrzadu = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonOProgramie = new System.Windows.Forms.ToolStripButton();
+            this.labelData = new System.Windows.Forms.Label();
+            this.labelDayOfWeek = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.labelZegar = new System.Windows.Forms.Label();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -329,16 +329,16 @@
             this.groupBox17.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.groupBox11.SuspendLayout();
-            this.toolStrip.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.statusStripPrzyrzad.SuspendLayout();
             this.groupBoxPicture.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStandPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxZdjeciePrzyrzadu)).BeginInit();
             this.groupBoxEdit.SuspendLayout();
             this.groupBoxFind.SuspendLayout();
             this.groupBoxSort.SuspendLayout();
             this.groupBoxStandData.SuspendLayout();
             this.groupBoxPrzyrzady.SuspendLayout();
-            this.statusStripPrzyrzad.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // Materiały
@@ -2728,99 +2728,6 @@
             this.buttonAnulujDostawca.UseVisualStyleBackColor = false;
             this.buttonAnulujDostawca.Click += new System.EventHandler(this.buttonAnulujDostawca_Click);
             // 
-            // toolStrip
-            // 
-            this.toolStrip.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.toolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.toolStrip.CanOverflow = false;
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonHelp,
-            this.toolStripButton1,
-            this.toolStripButtonOProgramie});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip.Size = new System.Drawing.Size(1267, 45);
-            this.toolStrip.TabIndex = 41;
-            this.toolStrip.Text = "toolStrip1";
-            // 
-            // toolStripButtonHelp
-            // 
-            this.toolStripButtonHelp.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonHelp.Image")));
-            this.toolStripButtonHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolStripButtonHelp.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonHelp.Name = "toolStripButtonHelp";
-            this.toolStripButtonHelp.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripButtonHelp.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonHelp.Size = new System.Drawing.Size(38, 42);
-            this.toolStripButtonHelp.ToolTipText = "Pomoc programu.";
-            this.toolStripButtonHelp.Click += new System.EventHandler(this.toolStripButtonHelp_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton1.Image = global::RemaGUM.Properties.Resources.LogoGUM2018;
-            this.toolStripButton1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(1, 1, 0, 2);
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripButton1.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton1.Size = new System.Drawing.Size(78, 42);
-            this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolStripButton1.ToolTipText = "Logo";
-            // 
-            // toolStripButtonOProgramie
-            // 
-            this.toolStripButtonOProgramie.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonOProgramie.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOProgramie.Image")));
-            this.toolStripButtonOProgramie.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonOProgramie.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonOProgramie.Name = "toolStripButtonOProgramie";
-            this.toolStripButtonOProgramie.Size = new System.Drawing.Size(39, 42);
-            this.toolStripButtonOProgramie.Text = "o programie";
-            this.toolStripButtonOProgramie.Click += new System.EventHandler(this.toolStripButtonOProgramie_Click);
-            // 
-            // labelData
-            // 
-            this.labelData.AutoSize = true;
-            this.labelData.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelData.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.labelData.Location = new System.Drawing.Point(96, 7);
-            this.labelData.Name = "labelData";
-            this.labelData.Size = new System.Drawing.Size(94, 23);
-            this.labelData.TabIndex = 48;
-            this.labelData.Text = "labelData";
-            this.labelData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelDayOfWeek
-            // 
-            this.labelDayOfWeek.AutoSize = true;
-            this.labelDayOfWeek.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelDayOfWeek.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.labelDayOfWeek.Location = new System.Drawing.Point(213, 7);
-            this.labelDayOfWeek.Name = "labelDayOfWeek";
-            this.labelDayOfWeek.Size = new System.Drawing.Size(154, 23);
-            this.labelDayOfWeek.TabIndex = 49;
-            this.labelDayOfWeek.Text = "labelDayOfWeek";
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // labelZegar
-            // 
-            this.labelZegar.AutoSize = true;
-            this.labelZegar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelZegar.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.labelZegar.Location = new System.Drawing.Point(394, 7);
-            this.labelZegar.Name = "labelZegar";
-            this.labelZegar.Size = new System.Drawing.Size(105, 23);
-            this.labelZegar.TabIndex = 50;
-            this.labelZegar.Text = "labelZegar";
-            // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Bisque;
@@ -2838,10 +2745,33 @@
             this.tabPage1.TabIndex = 6;
             this.tabPage1.Text = "Wzorcowania Chem";
             // 
+            // statusStripPrzyrzad
+            // 
+            this.statusStripPrzyrzad.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel7,
+            this.toolStripStatusLabelPrzyrzadu});
+            this.statusStripPrzyrzad.Location = new System.Drawing.Point(3, 777);
+            this.statusStripPrzyrzad.Name = "statusStripPrzyrzad";
+            this.statusStripPrzyrzad.Size = new System.Drawing.Size(1241, 22);
+            this.statusStripPrzyrzad.TabIndex = 61;
+            this.statusStripPrzyrzad.Text = "statusStripPrzyrzad";
+            // 
+            // toolStripStatusLabel7
+            // 
+            this.toolStripStatusLabel7.Name = "toolStripStatusLabel7";
+            this.toolStripStatusLabel7.Size = new System.Drawing.Size(78, 17);
+            this.toolStripStatusLabel7.Text = "ID Przyrządu: ";
+            // 
+            // toolStripStatusLabelPrzyrzadu
+            // 
+            this.toolStripStatusLabelPrzyrzadu.Name = "toolStripStatusLabelPrzyrzadu";
+            this.toolStripStatusLabelPrzyrzadu.Size = new System.Drawing.Size(69, 17);
+            this.toolStripStatusLabelPrzyrzadu.Text = "IDPrzyrzadu";
+            // 
             // groupBoxPicture
             // 
             this.groupBoxPicture.Controls.Add(this.buttonWgrajZdjeciePrzyrzad);
-            this.groupBoxPicture.Controls.Add(this.pictureBoxStandPicture);
+            this.groupBoxPicture.Controls.Add(this.pictureBoxZdjeciePrzyrzadu);
             this.groupBoxPicture.Controls.Add(this.buttonUsunZdjeciePrzyrzad);
             this.groupBoxPicture.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.groupBoxPicture.ForeColor = System.Drawing.Color.Black;
@@ -2864,14 +2794,14 @@
             this.buttonWgrajZdjeciePrzyrzad.Text = "Wgraj zdjęcie";
             this.buttonWgrajZdjeciePrzyrzad.UseVisualStyleBackColor = false;
             // 
-            // pictureBoxStandPicture
+            // pictureBoxZdjeciePrzyrzadu
             // 
-            this.pictureBoxStandPicture.Location = new System.Drawing.Point(6, 21);
-            this.pictureBoxStandPicture.Name = "pictureBoxStandPicture";
-            this.pictureBoxStandPicture.Size = new System.Drawing.Size(372, 433);
-            this.pictureBoxStandPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxStandPicture.TabIndex = 51;
-            this.pictureBoxStandPicture.TabStop = false;
+            this.pictureBoxZdjeciePrzyrzadu.Location = new System.Drawing.Point(6, 21);
+            this.pictureBoxZdjeciePrzyrzadu.Name = "pictureBoxZdjeciePrzyrzadu";
+            this.pictureBoxZdjeciePrzyrzadu.Size = new System.Drawing.Size(372, 433);
+            this.pictureBoxZdjeciePrzyrzadu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxZdjeciePrzyrzadu.TabIndex = 51;
+            this.pictureBoxZdjeciePrzyrzadu.TabStop = false;
             // 
             // buttonUsunZdjeciePrzyrzad
             // 
@@ -3283,29 +3213,100 @@
             this.listBoxPrzyrzady.Name = "listBoxPrzyrzady";
             this.listBoxPrzyrzady.Size = new System.Drawing.Size(283, 444);
             this.listBoxPrzyrzady.TabIndex = 0;
+            this.listBoxPrzyrzady.SelectedIndexChanged += new System.EventHandler(this.listBoxPrzyrzady_SelectedIndexChanged);
             // 
-            // statusStripPrzyrzad
+            // toolStrip
             // 
-            this.statusStripPrzyrzad.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel7,
-            this.toolStripStatusLabelPrzyrzadu});
-            this.statusStripPrzyrzad.Location = new System.Drawing.Point(3, 777);
-            this.statusStripPrzyrzad.Name = "statusStripPrzyrzad";
-            this.statusStripPrzyrzad.Size = new System.Drawing.Size(1241, 22);
-            this.statusStripPrzyrzad.TabIndex = 61;
-            this.statusStripPrzyrzad.Text = "statusStripPrzyrzad";
+            this.toolStrip.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.toolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.toolStrip.CanOverflow = false;
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonHelp,
+            this.toolStripButton1,
+            this.toolStripButtonOProgramie});
+            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip.Size = new System.Drawing.Size(1267, 45);
+            this.toolStrip.TabIndex = 41;
+            this.toolStrip.Text = "toolStrip1";
             // 
-            // toolStripStatusLabel7
+            // toolStripButtonHelp
             // 
-            this.toolStripStatusLabel7.Name = "toolStripStatusLabel7";
-            this.toolStripStatusLabel7.Size = new System.Drawing.Size(78, 17);
-            this.toolStripStatusLabel7.Text = "ID Przyrządu: ";
+            this.toolStripButtonHelp.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonHelp.Image")));
+            this.toolStripButtonHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripButtonHelp.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonHelp.Name = "toolStripButtonHelp";
+            this.toolStripButtonHelp.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripButtonHelp.RightToLeftAutoMirrorImage = true;
+            this.toolStripButtonHelp.Size = new System.Drawing.Size(38, 42);
+            this.toolStripButtonHelp.ToolTipText = "Pomoc programu.";
+            this.toolStripButtonHelp.Click += new System.EventHandler(this.toolStripButtonHelp_Click);
             // 
-            // toolStripStatusLabelPrzyrzadu
+            // toolStripButton1
             // 
-            this.toolStripStatusLabelPrzyrzadu.Name = "toolStripStatusLabelPrzyrzadu";
-            this.toolStripStatusLabelPrzyrzadu.Size = new System.Drawing.Size(69, 17);
-            this.toolStripStatusLabelPrzyrzadu.Text = "IDPrzyrzadu";
+            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton1.Image = global::RemaGUM.Properties.Resources.LogoGUM2018;
+            this.toolStripButton1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(1, 1, 0, 2);
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripButton1.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton1.Size = new System.Drawing.Size(78, 42);
+            this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripButton1.ToolTipText = "Logo";
+            // 
+            // toolStripButtonOProgramie
+            // 
+            this.toolStripButtonOProgramie.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonOProgramie.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOProgramie.Image")));
+            this.toolStripButtonOProgramie.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonOProgramie.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonOProgramie.Name = "toolStripButtonOProgramie";
+            this.toolStripButtonOProgramie.Size = new System.Drawing.Size(39, 42);
+            this.toolStripButtonOProgramie.Text = "o programie";
+            this.toolStripButtonOProgramie.Click += new System.EventHandler(this.toolStripButtonOProgramie_Click);
+            // 
+            // labelData
+            // 
+            this.labelData.AutoSize = true;
+            this.labelData.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.labelData.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.labelData.Location = new System.Drawing.Point(96, 7);
+            this.labelData.Name = "labelData";
+            this.labelData.Size = new System.Drawing.Size(94, 23);
+            this.labelData.TabIndex = 48;
+            this.labelData.Text = "labelData";
+            this.labelData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelDayOfWeek
+            // 
+            this.labelDayOfWeek.AutoSize = true;
+            this.labelDayOfWeek.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.labelDayOfWeek.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.labelDayOfWeek.Location = new System.Drawing.Point(213, 7);
+            this.labelDayOfWeek.Name = "labelDayOfWeek";
+            this.labelDayOfWeek.Size = new System.Drawing.Size(154, 23);
+            this.labelDayOfWeek.TabIndex = 49;
+            this.labelDayOfWeek.Text = "labelDayOfWeek";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // labelZegar
+            // 
+            this.labelZegar.AutoSize = true;
+            this.labelZegar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.labelZegar.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.labelZegar.Location = new System.Drawing.Point(394, 7);
+            this.labelZegar.Name = "labelZegar";
+            this.labelZegar.Size = new System.Drawing.Size(105, 23);
+            this.labelZegar.TabIndex = 50;
+            this.labelZegar.Text = "labelZegar";
             // 
             // SpisForm
             // 
@@ -3394,12 +3395,12 @@
             this.groupBox17.PerformLayout();
             this.groupBox16.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.statusStripPrzyrzad.ResumeLayout(false);
+            this.statusStripPrzyrzad.PerformLayout();
             this.groupBoxPicture.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStandPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxZdjeciePrzyrzadu)).EndInit();
             this.groupBoxEdit.ResumeLayout(false);
             this.groupBoxFind.ResumeLayout(false);
             this.groupBoxFind.PerformLayout();
@@ -3408,8 +3409,8 @@
             this.groupBoxStandData.ResumeLayout(false);
             this.groupBoxStandData.PerformLayout();
             this.groupBoxPrzyrzady.ResumeLayout(false);
-            this.statusStripPrzyrzad.ResumeLayout(false);
-            this.statusStripPrzyrzad.PerformLayout();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3637,7 +3638,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelPrzyrzadu;
         private System.Windows.Forms.GroupBox groupBoxPicture;
         private System.Windows.Forms.Button buttonWgrajZdjeciePrzyrzad;
-        private System.Windows.Forms.PictureBox pictureBoxStandPicture;
+        private System.Windows.Forms.PictureBox pictureBoxZdjeciePrzyrzadu;
         private System.Windows.Forms.Button buttonUsunZdjeciePrzyrzad;
         private System.Windows.Forms.GroupBox groupBoxEdit;
         private System.Windows.Forms.Button buttonNowyPrzyrzad;

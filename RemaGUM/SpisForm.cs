@@ -418,7 +418,14 @@ namespace RemaGUM
             buttonZapiszDostawca.TabIndex = 7;
             buttonAnulujDostawca.TabIndex = 8;
             buttonUsunDostawca.TabIndex = 9;
-            
+
+
+            // ---------------------------------------------Zakladka Przyrzad
+            //lista przyrzadów
+            //listBoxPrzyrzady.TabIndex = 1;
+
+
+
             // tool tipy
             _tt = new ToolTip();
             _tt.SetToolTip(listBoxMaszyny, "Lista maszyn, przyrządów i urządzeń itp.");
@@ -688,6 +695,16 @@ namespace RemaGUM
                     listBoxDostawcy.SelectedIndex = 0;
                 }
             } // Zakładka Dostawcy
+
+            // --------------------------------Zakładka Przyrzad.
+            if (v.SelectedIndex == 5)
+            {
+                WypelnijlistBoxPrzyrzady();
+                if (listBoxPrzyrzady.Items.Count > 0)
+                {
+                    listBoxPrzyrzady.SelectedIndex = 0;
+                }
+            }
 
 
 
@@ -3929,6 +3946,55 @@ namespace RemaGUM
             Cursor.Current = Cursors.Default;
         }//buttonSzukajDysponent_Click
 
+        // TODO // // // // // // // // // // // // // // // // // // // // ZAKŁADKA PRZYRZĄD.
+        private void WypelnijlistBoxPrzyrzady()
+        {
+            nsAccess2DB.PrzyrzadBUS przyrzadBUS = new nsAccess2DB.PrzyrzadBUS(_connString);
+            listBoxPrzyrzady.Items.Clear();
+            przyrzadBUS.Select();
+
+            while (!przyrzadBUS.eof)
+            {
+                listBoxPrzyrzady.Items.Add(przyrzadBUS.VO.Nazwa_przyrzadu);
+                przyrzadBUS.skip();
+            }
+        }// WypelnijlistBoxPrzyrzady()
+
+        
+
+        private void CzyscDanePrzyrzadu()
+        {
+            toolStripStatusLabelPrzyrzadu.Text = "";
+
+            textBoxNazwaPrzyrzadu.Text = string.Empty;
+            textBoxTypPrzyrzadu.Text = string.Empty;
+            textBoxRodzajPrzyrzadu.Text = string.Empty;
+            textBoxNrfabrycznyPrzyrzadu.Text = string.Empty;
+            textBoxNrSystemowyPrzyrzadu.Text = string.Empty;
+            richTextBoxDaneProducentaPrzyrzadu.Text = string.Empty;
+            dateTimePickerDataOstPrzegladuPrzyrzadu.Text = string.Empty;
+            comboBoxOpiekunPrzyrzadu.Text = string.Empty;
+
+        }//CzyscDanePrzyrzadu()
+
+        private void listBoxPrzyrzady_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nsAccess2DB.PrzyrzadBUS przyrzadBUS = new nsAccess2DB.PrzyrzadBUS(_connString);
+
+            przyrzadBUS.Select();
+            przyrzadBUS.idx = listBoxPrzyrzady.SelectedIndex;
+
+            textBoxNazwaPrzyrzadu.Text = przyrzadBUS.VO.Nazwa_przyrzadu;
+            textBoxTypPrzyrzadu.Text = przyrzadBUS.VO.Typ_przyrzadu;
+            textBoxRodzajPrzyrzadu.Text = przyrzadBUS.VO.Rodzaj_przyrzadu;
+            textBoxNrfabrycznyPrzyrzadu.Text = przyrzadBUS.VO.Nr_fabryczny_przyrzadu;
+            textBoxNrSystemowyPrzyrzadu.Text = przyrzadBUS.VO.Nr_systemowy_przyrzadu;
+            richTextBoxDaneProducentaPrzyrzadu.Text = przyrzadBUS.VO.Dane_producenta_przyrzadu;
+            //data przechowywana w bazie jako rok mc i dzień
+            dateTimePickerDataOstPrzegladuPrzyrzadu.Value = new DateTime(przyrzadBUS.VO.Rok_ost_przeg_przyrzadu, przyrzadBUS.VO.Mc_ost_przeg_przyrzadu, przyrzadBUS.VO.Dz_ost_przeg_przyrzadu);
+            comboBoxOpiekunPrzyrzadu.Text = przyrzadBUS.VO.Opiekun_przyrzadu;
+
+        }
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM

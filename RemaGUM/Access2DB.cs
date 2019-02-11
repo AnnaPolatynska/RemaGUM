@@ -7514,7 +7514,7 @@ namespace nsAccess2DB
         /// Dowolne zapytanie z formularza.
         /// </summary>
         /// <param name="query">The query.</param>
-        public void selectQuery(string query)
+        public void SelectQuery(string query)
         {
             FillTable(_DAO.SelectQuery(query));
         }//selectQuery
@@ -7573,9 +7573,13 @@ namespace nsAccess2DB
                 VOi.Rodzaj_przyrzadu = dr["Rodzaj_przyrzadu"].ToString();
                 VOi.Nr_fabryczny_przyrzadu = dr["Nr_fabryczny_przyrzadu"].ToString();
                 VOi.Nr_systemowy_przyrzadu = dr["Nr_systemowy_przyrzadu"].ToString();
-                VOi.Dane_producenta_przyrzadu = dr["Dane_producenta_przyrzadu "].ToString();
+                VOi.Dane_producenta_przyrzadu = dr["Dane_producenta_przyrzadu"].ToString();
                 VOi.Nazwa_stanowiska = dr["Nazwa_stanowiska"].ToString();
-                VOi.Data_ost_przeg_przyrzadu = int.Parse(dr["Data_ost_przeg_przyrzadu"].ToString());
+                try
+                {
+                    VOi.Data_ost_przeg_przyrzadu = int.Parse(dr["Data_ost_przeg_przyrzadu"].ToString());
+                }
+                catch { }
                 VOi.Rok_ost_przeg_przyrzadu = int.Parse(dr["Rok_ost_przeg_przyrzadu"].ToString());
                 VOi.Mc_ost_przeg_przyrzadu = int.Parse(dr["Mc_ost_przeg_przyrzadu"].ToString());
                 VOi.Dz_ost_przeg_przyrzadu = int.Parse(dr["Dz_ost_przeg_przyrzadu"].ToString());
