@@ -254,7 +254,7 @@
             this.groupBoxSort = new System.Windows.Forms.GroupBox();
             this.radioButtonOstatniPrzegladPrzyrzadu = new System.Windows.Forms.RadioButton();
             this.radioButtonNazwaPrzyrzadu = new System.Windows.Forms.RadioButton();
-            this.radioButtonNrPrzyrzadu = new System.Windows.Forms.RadioButton();
+            this.radioButtonNrSystemowyPrzyrzadu = new System.Windows.Forms.RadioButton();
             this.radioButtonTypPrzyrzadu = new System.Windows.Forms.RadioButton();
             this.groupBoxStandData = new System.Windows.Forms.GroupBox();
             this.labelSystemNumber = new System.Windows.Forms.Label();
@@ -2916,7 +2916,7 @@
             this.groupBoxSort.BackColor = System.Drawing.Color.Bisque;
             this.groupBoxSort.Controls.Add(this.radioButtonOstatniPrzegladPrzyrzadu);
             this.groupBoxSort.Controls.Add(this.radioButtonNazwaPrzyrzadu);
-            this.groupBoxSort.Controls.Add(this.radioButtonNrPrzyrzadu);
+            this.groupBoxSort.Controls.Add(this.radioButtonNrSystemowyPrzyrzadu);
             this.groupBoxSort.Controls.Add(this.radioButtonTypPrzyrzadu);
             this.groupBoxSort.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
             this.groupBoxSort.ForeColor = System.Drawing.Color.Black;
@@ -2939,6 +2939,7 @@
             this.radioButtonOstatniPrzegladPrzyrzadu.TabIndex = 6;
             this.radioButtonOstatniPrzegladPrzyrzadu.Text = "Ostatni przegląd";
             this.radioButtonOstatniPrzegladPrzyrzadu.UseVisualStyleBackColor = false;
+            this.radioButtonOstatniPrzegladPrzyrzadu.CheckedChanged += new System.EventHandler(this.radioButtonOstatniPrzegladPrzyrzadu_CheckedChanged);
             // 
             // radioButtonNazwaPrzyrzadu
             // 
@@ -2952,19 +2953,21 @@
             this.radioButtonNazwaPrzyrzadu.TabIndex = 4;
             this.radioButtonNazwaPrzyrzadu.Text = "Nazwa";
             this.radioButtonNazwaPrzyrzadu.UseVisualStyleBackColor = false;
+            this.radioButtonNazwaPrzyrzadu.CheckedChanged += new System.EventHandler(this.radioButtonNazwaPrzyrzadu_CheckedChanged);
             // 
-            // radioButtonNrPrzyrzadu
+            // radioButtonNrSystemowyPrzyrzadu
             // 
-            this.radioButtonNrPrzyrzadu.AutoSize = true;
-            this.radioButtonNrPrzyrzadu.BackColor = System.Drawing.Color.Bisque;
-            this.radioButtonNrPrzyrzadu.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.radioButtonNrPrzyrzadu.ForeColor = System.Drawing.Color.Black;
-            this.radioButtonNrPrzyrzadu.Location = new System.Drawing.Point(161, 21);
-            this.radioButtonNrPrzyrzadu.Name = "radioButtonNrPrzyrzadu";
-            this.radioButtonNrPrzyrzadu.Size = new System.Drawing.Size(93, 24);
-            this.radioButtonNrPrzyrzadu.TabIndex = 2;
-            this.radioButtonNrPrzyrzadu.Text = "Nr fabryczny";
-            this.radioButtonNrPrzyrzadu.UseVisualStyleBackColor = false;
+            this.radioButtonNrSystemowyPrzyrzadu.AutoSize = true;
+            this.radioButtonNrSystemowyPrzyrzadu.BackColor = System.Drawing.Color.Bisque;
+            this.radioButtonNrSystemowyPrzyrzadu.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonNrSystemowyPrzyrzadu.ForeColor = System.Drawing.Color.Black;
+            this.radioButtonNrSystemowyPrzyrzadu.Location = new System.Drawing.Point(161, 21);
+            this.radioButtonNrSystemowyPrzyrzadu.Name = "radioButtonNrSystemowyPrzyrzadu";
+            this.radioButtonNrSystemowyPrzyrzadu.Size = new System.Drawing.Size(102, 24);
+            this.radioButtonNrSystemowyPrzyrzadu.TabIndex = 2;
+            this.radioButtonNrSystemowyPrzyrzadu.Text = "Nr systemowy";
+            this.radioButtonNrSystemowyPrzyrzadu.UseVisualStyleBackColor = false;
+            this.radioButtonNrSystemowyPrzyrzadu.CheckedChanged += new System.EventHandler(this.radioButtonNrSystemowyPrzyrzadu_CheckedChanged);
             // 
             // radioButtonTypPrzyrzadu
             // 
@@ -2978,6 +2981,7 @@
             this.radioButtonTypPrzyrzadu.TabIndex = 0;
             this.radioButtonTypPrzyrzadu.Text = "Typ";
             this.radioButtonTypPrzyrzadu.UseVisualStyleBackColor = false;
+            this.radioButtonTypPrzyrzadu.CheckedChanged += new System.EventHandler(this.radioButtonTypPrzyrzadu_CheckedChanged);
             // 
             // groupBoxStandData
             // 
@@ -3651,7 +3655,7 @@
         private System.Windows.Forms.GroupBox groupBoxSort;
         private System.Windows.Forms.RadioButton radioButtonOstatniPrzegladPrzyrzadu;
         private System.Windows.Forms.RadioButton radioButtonNazwaPrzyrzadu;
-        private System.Windows.Forms.RadioButton radioButtonNrPrzyrzadu;
+        private System.Windows.Forms.RadioButton radioButtonNrSystemowyPrzyrzadu;
         private System.Windows.Forms.RadioButton radioButtonTypPrzyrzadu;
         private System.Windows.Forms.GroupBox groupBoxStandData;
         private System.Windows.Forms.Label labelSystemNumber;

@@ -699,6 +699,8 @@ namespace RemaGUM
             // --------------------------------Zakładka Przyrzad.
             if (v.SelectedIndex == 5)
             {
+                radioButtonNazwaPrzyrzadu.Checked = true;
+
                 WypelnijlistBoxPrzyrzady();
                 if (listBoxPrzyrzady.Items.Count > 0)
                 {
@@ -3947,6 +3949,10 @@ namespace RemaGUM
         }//buttonSzukajDysponent_Click
 
         // TODO // // // // // // // // // // // // // // // // // // // // ZAKŁADKA PRZYRZĄD.
+
+        /// <summary>
+        /// Wypełnia danymi 
+        /// </summary>
         private void WypelnijlistBoxPrzyrzady()
         {
             nsAccess2DB.PrzyrzadBUS przyrzadBUS = new nsAccess2DB.PrzyrzadBUS(_connString);
@@ -3961,7 +3967,9 @@ namespace RemaGUM
         }// WypelnijlistBoxPrzyrzady()
 
         
-
+        /// <summary>
+        /// Czyści formularz Przyrząd
+        /// </summary>
         private void CzyscDanePrzyrzadu()
         {
             toolStripStatusLabelPrzyrzadu.Text = "";
@@ -3977,24 +3985,139 @@ namespace RemaGUM
 
         }//CzyscDanePrzyrzadu()
 
+        /// <summary>
+        /// Obsługa zmiany indeksu listy Przyrządów.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBoxPrzyrzady_SelectedIndexChanged(object sender, EventArgs e)
         {
             nsAccess2DB.PrzyrzadBUS przyrzadBUS = new nsAccess2DB.PrzyrzadBUS(_connString);
 
-            przyrzadBUS.Select();
-            przyrzadBUS.idx = listBoxPrzyrzady.SelectedIndex;
+            if (radioButtonNazwaPrzyrzadu.Checked)
+            {
+                przyrzadBUS.SelectQuery("SELECT * FROM Przyrzad ORDER BY Nazwa_przyrzadu ASC;");
+                przyrzadBUS.idx = listBoxPrzyrzady.SelectedIndex;
+            }
+            else if (radioButtonTypPrzyrzadu.Checked)
+            {
+                przyrzadBUS.SelectQuery("SELECT * FROM Przyrzad ORDER BY Typ_przyrzadu ASC;");
+                przyrzadBUS.idx = listBoxPrzyrzady.SelectedIndex;
+            }
+            else if (radioButtonNrSystemowyPrzyrzadu.Checked)
+            {
+                przyrzadBUS.SelectQuery("SELECT * FROM Przyrzad ORDER BY Nr_systemowy_przyrzadu ASC;");
+                przyrzadBUS.idx = listBoxPrzyrzady.SelectedIndex;
+            }
+            else if (radioButtonOstatniPrzegladPrzyrzadu.Checked)
+            {
+                przyrzadBUS.SelectQuery("SELECT * FROM Przyrzad ORDER BY Data_ost_przeg_przyrzadu ASC;");
+                przyrzadBUS.idx = listBoxPrzyrzady.SelectedIndex;
+            }
+            try
+            {
+                textBoxNazwaPrzyrzadu.Text = przyrzadBUS.VO.Nazwa_przyrzadu;
+                textBoxTypPrzyrzadu.Text = przyrzadBUS.VO.Typ_przyrzadu;
+                textBoxRodzajPrzyrzadu.Text = przyrzadBUS.VO.Rodzaj_przyrzadu;
+                textBoxNrfabrycznyPrzyrzadu.Text = przyrzadBUS.VO.Nr_fabryczny_przyrzadu;
+                textBoxNrSystemowyPrzyrzadu.Text = przyrzadBUS.VO.Nr_systemowy_przyrzadu;
+                richTextBoxDaneProducentaPrzyrzadu.Text = przyrzadBUS.VO.Dane_producenta_przyrzadu;
+                //data przechowywana w bazie jako rok mc i dzień
+                dateTimePickerDataOstPrzegladuPrzyrzadu.Value = new DateTime(przyrzadBUS.VO.Rok_ost_przeg_przyrzadu, przyrzadBUS.VO.Mc_ost_przeg_przyrzadu, przyrzadBUS.VO.Dz_ost_przeg_przyrzadu);
+                comboBoxOpiekunPrzyrzadu.Text = przyrzadBUS.VO.Opiekun_przyrzadu;
+            }
+            catch { }
+        }// listBoxPrzyrzady_SelectedIndexChanged
 
-            textBoxNazwaPrzyrzadu.Text = przyrzadBUS.VO.Nazwa_przyrzadu;
-            textBoxTypPrzyrzadu.Text = przyrzadBUS.VO.Typ_przyrzadu;
-            textBoxRodzajPrzyrzadu.Text = przyrzadBUS.VO.Rodzaj_przyrzadu;
-            textBoxNrfabrycznyPrzyrzadu.Text = przyrzadBUS.VO.Nr_fabryczny_przyrzadu;
-            textBoxNrSystemowyPrzyrzadu.Text = przyrzadBUS.VO.Nr_systemowy_przyrzadu;
-            richTextBoxDaneProducentaPrzyrzadu.Text = przyrzadBUS.VO.Dane_producenta_przyrzadu;
-            //data przechowywana w bazie jako rok mc i dzień
-            dateTimePickerDataOstPrzegladuPrzyrzadu.Value = new DateTime(przyrzadBUS.VO.Rok_ost_przeg_przyrzadu, przyrzadBUS.VO.Mc_ost_przeg_przyrzadu, przyrzadBUS.VO.Dz_ost_przeg_przyrzadu);
-            comboBoxOpiekunPrzyrzadu.Text = przyrzadBUS.VO.Opiekun_przyrzadu;
+        // Radio buttony
+        private void radioButtonNazwaPrzyrzadu_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonNazwaPrzyrzadu.Checked)
+            {
+                listBoxPrzyrzady.Items.Clear();
+                CzyscDanePrzyrzadu();
 
-        }
+                nsAccess2DB.PrzyrzadBUS przyrzadBUS = new nsAccess2DB.PrzyrzadBUS(_connString);
+                przyrzadBUS.SelectQuery("SELECT * FROM Przyrzad ORDER BY Nazwa_przyrzadu ASC;");
+
+                while (!przyrzadBUS.eof)
+                {
+                    listBoxPrzyrzady.Items.Add(przyrzadBUS.VO.Nazwa_przyrzadu);
+                    przyrzadBUS.skip();
+                }
+                if (listBoxPrzyrzady.Items.Count > 0)
+                {
+                    listBoxPrzyrzady.SelectedIndex = 0;
+                }
+            }
+        }//radioButtonNazwaPrzyrzadu_CheckedChanged(object sender, EventArgs e)
+
+        private void radioButtonTypPrzyrzadu_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonTypPrzyrzadu.Checked)
+            {
+                listBoxPrzyrzady.Items.Clear();
+                CzyscDanePrzyrzadu();
+
+                nsAccess2DB.PrzyrzadBUS przyrzadBUS = new nsAccess2DB.PrzyrzadBUS(_connString);
+                przyrzadBUS.SelectQuery("SELECT * FROM Przyrzad ORDER BY Typ_przyrzadu ASC;");
+
+                while (!przyrzadBUS.eof)
+                {
+                    listBoxPrzyrzady.Items.Add(przyrzadBUS.VO.Nazwa_przyrzadu + " " + przyrzadBUS.VO.Typ_przyrzadu);
+                    przyrzadBUS.skip();
+                }
+                if (listBoxPrzyrzady.Items.Count > 0)
+                {
+                    listBoxPrzyrzady.SelectedIndex = 0;
+                }
+            }
+        }// radioButtonTypPrzyrzadu_CheckedChanged(object sender, EventArgs e)
+
+        private void radioButtonOstatniPrzegladPrzyrzadu_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonOstatniPrzegladPrzyrzadu.Checked)
+            {
+                listBoxPrzyrzady.Items.Clear();
+                CzyscDanePrzyrzadu();
+
+                nsAccess2DB.PrzyrzadBUS przyrzadBUS = new nsAccess2DB.PrzyrzadBUS(_connString);
+                przyrzadBUS.SelectQuery("SELECT * FROM Przyrzad ORDER BY Data_ost_przeg_przyrzadu ASC;");
+
+                while (!przyrzadBUS.eof)
+                {
+                    listBoxPrzyrzady.Items.Add(przyrzadBUS.VO.Nazwa_przyrzadu + " " +przyrzadBUS.VO.Dz_ost_przeg_przyrzadu +"-"+ przyrzadBUS.VO.Mc_ost_przeg_przyrzadu +"-"+ przyrzadBUS.VO.Rok_ost_przeg_przyrzadu);
+                    przyrzadBUS.skip();
+                }
+                if (listBoxPrzyrzady.Items.Count > 0)
+                {
+                    listBoxPrzyrzady.SelectedIndex = 0;
+                }
+            }
+        }// radioButtonOstatniPrzegladPrzyrzadu_CheckedChanged(object sender, EventArgs e)
+
+        private void radioButtonNrSystemowyPrzyrzadu_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonNrSystemowyPrzyrzadu.Checked)
+            {
+                listBoxPrzyrzady.Items.Clear();
+                CzyscDanePrzyrzadu();
+
+                nsAccess2DB.PrzyrzadBUS przyrzadBUS = new nsAccess2DB.PrzyrzadBUS(_connString);
+                przyrzadBUS.SelectQuery("SELECT * FROM Przyrzad ORDER BY Nr_systemowy_przyrzadu ASC;");
+
+                while (!przyrzadBUS.eof)
+                {
+                    listBoxPrzyrzady.Items.Add(przyrzadBUS.VO.Nazwa_przyrzadu + " " + przyrzadBUS.VO.Nr_systemowy_przyrzadu);
+                    przyrzadBUS.skip();
+                }
+                if (listBoxPrzyrzady.Items.Count > 0)
+                {
+                    listBoxPrzyrzady.SelectedIndex = 0;
+                }
+            }
+        } // radioButtonNrSystemowyPrzyrzadu_CheckedChanged(object sender, EventArgs e)
+
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM
