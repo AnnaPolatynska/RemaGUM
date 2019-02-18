@@ -769,6 +769,8 @@ namespace RemaGUM
                 textBoxRok_produkcji.Text = string.Empty;
                 richTextBoxProducent.Text = string.Empty;
 
+                richTextBoxUwaga.Text = string.Empty;
+
                 linkLabelNazwaZdjecia.Text = string.Empty;
                 pictureBox1.Image = null;
                 _zawartoscPliku = new byte[] { };
@@ -1400,7 +1402,7 @@ namespace RemaGUM
             // dezaktywacja list boxa
             listBoxMaszyny.Enabled = false; 
             listBoxMaszyny.BackColor = Color.Bisque;
-
+            
             //dezaktywacja pola wyszukiwania i przycisku wyszukaj
             textBoxWyszukiwanie.Enabled = false;
             textBoxWyszukiwanie.BackColor = Color.Bisque;
@@ -1504,11 +1506,33 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonZapisz_Click(object sender, EventArgs e)
         {
-
-
             if (textBoxNazwa.Text == string.Empty)
             {
                 MessageBox.Show("Uzupełnij nazwę maszyny.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (textBoxTyp.Text == string.Empty)
+            {
+                MessageBox.Show("Uzupełnij typ maszyny.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (textBoxNr_inwentarzowy.Text == string.Empty)
+            {
+                MessageBox.Show("Uzupełnij nr inwentarzowy maszyny.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (textBoxRok_produkcji.Text == string.Empty)
+            {
+                MessageBox.Show("Uzupełnij rok produkcji maszyny.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (textBoxNr_pom.Text == string.Empty)
+            {
+                MessageBox.Show("Uzupełnij numer pomieszczenia.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -1540,7 +1564,9 @@ namespace RemaGUM
                 maszynyVO.Typ = textBoxTyp.Text.Trim();
                 maszynyVO.Nr_inwentarzowy = textBoxNr_inwentarzowy.Text.Trim();
                 maszynyVO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
+
                 maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
+
                 maszynyVO.Producent = richTextBoxProducent.Text.Trim();
 
                 maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
@@ -1550,13 +1576,8 @@ namespace RemaGUM
 
                 maszynyVO.Nazwa_dysponent = dysponentVO.Dysp_nazwisko + dysponentVO.Dysp_imie;
                 maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
-
-                if (textBoxNr_pom.Text == string.Empty)
-                {
-                    pokazKomunikat("Uzupełnij numer pomieszczenia.");
-                }
                 maszynyVO.Nr_pom = textBoxNr_pom.Text;
-
+                
                 maszynyVO.Dzial = comboBoxDzial.Text;
                 maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
                 maszynyVO.Rok_ost_przeg = dateTimePickerData_ost_przegl.Value.Year;
