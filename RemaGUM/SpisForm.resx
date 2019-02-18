@@ -120,6 +120,9 @@
   <metadata name="statusStripMaterialy.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>358, 17</value>
   </metadata>
+  <metadata name="statusStripMaterialy.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>358, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonSzukaj_mat.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -182,6 +185,18 @@
         AAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="statusStripOperator.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>518, 17</value>
+  </metadata>
+  <metadata name="statusStripDysponent.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>676, 17</value>
+  </metadata>
+  <metadata name="statusStripDostawca.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>844, 17</value>
+  </metadata>
+  <metadata name="statusStripPrzyrzad.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1007, 18</value>
+  </metadata>
   <metadata name="statusStripOperator.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>518, 17</value>
   </metadata>
@@ -255,7 +270,7 @@
   <data name="buttonSzukajPrzyrzad.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACQAAAAjCAYAAAD8BaggAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAVASURBVFhHzVdbbFRFGK4xRkULyE3BUi6igr5gTIwxSgIx
+        YQUAAAAJcEhZcwAADr4AAA6+AepCscAAAAVASURBVFhHzVdbbFRFGK4xRkULyE3BUi6igr5gTIwxSgIx
         EBOfjIkvRmL0QSItbYFeodRATItN1SYaMBJ4wIQIKhpEQEwMQQy1lGqriFZaCk1tC71td/fsnJnz+c3M
         2XZruxe7DfhtJmfnnzNnvvnnv00G/mfIgKcAz++lgIiSUFd/Bhq/wFD9AT4PQ3ZehPTH00UGlAPdpAyb
         J1QEQgT8YQuXTZzaBVH1JLwNdwMbZ7DNZJtlW8E9UHnTIatXQJ7ZaydNECTkQrpBwBCKkhJUmuKP4m8r

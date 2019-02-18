@@ -97,7 +97,9 @@ namespace RemaGUM
         /// The interwal przegladow
         /// </summary>
         private int _interwalPrzegladow = 365;    //w dniach = 1 rok
-        
+
+        public System.Drawing.Image ErrorImage { get; set; }
+
         private nsAccess2DB.OperatorBUS _OperatorBUS;
         private nsAccess2DB.MaszynyBUS _maszynyBUS;
         private nsAccess2DB.MaterialyBUS _materialyBUS;
@@ -240,6 +242,8 @@ namespace RemaGUM
                 get { return _historyInterval; }
                 set { _historyInterval = value; }
             }
+
+
         }//class settings
 
 
@@ -867,8 +871,9 @@ namespace RemaGUM
                 textBoxNr_fabryczny.Text = maszynyBUS.VO.Nr_fabryczny;
                 textBoxRok_produkcji.Text = maszynyBUS.VO.Rok_produkcji;
                 richTextBoxProducent.Text = maszynyBUS.VO.Producent;
+                textBoxNr_pom.Text = maszynyBUS.VO.Nr_pom;
 
-               // linkLabelNazwaZdjecia.Text = maszynyBUS.VO.Zdjecie;// zdjęcie nazwa w linku
+                // linkLabelNazwaZdjecia.Text = maszynyBUS.VO.Zdjecie;// zdjęcie nazwa w linku
                 if (File.Exists(maszynyBUS.VO.Zdjecie))
                 {
                     File.Delete(maszynyBUS.VO.Zdjecie);
@@ -878,12 +883,7 @@ namespace RemaGUM
                 _zawartoscPliku = maszynyBUS.VO.Zawartosc_pliku; // zawartość zdjęcia.
                 pokazZdjecie(linkLabelNazwaZdjecia.Text); // zmiana zdjęcia przy zmianie indeksu maszyny.
                 
-
-
-
                 comboBoxDysponent.Text = maszynyBUS.VO.Nazwa_dysponent;  // wypełnia dysponenta
-
-                textBoxNr_pom.Text = maszynyBUS.VO.Nr_pom;
 
                 comboBoxDzial.Text = maszynyBUS.VO.Dzial;
                 textBoxNr_prot_BHP.Text = maszynyBUS.VO.Nr_prot_BHP;
@@ -1171,10 +1171,10 @@ namespace RemaGUM
                     listBoxMaszyny.Items.Add(maszynyBUS.VO.Nr_pom + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
-                //if (listBoxMaszyny.Items.Count > 0)
-                //{
-                //    listBoxMaszyny.SelectedIndex = 0;
-                //}
+                if (listBoxMaszyny.Items.Count > 0)
+                {
+                    listBoxMaszyny.SelectedIndex = 0;
+                }
             }
         }//radioButton_Nr_Pomieszczenia_CheckedChanged
 
@@ -1767,12 +1767,18 @@ namespace RemaGUM
                 docInDb.zdjecieNazwa = maszynyBUS.VO.Zdjecie;
                 docInDb.zapiszNaNaped(maszynyBUS.VO.Zawartosc_pliku);
                 string zdjecie = _dirNazwa + "\\" + maszynyBUS.VO.Zdjecie;
+
                 if (File.Exists(zdjecie))
                 {
                     Bitmap bmp = (Bitmap)Bitmap.FromFile(zdjecie);
 
                     pictureBox1.Image = Bitmap.FromFile(zdjecie);
                     return;
+                }
+                else
+                {
+                    pictureBox1.Image = ErrorImage; // brak zdjęcia 
+                    //pokazKomunikat("Brak zdjęcia");
                 }
             }
             catch (Exception ex)
@@ -3966,7 +3972,9 @@ namespace RemaGUM
             }
         }// WypelnijlistBoxPrzyrzady()
 
-        
+        private void OdswiezListePrzyrzadow()
+        {
+        }
         /// <summary>
         /// Czyści formularz Przyrząd
         /// </summary>
@@ -3982,6 +3990,9 @@ namespace RemaGUM
             richTextBoxDaneProducentaPrzyrzadu.Text = string.Empty;
             dateTimePickerDataOstPrzegladuPrzyrzadu.Text = string.Empty;
             comboBoxOpiekunPrzyrzadu.Text = string.Empty;
+
+            pictureBoxZdjeciePrzyrzadu.Image = null;
+            
 
         }//CzyscDanePrzyrzadu()
 
@@ -4016,6 +4027,8 @@ namespace RemaGUM
             }
             try
             {
+                listBoxPrzyrzady.Tag = przyrzadBUS.VO.Identyfikator;
+
                 textBoxNazwaPrzyrzadu.Text = przyrzadBUS.VO.Nazwa_przyrzadu;
                 textBoxTypPrzyrzadu.Text = przyrzadBUS.VO.Typ_przyrzadu;
                 textBoxRodzajPrzyrzadu.Text = przyrzadBUS.VO.Rodzaj_przyrzadu;
@@ -4025,9 +4038,79 @@ namespace RemaGUM
                 //data przechowywana w bazie jako rok mc i dzień
                 dateTimePickerDataOstPrzegladuPrzyrzadu.Value = new DateTime(przyrzadBUS.VO.Rok_ost_przeg_przyrzadu, przyrzadBUS.VO.Mc_ost_przeg_przyrzadu, przyrzadBUS.VO.Dz_ost_przeg_przyrzadu);
                 comboBoxOpiekunPrzyrzadu.Text = przyrzadBUS.VO.Opiekun_przyrzadu;
+
+                if (File.Exists(przyrzadBUS.VO.Zdjecie_przyrzadu))
+                {
+                    File.Delete(przyrzadBUS.VO.Zdjecie_przyrzadu);
+                }
+
+                _zawartoscPliku = przyrzadBUS.VO.Zawartosc_pliku_zdj_przyrzadu; // zawartość zdjęcia.
+                
+
             }
             catch { }
         }// listBoxPrzyrzady_SelectedIndexChanged
+
+        // zdjęcie przyrządu
+
+        private void PokazZdjeciePrzyrzadu(string ZdjeciePrzyrzadu)
+        {
+            try
+            {
+                if (!Directory.Exists(_dirNazwa))
+                {
+                    Directory.CreateDirectory(_dirNazwa);
+                }
+                nsAccess2DB.PrzyrzadBUS przyrzadBUS = new nsAccess2DB.PrzyrzadBUS(_connString);
+
+                if (radioButtonNazwaPrzyrzadu.Checked)
+                {
+                    przyrzadBUS.SelectQuery("SELECT * FROM Przyrzad ORDER BY Nazwa_przyrzadu ASC;");
+                    przyrzadBUS.idx = listBoxPrzyrzady.SelectedIndex;
+                    toolStripStatusLabelPrzyrzadu.Text = przyrzadBUS.VO.Identyfikator.ToString();
+                }
+                else if (radioButtonTypPrzyrzadu.Checked)
+                {
+                    przyrzadBUS.SelectQuery("SELECT * FROM Przyrzad ORDER BY Typ_przyrzadu ASC;");
+                    przyrzadBUS.idx = listBoxPrzyrzady.SelectedIndex;
+                    toolStripStatusLabelPrzyrzadu.Text = przyrzadBUS.VO.Identyfikator.ToString();
+                }
+                else if (radioButtonNrSystemowyPrzyrzadu.Checked)
+                {
+                    przyrzadBUS.SelectQuery("SELECT * FROM Przyrzad ORDER BY Nr_systemowy_przyrzadu ASC;");
+                    przyrzadBUS.idx = listBoxPrzyrzady.SelectedIndex;
+                    toolStripStatusLabelPrzyrzadu.Text = przyrzadBUS.VO.Identyfikator.ToString();
+                }
+                else if (radioButtonOstatniPrzegladPrzyrzadu.Checked)
+                {
+                    przyrzadBUS.SelectQuery("SELECT * FROM Przyrzad ORDER BY Data_ost_przeg_przyrzadu ASC;");
+                    przyrzadBUS.idx = listBoxPrzyrzady.SelectedIndex;
+                    toolStripStatusLabelPrzyrzadu.Text = przyrzadBUS.VO.Identyfikator.ToString();
+                }
+
+                przyrzadBUS.idx = listBoxPrzyrzady.SelectedIndex;
+                listBoxPrzyrzady.Tag = przyrzadBUS.VO.Identyfikator;
+
+                nsDocInDb.docInDb docInDb = new nsDocInDb.docInDb();
+                docInDb.dirNazwa = _dirNazwa;
+                docInDb.zdjecieNazwa = przyrzadBUS.VO.Zdjecie_przyrzadu;
+                docInDb.zapiszNaNaped(przyrzadBUS.VO.Zawartosc_pliku_zdj_przyrzadu);
+                string zdjecie = _dirNazwa + "\\" + przyrzadBUS.VO.Zdjecie_przyrzadu;
+
+                if (File.Exists(zdjecie))
+                {
+                    Bitmap bmp = (Bitmap)Bitmap.FromFile(zdjecie);
+                    pictureBoxZdjeciePrzyrzadu.Image = Bitmap.FromFile(zdjecie);
+                    return;
+                }
+            }
+            catch ( Exception ex)
+            {
+                Cursor = Cursors.Default;
+                MessageBox.Show("Brak wgranego zdjęcia przyrządu lub problem z prezentacją zdjęcia. Błąd: " + ex.Message, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            Cursor = Cursors.Default;
+        }//PokazZdjeciePrzyrzadu
 
         // Radio buttony
         private void radioButtonNazwaPrzyrzadu_CheckedChanged(object sender, EventArgs e)
@@ -4118,6 +4201,10 @@ namespace RemaGUM
             }
         } // radioButtonNrSystemowyPrzyrzadu_CheckedChanged(object sender, EventArgs e)
 
+        private void buttonSzukajPrzyrzad_Click(object sender, EventArgs e)
+        {
+
+        }
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM

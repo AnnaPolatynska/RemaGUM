@@ -1519,6 +1519,9 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.ErrorImage = global::RemaGUM.Properties.Resources.LogoGUM2018;
+            this.pictureBox1.Image = global::RemaGUM.Properties.Resources.ikona2;
+            this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(862, 69);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(372, 422);
@@ -2901,6 +2904,7 @@
             this.buttonSzukajPrzyrzad.Size = new System.Drawing.Size(35, 34);
             this.buttonSzukajPrzyrzad.TabIndex = 4;
             this.buttonSzukajPrzyrzad.UseVisualStyleBackColor = false;
+            this.buttonSzukajPrzyrzad.Click += new System.EventHandler(this.buttonSzukajPrzyrzad_Click);
             // 
             // textBoxZnajdzPrzyrzad
             // 
