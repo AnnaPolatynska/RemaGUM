@@ -253,7 +253,10 @@ namespace RemaGUM
         /// <param name="connStr">Połaczenie z bazą.</param>
         public SpisForm()
         {
-            InitializeComponent();
+           
+
+
+                    InitializeComponent();
 
             //połączenie z bazą danych na sztywno
             //nsRest.Rest rest = new nsRest.Rest();
@@ -562,7 +565,27 @@ namespace RemaGUM
             _tt.SetToolTip(buttonAnulujDostawca, "Anulowanie zmiany.");
             _tt.SetToolTip(buttonUsunDostawca, "Usuwa pozycję z bazy.");
 
+
         }//public SpisForm()
+
+        //TODO zahasłować dostęp
+        private void SpisForm_Shown(object sender, EventArgs e)
+        {
+            try
+            {
+                Process[] ps = Process.GetProcessesByName(Application.ProductName);
+
+                if (ps.Length > 1)
+                {
+                    MessageBox.Show("Uwaga! RemaGUM został wcześniej uruchomiony i jest aktywny.", "RemaGUM",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    this.Close();
+                    return;
+                }
+            }
+            catch { }
+        }
 
         // Wyświetla komunikaty chwilowe w programie.
         private void pokazKomunikat(string tresc)
@@ -876,12 +899,11 @@ namespace RemaGUM
                 textBoxNr_pom.Text = maszynyBUS.VO.Nr_pom;
 
                 // linkLabelNazwaZdjecia.Text = maszynyBUS.VO.Zdjecie;// zdjęcie nazwa w linku
+                // wyświetlenie zdjecia przy zmianie indeksu
                 if (File.Exists(maszynyBUS.VO.Zdjecie))
                 {
                     File.Delete(maszynyBUS.VO.Zdjecie);
                 }
-
-               
                 _zawartoscPliku = maszynyBUS.VO.Zawartosc_pliku; // zawartość zdjęcia.
                 pokazZdjecie(linkLabelNazwaZdjecia.Text); // zmiana zdjęcia przy zmianie indeksu maszyny.
                 
@@ -1569,9 +1591,10 @@ namespace RemaGUM
 
                 maszynyVO.Producent = richTextBoxProducent.Text.Trim();
 
-                maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
-                maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
-
+                //pokazuje zdjęcie
+               maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
+               maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
+               
                 dysponentBUS.select();
 
                 maszynyVO.Nazwa_dysponent = dysponentVO.Dysp_nazwisko + dysponentVO.Dysp_imie;
@@ -1611,14 +1634,19 @@ namespace RemaGUM
                     if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
                     {
                         operatorBUS.idx = i;
-                        maszyny_OperatorBUS.insert(maszynyBUS.VO.Identyfikator + 1, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
+                        maszyny_OperatorBUS.insert(maszynyBUS.VO.Identyfikator, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
                     }
                 }
                 listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
                 maszynyBUS.write(maszynyVO);
 
-            }//if - nowy
 
+
+
+
+
+            }//if - nowy
+            
             else if (_statusForm == (int)_status.edycja)
             {
                 try
@@ -1641,6 +1669,7 @@ namespace RemaGUM
                         maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
                         maszynyVO.Producent = richTextBoxProducent.Text.Trim();
 
+                        //pokazuje zdjęcie
                         maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
                         maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
 
@@ -1669,7 +1698,7 @@ namespace RemaGUM
                         maszyny_OperatorBUS.delete(maszynyBUS.VO.Identyfikator);
                         maszyny_OperatorBUS.select(maszynyBUS.VO.Identyfikator);
 
-                        // Zapis operatorów/operatora maszyny przypisanych do maszyny.
+                        //Zapis operatorów/ operatora maszyny przypisanych do maszyny.
                         operatorBUS.select();
                         for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
                         {
@@ -1685,6 +1714,23 @@ namespace RemaGUM
                 catch { };
 
             }//else if - edycja
+            //maszynyBUS.write(maszynyVO);
+            //maszyny_OperatorBUS.delete(maszynyBUS.VO.Identyfikator);
+            //maszyny_OperatorBUS.select(maszynyBUS.VO.Identyfikator);
+            //// Zapis operatorów/operatora maszyny przypisanych do maszyny.
+            //operatorBUS.select();
+            //for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
+            //{
+            //    if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
+            //    {
+            //        operatorBUS.idx = i;
+            //        maszyny_OperatorBUS.insert(maszynyVO.Identyfikator, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
+            //    }
+            //}
+            //listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
+
+
+
 
             WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);
 
@@ -1848,17 +1894,24 @@ namespace RemaGUM
         }//buttonPokazZdj_Click
 
         /// <summary>
+        /// usuwa zdjęcie maszyny.
+        /// </summary>
+        private void UsunZdjecie()
+        {
+            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
+            maszynyBUS.VO.Zdjecie = string.Empty; // nazwa zdjęcia.
+            maszynyBUS.VO.Zawartosc_pliku = new byte[0] { }; // zawartość pliku zdjęcia.
+            linkLabelNazwaZdjecia.Text = string.Empty;
+        }
+
+        /// <summary>
         /// Przycisk Usuń zdjęcie.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void buttonUsunZdj_Click(object sender, EventArgs e)
         {
-            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-            maszynyBUS.VO.Zdjecie = string.Empty; // nazwa zdjęcia.
-            maszynyBUS.VO.Zawartosc_pliku = new byte[0] { }; // zawartość pliku zdjęcia.
-            linkLabelNazwaZdjecia.Text = string.Empty;
-
+            UsunZdjecie();
             pokazKomunikat("Usunięcie zdjęcia nastąpi po wciśnięciu przycisku Zapisz.");
         }//buttonUsunZdj_Click
 

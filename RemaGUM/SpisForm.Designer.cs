@@ -3238,6 +3238,7 @@
             this.toolStrip.Size = new System.Drawing.Size(1267, 45);
             this.toolStrip.TabIndex = 41;
             this.toolStrip.Text = "toolStrip1";
+            this.toolStrip.Enter += new System.EventHandler(this.SpisForm_Shown);
             // 
             // toolStripButtonHelp
             // 
