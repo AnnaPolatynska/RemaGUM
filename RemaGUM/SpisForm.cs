@@ -3262,9 +3262,17 @@ namespace RemaGUM
                 long terminUpr = dateTimePickerDataKoncaUprOp.Value.Ticks - currentDate.Ticks;
                 TimeSpan timeSpan = new TimeSpan(terminUpr);
 
-                if ((timeSpan.Days >= 1) && (timeSpan.Days <=14))
+                if ((timeSpan.Days >= 1) && (timeSpan.Days <= 14))
                 {
-                    richTextBoxUprawnieniaOperatora.Text = ("Uwaga uprawnienia pracownika: " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie + " kończą się w dniu: " + operatorBUS.VO.Rok + "-" + operatorBUS.VO.Mc + "-" + operatorBUS.VO.Dzien +"." );
+                    richTextBoxUprawnieniaOperatora.Text = ("Uwaga uprawnienia pracownika: " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie + " kończą się w dniu: " + operatorBUS.VO.Rok + "-" + operatorBUS.VO.Mc + "-" + operatorBUS.VO.Dzien + ".");
+                }
+                else if (timeSpan.Days <= 0)
+                {
+                    richTextBoxUprawnieniaOperatora.Text = ("Uwaga termin obowiązywania uprawnień pracownika: " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie + " skończyły się w dniu: " + operatorBUS.VO.Rok + "-" + operatorBUS.VO.Mc + "-" + operatorBUS.VO.Dzien + ".");
+                }
+                else
+                {
+                    richTextBoxUprawnieniaOperatora.Text = string.Empty;
                 }
 
                 //wypełnia listę maszyn obsługiwanych przez wybranego operatora - zmiana indeksu operatora ma zmieniać listę podległych mu maszyn.
