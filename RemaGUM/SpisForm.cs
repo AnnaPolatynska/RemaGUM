@@ -1477,6 +1477,11 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonUsun_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Czy na pewno chcesz usunąć maszynę: " + textBoxNazwa.Text + "? ", "RemaGUM", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                goto no;
+            }
+
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             nsAccess2DB.Maszyny_OperatorBUS maszyny_OperatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
             nsAccess2DB.Maszyny_DysponentBUS maszyny_DysponentBUS = new nsAccess2DB.Maszyny_DysponentBUS(_connString);
@@ -1519,6 +1524,8 @@ namespace RemaGUM
 
             WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);
             _statusForm = (int)_status.edycja;
+
+            no:;
         }//buttonUsun_Click
 
         /// <summary>
@@ -1728,17 +1735,9 @@ namespace RemaGUM
             //    }
             //}
             //listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
-
-
-
-
+            
             WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);
-
-            buttonNowa.Enabled = true;
-            buttonZapisz.Enabled = true;
-            buttonAnuluj.Enabled = true;
-            buttonUsun.Enabled = true;
-
+                      
             /// aktywacja list boxa
             listBoxMaszyny.Enabled = true;
             listBoxMaszyny.BackColor = Color.White;
@@ -1913,6 +1912,8 @@ namespace RemaGUM
         {
             UsunZdjecie();
             pokazKomunikat("Usunięcie zdjęcia nastąpi po wciśnięciu przycisku Zapisz.");
+
+
         }//buttonUsunZdj_Click
 
 
@@ -2543,6 +2544,11 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonUsun_mat_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Czy na pewno chcesz usunąć materiał: " + textBoxNazwaMat.Text + "? ", "RemaGUM", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                goto no;
+            }
+
             nsAccess2DB.MaterialyBUS materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
             materialyBUS.delete((int)listBoxMaterialy.Tag);
 
@@ -2553,6 +2559,8 @@ namespace RemaGUM
             AktywujPanelMaterial();
            
             _statusForm = (int)_status.edycja;
+
+            no:;
         }//buttonUsun_mat_Click
 
         /// <summary>
@@ -2860,6 +2868,12 @@ namespace RemaGUM
             OdswiezDostawcowWMaterialach();
             listBoxMaterialy.Enabled = true;
 
+            buttonAnulujMat.Enabled = true;
+            buttonZapiszMat.Enabled = true;
+            buttonUsunMat.Enabled = true;
+            buttonNowaMat.Enabled = true;
+
+
             pokazKomunikat("Pozycja zapisana w bazie");
 
             _statusForm = (int)_status.edycja;
@@ -3122,6 +3136,11 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonUsunDostawca_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Czy na pewno chcesz usunąć dostawcę: " + textBoxNazwaDostawcy.Text + "? ", "RemaGUM", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                goto no;
+            }
+            
             nsAccess2DB.Dostawca_matBUS dostawca_MatBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
             nsAccess2DB.Dostawca_MaterialBUS dostawca_MaterialBUS = new nsAccess2DB.Dostawca_MaterialBUS(_connString);
 
@@ -3132,6 +3151,8 @@ namespace RemaGUM
 
             WypelnijListeDostawcowDanymi();
             _statusForm = (int)_status.edycja;
+
+            no:;
         }//  private void buttonUsunDostawca_Click
 
         // TODO //  //  //  //  //  //  //  //  //  //  //  //  //  //   ZAKŁADKA OPERATORZY MASZYN.
@@ -3603,7 +3624,12 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonUsunOperator_Click(object sender, EventArgs e)
         {
-            nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
+
+            if (MessageBox.Show("Czy na pewno chcesz usunąć operatora: " + textBoxImieOperator.Text + " "+ textBoxNazwiskoOperator.Text + "?", "RemaGUM", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                goto no;
+            }
+                nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
             nsAccess2DB.Maszyny_OperatorBUS maszyny_OperatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
             try
             {
@@ -3622,6 +3648,8 @@ namespace RemaGUM
             comboBoxOperator.SelectedIndex = 1;// odświeża listę operatorów
             comboBoxOperator.SelectedIndex = 0;
             //WypelnijOperatorowDanymi();
+
+            no:;
         }// buttonUsunOperator_Clik
 
         /// <summary>
@@ -3976,6 +4004,11 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonUsunDysponent_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Czy na pewno chcesz usunąć dysponenta: " + textBoxImieDysponent.Text + " " + textBoxNazwiskoDysponent.Text + "? ", "RemaGUM", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                goto no;
+            }
+
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
             nsAccess2DB.Maszyny_DysponentBUS maszyny_DysponentBUS = new nsAccess2DB.Maszyny_DysponentBUS(_connString);
 
@@ -3986,6 +4019,8 @@ namespace RemaGUM
 
             WypelnijDysponentowDanymi();
             _statusForm = (int)_status.edycja;
+
+            no:;
         }// buttonUsunDysponent_Click
 
         /// <summary>
