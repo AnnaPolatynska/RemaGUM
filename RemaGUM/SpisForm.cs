@@ -1847,7 +1847,7 @@ namespace RemaGUM
                     pictureBox1.Image = ErrorImage; // brak zdjęcia 
                     //pokazKomunikat("Brak zdjęcia");
                     buttonPokazZdj.Enabled = true;
-                    buttonUsunZdj.Enabled = false;                   
+                    buttonUsunZdj.Enabled = false;       
                 }
             }
             catch (Exception ex)
@@ -1891,7 +1891,6 @@ namespace RemaGUM
                     maszynyBUS.VO.Zdjecie = fi.Name;// nazwa zdjęcia
 
                     pokazZdjecie(linkLabelNazwaZdjecia.Text); // pokazuje zdjęcie.
-
                     pokazKomunikat("Wgranie zdjęcia nastąpi po wciśnięciu przycisku Zapisz.");
                 }
                 catch (Exception ex)
@@ -3200,10 +3199,12 @@ namespace RemaGUM
             textBoxImieOperator.Text = string.Empty;
             textBoxNazwiskoOperator.Text = string.Empty;
 
-            comboBoxDzialOperator.SelectedIndex = -1;
+            comboBoxDzialOperator.SelectedIndex = -1; 
             comboBoxDzialOperator.Enabled = true;
             comboBoxDzialOperator.SelectedIndex = 0;
             comboBoxDzialOperator.Refresh();
+
+            richTextBoxUprawnieniaOperatora.Text = string.Empty;
 
             textBoxUprawnienieOperator.Text = string.Empty;
             dateTimePickerDataKoncaUprOp.Text = string.Empty;
@@ -3502,7 +3503,25 @@ namespace RemaGUM
                 MessageBox.Show("Proszę uzupełnij rodzaj uprawnień operatora maszyny", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            //komunikat o złej dacie końca uprawnień
+            DateTime currentDate = DateTime.Now;
+            long terminUpr = dateTimePickerDataKoncaUprOp.Value.Ticks - currentDate.Ticks;
+            TimeSpan timeSpan = new TimeSpan(terminUpr);
 
+            if ((timeSpan.Days < 0))
+            {
+                if (MessageBox.Show("Czy chcesz ustawić datę końca uprawnień na datę wcześniejszą niż dzisiejsza.", "RemaGUM", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    goto no;
+                }
+            }
+            else if ((timeSpan.Days == 0))
+            {
+                if (MessageBox.Show("Czy chcesz ustawić datę końca uprawnień na dzień dzisiejszy.", "RemaGUM", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    goto no;
+                }
+            }
             nsAccess2DB.OperatorBUS operatorBUS = new nsAccess2DB.OperatorBUS(_connString);
             nsAccess2DB.Maszyny_OperatorBUS maszyny_operatorBUS = new nsAccess2DB.Maszyny_OperatorBUS(_connString);
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
@@ -3521,27 +3540,12 @@ namespace RemaGUM
                 operatorVO.Op_nazwisko = textBoxNazwiskoOperator.Text.Trim();
                 operatorVO.Dzial = comboBoxDzialOperator.Text.Trim();
                 operatorVO.Uprawnienie = textBoxUprawnienieOperator.Text.Trim();
+                operatorVO.Rok = dateTimePickerDataKoncaUprOp.Value.Year;
+                operatorVO.Mc = dateTimePickerDataKoncaUprOp.Value.Month;
+                operatorVO.Dzien = dateTimePickerDataKoncaUprOp.Value.Day;
+                //operatorVO.Data_konca_upr = int.Parse(operatorVO.Rok.ToString() + operatorVO.Mc.ToString("00") + operatorVO.Dzien.ToString("00"));
+                operatorVO.Data_konca_upr = dateTimePickerDataKoncaUprOp.Value;
 
-                //komunikat o złej dacie końca uprawnień
-                DateTime currentDate = DateTime.Now;
-                long terminUpr = dateTimePickerDataKoncaUprOp.Value.Ticks - currentDate.Ticks;
-                TimeSpan timeSpan = new TimeSpan(terminUpr);
-
-                if ((timeSpan.Days >= 0))
-                {
-                    if (MessageBox.Show("Uwaga nie możesz ustawić datę końca uprawnień pracownika: " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie + " jako datę wcześniejszą niż data obecna.", "RemaGUM", MessageBoxButtons.YesNo) == DialogResult.No)
-                    {
-                        goto no;
-                    }
-                }
-                else
-                {
-                    operatorVO.Rok = dateTimePickerDataKoncaUprOp.Value.Year;
-                    operatorVO.Mc = dateTimePickerDataKoncaUprOp.Value.Month;
-                    operatorVO.Dzien = dateTimePickerDataKoncaUprOp.Value.Day;
-                    //operatorVO.Data_konca_upr = int.Parse(operatorVO.Rok.ToString() + operatorVO.Mc.ToString("00") + operatorVO.Dzien.ToString("00"));
-                    operatorVO.Data_konca_upr = dateTimePickerDataKoncaUprOp.Value;
-                }
                 //TODO komunikat o zbliżającej się dacie końca uprawnień operatora. Ustal jak być powinno.
                 //DateTime dt = new DateTime(dateTimePickerDataKoncaUprOp.Value.Ticks);
                 //dt = dt.AddDays(31);
@@ -3554,7 +3558,6 @@ namespace RemaGUM
 
                 listBoxOperator.SelectedIndex = operatorBUS.getIdx(operatorBUS.VO.Identyfikator); // ustawia zaznaczenie w tab operator.
 
-                
             }// if nowy
             else if (_statusForm == (int)_status.edycja)
             {
@@ -3611,8 +3614,8 @@ namespace RemaGUM
             
             pokazKomunikat("Pozycja zapisana w bazie");
 
-            no:;
             _statusForm = (int)_status.edycja;
+            no:;
         }// buttonZapiszOperator_Click
 
         /// <summary>

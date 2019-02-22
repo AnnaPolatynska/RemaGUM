@@ -1135,7 +1135,7 @@
             // 
             this.buttonPokazZdj.BackColor = System.Drawing.Color.Linen;
             this.buttonPokazZdj.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonPokazZdj.Location = new System.Drawing.Point(881, 497);
+            this.buttonPokazZdj.Location = new System.Drawing.Point(862, 497);
             this.buttonPokazZdj.Name = "buttonPokazZdj";
             this.buttonPokazZdj.Size = new System.Drawing.Size(130, 28);
             this.buttonPokazZdj.TabIndex = 49;
@@ -1145,21 +1145,24 @@
             // 
             // linkLabelNazwaZdjecia
             // 
+            this.linkLabelNazwaZdjecia.ActiveLinkColor = System.Drawing.Color.Bisque;
             this.linkLabelNazwaZdjecia.AutoSize = true;
+            this.linkLabelNazwaZdjecia.DisabledLinkColor = System.Drawing.Color.Bisque;
             this.linkLabelNazwaZdjecia.LinkColor = System.Drawing.Color.Bisque;
-            this.linkLabelNazwaZdjecia.Location = new System.Drawing.Point(1058, 465);
+            this.linkLabelNazwaZdjecia.Location = new System.Drawing.Point(1010, 501);
             this.linkLabelNazwaZdjecia.Name = "linkLabelNazwaZdjecia";
             this.linkLabelNazwaZdjecia.Size = new System.Drawing.Size(88, 20);
             this.linkLabelNazwaZdjecia.TabIndex = 48;
             this.linkLabelNazwaZdjecia.TabStop = true;
             this.linkLabelNazwaZdjecia.Text = "Nazwa zdjęcia";
+            this.linkLabelNazwaZdjecia.Visible = false;
             this.linkLabelNazwaZdjecia.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNazwaZdjecia_LinkClicked);
             // 
             // buttonUsunZdj
             // 
             this.buttonUsunZdj.BackColor = System.Drawing.Color.Linen;
             this.buttonUsunZdj.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonUsunZdj.Location = new System.Drawing.Point(1081, 497);
+            this.buttonUsunZdj.Location = new System.Drawing.Point(1104, 497);
             this.buttonUsunZdj.Name = "buttonUsunZdj";
             this.buttonUsunZdj.Size = new System.Drawing.Size(130, 28);
             this.buttonUsunZdj.TabIndex = 47;
@@ -1519,8 +1522,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.ErrorImage = global::RemaGUM.Properties.Resources.LogoGUM2018;
-            this.pictureBox1.Image = global::RemaGUM.Properties.Resources.ikona2;
+            this.pictureBox1.ErrorImage = null;
             this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(862, 69);
             this.pictureBox1.Name = "pictureBox1";
