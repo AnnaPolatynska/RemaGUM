@@ -1112,7 +1112,7 @@ namespace RemaGUM
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nr_inwentarzowy ASC;");
                 while (!maszynyBUS.eof)
                 {
-                    listBoxMaszyny.Items.Add(maszynyBUS.VO.Nr_inwentarzowy + " -> " + maszynyBUS.VO.Nazwa);
+                    listBoxMaszyny.Items.Add("nr: " + maszynyBUS.VO.Nr_inwentarzowy + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
                 if (listBoxMaszyny.Items.Count > 0)
@@ -1138,7 +1138,7 @@ namespace RemaGUM
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Typ ASC;");
                 while (!maszynyBUS.eof)
                 {
-                    listBoxMaszyny.Items.Add(maszynyBUS.VO.Typ + " -> " + maszynyBUS.VO.Nazwa);
+                    listBoxMaszyny.Items.Add("Typ: " + maszynyBUS.VO.Typ + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
                 if (listBoxMaszyny.Items.Count > 0)
@@ -1164,7 +1164,7 @@ namespace RemaGUM
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nr_fabryczny ASC;");
                 while (!maszynyBUS.eof)
                 {
-                    listBoxMaszyny.Items.Add(maszynyBUS.VO.Nr_fabryczny + " -> " + maszynyBUS.VO.Nazwa);
+                    listBoxMaszyny.Items.Add("Nr fabryczny: "+maszynyBUS.VO.Nr_fabryczny + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
                 if (listBoxMaszyny.Items.Count > 0)
@@ -1191,7 +1191,7 @@ namespace RemaGUM
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nr_pom ASC;");
                 while (!maszynyBUS.eof)
                 {
-                    listBoxMaszyny.Items.Add(maszynyBUS.VO.Nr_pom + " -> " + maszynyBUS.VO.Nazwa);
+                    listBoxMaszyny.Items.Add("Nr pomieszczenia: "+maszynyBUS.VO.Nr_pom + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
                 if (listBoxMaszyny.Items.Count > 0)
@@ -1946,7 +1946,7 @@ namespace RemaGUM
 
             while (!materialyBUS.eof)
             {
-                listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " - " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
+                listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat);
                 materialyBUS.skip();
             }
 
@@ -2167,7 +2167,7 @@ namespace RemaGUM
 
             while (!materialyBUS.eof)
             {
-                listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " - " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
+                listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat);
                 materialyBUS.skip();
             }
         }// OdswiezMaterialy()
@@ -2371,7 +2371,7 @@ namespace RemaGUM
                 materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Typ_mat ASC;");
                 while (!materialyBUS.eof)
                 {
-                    listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " -> " + materialyBUS.VO.Typ_mat);
+                    listBoxMaterialy.Items.Add(materialyBUS.VO.Typ_mat + " -> " + materialyBUS.VO.Nazwa_mat);
                     materialyBUS.skip();
                 }
                 if (listBoxMaterialy.Items.Count > 0)
@@ -2399,7 +2399,7 @@ namespace RemaGUM
                 materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Stan_min_mat ASC;");
                 while (!materialyBUS.eof)
                 {
-                    listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " -> " + materialyBUS.VO.Stan_min_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
+                    listBoxMaterialy.Items.Add(materialyBUS.VO.Stan_min_mat + " " + materialyBUS.VO.Jednostka_miar_mat + " -> " + materialyBUS.VO.Nazwa_mat);
                     materialyBUS.skip();
                 }
                 if (listBoxMaterialy.Items.Count > 0)
@@ -2426,7 +2426,7 @@ namespace RemaGUM
                 materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Stan_mat ASC;");
                 while (!materialyBUS.eof)
                 {
-                    listBoxMaterialy.Items.Add(materialyBUS.VO.Nazwa_mat + " -> " + materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat);
+                    listBoxMaterialy.Items.Add(materialyBUS.VO.Stan_mat + " " + materialyBUS.VO.Jednostka_miar_mat + " -> " + materialyBUS.VO.Nazwa_mat  );
                     materialyBUS.skip();
                 }
                 if (listBoxMaterialy.Items.Count > 0)
