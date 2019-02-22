@@ -25,13 +25,13 @@ namespace RemaGUM
         //private string _connString = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = D:\\Projects\\RemaGUM\\RemaGUM.mdb"; //połaczenie z bazą danych
 
         //ustawienia połączenie z bazą poprzez xml.
-       private settings _settings;     
-        
+        private settings _settings;
+
         /// <summary>
         /// The connection string
         /// </summary>
         private string _connString;
-        
+
         /// <summary>
         /// The rest
         /// </summary>
@@ -45,13 +45,13 @@ namespace RemaGUM
         /// <summary>
         /// zawartosc pliku-dane odczytane z pliku zdjęcia.
         /// </summary>
-        private byte[] _zawartoscPliku; 
+        private byte[] _zawartoscPliku;
 
         /// <summary>
         /// dir nazwa -nazwa katalogu tymczasowego.
         /// </summary>
         string _dirNazwa = "C:\\tempRemaGUM";
-        
+
         /// <summary>
         /// dir pelna nazwa katalogu tymczasowego - pelna nazwa.
         /// </summary>
@@ -253,10 +253,10 @@ namespace RemaGUM
         /// <param name="connStr">Połaczenie z bazą.</param>
         public SpisForm()
         {
-           
 
 
-                    InitializeComponent();
+
+            InitializeComponent();
 
             //połączenie z bazą danych na sztywno
             //nsRest.Rest rest = new nsRest.Rest();
@@ -270,7 +270,7 @@ namespace RemaGUM
             _connString = _rest.dbConnection(_settings.connectionString);
 
             _statusForm = (int)_status.edycja;
-            
+
             _OperatorBUS = new nsAccess2DB.OperatorBUS(_connString);
             _maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
             _materialyBUS = new nsAccess2DB.MaterialyBUS(_connString);
@@ -287,13 +287,13 @@ namespace RemaGUM
             timer1.Interval = 1000;
             timer1.Start();
             SetDataAndTime();
-        
-                if (listBoxMaszyny.Items.Count > 0)
+
+            if (listBoxMaszyny.Items.Count > 0)
             {
                 listBoxMaszyny.SelectedIndex = 0;
             }
-            
-             // Indeksowanie w zakładkach
+
+            // Indeksowanie w zakładkach
             //------------------------------------ Zakładka Maszyny
             //dane formularza Maszyny
             //listBoxMaszyny.TabIndex = 0;
@@ -377,7 +377,7 @@ namespace RemaGUM
             buttonUsunDysponent.TabIndex = 11;
             //lista maszyn, którymi zarządza dysponent
             //listBoxMaszynyDysponenta.TabIndex = 12;
-           
+
             // --------------------------------------------- Zakładka Materiały
             //sortowanie Materiału po radio buttonach
             radioButtonNazwa_mat.TabIndex = 1;
@@ -411,7 +411,7 @@ namespace RemaGUM
             checkedListBoxDostawcyMat.TabIndex = 23;
             richTextBoxDaneDodatkoweDostawca.TabIndex = 24;
             linkLabelDostawcaMat2.TabIndex = 25;
-           
+
             // -----------------------------------------------Zakładka Dostawcy
             //lista dostawców
             //listBoxDostawcy.TabIndex = 1;
@@ -475,7 +475,7 @@ namespace RemaGUM
             _tt.SetToolTip(radioButtonNr_inwentarzowy, "Sortuj po numerze inwentarzowym.");
             _tt.SetToolTip(radioButtonNr_pomieszczenia, "Sortuj po numerze pomieszczenia.");
             _tt.SetToolTip(radioButtonData_ost_przegl, "Sortuj po dacie ostatniego przegladu.");
-            
+
             //------------------------------------------------ Zakładka Operatorzy maszyn
             //sortowanie po comboBoxOperator
             _tt.SetToolTip(comboBoxOperator, "Sortowanie operatorow po dacie końca uprawnień.");
@@ -497,7 +497,7 @@ namespace RemaGUM
             _tt.SetToolTip(buttonZapiszOperator, "Zapis nowego operatora lub edycja wybranej pozycji.");
             _tt.SetToolTip(buttonAnulujOperator, "Anulowanie zmiany.");
             _tt.SetToolTip(buttonUsunOperator, "Usuwa pozycję z bazy.");
-            
+
             // ------------------------------------------- Zakładka Dysponenci maszyn.
             //lista dysponentów maszyn
             _tt.SetToolTip(listBoxDysponent, "Lista dysponentów maszyn.");
@@ -534,7 +534,7 @@ namespace RemaGUM
             _tt.SetToolTip(textBoxTypMat, "Typ materiałów / normaliów.");
             _tt.SetToolTip(comboBoxRodzajMat, "Rodzaj materiałów / normaliów.");
             _tt.SetToolTip(comboBoxJednostkaMat, "Jednostka miary materiałów / normaliów.");
-            _tt.SetToolTip(richTextBoxKomunikatMaterialy,"Komunikaty systemowe, dotyczące dostępności materiału.");// komunikaty dotyczące dostępności materiału.
+            _tt.SetToolTip(richTextBoxKomunikatMaterialy, "Komunikaty systemowe, dotyczące dostępności materiału.");// komunikaty dotyczące dostępności materiału.
             //Gospodarka magazynowa
             _tt.SetToolTip(textBoxMagazynMat, "Stan magazynowy materiałów / normaliów.");
             _tt.SetToolTip(textBoxZuzycieMat, "Wpisz ile podlega zużyciu.");
@@ -550,7 +550,7 @@ namespace RemaGUM
             _tt.SetToolTip(checkedListBoxDostawcyMat, "Dostawcy wybranego materiału.");
             _tt.SetToolTip(richTextBoxDaneDodatkoweDostawca, "Wszelkie dodatkowe informacje dotyczące dostawcy np. dane adresowe, telefony, informacje dotyczące otrzymanych upustów.");
             _tt.SetToolTip(linkLabelDostawcaMat2, "link do strony dostawcy materiałów / normaliów.");
-                                   
+
             // -----------------------------------------------Zakładka Dostawcy
             //lista dostawców
             _tt.SetToolTip(listBoxDostawcy, "Lista dostawców.");
@@ -616,25 +616,25 @@ namespace RemaGUM
             string str = DateTime.Now.ToString();
             int indeks = str.IndexOf(" ");
 
-             //str.Substring(0, indeks);//data
+            //str.Substring(0, indeks);//data
             string data = str.Substring(0, indeks);
             labelData.Text = data;
-           
+
             string irok = str.Substring(0, 4);
             string imies = str.Substring(5, 2);
             string idzien = str.Substring(8, 2);
 
-            int rok = (Int32 .Parse(irok));
+            int rok = (Int32.Parse(irok));
             int mies = (Int32.Parse(imies));
             int dzien = (Int32.Parse(idzien));
 
             DateTime dataValue = new DateTime(rok, mies, dzien); // wyciągnięcie roku, miesiąca i dnia z ciągu daty
-                 
+
             labelDayOfWeek.Text = dataValue.ToString("dddd");
 
             labelZegar.Text = str.Substring(indeks + 1); // godzina
         }// SetData
-      
+
 
         /// <summary>
         /// Wyświetla komponenty w zależności od indeksu zakładki.
@@ -705,7 +705,7 @@ namespace RemaGUM
                 WypelnijJednostka_miar();
                 WypelnijRodzaj_mat();
                 WypelnijCheckedBoxDostawcow(checkedListBoxDostawcyMat);// wypełnia checked boxy dostawców materialów.
-               
+
                 if (listBoxMaterialy.Items.Count > 0)
                 {
                     listBoxMaterialy.SelectedIndex = 0;
@@ -906,7 +906,6 @@ namespace RemaGUM
                 }
                 _zawartoscPliku = maszynyBUS.VO.Zawartosc_pliku; // zawartość zdjęcia.
                 pokazZdjecie(linkLabelNazwaZdjecia.Text); // zmiana zdjęcia przy zmianie indeksu maszyny.
-                
                 comboBoxDysponent.Text = maszynyBUS.VO.Nazwa_dysponent;  // wypełnia dysponenta
 
                 comboBoxDzial.Text = maszynyBUS.VO.Dzial;
@@ -1420,11 +1419,11 @@ namespace RemaGUM
             CzyscDaneMaszyny();
 
             radioButtonNazwa.Checked = true; // przy nowej maszynie przed zapisem wymusza zaznaczenie sortowanie po nazwie maszyny.
- 
+
             // dezaktywacja list boxa
-            listBoxMaszyny.Enabled = false; 
+            listBoxMaszyny.Enabled = false;
             listBoxMaszyny.BackColor = Color.Bisque;
-            
+
             //dezaktywacja pola wyszukiwania i przycisku wyszukaj
             textBoxWyszukiwanie.Enabled = false;
             textBoxWyszukiwanie.BackColor = Color.Bisque;
@@ -1453,7 +1452,7 @@ namespace RemaGUM
             // aktywacja list boxa
             listBoxMaszyny.Enabled = true;
             listBoxMaszyny.BackColor = Color.White;
-            
+
             // aktywacja pola wyszukiwania i przycisku szukaj
             textBoxWyszukiwanie.Enabled = true;
             textBoxWyszukiwanie.BackColor = Color.White;
@@ -1599,15 +1598,15 @@ namespace RemaGUM
                 maszynyVO.Producent = richTextBoxProducent.Text.Trim();
 
                 //pokazuje zdjęcie
-               maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
-               maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
-               
+                maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
+                maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
+
                 dysponentBUS.select();
 
                 maszynyVO.Nazwa_dysponent = dysponentVO.Dysp_nazwisko + dysponentVO.Dysp_imie;
                 maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
                 maszynyVO.Nr_pom = textBoxNr_pom.Text;
-                
+
                 maszynyVO.Dzial = comboBoxDzial.Text;
                 maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
                 maszynyVO.Rok_ost_przeg = dateTimePickerData_ost_przegl.Value.Year;
@@ -1653,7 +1652,7 @@ namespace RemaGUM
 
 
             }//if - nowy
-            
+
             else if (_statusForm == (int)_status.edycja)
             {
                 try
@@ -1721,23 +1720,23 @@ namespace RemaGUM
                 catch { };
 
             }//else if - edycja
-            //maszynyBUS.write(maszynyVO);
-            //maszyny_OperatorBUS.delete(maszynyBUS.VO.Identyfikator);
-            //maszyny_OperatorBUS.select(maszynyBUS.VO.Identyfikator);
-            //// Zapis operatorów/operatora maszyny przypisanych do maszyny.
-            //operatorBUS.select();
-            //for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
-            //{
-            //    if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
-            //    {
-            //        operatorBUS.idx = i;
-            //        maszyny_OperatorBUS.insert(maszynyVO.Identyfikator, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
-            //    }
-            //}
-            //listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
-            
+             //maszynyBUS.write(maszynyVO);
+             //maszyny_OperatorBUS.delete(maszynyBUS.VO.Identyfikator);
+             //maszyny_OperatorBUS.select(maszynyBUS.VO.Identyfikator);
+             //// Zapis operatorów/operatora maszyny przypisanych do maszyny.
+             //operatorBUS.select();
+             //for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
+             //{
+             //    if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
+             //    {
+             //        operatorBUS.idx = i;
+             //        maszyny_OperatorBUS.insert(maszynyVO.Identyfikator, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
+             //    }
+             //}
+             //listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
+
             WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);
-                      
+
             /// aktywacja list boxa
             listBoxMaszyny.Enabled = true;
             listBoxMaszyny.BackColor = Color.White;
@@ -1839,12 +1838,16 @@ namespace RemaGUM
                     Bitmap bmp = (Bitmap)Bitmap.FromFile(zdjecie);
 
                     pictureBox1.Image = Bitmap.FromFile(zdjecie);
+                    buttonUsunZdj.Enabled = true;
+                    buttonPokazZdj.Enabled = false;
                     return;
                 }
                 else
                 {
                     pictureBox1.Image = ErrorImage; // brak zdjęcia 
                     //pokazKomunikat("Brak zdjęcia");
+                    buttonPokazZdj.Enabled = true;
+                    buttonUsunZdj.Enabled = false;                   
                 }
             }
             catch (Exception ex)
@@ -1867,7 +1870,7 @@ namespace RemaGUM
             //tylko pliki obrazów 
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "JPG|*.jpg|PNG|*.png|TIFF|*.tiff|BMP|*.bmp";
-            
+
             // dopuszczenie zczytania wszystkich plików
             //ofd.Title = "wybierz *.* plik";
             //ofd.Filter = "pliki (*.*)|*.*|wszystkie pliki (*.*)|*.*";
@@ -1904,6 +1907,7 @@ namespace RemaGUM
         private void UsunZdjecie()
         {
             nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
+           
             maszynyBUS.VO.Zdjecie = string.Empty; // nazwa zdjęcia.
             maszynyBUS.VO.Zawartosc_pliku = new byte[0] { }; // zawartość pliku zdjęcia.
             linkLabelNazwaZdjecia.Text = string.Empty;
@@ -1916,10 +1920,8 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonUsunZdj_Click(object sender, EventArgs e)
         {
-            UsunZdjecie();
-            pokazKomunikat("Usunięcie zdjęcia nastąpi po wciśnięciu przycisku Zapisz.");
-
-
+                UsunZdjecie();
+                pokazKomunikat("Usunięcie zdjęcia nastąpi po wciśnięciu przycisku Zapisz.");
         }//buttonUsunZdj_Click
 
 
@@ -3527,7 +3529,7 @@ namespace RemaGUM
 
                 if ((timeSpan.Days >= 0))
                 {
-                    if (MessageBox.Show("Uwaga nie możesz ustawić daty uprawnień pracownika: " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie + " niż data obecna.", "RemaGUM", MessageBoxButtons.YesNo) == DialogResult.No)
+                    if (MessageBox.Show("Uwaga nie możesz ustawić datę końca uprawnień pracownika: " + operatorBUS.VO.Op_nazwisko + " " + operatorBUS.VO.Op_imie + " jako datę wcześniejszą niż data obecna.", "RemaGUM", MessageBoxButtons.YesNo) == DialogResult.No)
                     {
                         goto no;
                     }
