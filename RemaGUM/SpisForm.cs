@@ -286,7 +286,7 @@ namespace RemaGUM
 
             timer1.Interval = 1000;
             timer1.Start();
-            SetDataAndTime();
+           
 
             if (listBoxMaszyny.Items.Count > 0)
             {
@@ -598,44 +598,7 @@ namespace RemaGUM
             frame.Dispose();
         }// pokazKomunikat
 
-        /// <summary>
-        ///Obsługuje tiki timera.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            SetDataAndTime();
-        }//timer1_Tick
-
-        /// <summary>
-        /// Ustawia datę i czas. 2018-02-14 11:06:21 format dat godzina indeks spacji dzieli ciąg na 2 podciagi data + godzina
-        /// </summary>
-        private void SetDataAndTime()
-        {
-            string str = DateTime.Now.ToString();
-            int indeks = str.IndexOf(" ");
-
-            //str.Substring(0, indeks);//data
-            string data = str.Substring(0, indeks);
-            labelData.Text = data;
-
-            string irok = str.Substring(0, 4);
-            string imies = str.Substring(5, 2);
-            string idzien = str.Substring(8, 2);
-
-            int rok = (Int32.Parse(irok));
-            int mies = (Int32.Parse(imies));
-            int dzien = (Int32.Parse(idzien));
-
-            DateTime dataValue = new DateTime(rok, mies, dzien); // wyciągnięcie roku, miesiąca i dnia z ciągu daty
-
-            labelDayOfWeek.Text = dataValue.ToString("dddd");
-
-            labelZegar.Text = str.Substring(indeks + 1); // godzina
-        }// SetData
-
-
+        
         /// <summary>
         /// Wyświetla komponenty w zależności od indeksu zakładki.
         /// </summary>

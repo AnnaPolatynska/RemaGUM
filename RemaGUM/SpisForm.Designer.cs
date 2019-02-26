@@ -281,10 +281,7 @@
             this.toolStripButtonHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOProgramie = new System.Windows.Forms.ToolStripButton();
-            this.labelData = new System.Windows.Forms.Label();
-            this.labelDayOfWeek = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.labelZegar = new System.Windows.Forms.Label();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -3281,44 +3278,6 @@
             this.toolStripButtonOProgramie.Text = "o programie";
             this.toolStripButtonOProgramie.Click += new System.EventHandler(this.toolStripButtonOProgramie_Click);
             // 
-            // labelData
-            // 
-            this.labelData.AutoSize = true;
-            this.labelData.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelData.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.labelData.Location = new System.Drawing.Point(96, 7);
-            this.labelData.Name = "labelData";
-            this.labelData.Size = new System.Drawing.Size(94, 23);
-            this.labelData.TabIndex = 48;
-            this.labelData.Text = "labelData";
-            this.labelData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelDayOfWeek
-            // 
-            this.labelDayOfWeek.AutoSize = true;
-            this.labelDayOfWeek.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelDayOfWeek.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.labelDayOfWeek.Location = new System.Drawing.Point(213, 7);
-            this.labelDayOfWeek.Name = "labelDayOfWeek";
-            this.labelDayOfWeek.Size = new System.Drawing.Size(154, 23);
-            this.labelDayOfWeek.TabIndex = 49;
-            this.labelDayOfWeek.Text = "labelDayOfWeek";
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // labelZegar
-            // 
-            this.labelZegar.AutoSize = true;
-            this.labelZegar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelZegar.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.labelZegar.Location = new System.Drawing.Point(394, 7);
-            this.labelZegar.Name = "labelZegar";
-            this.labelZegar.Size = new System.Drawing.Size(105, 23);
-            this.labelZegar.TabIndex = 50;
-            this.labelZegar.Text = "labelZegar";
-            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3326,9 +3285,6 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(1267, 902);
-            this.Controls.Add(this.labelZegar);
-            this.Controls.Add(this.labelDayOfWeek);
-            this.Controls.Add(this.labelData);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.tabControlZakładki);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -3636,10 +3592,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonOProgramie;
         private System.Windows.Forms.RichTextBox richTextBoxUwaga;
         private System.Windows.Forms.RichTextBox richTextBoxUprawnieniaOperatora;
-        private System.Windows.Forms.Label labelData;
-        private System.Windows.Forms.Label labelDayOfWeek;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label labelZegar;
         private System.Windows.Forms.Label labelDostepnosc;
         private System.Windows.Forms.RichTextBox richTextBoxKomunikatMaterialy;
         private System.Windows.Forms.TextBox textBoxLink;
