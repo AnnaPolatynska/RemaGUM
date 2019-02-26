@@ -859,7 +859,7 @@ namespace RemaGUM
                 textBoxNr_fabryczny.Text = maszynyBUS.VO.Nr_fabryczny;
                 textBoxRok_produkcji.Text = maszynyBUS.VO.Rok_produkcji;
                 richTextBoxProducent.Text = maszynyBUS.VO.Producent;
-                textBoxNr_pom.Text = maszynyBUS.VO.Nr_pom;
+                textBoxNr_pom.Text = maszynyBUS.VO.Nr_pomieszczenia;
 
                 // linkLabelNazwaZdjecia.Text = maszynyBUS.VO.Zdjecie;// zdjęcie nazwa w linku
                 // wyświetlenie zdjecia przy zmianie indeksu
@@ -1127,7 +1127,7 @@ namespace RemaGUM
                 maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nr_fabryczny ASC;");
                 while (!maszynyBUS.eof)
                 {
-                    listBoxMaszyny.Items.Add("Nr fabryczny: "+maszynyBUS.VO.Nr_fabryczny + " -> " + maszynyBUS.VO.Nazwa);
+                    listBoxMaszyny.Items.Add("Nr: "+maszynyBUS.VO.Nr_fabryczny + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
                 if (listBoxMaszyny.Items.Count > 0)
@@ -1138,12 +1138,13 @@ namespace RemaGUM
 
         }//radioButtonNr_fabrycznyCheckedChanged
 
+
         /// <summary>
-        /// Sortuje po numerze pomieszczenia, w którym znajduje się maszyna.
+        /// Sortuje po numerze pomieszczenia.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void radioButton_Nr_Pomieszczenia_CheckedChanged(object sender, EventArgs e)
+        private void radioButtonNr_pomieszczenia_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonNr_pomieszczenia.Checked)
             {
@@ -1151,10 +1152,10 @@ namespace RemaGUM
                 CzyscDaneMaszyny();
 
                 nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
-                maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nr_pom ASC;");
+                maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Nr_pomieszczenia ASC;");
                 while (!maszynyBUS.eof)
                 {
-                    listBoxMaszyny.Items.Add("Nr pomieszczenia: "+maszynyBUS.VO.Nr_pom + " -> " + maszynyBUS.VO.Nazwa);
+                    listBoxMaszyny.Items.Add("Nr: " + maszynyBUS.VO.Nr_pomieszczenia + " -> " + maszynyBUS.VO.Nazwa);
                     maszynyBUS.skip();
                 }
                 if (listBoxMaszyny.Items.Count > 0)
@@ -1162,7 +1163,7 @@ namespace RemaGUM
                     listBoxMaszyny.SelectedIndex = 0;
                 }
             }
-        }//radioButton_Nr_Pomieszczenia_CheckedChanged
+        }//radioButtonNr_pomieszczenia
 
         /// <summary>
         /// Sortuje po dacie ostatniego przeglądu maszyny.
@@ -1568,7 +1569,7 @@ namespace RemaGUM
 
                 maszynyVO.Nazwa_dysponent = dysponentVO.Dysp_nazwisko + dysponentVO.Dysp_imie;
                 maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
-                maszynyVO.Nr_pom = textBoxNr_pom.Text;
+                maszynyVO.Nr_pomieszczenia = textBoxNr_pom.Text;
 
                 maszynyVO.Dzial = comboBoxDzial.Text;
                 maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
@@ -1644,7 +1645,7 @@ namespace RemaGUM
 
                         maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
 
-                        maszynyVO.Nr_pom = textBoxNr_pom.Text;
+                        maszynyVO.Nr_pomieszczenia = textBoxNr_pom.Text;
                         maszynyVO.Dzial = comboBoxDzial.Text;
                         maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
                         maszynyVO.Rok_ost_przeg = dateTimePickerData_ost_przegl.Value.Year;
@@ -4321,6 +4322,7 @@ namespace RemaGUM
         {
 
         }
+
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM

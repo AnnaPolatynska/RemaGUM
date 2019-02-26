@@ -212,7 +212,7 @@ namespace nsAccess2DB
         private byte[] _Zawartosc_pliku = new byte[]{}; // obiekt OLE - zdjęcie
         private string _Rozszerz_zdj = string.Empty; // 255
         private string _Nazwa_dysponent = string.Empty; // 255
-        private string _Nr_pom = string.Empty; // 255
+        private string _Nr_pomieszczenia = string.Empty; // 255
         private string _Dzial = string.Empty; // 255
         private string _Nr_prot_BHP = string.Empty; // 255
         private int _Data_ost_przegl = 0; //liczba
@@ -345,9 +345,10 @@ namespace nsAccess2DB
         /// Gets or sets the nr pom.
         /// </summary>
         /// <value>The nr pom.</value>
-        public string Nr_pom {
-            get { return _Nr_pom; }
-            set { _Nr_pom = value; }
+        public string Nr_pomieszczenia
+        {
+            get { return _Nr_pomieszczenia; }
+            set { _Nr_pomieszczenia = value; }
         }
         /// <summary>
         /// Gets or sets the dzial.
@@ -582,9 +583,9 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool insert(nsAccess2DB.MaszynyVO VO)
         {
-            string query = "INSERT INTO Maszyny (Kategoria, Nazwa, Typ, Nr_inwentarzowy, Nr_fabryczny, Rok_produkcji, Producent, Zdjecie, Zawartosc_pliku, Rozszerz_zdj, Nazwa_dysponent, Nr_pom, Dzial, Nr_prot_BHP, Data_ost_przegl, Data_kol_przegl, " +
+            string query = "INSERT INTO Maszyny (Kategoria, Nazwa, Typ, Nr_inwentarzowy, Nr_fabryczny, Rok_produkcji, Producent, Zdjecie, Zawartosc_pliku, Rozszerz_zdj, Nazwa_dysponent, Nr_pomieszczenia, Dzial, Nr_prot_BHP, Data_ost_przegl, Data_kol_przegl, " +
                 "Uwagi, Wykorzystanie, Stan_techniczny, Propozycja, Rok_ost_przeg, Mc_ost_przeg, Dz_ost_przeg, Rok_kol_przeg, Mc_kol_przeg, Dz_kol_przeg)" +
-                " VALUES (@Kategoria, @Nazwa, @Typ, @Nr_inwentarzowy, @Nr_fabryczny, @Rok_produkcji, @Producent, @Zdjecie, @Zawartosc_pliku, @Rozszerz_zdj, @Nazwa_dysponent, @Nr_pom, @Dzial, @Nr_prot_BHP, @Data_ost_przegl, @Data_kol_przegl, " +
+                " VALUES (@Kategoria, @Nazwa, @Typ, @Nr_inwentarzowy, @Nr_fabryczny, @Rok_produkcji, @Producent, @Zdjecie, @Zawartosc_pliku, @Rozszerz_zdj, @Nazwa_dysponent, @Nr_pomieszczenia, @Dzial, @Nr_prot_BHP, @Data_ost_przegl, @Data_kol_przegl, " +
                 "@Uwagi, @Wykorzystanie, @Stan_techniczny, @Propozycja, @Rok_ost_przeg, @Mc_ost_przeg, @Dz_ost_przeg, @Rok_kol_przeg, @Mc_kol_przeg, @Dz_kol_przeg);";
 
             OleDbParameter[] parameters = new OleDbParameter[26];
@@ -621,8 +622,8 @@ namespace nsAccess2DB
             parameters[10] = new OleDbParameter("Nazwa_dysponent", OleDbType.VarChar, 255);
             parameters[10].Value = VO.Nazwa_dysponent;
 
-            parameters[11] = new OleDbParameter("Nr_pom", OleDbType.VarChar, 255);
-            parameters[11].Value = VO.Nr_pom;
+            parameters[11] = new OleDbParameter("Nr_pomieszczenia", OleDbType.VarChar, 255);
+            parameters[11].Value = VO.Nr_pomieszczenia;
 
             parameters[12] = new OleDbParameter("Dzial", OleDbType.VarChar, 20);
             parameters[12].Value = VO.Dzial;
@@ -677,7 +678,7 @@ namespace nsAccess2DB
          /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool update(nsAccess2DB.MaszynyVO VO)
         {
-            string query = "UPDATE Maszyny SET Kategoria = @Kategoria, Nazwa = @Nazwa, Typ = @Typ, Nr_inwentarzowy = @Nr_inwentarzowy, Nr_fabryczny = @Nr_fabryczny, Rok_produkcji = @Rok_produkcji, Producent = @Producent, Zdjecie = @Zdjecie, Zawartosc_pliku = @Zawartosc_pliku, Rozszerz_zdj = @Rozszerz_zdj, Nazwa_dysponent = @Nazwa_dysponent, Nr_pom = @Nr_pom, Dzial = @Dzial, Nr_prot_BHP = @Nr_prot_BHP, Data_ost_przegl = @Data_ost_przegl, " +
+            string query = "UPDATE Maszyny SET Kategoria = @Kategoria, Nazwa = @Nazwa, Typ = @Typ, Nr_inwentarzowy = @Nr_inwentarzowy, Nr_fabryczny = @Nr_fabryczny, Rok_produkcji = @Rok_produkcji, Producent = @Producent, Zdjecie = @Zdjecie, Zawartosc_pliku = @Zawartosc_pliku, Rozszerz_zdj = @Rozszerz_zdj, Nazwa_dysponent = @Nazwa_dysponent, Nr_pomieszczenia = @Nr_pomieszczenia, Dzial = @Dzial, Nr_prot_BHP = @Nr_prot_BHP, Data_ost_przegl = @Data_ost_przegl, " +
                 "Data_kol_przegl = @Data_kol_przegl, Uwagi = @Uwagi, Wykorzystanie = @Wykorzystanie, Stan_techniczny = @Stan_techniczny, Propozycja = @Propozycja, Rok_ost_przeg = @Rok_ost_przeg," +
                 " Mc_ost_przeg = @Mc_ost_przeg, Dz_ost_przeg = @Dz_ost_przeg, Rok_kol_przeg = @Rok_kol_przeg, Mc_kol_przeg = @Mc_kol_przeg, Dz_kol_przeg = @Dz_kol_przeg WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
 
@@ -715,8 +716,8 @@ namespace nsAccess2DB
             parameters[10] = new OleDbParameter("Nazwa_dysponent", OleDbType.VarChar, 255);
             parameters[10].Value = VO.Nazwa_dysponent;
 
-            parameters[11] = new OleDbParameter("Nr_pom", OleDbType.VarChar, 255);
-            parameters[11].Value = VO.Nr_pom;
+            parameters[11] = new OleDbParameter("Nr_pomieszczenia", OleDbType.VarChar, 255);
+            parameters[11].Value = VO.Nr_pomieszczenia;
 
             parameters[12] = new OleDbParameter("Dzial", OleDbType.VarChar, 20);
             parameters[12].Value = VO.Dzial;
@@ -919,7 +920,7 @@ namespace nsAccess2DB
 
                 VOi.Rozszerz_zdj = dr["Rozszerz_zdj"].ToString();
                 VOi.Nazwa_dysponent = dr["Nazwa_dysponent"].ToString();
-                VOi.Nr_pom = dr["Nr_pom"].ToString();
+                VOi.Nr_pomieszczenia = dr["Nr_pomieszczenia"].ToString();
                 VOi.Dzial = dr["Dzial"].ToString();
                 VOi.Nr_prot_BHP = dr["Nr_prot_BHP"].ToString();
 

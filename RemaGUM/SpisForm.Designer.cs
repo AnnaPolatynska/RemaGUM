@@ -1609,7 +1609,7 @@
             this.radioButtonNr_pomieszczenia.TabIndex = 3;
             this.radioButtonNr_pomieszczenia.Text = "Nr pomieszczenia";
             this.radioButtonNr_pomieszczenia.UseVisualStyleBackColor = true;
-            this.radioButtonNr_pomieszczenia.CheckedChanged += new System.EventHandler(this.radioButton_Nr_Pomieszczenia_CheckedChanged);
+            this.radioButtonNr_pomieszczenia.CheckedChanged += new System.EventHandler(this.radioButtonNr_pomieszczenia_CheckedChanged);
             // 
             // radioButtonNr_fabryczny
             // 
@@ -1622,7 +1622,6 @@
             this.radioButtonNr_fabryczny.TabIndex = 2;
             this.radioButtonNr_fabryczny.Text = "Nr fabryczny";
             this.radioButtonNr_fabryczny.UseVisualStyleBackColor = true;
-            this.radioButtonNr_fabryczny.CheckedChanged += new System.EventHandler(this.radioButtonNr_fabrycznyCheckedChanged);
             // 
             // radioButtonNr_inwentarzowy
             // 
