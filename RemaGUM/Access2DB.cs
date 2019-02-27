@@ -781,6 +781,16 @@ namespace nsAccess2DB
             return b;
         }// delete
 
+        public bool deleteZdjecie(string Zdjecie)
+        {
+            string query = "DELETE Zawartosc_pliku FROM Maszyny WHERE Zdjecie = " + Zdjecie.ToString() + ";";
+
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            bool b = _conn.executeDeleteQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }
+
     }//class MaszynyDAO
 
     // warstawa operacji biznesowych tabeli Maszyny ---> BUS 
@@ -843,6 +853,16 @@ namespace nsAccess2DB
         }// selectZdjecie
 
         /// <summary>
+        /// Wykasowuje zdjęcie.
+        /// </summary>
+        /// <param name="Zdjecie"></param>
+        public bool deleteZdjecie(string Zdjecie)
+        {
+            return _DAO.deleteZdjecie(Zdjecie);
+        }// deleteZdjecie
+
+
+        /// <summary>
         /// Dowolne zapytanie z formularza.
         /// </summary>
         /// <param name="query">The query.</param>
@@ -884,6 +904,8 @@ namespace nsAccess2DB
         {
             return _DAO.delete(Identyfikator);
         }// delete
+
+        
 
         /// <summary>
         /// Wypełnia tablice.
@@ -3375,12 +3397,13 @@ namespace nsAccess2DB
         /// <param name="ID_op_maszyny">The identifier op maszyny.</param>
         /// <param name="Maszyny_nazwa">The maszyny nazwa.</param>
         /// <returns>Wartość logiczna powodzenia akcji.</returns>
-        private bool update(int ID_maszyny, int ID_op_maszyny, string Maszyny_nazwa)
+        public bool update(int ID_maszyny, int ID_op_maszyny, string Maszyny_nazwa)
         {
             bool b = _DAO.update(VO);
             _error = _DAO._error;
             return b;
         }//update
+
 
 
         /// <summary>

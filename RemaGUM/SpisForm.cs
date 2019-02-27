@@ -938,7 +938,15 @@ namespace RemaGUM
                 listBoxMaszyny.Items.Add(maszynyBUS.VO.Nazwa);
                 maszynyBUS.skip();
             }
+            // ustawia indeks listy maszyn na pozycji 1
+            if (listBoxMaszyny.Items.Count > 0)
+            {
+                listBoxMaszyny.SelectedIndex = 0;
+            }
+
             listBoxMaszyny.EndUpdate();
+
+
         }// OdswiezListeMaszyn()
 
         //************* wypełnia CheckedListBox nazwiskami i imionami operatorów maszyn.
@@ -1535,12 +1543,12 @@ namespace RemaGUM
 
             nsAccess2DB.MaszynyVO maszynyVO = new nsAccess2DB.MaszynyVO();
             nsAccess2DB.OperatorVO operatorVO = new nsAccess2DB.OperatorVO();
-            nsAccess2DB.Maszyny_OperatorVO operator_maszynyVO = new nsAccess2DB.Maszyny_OperatorVO();
+            nsAccess2DB.Maszyny_OperatorVO maszyny_operatorVO = new nsAccess2DB.Maszyny_OperatorVO();
             nsAccess2DB.DysponentVO dysponentVO = new nsAccess2DB.DysponentVO();
 
             maszynyVO = maszynyBUS.VO;
             operatorVO = operatorBUS.VO;
-            operator_maszynyVO = maszyny_OperatorBUS.VO;
+            maszyny_operatorVO = maszyny_OperatorBUS.VO;
             dysponentVO = dysponentBUS.VO;
 
             if (_zawartoscPliku == null) _zawartoscPliku = new byte[] { }; // zapisz nowy plik zdjęcia podczas edycji maszyny.
@@ -1548,17 +1556,17 @@ namespace RemaGUM
             {
                 //maszynyBUS.write(maszynyVO);
                 maszynyBUS.select();
+                //maszynyBUS.selectQuery("SELECT * FROM Maszyny ORDER BY Identyfikator ASC;");
                 maszynyBUS.idx = maszynyBUS.count - 1;
-                maszynyVO.Identyfikator = maszynyBUS.VO.Identyfikator + 1;
+                //maszynyVO.Identyfikator = maszynyBUS.VO.Identyfikator + 1;
+                int maszynaId = maszynyBUS.VO.Identyfikator + 1;
 
                 maszynyVO.Kategoria = comboBoxKategoria.Text;
                 maszynyVO.Nazwa = textBoxNazwa.Text.Trim();
                 maszynyVO.Typ = textBoxTyp.Text.Trim();
                 maszynyVO.Nr_inwentarzowy = textBoxNr_inwentarzowy.Text.Trim();
                 maszynyVO.Nr_fabryczny = textBoxNr_fabryczny.Text.Trim();
-
                 maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
-
                 maszynyVO.Producent = richTextBoxProducent.Text.Trim();
 
                 //pokazuje zdjęcie
@@ -1566,11 +1574,10 @@ namespace RemaGUM
                 maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
 
                 dysponentBUS.select();
-
                 maszynyVO.Nazwa_dysponent = dysponentVO.Dysp_nazwisko + dysponentVO.Dysp_imie;
                 maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
-                maszynyVO.Nr_pomieszczenia = textBoxNr_pom.Text;
 
+                maszynyVO.Nr_pomieszczenia = textBoxNr_pom.Text;
                 maszynyVO.Dzial = comboBoxDzial.Text;
                 maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
                 maszynyVO.Rok_ost_przeg = dateTimePickerData_ost_przegl.Value.Year;
@@ -1595,7 +1602,7 @@ namespace RemaGUM
                                                                           //listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
 
                 // Zapis operatorów/operatora maszyny przypisanych do maszyny.
-
+                
                 maszyny_OperatorBUS.select(maszynyVO.Identyfikator);
                 operatorBUS.select();
 
@@ -1609,12 +1616,10 @@ namespace RemaGUM
                 }
                 listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
                 maszynyBUS.write(maszynyVO);
-
-
-
-
-
-
+                
+                //maszynyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa ASC;");
+                //listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynaId);
+                
             }//if - nowy
 
             else if (_statusForm == (int)_status.edycja)
@@ -1639,12 +1644,7 @@ namespace RemaGUM
                         maszynyVO.Rok_produkcji = textBoxRok_produkcji.Text.Trim();
                         maszynyVO.Producent = richTextBoxProducent.Text.Trim();
 
-                        //pokazuje zdjęcie
-                        maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
-                        maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
-
                         maszynyVO.Nazwa_dysponent = comboBoxDysponent.Text.Trim();
-
                         maszynyVO.Nr_pomieszczenia = textBoxNr_pom.Text;
                         maszynyVO.Dzial = comboBoxDzial.Text;
                         maszynyVO.Nr_prot_BHP = textBoxNr_prot_BHP.Text;
@@ -1663,8 +1663,20 @@ namespace RemaGUM
                         maszynyVO.Stan_techniczny = comboBoxStan_techniczny.Text;
                         maszynyVO.Propozycja = comboBoxPropozycja.Text;
 
-                        maszynyBUS.write(maszynyVO);
-
+                        //pokazuje zdjęcie
+                        maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
+                        int dlugosc = maszynyBUS.VO.Zawartosc_pliku.Length;
+                        if (dlugosc == 0)
+                        {
+                            maszynyVO.Zdjecie = string.Empty; //wykasowuje nazwę zdjęcia jeżeli nie ma pliku.
+                            //maszynyBUS.deleteZdjecie(maszynyBUS.VO.Zdjecie);
+                        }
+                        else
+                        {
+                            maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
+                            maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
+                        }
+                        
                         maszyny_OperatorBUS.delete(maszynyBUS.VO.Identyfikator);
                         maszyny_OperatorBUS.select(maszynyBUS.VO.Identyfikator);
 
@@ -1675,31 +1687,21 @@ namespace RemaGUM
                             if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
                             {
                                 operatorBUS.idx = i;
-                                maszyny_OperatorBUS.insert(maszynyVO.Identyfikator, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
+                                maszyny_OperatorBUS.insert(maszynyVO.Identyfikator, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa); //wpisanie nazwy maszyny
                             }
                         }
+
+                        maszynyBUS.write(maszynyVO);// zapis edycji
                     }
                     listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
+                    
                 }
                 catch { };
 
             }//else if - edycja
-             //maszynyBUS.write(maszynyVO);
-             //maszyny_OperatorBUS.delete(maszynyBUS.VO.Identyfikator);
-             //maszyny_OperatorBUS.select(maszynyBUS.VO.Identyfikator);
-             //// Zapis operatorów/operatora maszyny przypisanych do maszyny.
-             //operatorBUS.select();
-             //for (int i = 0; i < checkedListBoxOperatorzy_maszyn.Items.Count; i++)
-             //{
-             //    if (checkedListBoxOperatorzy_maszyn.GetItemChecked(i))
-             //    {
-             //        operatorBUS.idx = i;
-             //        maszyny_OperatorBUS.insert(maszynyVO.Identyfikator, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
-             //    }
-             //}
-             //listBoxMaszyny.SelectedIndex = maszynyBUS.getIdx(maszynyBUS.VO.Identyfikator);// ustawienie zaznaczenia w tabeli maszyn.
-
+             
             WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);
+            maszyny_OperatorBUS.update(maszynyVO.Identyfikator, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
 
             /// aktywacja list boxa
             listBoxMaszyny.Enabled = true;
@@ -1797,11 +1799,21 @@ namespace RemaGUM
                 docInDb.zapiszNaNaped(maszynyBUS.VO.Zawartosc_pliku);
                 string zdjecie = _dirNazwa + "\\" + maszynyBUS.VO.Zdjecie;
 
+                //TODO kasuje nazwę zdjęcia, jeżeli zdjęcie nie ma zawartości.
+                //int dlugosc = maszynyBUS.VO.Zawartosc_pliku.Length;
+
+                //if (dlugosc == 0)
+                //{
+                //    pokazKomunikat("Zawartosc pliku zdjęcia jest zerowa.");
+                //    maszynyBUS.VO.Zdjecie = string.Empty;
+                //}
+
+
                 if (File.Exists(zdjecie))
                 {
                     Bitmap bmp = (Bitmap)Bitmap.FromFile(zdjecie);
-
                     pictureBox1.Image = Bitmap.FromFile(zdjecie);
+
                     buttonUsunZdj.Enabled = true;
                     buttonPokazZdj.Enabled = false;
                     return;
@@ -1809,7 +1821,8 @@ namespace RemaGUM
                 else
                 {
                     pictureBox1.Image = ErrorImage; // brak zdjęcia 
-                    //pokazKomunikat("Brak zdjęcia");
+                    //pokazKomunikat("Brak zdjęcia.");
+
                     buttonPokazZdj.Enabled = true;
                     buttonUsunZdj.Enabled = false;       
                 }
@@ -1852,7 +1865,7 @@ namespace RemaGUM
                     FileInfo fi = new FileInfo(ofd.FileName);
                     linkLabelNazwaZdjecia.Text = fi.Name;
                     maszynyBUS.VO.Zawartosc_pliku = _zawartoscPliku; //zawartosc zdjęcia
-                    maszynyBUS.VO.Zdjecie = fi.Name;// nazwa zdjęcia
+                    //maszynyBUS.VO.Zdjecie = fi.Name;// nazwa zdjęcia
 
                     pokazZdjecie(linkLabelNazwaZdjecia.Text); // pokazuje zdjęcie.
                     pokazKomunikat("Wgranie zdjęcia nastąpi po wciśnięciu przycisku Zapisz.");
@@ -1883,8 +1896,14 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonUsunZdj_Click(object sender, EventArgs e)
         {
-                UsunZdjecie();
-                pokazKomunikat("Usunięcie zdjęcia nastąpi po wciśnięciu przycisku Zapisz.");
+            if (MessageBox.Show("Usunięcie zdjęcia nastąpi po wciśnięciu przycisku Zapisz. Czy chcesz usunąć zdjęcie maszyny: " + textBoxNazwa.Text + "? ", "RemaGUM", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                goto no;
+            }
+            UsunZdjecie();
+
+            no:; // rezygnacja z wykasowania zdjęcia.
+
         }//buttonUsunZdj_Click
 
 
