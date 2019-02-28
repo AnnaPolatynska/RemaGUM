@@ -96,12 +96,12 @@
             this.radioButtonStan_min_mat = new System.Windows.Forms.RadioButton();
             this.radioButtonTyp_mat = new System.Windows.Forms.RadioButton();
             this.Maszyny = new System.Windows.Forms.TabPage();
+            this.labelZdjecieNazwa = new System.Windows.Forms.Label();
             this.richTextBoxUwaga = new System.Windows.Forms.RichTextBox();
             this.statusStripMaszyna = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelID_Maszyny = new System.Windows.Forms.ToolStripStatusLabel();
             this.buttonPokazZdj = new System.Windows.Forms.Button();
-            this.linkLabelNazwaZdjecia = new System.Windows.Forms.LinkLabel();
             this.buttonUsunZdj = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.richTextBoxProducent = new System.Windows.Forms.RichTextBox();
@@ -1077,10 +1077,10 @@
             // 
             this.Maszyny.AutoScroll = true;
             this.Maszyny.BackColor = System.Drawing.Color.Bisque;
+            this.Maszyny.Controls.Add(this.labelZdjecieNazwa);
             this.Maszyny.Controls.Add(this.richTextBoxUwaga);
             this.Maszyny.Controls.Add(this.statusStripMaszyna);
             this.Maszyny.Controls.Add(this.buttonPokazZdj);
-            this.Maszyny.Controls.Add(this.linkLabelNazwaZdjecia);
             this.Maszyny.Controls.Add(this.buttonUsunZdj);
             this.Maszyny.Controls.Add(this.groupBox4);
             this.Maszyny.Controls.Add(this.groupBox5);
@@ -1094,6 +1094,16 @@
             this.Maszyny.Size = new System.Drawing.Size(1247, 802);
             this.Maszyny.TabIndex = 0;
             this.Maszyny.Text = "Maszyny";
+            // 
+            // labelZdjecieNazwa
+            // 
+            this.labelZdjecieNazwa.AutoSize = true;
+            this.labelZdjecieNazwa.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelZdjecieNazwa.Location = new System.Drawing.Point(858, 494);
+            this.labelZdjecieNazwa.Name = "labelZdjecieNazwa";
+            this.labelZdjecieNazwa.Size = new System.Drawing.Size(88, 20);
+            this.labelZdjecieNazwa.TabIndex = 59;
+            this.labelZdjecieNazwa.Text = "ZdjecieNazwa";
             // 
             // richTextBoxUwaga
             // 
@@ -1132,36 +1142,21 @@
             // 
             this.buttonPokazZdj.BackColor = System.Drawing.Color.Linen;
             this.buttonPokazZdj.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonPokazZdj.Location = new System.Drawing.Point(862, 497);
+            this.buttonPokazZdj.Location = new System.Drawing.Point(862, 518);
             this.buttonPokazZdj.Name = "buttonPokazZdj";
-            this.buttonPokazZdj.Size = new System.Drawing.Size(130, 28);
+            this.buttonPokazZdj.Size = new System.Drawing.Size(151, 28);
             this.buttonPokazZdj.TabIndex = 49;
             this.buttonPokazZdj.Text = "Wgraj zdjęcie";
             this.buttonPokazZdj.UseVisualStyleBackColor = false;
-            this.buttonPokazZdj.Click += new System.EventHandler(this.buttonPokazZdj_Click);
-            // 
-            // linkLabelNazwaZdjecia
-            // 
-            this.linkLabelNazwaZdjecia.ActiveLinkColor = System.Drawing.Color.Bisque;
-            this.linkLabelNazwaZdjecia.AutoSize = true;
-            this.linkLabelNazwaZdjecia.DisabledLinkColor = System.Drawing.Color.Bisque;
-            this.linkLabelNazwaZdjecia.LinkColor = System.Drawing.Color.Bisque;
-            this.linkLabelNazwaZdjecia.Location = new System.Drawing.Point(1010, 501);
-            this.linkLabelNazwaZdjecia.Name = "linkLabelNazwaZdjecia";
-            this.linkLabelNazwaZdjecia.Size = new System.Drawing.Size(88, 20);
-            this.linkLabelNazwaZdjecia.TabIndex = 48;
-            this.linkLabelNazwaZdjecia.TabStop = true;
-            this.linkLabelNazwaZdjecia.Text = "Nazwa zdjęcia";
-            this.linkLabelNazwaZdjecia.Visible = false;
-            this.linkLabelNazwaZdjecia.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNazwaZdjecia_LinkClicked);
+            this.buttonPokazZdj.Click += new System.EventHandler(this.buttonWgrajZdj_Click);
             // 
             // buttonUsunZdj
             // 
             this.buttonUsunZdj.BackColor = System.Drawing.Color.Linen;
             this.buttonUsunZdj.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonUsunZdj.Location = new System.Drawing.Point(1104, 497);
+            this.buttonUsunZdj.Location = new System.Drawing.Point(1083, 518);
             this.buttonUsunZdj.Name = "buttonUsunZdj";
-            this.buttonUsunZdj.Size = new System.Drawing.Size(130, 28);
+            this.buttonUsunZdj.Size = new System.Drawing.Size(151, 28);
             this.buttonUsunZdj.TabIndex = 47;
             this.buttonUsunZdj.Text = "Usuń zdjęcie";
             this.buttonUsunZdj.UseVisualStyleBackColor = false;
@@ -1725,9 +1720,9 @@
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.textBoxNr_prot_BHP);
             this.groupBox3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
-            this.groupBox3.Location = new System.Drawing.Point(862, 531);
+            this.groupBox3.Location = new System.Drawing.Point(862, 552);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(372, 178);
+            this.groupBox3.Size = new System.Drawing.Size(372, 166);
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Stan techniczny i częstotliwość wykorzystania";
@@ -1737,7 +1732,7 @@
             this.comboBoxPropozycja.BackColor = System.Drawing.Color.Linen;
             this.comboBoxPropozycja.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.comboBoxPropozycja.FormattingEnabled = true;
-            this.comboBoxPropozycja.Location = new System.Drawing.Point(169, 104);
+            this.comboBoxPropozycja.Location = new System.Drawing.Point(169, 96);
             this.comboBoxPropozycja.Name = "comboBoxPropozycja";
             this.comboBoxPropozycja.Size = new System.Drawing.Size(188, 28);
             this.comboBoxPropozycja.TabIndex = 41;
@@ -1748,7 +1743,7 @@
             this.comboBoxWykorzystanie.BackColor = System.Drawing.Color.Linen;
             this.comboBoxWykorzystanie.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.comboBoxWykorzystanie.FormattingEnabled = true;
-            this.comboBoxWykorzystanie.Location = new System.Drawing.Point(169, 67);
+            this.comboBoxWykorzystanie.Location = new System.Drawing.Point(169, 59);
             this.comboBoxWykorzystanie.Name = "comboBoxWykorzystanie";
             this.comboBoxWykorzystanie.Size = new System.Drawing.Size(188, 28);
             this.comboBoxWykorzystanie.TabIndex = 40;
@@ -1759,7 +1754,7 @@
             this.comboBoxStan_techniczny.BackColor = System.Drawing.Color.Linen;
             this.comboBoxStan_techniczny.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.comboBoxStan_techniczny.FormattingEnabled = true;
-            this.comboBoxStan_techniczny.Location = new System.Drawing.Point(169, 29);
+            this.comboBoxStan_techniczny.Location = new System.Drawing.Point(169, 21);
             this.comboBoxStan_techniczny.Name = "comboBoxStan_techniczny";
             this.comboBoxStan_techniczny.Size = new System.Drawing.Size(188, 28);
             this.comboBoxStan_techniczny.TabIndex = 38;
@@ -1769,7 +1764,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label15.Location = new System.Drawing.Point(7, 70);
+            this.label15.Location = new System.Drawing.Point(7, 62);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(161, 20);
             this.label15.TabIndex = 30;
@@ -1779,7 +1774,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label16.Location = new System.Drawing.Point(7, 32);
+            this.label16.Location = new System.Drawing.Point(7, 24);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(157, 20);
             this.label16.TabIndex = 31;
@@ -1789,7 +1784,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label18.Location = new System.Drawing.Point(7, 107);
+            this.label18.Location = new System.Drawing.Point(7, 99);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(69, 20);
             this.label18.TabIndex = 33;
@@ -1799,7 +1794,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label11.Location = new System.Drawing.Point(7, 144);
+            this.label11.Location = new System.Drawing.Point(7, 136);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(123, 20);
             this.label11.TabIndex = 23;
@@ -1809,7 +1804,7 @@
             // 
             this.textBoxNr_prot_BHP.BackColor = System.Drawing.Color.Linen;
             this.textBoxNr_prot_BHP.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(169, 141);
+            this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(169, 133);
             this.textBoxNr_prot_BHP.Name = "textBoxNr_prot_BHP";
             this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(188, 24);
             this.textBoxNr_prot_BHP.TabIndex = 24;
@@ -3443,7 +3438,6 @@
         private System.Windows.Forms.RadioButton radioButtonNr_inwentarzowy;
         private System.Windows.Forms.RadioButton radioButtonTyp;
         private System.Windows.Forms.TabControl tabControlZakładki;
-        private System.Windows.Forms.LinkLabel linkLabelNazwaZdjecia;
         private System.Windows.Forms.Button buttonUsunZdj;
         private System.Windows.Forms.Button buttonPokazZdj;
         private System.Windows.Forms.GroupBox groupBox6;
@@ -3637,6 +3631,7 @@
         private System.Windows.Forms.Label labelStandKeeper;
         private System.Windows.Forms.GroupBox groupBoxPrzyrzady;
         private System.Windows.Forms.ListBox listBoxPrzyrzady;
+        private System.Windows.Forms.Label labelZdjecieNazwa;
     }
 }
 

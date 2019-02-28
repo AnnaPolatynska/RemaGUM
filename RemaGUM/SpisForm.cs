@@ -757,7 +757,7 @@ namespace RemaGUM
 
                 richTextBoxUwaga.Text = string.Empty;
 
-                linkLabelNazwaZdjecia.Text = string.Empty;
+                labelZdjecieNazwa.Text = string.Empty;
                 pictureBox1.Image = null;
                 _zawartoscPliku = new byte[] { };
 
@@ -861,14 +861,16 @@ namespace RemaGUM
                 richTextBoxProducent.Text = maszynyBUS.VO.Producent;
                 textBoxNr_pom.Text = maszynyBUS.VO.Nr_pomieszczenia;
 
-                // linkLabelNazwaZdjecia.Text = maszynyBUS.VO.Zdjecie;// zdjęcie nazwa w linku
                 // wyświetlenie zdjecia przy zmianie indeksu
                 if (File.Exists(maszynyBUS.VO.Zdjecie))
                 {
                     File.Delete(maszynyBUS.VO.Zdjecie);
                 }
+
+                labelZdjecieNazwa.Text = maszynyBUS.VO.Zdjecie;
+
                 _zawartoscPliku = maszynyBUS.VO.Zawartosc_pliku; // zawartość zdjęcia.
-                pokazZdjecie(linkLabelNazwaZdjecia.Text); // zmiana zdjęcia przy zmianie indeksu maszyny.
+                pokazZdjecie(labelZdjecieNazwa.Text); // zmiana zdjęcia przy zmianie indeksu maszyny.
                 comboBoxDysponent.Text = maszynyBUS.VO.Nazwa_dysponent;  // wypełnia dysponenta
 
                 comboBoxDzial.Text = maszynyBUS.VO.Dzial;
@@ -1481,7 +1483,7 @@ namespace RemaGUM
                 comboBoxWykorzystanie.Text = string.Empty;
                 comboBoxStan_techniczny.Text = string.Empty;
                 comboBoxPropozycja.Text = string.Empty;
-                linkLabelNazwaZdjecia.Text = string.Empty;
+                labelZdjecieNazwa.Text = string.Empty;
 
             }
             catch { }
@@ -1570,7 +1572,7 @@ namespace RemaGUM
                 maszynyVO.Producent = richTextBoxProducent.Text.Trim();
 
                 //pokazuje zdjęcie
-                maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
+                maszynyVO.Zdjecie = labelZdjecieNazwa.Text;  //zdjęcie nazwa
                 maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
 
                 dysponentBUS.select();
@@ -1671,9 +1673,13 @@ namespace RemaGUM
                             maszynyVO.Zdjecie = string.Empty; //wykasowuje nazwę zdjęcia jeżeli nie ma pliku.
                             //maszynyBUS.deleteZdjecie(maszynyBUS.VO.Zdjecie);
                         }
+                        else if (maszynyVO.Zdjecie == "Nazwa zdjęcia")
+                        {
+                            maszynyVO.Zdjecie = string.Empty; //wykasowuje nazwę zdjęcia jeżeli nie ma pliku.
+                        }
                         else
                         {
-                            maszynyVO.Zdjecie = linkLabelNazwaZdjecia.Text;  //zdjęcie nazwa
+                            maszynyVO.Zdjecie = labelZdjecieNazwa.Text;  //zdjęcie nazwa
                             maszynyVO.Zawartosc_pliku = _zawartoscPliku;//zdjęcie zawartość
                         }
                         
@@ -1702,7 +1708,7 @@ namespace RemaGUM
              
             WypelnijOperatorow_maszyn(checkedListBoxOperatorzy_maszyn);
             maszyny_OperatorBUS.update(maszynyVO.Identyfikator, operatorBUS.VO.Identyfikator, maszynyBUS.VO.Nazwa);
-
+            
             /// aktywacja list boxa
             listBoxMaszyny.Enabled = true;
             listBoxMaszyny.BackColor = Color.White;
@@ -1726,16 +1732,6 @@ namespace RemaGUM
 
             // radioButtonNazwa.Checked = true; // przy zapisie wymusza zaznaczenie sortowanie po nazwie edytowanej maszyny.
         }//buttonZapisz_Click
-
-        /// <summary>
-        /// Pokazuje nazwę zdjęcia w formie linku.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void linkLabelNazwaZdjecia_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            pokazZdjecie(linkLabelNazwaZdjecia.Text);
-        } //linkLabelNazwaZdjecia_LinkClicked
 
         /// <summary>
         /// Pokazuje zdjęcie wybranej maszyny.
@@ -1797,22 +1793,12 @@ namespace RemaGUM
                 docInDb.dirNazwa = _dirNazwa;
                 docInDb.zdjecieNazwa = maszynyBUS.VO.Zdjecie;
                 docInDb.zapiszNaNaped(maszynyBUS.VO.Zawartosc_pliku);
-                string zdjecie = _dirNazwa + "\\" + maszynyBUS.VO.Zdjecie;
-
-                //TODO kasuje nazwę zdjęcia, jeżeli zdjęcie nie ma zawartości.
-                //int dlugosc = maszynyBUS.VO.Zawartosc_pliku.Length;
-
-                //if (dlugosc == 0)
-                //{
-                //    pokazKomunikat("Zawartosc pliku zdjęcia jest zerowa.");
-                //    maszynyBUS.VO.Zdjecie = string.Empty;
-                //}
-
-
-                if (File.Exists(zdjecie))
+                string sciezkazdjecia = _dirNazwa + "\\" + maszynyBUS.VO.Zdjecie;
+                                
+                if (File.Exists(sciezkazdjecia))
                 {
-                    Bitmap bmp = (Bitmap)Bitmap.FromFile(zdjecie);
-                    pictureBox1.Image = Bitmap.FromFile(zdjecie);
+                    Bitmap bmp = (Bitmap)Bitmap.FromFile(sciezkazdjecia);
+                    pictureBox1.Image = Bitmap.FromFile(sciezkazdjecia);
 
                     buttonUsunZdj.Enabled = true;
                     buttonPokazZdj.Enabled = false;
@@ -1840,7 +1826,7 @@ namespace RemaGUM
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonPokazZdj_Click(object sender, EventArgs e)
+        private void buttonWgrajZdj_Click(object sender, EventArgs e)
         {
             pokazKomunikat("Uwaga dopuszczalne formaty zdjęć to jpg, png, tiff oraz btm.");
 
@@ -1863,11 +1849,11 @@ namespace RemaGUM
                     fs.Close();
 
                     FileInfo fi = new FileInfo(ofd.FileName);
-                    linkLabelNazwaZdjecia.Text = fi.Name;
+                    labelZdjecieNazwa.Text = fi.Name;
                     maszynyBUS.VO.Zawartosc_pliku = _zawartoscPliku; //zawartosc zdjęcia
                     //maszynyBUS.VO.Zdjecie = fi.Name;// nazwa zdjęcia
 
-                    pokazZdjecie(linkLabelNazwaZdjecia.Text); // pokazuje zdjęcie.
+                    pokazZdjecie(labelZdjecieNazwa.Text); // pokazuje zdjęcie.
                     pokazKomunikat("Wgranie zdjęcia nastąpi po wciśnięciu przycisku Zapisz.");
                 }
                 catch (Exception ex)
@@ -1875,7 +1861,7 @@ namespace RemaGUM
                     MessageBox.Show("Problem z prezentacją zdjęcia. Błąd: " + ex.Message);
                 }
             }
-        }//buttonPokazZdj_Click
+        }//buttonWgrajZdj_Click
 
         /// <summary>
         /// usuwa zdjęcie maszyny.
@@ -1886,7 +1872,7 @@ namespace RemaGUM
            
             maszynyBUS.VO.Zdjecie = string.Empty; // nazwa zdjęcia.
             maszynyBUS.VO.Zawartosc_pliku = new byte[0] { }; // zawartość pliku zdjęcia.
-            linkLabelNazwaZdjecia.Text = string.Empty;
+            labelZdjecieNazwa.Text = string.Empty;
         }
 
         /// <summary>
