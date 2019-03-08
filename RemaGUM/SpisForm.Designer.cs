@@ -144,7 +144,6 @@
             this.radioButtonNr_pomieszczenia = new System.Windows.Forms.RadioButton();
             this.radioButtonNr_fabryczny = new System.Windows.Forms.RadioButton();
             this.radioButtonNr_inwentarzowy = new System.Windows.Forms.RadioButton();
-            this.radioButtonTyp = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonZapisz = new System.Windows.Forms.Button();
             this.buttonNowa = new System.Windows.Forms.Button();
@@ -282,6 +281,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOProgramie = new System.Windows.Forms.ToolStripButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.radioButtonTyp = new System.Windows.Forms.RadioButton();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -1617,6 +1617,7 @@
             this.radioButtonNr_fabryczny.TabIndex = 2;
             this.radioButtonNr_fabryczny.Text = "Nr fabryczny";
             this.radioButtonNr_fabryczny.UseVisualStyleBackColor = true;
+            this.radioButtonNr_fabryczny.CheckedChanged += new System.EventHandler(this.radioButtonNr_fabrycznyCheckedChanged);
             // 
             // radioButtonNr_inwentarzowy
             // 
@@ -1630,19 +1631,6 @@
             this.radioButtonNr_inwentarzowy.Text = "Nr inwentarzowy";
             this.radioButtonNr_inwentarzowy.UseVisualStyleBackColor = true;
             this.radioButtonNr_inwentarzowy.CheckedChanged += new System.EventHandler(this.radioButton_Nr_Inwentarzowy_CheckedChanged);
-            // 
-            // radioButtonTyp
-            // 
-            this.radioButtonTyp.AutoSize = true;
-            this.radioButtonTyp.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.radioButtonTyp.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonTyp.Location = new System.Drawing.Point(148, 21);
-            this.radioButtonTyp.Name = "radioButtonTyp";
-            this.radioButtonTyp.Size = new System.Drawing.Size(48, 24);
-            this.radioButtonTyp.TabIndex = 0;
-            this.radioButtonTyp.Text = "Typ";
-            this.radioButtonTyp.UseVisualStyleBackColor = true;
-            this.radioButtonTyp.CheckedChanged += new System.EventHandler(this.radioButton_Typ_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -2838,6 +2826,7 @@
             this.buttonNowyPrzyrzad.TabIndex = 2;
             this.buttonNowyPrzyrzad.Text = "Nowy";
             this.buttonNowyPrzyrzad.UseVisualStyleBackColor = false;
+            this.buttonNowyPrzyrzad.Click += new System.EventHandler(this.buttonNowyPrzyrzad_Click);
             // 
             // buttonUsunPrzyrzad
             // 
@@ -2860,6 +2849,7 @@
             this.buttonZapiszPrzyrzad.TabIndex = 3;
             this.buttonZapiszPrzyrzad.Text = "Zapisz";
             this.buttonZapiszPrzyrzad.UseVisualStyleBackColor = false;
+            this.buttonZapiszPrzyrzad.Click += new System.EventHandler(this.buttonZapiszPrzyrzad_Click);
             // 
             // buttonAnulujPrzyrzad
             // 
@@ -3272,6 +3262,19 @@
             this.toolStripButtonOProgramie.Text = "o programie";
             this.toolStripButtonOProgramie.Click += new System.EventHandler(this.toolStripButtonOProgramie_Click);
             // 
+            // radioButtonTyp
+            // 
+            this.radioButtonTyp.AutoSize = true;
+            this.radioButtonTyp.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonTyp.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonTyp.Location = new System.Drawing.Point(148, 21);
+            this.radioButtonTyp.Name = "radioButtonTyp";
+            this.radioButtonTyp.Size = new System.Drawing.Size(48, 24);
+            this.radioButtonTyp.TabIndex = 0;
+            this.radioButtonTyp.Text = "Typ";
+            this.radioButtonTyp.UseVisualStyleBackColor = true;
+            this.radioButtonTyp.CheckedChanged += new System.EventHandler(this.radioButton_Typ_CheckedChanged);
+            // 
             // SpisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3402,7 +3405,6 @@
         private System.Windows.Forms.ComboBox comboBoxKategoria;
         private System.Windows.Forms.Label labelProducentMaszyny;
         private System.Windows.Forms.RichTextBox richTextBoxUwagi;
-        private System.Windows.Forms.TextBox textBoxProducent;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label14;
@@ -3436,7 +3438,6 @@
         private System.Windows.Forms.RadioButton radioButtonNr_pomieszczenia;
         private System.Windows.Forms.RadioButton radioButtonNr_fabryczny;
         private System.Windows.Forms.RadioButton radioButtonNr_inwentarzowy;
-        private System.Windows.Forms.RadioButton radioButtonTyp;
         private System.Windows.Forms.TabControl tabControlZakładki;
         private System.Windows.Forms.Button buttonUsunZdj;
         private System.Windows.Forms.Button buttonPokazZdj;
@@ -3632,6 +3633,7 @@
         private System.Windows.Forms.GroupBox groupBoxPrzyrzady;
         private System.Windows.Forms.ListBox listBoxPrzyrzady;
         private System.Windows.Forms.Label labelZdjecieNazwa;
+        private System.Windows.Forms.RadioButton radioButtonTyp;
     }
 }
 

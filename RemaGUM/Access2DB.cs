@@ -3404,14 +3404,19 @@ namespace nsAccess2DB
             return b;
         }//update
 
+        public bool updateNazwa(string Maszyny_nazwa)
+        { 
+            bool b = _DAO.update(VO);
+            _error = _DAO._error;
+            return b;
+        }//update
 
-
-        /// <summary>
-        /// Usuwa z tabeli pozycję o wskazanych parametrach.
-        /// </summary>
-        /// <param name="ID_maszyny">The identifier maszyny.</param>
-        /// <returns>Wartość logiczna powodzenia akcji.</returns>
-        public bool delete(int ID_maszyny)
+    /// <summary>
+    /// Usuwa z tabeli pozycję o wskazanych parametrach.
+    /// </summary>
+    /// <param name="ID_maszyny">The identifier maszyny.</param>
+    /// <returns>Wartość logiczna powodzenia akcji.</returns>
+    public bool delete(int ID_maszyny)
         {
            return _DAO.delete(ID_maszyny);
            
