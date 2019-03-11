@@ -2773,51 +2773,106 @@ namespace RemaGUM
                     {
                         materialy_VO.Jednostka_miar_mat = comboBoxJednostkaMat.Text.Trim();
                     }
-                    
-                    //************************** pola wartości **********
-                    materialy_VO.Stan_mat = int.Parse(textBoxMagazynMat.Text.Trim()); // pole zablokowane do edycji - jedynie wartość wyliczana automatycznie.
 
-                    // komunikat o błędzie gdy brak wprowadzonego stanu minimalnego materiału.
-                    if (textBoxMinMat.Text == string.Empty)
+                    //************************** pola wartości **********
+                    int v;
+
+
+                    if (int.TryParse(textBoxMagazynMat.Text.Trim(), out v))
                     {
-                        MessageBox.Show("Proszę wprowadzić wymagany stan minimalny dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        materialy_VO.Stan_mat = int.Parse(textBoxMagazynMat.Text.Trim()); // pole zablokowane do edycji - jedynie wartość wyliczana automatycznie.
+
+                    }
+                    else
+                    {
+                        pokazKomunikat("Uwaga wprowadz liczbę całkowitą do pola - stan materiałów.");
                         return;
                     }
-                    else
-                    {
-                        materialy_VO.Stan_min_mat = int.Parse(textBoxMinMat.Text.Trim());
-                    }
-                                        
-                    if (textBoxZuzycieMat.Text == string.Empty) //wstawienie 0 w przypadku braku wpisu w pole textBoxZuzycieMat.
-                    {
-                        textBoxZuzycieMat.Text = "0";
-                    }
-                    else
-                    {
-                        materialy_VO.Zuzycie_mat = int.Parse(textBoxZuzycieMat.Text.Trim());
-                    }
 
-                    //wstawienie 0 w przypadku braku wpisu w pole textBoxOdpadMat.
-                    if (textBoxOdpadMat.Text == string.Empty)
-                    {
-                        textBoxOdpadMat.Text = "0";
-                    }
-                    else 
-                    {
-                        materialy_VO.Odpad_mat = int.Parse(textBoxOdpadMat.Text.Trim());
-                    }
 
-                    //wstawienie 0 w przypadku braku wpisu w pole textBoxZapotrzebowanieMat.
-                    if (textBoxZapotrzebowanieMat.Text == string.Empty)
+                    
+
+                    // komunikat o błędzie gdy brak wprowadzonego stanu minimalnego materiału.
+
+                  
+                   // string s = textBoxMinMat.Text.Trim();
+
+                    if (int.TryParse(textBoxMinMat.Text.Trim(), out v))
                     {
-                        textBoxZapotrzebowanieMat.Text = "0";
+                        if (textBoxMinMat.Text == string.Empty)
+                        {
+                            MessageBox.Show("Proszę wprowadzić wymagany stan minimalny dla materiału: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            materialy_VO.Stan_min_mat = int.Parse(textBoxMinMat.Text.Trim());
+                        }
                     }
                     else
                     {
-                        materialy_VO.Zapotrzebowanie_mat = int.Parse(textBoxZapotrzebowanieMat.Text.Trim());
+                        pokazKomunikat("Uwaga wprowadz liczbę całkowitą do pola - stan minimalny materiałów.");
+                        return;
                     }
 
-                     
+
+                    if (int.TryParse(textBoxZuzycieMat.Text.Trim(), out v))
+                    {
+                        if (textBoxZuzycieMat.Text == string.Empty) //wstawienie 0 w przypadku braku wpisu w pole textBoxZuzycieMat.
+                        {
+                            textBoxZuzycieMat.Text = "0";
+                        }
+                        else
+                        {
+                            materialy_VO.Zuzycie_mat = int.Parse(textBoxZuzycieMat.Text.Trim());
+                        }
+                    }
+                    else
+                    {
+                        pokazKomunikat("Uwaga wprowadz liczbę całkowitą do pola - bieżące zużycie materiałów.");
+                        return;
+                    }
+
+
+                    if (int.TryParse(textBoxOdpadMat.Text.Trim(), out v))
+                    {
+                        if (textBoxOdpadMat.Text == string.Empty)
+                        {
+                            textBoxOdpadMat.Text = "0";  //wstawienie 0 w przypadku braku wpisu w pole textBoxOdpadMat.
+                        }
+                        else
+                        {
+                            materialy_VO.Odpad_mat = int.Parse(textBoxOdpadMat.Text.Trim());
+                        }
+                    }
+                    else
+                    {
+                        pokazKomunikat("Uwaga wprowadz liczbę całkowitą do pola - odpad materiałów.");
+                        return;
+                    }
+
+
+
+                    if (int.TryParse(textBoxZapotrzebowanieMat.Text.Trim(), out v))
+                    {
+                        //wstawienie 0 w przypadku braku wpisu w pole textBoxZapotrzebowanieMat.
+                        if (textBoxZapotrzebowanieMat.Text == string.Empty)
+                        {
+                            textBoxZapotrzebowanieMat.Text = "0";
+                        }
+                        else
+                        {
+                            materialy_VO.Zapotrzebowanie_mat = int.Parse(textBoxZapotrzebowanieMat.Text.Trim());
+                        }
+                    }
+                    else
+                    {
+                        pokazKomunikat("Uwaga wprowadz liczbę całkowitą do pola - zakup materiałów.");
+                        return;
+                    }
+
+
                     materialyBUS.write(materialy_VO); // ZAPIS
 
                     dostawca_MaterialBUS.select(materialyBUS.VO.Identyfikator);
