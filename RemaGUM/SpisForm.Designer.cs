@@ -144,6 +144,7 @@
             this.radioButtonNr_pomieszczenia = new System.Windows.Forms.RadioButton();
             this.radioButtonNr_fabryczny = new System.Windows.Forms.RadioButton();
             this.radioButtonNr_inwentarzowy = new System.Windows.Forms.RadioButton();
+            this.radioButtonTyp = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonZapisz = new System.Windows.Forms.Button();
             this.buttonNowa = new System.Windows.Forms.Button();
@@ -281,7 +282,6 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOProgramie = new System.Windows.Forms.ToolStripButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.radioButtonTyp = new System.Windows.Forms.RadioButton();
             this.Materiały.SuspendLayout();
             this.statusStripMaterialy.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -1631,6 +1631,19 @@
             this.radioButtonNr_inwentarzowy.Text = "Nr inwentarzowy";
             this.radioButtonNr_inwentarzowy.UseVisualStyleBackColor = true;
             this.radioButtonNr_inwentarzowy.CheckedChanged += new System.EventHandler(this.radioButton_Nr_Inwentarzowy_CheckedChanged);
+            // 
+            // radioButtonTyp
+            // 
+            this.radioButtonTyp.AutoSize = true;
+            this.radioButtonTyp.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonTyp.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonTyp.Location = new System.Drawing.Point(148, 21);
+            this.radioButtonTyp.Name = "radioButtonTyp";
+            this.radioButtonTyp.Size = new System.Drawing.Size(48, 24);
+            this.radioButtonTyp.TabIndex = 0;
+            this.radioButtonTyp.Text = "Typ";
+            this.radioButtonTyp.UseVisualStyleBackColor = true;
+            this.radioButtonTyp.CheckedChanged += new System.EventHandler(this.radioButton_Typ_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -3261,19 +3274,6 @@
             this.toolStripButtonOProgramie.Size = new System.Drawing.Size(39, 42);
             this.toolStripButtonOProgramie.Text = "o programie";
             this.toolStripButtonOProgramie.Click += new System.EventHandler(this.toolStripButtonOProgramie_Click);
-            // 
-            // radioButtonTyp
-            // 
-            this.radioButtonTyp.AutoSize = true;
-            this.radioButtonTyp.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.radioButtonTyp.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonTyp.Location = new System.Drawing.Point(148, 21);
-            this.radioButtonTyp.Name = "radioButtonTyp";
-            this.radioButtonTyp.Size = new System.Drawing.Size(48, 24);
-            this.radioButtonTyp.TabIndex = 0;
-            this.radioButtonTyp.Text = "Typ";
-            this.radioButtonTyp.UseVisualStyleBackColor = true;
-            this.radioButtonTyp.CheckedChanged += new System.EventHandler(this.radioButton_Typ_CheckedChanged);
             // 
             // SpisForm
             // 

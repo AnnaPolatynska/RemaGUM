@@ -2014,7 +2014,8 @@ namespace RemaGUM
 
                 textBoxMagazynMat.Text = aktualizacjaStanuMagazyn.ToString();
 
-                //OdswiezMaterialy();
+                textBoxMagazynMat.Enabled = false; // zablokowanie pola magazynu po zapisie.
+                textBoxMagazynMat.BackColor = Color.Bisque;
 
                 nsAccess2DB.Dostawca_matBUS dostawca_matBUS = new nsAccess2DB.Dostawca_matBUS(_connString);
                 //dostawca_matBUS.select();
@@ -2623,8 +2624,10 @@ namespace RemaGUM
 
 
                 // Stan magazynowy - pole jedynie do odczytu (wyliczane automatycznie). Pole przy nowej pozycji nie może być puste. Komunikat o konieczności wprowadzenia na stan przez pole Zakup. 
+                textBoxMagazynMat.Enabled = false; // odblokowanie pola magazynu dla nowego materiału.
+                textBoxMagazynMat.BackColor = Color.White;
+
                 int v;
-                
                 if (int.TryParse(textBoxMagazynMat.Text.Trim(), out v))
                 {
                     if (textBoxMagazynMat.Text == string.Empty)
@@ -2721,9 +2724,6 @@ namespace RemaGUM
                 //listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialyBUS.VO.Identyfikator); // ustawienie zaznaczenia w tabeli materiały.
                 materialyBUS.write(materialy_VO);
 
-                textBoxMagazynMat.Enabled = false; // zablokowanie pola magazynu po zapisie.
-                textBoxMagazynMat.BackColor = Color.Bisque;
-
                 textBoxZuzycieMat.Enabled = true; // odblokowanie pola rozchód - Bieżące zużycie i Odpad.
                 textBoxZuzycieMat.BackColor = Color.White;
                 textBoxOdpadMat.Enabled = true;
@@ -2805,12 +2805,14 @@ namespace RemaGUM
 
 
                     //************************** pola wartości **********
+                   
                     int v;
 
 
                     if (int.TryParse(textBoxMagazynMat.Text.Trim(), out v))
                     {
-                        materialy_VO.Stan_mat = int.Parse(textBoxMagazynMat.Text.Trim()); // pole zablokowane do edycji - jedynie wartość wyliczana automatycznie.
+                        materialy_VO.Stan_mat = int.Parse(textBoxMagazynMat.Text.Trim()); // pole zablokowane do edycji - jedynie wartość wyliczana automatycznie. 
+                       
                     }
                     else
                     {
@@ -2951,6 +2953,10 @@ namespace RemaGUM
             //OdswiezMaterialy();
             WypelnijCheckedBoxDostawcow(checkedListBoxDostawcyMat);// wypełnia checked boxy dostawców materialów.
             OdswiezDostawcowWMaterialach();
+
+            textBoxMagazynMat.Enabled = false; // zablokowanie pola magazynu po zapisie.
+            textBoxMagazynMat.BackColor = Color.Bisque;
+
             listBoxMaterialy.Enabled = true;
 
             buttonAnulujMat.Enabled = true;
