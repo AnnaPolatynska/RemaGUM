@@ -2119,6 +2119,8 @@ namespace RemaGUM
                 comboBoxJednostkaMat.SelectedIndex = 0;
                 comboBoxJednostkaMat.Refresh();
 
+                richTextBoxKomunikatMaterialy.Text = string.Empty;// czyści komunikaty dotyczące materiały.
+
                 textBoxMagazynMat.Text = string.Empty;
                 textBoxZuzycieMat.Text = string.Empty;
                 textBoxOdpadMat.Text = string.Empty;
@@ -2570,6 +2572,9 @@ namespace RemaGUM
 
             if (_statusForm == (int)_status.nowy)
             {
+                textBoxMagazynMat.Enabled = true; // odblokowanie pola magazynu dla nowego materiału.
+                textBoxMagazynMat.BackColor = Color.White;
+
                 materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Identyfikator ASC;");
                 //materialyBUS.select();
                 materialyBUS.idx = materialyBUS.count - 1;
@@ -2620,10 +2625,7 @@ namespace RemaGUM
                     materialy_VO.Jednostka_miar_mat = comboBoxJednostkaMat.Text.Trim();
                 }
 
-
                 // Stan magazynowy - pole jedynie do odczytu (wyliczane automatycznie). Pole przy nowej pozycji nie może być puste. Komunikat o konieczności wprowadzenia na stan przez pole Zakup. 
-                textBoxMagazynMat.Enabled = false; // odblokowanie pola magazynu dla nowego materiału.
-                textBoxMagazynMat.BackColor = Color.White;
 
                 int v;
                 if (int.TryParse(textBoxMagazynMat.Text.Trim(), out v))
