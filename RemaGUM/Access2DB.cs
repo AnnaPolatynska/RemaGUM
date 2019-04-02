@@ -4774,10 +4774,6 @@ namespace nsAccess2DB
         /// </summary>
         private int _Zapotrzebowanie_mat = 0;// liczba
         /// <summary>
-        /// The stan mag po mat
-        /// </summary>
-        private int _Stan_mag_po_mat = 0;// liczba
-        /// <summary>
         /// The magazyn
         /// </summary>
         private string _Magazyn = string.Empty; //255
@@ -4888,15 +4884,6 @@ namespace nsAccess2DB
             set { _Zapotrzebowanie_mat = value; }
         }
         /// <summary>
-        /// Gets or sets the stan mag po mat.
-        /// </summary>
-        /// <value>The stan mag po mat.</value>
-        public int Stan_mag_po_mat
-        {
-            get { return _Stan_mag_po_mat; }
-            set { _Stan_mag_po_mat = value; }
-        }
-        /// <summary>
         /// Gets or sets the magazyn.
         /// </summary>
         /// <value>The magazyn.</value>
@@ -4985,9 +4972,9 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool insert(nsAccess2DB.MaterialyVO VO)
         {
-            string query = "INSERT INTO Materialy (Nazwa_mat, Typ_mat, Rodzaj_mat, Jednostka_miar_mat, Dostawca_mat, Stan_mat, Zuzycie_mat, Odpad_mat, Stan_min_mat, Zapotrzebowanie_mat, Stan_mag_po_mat, Magazyn) VALUES (@Nazwa_mat, @Typ_mat, @Rodzaj_mat, @Jednostka_miar_mat, @Dostawca_mat, @Stan_mat, @Zuzycie_mat, @Odpad_mat, @Stan_min_mat, @Zapotrzebowanie_mat, @Stan_mag_po_mat, @Magazyn);";
+            string query = "INSERT INTO Materialy (Nazwa_mat, Typ_mat, Rodzaj_mat, Jednostka_miar_mat, Dostawca_mat, Stan_mat, Zuzycie_mat, Odpad_mat, Stan_min_mat, Zapotrzebowanie_mat, Magazyn) VALUES (@Nazwa_mat, @Typ_mat, @Rodzaj_mat, @Jednostka_miar_mat, @Dostawca_mat, @Stan_mat, @Zuzycie_mat, @Odpad_mat, @Stan_min_mat, @Zapotrzebowanie_mat, @Magazyn);";
 
-            OleDbParameter[] parameters = new OleDbParameter[12];
+            OleDbParameter[] parameters = new OleDbParameter[11];
             parameters[0] = new OleDbParameter("Nazwa_mat", OleDbType.VarChar, 255);
             parameters[0].Value = VO.Nazwa_mat;
 
@@ -5018,11 +5005,8 @@ namespace nsAccess2DB
             parameters[9] = new OleDbParameter("Zapotrzebowanie_mat", OleDbType.Integer);
             parameters[9].Value = VO.Zapotrzebowanie_mat;
 
-            parameters[10] = new OleDbParameter("Stan_mag_po_mat", OleDbType.Integer);
-            parameters[10].Value = VO.Stan_mag_po_mat;
-
-            parameters[11] = new OleDbParameter("Magazyn", OleDbType.VarChar, 100);
-            parameters[11].Value = VO.Magazyn;
+            parameters[10] = new OleDbParameter("Magazyn", OleDbType.VarChar, 100);
+            parameters[10].Value = VO.Magazyn;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -5036,9 +5020,9 @@ namespace nsAccess2DB
         /// <returns>Wartość logiczna powodzenia operacji.</returns>
         public bool update(nsAccess2DB.MaterialyVO VO)
         {
-            string query = "UPDATE Materialy SET Nazwa_mat = @Nazwa_mat, Typ_mat = @Typ_mat, Rodzaj_mat = @Rodzaj_mat, Jednostka_miar_mat = @Jednostka_miar_mat, Dostawca_mat = @Dostawca_mat, Stan_mat = @Stan_mat, Zuzycie_mat = @Zuzycie_mat, Odpad_mat = @Odpad_mat, Stan_min_mat = @Stan_min_mat, Zapotrzebowanie_mat = @Zapotrzebowanie_mat, Stan_mag_po_mat = @Stan_mag_po_mat, Magazyn = @Magazyn WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
+            string query = "UPDATE Materialy SET Nazwa_mat = @Nazwa_mat, Typ_mat = @Typ_mat, Rodzaj_mat = @Rodzaj_mat, Jednostka_miar_mat = @Jednostka_miar_mat, Dostawca_mat = @Dostawca_mat, Stan_mat = @Stan_mat, Zuzycie_mat = @Zuzycie_mat, Odpad_mat = @Odpad_mat, Stan_min_mat = @Stan_min_mat, Zapotrzebowanie_mat = @Zapotrzebowanie_mat, Magazyn = @Magazyn WHERE Identyfikator = " + VO.Identyfikator.ToString() + ";";
 
-            OleDbParameter[] parameters = new OleDbParameter[12];
+            OleDbParameter[] parameters = new OleDbParameter[11];
             parameters[0] = new OleDbParameter("Nazwa_mat", OleDbType.VarChar, 255);
             parameters[0].Value = VO.Nazwa_mat;
 
@@ -5069,11 +5053,8 @@ namespace nsAccess2DB
             parameters[9] = new OleDbParameter("Zapotrzebowanie_mat", OleDbType.Integer);
             parameters[9].Value = VO.Zapotrzebowanie_mat;
 
-            parameters[10] = new OleDbParameter("Stan_mag_po_mat", OleDbType.Integer);
-            parameters[10].Value = VO.Stan_mag_po_mat;
-
-            parameters[11] = new OleDbParameter("Magazyn", OleDbType.VarChar, 100);
-            parameters[11].Value = VO.Magazyn;
+            parameters[10] = new OleDbParameter("Magazyn", OleDbType.VarChar, 100);
+            parameters[10].Value = VO.Magazyn;
 
             bool b = _conn.executeInsertQuery(query, parameters);
             _error = _conn._error;
@@ -5226,7 +5207,6 @@ namespace nsAccess2DB
                 VOi.Odpad_mat = int.Parse(dr["Odpad_mat"].ToString());
                 VOi.Stan_min_mat = int.Parse(dr["Stan_min_mat"].ToString());
                 VOi.Zapotrzebowanie_mat = int.Parse(dr["Zapotrzebowanie_mat"].ToString());
-                VOi.Stan_mag_po_mat = int.Parse(dr["Stan_mag_po_mat"].ToString());
                 VOi.Magazyn = dr["Magazyn"].ToString();
 
                 _VOs[_VOs.Length - 1] = VOi;
