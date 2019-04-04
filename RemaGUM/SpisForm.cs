@@ -3395,7 +3395,7 @@ namespace RemaGUM
 
                     maszynyBUS.selectQuery("SELECT * FROM Maszyny WHERE Identyfikator = " + maszyny_OperatorBUS.VO.ID_maszyny);
 
-                    listBoxMaszynyOperatora.Items.Add(maszyny_OperatorBUS.VO.ID_maszyny + " " + maszynyBUS.VO.Nazwa);
+                    listBoxMaszynyOperatora.Items.Add(maszynyBUS.VO.Nazwa);
                     maszyny_OperatorBUS.skip();
                     idx++;
                 }
