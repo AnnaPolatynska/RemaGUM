@@ -40,7 +40,7 @@ namespace RemaGUM
         /// <summary>
         /// The help file- plik pomocy RemaGUM.
         /// </summary>
-        private string _helpFile = Application.StartupPath + "\\help.chm";
+        private string _helpFile = Application.StartupPath + "\\help.pdf";
 
         /// <summary>
         /// zawartosc pliku-dane odczytane z pliku zdjęcia.
