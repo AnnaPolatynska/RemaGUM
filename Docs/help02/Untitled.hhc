@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Program RemaGUM">
+		<param name="Local" value="Program REMAGUM.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Cel powstania">
+		<param name="Local" value="Cel powstania.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Wykorzystanie">
+		<param name="Local" value="Mo¿liwoœci adaptacji programu dla innych celów.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Maszyny">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Maszyny">
+			<param name="Local" value="Modu³ maszyny.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Dysponenci maszyn">
+			<param name="Local" value="Modu³ dysponenci maszyn.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Operatorzy maszyn">
+			<param name="Local" value="Modu³ operatorzy maszyn.htm">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Magazyn">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Magazyn Materia&sup3;&oacute;w">
+			<param name="Local" value="Modu³ materia³y.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Dostawcy">
+			<param name="Local" value="Modu³ dostawcy.htm">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Alternatywne wykorzystanie programu">
+		<param name="Local" value="Wykorzystanie programu.htm">
+		</OBJECT>
+</UL>
+</BODY></HTML>

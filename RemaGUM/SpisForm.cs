@@ -3094,7 +3094,8 @@ namespace RemaGUM
         /// <param name="e"></param>
         private void buttonUsunLink_Click(object sender, EventArgs e)
         {
-            linkLabelDostawcaMat2.Text = string.Empty;
+            linkLabelDostawcaMat.Text = string.Empty;
+            textBoxLink.Text = string.Empty;
 
             pokazKomunikat("Usunięcie linku wymaga zatwierdzenia przyciskiem Zapisz.");
 
