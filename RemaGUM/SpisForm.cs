@@ -1715,8 +1715,9 @@ namespace RemaGUM
             textBoxWyszukiwanie.BackColor = Color.White;
             buttonSzukaj.Enabled = true;
 
-            // aktywacja sortowania
+            // aktywacja sortowania i ustawienie sortowania po nazwie.
             groupBoxSortowanie.Enabled = true;
+            radioButtonNazwa.Checked = true;
 
             buttonNowa.Enabled = true;
             buttonZapisz.Enabled = true;
