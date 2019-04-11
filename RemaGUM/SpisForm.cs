@@ -90,6 +90,7 @@ namespace RemaGUM
         /// </summary>
         int _materialSzukajIdx = 0;
         /// <summary>
+        /// ToolTipy.
         /// </summary>
         private ToolTip _tt;
 
@@ -184,7 +185,7 @@ namespace RemaGUM
                 }
                 catch
                 {
-                    MessageBox.Show("Error writing file", "ECP",
+                    MessageBox.Show("Error writing file", "RemaGUM",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }//write
@@ -743,11 +744,8 @@ namespace RemaGUM
                 pictureBox1.Image = null;
                 _zawartoscPliku = new byte[] { };
 
-                comboBoxDysponent.SelectedIndex = -1;
-                comboBoxDysponent.Enabled = true;
-                comboBoxDysponent.SelectedIndex = 0;
-                comboBoxDysponent.Refresh();
-
+                comboBoxDysponent.Text = string.Empty;
+               
                 textBoxNr_pom.Text = string.Empty;
 
                 comboBoxDzial.SelectedIndex = -1;
@@ -1471,7 +1469,7 @@ namespace RemaGUM
             }
             catch { }
 
-            maszynyBUS.delete((int)listBoxMaszyny.Tag);// usunięcie z tabeli maszyna
+            maszynyBUS.Delete((int)listBoxMaszyny.Tag);// usunięcie z tabeli maszyna
             maszyny_OperatorBUS.delete((int)listBoxMaszyny.Tag); // usunięcie z tabeli relacji maszyna operator.
 
             // po usunięciu maszyny odświeża danę z listy maszyn przez ponowne zaznaczenie sortowania po nazwie.
@@ -4123,11 +4121,15 @@ namespace RemaGUM
 
             nsAccess2DB.DysponentBUS dysponentBUS = new nsAccess2DB.DysponentBUS(_connString);
             nsAccess2DB.Maszyny_DysponentBUS maszyny_DysponentBUS = new nsAccess2DB.Maszyny_DysponentBUS(_connString);
+            nsAccess2DB.MaszynyBUS maszynyBUS = new nsAccess2DB.MaszynyBUS(_connString);
 
             CzyscDaneDysponenta();
             
             dysponentBUS.delete((int)listBoxDysponent.Tag); // usunięcie danych dysponenta.
             maszyny_DysponentBUS.delete((int)listBoxDysponent.Tag); // usunięcie relacji z tabeli maszyny - dysponent
+            maszynyBUS.DeleteDysponent(dysponentBUS.VO.Dysp_nazwisko + " " + dysponentBUS.VO.Dysp_imie); //usunięcie dysponenta z tabeli maszyn
+
+            //
 
             WypelnijDysponentowDanymi();
             _statusForm = (int)_status.edycja;
@@ -4183,7 +4185,6 @@ namespace RemaGUM
             Cursor.Current = Cursors.Default;
         }//buttonSzukajDysponent_Click
 
-     
     }// public partial class SpisForm : Form
 
 }//namespace RemaGUM

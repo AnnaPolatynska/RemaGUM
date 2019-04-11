@@ -125,7 +125,7 @@ namespace nsAccess2DB
         }//executeInsertQuery
 
         /// <summary>
-        /// Executes the delete query.
+        /// Executes the Delete query.
         /// </summary>
         /// <param name="query">The query.</param>
         /// <param name="parameters">The parameters.</param>
@@ -212,15 +212,15 @@ namespace nsAccess2DB
         private byte[] _Zawartosc_pliku = new byte[]{}; // obiekt OLE - zdjęcie
         private string _Rozszerz_zdj = string.Empty; // 255
         private string _Nazwa_dysponent = string.Empty; // 255
-        private string _Nr_pomieszczenia = string.Empty; // 255
-        private string _Dzial = string.Empty; // 255
+        private string _Nr_pomieszczenia = string.Empty; // 50
+        private string _Dzial = string.Empty; // 50
         private string _Nr_prot_BHP = string.Empty; // 255
         private int _Data_ost_przegl = 0; //liczba
         private int _Data_kol_przegl = 0; //liczba
         private string _Uwagi = string.Empty; //255
-        private string _Wykorzystanie = string.Empty; // 255
-        private string _Stan_techniczny = string.Empty; // 255
-        private string _Propozycja = string.Empty; // 255
+        private string _Wykorzystanie = string.Empty; // 50
+        private string _Stan_techniczny = string.Empty; // 50
+        private string _Propozycja = string.Empty; // 50
         private int _Rok_ost_przeg = 0; //liczba
         private int _Mc_ost_przeg = 0; //liczba
         private int _Dz_ost_przeg = 0; //liczba
@@ -625,10 +625,10 @@ namespace nsAccess2DB
             parameters[11] = new OleDbParameter("Nr_pomieszczenia", OleDbType.VarChar, 255);
             parameters[11].Value = VO.Nr_pomieszczenia;
 
-            parameters[12] = new OleDbParameter("Dzial", OleDbType.VarChar, 20);
+            parameters[12] = new OleDbParameter("Dzial", OleDbType.VarChar, 50);
             parameters[12].Value = VO.Dzial;
 
-            parameters[13] = new OleDbParameter("Nr_prot_BHP", OleDbType.VarChar, 20);
+            parameters[13] = new OleDbParameter("Nr_prot_BHP", OleDbType.VarChar, 50);
             parameters[13].Value = VO.Nr_prot_BHP;
 
             parameters[14] = new OleDbParameter("Data_ost_przegl", OleDbType.Integer);
@@ -640,13 +640,13 @@ namespace nsAccess2DB
             parameters[16] = new OleDbParameter("Uwagi", OleDbType.VarChar, 255);
             parameters[16].Value = VO.Uwagi;
 
-            parameters[17] = new OleDbParameter("Wykorzystanie", OleDbType.VarChar, 20);
+            parameters[17] = new OleDbParameter("Wykorzystanie", OleDbType.VarChar, 50);
             parameters[17].Value = VO.Wykorzystanie;
 
-            parameters[18] = new OleDbParameter("Stan_techniczny", OleDbType.VarChar, 20);
+            parameters[18] = new OleDbParameter("Stan_techniczny", OleDbType.VarChar, 50);
             parameters[18].Value = VO.Stan_techniczny;
 
-            parameters[19] = new OleDbParameter("Propozycja", OleDbType.VarChar, 20);
+            parameters[19] = new OleDbParameter("Propozycja", OleDbType.VarChar, 50);
             parameters[19].Value = VO.Propozycja;
 
             parameters[20] = new OleDbParameter("Rok_ost_przeg", OleDbType.Integer);
@@ -719,10 +719,10 @@ namespace nsAccess2DB
             parameters[11] = new OleDbParameter("Nr_pomieszczenia", OleDbType.VarChar, 255);
             parameters[11].Value = VO.Nr_pomieszczenia;
 
-            parameters[12] = new OleDbParameter("Dzial", OleDbType.VarChar, 20);
+            parameters[12] = new OleDbParameter("Dzial", OleDbType.VarChar, 50);
             parameters[12].Value = VO.Dzial;
 
-            parameters[13] = new OleDbParameter("Nr_prot_BHP", OleDbType.VarChar, 20);
+            parameters[13] = new OleDbParameter("Nr_prot_BHP", OleDbType.VarChar, 50);
             parameters[13].Value = VO.Nr_prot_BHP;
 
             parameters[14] = new OleDbParameter("Data_ost_przegl", OleDbType.Integer);
@@ -734,13 +734,13 @@ namespace nsAccess2DB
             parameters[16] = new OleDbParameter("Uwagi", OleDbType.VarChar, 255);
             parameters[16].Value = VO.Uwagi;
 
-            parameters[17] = new OleDbParameter("Wykorzystanie", OleDbType.VarChar, 20);
+            parameters[17] = new OleDbParameter("Wykorzystanie", OleDbType.VarChar, 50);
             parameters[17].Value = VO.Wykorzystanie;
 
-            parameters[18] = new OleDbParameter("Stan_techniczny", OleDbType.VarChar, 20);
+            parameters[18] = new OleDbParameter("Stan_techniczny", OleDbType.VarChar, 50);
             parameters[18].Value = VO.Stan_techniczny;
 
-            parameters[19] = new OleDbParameter("Propozycja", OleDbType.VarChar, 20);
+            parameters[19] = new OleDbParameter("Propozycja", OleDbType.VarChar, 50);
             parameters[19].Value = VO.Propozycja;
 
             parameters[20] = new OleDbParameter("Rok_ost_przeg", OleDbType.Integer);
@@ -771,7 +771,7 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="Identyfikator">The identyfikator.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public bool delete(int Identyfikator)
+        public bool Delete(int Identyfikator)
         {
             string query = "DELETE * FROM Maszyny WHERE Identyfikator = " + Identyfikator.ToString() + ";";
 
@@ -779,9 +779,18 @@ namespace nsAccess2DB
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
             return b;
-        }// delete
+        }// Delete
 
-        public bool deleteZdjecie(string Zdjecie)
+        public bool DeleteDysponent(string Nazwa_dysponent)
+        {
+            string query = "DELETE Nazwa_dysponent FROM Maszyny WHERE Nazwa_dysponent = " + Nazwa_dysponent.ToString() + ";";
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            bool b = _conn.executeDeleteQuery(query, parameters);
+            _error = _conn._error;
+            return b;
+        }
+
+        public bool DeleteZdjecie(string Zdjecie)
         {
             string query = "DELETE Zawartosc_pliku FROM Maszyny WHERE Zdjecie = " + Zdjecie.ToString() + ";";
 
@@ -858,7 +867,7 @@ namespace nsAccess2DB
         /// <param name="Zdjecie"></param>
         public bool deleteZdjecie(string Zdjecie)
         {
-            return _DAO.deleteZdjecie(Zdjecie);
+            return _DAO.DeleteZdjecie(Zdjecie);
         }// deleteZdjecie
 
 
@@ -900,12 +909,15 @@ namespace nsAccess2DB
         /// </summary>
         /// <param name="Identyfikator">The identyfikator.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public bool delete(int Identyfikator)
+        public bool Delete(int Identyfikator)
         {
-            return _DAO.delete(Identyfikator);
-        }// delete
+            return _DAO.Delete(Identyfikator);
+        }// Delete
 
-        
+        public bool DeleteDysponent(string Nazwa_dysponent)
+        {
+            return _DAO.DeleteDysponent(Nazwa_dysponent);
+        }//DeleteDysponent
 
         /// <summary>
         /// Wypełnia tablice.
@@ -2720,7 +2732,7 @@ namespace nsAccess2DB
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
             return b;
-        }//delete
+        }//Delete
 
     }//class OperatorDAO
 
@@ -2828,7 +2840,7 @@ namespace nsAccess2DB
         public void delete(int Identyfikator)
         {
             _DAO.delete(Identyfikator);
-        }// delete
+        }// Delete
 
         /// <summary>
         /// Wypełnia tablice.
@@ -3251,7 +3263,7 @@ namespace nsAccess2DB
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
             return b;
-        }//delete
+        }//Delete
 
         /// <summary>
         /// Kasuje rekord po podanym Identyfikatorze.
@@ -3267,7 +3279,7 @@ namespace nsAccess2DB
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
             return b;
-        }//delete
+        }//Delete
 
     }//class Maszyny_OperatorDAO
 
@@ -3420,7 +3432,7 @@ namespace nsAccess2DB
         {
            return _DAO.delete(ID_maszyny);
            
-        }// delete
+        }// Delete
 
         /// <summary>
         /// Usuwa z tabeli pozycję o wskazanych parametrach.
@@ -3432,7 +3444,7 @@ namespace nsAccess2DB
         {
             return _DAO.delete(ID_maszyny, ID_op_maszyny);
 
-        }// delete
+        }// Delete
 
         /// <summary>
         /// Wypełnia tablicę.
@@ -3855,7 +3867,7 @@ namespace nsAccess2DB
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
             return b;
-        }// delete
+        }// Delete
 
     }//class DysponentDAO
 
@@ -3964,7 +3976,7 @@ namespace nsAccess2DB
         public bool delete(int Identyfikator)
         {
             return _DAO.delete(Identyfikator);
-        }//delete
+        }//Delete
 
         /// <summary>
         /// Wypełnia tablice.
@@ -4370,7 +4382,7 @@ namespace nsAccess2DB
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
             return b;
-        }//delete
+        }//Delete
 
         /// <summary>
         /// Kasuje rekord po podanym Identyfikatorze.
@@ -4386,7 +4398,7 @@ namespace nsAccess2DB
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
             return b;
-        }//delete
+        }//Delete
 
     }//class Maszyny_DysponentDAO
 
@@ -4526,7 +4538,7 @@ namespace nsAccess2DB
         {
             return _DAO.delete(ID_maszyny);
 
-        }// delete
+        }// Delete
 
         /// <summary>
         /// Usuwa z tabeli pozycję o wskazanych parametrach.
@@ -4538,7 +4550,7 @@ namespace nsAccess2DB
         {
             return _DAO.delete(ID_maszyny, ID_dysponent);
 
-        }// delete
+        }// Delete
 
         /// <summary>
         /// Wypełnia tablicę.
@@ -5073,7 +5085,7 @@ namespace nsAccess2DB
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
             return b;
-        }//delete
+        }//Delete
     }//clasa MaterialyDAO
 
     // warstawa operacji biznesowych tabeli Materialy ---> BUS 
@@ -5179,7 +5191,7 @@ namespace nsAccess2DB
         public bool delete(int Identyfikator)
         {
             return _DAO.delete(Identyfikator);
-        }// delete
+        }// Delete
 
         /// <summary>
         /// Wypełnia tablice.
@@ -6345,7 +6357,7 @@ namespace nsAccess2DB
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
             return b;
-        }// delete
+        }// Delete
 
         /// <summary>
         /// usuwa rekord
@@ -6361,7 +6373,7 @@ namespace nsAccess2DB
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
             return b;
-        }// delete
+        }// Delete
     }//class Dostawca_MaterialDAO
 
     // // // // // // // // Warstwa operacji biznesowych tabeli Dostawca_Material BUS.
@@ -6508,7 +6520,7 @@ namespace nsAccess2DB
         public bool delete(int ID_material)
         {
             return _DAO.delete(ID_material);
-        }// delete
+        }// Delete
 
         /// <summary>
         /// Wypełnia tablicę
@@ -6890,7 +6902,7 @@ namespace nsAccess2DB
             bool b = _conn.executeDeleteQuery(query, parameters);
             _error = _conn._error;
             return b;
-        }// delete
+        }// Delete
 
     }// class Dostawca_matDAO
 
@@ -6997,7 +7009,7 @@ namespace nsAccess2DB
         public bool delete(int Identyfikator)
         {
             return _DAO.delete(Identyfikator);
-        }//delete
+        }//Delete
 
         /// <summary>
         /// Wypełnia tablice Dostawca Materiału.

@@ -380,6 +380,7 @@
             this.panelDostawcy.Controls.Add(this.labelLinkDostawcy);
             this.panelDostawcy.Controls.Add(this.label20);
             this.panelDostawcy.Controls.Add(this.linkLabelDostawcaMat2);
+            this.panelDostawcy.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.panelDostawcy.Location = new System.Drawing.Point(6, 25);
             this.panelDostawcy.Name = "panelDostawcy";
             this.panelDostawcy.Size = new System.Drawing.Size(406, 478);
@@ -390,7 +391,7 @@
             this.richTextBoxDaneDodatkoweDostawca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxDaneDodatkoweDostawca.BackColor = System.Drawing.Color.SandyBrown;
-            this.richTextBoxDaneDodatkoweDostawca.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.richTextBoxDaneDodatkoweDostawca.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.richTextBoxDaneDodatkoweDostawca.Location = new System.Drawing.Point(7, 60);
             this.richTextBoxDaneDodatkoweDostawca.Name = "richTextBoxDaneDodatkoweDostawca";
             this.richTextBoxDaneDodatkoweDostawca.Size = new System.Drawing.Size(385, 355);
@@ -411,10 +412,10 @@
             // 
             this.labelLinkDostawcy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelLinkDostawcy.AutoSize = true;
-            this.labelLinkDostawcy.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelLinkDostawcy.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.labelLinkDostawcy.Location = new System.Drawing.Point(10, 418);
             this.labelLinkDostawcy.Name = "labelLinkDostawcy";
-            this.labelLinkDostawcy.Size = new System.Drawing.Size(86, 20);
+            this.labelLinkDostawcy.Size = new System.Drawing.Size(77, 17);
             this.labelLinkDostawcy.TabIndex = 53;
             this.labelLinkDostawcy.Text = "Link dostawcy";
             // 
@@ -444,16 +445,16 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label28.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label28.Location = new System.Drawing.Point(12, 18);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(103, 20);
+            this.label28.Size = new System.Drawing.Size(90, 17);
             this.label28.TabIndex = 17;
             this.label28.Text = "Lista dostawców:";
             // 
             // checkedListBoxDostawcyMat
             // 
-            this.checkedListBoxDostawcyMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.checkedListBoxDostawcyMat.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.checkedListBoxDostawcyMat.FormattingEnabled = true;
             this.checkedListBoxDostawcyMat.Location = new System.Drawing.Point(13, 53);
             this.checkedListBoxDostawcyMat.Name = "checkedListBoxDostawcyMat";
@@ -492,10 +493,10 @@
             // labelDostepnosc
             // 
             this.labelDostepnosc.AutoSize = true;
-            this.labelDostepnosc.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelDostepnosc.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.labelDostepnosc.Location = new System.Drawing.Point(10, 230);
             this.labelDostepnosc.Name = "labelDostepnosc";
-            this.labelDostepnosc.Size = new System.Drawing.Size(75, 20);
+            this.labelDostepnosc.Size = new System.Drawing.Size(66, 17);
             this.labelDostepnosc.TabIndex = 65;
             this.labelDostepnosc.Text = "Dostępność";
             // 
@@ -503,6 +504,7 @@
             // 
             this.richTextBoxKomunikatMaterialy.BackColor = System.Drawing.Color.Bisque;
             this.richTextBoxKomunikatMaterialy.Enabled = false;
+            this.richTextBoxKomunikatMaterialy.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.richTextBoxKomunikatMaterialy.ForeColor = System.Drawing.Color.Red;
             this.richTextBoxKomunikatMaterialy.Location = new System.Drawing.Point(12, 253);
             this.richTextBoxKomunikatMaterialy.Name = "richTextBoxKomunikatMaterialy";
@@ -520,7 +522,7 @@
             this.groupBox15.Controls.Add(this.label30);
             this.groupBox15.Controls.Add(this.textBoxMagazynMat);
             this.groupBox15.Controls.Add(this.labelJednostkaDostepnosc);
-            this.groupBox15.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.groupBox15.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.groupBox15.Location = new System.Drawing.Point(12, 317);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Size = new System.Drawing.Size(398, 320);
@@ -552,20 +554,20 @@
             // labelJednostkaZapotrzebowanie
             // 
             this.labelJednostkaZapotrzebowanie.AutoSize = true;
-            this.labelJednostkaZapotrzebowanie.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.labelJednostkaZapotrzebowanie.Location = new System.Drawing.Point(282, 20);
+            this.labelJednostkaZapotrzebowanie.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.labelJednostkaZapotrzebowanie.Location = new System.Drawing.Point(285, 19);
             this.labelJednostkaZapotrzebowanie.Name = "labelJednostkaZapotrzebowanie";
-            this.labelJednostkaZapotrzebowanie.Size = new System.Drawing.Size(65, 20);
+            this.labelJednostkaZapotrzebowanie.Size = new System.Drawing.Size(58, 17);
             this.labelJednostkaZapotrzebowanie.TabIndex = 50;
             this.labelJednostkaZapotrzebowanie.Text = "Jednostka";
             // 
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label35.Location = new System.Drawing.Point(14, 20);
+            this.label35.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.label35.Location = new System.Drawing.Point(3, 20);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(44, 20);
+            this.label35.Size = new System.Drawing.Size(38, 17);
             this.label35.TabIndex = 54;
             this.label35.Text = "Zakup";
             // 
@@ -575,7 +577,7 @@
             this.textBoxZapotrzebowanieMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.textBoxZapotrzebowanieMat.Location = new System.Drawing.Point(130, 16);
             this.textBoxZapotrzebowanieMat.Name = "textBoxZapotrzebowanieMat";
-            this.textBoxZapotrzebowanieMat.Size = new System.Drawing.Size(149, 24);
+            this.textBoxZapotrzebowanieMat.Size = new System.Drawing.Size(138, 24);
             this.textBoxZapotrzebowanieMat.TabIndex = 55;
             // 
             // textBoxMinMat
@@ -584,26 +586,26 @@
             this.textBoxMinMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.textBoxMinMat.Location = new System.Drawing.Point(145, 63);
             this.textBoxMinMat.Name = "textBoxMinMat";
-            this.textBoxMinMat.Size = new System.Drawing.Size(149, 24);
+            this.textBoxMinMat.Size = new System.Drawing.Size(138, 24);
             this.textBoxMinMat.TabIndex = 58;
             // 
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label38.Location = new System.Drawing.Point(32, 66);
+            this.label38.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.label38.Location = new System.Drawing.Point(8, 66);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(94, 20);
+            this.label38.Size = new System.Drawing.Size(83, 17);
             this.label38.TabIndex = 57;
             this.label38.Text = "Stan minimalny";
             // 
             // labelJednostkaMin
             // 
             this.labelJednostkaMin.AutoSize = true;
-            this.labelJednostkaMin.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelJednostkaMin.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.labelJednostkaMin.Location = new System.Drawing.Point(300, 66);
             this.labelJednostkaMin.Name = "labelJednostkaMin";
-            this.labelJednostkaMin.Size = new System.Drawing.Size(65, 20);
+            this.labelJednostkaMin.Size = new System.Drawing.Size(58, 17);
             this.labelJednostkaMin.TabIndex = 59;
             this.labelJednostkaMin.Text = "Jednostka";
             // 
@@ -636,10 +638,10 @@
             // labelJednostkaZuzycie
             // 
             this.labelJednostkaZuzycie.AutoSize = true;
-            this.labelJednostkaZuzycie.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelJednostkaZuzycie.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.labelJednostkaZuzycie.Location = new System.Drawing.Point(285, 19);
             this.labelJednostkaZuzycie.Name = "labelJednostkaZuzycie";
-            this.labelJednostkaZuzycie.Size = new System.Drawing.Size(65, 20);
+            this.labelJednostkaZuzycie.Size = new System.Drawing.Size(58, 17);
             this.labelJednostkaZuzycie.TabIndex = 50;
             this.labelJednostkaZuzycie.Text = "Jednostka";
             // 
@@ -649,16 +651,16 @@
             this.textBoxOdpadMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.textBoxOdpadMat.Location = new System.Drawing.Point(130, 60);
             this.textBoxOdpadMat.Name = "textBoxOdpadMat";
-            this.textBoxOdpadMat.Size = new System.Drawing.Size(149, 24);
+            this.textBoxOdpadMat.Size = new System.Drawing.Size(138, 24);
             this.textBoxOdpadMat.TabIndex = 45;
             // 
             // labelJednostkaOdpad
             // 
             this.labelJednostkaOdpad.AutoSize = true;
-            this.labelJednostkaOdpad.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.labelJednostkaOdpad.Location = new System.Drawing.Point(285, 64);
+            this.labelJednostkaOdpad.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.labelJednostkaOdpad.Location = new System.Drawing.Point(285, 63);
             this.labelJednostkaOdpad.Name = "labelJednostkaOdpad";
-            this.labelJednostkaOdpad.Size = new System.Drawing.Size(65, 20);
+            this.labelJednostkaOdpad.Size = new System.Drawing.Size(58, 17);
             this.labelJednostkaOdpad.TabIndex = 51;
             this.labelJednostkaOdpad.Text = "Jednostka";
             // 
@@ -668,36 +670,36 @@
             this.textBoxZuzycieMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.textBoxZuzycieMat.Location = new System.Drawing.Point(130, 16);
             this.textBoxZuzycieMat.Name = "textBoxZuzycieMat";
-            this.textBoxZuzycieMat.Size = new System.Drawing.Size(149, 24);
+            this.textBoxZuzycieMat.Size = new System.Drawing.Size(138, 24);
             this.textBoxZuzycieMat.TabIndex = 24;
             // 
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label33.Location = new System.Drawing.Point(17, 19);
+            this.label33.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.label33.Location = new System.Drawing.Point(3, 19);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(95, 20);
+            this.label33.Size = new System.Drawing.Size(89, 17);
             this.label33.TabIndex = 23;
             this.label33.Text = "Bieżące zużycie";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label21.Location = new System.Drawing.Point(17, 64);
+            this.label21.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.label21.Location = new System.Drawing.Point(3, 63);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(47, 20);
+            this.label21.Size = new System.Drawing.Size(41, 17);
             this.label21.TabIndex = 44;
             this.label21.Text = "Odpad";
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label30.Location = new System.Drawing.Point(32, 26);
+            this.label30.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.label30.Location = new System.Drawing.Point(6, 26);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(107, 20);
+            this.label30.Size = new System.Drawing.Size(99, 17);
             this.label30.TabIndex = 19;
             this.label30.Text = "Stan magazynowy";
             // 
@@ -707,16 +709,16 @@
             this.textBoxMagazynMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.textBoxMagazynMat.Location = new System.Drawing.Point(145, 23);
             this.textBoxMagazynMat.Name = "textBoxMagazynMat";
-            this.textBoxMagazynMat.Size = new System.Drawing.Size(149, 24);
+            this.textBoxMagazynMat.Size = new System.Drawing.Size(138, 24);
             this.textBoxMagazynMat.TabIndex = 38;
             // 
             // labelJednostkaDostepnosc
             // 
             this.labelJednostkaDostepnosc.AutoSize = true;
-            this.labelJednostkaDostepnosc.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelJednostkaDostepnosc.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.labelJednostkaDostepnosc.Location = new System.Drawing.Point(300, 26);
             this.labelJednostkaDostepnosc.Name = "labelJednostkaDostepnosc";
-            this.labelJednostkaDostepnosc.Size = new System.Drawing.Size(65, 20);
+            this.labelJednostkaDostepnosc.Size = new System.Drawing.Size(58, 17);
             this.labelJednostkaDostepnosc.TabIndex = 15;
             this.labelJednostkaDostepnosc.Text = "Jednostka";
             // 
@@ -734,12 +736,12 @@
             // comboBoxWyborMagazyn
             // 
             this.comboBoxWyborMagazyn.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxWyborMagazyn.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.comboBoxWyborMagazyn.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.comboBoxWyborMagazyn.ForeColor = System.Drawing.Color.Red;
             this.comboBoxWyborMagazyn.FormattingEnabled = true;
             this.comboBoxWyborMagazyn.Location = new System.Drawing.Point(132, 25);
             this.comboBoxWyborMagazyn.Name = "comboBoxWyborMagazyn";
-            this.comboBoxWyborMagazyn.Size = new System.Drawing.Size(275, 28);
+            this.comboBoxWyborMagazyn.Size = new System.Drawing.Size(275, 24);
             this.comboBoxWyborMagazyn.TabIndex = 61;
             this.comboBoxWyborMagazyn.SelectedIndexChanged += new System.EventHandler(this.comboBoxWyborMagazyn_SelectedIndexChanged);
             // 
@@ -810,81 +812,81 @@
             // comboBoxJednostkaMat
             // 
             this.comboBoxJednostkaMat.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxJednostkaMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.comboBoxJednostkaMat.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.comboBoxJednostkaMat.FormattingEnabled = true;
             this.comboBoxJednostkaMat.Location = new System.Drawing.Point(139, 202);
             this.comboBoxJednostkaMat.Name = "comboBoxJednostkaMat";
-            this.comboBoxJednostkaMat.Size = new System.Drawing.Size(268, 28);
+            this.comboBoxJednostkaMat.Size = new System.Drawing.Size(268, 24);
             this.comboBoxJednostkaMat.TabIndex = 49;
             this.comboBoxJednostkaMat.SelectedIndexChanged += new System.EventHandler(this.comboBoxJednostka_mat_SelectedIndexChanged);
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label19.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label19.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label19.Location = new System.Drawing.Point(9, 117);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(30, 20);
+            this.label19.Size = new System.Drawing.Size(27, 17);
             this.label19.TabIndex = 34;
             this.label19.Text = "Typ";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label22.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label22.Location = new System.Drawing.Point(9, 161);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(47, 20);
+            this.label22.Size = new System.Drawing.Size(42, 17);
             this.label22.TabIndex = 10;
             this.label22.Text = "Rodzaj";
             // 
             // textBoxTypMat
             // 
             this.textBoxTypMat.BackColor = System.Drawing.Color.Linen;
-            this.textBoxTypMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxTypMat.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.textBoxTypMat.Location = new System.Drawing.Point(78, 114);
             this.textBoxTypMat.Name = "textBoxTypMat";
-            this.textBoxTypMat.Size = new System.Drawing.Size(331, 24);
+            this.textBoxTypMat.Size = new System.Drawing.Size(331, 23);
             this.textBoxTypMat.TabIndex = 11;
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label23.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label23.Location = new System.Drawing.Point(9, 69);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(46, 20);
+            this.label23.Size = new System.Drawing.Size(42, 17);
             this.label23.TabIndex = 7;
             this.label23.Text = "Nazwa";
             // 
             // textBoxNazwaMat
             // 
             this.textBoxNazwaMat.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwaMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxNazwaMat.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.textBoxNazwaMat.Location = new System.Drawing.Point(78, 69);
             this.textBoxNazwaMat.Name = "textBoxNazwaMat";
-            this.textBoxNazwaMat.Size = new System.Drawing.Size(329, 24);
+            this.textBoxNazwaMat.Size = new System.Drawing.Size(329, 23);
             this.textBoxNazwaMat.TabIndex = 6;
             // 
             // comboBoxRodzajMat
             // 
             this.comboBoxRodzajMat.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxRodzajMat.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.comboBoxRodzajMat.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.comboBoxRodzajMat.FormattingEnabled = true;
             this.comboBoxRodzajMat.Location = new System.Drawing.Point(78, 158);
             this.comboBoxRodzajMat.Name = "comboBoxRodzajMat";
-            this.comboBoxRodzajMat.Size = new System.Drawing.Size(332, 28);
+            this.comboBoxRodzajMat.Size = new System.Drawing.Size(332, 24);
             this.comboBoxRodzajMat.TabIndex = 31;
             this.comboBoxRodzajMat.SelectedIndexChanged += new System.EventHandler(this.comboBoxRodzaj_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label4.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label4.Location = new System.Drawing.Point(7, 205);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(126, 20);
+            this.label4.Size = new System.Drawing.Size(112, 17);
             this.label4.TabIndex = 15;
             this.label4.Text = "Wartość jednostkowa";
             // 
@@ -918,10 +920,10 @@
             // textBoxWyszukaj_mat
             // 
             this.textBoxWyszukaj_mat.BackColor = System.Drawing.Color.Linen;
-            this.textBoxWyszukaj_mat.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxWyszukaj_mat.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.textBoxWyszukaj_mat.Location = new System.Drawing.Point(10, 23);
             this.textBoxWyszukaj_mat.Name = "textBoxWyszukaj_mat";
-            this.textBoxWyszukaj_mat.Size = new System.Drawing.Size(357, 24);
+            this.textBoxWyszukaj_mat.Size = new System.Drawing.Size(357, 23);
             this.textBoxWyszukaj_mat.TabIndex = 44;
             // 
             // groupBox8
@@ -941,12 +943,12 @@
             // listBoxMaterialy
             // 
             this.listBoxMaterialy.BackColor = System.Drawing.Color.Linen;
-            this.listBoxMaterialy.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.listBoxMaterialy.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.listBoxMaterialy.FormattingEnabled = true;
-            this.listBoxMaterialy.ItemHeight = 20;
+            this.listBoxMaterialy.ItemHeight = 16;
             this.listBoxMaterialy.Location = new System.Drawing.Point(6, 19);
             this.listBoxMaterialy.Name = "listBoxMaterialy";
-            this.listBoxMaterialy.Size = new System.Drawing.Size(361, 664);
+            this.listBoxMaterialy.Size = new System.Drawing.Size(361, 660);
             this.listBoxMaterialy.TabIndex = 0;
             this.listBoxMaterialy.SelectedIndexChanged += new System.EventHandler(this.listBoxMaterialy_SelectedIndexChanged);
             // 
@@ -969,11 +971,11 @@
             // radioButtonMagazyn_ilosc_mat
             // 
             this.radioButtonMagazyn_ilosc_mat.AutoSize = true;
-            this.radioButtonMagazyn_ilosc_mat.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonMagazyn_ilosc_mat.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.radioButtonMagazyn_ilosc_mat.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonMagazyn_ilosc_mat.Location = new System.Drawing.Point(263, 23);
             this.radioButtonMagazyn_ilosc_mat.Name = "radioButtonMagazyn_ilosc_mat";
-            this.radioButtonMagazyn_ilosc_mat.Size = new System.Drawing.Size(106, 24);
+            this.radioButtonMagazyn_ilosc_mat.Size = new System.Drawing.Size(95, 21);
             this.radioButtonMagazyn_ilosc_mat.TabIndex = 5;
             this.radioButtonMagazyn_ilosc_mat.TabStop = true;
             this.radioButtonMagazyn_ilosc_mat.Text = "Ilość na stanie";
@@ -983,11 +985,11 @@
             // radioButtonNazwa_mat
             // 
             this.radioButtonNazwa_mat.AutoSize = true;
-            this.radioButtonNazwa_mat.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonNazwa_mat.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.radioButtonNazwa_mat.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonNazwa_mat.Location = new System.Drawing.Point(6, 23);
             this.radioButtonNazwa_mat.Name = "radioButtonNazwa_mat";
-            this.radioButtonNazwa_mat.Size = new System.Drawing.Size(64, 24);
+            this.radioButtonNazwa_mat.Size = new System.Drawing.Size(60, 21);
             this.radioButtonNazwa_mat.TabIndex = 4;
             this.radioButtonNazwa_mat.TabStop = true;
             this.radioButtonNazwa_mat.Text = "Nazwa";
@@ -997,11 +999,11 @@
             // radioButtonStan_min_mat
             // 
             this.radioButtonStan_min_mat.AutoSize = true;
-            this.radioButtonStan_min_mat.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonStan_min_mat.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.radioButtonStan_min_mat.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonStan_min_mat.Location = new System.Drawing.Point(136, 24);
             this.radioButtonStan_min_mat.Name = "radioButtonStan_min_mat";
-            this.radioButtonStan_min_mat.Size = new System.Drawing.Size(112, 24);
+            this.radioButtonStan_min_mat.Size = new System.Drawing.Size(101, 21);
             this.radioButtonStan_min_mat.TabIndex = 3;
             this.radioButtonStan_min_mat.TabStop = true;
             this.radioButtonStan_min_mat.Text = "Stan minimalny";
@@ -1011,11 +1013,11 @@
             // radioButtonTyp_mat
             // 
             this.radioButtonTyp_mat.AutoSize = true;
-            this.radioButtonTyp_mat.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonTyp_mat.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.radioButtonTyp_mat.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonTyp_mat.Location = new System.Drawing.Point(76, 23);
             this.radioButtonTyp_mat.Name = "radioButtonTyp_mat";
-            this.radioButtonTyp_mat.Size = new System.Drawing.Size(48, 24);
+            this.radioButtonTyp_mat.Size = new System.Drawing.Size(45, 21);
             this.radioButtonTyp_mat.TabIndex = 0;
             this.radioButtonTyp_mat.TabStop = true;
             this.radioButtonTyp_mat.Text = "Typ";
@@ -1047,10 +1049,10 @@
             // labelZdjecieNazwa
             // 
             this.labelZdjecieNazwa.AutoSize = true;
-            this.labelZdjecieNazwa.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelZdjecieNazwa.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.labelZdjecieNazwa.Location = new System.Drawing.Point(858, 494);
             this.labelZdjecieNazwa.Name = "labelZdjecieNazwa";
-            this.labelZdjecieNazwa.Size = new System.Drawing.Size(88, 20);
+            this.labelZdjecieNazwa.Size = new System.Drawing.Size(76, 17);
             this.labelZdjecieNazwa.TabIndex = 59;
             this.labelZdjecieNazwa.Text = "ZdjecieNazwa";
             // 
@@ -1058,6 +1060,7 @@
             // 
             this.richTextBoxUwaga.BackColor = System.Drawing.Color.Bisque;
             this.richTextBoxUwaga.Enabled = false;
+            this.richTextBoxUwaga.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.richTextBoxUwaga.ForeColor = System.Drawing.Color.Red;
             this.richTextBoxUwaga.Location = new System.Drawing.Point(333, 13);
             this.richTextBoxUwaga.Name = "richTextBoxUwaga";
@@ -1151,68 +1154,69 @@
             // 
             // richTextBoxProducent
             // 
-            this.richTextBoxProducent.Location = new System.Drawing.Point(116, 200);
+            this.richTextBoxProducent.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
+            this.richTextBoxProducent.Location = new System.Drawing.Point(131, 191);
             this.richTextBoxProducent.Name = "richTextBoxProducent";
-            this.richTextBoxProducent.Size = new System.Drawing.Size(380, 40);
+            this.richTextBoxProducent.Size = new System.Drawing.Size(365, 54);
             this.richTextBoxProducent.TabIndex = 42;
             this.richTextBoxProducent.Text = "";
             // 
             // checkedListBoxOperatorzy_maszyn
             // 
-            this.checkedListBoxOperatorzy_maszyn.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.checkedListBoxOperatorzy_maszyn.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.checkedListBoxOperatorzy_maszyn.FormattingEnabled = true;
             this.checkedListBoxOperatorzy_maszyn.Location = new System.Drawing.Point(9, 425);
             this.checkedListBoxOperatorzy_maszyn.Name = "checkedListBoxOperatorzy_maszyn";
-            this.checkedListBoxOperatorzy_maszyn.Size = new System.Drawing.Size(486, 137);
+            this.checkedListBoxOperatorzy_maszyn.Size = new System.Drawing.Size(486, 130);
             this.checkedListBoxOperatorzy_maszyn.TabIndex = 41;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label5.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label5.Location = new System.Drawing.Point(11, 251);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 20);
+            this.label5.Size = new System.Drawing.Size(75, 17);
             this.label5.TabIndex = 12;
             this.label5.Text = "Rok produkcji";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label1.Location = new System.Drawing.Point(11, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 20);
+            this.label1.Size = new System.Drawing.Size(57, 17);
             this.label1.TabIndex = 34;
             this.label1.Text = "Kategoria ";
             // 
             // textBoxRok_produkcji
             // 
             this.textBoxRok_produkcji.BackColor = System.Drawing.Color.Linen;
-            this.textBoxRok_produkcji.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxRok_produkcji.Location = new System.Drawing.Point(116, 251);
+            this.textBoxRok_produkcji.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.textBoxRok_produkcji.Location = new System.Drawing.Point(131, 254);
             this.textBoxRok_produkcji.Name = "textBoxRok_produkcji";
-            this.textBoxRok_produkcji.Size = new System.Drawing.Size(86, 24);
+            this.textBoxRok_produkcji.Size = new System.Drawing.Size(96, 23);
             this.textBoxRok_produkcji.TabIndex = 15;
             // 
             // label58
             // 
             this.label58.AutoSize = true;
-            this.label58.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label58.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label58.Location = new System.Drawing.Point(9, 402);
             this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(107, 20);
+            this.label58.Size = new System.Drawing.Size(100, 17);
             this.label58.TabIndex = 40;
             this.label58.Text = "Operator maszyny";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label12.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label12.Location = new System.Drawing.Point(11, 288);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(152, 20);
+            this.label12.Size = new System.Drawing.Size(132, 17);
             this.label12.TabIndex = 25;
             this.label12.Text = "Data ostatniego przegladu";
             // 
@@ -1230,30 +1234,30 @@
             // labelTypMaszyny
             // 
             this.labelTypMaszyny.AutoSize = true;
-            this.labelTypMaszyny.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelTypMaszyny.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.labelTypMaszyny.Location = new System.Drawing.Point(11, 102);
             this.labelTypMaszyny.Name = "labelTypMaszyny";
-            this.labelTypMaszyny.Size = new System.Drawing.Size(30, 20);
+            this.labelTypMaszyny.Size = new System.Drawing.Size(27, 17);
             this.labelTypMaszyny.TabIndex = 9;
             this.labelTypMaszyny.Text = "Typ";
             // 
             // dateTimePickerData_ost_przegl
             // 
             this.dateTimePickerData_ost_przegl.CalendarMonthBackground = System.Drawing.Color.Linen;
-            this.dateTimePickerData_ost_przegl.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.dateTimePickerData_ost_przegl.Location = new System.Drawing.Point(169, 288);
+            this.dateTimePickerData_ost_przegl.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.dateTimePickerData_ost_przegl.Location = new System.Drawing.Point(274, 288);
             this.dateTimePickerData_ost_przegl.Name = "dateTimePickerData_ost_przegl";
-            this.dateTimePickerData_ost_przegl.Size = new System.Drawing.Size(169, 24);
+            this.dateTimePickerData_ost_przegl.Size = new System.Drawing.Size(221, 23);
             this.dateTimePickerData_ost_przegl.TabIndex = 36;
             // 
             // comboBoxDysponent
             // 
             this.comboBoxDysponent.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxDysponent.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.comboBoxDysponent.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.comboBoxDysponent.FormattingEnabled = true;
-            this.comboBoxDysponent.Location = new System.Drawing.Point(115, 363);
+            this.comboBoxDysponent.Location = new System.Drawing.Point(131, 363);
             this.comboBoxDysponent.Name = "comboBoxDysponent";
-            this.comboBoxDysponent.Size = new System.Drawing.Size(380, 28);
+            this.comboBoxDysponent.Size = new System.Drawing.Size(364, 24);
             this.comboBoxDysponent.TabIndex = 39;
             this.comboBoxDysponent.SelectedIndexChanged += new System.EventHandler(this.comboBox_Dysponent_SelectedIndexChanged);
             // 
@@ -1271,114 +1275,114 @@
             // textBoxTyp
             // 
             this.textBoxTyp.BackColor = System.Drawing.Color.Linen;
-            this.textBoxTyp.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxTyp.Location = new System.Drawing.Point(116, 99);
+            this.textBoxTyp.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.textBoxTyp.Location = new System.Drawing.Point(131, 99);
             this.textBoxTyp.Name = "textBoxTyp";
-            this.textBoxTyp.Size = new System.Drawing.Size(380, 24);
+            this.textBoxTyp.Size = new System.Drawing.Size(365, 23);
             this.textBoxTyp.TabIndex = 8;
             // 
             // textBoxNr_pom
             // 
             this.textBoxNr_pom.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_pom.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxNr_pom.Location = new System.Drawing.Point(353, 255);
+            this.textBoxNr_pom.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.textBoxNr_pom.Location = new System.Drawing.Point(377, 255);
             this.textBoxNr_pom.Name = "textBoxNr_pom";
-            this.textBoxNr_pom.Size = new System.Drawing.Size(142, 24);
+            this.textBoxNr_pom.Size = new System.Drawing.Size(118, 23);
             this.textBoxNr_pom.TabIndex = 38;
             // 
             // labelNrInwentarzowyMaszyny
             // 
             this.labelNrInwentarzowyMaszyny.AutoSize = true;
-            this.labelNrInwentarzowyMaszyny.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelNrInwentarzowyMaszyny.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.labelNrInwentarzowyMaszyny.Location = new System.Drawing.Point(11, 134);
             this.labelNrInwentarzowyMaszyny.Name = "labelNrInwentarzowyMaszyny";
-            this.labelNrInwentarzowyMaszyny.Size = new System.Drawing.Size(98, 20);
+            this.labelNrInwentarzowyMaszyny.Size = new System.Drawing.Size(89, 17);
             this.labelNrInwentarzowyMaszyny.TabIndex = 10;
             this.labelNrInwentarzowyMaszyny.Text = "Nr inwentarzowy";
             // 
             // textBoxNr_inwentarzowy
             // 
             this.textBoxNr_inwentarzowy.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_inwentarzowy.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxNr_inwentarzowy.Location = new System.Drawing.Point(115, 131);
+            this.textBoxNr_inwentarzowy.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.textBoxNr_inwentarzowy.Location = new System.Drawing.Point(131, 131);
             this.textBoxNr_inwentarzowy.Name = "textBoxNr_inwentarzowy";
-            this.textBoxNr_inwentarzowy.Size = new System.Drawing.Size(380, 24);
+            this.textBoxNr_inwentarzowy.Size = new System.Drawing.Size(364, 23);
             this.textBoxNr_inwentarzowy.TabIndex = 11;
             // 
             // labelNazwaMaszyny
             // 
             this.labelNazwaMaszyny.AutoSize = true;
-            this.labelNazwaMaszyny.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelNazwaMaszyny.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.labelNazwaMaszyny.Location = new System.Drawing.Point(11, 70);
             this.labelNazwaMaszyny.Name = "labelNazwaMaszyny";
-            this.labelNazwaMaszyny.Size = new System.Drawing.Size(46, 20);
+            this.labelNazwaMaszyny.Size = new System.Drawing.Size(42, 17);
             this.labelNazwaMaszyny.TabIndex = 7;
             this.labelNazwaMaszyny.Text = "Nazwa";
             // 
             // comboBoxDzial
             // 
             this.comboBoxDzial.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxDzial.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.comboBoxDzial.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.comboBoxDzial.FormattingEnabled = true;
-            this.comboBoxDzial.Location = new System.Drawing.Point(202, 324);
+            this.comboBoxDzial.Location = new System.Drawing.Point(274, 324);
             this.comboBoxDzial.Name = "comboBoxDzial";
-            this.comboBoxDzial.Size = new System.Drawing.Size(293, 28);
+            this.comboBoxDzial.Size = new System.Drawing.Size(221, 24);
             this.comboBoxDzial.TabIndex = 33;
             this.comboBoxDzial.SelectedIndexChanged += new System.EventHandler(this.comboBoxDzial_SelectedIndexChanged);
             // 
             // labelNrFabrycznyMaszyny
             // 
             this.labelNrFabrycznyMaszyny.AutoSize = true;
-            this.labelNrFabrycznyMaszyny.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelNrFabrycznyMaszyny.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.labelNrFabrycznyMaszyny.Location = new System.Drawing.Point(11, 167);
             this.labelNrFabrycznyMaszyny.Name = "labelNrFabrycznyMaszyny";
-            this.labelNrFabrycznyMaszyny.Size = new System.Drawing.Size(75, 20);
+            this.labelNrFabrycznyMaszyny.Size = new System.Drawing.Size(71, 17);
             this.labelNrFabrycznyMaszyny.TabIndex = 13;
             this.labelNrFabrycznyMaszyny.Text = "Nr fabryczny";
             // 
             // textBoxNazwa
             // 
             this.textBoxNazwa.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwa.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxNazwa.Location = new System.Drawing.Point(116, 67);
+            this.textBoxNazwa.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.textBoxNazwa.Location = new System.Drawing.Point(131, 67);
             this.textBoxNazwa.Name = "textBoxNazwa";
-            this.textBoxNazwa.Size = new System.Drawing.Size(380, 24);
+            this.textBoxNazwa.Size = new System.Drawing.Size(365, 23);
             this.textBoxNazwa.TabIndex = 6;
             // 
             // textBoxNr_fabryczny
             // 
             this.textBoxNr_fabryczny.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_fabryczny.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.textBoxNr_fabryczny.Location = new System.Drawing.Point(115, 164);
+            this.textBoxNr_fabryczny.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.textBoxNr_fabryczny.Location = new System.Drawing.Point(131, 164);
             this.textBoxNr_fabryczny.Name = "textBoxNr_fabryczny";
-            this.textBoxNr_fabryczny.Size = new System.Drawing.Size(380, 24);
+            this.textBoxNr_fabryczny.Size = new System.Drawing.Size(364, 23);
             this.textBoxNr_fabryczny.TabIndex = 14;
             // 
             // comboBoxKategoria
             // 
             this.comboBoxKategoria.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxKategoria.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.comboBoxKategoria.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.comboBoxKategoria.FormattingEnabled = true;
-            this.comboBoxKategoria.Location = new System.Drawing.Point(116, 33);
+            this.comboBoxKategoria.Location = new System.Drawing.Point(131, 33);
             this.comboBoxKategoria.Name = "comboBoxKategoria";
-            this.comboBoxKategoria.Size = new System.Drawing.Size(165, 28);
+            this.comboBoxKategoria.Size = new System.Drawing.Size(165, 24);
             this.comboBoxKategoria.TabIndex = 31;
             this.comboBoxKategoria.SelectedIndexChanged += new System.EventHandler(this.comboBoxKategoria_SelectedIndexChanged);
             // 
             // labelProducentMaszyny
             // 
             this.labelProducentMaszyny.AutoSize = true;
-            this.labelProducentMaszyny.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.labelProducentMaszyny.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.labelProducentMaszyny.Location = new System.Drawing.Point(11, 200);
             this.labelProducentMaszyny.Name = "labelProducentMaszyny";
-            this.labelProducentMaszyny.Size = new System.Drawing.Size(105, 20);
+            this.labelProducentMaszyny.Size = new System.Drawing.Size(91, 17);
             this.labelProducentMaszyny.TabIndex = 15;
             this.labelProducentMaszyny.Text = "Dane producenta";
             // 
             // richTextBoxUwagi
             // 
             this.richTextBoxUwagi.BackColor = System.Drawing.Color.Linen;
-            this.richTextBoxUwagi.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.richTextBoxUwagi.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.richTextBoxUwagi.Location = new System.Drawing.Point(10, 593);
             this.richTextBoxUwagi.Name = "richTextBoxUwagi";
             this.richTextBoxUwagi.Size = new System.Drawing.Size(486, 109);
@@ -1388,40 +1392,40 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label8.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label8.Location = new System.Drawing.Point(11, 363);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 20);
+            this.label8.Size = new System.Drawing.Size(60, 17);
             this.label8.TabIndex = 17;
             this.label8.Text = "Dysponent";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label14.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label14.Location = new System.Drawing.Point(11, 570);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 20);
+            this.label14.Size = new System.Drawing.Size(38, 17);
             this.label14.TabIndex = 29;
             this.label14.Text = "Uwagi";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.label9.Location = new System.Drawing.Point(231, 255);
+            this.label9.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.label9.Location = new System.Drawing.Point(271, 258);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(107, 20);
+            this.label9.Size = new System.Drawing.Size(97, 17);
             this.label9.TabIndex = 19;
             this.label9.Text = "Nr pomieszczenia";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label10.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label10.Location = new System.Drawing.Point(11, 327);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(185, 20);
+            this.label10.Size = new System.Drawing.Size(170, 17);
             this.label10.TabIndex = 21;
             this.label10.Text = "Dział do którego należy maszyna";
             // 
@@ -1489,9 +1493,9 @@
             // listBoxMaszyny
             // 
             this.listBoxMaszyny.BackColor = System.Drawing.Color.Linen;
-            this.listBoxMaszyny.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.listBoxMaszyny.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.listBoxMaszyny.FormattingEnabled = true;
-            this.listBoxMaszyny.ItemHeight = 20;
+            this.listBoxMaszyny.ItemHeight = 16;
             this.listBoxMaszyny.Location = new System.Drawing.Point(6, 119);
             this.listBoxMaszyny.Name = "listBoxMaszyny";
             this.listBoxMaszyny.Size = new System.Drawing.Size(309, 644);
@@ -1519,11 +1523,11 @@
             // radioButtonData_ost_przegl
             // 
             this.radioButtonData_ost_przegl.AutoSize = true;
-            this.radioButtonData_ost_przegl.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonData_ost_przegl.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.radioButtonData_ost_przegl.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonData_ost_przegl.Location = new System.Drawing.Point(148, 69);
             this.radioButtonData_ost_przegl.Name = "radioButtonData_ost_przegl";
-            this.radioButtonData_ost_przegl.Size = new System.Drawing.Size(116, 24);
+            this.radioButtonData_ost_przegl.Size = new System.Drawing.Size(104, 21);
             this.radioButtonData_ost_przegl.TabIndex = 6;
             this.radioButtonData_ost_przegl.Text = "Ostatni przegląd";
             this.radioButtonData_ost_przegl.UseVisualStyleBackColor = true;
@@ -1532,11 +1536,11 @@
             // radioButtonNazwa
             // 
             this.radioButtonNazwa.AutoSize = true;
-            this.radioButtonNazwa.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonNazwa.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.radioButtonNazwa.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonNazwa.Location = new System.Drawing.Point(6, 21);
             this.radioButtonNazwa.Name = "radioButtonNazwa";
-            this.radioButtonNazwa.Size = new System.Drawing.Size(64, 24);
+            this.radioButtonNazwa.Size = new System.Drawing.Size(60, 21);
             this.radioButtonNazwa.TabIndex = 4;
             this.radioButtonNazwa.Text = "Nazwa";
             this.radioButtonNazwa.UseVisualStyleBackColor = true;
@@ -1545,11 +1549,11 @@
             // radioButtonNr_pomieszczenia
             // 
             this.radioButtonNr_pomieszczenia.AutoSize = true;
-            this.radioButtonNr_pomieszczenia.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonNr_pomieszczenia.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.radioButtonNr_pomieszczenia.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonNr_pomieszczenia.Location = new System.Drawing.Point(6, 71);
             this.radioButtonNr_pomieszczenia.Name = "radioButtonNr_pomieszczenia";
-            this.radioButtonNr_pomieszczenia.Size = new System.Drawing.Size(125, 24);
+            this.radioButtonNr_pomieszczenia.Size = new System.Drawing.Size(115, 21);
             this.radioButtonNr_pomieszczenia.TabIndex = 3;
             this.radioButtonNr_pomieszczenia.Text = "Nr pomieszczenia";
             this.radioButtonNr_pomieszczenia.UseVisualStyleBackColor = true;
@@ -1558,11 +1562,11 @@
             // radioButtonNr_fabryczny
             // 
             this.radioButtonNr_fabryczny.AutoSize = true;
-            this.radioButtonNr_fabryczny.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonNr_fabryczny.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.radioButtonNr_fabryczny.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonNr_fabryczny.Location = new System.Drawing.Point(6, 46);
             this.radioButtonNr_fabryczny.Name = "radioButtonNr_fabryczny";
-            this.radioButtonNr_fabryczny.Size = new System.Drawing.Size(93, 24);
+            this.radioButtonNr_fabryczny.Size = new System.Drawing.Size(89, 21);
             this.radioButtonNr_fabryczny.TabIndex = 2;
             this.radioButtonNr_fabryczny.Text = "Nr fabryczny";
             this.radioButtonNr_fabryczny.UseVisualStyleBackColor = true;
@@ -1571,11 +1575,11 @@
             // radioButtonNr_inwentarzowy
             // 
             this.radioButtonNr_inwentarzowy.AutoSize = true;
-            this.radioButtonNr_inwentarzowy.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonNr_inwentarzowy.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.radioButtonNr_inwentarzowy.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonNr_inwentarzowy.Location = new System.Drawing.Point(148, 46);
             this.radioButtonNr_inwentarzowy.Name = "radioButtonNr_inwentarzowy";
-            this.radioButtonNr_inwentarzowy.Size = new System.Drawing.Size(116, 24);
+            this.radioButtonNr_inwentarzowy.Size = new System.Drawing.Size(107, 21);
             this.radioButtonNr_inwentarzowy.TabIndex = 1;
             this.radioButtonNr_inwentarzowy.Text = "Nr inwentarzowy";
             this.radioButtonNr_inwentarzowy.UseVisualStyleBackColor = true;
@@ -1584,11 +1588,11 @@
             // radioButtonTyp
             // 
             this.radioButtonTyp.AutoSize = true;
-            this.radioButtonTyp.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.radioButtonTyp.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.radioButtonTyp.ForeColor = System.Drawing.SystemColors.Desktop;
             this.radioButtonTyp.Location = new System.Drawing.Point(148, 21);
             this.radioButtonTyp.Name = "radioButtonTyp";
-            this.radioButtonTyp.Size = new System.Drawing.Size(48, 24);
+            this.radioButtonTyp.Size = new System.Drawing.Size(45, 21);
             this.radioButtonTyp.TabIndex = 0;
             this.radioButtonTyp.Text = "Typ";
             this.radioButtonTyp.UseVisualStyleBackColor = true;
@@ -1680,83 +1684,83 @@
             // comboBoxPropozycja
             // 
             this.comboBoxPropozycja.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxPropozycja.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.comboBoxPropozycja.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.comboBoxPropozycja.FormattingEnabled = true;
             this.comboBoxPropozycja.Location = new System.Drawing.Point(169, 96);
             this.comboBoxPropozycja.Name = "comboBoxPropozycja";
-            this.comboBoxPropozycja.Size = new System.Drawing.Size(188, 28);
+            this.comboBoxPropozycja.Size = new System.Drawing.Size(188, 24);
             this.comboBoxPropozycja.TabIndex = 41;
             this.comboBoxPropozycja.SelectedIndexChanged += new System.EventHandler(this.comboBoxPropozycja_SelectedIndexChanged);
             // 
             // comboBoxWykorzystanie
             // 
             this.comboBoxWykorzystanie.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxWykorzystanie.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.comboBoxWykorzystanie.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.comboBoxWykorzystanie.FormattingEnabled = true;
             this.comboBoxWykorzystanie.Location = new System.Drawing.Point(169, 59);
             this.comboBoxWykorzystanie.Name = "comboBoxWykorzystanie";
-            this.comboBoxWykorzystanie.Size = new System.Drawing.Size(188, 28);
+            this.comboBoxWykorzystanie.Size = new System.Drawing.Size(188, 24);
             this.comboBoxWykorzystanie.TabIndex = 40;
             this.comboBoxWykorzystanie.SelectedIndexChanged += new System.EventHandler(this.ComboBoxWykorzystanie_SelectedIndexChanged);
             // 
             // comboBoxStan_techniczny
             // 
             this.comboBoxStan_techniczny.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxStan_techniczny.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.comboBoxStan_techniczny.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.comboBoxStan_techniczny.FormattingEnabled = true;
             this.comboBoxStan_techniczny.Location = new System.Drawing.Point(169, 21);
             this.comboBoxStan_techniczny.Name = "comboBoxStan_techniczny";
-            this.comboBoxStan_techniczny.Size = new System.Drawing.Size(188, 28);
+            this.comboBoxStan_techniczny.Size = new System.Drawing.Size(188, 24);
             this.comboBoxStan_techniczny.TabIndex = 38;
             this.comboBoxStan_techniczny.SelectedIndexChanged += new System.EventHandler(this.comboBoxStan_techniczny_SelectedIndexChanged);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label15.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label15.Location = new System.Drawing.Point(7, 62);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(161, 20);
+            this.label15.Size = new System.Drawing.Size(147, 17);
             this.label15.TabIndex = 30;
             this.label15.Text = "Częstotliwość wykorzystania";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label16.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label16.Location = new System.Drawing.Point(7, 24);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(157, 20);
+            this.label16.Size = new System.Drawing.Size(137, 17);
             this.label16.TabIndex = 31;
             this.label16.Text = "Ocena stanu technicznego";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label18.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label18.Location = new System.Drawing.Point(7, 99);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(69, 20);
+            this.label18.Size = new System.Drawing.Size(64, 17);
             this.label18.TabIndex = 33;
             this.label18.Text = "Propozycja";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label11.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label11.Location = new System.Drawing.Point(7, 136);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(123, 20);
+            this.label11.Size = new System.Drawing.Size(111, 17);
             this.label11.TabIndex = 23;
             this.label11.Text = "Nr wg protokołu BHP";
             // 
             // textBoxNr_prot_BHP
             // 
             this.textBoxNr_prot_BHP.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNr_prot_BHP.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxNr_prot_BHP.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.textBoxNr_prot_BHP.Location = new System.Drawing.Point(169, 133);
             this.textBoxNr_prot_BHP.Name = "textBoxNr_prot_BHP";
-            this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(188, 24);
+            this.textBoxNr_prot_BHP.Size = new System.Drawing.Size(188, 23);
             this.textBoxNr_prot_BHP.TabIndex = 24;
             // 
             // tabControlZakładki
@@ -1902,12 +1906,12 @@
             this.listBoxOperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxOperator.BackColor = System.Drawing.Color.Linen;
-            this.listBoxOperator.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.listBoxOperator.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.listBoxOperator.FormattingEnabled = true;
-            this.listBoxOperator.ItemHeight = 20;
+            this.listBoxOperator.ItemHeight = 16;
             this.listBoxOperator.Location = new System.Drawing.Point(15, 22);
             this.listBoxOperator.Name = "listBoxOperator";
-            this.listBoxOperator.Size = new System.Drawing.Size(299, 664);
+            this.listBoxOperator.Size = new System.Drawing.Size(299, 660);
             this.listBoxOperator.TabIndex = 0;
             this.listBoxOperator.SelectedIndexChanged += new System.EventHandler(this.listBoxOperator_maszyny_SelectedIndexChanged);
             // 
@@ -1941,10 +1945,10 @@
             // textBoxWyszukiwanieOperator
             // 
             this.textBoxWyszukiwanieOperator.BackColor = System.Drawing.Color.Linen;
-            this.textBoxWyszukiwanieOperator.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxWyszukiwanieOperator.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.textBoxWyszukiwanieOperator.Location = new System.Drawing.Point(6, 23);
             this.textBoxWyszukiwanieOperator.Name = "textBoxWyszukiwanieOperator";
-            this.textBoxWyszukiwanieOperator.Size = new System.Drawing.Size(440, 24);
+            this.textBoxWyszukiwanieOperator.Size = new System.Drawing.Size(440, 23);
             this.textBoxWyszukiwanieOperator.TabIndex = 44;
             // 
             // groupBox25
@@ -1976,6 +1980,7 @@
             // richTextBoxUprawnieniaOperatora
             // 
             this.richTextBoxUprawnieniaOperatora.Enabled = false;
+            this.richTextBoxUprawnieniaOperatora.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.richTextBoxUprawnieniaOperatora.ForeColor = System.Drawing.Color.Red;
             this.richTextBoxUprawnieniaOperatora.Location = new System.Drawing.Point(10, 272);
             this.richTextBoxUprawnieniaOperatora.Name = "richTextBoxUprawnieniaOperatora";
@@ -1986,41 +1991,41 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label45.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label45.Location = new System.Drawing.Point(6, 83);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(61, 20);
+            this.label45.Size = new System.Drawing.Size(66, 16);
             this.label45.TabIndex = 56;
             this.label45.Text = "Nazwisko";
             // 
             // textBoxNazwiskoOperator
             // 
             this.textBoxNazwiskoOperator.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwiskoOperator.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxNazwiskoOperator.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.textBoxNazwiskoOperator.Location = new System.Drawing.Point(90, 79);
             this.textBoxNazwiskoOperator.Name = "textBoxNazwiskoOperator";
-            this.textBoxNazwiskoOperator.Size = new System.Drawing.Size(388, 24);
+            this.textBoxNazwiskoOperator.Size = new System.Drawing.Size(388, 23);
             this.textBoxNazwiskoOperator.TabIndex = 55;
             // 
             // comboBoxDzialOperator
             // 
-            this.comboBoxDzialOperator.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.comboBoxDzialOperator.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.comboBoxDzialOperator.FormattingEnabled = true;
             this.comboBoxDzialOperator.Location = new System.Drawing.Point(90, 127);
             this.comboBoxDzialOperator.Name = "comboBoxDzialOperator";
-            this.comboBoxDzialOperator.Size = new System.Drawing.Size(388, 28);
+            this.comboBoxDzialOperator.Size = new System.Drawing.Size(388, 24);
             this.comboBoxDzialOperator.TabIndex = 54;
             this.comboBoxDzialOperator.SelectedIndexChanged += new System.EventHandler(this.comboBoxDzial_operator_maszyny_SelectedIndexChanged);
             // 
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label47.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label47.Location = new System.Drawing.Point(6, 232);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(133, 20);
+            this.label47.Size = new System.Drawing.Size(141, 16);
             this.label47.TabIndex = 53;
             this.label47.Text = "Data końca uprawnień";
             // 
@@ -2036,11 +2041,11 @@
             // label54
             // 
             this.label54.AutoSize = true;
-            this.label54.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label54.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label54.Location = new System.Drawing.Point(6, 333);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(147, 20);
+            this.label54.Size = new System.Drawing.Size(145, 16);
             this.label54.TabIndex = 51;
             this.label54.Text = "Obsługiwane maszyny";
             // 
@@ -2050,63 +2055,63 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxMaszynyOperatora.BackColor = System.Drawing.Color.Linen;
             this.listBoxMaszynyOperatora.Enabled = false;
-            this.listBoxMaszynyOperatora.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.listBoxMaszynyOperatora.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.listBoxMaszynyOperatora.FormattingEnabled = true;
-            this.listBoxMaszynyOperatora.ItemHeight = 20;
+            this.listBoxMaszynyOperatora.ItemHeight = 16;
             this.listBoxMaszynyOperatora.Location = new System.Drawing.Point(10, 356);
             this.listBoxMaszynyOperatora.Name = "listBoxMaszynyOperatora";
-            this.listBoxMaszynyOperatora.Size = new System.Drawing.Size(468, 264);
+            this.listBoxMaszynyOperatora.Size = new System.Drawing.Size(468, 260);
             this.listBoxMaszynyOperatora.TabIndex = 50;
             // 
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label55.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label55.Location = new System.Drawing.Point(6, 181);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(79, 20);
+            this.label55.Size = new System.Drawing.Size(83, 16);
             this.label55.TabIndex = 49;
             this.label55.Text = "Uprawnienia";
             // 
             // textBoxUprawnienieOperator
             // 
             this.textBoxUprawnienieOperator.BackColor = System.Drawing.Color.Linen;
-            this.textBoxUprawnienieOperator.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxUprawnienieOperator.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.textBoxUprawnienieOperator.Location = new System.Drawing.Point(90, 178);
             this.textBoxUprawnienieOperator.Name = "textBoxUprawnienieOperator";
-            this.textBoxUprawnienieOperator.Size = new System.Drawing.Size(388, 24);
+            this.textBoxUprawnienieOperator.Size = new System.Drawing.Size(388, 23);
             this.textBoxUprawnienieOperator.TabIndex = 48;
             // 
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label56.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label56.Location = new System.Drawing.Point(6, 130);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(36, 20);
+            this.label56.Size = new System.Drawing.Size(41, 16);
             this.label56.TabIndex = 47;
             this.label56.Text = "Dział";
             // 
             // label57
             // 
             this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label57.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label57.Location = new System.Drawing.Point(6, 37);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(33, 20);
+            this.label57.Size = new System.Drawing.Size(33, 16);
             this.label57.TabIndex = 45;
             this.label57.Text = "Imię";
             // 
             // textBoxImieOperator
             // 
             this.textBoxImieOperator.BackColor = System.Drawing.Color.Linen;
-            this.textBoxImieOperator.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxImieOperator.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.textBoxImieOperator.Location = new System.Drawing.Point(90, 34);
             this.textBoxImieOperator.Name = "textBoxImieOperator";
-            this.textBoxImieOperator.Size = new System.Drawing.Size(388, 24);
+            this.textBoxImieOperator.Size = new System.Drawing.Size(388, 23);
             this.textBoxImieOperator.TabIndex = 44;
             // 
             // groupBox26
@@ -2124,7 +2129,7 @@
             // 
             // comboBoxOperator
             // 
-            this.comboBoxOperator.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.comboBoxOperator.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.comboBoxOperator.FormattingEnabled = true;
             this.comboBoxOperator.Items.AddRange(new object[] {
             "Nazwisko",
@@ -2134,7 +2139,7 @@
             " "});
             this.comboBoxOperator.Location = new System.Drawing.Point(15, 19);
             this.comboBoxOperator.Name = "comboBoxOperator";
-            this.comboBoxOperator.Size = new System.Drawing.Size(299, 28);
+            this.comboBoxOperator.Size = new System.Drawing.Size(299, 24);
             this.comboBoxOperator.TabIndex = 7;
             this.comboBoxOperator.SelectedIndexChanged += new System.EventHandler(this.comboBoxOperator_SelectedIndexChanged);
             // 
@@ -2174,11 +2179,11 @@
             this.listBoxMaszynyDysponenta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxMaszynyDysponenta.Enabled = false;
-            this.listBoxMaszynyDysponenta.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.listBoxMaszynyDysponenta.ItemHeight = 20;
+            this.listBoxMaszynyDysponenta.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.listBoxMaszynyDysponenta.ItemHeight = 16;
             this.listBoxMaszynyDysponenta.Location = new System.Drawing.Point(6, 37);
             this.listBoxMaszynyDysponenta.Name = "listBoxMaszynyDysponenta";
-            this.listBoxMaszynyDysponenta.Size = new System.Drawing.Size(338, 704);
+            this.listBoxMaszynyDysponenta.Size = new System.Drawing.Size(338, 692);
             this.listBoxMaszynyDysponenta.TabIndex = 63;
             // 
             // statusStripDysponent
@@ -2298,7 +2303,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxDysponent_dane.BackColor = System.Drawing.Color.Linen;
             this.richTextBoxDysponent_dane.DetectUrls = false;
-            this.richTextBoxDysponent_dane.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.richTextBoxDysponent_dane.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.richTextBoxDysponent_dane.Location = new System.Drawing.Point(16, 194);
             this.richTextBoxDysponent_dane.Name = "richTextBoxDysponent_dane";
             this.richTextBoxDysponent_dane.Size = new System.Drawing.Size(432, 430);
@@ -2308,73 +2313,73 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label2.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label2.Location = new System.Drawing.Point(12, 85);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 20);
+            this.label2.Size = new System.Drawing.Size(56, 17);
             this.label2.TabIndex = 56;
             this.label2.Text = "Nazwisko";
             // 
             // textBoxNazwiskoDysponent
             // 
             this.textBoxNazwiskoDysponent.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwiskoDysponent.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxNazwiskoDysponent.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.textBoxNazwiskoDysponent.Location = new System.Drawing.Point(79, 82);
             this.textBoxNazwiskoDysponent.Name = "textBoxNazwiskoDysponent";
-            this.textBoxNazwiskoDysponent.Size = new System.Drawing.Size(371, 24);
+            this.textBoxNazwiskoDysponent.Size = new System.Drawing.Size(371, 23);
             this.textBoxNazwiskoDysponent.TabIndex = 55;
             // 
             // comboBoxDzialDysponent
             // 
-            this.comboBoxDzialDysponent.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.comboBoxDzialDysponent.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.comboBoxDzialDysponent.FormattingEnabled = true;
             this.comboBoxDzialDysponent.Location = new System.Drawing.Point(79, 127);
             this.comboBoxDzialDysponent.Name = "comboBoxDzialDysponent";
-            this.comboBoxDzialDysponent.Size = new System.Drawing.Size(369, 28);
+            this.comboBoxDzialDysponent.Size = new System.Drawing.Size(369, 24);
             this.comboBoxDzialDysponent.TabIndex = 54;
             this.comboBoxDzialDysponent.SelectedIndexChanged += new System.EventHandler(this.comboBoxDzial_dysponent_SelectedIndexChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label6.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label6.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label6.Location = new System.Drawing.Point(12, 171);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(102, 20);
+            this.label6.Size = new System.Drawing.Size(89, 17);
             this.label6.TabIndex = 49;
             this.label6.Text = "Dodatkowe dane";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label7.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label7.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label7.Location = new System.Drawing.Point(12, 130);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 20);
+            this.label7.Size = new System.Drawing.Size(32, 17);
             this.label7.TabIndex = 47;
             this.label7.Text = "Dział";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label17.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label17.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label17.Location = new System.Drawing.Point(12, 38);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(33, 20);
+            this.label17.Size = new System.Drawing.Size(29, 17);
             this.label17.TabIndex = 45;
             this.label17.Text = "Imię";
             // 
             // textBoxImieDysponent
             // 
             this.textBoxImieDysponent.BackColor = System.Drawing.Color.Linen;
-            this.textBoxImieDysponent.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxImieDysponent.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.textBoxImieDysponent.Location = new System.Drawing.Point(79, 35);
             this.textBoxImieDysponent.Name = "textBoxImieDysponent";
-            this.textBoxImieDysponent.Size = new System.Drawing.Size(371, 24);
+            this.textBoxImieDysponent.Size = new System.Drawing.Size(371, 23);
             this.textBoxImieDysponent.TabIndex = 44;
             // 
             // groupBox29
@@ -2407,10 +2412,10 @@
             // textBoxWyszukiwanieDysponent
             // 
             this.textBoxWyszukiwanieDysponent.BackColor = System.Drawing.Color.Linen;
-            this.textBoxWyszukiwanieDysponent.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxWyszukiwanieDysponent.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.textBoxWyszukiwanieDysponent.Location = new System.Drawing.Point(6, 23);
             this.textBoxWyszukiwanieDysponent.Name = "textBoxWyszukiwanieDysponent";
-            this.textBoxWyszukiwanieDysponent.Size = new System.Drawing.Size(403, 24);
+            this.textBoxWyszukiwanieDysponent.Size = new System.Drawing.Size(403, 23);
             this.textBoxWyszukiwanieDysponent.TabIndex = 44;
             // 
             // groupBox30
@@ -2433,9 +2438,9 @@
             this.listBoxDysponent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxDysponent.BackColor = System.Drawing.Color.Linen;
-            this.listBoxDysponent.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.listBoxDysponent.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.listBoxDysponent.FormattingEnabled = true;
-            this.listBoxDysponent.ItemHeight = 20;
+            this.listBoxDysponent.ItemHeight = 16;
             this.listBoxDysponent.Location = new System.Drawing.Point(15, 22);
             this.listBoxDysponent.Name = "listBoxDysponent";
             this.listBoxDysponent.Size = new System.Drawing.Size(299, 724);
@@ -2512,37 +2517,38 @@
             // textBoxNazwaDostawcy
             // 
             this.textBoxNazwaDostawcy.BackColor = System.Drawing.Color.Linen;
-            this.textBoxNazwaDostawcy.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxNazwaDostawcy.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.textBoxNazwaDostawcy.Location = new System.Drawing.Point(10, 62);
             this.textBoxNazwaDostawcy.Name = "textBoxNazwaDostawcy";
-            this.textBoxNazwaDostawcy.Size = new System.Drawing.Size(480, 24);
+            this.textBoxNazwaDostawcy.Size = new System.Drawing.Size(480, 23);
             this.textBoxNazwaDostawcy.TabIndex = 54;
             // 
             // textBoxLink
             // 
             this.textBoxLink.BackColor = System.Drawing.Color.Linen;
-            this.textBoxLink.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.textBoxLink.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.textBoxLink.Location = new System.Drawing.Point(12, 549);
             this.textBoxLink.Name = "textBoxLink";
-            this.textBoxLink.Size = new System.Drawing.Size(478, 24);
+            this.textBoxLink.Size = new System.Drawing.Size(478, 23);
             this.textBoxLink.TabIndex = 52;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label24.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label24.Location = new System.Drawing.Point(13, 526);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(86, 20);
+            this.label24.Size = new System.Drawing.Size(74, 16);
             this.label24.TabIndex = 53;
             this.label24.Text = "Link dostawcy";
             // 
             // linkLabelDostawcaMat
             // 
             this.linkLabelDostawcaMat.AutoSize = true;
+            this.linkLabelDostawcaMat.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.linkLabelDostawcaMat.Location = new System.Drawing.Point(13, 601);
             this.linkLabelDostawcaMat.Name = "linkLabelDostawcaMat";
-            this.linkLabelDostawcaMat.Size = new System.Drawing.Size(124, 20);
+            this.linkLabelDostawcaMat.Size = new System.Drawing.Size(108, 15);
             this.linkLabelDostawcaMat.TabIndex = 42;
             this.linkLabelDostawcaMat.TabStop = true;
             this.linkLabelDostawcaMat.Text = "linkLabelDostawca";
@@ -2551,10 +2557,10 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label25.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label25.Location = new System.Drawing.Point(6, 39);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(100, 20);
+            this.label25.Size = new System.Drawing.Size(88, 16);
             this.label25.TabIndex = 51;
             this.label25.Text = "Nazwa dostawcy";
             // 
@@ -2563,7 +2569,7 @@
             this.richTextBoxDostawca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxDostawca.BackColor = System.Drawing.Color.Linen;
-            this.richTextBoxDostawca.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.richTextBoxDostawca.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.richTextBoxDostawca.Location = new System.Drawing.Point(12, 146);
             this.richTextBoxDostawca.Name = "richTextBoxDostawca";
             this.richTextBoxDostawca.Size = new System.Drawing.Size(478, 329);
@@ -2573,10 +2579,10 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.label26.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label26.Location = new System.Drawing.Point(8, 123);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(133, 20);
+            this.label26.Size = new System.Drawing.Size(111, 16);
             this.label26.TabIndex = 44;
             this.label26.Text = "Dodatkowe informacje";
             this.label26.UseMnemonic = false;
@@ -2599,12 +2605,12 @@
             // 
             this.listBoxDostawcy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBoxDostawcy.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.listBoxDostawcy.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.listBoxDostawcy.FormattingEnabled = true;
-            this.listBoxDostawcy.ItemHeight = 20;
+            this.listBoxDostawcy.ItemHeight = 16;
             this.listBoxDostawcy.Location = new System.Drawing.Point(6, 23);
             this.listBoxDostawcy.Name = "listBoxDostawcy";
-            this.listBoxDostawcy.Size = new System.Drawing.Size(355, 704);
+            this.listBoxDostawcy.Size = new System.Drawing.Size(355, 692);
             this.listBoxDostawcy.TabIndex = 52;
             this.listBoxDostawcy.SelectedIndexChanged += new System.EventHandler(this.listBoxDostawcy_SelectedIndexChanged);
             // 
