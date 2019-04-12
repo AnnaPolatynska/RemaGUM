@@ -2645,7 +2645,7 @@ namespace RemaGUM
                         materialy_VO.Stan_min_mat = int.Parse(textBoxMinMat.Text.Trim());
                         if (int.Parse(textBoxMinMat.Text.Trim()) < 0)
                         {
-                            MessageBox.Show("Uwaga wprowadzono liczbę ujemną! Wprowadz liczbę dodatnia do pola stan minimalny dla materiału.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Uwaga wprowadzono liczbę ujemną! Wprowadz liczbę dodatnią do pola stan minimalny dla materiału.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                     }
@@ -2655,10 +2655,12 @@ namespace RemaGUM
                     MessageBox.Show("Uwaga nie wprowadzono prawidłowej wartości! Wprowadz liczbę całkowitą do pola stan minimalny materiałów.",  "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                // pola uzupełniane zerami w przypadku braku wpisu użytkownika.
-               
-                //wstawienie 0 w przypadku braku wpisu w pole textBoxZuzycieMat.
-                if (textBoxZuzycieMat.Text == string.Empty)
+
+                
+                    // pola uzupełniane zerami w przypadku braku wpisu użytkownika.
+
+                    //wstawienie 0 w przypadku braku wpisu w pole textBoxZuzycieMat.
+                    if (textBoxZuzycieMat.Text == string.Empty)
                 {
                     textBoxZuzycieMat.Text = "0";
                 }
@@ -2778,36 +2780,6 @@ namespace RemaGUM
                     int v;
 
 
-                    if (int.TryParse(textBoxMagazynMat.Text.Trim(), out v))
-                    {
-                        if (textBoxMagazynMat.Text == string.Empty)
-                        {
-                            MessageBox.Show("Uwaga! Proszę wprowadzić stan magazynowy: " + materialy_VO.Nazwa_mat, "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        else
-                        {
-
-                            int aktualny_stan_Material = int.Parse(textBoxMagazynMat.Text.Trim()) - int.Parse(textBoxZuzycieMat.Text.Trim()) - int.Parse(textBoxOdpadMat.Text.Trim()) + int.Parse(textBoxZapotrzebowanieMat.Text.Trim());
-                            //materialyBUS.VO.Stan_mat - materialyBUS.VO.Zuzycie_mat - materialyBUS.VO.Odpad_mat + materialyBUS.VO.Zapotrzebowanie_mat;
-
-                            //materialy_VO.Stan_mat = int.Parse(textBoxMagazynMat.Text.Trim()); // pole zablokowane do edycji - jedynie wartość wyliczana automatycznie.
-                            materialy_VO.Stan_mat = aktualny_stan_Material;
-
-                            if (int.Parse(textBoxMagazynMat.Text.Trim()) < 0)
-                            {
-                                MessageBox.Show("Uwaga wprowadzono liczbę ujemną! Wprowadz liczbę dodatnią do pola stan magazynowy.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Uwaga nie wprowadzono prawidłowej wartości! Wprowadz liczbę całkowitą do pola stan magazynowy.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-
                     if (int.TryParse(textBoxMinMat.Text.Trim(), out v))
                     {
                         if (textBoxMinMat.Text == string.Empty)
@@ -2878,18 +2850,17 @@ namespace RemaGUM
                     }
 
 
-
                     if (int.TryParse(textBoxZapotrzebowanieMat.Text.Trim(), out v))
                     {
-                        //wstawienie 0 w przypadku braku wpisu w pole textBoxZapotrzebowanieMat.
+                        
                         if (textBoxZapotrzebowanieMat.Text == string.Empty)
                         {
-                            textBoxZapotrzebowanieMat.Text = "0";
+                            textBoxZapotrzebowanieMat.Text = "0"; //wstawienie 0 w przypadku braku wpisu w pole textBoxZapotrzebowanieMat.
                         }
                         else
                         {
                             materialy_VO.Zapotrzebowanie_mat = int.Parse(textBoxZapotrzebowanieMat.Text.Trim());
-                            if (int.Parse(textBoxOdpadMat.Text.Trim()) < 0)
+                            if (int.Parse(textBoxZapotrzebowanieMat.Text.Trim()) < 0)
                             {
                                 MessageBox.Show("Uwaga wprowadzono liczbę ujemną! Wprowadz liczbę dodatnią do pola zakup materiału.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -2902,6 +2873,9 @@ namespace RemaGUM
                         return;
                     }
 
+                    
+                    int aktualny_stan_Material = int.Parse(textBoxMagazynMat.Text.Trim()) - int.Parse(textBoxZuzycieMat.Text.Trim()) - int.Parse(textBoxOdpadMat.Text.Trim()) + int.Parse(textBoxZapotrzebowanieMat.Text.Trim());
+                    materialy_VO.Stan_mat = aktualny_stan_Material;
 
                     materialyBUS.write(materialy_VO); // ZAPIS
 
