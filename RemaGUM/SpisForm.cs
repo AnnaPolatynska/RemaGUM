@@ -2604,7 +2604,7 @@ namespace RemaGUM
                 {
                     materialy_VO.Jednostka_miar_mat = comboBoxJednostkaMat.Text.Trim();
                 }
-
+                
                 // Stan magazynowy - pole jedynie do odczytu (wyliczane automatycznie). Pole przy nowej pozycji nie może być puste. Komunikat o konieczności wprowadzenia na stan przez pole Zakup. 
 
                 int v;
@@ -2670,9 +2670,9 @@ namespace RemaGUM
                         dostawca_MatBUS.idx = i;
                         dostawca_MaterialBUS.insert(materialyBUS.VO.Identyfikator, dostawca_MatBUS.VO.Identyfikator, materialyBUS.VO.Nazwa_mat);
                     }
-                    //dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;"); //odświeża wybrane checkboxy dostawcy.
-                    
+               
                 }
+
                 //listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialyBUS.VO.Identyfikator); // ustawienie zaznaczenia w tabeli materiały.
                 materialyBUS.write(materialy_VO);
 
@@ -2688,11 +2688,19 @@ namespace RemaGUM
 
                 materialyBUS.selectQuery("SELECT * FROM Materialy ORDER BY Nazwa_mat ASC;");
                 listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialId);
+                
+                //odblokowanie sortowania i wyszukiwania po zapisie.
+                // odblokowanie listy materiałów
+                listBoxMaterialy.Enabled = true;
+                listBoxMaterialy.BackColor = Color.White;
 
-                //dostawca_MatBUS.idx = checkedListBoxDostawcyMat.SelectedIndex;
-                //toolStripStatusLabel_ID_Dostawcy.Text = dostawca_MatBUS.VO.Identyfikator.ToString();
-                //dostawca_MaterialBUS.select(materialy_VO.Identyfikator);
-                //dostawca_MatBUS.select();
+                // zablokowanie sortowania materiałów
+                groupBoxSorowanieMaterialow.Enabled = true;
+
+                // zablokowanie wyszukiwania
+                textBoxWyszukaj_mat.Enabled = true;
+                textBoxWyszukaj_mat.BackColor = Color.White;
+                buttonSzukaj_mat.Enabled = true;
 
             } // if nowy
 
