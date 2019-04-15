@@ -2656,27 +2656,8 @@ namespace RemaGUM
                     return;
                 }
 
-                
-                    // pola uzupełniane zerami w przypadku braku wpisu użytkownika.
-
-                    //wstawienie 0 w przypadku braku wpisu w pole textBoxZuzycieMat.
-                    if (textBoxZuzycieMat.Text == string.Empty)
-                {
-                    textBoxZuzycieMat.Text = "0";
-                }
-               
-                //wstawienie 0 w przypadku braku wpisu w pole textBoxOdpadMat.
-                if (textBoxOdpadMat.Text == string.Empty)
-                {
-                    textBoxOdpadMat.Text = "0";
-                }
-               
-                //wstawienie 0 w przypadku braku wpisu w pole textBoxZapotrzebowanieMat.
-                if (textBoxZapotrzebowanieMat.Text == string.Empty)
-                {
-                    textBoxZapotrzebowanieMat.Text = "0";
-                }
-              
+                // pola nieaktywne: textBoxZuzycieMat, textBoxOdpadMat, textBoxZapotrzebowanieMat.
+                              
                 // Zapis dostawców przypisanych do danego materiału.
 
                 dostawca_MatBUS.selectQuery("SELECT * FROM Dostawca_mat ORDER BY Nazwa_dostawca_mat ASC;");
@@ -2776,10 +2757,8 @@ namespace RemaGUM
 
 
                     //************************** pola wartości **********
-                   
                     int v;
-
-
+                    // Wartość minimalna - textBoxMinMat
                     if (int.TryParse(textBoxMinMat.Text.Trim(), out v))
                     {
                         if (textBoxMinMat.Text == string.Empty)
@@ -2803,7 +2782,7 @@ namespace RemaGUM
                         return;
                     }
 
-
+                    //Zużycie materiałów - textBoxZuzycieMat.
                     if (int.TryParse(textBoxZuzycieMat.Text.Trim(), out v))
                     {
                         if (textBoxZuzycieMat.Text == string.Empty) //wstawienie 0 w przypadku braku wpisu w pole textBoxZuzycieMat.
@@ -2818,6 +2797,11 @@ namespace RemaGUM
                                 MessageBox.Show("Uwaga wprowadzono liczbę ujemną! Wprowadz liczbę dodatnią do pola bieżące zużycie materiału.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
+                            if (int.Parse(textBoxZuzycieMat.Text.Trim()) > int.Parse(textBoxMagazynMat.Text.Trim())) // uniemożliwia wpisanie zużycia wyższego niż stan magazynowy.
+                            {
+                                MessageBox.Show("Uwaga wprowadzono wartość zuzycia materiału przekraczającą stan magazynowy. Skoryguj wartość dla bieżącego zużycia materiału.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
                     }
                     else
@@ -2826,7 +2810,7 @@ namespace RemaGUM
                         return;
                     }
 
-
+                    //Odpad materiałów - textBoxOdpadMat.
                     if (int.TryParse(textBoxOdpadMat.Text.Trim(), out v))
                     {
                         if (textBoxOdpadMat.Text == string.Empty)
@@ -2841,6 +2825,11 @@ namespace RemaGUM
                                 MessageBox.Show("Uwaga wprowadzono liczbę ujemną! Wprowadz liczbę dodatnią do pola odpad materiału.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
+                            if (int.Parse(textBoxOdpadMat.Text.Trim()) > int.Parse(textBoxMagazynMat.Text.Trim())) // uniemożliwia wpisanie odpadu materiału wyższego niż stan magazynowy.
+                            {
+                                MessageBox.Show("Uwaga wprowadzono wartość dla odpadu materiału przekraczającą stan magazynowy. Skoryguj wartość dla odpadu materiału.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
                     }
                     else
@@ -2849,7 +2838,15 @@ namespace RemaGUM
                         return;
                     }
 
+                    // uniemożliwienie wpisania sumy zuzycia i odpadu przekraczającego stan magazynowy.
+                    int rozchod = int.Parse(textBoxZuzycieMat.Text.Trim()) + int.Parse(textBoxOdpadMat.Text.Trim());
+                    if (rozchod > int.Parse(textBoxMagazynMat.Text.Trim()))
+                    {
+                        MessageBox.Show("Uwaga łączna ilość zużycia materiału i odpadu materiału przekracza stan magazynowy. Skoryguj wartośći.", "RemaGUM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
+                    //Zapotrzebowanie materiałów - textBoxZapotrzebowanieMat.
                     if (int.TryParse(textBoxZapotrzebowanieMat.Text.Trim(), out v))
                     {
                         
@@ -2873,14 +2870,13 @@ namespace RemaGUM
                         return;
                     }
 
-                    
+                    //Aktualny stan materiałów.
                     int aktualny_stan_Material = int.Parse(textBoxMagazynMat.Text.Trim()) - int.Parse(textBoxZuzycieMat.Text.Trim()) - int.Parse(textBoxOdpadMat.Text.Trim()) + int.Parse(textBoxZapotrzebowanieMat.Text.Trim());
                     materialy_VO.Stan_mat = aktualny_stan_Material;
 
                     materialyBUS.write(materialy_VO); // ZAPIS
 
                     dostawca_MaterialBUS.select(materialyBUS.VO.Identyfikator);
-
 
                     int aktualizacjaStanuMagazyn = materialyBUS.VO.Stan_mat - materialyBUS.VO.Zuzycie_mat - materialyBUS.VO.Odpad_mat + materialyBUS.VO.Zapotrzebowanie_mat;
 
