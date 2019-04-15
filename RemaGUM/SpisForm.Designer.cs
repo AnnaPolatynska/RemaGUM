@@ -354,7 +354,7 @@
             this.groupBox10.Controls.Add(this.groupBoxDostawca);
             this.groupBox10.Controls.Add(this.label28);
             this.groupBox10.Controls.Add(this.checkedListBoxDostawcyMat);
-            this.groupBox10.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox10.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox10.Location = new System.Drawing.Point(816, 8);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(431, 768);
@@ -401,10 +401,10 @@
             // labelDostawca
             // 
             this.labelDostawca.AutoSize = true;
-            this.labelDostawca.Font = new System.Drawing.Font("Arial Narrow", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelDostawca.Font = new System.Drawing.Font("Arial Narrow", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.labelDostawca.Location = new System.Drawing.Point(10, 37);
             this.labelDostawca.Name = "labelDostawca";
-            this.labelDostawca.Size = new System.Drawing.Size(68, 20);
+            this.labelDostawca.Size = new System.Drawing.Size(60, 17);
             this.labelDostawca.TabIndex = 55;
             this.labelDostawca.Text = "Dostawca";
             // 
@@ -458,7 +458,7 @@
             this.checkedListBoxDostawcyMat.FormattingEnabled = true;
             this.checkedListBoxDostawcyMat.Location = new System.Drawing.Point(13, 53);
             this.checkedListBoxDostawcyMat.Name = "checkedListBoxDostawcyMat";
-            this.checkedListBoxDostawcyMat.Size = new System.Drawing.Size(405, 194);
+            this.checkedListBoxDostawcyMat.Size = new System.Drawing.Size(405, 184);
             this.checkedListBoxDostawcyMat.TabIndex = 46;
             this.checkedListBoxDostawcyMat.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxDostawcyMat_SelectedIndex);
             // 
@@ -481,7 +481,7 @@
             this.groupBox6.Controls.Add(this.comboBoxRodzajMat);
             this.groupBox6.Controls.Add(this.label4);
             this.groupBox6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox6.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox6.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox6.Location = new System.Drawing.Point(388, 71);
             this.groupBox6.Name = "groupBox6";
@@ -764,7 +764,7 @@
             // buttonNowaMat
             // 
             this.buttonNowaMat.BackColor = System.Drawing.Color.Linen;
-            this.buttonNowaMat.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonNowaMat.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonNowaMat.Location = new System.Drawing.Point(14, 19);
             this.buttonNowaMat.Name = "buttonNowaMat";
             this.buttonNowaMat.Size = new System.Drawing.Size(75, 31);
@@ -776,7 +776,7 @@
             // buttonUsunMat
             // 
             this.buttonUsunMat.BackColor = System.Drawing.Color.Linen;
-            this.buttonUsunMat.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonUsunMat.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonUsunMat.Location = new System.Drawing.Point(317, 19);
             this.buttonUsunMat.Name = "buttonUsunMat";
             this.buttonUsunMat.Size = new System.Drawing.Size(75, 31);
@@ -788,7 +788,7 @@
             // buttonZapiszMat
             // 
             this.buttonZapiszMat.BackColor = System.Drawing.Color.Linen;
-            this.buttonZapiszMat.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonZapiszMat.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonZapiszMat.Location = new System.Drawing.Point(119, 19);
             this.buttonZapiszMat.Name = "buttonZapiszMat";
             this.buttonZapiszMat.Size = new System.Drawing.Size(75, 31);
@@ -800,7 +800,7 @@
             // buttonAnulujMat
             // 
             this.buttonAnulujMat.BackColor = System.Drawing.Color.Linen;
-            this.buttonAnulujMat.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonAnulujMat.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonAnulujMat.Location = new System.Drawing.Point(218, 19);
             this.buttonAnulujMat.Name = "buttonAnulujMat";
             this.buttonAnulujMat.Size = new System.Drawing.Size(75, 31);
@@ -896,7 +896,7 @@
             this.groupBox7.Controls.Add(this.buttonSzukaj_mat);
             this.groupBox7.Controls.Add(this.textBoxWyszukaj_mat);
             this.groupBox7.Cursor = System.Windows.Forms.Cursors.Default;
-            this.groupBox7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox7.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox7.ForeColor = System.Drawing.Color.Black;
             this.groupBox7.Location = new System.Drawing.Point(390, 8);
             this.groupBox7.Name = "groupBox7";
@@ -931,7 +931,7 @@
             this.groupBox8.BackColor = System.Drawing.Color.Bisque;
             this.groupBox8.Controls.Add(this.listBoxMaterialy);
             this.groupBox8.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.groupBox8.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox8.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox8.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox8.Location = new System.Drawing.Point(9, 71);
             this.groupBox8.Name = "groupBox8";
@@ -959,7 +959,7 @@
             this.groupBoxSorowanieMaterialow.Controls.Add(this.radioButtonNazwa_mat);
             this.groupBoxSorowanieMaterialow.Controls.Add(this.radioButtonStan_min_mat);
             this.groupBoxSorowanieMaterialow.Controls.Add(this.radioButtonTyp_mat);
-            this.groupBoxSorowanieMaterialow.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBoxSorowanieMaterialow.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBoxSorowanieMaterialow.ForeColor = System.Drawing.Color.Black;
             this.groupBoxSorowanieMaterialow.Location = new System.Drawing.Point(9, 8);
             this.groupBoxSorowanieMaterialow.Name = "groupBoxSorowanieMaterialow";
@@ -1093,7 +1093,7 @@
             // buttonPokazZdj
             // 
             this.buttonPokazZdj.BackColor = System.Drawing.Color.Linen;
-            this.buttonPokazZdj.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonPokazZdj.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonPokazZdj.Location = new System.Drawing.Point(862, 518);
             this.buttonPokazZdj.Name = "buttonPokazZdj";
             this.buttonPokazZdj.Size = new System.Drawing.Size(151, 28);
@@ -1105,7 +1105,7 @@
             // buttonUsunZdj
             // 
             this.buttonUsunZdj.BackColor = System.Drawing.Color.Linen;
-            this.buttonUsunZdj.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonUsunZdj.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonUsunZdj.Location = new System.Drawing.Point(1083, 518);
             this.buttonUsunZdj.Name = "buttonUsunZdj";
             this.buttonUsunZdj.Size = new System.Drawing.Size(151, 28);
@@ -1144,7 +1144,7 @@
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox4.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox4.Location = new System.Drawing.Point(333, 63);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(514, 708);
@@ -1155,9 +1155,9 @@
             // richTextBoxProducent
             // 
             this.richTextBoxProducent.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
-            this.richTextBoxProducent.Location = new System.Drawing.Point(131, 191);
+            this.richTextBoxProducent.Location = new System.Drawing.Point(131, 182);
             this.richTextBoxProducent.Name = "richTextBoxProducent";
-            this.richTextBoxProducent.Size = new System.Drawing.Size(365, 54);
+            this.richTextBoxProducent.Size = new System.Drawing.Size(365, 66);
             this.richTextBoxProducent.TabIndex = 42;
             this.richTextBoxProducent.Text = "";
             // 
@@ -1185,7 +1185,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label1.Location = new System.Drawing.Point(11, 36);
+            this.label1.Location = new System.Drawing.Point(11, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 17);
             this.label1.TabIndex = 34;
@@ -1235,7 +1235,7 @@
             // 
             this.labelTypMaszyny.AutoSize = true;
             this.labelTypMaszyny.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.labelTypMaszyny.Location = new System.Drawing.Point(11, 102);
+            this.labelTypMaszyny.Location = new System.Drawing.Point(11, 91);
             this.labelTypMaszyny.Name = "labelTypMaszyny";
             this.labelTypMaszyny.Size = new System.Drawing.Size(27, 17);
             this.labelTypMaszyny.TabIndex = 9;
@@ -1276,7 +1276,7 @@
             // 
             this.textBoxTyp.BackColor = System.Drawing.Color.Linen;
             this.textBoxTyp.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.textBoxTyp.Location = new System.Drawing.Point(131, 99);
+            this.textBoxTyp.Location = new System.Drawing.Point(131, 88);
             this.textBoxTyp.Name = "textBoxTyp";
             this.textBoxTyp.Size = new System.Drawing.Size(365, 23);
             this.textBoxTyp.TabIndex = 8;
@@ -1294,7 +1294,7 @@
             // 
             this.labelNrInwentarzowyMaszyny.AutoSize = true;
             this.labelNrInwentarzowyMaszyny.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.labelNrInwentarzowyMaszyny.Location = new System.Drawing.Point(11, 134);
+            this.labelNrInwentarzowyMaszyny.Location = new System.Drawing.Point(11, 123);
             this.labelNrInwentarzowyMaszyny.Name = "labelNrInwentarzowyMaszyny";
             this.labelNrInwentarzowyMaszyny.Size = new System.Drawing.Size(89, 17);
             this.labelNrInwentarzowyMaszyny.TabIndex = 10;
@@ -1304,7 +1304,7 @@
             // 
             this.textBoxNr_inwentarzowy.BackColor = System.Drawing.Color.Linen;
             this.textBoxNr_inwentarzowy.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.textBoxNr_inwentarzowy.Location = new System.Drawing.Point(131, 131);
+            this.textBoxNr_inwentarzowy.Location = new System.Drawing.Point(131, 120);
             this.textBoxNr_inwentarzowy.Name = "textBoxNr_inwentarzowy";
             this.textBoxNr_inwentarzowy.Size = new System.Drawing.Size(364, 23);
             this.textBoxNr_inwentarzowy.TabIndex = 11;
@@ -1313,7 +1313,7 @@
             // 
             this.labelNazwaMaszyny.AutoSize = true;
             this.labelNazwaMaszyny.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.labelNazwaMaszyny.Location = new System.Drawing.Point(11, 70);
+            this.labelNazwaMaszyny.Location = new System.Drawing.Point(11, 59);
             this.labelNazwaMaszyny.Name = "labelNazwaMaszyny";
             this.labelNazwaMaszyny.Size = new System.Drawing.Size(42, 17);
             this.labelNazwaMaszyny.TabIndex = 7;
@@ -1334,7 +1334,7 @@
             // 
             this.labelNrFabrycznyMaszyny.AutoSize = true;
             this.labelNrFabrycznyMaszyny.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.labelNrFabrycznyMaszyny.Location = new System.Drawing.Point(11, 167);
+            this.labelNrFabrycznyMaszyny.Location = new System.Drawing.Point(11, 156);
             this.labelNrFabrycznyMaszyny.Name = "labelNrFabrycznyMaszyny";
             this.labelNrFabrycznyMaszyny.Size = new System.Drawing.Size(71, 17);
             this.labelNrFabrycznyMaszyny.TabIndex = 13;
@@ -1344,7 +1344,7 @@
             // 
             this.textBoxNazwa.BackColor = System.Drawing.Color.Linen;
             this.textBoxNazwa.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.textBoxNazwa.Location = new System.Drawing.Point(131, 67);
+            this.textBoxNazwa.Location = new System.Drawing.Point(131, 56);
             this.textBoxNazwa.Name = "textBoxNazwa";
             this.textBoxNazwa.Size = new System.Drawing.Size(365, 23);
             this.textBoxNazwa.TabIndex = 6;
@@ -1353,7 +1353,7 @@
             // 
             this.textBoxNr_fabryczny.BackColor = System.Drawing.Color.Linen;
             this.textBoxNr_fabryczny.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.textBoxNr_fabryczny.Location = new System.Drawing.Point(131, 164);
+            this.textBoxNr_fabryczny.Location = new System.Drawing.Point(131, 153);
             this.textBoxNr_fabryczny.Name = "textBoxNr_fabryczny";
             this.textBoxNr_fabryczny.Size = new System.Drawing.Size(364, 23);
             this.textBoxNr_fabryczny.TabIndex = 14;
@@ -1363,7 +1363,7 @@
             this.comboBoxKategoria.BackColor = System.Drawing.Color.Linen;
             this.comboBoxKategoria.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.comboBoxKategoria.FormattingEnabled = true;
-            this.comboBoxKategoria.Location = new System.Drawing.Point(131, 33);
+            this.comboBoxKategoria.Location = new System.Drawing.Point(131, 22);
             this.comboBoxKategoria.Name = "comboBoxKategoria";
             this.comboBoxKategoria.Size = new System.Drawing.Size(165, 24);
             this.comboBoxKategoria.TabIndex = 31;
@@ -1435,7 +1435,7 @@
             this.groupBox5.Controls.Add(this.buttonSzukaj);
             this.groupBox5.Controls.Add(this.textBoxWyszukiwanie);
             this.groupBox5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.groupBox5.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox5.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox5.ForeColor = System.Drawing.Color.Black;
             this.groupBox5.Location = new System.Drawing.Point(862, 6);
             this.groupBox5.Name = "groupBox5";
@@ -1481,7 +1481,7 @@
             this.groupBox1.BackColor = System.Drawing.Color.Bisque;
             this.groupBox1.Controls.Add(this.listBoxMaszyny);
             this.groupBox1.Controls.Add(this.groupBoxSortowanie);
-            this.groupBox1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox1.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
@@ -1511,7 +1511,7 @@
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_fabryczny);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonNr_inwentarzowy);
             this.groupBoxSortowanie.Controls.Add(this.radioButtonTyp);
-            this.groupBoxSortowanie.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBoxSortowanie.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBoxSortowanie.ForeColor = System.Drawing.Color.Black;
             this.groupBoxSortowanie.Location = new System.Drawing.Point(6, 19);
             this.groupBoxSortowanie.Name = "groupBoxSortowanie";
@@ -1605,7 +1605,7 @@
             this.groupBox2.Controls.Add(this.buttonNowa);
             this.groupBox2.Controls.Add(this.buttonUsun);
             this.groupBox2.Controls.Add(this.buttonAnuluj);
-            this.groupBox2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox2.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
             this.groupBox2.Location = new System.Drawing.Point(862, 715);
             this.groupBox2.Name = "groupBox2";
@@ -1617,7 +1617,7 @@
             // buttonZapisz
             // 
             this.buttonZapisz.BackColor = System.Drawing.Color.Linen;
-            this.buttonZapisz.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonZapisz.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonZapisz.Location = new System.Drawing.Point(103, 20);
             this.buttonZapisz.Name = "buttonZapisz";
             this.buttonZapisz.Size = new System.Drawing.Size(78, 30);
@@ -1629,7 +1629,7 @@
             // buttonNowa
             // 
             this.buttonNowa.BackColor = System.Drawing.Color.Linen;
-            this.buttonNowa.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonNowa.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonNowa.Location = new System.Drawing.Point(19, 20);
             this.buttonNowa.Name = "buttonNowa";
             this.buttonNowa.Size = new System.Drawing.Size(78, 30);
@@ -1641,7 +1641,7 @@
             // buttonUsun
             // 
             this.buttonUsun.BackColor = System.Drawing.Color.Linen;
-            this.buttonUsun.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonUsun.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonUsun.Location = new System.Drawing.Point(271, 20);
             this.buttonUsun.Name = "buttonUsun";
             this.buttonUsun.Size = new System.Drawing.Size(78, 30);
@@ -1653,7 +1653,7 @@
             // buttonAnuluj
             // 
             this.buttonAnuluj.BackColor = System.Drawing.Color.Linen;
-            this.buttonAnuluj.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonAnuluj.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonAnuluj.Location = new System.Drawing.Point(187, 20);
             this.buttonAnuluj.Name = "buttonAnuluj";
             this.buttonAnuluj.Size = new System.Drawing.Size(78, 30);
@@ -1673,7 +1673,7 @@
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.textBoxNr_prot_BHP);
-            this.groupBox3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox3.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox3.Location = new System.Drawing.Point(862, 552);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(372, 166);
@@ -1829,7 +1829,7 @@
             this.groupBox22.Controls.Add(this.buttonUsunOperator);
             this.groupBox22.Controls.Add(this.buttonZapiszOperator);
             this.groupBox22.Controls.Add(this.buttonAnulujOperator);
-            this.groupBox22.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox22.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox22.ForeColor = System.Drawing.Color.Black;
             this.groupBox22.Location = new System.Drawing.Point(348, 714);
             this.groupBox22.Name = "groupBox22";
@@ -1841,7 +1841,7 @@
             // buttonNowaOperator
             // 
             this.buttonNowaOperator.BackColor = System.Drawing.Color.Linen;
-            this.buttonNowaOperator.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonNowaOperator.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonNowaOperator.Location = new System.Drawing.Point(6, 19);
             this.buttonNowaOperator.Name = "buttonNowaOperator";
             this.buttonNowaOperator.Size = new System.Drawing.Size(100, 35);
@@ -1853,7 +1853,7 @@
             // buttonUsunOperator
             // 
             this.buttonUsunOperator.BackColor = System.Drawing.Color.Linen;
-            this.buttonUsunOperator.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonUsunOperator.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonUsunOperator.Location = new System.Drawing.Point(378, 19);
             this.buttonUsunOperator.Name = "buttonUsunOperator";
             this.buttonUsunOperator.Size = new System.Drawing.Size(100, 35);
@@ -1865,7 +1865,7 @@
             // buttonZapiszOperator
             // 
             this.buttonZapiszOperator.BackColor = System.Drawing.Color.Linen;
-            this.buttonZapiszOperator.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonZapiszOperator.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonZapiszOperator.Location = new System.Drawing.Point(132, 19);
             this.buttonZapiszOperator.Name = "buttonZapiszOperator";
             this.buttonZapiszOperator.Size = new System.Drawing.Size(100, 35);
@@ -1877,7 +1877,7 @@
             // buttonAnulujOperator
             // 
             this.buttonAnulujOperator.BackColor = System.Drawing.Color.Linen;
-            this.buttonAnulujOperator.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonAnulujOperator.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonAnulujOperator.Location = new System.Drawing.Point(254, 19);
             this.buttonAnulujOperator.Name = "buttonAnulujOperator";
             this.buttonAnulujOperator.Size = new System.Drawing.Size(100, 35);
@@ -1892,7 +1892,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox23.BackColor = System.Drawing.Color.Bisque;
             this.groupBox23.Controls.Add(this.listBoxOperator);
-            this.groupBox23.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox23.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox23.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBox23.Location = new System.Drawing.Point(12, 76);
             this.groupBox23.Name = "groupBox23";
@@ -1921,7 +1921,7 @@
             this.groupBox24.Controls.Add(this.buttonSzukajOperator);
             this.groupBox24.Controls.Add(this.textBoxWyszukiwanieOperator);
             this.groupBox24.Cursor = System.Windows.Forms.Cursors.Default;
-            this.groupBox24.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox24.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox24.ForeColor = System.Drawing.Color.Black;
             this.groupBox24.Location = new System.Drawing.Point(348, 15);
             this.groupBox24.Name = "groupBox24";
@@ -1968,7 +1968,7 @@
             this.groupBox25.Controls.Add(this.label57);
             this.groupBox25.Controls.Add(this.textBoxImieOperator);
             this.groupBox25.Cursor = System.Windows.Forms.Cursors.Default;
-            this.groupBox25.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox25.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox25.ForeColor = System.Drawing.Color.Black;
             this.groupBox25.Location = new System.Drawing.Point(348, 78);
             this.groupBox25.Name = "groupBox25";
@@ -2003,18 +2003,18 @@
             // 
             this.textBoxNazwiskoOperator.BackColor = System.Drawing.Color.Linen;
             this.textBoxNazwiskoOperator.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.textBoxNazwiskoOperator.Location = new System.Drawing.Point(90, 79);
+            this.textBoxNazwiskoOperator.Location = new System.Drawing.Point(111, 79);
             this.textBoxNazwiskoOperator.Name = "textBoxNazwiskoOperator";
-            this.textBoxNazwiskoOperator.Size = new System.Drawing.Size(388, 23);
+            this.textBoxNazwiskoOperator.Size = new System.Drawing.Size(367, 23);
             this.textBoxNazwiskoOperator.TabIndex = 55;
             // 
             // comboBoxDzialOperator
             // 
             this.comboBoxDzialOperator.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.comboBoxDzialOperator.FormattingEnabled = true;
-            this.comboBoxDzialOperator.Location = new System.Drawing.Point(90, 127);
+            this.comboBoxDzialOperator.Location = new System.Drawing.Point(111, 127);
             this.comboBoxDzialOperator.Name = "comboBoxDzialOperator";
-            this.comboBoxDzialOperator.Size = new System.Drawing.Size(388, 24);
+            this.comboBoxDzialOperator.Size = new System.Drawing.Size(367, 24);
             this.comboBoxDzialOperator.TabIndex = 54;
             this.comboBoxDzialOperator.SelectedIndexChanged += new System.EventHandler(this.comboBoxDzial_operator_maszyny_SelectedIndexChanged);
             // 
@@ -2033,9 +2033,9 @@
             // 
             this.dateTimePickerDataKoncaUprOp.CalendarMonthBackground = System.Drawing.Color.Linen;
             this.dateTimePickerDataKoncaUprOp.Font = new System.Drawing.Font("Arial Narrow", 11F);
-            this.dateTimePickerDataKoncaUprOp.Location = new System.Drawing.Point(145, 227);
+            this.dateTimePickerDataKoncaUprOp.Location = new System.Drawing.Point(199, 227);
             this.dateTimePickerDataKoncaUprOp.Name = "dateTimePickerDataKoncaUprOp";
-            this.dateTimePickerDataKoncaUprOp.Size = new System.Drawing.Size(333, 24);
+            this.dateTimePickerDataKoncaUprOp.Size = new System.Drawing.Size(279, 24);
             this.dateTimePickerDataKoncaUprOp.TabIndex = 52;
             // 
             // label54
@@ -2078,9 +2078,9 @@
             // 
             this.textBoxUprawnienieOperator.BackColor = System.Drawing.Color.Linen;
             this.textBoxUprawnienieOperator.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.textBoxUprawnienieOperator.Location = new System.Drawing.Point(90, 178);
+            this.textBoxUprawnienieOperator.Location = new System.Drawing.Point(199, 178);
             this.textBoxUprawnienieOperator.Name = "textBoxUprawnienieOperator";
-            this.textBoxUprawnienieOperator.Size = new System.Drawing.Size(388, 23);
+            this.textBoxUprawnienieOperator.Size = new System.Drawing.Size(279, 23);
             this.textBoxUprawnienieOperator.TabIndex = 48;
             // 
             // label56
@@ -2109,16 +2109,16 @@
             // 
             this.textBoxImieOperator.BackColor = System.Drawing.Color.Linen;
             this.textBoxImieOperator.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.textBoxImieOperator.Location = new System.Drawing.Point(90, 34);
+            this.textBoxImieOperator.Location = new System.Drawing.Point(111, 34);
             this.textBoxImieOperator.Name = "textBoxImieOperator";
-            this.textBoxImieOperator.Size = new System.Drawing.Size(388, 23);
+            this.textBoxImieOperator.Size = new System.Drawing.Size(367, 23);
             this.textBoxImieOperator.TabIndex = 44;
             // 
             // groupBox26
             // 
             this.groupBox26.BackColor = System.Drawing.Color.Bisque;
             this.groupBox26.Controls.Add(this.comboBoxOperator);
-            this.groupBox26.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox26.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox26.ForeColor = System.Drawing.Color.Black;
             this.groupBox26.Location = new System.Drawing.Point(12, 13);
             this.groupBox26.Name = "groupBox26";
@@ -2165,7 +2165,7 @@
             this.groupBox31.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox31.Controls.Add(this.listBoxMaszynyDysponenta);
-            this.groupBox31.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox31.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox31.ForeColor = System.Drawing.Color.Black;
             this.groupBox31.Location = new System.Drawing.Point(801, 22);
             this.groupBox31.Name = "groupBox31";
@@ -2217,7 +2217,7 @@
             this.groupBox27.Controls.Add(this.buttonUsunDysponent);
             this.groupBox27.Controls.Add(this.buttonZapiszDysponent);
             this.groupBox27.Controls.Add(this.buttonAnulujDysponent);
-            this.groupBox27.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox27.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox27.ForeColor = System.Drawing.Color.Black;
             this.groupBox27.Location = new System.Drawing.Point(339, 721);
             this.groupBox27.Name = "groupBox27";
@@ -2229,7 +2229,7 @@
             // buttonNowaDysponent
             // 
             this.buttonNowaDysponent.BackColor = System.Drawing.Color.Linen;
-            this.buttonNowaDysponent.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonNowaDysponent.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonNowaDysponent.Location = new System.Drawing.Point(16, 20);
             this.buttonNowaDysponent.Name = "buttonNowaDysponent";
             this.buttonNowaDysponent.Size = new System.Drawing.Size(80, 30);
@@ -2241,7 +2241,7 @@
             // buttonUsunDysponent
             // 
             this.buttonUsunDysponent.BackColor = System.Drawing.Color.Linen;
-            this.buttonUsunDysponent.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonUsunDysponent.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonUsunDysponent.Location = new System.Drawing.Point(368, 20);
             this.buttonUsunDysponent.Name = "buttonUsunDysponent";
             this.buttonUsunDysponent.Size = new System.Drawing.Size(80, 30);
@@ -2253,7 +2253,7 @@
             // buttonZapiszDysponent
             // 
             this.buttonZapiszDysponent.BackColor = System.Drawing.Color.Linen;
-            this.buttonZapiszDysponent.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonZapiszDysponent.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonZapiszDysponent.Location = new System.Drawing.Point(134, 20);
             this.buttonZapiszDysponent.Name = "buttonZapiszDysponent";
             this.buttonZapiszDysponent.Size = new System.Drawing.Size(80, 30);
@@ -2265,7 +2265,7 @@
             // buttonAnulujDysponent
             // 
             this.buttonAnulujDysponent.BackColor = System.Drawing.Color.Linen;
-            this.buttonAnulujDysponent.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonAnulujDysponent.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonAnulujDysponent.Location = new System.Drawing.Point(253, 20);
             this.buttonAnulujDysponent.Name = "buttonAnulujDysponent";
             this.buttonAnulujDysponent.Size = new System.Drawing.Size(80, 30);
@@ -2288,7 +2288,7 @@
             this.groupBox28.Controls.Add(this.label17);
             this.groupBox28.Controls.Add(this.textBoxImieDysponent);
             this.groupBox28.Cursor = System.Windows.Forms.Cursors.Default;
-            this.groupBox28.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox28.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox28.ForeColor = System.Drawing.Color.Black;
             this.groupBox28.Location = new System.Drawing.Point(339, 85);
             this.groupBox28.Name = "groupBox28";
@@ -2325,18 +2325,18 @@
             // 
             this.textBoxNazwiskoDysponent.BackColor = System.Drawing.Color.Linen;
             this.textBoxNazwiskoDysponent.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.textBoxNazwiskoDysponent.Location = new System.Drawing.Point(79, 82);
+            this.textBoxNazwiskoDysponent.Location = new System.Drawing.Point(102, 82);
             this.textBoxNazwiskoDysponent.Name = "textBoxNazwiskoDysponent";
-            this.textBoxNazwiskoDysponent.Size = new System.Drawing.Size(371, 23);
+            this.textBoxNazwiskoDysponent.Size = new System.Drawing.Size(348, 23);
             this.textBoxNazwiskoDysponent.TabIndex = 55;
             // 
             // comboBoxDzialDysponent
             // 
             this.comboBoxDzialDysponent.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.comboBoxDzialDysponent.FormattingEnabled = true;
-            this.comboBoxDzialDysponent.Location = new System.Drawing.Point(79, 127);
+            this.comboBoxDzialDysponent.Location = new System.Drawing.Point(102, 127);
             this.comboBoxDzialDysponent.Name = "comboBoxDzialDysponent";
-            this.comboBoxDzialDysponent.Size = new System.Drawing.Size(369, 24);
+            this.comboBoxDzialDysponent.Size = new System.Drawing.Size(346, 24);
             this.comboBoxDzialDysponent.TabIndex = 54;
             this.comboBoxDzialDysponent.SelectedIndexChanged += new System.EventHandler(this.comboBoxDzial_dysponent_SelectedIndexChanged);
             // 
@@ -2377,9 +2377,9 @@
             // 
             this.textBoxImieDysponent.BackColor = System.Drawing.Color.Linen;
             this.textBoxImieDysponent.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.textBoxImieDysponent.Location = new System.Drawing.Point(79, 35);
+            this.textBoxImieDysponent.Location = new System.Drawing.Point(102, 35);
             this.textBoxImieDysponent.Name = "textBoxImieDysponent";
-            this.textBoxImieDysponent.Size = new System.Drawing.Size(371, 23);
+            this.textBoxImieDysponent.Size = new System.Drawing.Size(348, 23);
             this.textBoxImieDysponent.TabIndex = 44;
             // 
             // groupBox29
@@ -2388,7 +2388,7 @@
             this.groupBox29.Controls.Add(this.buttonSzukajDysponent);
             this.groupBox29.Controls.Add(this.textBoxWyszukiwanieDysponent);
             this.groupBox29.Cursor = System.Windows.Forms.Cursors.Default;
-            this.groupBox29.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox29.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox29.ForeColor = System.Drawing.Color.Black;
             this.groupBox29.Location = new System.Drawing.Point(339, 22);
             this.groupBox29.Name = "groupBox29";
@@ -2424,7 +2424,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox30.BackColor = System.Drawing.Color.Bisque;
             this.groupBox30.Controls.Add(this.listBoxDysponent);
-            this.groupBox30.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox30.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox30.ForeColor = System.Drawing.Color.Black;
             this.groupBox30.Location = new System.Drawing.Point(3, 22);
             this.groupBox30.Name = "groupBox30";
@@ -2494,7 +2494,7 @@
             this.groupBox17.Controls.Add(this.label25);
             this.groupBox17.Controls.Add(this.richTextBoxDostawca);
             this.groupBox17.Controls.Add(this.label26);
-            this.groupBox17.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox17.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox17.Location = new System.Drawing.Point(401, 21);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Size = new System.Drawing.Size(504, 638);
@@ -2505,7 +2505,7 @@
             // buttonUsunLink
             // 
             this.buttonUsunLink.BackColor = System.Drawing.Color.Linen;
-            this.buttonUsunLink.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonUsunLink.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonUsunLink.Location = new System.Drawing.Point(393, 579);
             this.buttonUsunLink.Name = "buttonUsunLink";
             this.buttonUsunLink.Size = new System.Drawing.Size(97, 30);
@@ -2545,10 +2545,10 @@
             // linkLabelDostawcaMat
             // 
             this.linkLabelDostawcaMat.AutoSize = true;
-            this.linkLabelDostawcaMat.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.linkLabelDostawcaMat.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.linkLabelDostawcaMat.Location = new System.Drawing.Point(13, 601);
             this.linkLabelDostawcaMat.Name = "linkLabelDostawcaMat";
-            this.linkLabelDostawcaMat.Size = new System.Drawing.Size(108, 15);
+            this.linkLabelDostawcaMat.Size = new System.Drawing.Size(107, 16);
             this.linkLabelDostawcaMat.TabIndex = 42;
             this.linkLabelDostawcaMat.TabStop = true;
             this.linkLabelDostawcaMat.Text = "linkLabelDostawca";
@@ -2593,7 +2593,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox16.BackColor = System.Drawing.Color.Bisque;
             this.groupBox16.Controls.Add(this.listBoxDostawcy);
-            this.groupBox16.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox16.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox16.Location = new System.Drawing.Point(16, 21);
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.Size = new System.Drawing.Size(367, 743);
@@ -2622,7 +2622,7 @@
             this.groupBox11.Controls.Add(this.buttonUsunDostawca);
             this.groupBox11.Controls.Add(this.buttonZapiszDostawca);
             this.groupBox11.Controls.Add(this.buttonAnulujDostawca);
-            this.groupBox11.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox11.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox11.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox11.Location = new System.Drawing.Point(401, 700);
             this.groupBox11.Name = "groupBox11";
@@ -2634,7 +2634,7 @@
             // buttonNowyDostawca
             // 
             this.buttonNowyDostawca.BackColor = System.Drawing.Color.Linen;
-            this.buttonNowyDostawca.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonNowyDostawca.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonNowyDostawca.Location = new System.Drawing.Point(14, 25);
             this.buttonNowyDostawca.Name = "buttonNowyDostawca";
             this.buttonNowyDostawca.Size = new System.Drawing.Size(85, 30);
@@ -2646,7 +2646,7 @@
             // buttonUsunDostawca
             // 
             this.buttonUsunDostawca.BackColor = System.Drawing.Color.Linen;
-            this.buttonUsunDostawca.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonUsunDostawca.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonUsunDostawca.Location = new System.Drawing.Point(405, 25);
             this.buttonUsunDostawca.Name = "buttonUsunDostawca";
             this.buttonUsunDostawca.Size = new System.Drawing.Size(85, 30);
@@ -2658,7 +2658,7 @@
             // buttonZapiszDostawca
             // 
             this.buttonZapiszDostawca.BackColor = System.Drawing.Color.Linen;
-            this.buttonZapiszDostawca.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonZapiszDostawca.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonZapiszDostawca.Location = new System.Drawing.Point(144, 25);
             this.buttonZapiszDostawca.Name = "buttonZapiszDostawca";
             this.buttonZapiszDostawca.Size = new System.Drawing.Size(85, 30);
@@ -2670,7 +2670,7 @@
             // buttonAnulujDostawca
             // 
             this.buttonAnulujDostawca.BackColor = System.Drawing.Color.Linen;
-            this.buttonAnulujDostawca.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonAnulujDostawca.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold);
             this.buttonAnulujDostawca.Location = new System.Drawing.Point(279, 25);
             this.buttonAnulujDostawca.Name = "buttonAnulujDostawca";
             this.buttonAnulujDostawca.Size = new System.Drawing.Size(85, 30);
