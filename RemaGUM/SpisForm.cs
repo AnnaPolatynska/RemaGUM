@@ -2670,9 +2670,9 @@ namespace RemaGUM
                         dostawca_MatBUS.idx = i;
                         dostawca_MaterialBUS.insert(materialyBUS.VO.Identyfikator, dostawca_MatBUS.VO.Identyfikator, materialyBUS.VO.Nazwa_mat);
                     }
-               
-                }
 
+                }
+                
                 //listBoxMaterialy.SelectedIndex = materialyBUS.getIdx(materialyBUS.VO.Identyfikator); // ustawienie zaznaczenia w tabeli materiały.
                 materialyBUS.write(materialy_VO);
 
@@ -2935,8 +2935,6 @@ namespace RemaGUM
             _statusForm = (int)_status.edycja;
         }//buttonZapiszMat_Clic
 
-
-        //TODO wyszukiwarka materiałów.
         /// <summary>
         /// Wyszukuje materiał po dowolnym ciągu znaków w nazwie lub rodzaju materiału.
         /// </summary>
@@ -3599,7 +3597,6 @@ namespace RemaGUM
                 //operatorVO.Data_konca_upr = int.Parse(operatorVO.Rok.ToString() + operatorVO.Mc.ToString("00") + operatorVO.Dzien.ToString("00"));
                 operatorVO.Data_konca_upr = dateTimePickerDataKoncaUprOp.Value;
 
-                //TODO komunikat o zbliżającej się dacie końca uprawnień operatora. Ustal jak być powinno.
                 //DateTime dt = new DateTime(dateTimePickerDataKoncaUprOp.Value.Ticks);
                 //dt = dt.AddDays(31);
 
